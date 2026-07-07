@@ -1,0 +1,13 @@
+# Transkription: BAT_664_r_00027
+# QA-Score: 0.80
+# HTR-Source: kraken
+# Modell: qwen3-vl-30b-a3b-instruct
+
+iuuuuuie
+uuuuuuuuuuuuuuuu
+uuuuuuuuuuuuuuu
+uuuuuu
+uu
+uiuuuu
+uuuuuuuuuuuuuu
+uuiuiu

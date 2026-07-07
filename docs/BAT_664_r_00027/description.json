@@ -1,0 +1,93 @@
+{
+  "doc_id": "BAT_664_r_00027",
+  "ad_fontes_version": "UZH 16-element",
+  "elements": {
+    "Aufbewahrungsort": {
+      "wert": "",
+      "unsicher": false,
+      "notiz": "nicht beobachtbar"
+    },
+    "Beschreibstoff": {
+      "wert": "Papier (unsicher)",
+      "unsicher": true,
+      "notiz": "Keine materialbezogene Information im Transkript; Papier seit ca. 1330 im deutschsprachigen Verwaltungsbereich üblich"
+    },
+    "Blaetter": {
+      "wert": "1 (unsicher)",
+      "unsicher": true,
+      "notiz": "Nur ein kurzer Textausschnitt; Gesamtlänge und Blattzahl nicht erkennbar"
+    },
+    "Format": {
+      "wert": "Quarto (unsicher)",
+      "unsicher": true,
+      "notiz": "Keine Größenangaben; Quarto häufig bei Verwaltungsunterlagen des 14.–15. Jh."
+    },
+    "Datierung": {
+      "wert": "15. Jahrhundert (unsicher)",
+      "unsicher": true,
+      "notiz": "Keine explizite Datierung; vermutet aufgrund des generellen Material‑ und Schriftgebrauchs"
+    },
+    "Lagen": {
+      "wert": "unregelmaessig (unsicher)",
+      "unsicher": true,
+      "notiz": "Keine Lagensignaturen oder Reklamanten im Text erkennbar"
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "einspaltig (unsicher)",
+      "unsicher": true,
+      "notiz": "Der Transkript besteht aus einzelnen Zeilen; keine Spaltenmarkierungen sichtbar"
+    },
+    "Schrift": {
+      "wert": "gotische Textschrift (unsicher)",
+      "unsicher": true,
+      "notiz": "Gotische Grundschrift ist in Verwaltungsquellen des 14.–15. Jh. dominant"
+    },
+    "Schreiber": {
+      "wert": "ein Schreiber (unsicher)",
+      "unsicher": true,
+      "notiz": "Keine handschriftlichen Merkmale wie Variation in Buchstabenform erkennbar"
+    },
+    "Ausstattung": {
+      "wert": "keine",
+      "unsicher": false,
+      "notiz": "Kein Buchschmuck, Miniaturen oder verzierte Initialen im Transkript nachweisbar"
+    },
+    "Sprache": {
+      "wert": "Deutsch (unsicher)",
+      "unsicher": true,
+      "notiz": "Der Text enthält nur die Buchstaben i und u; sprachliche Zuordnung nur anhand des Kontextes möglich"
+    },
+    "Einband": {
+      "wert": "nicht beobachtbar",
+      "unsicher": false,
+      "notiz": "Keine Angaben zum Einbandmaterial oder -gestaltung im Transkript"
+    },
+    "Provenienz": {
+      "wert": "",
+      "unsicher": false,
+      "notiz": "nicht beobachtbar"
+    },
+    "Literatur": {
+      "wert": "",
+      "unsicher": false,
+      "notiz": "nicht beobachtbar"
+    },
+    "Inhalt": {
+      "wert": "unbekannt (unsicher)",
+      "unsicher": true,
+      "notiz": "Der kurze Auszug gibt keine inhaltliche Klarheit; mögliche Register‑ oder Listeneintrag"
+    },
+    "Weitere_Hinweise": {
+      "wert": "",
+      "unsicher": false,
+      "notiz": "keine zusätzlichen Informationen"
+    }
+  },
+  "care_flag": {
+    "is_care_related": false,
+    "care_context": "",
+    "care_types": [],
+    "beteiligte": []
+  },
+  "image_path": "none"
+}

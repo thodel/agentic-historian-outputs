@@ -1,0 +1,110 @@
+{
+  "entities": [
+    {
+      "text": "Evan",
+      "type": "PERSON",
+      "normalised": "Evan",
+      "context": "Evan dec scrsl.dor eẏ",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Smrát",
+      "type": "PERSON",
+      "normalised": "Smrát",
+      "context": "henm svastnð Smrát .i",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sarínii",
+      "type": "PERSON",
+      "normalised": "Sarínii",
+      "context": "Fø  Sarínii G̅",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Fø",
+      "type": "PLACE",
+      "normalised": "Fø",
+      "context": "Fø  Sarínii",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Aán",
+      "type": "PERSON",
+      "normalised": "Aán",
+      "context": "Fren b͛sigrmi Aán",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Svm Gnaig",
+      "type": "PERSON",
+      "normalised": "Svm Gnaig",
+      "context": "dr Svm Gnaig eratt",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Gnaig",
+      "type": "PERSON",
+      "normalised": "Gnaig",
+      "context": "dr Svm Gnaig eratt",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Pøtyt",
+      "type": "PERSON",
+      "normalised": "Pøtyt",
+      "context": "scꝛr Pøtyt ist",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Gƿir",
+      "type": "PERSON",
+      "normalised": "Gƿir",
+      "context": "er Gƿir .s",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "unio",
+      "type": "ORG",
+      "normalised": "unio",
+      "context": "ist i unio"
+    },
+    {
+      "text": "Ar",
+      "type": "PLACE",
+      "normalised": "Ar",
+      "context": "Ar G͛r a",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Pr",
+      "type": "ROLE",
+      "normalised": "Pr",
+      "context": "ðiser Pr mimítt"
+    },
+    {
+      "text": "dr",
+      "type": "ROLE",
+      "normalised": "dr",
+      "context": "dr Svm Gnaig"
+    },
+    {
+      "text": "Da",
+      "type": "PLACE",
+      "normalised": "Da",
+      "context": "Da þʀit sziristn",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    }
+  ]
+}
