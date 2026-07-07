@@ -1,0 +1,106 @@
+{
+  "doc_id": "kf-",
+  "transcription": "--- 0000004_478964_0001_19804829.jpg.png ---\nuuiuu\nuuuuuuuuuuuuuuuuuuuu\nuuuuuuuuuuu\nuuuuuuuuuuuuuuuuuu\niuuuuuuuuuuuuuu\nuuuuuuiuuuu\nuuuuuuuuuuuuuuuuuuu\nuuuuuuuu\nuuuuuuuuuu\nuuuuuuuu\nuuuuuuuuuuuuuu\nuuuuuuuuuuuuuuuuu\nuuuuuuuuuuuuuuuuu\nuuuuuu\nuuuuiuuuuuuuu\nuuuuuuuu\nu\nu\ni\n\nu\n\n--- 0000007_024634_0002_663320.jpg.png ---\niuu\nu\nuuuu\ni\nu\n\nuuu\nuuu\nuu\nuuu\nu\n\niuuu\nuuu\nuu\nu\n\n\n\n\nu\n\n--- 0000015_034634_0001_1169403.png ---\niuu\nuuiuuuuuuuuuuuuuuuuu\nuuuuuuuuuu\nuuiuuu\nuuuuuiuuuuuuuuuuuuu\nuuuuuuuuuuuuuuu\nuuuuuiiuuuuuuuuuuu\nuuuuuuuuuuu\nuiiiiiuuu\nu",
+  "description": {
+    "doc_id": "kf-",
+    "source_description": "# Kodizologische Beschreibung (Ad‑Fontes‑Richtlinien, UZH)\n\n## 1. Aufbewahrungsort  \nKeine gesicherten Angaben möglich. Der aktuelle Standort der Handschrift ist nicht aus den vorliegenden Bilddateien oder der Transkription ableitbar.  \n\n## 2. Beschreibstoff  \nDer Text besteht ausschließlich aus den Buchstaben **u** und **i**, was keinerlei Hinweise auf den verwendeten Beschreibstoff (Pergament, Papier, Papyrus) liefert. Auch ein eventuelles Wasserzeichen, Qualitätsmerkmale (Dicke, Vergilbung) oder Palimpsest‑Spuren sind nicht erkennbar.  \n\n## 3. Blätter  \nDie Anzahl der Blätter bzw. Seiten kann nicht bestimmt werden; es gibt keine sichtbare Foliierung, keine Hinweiszeichen für fehlende Blätter und keine Information zur Lagenstruktur.  \n\n## 4. Format  \nAufgrund fehlender Bildinformationen lässt sich weder die absolute Größe (Höhe × Breite in cm) noch das Format (Folio, Quarto, Oktav) feststellen.  \n\n## 5. Datierung  \nWeder ein explizites Datum noch paleografische Anhaltspunkte (z. B. Schriftstil) sind aus der Transkription ersichtlich. Eine Datumszuordnung ist daher nicht möglich.  \n\n## 6. Lagen  \nKeine Anzeichen für regelmäßige oder unregelmäßige Lagen, keine Kustoden‑ oder Reklamantenmarkierungen erkennbar.  \n\n## 7. Schriftraum‑Gliederung  \nKeine Angaben zu Spaltenzahl, Zeilenzahl, Rasterungen oder Größe des Schriftraums.  \n\n## 8. Schrift  \nDie Transkription liefert ausschließlich die Buchstaben **u** und **i**, sodass Schriftart (gotisch, humanistisch etc.), Tintenfarbe, Schriftgröße, Initialen, Abkürzungen oder Korrekturen nicht beurteilt werden können.  \n\n## 9. Schreiber  \nKein Hinweis auf die Anzahl der Schreiber, deren Identität, Korrekturen, Marginalien oder nachträgliche Anmerkungen.  \n\n## 10. Ausstattung  \nEs sind keine verzierten Initialen, Lombarden, Farbgebung (Rot, Blau, Gold) oder andere Buchschmuckelemente erkennbar.  \n\n## 11. Sprache  \nDer Text ist nicht lesbar; daher kann weder die Sprache (Deutsch, Latein, Mischform) noch ein möglicher Dialektraum (z. B. Alemannisch, Ostschweizerisch) bestimmt werden.  \n\n## 12. Einband  \nKeine Bildmaterialien des Einbands vorhanden; Material, Bezug, Beschläge oder Signaturen sind unbekannt.  \n\n## 13. Provenienz  \nKeine gesicherten Angaben möglich.  \n\n## 14. Literatur  \nKeine gesicherten Angaben möglich.  \n\n## 15. Inhalt  \nDer Dokumenttyp (Urbar, Rechnungsbuch, Roedel, Urkunde, Statuten) und der sachliche Inhalt (Güterverzeichnis, Abgabenregister, Rechtssetzungen) können aufgrund der unlesbaren Transkription nicht ermittelt werden.  \n\n## 16. Weitere Hinweise  \nKeine gesicherten Angaben möglich.  \n\n*Hinweis*: Alle Angaben sind als **unsicher** zu betrachten, da die vorliegende Transkription keinerlei erkenntliche inhaltliche oder formale Merkmale liefert. Weitere Forschungen, insbesondere die Sichtung des Originalmaterials, sind notwendig, um fundierte kodizologische Aussagen treffen zu können.",
+    "source_json": {
+      "Aufbewahrungsort": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Keine gesicherten Angaben möglich"
+      },
+      "Beschreibstoff": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Transkription enthält nur die Buchstaben 'u' und 'i', kein Hinweis auf Pergament, Papier oder Papyrus; kein Wasserzeichen erkennbar"
+      },
+      "Blaetter": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Unklar, wie viele Blätter vorliegen; keine Foliierung sichtbar, keine Anzeichen für fehlende Blätter"
+      },
+      "Format": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Kein Hinweis aus dem Bildmaterial; Format kann weder als Folio, Quarto noch Oktav bestimmt werden"
+      },
+      "Datierung": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Kein explizites Datum, keine datierbaren paleografischen Merkmale erkennbar"
+      },
+      "Lagen": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Keine Information über Lagenstruktur oder Kustoden"
+      },
+      "Schriftraum_Gliederung": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Transkription liefert keine Angaben zu Spalten, Zeilen oder Rasterungen"
+      },
+      "Schrift": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Keine erkennbaren Schriftmerkmale; die reine Buchstabenfolge 'u'/'i' lässt keine Aussage zu Schriftart, Tinte oder Größe zu"
+      },
+      "Schreiber": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Keine Angaben zu Schreiberhand, Korrekturen oder Marginalien"
+      },
+      "Ausstattung": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Keine Anzeichen von Buchschmuck, Initialen oder farbigen Elementen"
+      },
+      "Sprache": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Der Inhalt ist nicht lesbar; Sprache kann nicht bestimmt werden"
+      },
+      "Einband": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Kein Bild des Einbands vorhanden"
+      },
+      "Provenienz": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Keine gesicherten Angaben möglich"
+      },
+      "Literatur": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Keine gesicherten Angaben möglich"
+      },
+      "Inhalt": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Durch die unlesbare Transkription lässt sich weder Dokumententyp noch Sachinhalt bestimmen"
+      },
+      "Weitere_Hinweise": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Keine gesicherten Angaben möglich"
+      }
+    },
+    "care_flag": {
+      "is_care_related": false,
+      "care_context": "",
+      "care_types": [],
+      "beteiligte": []
+    },
+    "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/_orders/agentic_historian_hotfolder__kf-/0000004_478964_0001_19804829.jpg.png"
+  },
+  "entities": {
+    "entities": []
+  },
+  "errors": [],
+  "a_meta": {
+    "pages": 3,
+    "qa_score": 0.8,
+    "source": "grouped"
+  }
+}

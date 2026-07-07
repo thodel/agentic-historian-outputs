@@ -1,0 +1,93 @@
+{
+  "doc_id": "kf-",
+  "ad_fontes_version": "UZH 16-element",
+  "elements": {
+    "Aufbewahrungsort": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben möglich"
+    },
+    "Beschreibstoff": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Transkription enthält nur die Buchstaben 'u' und 'i', kein Hinweis auf Pergament, Papier oder Papyrus; kein Wasserzeichen erkennbar"
+    },
+    "Blaetter": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Unklar, wie viele Blätter vorliegen; keine Foliierung sichtbar, keine Anzeichen für fehlende Blätter"
+    },
+    "Format": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Kein Hinweis aus dem Bildmaterial; Format kann weder als Folio, Quarto noch Oktav bestimmt werden"
+    },
+    "Datierung": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Kein explizites Datum, keine datierbaren paleografischen Merkmale erkennbar"
+    },
+    "Lagen": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine Information über Lagenstruktur oder Kustoden"
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Transkription liefert keine Angaben zu Spalten, Zeilen oder Rasterungen"
+    },
+    "Schrift": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine erkennbaren Schriftmerkmale; die reine Buchstabenfolge 'u'/'i' lässt keine Aussage zu Schriftart, Tinte oder Größe zu"
+    },
+    "Schreiber": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine Angaben zu Schreiberhand, Korrekturen oder Marginalien"
+    },
+    "Ausstattung": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine Anzeichen von Buchschmuck, Initialen oder farbigen Elementen"
+    },
+    "Sprache": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Der Inhalt ist nicht lesbar; Sprache kann nicht bestimmt werden"
+    },
+    "Einband": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Kein Bild des Einbands vorhanden"
+    },
+    "Provenienz": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben möglich"
+    },
+    "Literatur": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben möglich"
+    },
+    "Inhalt": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Durch die unlesbare Transkription lässt sich weder Dokumententyp noch Sachinhalt bestimmen"
+    },
+    "Weitere_Hinweise": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben möglich"
+    }
+  },
+  "care_flag": {
+    "is_care_related": false,
+    "care_context": "",
+    "care_types": [],
+    "beteiligte": []
+  },
+  "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/_orders/agentic_historian_hotfolder__kf-/0000004_478964_0001_19804829.jpg.png"
+}
