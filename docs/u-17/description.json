@@ -1,0 +1,93 @@
+{
+  "doc_id": "u-17",
+  "ad_fontes_version": "UZH 16-element",
+  "elements": {
+    "Aufbewahrungsort": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben möglich"
+    },
+    "Beschreibstoff": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Transkription enthält nur Buchstaben‑ähnliche Zeichen (u, i, g, s, –). Ohne Bildmaterial können Pergament‑/Papier‑Identifikation, Wasserzeichen, Materialqualität oder Palimpsest‑Hinweise nicht beurteilt werden."
+    },
+    "Blaetter": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Anzahl der Blätter/Seiten, Foliierung und eventuelle Fehlstellen nicht aus dem Text ableitbar."
+    },
+    "Format": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine Angaben zur Größe oder zum Format (Folio, Quarto, Oktav) möglich."
+    },
+    "Datierung": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine explizite Jahresangabe. Inhaltliche Hinweise fehlen, weshalb nur ein sehr grobes 14.–16. Jh. als Wahrscheinlichkeit angegeben werden kann (unsicher)."
+    },
+    "Lagen": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Lagenstruktur und mögliche Lagensignaturen (Kustoden, Reklamanten) können nicht beurteilt werden."
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Spaltenzahl, Zeilenzahl, Rasterung und Größe des Schriftraums nicht erkennbar."
+    },
+    "Schrift": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Schriftart, Tintenfarbe, Schriftgröße, Initialen, Abkürzungen und Korrekturen können nicht beurteilt werden. Die reine Buchstabenfolge (u, i, g, s) lässt keine typologische Analyse zu."
+    },
+    "Schreiber": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine Hinweise auf Anzahl der Schreiber, Namen oder Korrekturarten erkennbar."
+    },
+    "Ausstattung": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine Buchschmuck‑, Miniatur‑ oder Initialenbeobachtungen möglich."
+    },
+    "Sprache": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Der transkribierte Text besteht ausschließlich aus den Zeichen u, i, g, s und Trennstrichen; keine sprachlichen Daten erkennbar."
+    },
+    "Einband": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine Angaben zum Einbandmaterial, -bezug oder Beschlägen möglich."
+    },
+    "Provenienz": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben zur Herkunft."
+    },
+    "Literatur": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine Literaturangaben vorhanden."
+    },
+    "Inhalt": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Durch die abstrakte Zeichenfolge lässt sich der Dokumententyp (Urbar, Rechnungsbuch, etc.) nicht bestimmen."
+    },
+    "Weitere_Hinweise": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Zusatzinformationen."
+    }
+  },
+  "care_flag": {
+    "is_care_related": false,
+    "care_context": "",
+    "care_types": [],
+    "beteiligte": []
+  },
+  "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/_orders/agentic_historian_hotfolder__u-17/e-codices_saa-0428_015v_large.jpg"
+}
