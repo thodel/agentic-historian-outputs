@@ -1,8 +1,22 @@
 {
   "doc_id": "saa-0005-test",
   "transcription": "Hans von Bern tuend kund…",
-  "description": {},
-  "entities": {},
+  "description": {
+    "source_description": "Gerichtsverhandlung, 15. Jh., Kurrent",
+    "source_json": {
+      "script": "Kurrent",
+      "lang": "de",
+      "century": 15,
+      "document_type": "Gerichtsbrief"
+    }
+  },
+  "entities": {
+    "persons": [
+      {
+        "name": "Hans von Bern"
+      }
+    ]
+  },
   "errors": [],
   "a_meta": {},
   "source_url": "https://my.override.com/page/42"
