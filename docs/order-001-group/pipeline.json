@@ -23,5 +23,6 @@
     "qa_score": 0.9,
     "source": "grouped"
   },
-  "source_url": "https://base/test_runstate_grouped_pipeline0"
+  "source_url": "https://base/test_runstate_grouped_pipeline0",
+  "recognitions": []
 }
