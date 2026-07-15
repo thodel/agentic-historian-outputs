@@ -1,0 +1,26 @@
+{
+  "doc_id": "order-ens",
+  "transcription": "--- p1.jpg ---\ngut lesbar hier\n\n--- p2.jpg ---\ngut lesbar hier",
+  "description": {
+    "source_description": "x",
+    "source_json": {}
+  },
+  "entities": {},
+  "errors": [],
+  "a_meta": {
+    "pages": 2,
+    "qa_score": 0.9,
+    "source": "grouped-ensemble"
+  },
+  "recognitions": [
+    {
+      "engine": "kraken",
+      "model_id": "k0",
+      "text": "gut lesbar hier",
+      "confidence": 0.8,
+      "error": "",
+      "timing_ms": 0,
+      "segmented_by": null
+    }
+  ]
+}
