@@ -1,0 +1,93 @@
+{
+  "doc_id": "u-17__",
+  "ad_fontes_version": "UZH 16-element",
+  "elements": {
+    "Aufbewahrungsort": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben"
+    },
+    "Beschreibstoff": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine eindeutigen Materialmerkmale erkennbar, Bildmaterial zu unscharf"
+    },
+    "Blaetter": {
+      "wert": "2 (4 Seiten beobachtet)",
+      "unsicher": false,
+      "notiz": "Folien 015v, 016r, 016v, 017r"
+    },
+    "Format": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine Maßangaben erkennbar"
+    },
+    "Datierung": {
+      "wert": "14.-16. Jh.",
+      "unsicher": true,
+      "notiz": "Plausibel nach typischer Nutzung von Verwaltungsschriften, keine explizite Datierung"
+    },
+    "Lagen": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine Lagensignaturen sichtbar"
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Kein Hinweis auf Spalten oder Raster erkennbar"
+    },
+    "Schrift": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Transkription zeigt nur die Buchstaben u, i, s, kein lesbarer Text"
+    },
+    "Schreiber": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine Handschriftmerkmale erkennbar"
+    },
+    "Ausstattung": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine Buchschmuckelemente erkennbar"
+    },
+    "Sprache": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Unklar, da kein lesbarer Text"
+    },
+    "Einband": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine Angaben"
+    },
+    "Provenienz": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben"
+    },
+    "Literatur": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben"
+    },
+    "Inhalt": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Unklar, evtl. Register oder Zählung"
+    },
+    "Weitere_Hinweise": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": ""
+    }
+  },
+  "care_flag": {
+    "is_care_related": false,
+    "care_context": "",
+    "care_types": [],
+    "beteiligte": []
+  },
+  "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/_orders/agentic_historian_hotfolder__u-17__/e-codices_saa-0428_015v_large.jpg"
+}
