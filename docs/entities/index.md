@@ -1,0 +1,8 @@
+---
+layout: default
+title: "Entitäten"
+---
+
+<link rel="stylesheet" href="{{ '/assets/output.css' | relative_url }}">
+
+<nav class="breadcrumbs"><a href="../">Alle Ausgaben</a> / Entitäten</nav><h1>Entitäten</h1><p>Automatisch erkannte Personen, Orte, Organisationen und weitere Entitätstypen. Schreibvarianten können getrennte Einträge bilden; fehlende Normdatenlinks bedeuten, dass die Identifikation nicht verifiziert wurde.</p><div class="table-scroll"><table><thead><tr><th>Entität</th><th>Typ</th><th>Vorkommen</th></tr></thead><tbody><tr><td><a href="unio-28f741b7/">unio</a></td><td>ORG</td><td>1</td></tr><tr><td><a href="a-n-996ae1fa/">Aán</a></td><td>PERSON</td><td>1</td></tr><tr><td><a href="evan-a4b94348/">Evan</a></td><td>PERSON</td><td>1</td></tr><tr><td><a href="gnaig-7dd9f893/">Gnaig</a></td><td>PERSON</td><td>1</td></tr><tr><td><a href="g-ir-380a0397/">Gƿir</a></td><td>PERSON</td><td>1</td></tr><tr><td><a href="hans-von-bern-cee70931/">Hans von Bern</a></td><td>PERSON</td><td>7</td></tr><tr><td><a href="p-tyt-a9b8a6a9/">Pøtyt</a></td><td>PERSON</td><td>1</td></tr><tr><td><a href="sar-nii-0435664b/">Sarínii</a></td><td>PERSON</td><td>1</td></tr><tr><td><a href="smr-t-275792c8/">Smrát</a></td><td>PERSON</td><td>1</td></tr><tr><td><a href="svm-gnaig-18cd3e24/">Svm Gnaig</a></td><td>PERSON</td><td>1</td></tr><tr><td><a href="ar-d08c55d2/">Ar</a></td><td>PLACE</td><td>1</td></tr><tr><td><a href="da-d968cc76/">Da</a></td><td>PLACE</td><td>1</td></tr><tr><td><a href="f-38f38f86/">Fø</a></td><td>PLACE</td><td>1</td></tr><tr><td><a href="dr-f2f1f251/">dr</a></td><td>ROLE</td><td>1</td></tr><tr><td><a href="pr-02f46d31/">Pr</a></td><td>ROLE</td><td>1</td></tr></tbody></table></div>

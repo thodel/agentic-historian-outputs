@@ -85,6 +85,7 @@ class Record:
     errors: int
     is_test: bool
     preview: str
+    review_status: str
 
 
 def _record(path: Path) -> Record:
@@ -142,6 +143,7 @@ def _record(path: Path) -> Record:
         errors=len(errors),
         is_test="test" in doc_id.lower() or "example.com" in source_url,
         preview=compact_preview,
+        review_status=_val(data.get("review_status") or meta.get("review_status") or "machine-generated"),
     )
 
 
@@ -156,6 +158,7 @@ def _card(record: Record) -> str:
     badges = []
     if record.is_test:
         badges.append(_badge("Testlauf", "test"))
+    badges.append(_badge(record.review_status, "ok" if record.review_status == "human-verified" else "test"))
     badges.append(_badge("Ohne Fehler" if not record.errors else f"{record.errors} Fehler", "ok" if not record.errors else "error"))
     if record.qa_score is not None:
         badges.append(_badge(f"QA {record.qa_score:.0%}"))
@@ -183,7 +186,7 @@ def _card(record: Record) -> str:
     )
     search = " ".join((record.doc_id, record.date_label, record.language, record.script, record.document_type, record.preview)).lower()
     kind = "test" if record.is_test else "output"
-    return f'''<article class="catalogue-card" data-kind="{kind}" data-search="{html.escape(search, quote=True)}">
+    return f'''<article class="catalogue-card" data-kind="{kind}" data-language="{html.escape(record.language.casefold(), quote=True)}" data-script="{html.escape(record.script.casefold(), quote=True)}" data-search="{html.escape(search, quote=True)}">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="{created_iso}">{created_label}</time></p>
@@ -215,6 +218,7 @@ title: Agentic Historian — Outputs
   <p class="catalogue-kicker">Forschungsdaten · automatisch erzeugt</p>
   <h1>Verarbeitete Dokumente</h1>
   <p>Transkriptionen, Quellenbeschreibungen und erkannte Entitäten. Die neuesten Ausgaben stehen zuerst. Automatisch erzeugte Angaben sind Forschungsangebote und müssen am Original überprüft werden.</p>
+  <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
   <p class="catalogue-summary"><strong>{len(records)}</strong> Einträge · {output_count} Ausgaben · {test_count} Testläufe</p>
 </div>
 
@@ -231,6 +235,14 @@ title: Agentic Historian — Outputs
       <option value="test">Nur Testläufe</option>
     </select>
   </div>
+  <div>
+    <label for="catalogue-language">Sprache</label>
+    <select id="catalogue-language"><option value="all">Alle Sprachen</option></select>
+  </div>
+  <div>
+    <label for="catalogue-script">Schrift</label>
+    <select id="catalogue-script"><option value="all">Alle Schriften</option></select>
+  </div>
 </form>
 
 <p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">{len(records)} Einträge, nach Erstellungsdatum absteigend sortiert.</p>
@@ -243,6 +255,8 @@ title: Agentic Historian — Outputs
 <script src="{{{{ '/assets/catalogue.js' | relative_url }}}}" defer></script>
 '''
     (DOCS / "index.md").write_text(page, encoding="utf-8")
+    from build_outputs import build as build_outputs
+    build_outputs()
     print(f"Wrote docs/index.md with {len(records)} record(s), newest first")
     return len(records)
 

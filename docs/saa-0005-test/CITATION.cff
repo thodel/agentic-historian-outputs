@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this output, cite it using these metadata."
+title: "Agentic Historian output: saa-0005-test"
+type: dataset
+authors:
+  - name: "Agentic Historian"
+repository-code: "https://github.com/thodel/agentic-historian-outputs"
+url: "https://thodel.github.io/agentic-historian-outputs/saa-0005-test/"
+date-released: "2026-07-15"
+license: "LicenseRef-Not-Specified"

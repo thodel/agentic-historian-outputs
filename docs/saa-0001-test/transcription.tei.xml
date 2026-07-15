@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt><title>Machine transcription: saa-0001-test</title></titleStmt>
+      <publicationStmt><p>Agentic Historian output; reuse rights not specified.</p></publicationStmt>
+      <sourceDesc><p>Source image not published</p></sourceDesc>
+    </fileDesc>
+    <revisionDesc><change when="2026-07-15">Generated from pipeline.json.</change></revisionDesc>
+  </teiHeader>
+  <text><body><div type="transcription"><p>Hans von Bern tuend kund…</p></div></body></text>
+</TEI>

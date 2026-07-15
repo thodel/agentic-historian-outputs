@@ -31,6 +31,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/index.md
+          git add docs
           git diff --cached --quiet || git commit -m "build: refresh catalogue index [skip ci]"
           git push
