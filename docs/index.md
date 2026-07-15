@@ -51,7 +51,7 @@ title: Katalog
   <p class="catalogue-preview">p1.jpg gut lesbar hier p2.jpg gut lesbar hier…</p>
   <p class="catalogue-actions"><a href="order-ens/" aria-label="Ausgabe order-ens öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
 </article>
-<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="u-17__ 14.-16. jh.    e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu ">
+<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="u-17__     e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu ">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T16:49:41+02:00">15.07.2026, 16:49</time></p>
@@ -59,7 +59,7 @@ title: Katalog
     </div>
     <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 80%</span></div>
   </div>
-  <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>14.-16. Jh.</dd></div><div><dt>Entitäten</dt><dd>0</dd></div><div><dt>Seiten</dt><dd>4</dd></div></dl>
+  <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>0</dd></div><div><dt>Seiten</dt><dd>4</dd></div></dl>
   <p class="catalogue-preview">e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu …</p>
   <p class="catalogue-actions"><a href="u-17__/" aria-label="Ausgabe u-17__ öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
 </article>
