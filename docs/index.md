@@ -10,7 +10,7 @@ title: Katalog
   <h1>Verarbeitete Dokumente</h1>
   <p>Transkriptionen, Quellenbeschreibungen und erkannte Entitäten. Die neuesten Ausgaben stehen zuerst. Automatisch erzeugte Angaben sind Forschungsangebote und müssen am Original überprüft werden.</p>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
-  <p class="catalogue-summary"><strong>12</strong> Einträge · 6 Ausgaben · 6 Testläufe</p>
+  <p class="catalogue-summary"><strong>13</strong> Einträge · 7 Ausgaben · 6 Testläufe</p>
 </div>
 
 <form class="catalogue-tools" role="search" aria-label="Ausgaben durchsuchen" onsubmit="return false">
@@ -36,9 +36,21 @@ title: Katalog
   </div>
 </form>
 
-<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">12 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
+<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">13 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
 
 <div id="catalogue-list" class="catalogue-list">
+<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="order-ens     p1.jpg gut lesbar hier p2.jpg gut lesbar hier">
+  <div class="catalogue-card__heading">
+    <div>
+      <p class="catalogue-created">Erstellt <time datetime="2026-07-15T19:17:36+02:00">15.07.2026, 19:17</time></p>
+      <h2><a href="order-ens/">order-ens</a></h2>
+    </div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 90%</span></div>
+  </div>
+  <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>0</dd></div><div><dt>Seiten</dt><dd>2</dd></div></dl>
+  <p class="catalogue-preview">p1.jpg gut lesbar hier p2.jpg gut lesbar hier…</p>
+  <p class="catalogue-actions"><a href="order-ens/" aria-label="Ausgabe order-ens öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+</article>
 <article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="u-17__ 14.-16. jh.    e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu ">
   <div class="catalogue-card__heading">
     <div>
