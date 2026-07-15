@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Agentic Historian — Outputs
+title: Katalog
 ---
 
 <link rel="stylesheet" href="{{ '/assets/catalogue.css' | relative_url }}">

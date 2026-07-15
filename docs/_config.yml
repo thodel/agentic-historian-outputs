@@ -8,9 +8,10 @@ theme: minima
 # processed document. Keep global navigation at collection level only; the
 # catalogue itself provides access to individual outputs.
 header_pages:
+  - index.md
   - entities/index.md
   - methodology.md
-  - tests/index.md
+  - about.md
 
 # Pages serves this folder (Settings → Pages → main /docs). The publisher writes
 # docs/<doc_id>/index.md pages; the build-index Action writes docs/index.md.

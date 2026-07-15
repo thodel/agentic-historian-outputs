@@ -209,7 +209,7 @@ def build() -> int:
     cards = "\n".join(_card(record) for record in records)
     page = f'''---
 layout: default
-title: Agentic Historian — Outputs
+title: Katalog
 ---
 
 <link rel="stylesheet" href="{{{{ '/assets/catalogue.css' | relative_url }}}}">
