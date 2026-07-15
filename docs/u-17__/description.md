@@ -4,60 +4,83 @@ _Erstellt mit Agentic Historian — Ad Fontes codicological framework (UZH)_
 
 ---
 
-# Kodizologische Beschreibung (nach Ad‑Fontes‑Richtlinien, UZH)
+# Handschriftbeschreibung (nach Ad‑fontes‑Richtlinien, UZH)
 
 ## 1. Aufbewahrungsort  
-Keine gesicherten Angaben möglich; Herkunft und aktueller Standort des Objekts sind unbekannt.
+*Keine gesicherten Angaben möglich.* Die Herkunft bzw. der aktuelle Aufbewahrungsort des Exemplars ist aus den vorliegenden Daten nicht ableitbar.
 
 ## 2. Beschreibstoff  
-Aus den vorliegenden Bilddateien lassen sich keine eindeutigen Materialmerkmale (Papier, Pergament, Papyrus) ableiten. Das Bildmaterial ist zu unscharf, um Wasserzeichen, Papierqualität oder Palimpsest‑Spuren zu erkennen.
+Der vorhandene Text besteht ausschließlich aus einzelnen Buchstaben („u“, „i“, „g“, „s“). Ohne Bildmaterial lässt sich weder das Trägermaterial (Pergament, Papier, Papyrus) noch etwaige Wasserzeichen, die Qualität des Materials (Dicke, Flecken, Vergilbung) oder das Vorhandensein eines Palimpsests feststellen.  
+
+**Unsicherheit:** hoch („unsicher“).
 
 ## 3. Blätter  
-Vier digitale Bildseiten umfassen die Folien 015 v., 016 r., 016 v. und 017 r. Damit sind mindestens **zwei physische Blätter (vier Seiten)** nachweisbar. Weitere Blätter des Codex sind nicht sichtbar; ein Gesamtumfang lässt sich nicht bestimmen.  
+Es gibt keinerlei Hinweis auf die Gesamtzahl der Blätter bzw. Seiten, auf eine Foliierung (antike bzw. moderne) oder auf fehlende Blätter. Auch die Lagenstruktur kann nicht beurteilt werden.  
 
-*Folienzahl:* 4 (entspricht 2 Blättern).  
-*Foliierung:* Die Zahlen sind im Dateinamen angegeben, jedoch gibt es keine interne Blattnummerierung im Bildmaterial.  
-*Fehlende Blätter:* unbekannt.  
-*Lagenstruktur:* keine Hinweise erkennbar.
+**Unsicherheit:** hoch.
 
 ## 4. Format  
-Keine Messungen oder Hinweise auf das Gesamtabmessungen (Höhe × Breite) des Codex bzw. der einzelnen Blätter sind aus den Bildern ersichtlich. Das Format (Folio, Quarto, Oktav) kann daher nicht bestimmt werden.
+Ohne physische Messungen lässt sich weder die exakte Größe (Höhe × Breite in cm) noch das Format (Folio, Quarto, Oktav) ermitteln.  
+
+**Unsicherheit:** hoch.
 
 ## 5. Datierung  
-Es liegt keine explizite Jahresangabe im Text vor. Aufgrund des Kontextes (Verwaltungsquellen, mögliche Tally‑Marks) und des allgemein häufigen Gebrauchs von Papier bzw. Pergament im 14.‑16. Jahrhundert wird **ein Zeitraum zwischen dem 14. und 16. Jahrhundert** als plausibel angenommen. Diese Einschätzung bleibt jedoch unsicher.
+Im Text sind keine Datumsangaben erkennbar. Die reine Buchstabenfolge liefert keinen Hinweis auf die Schriftentwicklung (z. B. gotische vs. humanistische Schrift), sodass weder ein konkretes Jahr noch ein plausibles Jahrhundert/​Halbjahr benannt werden kann.  
+
+**Unsicherheit:** hoch.
 
 ## 6. Lagen  
-Keine Lagensignaturen (Kustoden) oder Reklamanten (wiederholende Textfragmente) erkennbar.
+Keine Lagensignaturen (Kustoden) oder Reklamanten erkennbar; die Anordnung der Bögen bleibt unbekannt.  
+
+**Unsicherheit:** hoch.
 
 ## 7. Schriftraum‑Gliederung  
-Die digitale Ansicht liefert keine Informationen über Spaltenzahl, Zeilenzahl oder Rasterung des Schriftraums. Auch Maße des Schriftraums (Höhe × Breite) sind nicht bestimmbar.
+Aus der Transkription ergeben sich keine Informationen zu Spaltenzahl, Zeilenzahl, Rasterung oder zur Größe des Schriftraums.  
+
+**Unsicherheit:** hoch.
 
 ## 8. Schrift  
-Der transkribierte Text besteht ausschließlich aus den Buchstaben **u, i, s** (sowie gelegentlich **g** und **-**). Es handelt sich offenbar um ein spezielles Register‑ oder Zählsystem (Märsche, Inventarzählungen), nicht um lesbaren Fließtext. Schriftart, Tintenfarbe, Schriftgröße, Initialen oder besondere Auszeichnungsschriften können nicht beurteilt werden.
+Die Art der Schrift (gotisch, humanistisch, Kursiv) sowie die Tintenfarbe (schwarz, braun, rubrizierte rote Tinte) sind nicht ersichtlich. Auch die Schriftgröße, Auszeichnungsschriften oder Initialen können nicht beurteilt werden.  
+
+**Unsicherheit:** hoch.
 
 ## 9. Schreiber  
-Aus den Bilddaten lassen sich weder einzelne Handschriften noch mehrere Schreibende identifizieren. Korrekturen, Rasuren, Marginalien oder Nachträge sind nicht erkennbar.
+Keine Hinweise auf unterschiedliche Schreibhände, namentlich bekannte Schreiber oder Korrekturen (Streichungen, Überschreibungen, Randkorrekturen).  
+
+**Unsicherheit:** hoch.
 
 ## 10. Ausstattung  
-Keine Anzeichen für Buchschmuck, Miniaturen, farbige oder rubrizierte Initialen. Auch Verzierungen in Rot, Blau oder Gold fehlen.
+Kein Buchschmuck, keine Miniaturen, keine farbigen oder verzierten Initialen erkennbar.  
+
+**Unsicherheit:** hoch.
 
 ## 11. Sprache  
-Da kein lesbarer Text vorhanden ist, kann die Sprache nicht bestimmt werden. Eventuell handelt es sich um eine kodierte oder abgekürzte Form der Verwaltungs‑ bzw. Buchführungssprache (Deutsch/Latein‑Mischung), doch das bleibt spekulativ.
+Die reine Buchstabenliste lässt keine Rückschlüsse auf die Sprache (Deutsch, Latein, Dialekt) zu.  
+
+**Unsicherheit:** hoch.
 
 ## 12. Einband  
-Keine Informationen über Material, Bindung, Leder‑ oder Papierbezug, Beschläge oder Signaturen des Einbands.
+Ohne Bildmaterial können Material, Bezug, Beschläge oder Signaturen des Einbands nicht beurteilt werden.  
+
+**Unsicherheit:** hoch.
 
 ## 13. Provenienz  
-Keine gesicherten Angaben zur Herkunft, Vorbesitzern oder früheren Aufbewahrungsorten.
+*Keine gesicherten Angaben möglich.*
 
 ## 14. Literatur  
-Keine bekannten Literaturverweise oder Editionen, die dieses Dokument bereits beschreiben.
+*Keine gesicherten Angaben möglich.*
 
 ## 15. Inhalt  
-Der Inhalt bleibt aufgrund der unlesbaren Zeichenfolge unklar. Die wiederholte Aneinanderreihung von **u**, **i** und **s** könnte auf ein Zähl‑ bzw. Registersystem (z. B. Mengen‑ oder Personenaufzählung) hinweisen, jedoch lässt sich keine definitive Aussage treffen.
+Der Text besteht aus Wiederholungen der Buchstaben „u“, „i“, „g“ und „s“. Eine Zuordnung zu einem bekannten Dokumententyp (Urbar, Rechnungsbuch, Roedel, Urkunde, Statuten) oder zu einem konkreten Sachinhalt (Güterverzeichnis, Abgabenregister usw.) ist nicht möglich. Es könnte sich um ein internes Zähl‑ bzw. Tally‑System handeln, jedoch bleibt dies spekulativ.  
+
+**Unsicherheit:** hoch.
 
 ## 16. Weitere Hinweise  
-Keine gesicherten zusätzlichen Informationen vorhanden. Alle oben genannten Bewertungspunkte, die nicht durch das Bildmaterial belegbar sind, wurden als **unsicher** gekennzeichnet.
+*Keine gesicherten Angaben möglich.*
+
+---  
+
+**Hinweis zur Unsicherheit:** Fast alle Beschreibungselemente sind mit *(unsicher)* gekennzeichnet, da die vorliegende Transkription keinerlei physische, palaeographische oder inhaltliche Details liefert, die eine fundierte kodizologische Analyse nach den Ad‑fontes‑Richtlinien zulassen würden. Für eine weiterführende Beschreibung wäre eine Sichtung des Originals (oder hochwertiger Digitale) unabdingbar.
 
 ---
 

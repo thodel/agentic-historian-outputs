@@ -5,82 +5,82 @@
     "Aufbewahrungsort": {
       "wert": "",
       "unsicher": true,
-      "notiz": "Keine gesicherten Angaben"
+      "notiz": "keine gesicherten Angaben"
     },
     "Beschreibstoff": {
       "wert": "",
       "unsicher": true,
-      "notiz": "Keine eindeutigen Materialmerkmale erkennbar, Bildmaterial zu unscharf"
+      "notiz": "Transkription enthält ausschließlich einzelne Buchstaben (u, i, g, s). Ohne Bildmaterial kann weder Pergament noch Papier, noch Wasserzeichen, Qualität oder Palimpsest festgestellt werden."
     },
     "Blaetter": {
-      "wert": "2 (4 Seiten beobachtet)",
-      "unsicher": false,
-      "notiz": "Folien 015v, 016r, 016v, 017r"
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine Angabe zur Blatt‑/Seitenzahl, Foliierung, Verlusten oder Lagenstruktur ersichtlich."
     },
     "Format": {
       "wert": "",
       "unsicher": true,
-      "notiz": "Keine Maßangaben erkennbar"
+      "notiz": "Ohne Bild bzw. Messungen lässt sich Höhe, Breite, Format (Folio, Quarto, Oktav) nicht bestimmen."
     },
     "Datierung": {
-      "wert": "14.-16. Jh.",
+      "wert": "",
       "unsicher": true,
-      "notiz": "Plausibel nach typischer Nutzung von Verwaltungsschriften, keine explizite Datierung"
+      "notiz": "Keine explizite Jahresangabe im Text; die reine Buchstabenfolge gibt keinen Hinweis auf die Schriftentwicklung, sodass keine plausible Datierung möglich ist."
     },
     "Lagen": {
       "wert": "",
       "unsicher": true,
-      "notiz": "Keine Lagensignaturen sichtbar"
+      "notiz": "Keine Hinweise auf Lagensignaturen, Reklamanten oder die Anordnung der Bogen."
     },
     "Schriftraum_Gliederung": {
       "wert": "",
       "unsicher": true,
-      "notiz": "Kein Hinweis auf Spalten oder Raster erkennbar"
+      "notiz": "Die Transkription liefert keine Information über Spalten, Zeilen, Raster oder lineare Anordnung."
     },
     "Schrift": {
       "wert": "",
       "unsicher": true,
-      "notiz": "Transkription zeigt nur die Buchstaben u, i, s, kein lesbarer Text"
+      "notiz": "Art der Schrift (gotisch, humanistisch etc.) und Tintenfarbe können aus der reinen Buchstabenliste nicht erschlossen werden."
     },
     "Schreiber": {
       "wert": "",
       "unsicher": true,
-      "notiz": "Keine Handschriftmerkmale erkennbar"
+      "notiz": "Keine Hinweise auf unterschiedliche Schreibhanden, Namen oder Korrekturen erkennbar."
     },
     "Ausstattung": {
       "wert": "",
       "unsicher": true,
-      "notiz": "Keine Buchschmuckelemente erkennbar"
+      "notiz": "Kein Buchschmuck, keine Initialen, keine farbigen Verzierungen ersichtlich."
     },
     "Sprache": {
       "wert": "",
       "unsicher": true,
-      "notiz": "Unklar, da kein lesbarer Text"
+      "notiz": "Einzelbuchstaben lassen keine Rückschlüsse auf die Sprache (Deutsch, Latein etc.) zu."
     },
     "Einband": {
       "wert": "",
       "unsicher": true,
-      "notiz": "Keine Angaben"
+      "notiz": "Ohne Bildinformation kann Material, Bezug oder Beschläge nicht beurteilt werden."
     },
     "Provenienz": {
       "wert": "",
       "unsicher": true,
-      "notiz": "Keine gesicherten Angaben"
+      "notiz": "keine gesicherten Angaben"
     },
     "Literatur": {
       "wert": "",
       "unsicher": true,
-      "notiz": "Keine gesicherten Angaben"
+      "notiz": "keine gesicherten Angaben"
     },
     "Inhalt": {
       "wert": "",
       "unsicher": true,
-      "notiz": "Unklar, evtl. Register oder Zählung"
+      "notiz": "Die reine Buchstabenabfolge (u, i, g, s) kann nicht eindeutig einem Dokumententyp (Urbar, Rechnungsbuch, Roedel, Urkunde, Statuten) zugeordnet werden; möglicherweise handelt es sich um ein Register oder Tally‑Vermerk, jedoch bleibt das spekulativ."
     },
     "Weitere_Hinweise": {
       "wert": "",
       "unsicher": true,
-      "notiz": ""
+      "notiz": "keine gesicherten Angaben"
     }
   },
   "care_flag": {
