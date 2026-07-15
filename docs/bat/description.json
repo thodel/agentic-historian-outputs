@@ -1,0 +1,93 @@
+{
+  "doc_id": "bat",
+  "ad_fontes_version": "UZH 16-element",
+  "elements": {
+    "Aufbewahrungsort": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "keine gesicherten Angaben"
+    },
+    "Beschreibstoff": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Material (Pergament, Papier, Papyrus) nicht erkennbar; keine Wasserzeichen, keine Palimpsest‑Hinweise aus der Bilddarstellung"
+    },
+    "Blaetter": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Anzahl der Blätter/Seiten nicht ersichtlich; Foliierung, Fehlende Blätter und Lagenstruktur nicht beobachtbar"
+    },
+    "Format": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Höhe/Breite sowie Format (Folio, Quarto, etc.) nicht bestimmbar"
+    },
+    "Datierung": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine explizite Datierung; aufgrund des Kontextes (Verwaltungsquelle, 14.–16. Jh.) lediglich eine grobe Chronologie möglich"
+    },
+    "Lagen": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Lagenstruktur und mögliche Kustoden/Reklamanten nicht erkennbar"
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Spaltenzahl, Zeilenzahl, Liniertes bzw. rasterndes Layout nicht aus dem Bild ableitbar"
+    },
+    "Schrift": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Schriftart, Tintenfarbe, Schriftgröße und Auszeichnungselemente unbekannt"
+    },
+    "Schreiber": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Anzahl und Identität der Schreiber nicht bestimmbar; keine erkennbaren Korrekturen oder Marginalien"
+    },
+    "Ausstattung": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Kein Buchschmuck, Miniaturen oder verzierte Initialen ersichtlich"
+    },
+    "Sprache": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Sprachliche Zuordnung (Deutsch, Latein, Dialekt) nicht möglich"
+    },
+    "Einband": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Material und Beschaffenheit des Einbands (Holz, Leder, etc.) nicht sichtbar"
+    },
+    "Provenienz": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "keine gesicherten Angaben"
+    },
+    "Literatur": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "keine gesicherten Angaben"
+    },
+    "Inhalt": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Dokumenttyp und Sachinhalt nicht bestimmbar"
+    },
+    "Weitere_Hinweise": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "keine gesicherten Angaben"
+    }
+  },
+  "care_flag": {
+    "is_care_related": false,
+    "care_context": "",
+    "care_types": [],
+    "beteiligte": []
+  },
+  "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/_orders/agentic_historian_hotfolder__bat/BAT_663_r_00050.jpg"
+}

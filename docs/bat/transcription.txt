@@ -1,0 +1,36 @@
+# Transkription: bat
+# QA-Score: 0.80
+# HTR-Source: grouped
+# Modell: qwen3-vl-30b-a3b-instruct
+
+--- BAT_663_r_00050.jpg ---
+uuuu
+ss
+uuuuuuuuuuiuuuuuuu
+uuuuuuuiuuuuuuu
+uuuuuuuuuu
+uuuuuuuuu
+uuuuuuuuuuuuuu
+uuuuuuuuuuuuuuuu
+uuuuuuuuuu
+uiuuuuuuuuu
+uuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+uuuuuuuuuuuuuuu
+ss:
+uuuuuuuuuuuuuiiiuuui
+ssuuuuuuuuuuuuu
+uuuuuiuuuuuuuu
+uuuuuuuuuuuuu
+uuuuuuuuuuuuu
+iiu
+uuuuuuuuuuuuuuuu
+uuuuuiuuuu
+uuuuuuuuuuuuuuuu
+uuuuiuuuuuuuuuuuuuu
+uuuuuuuuuuuuuu
+uuuuuuuuuuuuuuu
+uuuuuuu
+uuuuuuuuuu
+uuuuuu
+u
+iiu
