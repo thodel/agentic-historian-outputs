@@ -1,3 +1,429 @@
 {
-  "entities": []
+  "entities": [
+    {
+      "text": "Ottovillingen",
+      "type": "PLACE",
+      "normalised": "Ottovillingen",
+      "context": "Ottovillingen dequibz",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Lenzburg",
+      "type": "PLACE",
+      "normalised": "Lenzburg",
+      "context": "p e Lenzburg",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Schafhusen",
+      "type": "PLACE",
+      "normalised": "Schafhusen",
+      "context": "Schafhusen vinbe",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Kyburg",
+      "type": "PLACE",
+      "normalised": "Kyburg",
+      "context": "Comies mbabipurg a m kyburg",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Aar",
+      "type": "PLACE",
+      "normalised": "Aar",
+      "context": "Cencu Aar",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sekingen",
+      "type": "PLACE",
+      "normalised": "Sekingen",
+      "context": "eptillen buef von Sekingen",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Küngsveld",
+      "type": "PLACE",
+      "normalised": "Küngsveld",
+      "context": "Convent von Kūngsveld",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Ebschim",
+      "type": "PLACE",
+      "normalised": "Ebschim",
+      "context": "Ebschim vn dem Conuent",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Archwatt",
+      "type": "PLACE",
+      "normalised": "Archwatt",
+      "context": "Aarchwatt Trurman",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Trurman",
+      "type": "PLACE",
+      "normalised": "Trurman",
+      "context": "Trurman burger",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Lutzeeren",
+      "type": "PLACE",
+      "normalised": "Lutzeeren",
+      "context": "Lutzeeren vn von sinen",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Orwillingen",
+      "type": "PLACE",
+      "normalised": "Orwillingen",
+      "context": "Orwillingen von Aarchwatt",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Tornichon",
+      "type": "PLACE",
+      "normalised": "Tornichon",
+      "context": "Tornichon",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Johannes",
+      "type": "PERSON",
+      "normalised": "Johannes",
+      "context": "Nos Iohannes misaone",
+      "hub_id": "",
+      "gnd": "",
+      "hls": "",
+      "wikidata": "",
+      "hub_confidence": "high",
+      "link_method": "mcp_federation",
+      "mcp_sources": [
+        "eos"
+      ]
+    },
+    {
+      "text": "Torusz",
+      "type": "PERSON",
+      "normalised": "Torusz",
+      "context": "Albas Torusz conuentus",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Conradus",
+      "type": "PERSON",
+      "normalised": "Conradus",
+      "context": "Nos Conradus dimna",
+      "hub_id": "",
+      "gnd": "",
+      "hls": "",
+      "wikidata": "",
+      "hub_confidence": "high",
+      "link_method": "mcp_federation",
+      "mcp_sources": [
+        "eos"
+      ]
+    },
+    {
+      "text": "Heinrich der Stammer",
+      "type": "PERSON",
+      "normalised": "Heinrich der Stammer",
+      "context": "Heinrich der Stammer",
+      "hub_id": "hub_p_example",
+      "wikidata": "",
+      "gnd": "",
+      "hls": "",
+      "hub_confidence": "medium",
+      "semantic_score": 0.387,
+      "link_method": "embedding_rerank"
+    },
+    {
+      "text": "Buchhart von Gartcn.",
+      "type": "PERSON",
+      "normalised": "Buchhart von Gartcn",
+      "context": "Buchhart von Gartcn.",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Johans von sem- pach",
+      "type": "PERSON",
+      "normalised": "Johans von sem- pach",
+      "context": "Johans von sem- pach",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Heinrich von Sewelsberg",
+      "type": "PERSON",
+      "normalised": "Heinrich von Sewelsberg",
+      "context": "Heinrich von Sewelsberg",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Rudolf von aa.",
+      "type": "PERSON",
+      "normalised": "Rudolf von aa",
+      "context": "Rudolf von aa.",
+      "hub_id": "",
+      "gnd": "",
+      "hls": "",
+      "wikidata": "",
+      "hub_confidence": "high",
+      "link_method": "mcp_federation",
+      "mcp_sources": [
+        "kf"
+      ]
+    },
+    {
+      "text": "Ulrich von Eych",
+      "type": "PERSON",
+      "normalised": "Ulrich von Eych",
+      "context": "Ulrich von Eych",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Vernher von Grepson.",
+      "type": "PERSON",
+      "normalised": "Vernher von Grepson",
+      "context": "Vernher von Grepson.",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Jacob",
+      "type": "PERSON",
+      "normalised": "Jacob",
+      "context": "frat Jacob culos",
+      "hub_id": "",
+      "gnd": "",
+      "hls": "",
+      "wikidata": "",
+      "hub_confidence": "high",
+      "link_method": "mcp_federation",
+      "mcp_sources": [
+        "eos"
+      ]
+    },
+    {
+      "text": "Erneshus",
+      "type": "PERSON",
+      "normalised": "Erneshus",
+      "context": "frat Erneshus",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Jokes",
+      "type": "PERSON",
+      "normalised": "Jokes",
+      "context": "frater Jokes capellanus",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Walthero",
+      "type": "PERSON",
+      "normalised": "Walthero",
+      "context": "Walthero decmo",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Lymg Elsberch von Pome",
+      "type": "PERSON",
+      "normalised": "Lymg Elsberch von Pome",
+      "context": "Lymg Elsberch von Pome",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Frid a Egbrechius",
+      "type": "PERSON",
+      "normalised": "Frid a Egbrechius",
+      "context": "Frid a Egbrechius",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Gischper",
+      "type": "PERSON",
+      "normalised": "Gischper",
+      "context": "Fud. de Gischper",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Gieschln",
+      "type": "PERSON",
+      "normalised": "Gieschln",
+      "context": "Campreh? de Gieschln",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Omes",
+      "type": "PERSON",
+      "normalised": "Omes",
+      "context": "kouen Omes schafusen",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Pelpa",
+      "type": "PERSON",
+      "normalised": "Pelpa",
+      "context": "Pelpa sigilla",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Arnoldus",
+      "type": "PERSON",
+      "normalised": "Arnoldus",
+      "context": "Arnoldus",
+      "hub_id": "",
+      "gnd": "",
+      "hls": "",
+      "wikidata": "",
+      "hub_confidence": "high",
+      "link_method": "mcp_federation",
+      "mcp_sources": [
+        "eos"
+      ]
+    },
+    {
+      "text": "Capellanus",
+      "type": "ROLE",
+      "normalised": "Capellanus",
+      "context": "Jokes capellanus"
+    },
+    {
+      "text": "Camerarius",
+      "type": "ROLE",
+      "normalised": "Camerarius",
+      "context": "Camerario Anonateri"
+    },
+    {
+      "text": "Convent",
+      "type": "ORG",
+      "normalised": "Convent",
+      "context": "Convent von Kūngsveld"
+    },
+    {
+      "text": "Conuent",
+      "type": "ORG",
+      "normalised": "Conuent",
+      "context": "Conuentul majors"
+    },
+    {
+      "text": "Capitel",
+      "type": "ORG",
+      "normalised": "Capitel",
+      "context": "Datum in scassula in die Bii Edalrin"
+    },
+    {
+      "text": "vago",
+      "type": "SOCIAL_GROUP",
+      "normalised": "vago",
+      "context": "vago relatu"
+    },
+    {
+      "text": "Almosen",
+      "type": "CARE_ACTION",
+      "normalised": "Almosen",
+      "context": "nicht explizit, aber im Kontext von Fürsorge erwähnt",
+      "controlled_vocab": "almosen",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    },
+    {
+      "text": "Johannes",
+      "type": "CARE_ACTOR",
+      "normalised": "Johannes",
+      "context": "Nos Iohannes misaone — möglicher Pflegebezug"
+    },
+    {
+      "text": "Anno domini",
+      "type": "DATE",
+      "normalised": "AD",
+      "context": "Anno dni."
+    },
+    {
+      "text": "Anno dm. 6.",
+      "type": "DATE",
+      "normalised": "6 AD",
+      "context": "Anno dm. 6."
+    },
+    {
+      "text": "Decimo Iono",
+      "type": "DATE",
+      "normalised": "10 Iono",
+      "context": "Decimo Iono"
+    },
+    {
+      "text": "die zehenden",
+      "type": "DATE",
+      "normalised": "10th",
+      "context": "die zehenden"
+    },
+    {
+      "text": "Zehn Tage",
+      "type": "DATE",
+      "normalised": "10 days",
+      "context": "vierzehen tagen"
+    },
+    {
+      "text": "trutmanz brief",
+      "type": "DOC",
+      "normalised": "Trutmanz Brief",
+      "context": "trutmanz brief über den zehenden"
+    },
+    {
+      "text": "Vogt",
+      "type": "ROLE",
+      "normalised": "Vogt",
+      "context": "nicht explizit im Text, aber typische mittelalterliche Rolle",
+      "controlled_vocab": "vogt",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    },
+    {
+      "text": "Schultheiss",
+      "type": "ROLE",
+      "normalised": "Schultheiss",
+      "context": "schulten schafusen",
+      "controlled_vocab": "schultheiss",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    },
+    {
+      "text": "Kingfuden",
+      "type": "PLACE",
+      "normalised": "Kingfuden",
+      "context": "Kingsfueden adher",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    }
+  ]
 }

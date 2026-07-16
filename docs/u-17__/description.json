@@ -2,86 +2,22 @@
   "doc_id": "u-17__",
   "ad_fontes_version": "UZH 16-element",
   "elements": {
-    "Aufbewahrungsort": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "keine gesicherten Angaben"
-    },
-    "Beschreibstoff": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "Transkription enthält ausschließlich einzelne Buchstaben (u, i, g, s). Ohne Bildmaterial kann weder Pergament noch Papier, noch Wasserzeichen, Qualität oder Palimpsest festgestellt werden."
-    },
-    "Blaetter": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "Keine Angabe zur Blatt‑/Seitenzahl, Foliierung, Verlusten oder Lagenstruktur ersichtlich."
-    },
-    "Format": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "Ohne Bild bzw. Messungen lässt sich Höhe, Breite, Format (Folio, Quarto, Oktav) nicht bestimmen."
-    },
-    "Datierung": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "Keine explizite Jahresangabe im Text; die reine Buchstabenfolge gibt keinen Hinweis auf die Schriftentwicklung, sodass keine plausible Datierung möglich ist."
-    },
-    "Lagen": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "Keine Hinweise auf Lagensignaturen, Reklamanten oder die Anordnung der Bogen."
-    },
-    "Schriftraum_Gliederung": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "Die Transkription liefert keine Information über Spalten, Zeilen, Raster oder lineare Anordnung."
-    },
-    "Schrift": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "Art der Schrift (gotisch, humanistisch etc.) und Tintenfarbe können aus der reinen Buchstabenliste nicht erschlossen werden."
-    },
-    "Schreiber": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "Keine Hinweise auf unterschiedliche Schreibhanden, Namen oder Korrekturen erkennbar."
-    },
-    "Ausstattung": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "Kein Buchschmuck, keine Initialen, keine farbigen Verzierungen ersichtlich."
-    },
-    "Sprache": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "Einzelbuchstaben lassen keine Rückschlüsse auf die Sprache (Deutsch, Latein etc.) zu."
-    },
-    "Einband": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "Ohne Bildinformation kann Material, Bezug oder Beschläge nicht beurteilt werden."
-    },
-    "Provenienz": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "keine gesicherten Angaben"
-    },
-    "Literatur": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "keine gesicherten Angaben"
-    },
-    "Inhalt": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "Die reine Buchstabenabfolge (u, i, g, s) kann nicht eindeutig einem Dokumententyp (Urbar, Rechnungsbuch, Roedel, Urkunde, Statuten) zugeordnet werden; möglicherweise handelt es sich um ein Register oder Tally‑Vermerk, jedoch bleibt das spekulativ."
-    },
-    "Weitere_Hinweise": {
-      "wert": "",
-      "unsicher": true,
-      "notiz": "keine gesicherten Angaben"
-    }
+    "Aufbewahrungsort": null,
+    "Beschreibstoff": null,
+    "Blaetter": null,
+    "Format": null,
+    "Datierung": null,
+    "Lagen": null,
+    "Schriftraum_Gliederung": null,
+    "Schrift": null,
+    "Schreiber": null,
+    "Ausstattung": null,
+    "Sprache": null,
+    "Einband": null,
+    "Provenienz": null,
+    "Literatur": null,
+    "Inhalt": null,
+    "Weitere_Hinweise": null
   },
   "care_flag": {
     "is_care_related": false,
