@@ -71,7 +71,7 @@ title: Katalog
     </div>
     <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 48%</span></div>
   </div>
-  <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>51</dd></div><div><dt>Seiten</dt><dd>4</dd></div></dl>
+  <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>82</dd></div><div><dt>Seiten</dt><dd>4</dd></div></dl>
   <p class="catalogue-preview">e-codices_saa-0428_015v_large.jpg SEITE 1 modios reina cum prato sive uysta Ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. Alhile er conu…</p>
   <p class="catalogue-actions"><a href="u-17__/" aria-label="Ausgabe u-17__ öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
 </article>

@@ -227,11 +227,8 @@ license: "LicenseRef-Not-Specified"
         recognitions=data.get("recognitions", []),
         doc_id=doc_id,
         transcript=transcript,
+        directory=path.parent,
     )
-
-    # Inline JS for tab switching (read from disk to avoid f-string issues)
-    _rec_js_path = Path(__file__).parent / "rec_viewer.js"
-    rec_js = _rec_js_path.read_text() if _rec_js_path.exists() else ""
 
     page = frontmatter(doc_id) + f'''<nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> {html.escape(doc_id)}</nav>
 <header class="output-header">
@@ -264,7 +261,7 @@ license: "LicenseRef-Not-Specified"
 <p>Stabile Seite: <a href="{canonical}">{canonical}</a> · <a href="{REPO}/commits/main/docs/{html.escape(doc_id)}/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
 
 <section aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol>{history_html}</ol></section>
-{rec_js}
+<script src="{{{{ '/assets/rec-viewer.js' | relative_url }}}}" defer></script>
 '''
     (path.parent / "index.md").write_text(page, encoding="utf-8")
     return is_test
@@ -292,6 +289,10 @@ def build_entity_pages(index: dict) -> None:
 
 
 def build() -> None:
+    # Publish the progressive-enhancement asset from its single source.
+    js_source = Path(__file__).with_name("rec_viewer.js")
+    (DOCS / "assets" / "rec-viewer.js").write_text(
+        js_source.read_text(encoding="utf-8"), encoding="utf-8")
     entity_index = defaultdict(list)
     tests = []
     for path in sorted(DOCS.glob("*/pipeline.json")):

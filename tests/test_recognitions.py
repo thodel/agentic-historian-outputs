@@ -1,226 +1,116 @@
-"""Tests for build_recognitions.py (issue #4)."""
-from __future__ import annotations
-
 import sys
+import tempfile
+import unittest
+from html.parser import HTMLParser
 from pathlib import Path
 
-# Ensure the scripts/ module is importable
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 from build_recognitions import (
-    _engine_label,
-    _engine_icon,
-    _is_selected,
-    _conf_html,
-    _recognition_candidate_html,
+    _candidates,
+    _confidence,
+    _public_error,
+    _recognition_path,
+    _safe_slug,
     build_recognition_section,
 )
 
 
-# ── Fixtures ─────────────────────────────────────────────────────────────────
+class DOM(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.ids = []
+        self.links = []
+        self.panels = []
 
-def make_rec(engine, model_id="test-model", confidence=None, error="", text="Sample text"):
-    return {
-        "engine": engine,
-        "model_id": model_id,
-        "confidence": confidence,
-        "error": error,
-        "text": text,
-    }
-
-
-# ── Engine labels & icons ─────────────────────────────────────────────────────
-
-class TestEngineLabels:
-    def test_vlm(self):
-        assert _engine_label("vlm") == "VLM (InternVL3-8B)"
-
-    def test_kraken(self):
-        assert _engine_label("kraken") == "Kraken OCR"
-
-    def test_trocr(self):
-        assert _engine_label("trocr") == "TrOCR"
-
-    def test_case_insensitive(self):
-        assert _engine_label("VLM") == "VLM (InternVL3-8B)"
-        assert _engine_label("Kraken") == "Kraken OCR"
-
-    def test_unknown(self):
-        assert _engine_label("unknown-engine") == "unknown-engine"
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if attrs.get("id"):
+            self.ids.append(attrs["id"])
+        if tag == "a" and attrs.get("href"):
+            self.links.append(attrs["href"])
+        if attrs.get("data-recognition-panel"):
+            self.panels.append(attrs)
 
 
-class TestEngineIcons:
-    def test_vlm(self):
-        assert _engine_icon("vlm") == "🔮"
-
-    def test_kraken(self):
-        assert _engine_icon("kraken") == "📖"
-
-    def test_trocr(self):
-        assert _engine_icon("trocr") == "🔤"
-
-    def test_fusion(self):
-        assert _engine_icon("fusion") == "🔗"
-
-    def test_fused(self):
-        assert _engine_icon("fused") == "✅"
-
-    def test_default(self):
-        assert _engine_icon("anything-else") == "🤖"
+def rec(engine="vlm", model="model", text="text", **extra):
+    return {"engine": engine, "model_id": model, "text": text, **extra}
 
 
-# ── _is_selected ─────────────────────────────────────────────────────────────
+class RecognitionContractTests(unittest.TestCase):
+    def test_empty_list_omits_section(self):
+        self.assertEqual(build_recognition_section([], "doc", "text"), "")
 
-class TestIsSelected:
-    def test_exact_match(self):
-        rec = {"text": "  Hello world  "}
-        assert _is_selected(rec, "Hello world") is True
+    def test_selected_output_is_first(self):
+        candidates = _candidates([rec()], "fused text")
+        self.assertEqual(candidates[0]["id"], "selected")
+        self.assertEqual(candidates[0]["text"], "fused text")
 
-    def test_strip_whitespace(self):
-        rec = {"text": "  Hello world  "}
-        assert _is_selected(rec, "  Hello world  ") is True
+    def test_duplicate_ids_are_unique(self):
+        candidates = _candidates([rec(), rec()], "fused")
+        ids = [c["id"] for c in candidates]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertEqual(candidates[1]["path"], "")
+        self.assertEqual(candidates[2]["path"], "")
 
-    def test_no_match(self):
-        rec = {"text": "Hello"}
-        assert _is_selected(rec, "Goodbye") is False
+    def test_ids_are_sanitized(self):
+        value = _safe_slug('Kraken <script> " model/id')
+        self.assertRegex(value, r"^[a-z0-9-]+$")
 
-    def test_empty_text(self):
-        rec = {"text": ""}
-        assert _is_selected(rec, "") is True
-        assert _is_selected(rec, "something") is False
+    def test_page_aware_publisher_path(self):
+        candidate = rec("kraken", "10.5281/zenodo.1", page="Page 1.jpg")
+        self.assertEqual(
+            _recognition_path(candidate),
+            "recognitions/Page_1/kraken-10.5281_zenodo.1.txt",
+        )
 
+    def test_confidence_is_typed_and_clamped(self):
+        self.assertEqual(_confidence(.82), "82%")
+        self.assertEqual(_confidence(7), "100%")
+        self.assertEqual(_confidence(None), "Nicht angegeben")
 
-# ── _conf_html ───────────────────────────────────────────────────────────────
+    def test_error_messages_hide_internal_details(self):
+        raw = "Kraken service error at http://10.0.0.8:8200/ocr: timed out token=secret"
+        public = _public_error(raw)
+        self.assertIn("Zeitlimit", public)
+        self.assertNotIn("10.0.0.8", public)
+        self.assertNotIn("secret", public)
 
-class TestConfHtml:
-    def test_float_confidence(self):
-        html = _conf_html(0.82)
-        assert "✅" in html
-        assert "82%" in html
+    def test_empty_success_becomes_failure(self):
+        candidate = _candidates([rec(text="")], "fused")[1]
+        self.assertIn("keinen Text", candidate["error"])
 
-    def test_int_confidence(self):
-        html = _conf_html(1)
-        assert "✅" in html
-        assert "100%" in html
+    def test_markup_escapes_model_and_text(self):
+        markup = build_recognition_section(
+            [rec(model='"><script>x</script>', text="<b>raw</b>")], "doc", "fused")
+        self.assertNotIn("<script>x</script>", markup)
+        self.assertIn("&lt;b&gt;raw&lt;/b&gt;", markup)
 
-    def test_zero_confidence(self):
-        html = _conf_html(0.0)
-        assert "✅" in html
-        assert "0%" in html
+    def test_dom_ids_are_unique_and_panels_match_candidates(self):
+        markup = build_recognition_section([rec(), rec(), rec("trocr", text="", error="timeout")], "doc", "fused")
+        dom = DOM(); dom.feed(markup)
+        self.assertEqual(len(dom.ids), len(set(dom.ids)))
+        self.assertEqual(len(dom.panels), 4)  # selected + three attempts
 
-    def test_none(self):
-        assert _conf_html(None) == ""
+    def test_no_js_panels_are_semantic_details(self):
+        markup = build_recognition_section([rec(), rec("kraken")], "doc", "fused")
+        self.assertEqual(markup.count('<details class="rec-panel"'), 3)
+        self.assertIn("<summary>", markup)
 
+    def test_failed_candidate_has_no_download(self):
+        markup = build_recognition_section([rec("trocr", text="", error="timeout")], "doc", "fused")
+        failed = markup.split('data-recognition-panel="trocr-model"', 1)[1]
+        self.assertNotIn("rec-download\" href", failed)
+        self.assertIn("Kein Textdownload verfügbar", failed)
 
-# ── _recognition_candidate_html ──────────────────────────────────────────────
-
-class TestRecognitionCandidateHtml:
-    def test_success_panel(self):
-        rec = make_rec("vlm", "internvl3-8b", confidence=0.8, text="Hello world")
-        html = _recognition_candidate_html(rec, "bat")
-        assert 'class="rec-panel"' in html
-        assert "VLM (InternVL3-8B)" in html
-        assert "✅ 80%" in html
-        assert "internvl3-8b" in html
-        assert "2,312" not in html  # bat-specific, not this fixture
-
-    def test_error_panel(self):
-        rec = make_rec("trocr", error="timed out", text="")
-        html = _recognition_candidate_html(rec, "bat")
-        assert 'class="rec-panel rec-panel--error"' in html
-        assert "❌ Fehler" in html
-        assert "timed out" in html
-
-    def test_download_link(self):
-        rec = make_rec("kraken", "kraken-catmus", confidence=0.82, text="Hello")
-        html = _recognition_candidate_html(rec, "bat")
-        assert 'href="recognitions/kraken-kraken-catmus.txt"' in html
-        assert "rec-dl" in html
-
-    def test_no_download_on_error(self):
-        rec = make_rec("trocr", error="timeout", text="")
-        html = _recognition_candidate_html(rec, "bat")
-        assert "rec-dl" not in html
-
-    def test_character_count(self):
-        rec = make_rec("vlm", text="Hello")
-        html = _recognition_candidate_html(rec, "bat")
-        assert "5 Zeichen" in html
+    def test_download_only_when_artifact_exists(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "recognitions").mkdir()
+            (root / "recognitions" / "fused.txt").write_text("fused")
+            markup = build_recognition_section([rec()], "doc", "fused", root)
+        self.assertEqual(markup.count("Diese Transkription herunterladen"), 1)
 
 
-# ── build_recognition_section ────────────────────────────────────────────────
-
-class TestBuildRecognitionSection:
-    def test_empty_list(self):
-        assert build_recognition_section([], "doc", "text") == ""
-
-    def test_empty_recognitions(self):
-        assert build_recognition_section(None, "doc", "text") == ""
-
-    def test_single_candidate(self):
-        recs = [make_rec("vlm", text="Hello world")]
-        html = build_recognition_section(recs, "doc", "Hello world")
-        assert "rec-viewer" in html
-        assert "VLM (InternVL3-8B)" in html
-        assert "rec-heading" in html
-
-    def test_selected_default_exact_match(self):
-        # transcript matches rec[1], so it should be pre-checked
-        recs = [
-            make_rec("kraken", text="wrong text"),
-            make_rec("vlm",     text="right text"),
-        ]
-        html = build_recognition_section(recs, "doc", "right text")
-        # The matching candidate should have its radio checked
-        assert 'checked' in html
-        assert 'value="cand-1-vlm-test-model"' in html
-
-    def test_fallback_to_first_non_error_when_no_exact_match(self):
-        recs = [
-            make_rec("kraken", text="first"),
-            make_rec("trocr",  error="fail"),
-        ]
-        html = build_recognition_section(recs, "doc", "unrelated text")
-        # first non-error should be selected
-        assert 'checked' in html
-        assert 'value="cand-0-kraken-test-model"' in html
-
-    def test_error_candidates_included(self):
-        recs = [
-            make_rec("trocr", error="timeout", text=""),
-            make_rec("vlm",   text="ok"),
-        ]
-        html = build_recognition_section(recs, "doc", "ok")
-        assert "rec-panel--error" in html
-        assert "❌ Fehler" in html
-        assert "timeout" in html
-
-    def test_multiple_candidates_all_rendered(self):
-        recs = [
-            make_rec("vlm",    text="a"),
-            make_rec("kraken", text="b"),
-            make_rec("trocr",  error="fail"),
-        ]
-        html = build_recognition_section(recs, "doc", "a")
-        assert html.count('class="rec-panel"') == 2  # 2 success panels
-        assert html.count('class="rec-panel rec-panel--error"') == 1
-
-    def test_radio_name_doc_scoped(self):
-        recs = [make_rec("vlm")]
-        html = build_recognition_section(recs, "my-doc-id", "x")
-        assert 'name="rec-my-doc-id"' in html
-
-    def test_no_recognitions_no_section(self):
-        recs = []
-        html = build_recognition_section(recs, "doc", "")
-        assert html == ""
-
-    def test_confidence_badge_shown_for_success(self):
-        recs = [make_rec("vlm", confidence=0.8, text="Hello")]
-        html = build_recognition_section(recs, "doc", "Hello")
-        assert "✅ 80%" in html
-
-    def test_doc_id_in_viewer_data_attribute(self):
-        recs = [make_rec("vlm")]
-        html = build_recognition_section(recs, "bat", "text")
-        assert 'data-doc-id="bat"' in html
+if __name__ == "__main__":
+    unittest.main()

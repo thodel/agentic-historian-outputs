@@ -1,136 +1,154 @@
-"""Recognition candidate helpers — used by build_outputs.py (issue #2)."""
+"""Accessible recognition-candidate rendering for generated output pages."""
 from __future__ import annotations
+
 import html
+import re
+from collections import Counter
+from pathlib import Path
+from urllib.parse import quote
 
 
 def _engine_label(engine: str) -> str:
     return {
-        "vlm": "VLM (InternVL3-8B)",
+        "vlm": "VLM",
         "kraken": "Kraken OCR",
         "trocr": "TrOCR",
-        "fusion": "Fusion",
-        "fused": "Fused output",
-    }.get(engine.lower(), engine)
+        "fusion": "Ausgewählt / Fusion",
+    }.get(str(engine).lower(), str(engine) or "Unbekannte Engine")
 
 
-def _engine_icon(engine: str) -> str:
-    return {
-        "vlm": "🔮",   # crystal ball
-        "kraken": "📖",  # book
-        "trocr": "🔤",   # abc
-        "fusion": "🔗",  # link
-        "fused": "✅",
-    }.get(engine.lower(), "🤖")  # robot
+def _safe_slug(value: object, fallback: str = "candidate") -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", str(value).casefold()).strip("-")
+    return slug[:100] or fallback
 
 
-def _is_selected(rec, transcript) -> bool:
-    return rec.get("text", "").strip() == transcript.strip()
+def _public_error(error: object) -> str:
+    """Return a useful public message without endpoints, paths, or credentials."""
+    message = str(error or "").strip()
+    lowered = message.casefold()
+    if not message:
+        return ""
+    if "timed out" in lowered or "timeout" in lowered:
+        return "Der Erkennungsdienst hat das Zeitlimit überschritten."
+    if "unavailable" in lowered or "connection" in lowered:
+        return "Der Erkennungsdienst war nicht erreichbar."
+    if "unsupported" in lowered or "not found" in lowered:
+        return "Das angeforderte Erkennungsmodell war nicht verfügbar."
+    return "Der Erkennungsversuch ist fehlgeschlagen."
 
 
-def _conf_html(conf) -> str:
-    if isinstance(conf, (int, float)):
-        return f'<span class="rec-badge">✅ {conf:.0%}</span>'
-    return ""
+def _confidence(confidence: object) -> str:
+    if not isinstance(confidence, (int, float)):
+        return "Nicht angegeben"
+    return f"{max(0.0, min(1.0, float(confidence))):.0%}"
 
 
-def _recognition_candidate_html(rec, doc_id, i=0) -> str:
-    engine = rec.get("engine", "unknown")
-    model_id = rec.get("model_id", "—")
-    confidence = rec.get("confidence")
-    error = rec.get("error", "")
-    text = rec.get("text", "")
-    char_count = len(text.replace("\r", "").replace("\n", ""))
-    has_text = bool(text.strip())
-    icon = _engine_icon(engine)
-    label = _engine_label(engine)
-    cand_id = f"cand-{i}-{engine}-{model_id.replace('/', '-')}"
-
-    if error:
-        badge = '<span class="rec-badge rec-badge--error">❌ Fehler</span>'
-        cls = "rec-panel rec-panel--error"
-        summary_cls = "rec-summary rec-summary--error"
-        text_html = f'<pre class="rec-text rec-text--error">{html.escape(error)}</pre>'
-        dl_note = '<p class="rec-error-note">❗ Kein Output — dieser Versuch ist fehlgeschlagen.</p>'
-    else:
-        badge = _conf_html(confidence)
-        cls = "rec-panel"
-        summary_cls = "rec-summary"
-        text_html = f'<pre class="rec-text">{html.escape(text)}</pre>'
-        dl_note = ""
-        if has_text:
-            fname = f"recognitions/{engine}-{model_id.replace('/', '-')}.txt"
-            dl_note = f'<a href="{fname}" download class="rec-dl">⬇ Text herunterladen</a>'
-
-    status = (
-        f"{icon} <strong>{label}</strong> {badge} "
-        f'<span class="rec-model">{html.escape(model_id)}</span> '
-        f"· {char_count:,} Zeichen"
-    )
-    if dl_note and not error:
-        status += f" · {dl_note}"
-
-    return (
-        f'<div class="{cls}" id="{cand_id}">'
-        f'<div class="{summary_cls}">{status}</div>'
-        f"{text_html}"
-        + dl_note +
-        "</div>"
-    )
+def _recognition_path(candidate: dict) -> str:
+    """Mirror the publisher's page-aware candidate path contract (#284)."""
+    page = str(candidate.get("page") or "").strip()
+    engine = str(candidate.get("engine") or "engine").strip() or "engine"
+    model = str(candidate.get("model_id") or "").strip().replace("/", "_")
+    stem = f"{engine}-{model}" if model else engine
+    if page:
+        page_slug = re.sub(r"[^A-Za-z0-9._-]+", "_", page.rsplit(".", 1)[0])
+        return f"recognitions/{page_slug}/{stem}.txt"
+    return f"recognitions/{stem}.txt"
 
 
-def build_recognition_section(recognitions, doc_id, transcript) -> str:
-    """Render the full recognition-viewer section (progressive enhancement).
+def _candidates(recognitions, transcript: str) -> list[dict]:
+    """Normalize selected output and every attempted recognition."""
+    result = [{
+        "id": "selected",
+        "engine": "fusion",
+        "model_id": "",
+        "page": "",
+        "text": str(transcript or ""),
+        "confidence": None,
+        "error": "",
+        "selected": True,
+        "path": "recognitions/fused.txt",
+    }]
+    raw_candidates = [raw for raw in (recognitions or []) if isinstance(raw, dict)]
+    path_counts = Counter(_recognition_path(raw) for raw in raw_candidates)
+    seen = {"selected"}
+    for index, raw in enumerate(raw_candidates, start=1):
+        if not isinstance(raw, dict):
+            continue
+        engine = str(raw.get("engine") or "unknown")
+        model = str(raw.get("model_id") or "")
+        page = str(raw.get("page") or "")
+        base = _safe_slug(f"{page}-{engine}-{model}", f"candidate-{index}")
+        candidate_id = base
+        suffix = 2
+        while candidate_id in seen:
+            candidate_id = f"{base}-{suffix}"
+            suffix += 1
+        seen.add(candidate_id)
+        text = str(raw.get("text") or "")
+        error = _public_error(raw.get("error"))
+        if not error and not text.strip():
+            error = "Der Erkennungsversuch lieferte keinen Text."
+        result.append({
+            "id": candidate_id,
+            "engine": engine,
+            "model_id": model,
+            "page": page,
+            "text": text,
+            "confidence": raw.get("confidence"),
+            "error": error,
+            "selected": False,
+            # Historical multi-page records without page attribution collide at
+            # one publisher path. Never link a candidate to an ambiguous file.
+            "path": (_recognition_path(raw)
+                     if path_counts[_recognition_path(raw)] == 1 else ""),
+        })
+    return result
 
-    No JS: all panels visible, radio defaults to selected/fused candidate.
-    With JS (added separately): only active panel shown.
-    """
+
+def build_recognition_section(recognitions, doc_id: str, transcript: str,
+                              directory: Path | None = None) -> str:
+    """Render a no-JS-complete viewer that JavaScript enhances to switching."""
     if not recognitions:
         return ""
-
-    # Pick default: first candidate matching the fused transcript, else
-    # first non-error candidate
-    default_idx = 0
-    exact_match = False
-    for i, r in enumerate(recognitions):
-        if _is_selected(r, transcript):
-            default_idx = i
-            exact_match = True
-            break
-    else:
-        for i, r in enumerate(recognitions):
-            if not r.get("error") and r.get("text"):
-                default_idx = i
-                break
-
-    tabs, panels = [], []
-    for i, rec in enumerate(recognitions):
-        engine = rec.get("engine", "unk")
-        model_id = rec.get("model_id", "")
-        cand_id = f"cand-{i}-{engine}-{model_id.replace('/', '-')}"
-        icon = _engine_icon(engine)
-        label = f"{icon} {_engine_label(engine)}"
-        if rec.get("error"):
-            label += " ❌"
-        chk = " checked" if i == default_idx else ""
-        marker = " ✔" if (i == default_idx and exact_match) else (" ⮕" if i == default_idx else "")
-        tabs.append(
-            f'<input type="radio" name="rec-{doc_id}" id="tab-{cand_id}" '
-            f'value="{cand_id}"{chk} class="rec-tab-input">'
-            f'<label for="tab-{cand_id}" class="rec-tab-label">{label}{marker}</label>'
+    directory = Path(directory) if directory is not None else None
+    candidates = _candidates(recognitions, transcript)
+    links, panels = [], []
+    for candidate in candidates:
+        cid = candidate["id"]
+        label = _engine_label(candidate["engine"])
+        if candidate["model_id"]:
+            label += f" · {candidate['model_id']}"
+        status = "Fehlgeschlagen" if candidate["error"] else "Erfolgreich"
+        links.append(
+            f'<li><a href="#recognition-{cid}" data-recognition-select="{cid}" '
+            f'aria-controls="recognition-{cid}">{html.escape(label)}</a> '
+            f'<span class="rec-status rec-status--{status.casefold()}">{status}</span></li>'
         )
-        panels.append(_recognition_candidate_html(rec, doc_id, i))
-
-    return (
-        "<section id=\"recognitions\" aria-labelledby=\"rec-heading\">"
-        "<h2 id=\"rec-heading\">Erkennungsversionen</h2>"
-        "<p class=\"rec-intro\">Es liegen mehrere Erkennungsversionen vor. "
-        "W\u00e4hlen Sie eine Version zum Vergleichen; "
-        "die ausgew\u00e4hlte Transkription bleibt ohne JavaScript sichtbar.</p>"
-        f'<div class="rec-viewer" data-doc-id="{html.escape(doc_id)}">'
-        "<div class=\"rec-tabs\" role=\"tablist\" aria-label=\"Erkennungsversionen\">"
-        + "\n".join(tabs) +
-        "</div>"
-        "<div class=\"rec-panels\">"
-        + "\n".join(panels) +
-        "</div></div></section>"
-    )
+        path = candidate["path"]
+        artifact_exists = bool(path) and (directory is None or (directory / path).exists())
+        download = (
+            f'<a class="rec-download" href="{quote(path, safe="/._-")}" download>'
+            "Diese Transkription herunterladen</a>"
+            if not candidate["error"] and artifact_exists else
+            '<span class="rec-download-unavailable">Kein Textdownload verfügbar</span>'
+        )
+        if candidate["error"]:
+            content = (
+                '<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> '
+                f'{html.escape(candidate["error"])}</div>'
+            )
+        else:
+            content = (
+                '<pre class="rec-text" tabindex="0"><code>'
+                f'{html.escape(candidate["text"])}</code></pre>'
+            )
+        panels.append(f'''<details class="rec-panel" id="recognition-{cid}" data-recognition-panel="{cid}" data-page="{html.escape(candidate["page"], quote=True)}"{' open' if candidate["selected"] else ''}>
+<summary>{html.escape(label)}{' — ausgewählt' if candidate["selected"] else ''}</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>{html.escape(candidate["engine"])}</dd></div><div><dt>Modell</dt><dd>{html.escape(candidate["model_id"]) or '—'}</dd></div><div><dt>Seite</dt><dd>{html.escape(candidate["page"]) or 'Nicht zugeordnet'}</dd></div><div><dt>Engine-Konfidenz</dt><dd>{_confidence(candidate["confidence"])}</dd></div><div><dt>Zeichen</dt><dd>{len(candidate["text"])}</dd></div><div><dt>Status</dt><dd>{status}</dd></div></dl>
+{content}<p>{download}</p></details>''')
+    return f'''<section id="recognitions" aria-labelledby="recognitions-heading">
+<h2 id="recognitions-heading">Erkennungsversionen</h2>
+<p class="rec-intro">Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sichtbar. Konfidenzwerte verschiedener Engines sind nicht unmittelbar vergleichbar.</p>
+<div class="rec-viewer" data-recognition-viewer data-doc-id="{html.escape(doc_id, quote=True)}">
+<nav class="rec-selector" aria-label="Erkennungsversionen"><ul>{''.join(links)}</ul></nav>
+<div class="rec-panels">{''.join(panels)}</div></div></section>'''

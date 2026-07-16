@@ -32,7 +32,22 @@ gut lesbar hier
 --- p2.jpg ---
 gut lesbar hier</code></pre></section>
 
-<section id="recognitions" aria-labelledby="rec-heading"><h2 id="rec-heading">Erkennungsversionen</h2><p class="rec-intro">Es liegen mehrere Erkennungsversionen vor. Wählen Sie eine Version zum Vergleichen; die ausgewählte Transkription bleibt ohne JavaScript sichtbar.</p><div class="rec-viewer" data-doc-id="order-ens"><div class="rec-tabs" role="tablist" aria-label="Erkennungsversionen"><input type="radio" name="rec-order-ens" id="tab-cand-0-kraken-k0" value="cand-0-kraken-k0" checked class="rec-tab-input"><label for="tab-cand-0-kraken-k0" class="rec-tab-label">📖 Kraken OCR ⮕</label></div><div class="rec-panels"><div class="rec-panel" id="cand-0-kraken-k0"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 80%</span> <span class="rec-model">k0</span> · 15 Zeichen · <a href="recognitions/kraken-k0.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">gut lesbar hier</pre><a href="recognitions/kraken-k0.txt" download class="rec-dl">⬇ Text herunterladen</a></div></div></div></section><section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
+<section id="recognitions" aria-labelledby="recognitions-heading">
+<h2 id="recognitions-heading">Erkennungsversionen</h2>
+<p class="rec-intro">Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sichtbar. Konfidenzwerte verschiedener Engines sind nicht unmittelbar vergleichbar.</p>
+<div class="rec-viewer" data-recognition-viewer data-doc-id="order-ens">
+<nav class="rec-selector" aria-label="Erkennungsversionen"><ul><li><a href="#recognition-selected" data-recognition-select="selected" aria-controls="recognition-selected">Ausgewählt / Fusion</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-kraken-k0" data-recognition-select="kraken-k0" aria-controls="recognition-kraken-k0">Kraken OCR · k0</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li></ul></nav>
+<div class="rec-panels"><details class="rec-panel" id="recognition-selected" data-recognition-panel="selected" data-page="" open>
+<summary>Ausgewählt / Fusion — ausgewählt</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>fusion</dd></div><div><dt>Modell</dt><dd>—</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>Nicht angegeben</dd></div><div><dt>Zeichen</dt><dd>62</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>--- p1.jpg ---
+gut lesbar hier
+
+--- p2.jpg ---
+gut lesbar hier</code></pre><p><a class="rec-download" href="recognitions/fused.txt" download>Diese Transkription herunterladen</a></p></details><details class="rec-panel" id="recognition-kraken-k0" data-recognition-panel="kraken-k0" data-page="">
+<summary>Kraken OCR · k0</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>k0</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>80%</dd></div><div><dt>Zeichen</dt><dd>15</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>gut lesbar hier</code></pre><p><a class="rec-download" href="recognitions/kraken-k0.txt" download>Diese Transkription herunterladen</a></p></details></div></div></section><section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
 <ul><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
 <p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
 
@@ -41,55 +56,4 @@ gut lesbar hier</code></pre></section>
 <p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/order-ens/">https://thodel.github.io/agentic-historian-outputs/order-ens/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/order-ens/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
 
 <section aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/570ccc2"><code>570ccc2</code></a> · <time datetime="2026-07-15T19:17:36+02:00">2026-07-15</time> · Publish order-ens</li></ol></section>
-// Recognition viewer — progressive enhancement (issues #2, #3)
-// - Tab switching without navigation
-// - URL persistence: ?rec=<candidate-id> restores selection
-// - Browser back/forward support
-// - Keyboard accessible
-document.querySelectorAll('.rec-viewer').forEach(function(viewer) {
-  var docId    = viewer.dataset.docId || '';
-  var panels   = Array.from(viewer.querySelectorAll('.rec-panel'));
-  var inputs   = Array.from(viewer.querySelectorAll('.rec-tab-input'));
-  var paramKey = 'rec';   // URL query parameter name
-
-  // ── helpers ──────────────────────────────────────────────────────────────
-  function getCandidateId() {
-    // 1. URL param takes precedence
-    var val = new URLSearchParams(window.location.search).get(paramKey);
-    if (val) { return val; }
-    // 2. currently checked radio
-    var checked = viewer.querySelector('.rec-tab-input:checked');
-    return checked ? checked.value : (inputs[0] ? inputs[0].value : null);
-  }
-
-  function activate(id) {
-    panels.forEach(function(p) {
-      p.classList.toggle('is-active', p.id === id);
-    });
-    inputs.forEach(function(inp) {
-      inp.checked = inp.value === id;
-    });
-  }
-
-  function persist(id) {
-    // Update URL without navigation
-    var url = new URL(window.location.href);
-    url.searchParams.set(paramKey, id);
-    history.replaceState({}, '', url.toString());
-  }
-
-  // ── init ─────────────────────────────────────────────────────────────────
-  viewer.classList.add('js');
-  var initial = getCandidateId();
-  if (initial) { activate(initial); }
-
-  // ── keyboard / mouse selection ───────────────────────────────────────────
-  inputs.forEach(function(inp) {
-    inp.addEventListener('change', function() {
-      activate(inp.value);
-      persist(inp.value);
-    });
-  });
-});
-
-
+<script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>

@@ -22,115 +22,126 @@ title: "u-17__"
 <section id="claims" aria-labelledby="claims-heading"><h2 id="claims-heading">Metadaten, Provenienz und Unsicherheit</h2><div class="table-scroll"><table><thead><tr><th>Feld</th><th>Wert</th><th>Sicherheit</th><th>Begründung</th><th>Nachweis</th></tr></thead><tbody><tr><td colspan="5">Keine strukturierten Beschreibungsfelder verfügbar.</td></tr></tbody></table></div></section>
 
 <section aria-labelledby="entities-heading"><h2 id="entities-heading">Erkannte Entitäten</h2>
-<h3>CARE_ACTION</h3><ul><li><a href="../entities/almosen-2c64b1f9/">Almosen</a> <span class="muted">— nicht explizit, aber im Kontext von Fürsorge erwähnt</span></li></ul><h3>CARE_ACTOR</h3><ul><li><a href="../entities/johannes-afba1db9/">Johannes</a> <span class="muted">— Nos Iohannes misaone — möglicher Pflegebezug</span></li></ul><h3>DATE</h3><ul><li><a href="../entities/ad-fe60dcfe/">AD</a> <span class="muted">— Anno dni.</span></li><li><a href="../entities/6-ad-2d41b783/">6 AD</a> <span class="muted">— Anno dm. 6.</span></li><li><a href="../entities/10-iono-b16e28ff/">10 Iono</a> <span class="muted">— Decimo Iono</span></li><li><a href="../entities/10th-b1d4d98c/">10th</a> <span class="muted">— die zehenden</span></li><li><a href="../entities/10-days-70501b09/">10 days</a> <span class="muted">— vierzehen tagen</span></li></ul><h3>DOC</h3><ul><li><a href="../entities/trutmanz-brief-f3d6c70c/">Trutmanz Brief</a> <span class="muted">— trutmanz brief über den zehenden</span></li></ul><h3>ORG</h3><ul><li><a href="../entities/convent-fb5bce98/">Convent</a> <span class="muted">— Convent von Kūngsveld</span></li><li><a href="../entities/conuent-260f70c9/">Conuent</a> <span class="muted">— Conuentul majors</span></li><li><a href="../entities/capitel-05f1d409/">Capitel</a> <span class="muted">— Datum in scassula in die Bii Edalrin</span></li></ul><h3>PERSON</h3><ul><li><a href="../entities/johannes-e058a3f5/">Johannes</a> <span class="muted">— Nos Iohannes misaone</span></li><li><a href="../entities/torusz-284fd2c1/">Torusz</a> <span class="muted">— Albas Torusz conuentus</span></li><li><a href="../entities/conradus-3be7e7af/">Conradus</a> <span class="muted">— Nos Conradus dimna</span></li><li><a href="../entities/heinrich-der-stammer-eff867e7/">Heinrich der Stammer</a> <span class="muted">— Heinrich der Stammer</span></li><li><a href="../entities/buchhart-von-gartcn-b1c27099/">Buchhart von Gartcn</a> <span class="muted">— Buchhart von Gartcn.</span></li><li><a href="../entities/johans-von-sem-pach-c9495638/">Johans von sem- pach</a> <span class="muted">— Johans von sem- pach</span></li><li><a href="../entities/heinrich-von-sewelsberg-52c14164/">Heinrich von Sewelsberg</a> <span class="muted">— Heinrich von Sewelsberg</span></li><li><a href="../entities/rudolf-von-aa-569381d2/">Rudolf von aa</a> <span class="muted">— Rudolf von aa.</span></li><li><a href="../entities/ulrich-von-eych-d5a054e0/">Ulrich von Eych</a> <span class="muted">— Ulrich von Eych</span></li><li><a href="../entities/vernher-von-grepson-b7ce9fae/">Vernher von Grepson</a> <span class="muted">— Vernher von Grepson.</span></li><li><a href="../entities/jacob-ff76b815/">Jacob</a> <span class="muted">— frat Jacob culos</span></li><li><a href="../entities/erneshus-702fd895/">Erneshus</a> <span class="muted">— frat Erneshus</span></li><li><a href="../entities/jokes-f2df5099/">Jokes</a> <span class="muted">— frater Jokes capellanus</span></li><li><a href="../entities/walthero-fafb9151/">Walthero</a> <span class="muted">— Walthero decmo</span></li><li><a href="../entities/lymg-elsberch-von-pome-74e68c7f/">Lymg Elsberch von Pome</a> <span class="muted">— Lymg Elsberch von Pome</span></li><li><a href="../entities/frid-a-egbrechius-2d5a0838/">Frid a Egbrechius</a> <span class="muted">— Frid a Egbrechius</span></li><li><a href="../entities/gischper-a5a52ba2/">Gischper</a> <span class="muted">— Fud. de Gischper</span></li><li><a href="../entities/gieschln-2a423600/">Gieschln</a> <span class="muted">— Campreh? de Gieschln</span></li><li><a href="../entities/omes-279362da/">Omes</a> <span class="muted">— kouen Omes schafusen</span></li><li><a href="../entities/pelpa-370c2ea1/">Pelpa</a> <span class="muted">— Pelpa sigilla</span></li><li><a href="../entities/arnoldus-a2a82cde/">Arnoldus</a> <span class="muted">— Arnoldus</span></li></ul><h3>PLACE</h3><ul><li><a href="../entities/ottovillingen-5214f9f0/">Ottovillingen</a> <span class="muted">— Ottovillingen dequibz</span></li><li><a href="../entities/lenzburg-579c482a/">Lenzburg</a> <span class="muted">— p e Lenzburg</span></li><li><a href="../entities/schafhusen-5162ab64/">Schafhusen</a> <span class="muted">— Schafhusen vinbe</span></li><li><a href="../entities/kyburg-a513b72f/">Kyburg</a> <span class="muted">— Comies mbabipurg a m kyburg</span></li><li><a href="../entities/aar-631a858a/">Aar</a> <span class="muted">— Cencu Aar</span></li><li><a href="../entities/sekingen-1a11a787/">Sekingen</a> <span class="muted">— eptillen buef von Sekingen</span></li><li><a href="../entities/k-ngsveld-be619f4f/">Küngsveld</a> <span class="muted">— Convent von Kūngsveld</span></li><li><a href="../entities/ebschim-e69f7ad4/">Ebschim</a> <span class="muted">— Ebschim vn dem Conuent</span></li><li><a href="../entities/archwatt-c912e7c6/">Archwatt</a> <span class="muted">— Aarchwatt Trurman</span></li><li><a href="../entities/trurman-962caf24/">Trurman</a> <span class="muted">— Trurman burger</span></li><li><a href="../entities/lutzeeren-5460e26d/">Lutzeeren</a> <span class="muted">— Lutzeeren vn von sinen</span></li><li><a href="../entities/orwillingen-c9b2ea95/">Orwillingen</a> <span class="muted">— Orwillingen von Aarchwatt</span></li><li><a href="../entities/tornichon-9f99b6dc/">Tornichon</a> <span class="muted">— Tornichon</span></li><li><a href="../entities/kingfuden-c24bc906/">Kingfuden</a> <span class="muted">— Kingsfueden adher</span></li></ul><h3>ROLE</h3><ul><li><a href="../entities/capellanus-39b514a1/">Capellanus</a> <span class="muted">— Jokes capellanus</span></li><li><a href="../entities/camerarius-7248d63e/">Camerarius</a> <span class="muted">— Camerario Anonateri</span></li><li><a href="../entities/vogt-acc6bfcf/">Vogt</a> <span class="muted">— nicht explizit im Text, aber typische mittelalterliche Rolle</span></li><li><a href="../entities/schultheiss-e1b64922/">Schultheiss</a> <span class="muted">— schulten schafusen</span></li></ul><h3>SOCIAL_GROUP</h3><ul><li><a href="../entities/vago-73a5f5ab/">vago</a> <span class="muted">— vago relatu</span></li></ul>
+<h3>CARE_ACTION</h3><ul><li><a href="../entities/almosen-b2bc5e70/">almosen</a> <span class="muted">— Almosen</span></li><li><a href="../entities/versorgung-20253e8a/">versorgung</a> <span class="muted">— Versorgung</span></li><li><a href="../entities/gottes-geburtsfest-7a00d87b/">gottes geburtsfest</a> <span class="muted">— gottes geburt</span></li><li><a href="../entities/allegemeine-versorgung-c9cd910d/">allegemeine versorgung</a> <span class="muted">— Allegemeine Versorgung</span></li></ul><h3>DATE</h3><ul><li><a href="../entities/anno-dni-9a6f57d5/">anno dni</a> <span class="muted">— Anno dni. o. o. exxu.</span></li><li><a href="../entities/anno-dm-6-04383156/">anno dm 6</a> <span class="muted">— Anno dm. 6. cc xxxdao</span></li><li><a href="../entities/die-zehenden-18e21285/">die zehenden</a> <span class="muted">— die zehenden</span></li><li><a href="../entities/10-tag-a24067d6/">10. tag</a> <span class="muted">— 10. Tag</span></li><li><a href="../entities/6-cc-xxxdao-6d250a97/">6. cc xxxdao</a> <span class="muted">— Anno dm. 6. cc xxxdao</span></li></ul><h3>ORG</h3><ul><li><a href="../entities/convent-09397a7f/">convent</a> <span class="muted">— Habem et conuentu ul maiozem prem Conueni</span></li><li><a href="../entities/conventus-d0f0ce17/">conventus</a> <span class="muted">— Conventus nri temstilimus in hono</span></li><li><a href="../entities/camerario-48974b08/">camerario</a> <span class="muted">— Camerario Anonateri</span></li><li><a href="../entities/gotzhuf-682f5a3f/">gotzhuf</a> <span class="muted">— Gotzhuf vn Allen</span></li><li><a href="../entities/rats-zu-bern-ae4d4308/">rats zu bern</a> <span class="muted">— Rats zu Bern</span></li><li><a href="../entities/spital-ee6c0315/">spital</a> <span class="muted">— Spital</span></li><li><a href="../entities/capitel-1619b40b/">capitel</a> <span class="muted">— Capitel</span></li><li><a href="../entities/sigilla-eac600ad/">sigilla</a> <span class="muted">— sigilla</span></li><li><a href="../entities/konigsfueden-05006581/">konigsfueden</a> <span class="muted">— Kingsfueden</span></li><li><a href="../entities/capitel-gememlich-d67a57df/">capitel gememlich</a> <span class="muted">— Capitel gememlich</span></li><li><a href="../entities/domschl-ssel-5412d62e/">domschlüssel</a> <span class="muted">— Domschlüssel</span></li><li><a href="../entities/kleiner-rat-4d91f401/">kleiner rat</a> <span class="muted">— Kleiner Rat</span></li><li><a href="../entities/grossrat-07e3194b/">grossrat</a> <span class="muted">— Grossrat</span></li><li><a href="../entities/stadtrat-f39aff9a/">stadtrat</a> <span class="muted">— Stadtrat</span></li><li><a href="../entities/judische-gemeinde-d2f00f2a/">judische gemeinde</a> <span class="muted">— Jüdische Gemeinde</span></li><li><a href="../entities/kloster-5ae37c02/">kloster</a> <span class="muted">— Kloster</span></li></ul><h3>PERSON</h3><ul><li><a href="../entities/darnm-33927c2d/">darnm</a> <span class="muted">— appendenda Darnm loro podo</span></li><li><a href="../entities/iohannes-229cb963/">iohannes</a> <span class="muted">— Nos Iohannes misaone dina.</span></li><li><a href="../entities/albas-torusz-d3665e2b/">albas torusz</a> <span class="muted">— Albas Torusz conuencius Aon de schahuta</span></li><li><a href="../entities/euntem-ea462039/">euntem</a> <span class="muted">— natus Euntem eackie vlih</span></li><li><a href="../entities/frat-jacob-8b04e8bb/">frat jacob</a> <span class="muted">— frat Jacob culos fras</span></li><li><a href="../entities/frater-jokes-3af82a1f/">frater jokes</a> <span class="muted">— Frater Jokes capellanus</span></li><li><a href="../entities/lymg-elsberch-von-pome-8d79eaaf/">lymg elsberch von pome</a> <span class="muted">— Lymg Elsberch von Pome vuler</span></li><li><a href="../entities/conradus-6654d12a/">conradus</a> <span class="muted">— Conradus dimna</span></li><li><a href="../entities/alrimis-a-pidolfius-2d2ecc90/">alrimis a pidolfius</a> <span class="muted">— Alrimis a Pidolfius</span></li><li><a href="../entities/gelleler-ad6838ae/">gelleler</a> <span class="muted">— Gelleler</span></li><li><a href="../entities/dietrich-von-lenzbch-3b4af0cd/">dietrich von lenzbch</a> <span class="muted">— Dietrich von Lenzbch</span></li><li><a href="../entities/heinrich-der-stammer-d8978127/">heinrich der stammer</a> <span class="muted">— Heinrich der Stammer</span></li><li><a href="../entities/buchhart-von-gartcn-4337a16b/">buchhart von gartcn</a> <span class="muted">— Buchhart von Gartcn</span></li><li><a href="../entities/johans-von-sem-pach-7ddd0c64/">johans von sem- pach</a> <span class="muted">— Johans von sem- pach</span></li><li><a href="../entities/heinrich-von-sewelsberg-92c36365/">heinrich von sewelsberg</a> <span class="muted">— Heinrich von Sewelsberg</span></li><li><a href="../entities/rudolf-von-aa-cfd74260/">rudolf von aa</a> <span class="muted">— Rudolf von aa</span></li><li><a href="../entities/ulrich-von-eych-995a4b15/">ulrich von eych</a> <span class="muted">— Ulrich von Eych</span></li><li><a href="../entities/vernher-von-grepcon-efbacca8/">vernher von grepcon</a> <span class="muted">— Vernher von Grepcon</span></li><li><a href="../entities/gerdrt-von-leisertil-tinwrowen-abef8969/">gerdrt von leisertil tinwrowen</a> <span class="muted">— Gerdrit von Leisertil Tinwrowen</span></li><li><a href="../entities/ebrischin-069d55de/">ebrischin</a> <span class="muted">— Ebrischin</span></li><li><a href="../entities/ahl-5781466e/">ahl</a> <span class="muted">— Ahl</span></li><li><a href="../entities/pierre-de-turck-d4e17e58/">pierre de turck</a> <span class="muted">— Pierre de Turck</span></li><li><a href="../entities/trutman-burger-a897c401/">trutman burger</a> <span class="muted">— Trutman Burger</span></li></ul><h3>PLACE</h3><ul><li><a href="../entities/ottovillingen-1f5569be/">ottovillingen</a> <span class="muted">— modios reina cum prato sive uysta Ottovillingen dequibz</span></li><li><a href="../entities/lenzburg-5704273e/">lenzburg</a> <span class="muted">— pue Lenzburg</span></li><li><a href="../entities/kyburg-e50b50c0/">kyburg</a> <span class="muted">— Comies mbabipurg a m kyburg ipius</span></li><li><a href="../entities/aar-e0c90363/">aar</a> <span class="muted">— Cencii Aar. charum legnhs argena pondis schafhusen</span></li><li><a href="../entities/schafhusen-a39e4b10/">schafhusen</a> <span class="muted">— Cencii Aar. charum legnhs argena pondis schafhusen</span></li><li><a href="../entities/sekingen-eb3d9b4b/">sekingen</a> <span class="muted">— der eptillin vn des capitez. buef von Sekingen</span></li><li><a href="../entities/ebschim-b4c643dc/">ebschim</a> <span class="muted">— Ebschim vn dem Conuent</span></li><li><a href="../entities/kungsvelt-8b91ec76/">kungsvelt</a> <span class="muted">— Conuent vn ze Kungsvelt</span></li><li><a href="../entities/orwillingen-f5a4abc5/">orwillingen</a> <span class="muted">— Orwillingen</span></li><li><a href="../entities/tornichkon-73e6717f/">tornichkon</a> <span class="muted">— Tornichkon</span></li><li><a href="../entities/aarchwatt-trurman-4104e358/">aarchwatt trurman</a> <span class="muted">— Aarchwatt Trurman</span></li><li><a href="../entities/lutzeeren-26f11c31/">lutzeeren</a> <span class="muted">— Lutzeeren</span></li><li><a href="../entities/buef-von-sekingen-b5b7f715/">buef von sekingen</a> <span class="muted">— Buef von Sekingen</span></li><li><a href="../entities/auerhahn-cf396cd1/">auerhahn</a> <span class="muted">— Auerhahn</span></li><li><a href="../entities/hoefe-eaa8acec/">hoefe</a> <span class="muted">— Höfe</span></li><li><a href="../entities/burg-e9a20fa2/">burg</a> <span class="muted">— Burg</span></li><li><a href="../entities/hof-87467870/">hof</a> <span class="muted">— Hof</span></li></ul><h3>ROLE</h3><ul><li><a href="../entities/camerarius-30985fef/">camerarius</a> <span class="muted">— Camerarius vl&#x27; eur certo</span></li><li><a href="../entities/capellanus-cd66ab0f/">capellanus</a> <span class="muted">— Frater Jokes capellanus er ali Honach</span></li><li><a href="../entities/schultheiss-afd471b5/">schultheiss</a> <span class="muted">— schulten schafusen</span></li><li><a href="../entities/vogt-54c173f5/">vogt</a> <span class="muted">— Vogt</span></li><li><a href="../entities/procurator-500b28e6/">procurator</a> <span class="muted">— procurator</span></li><li><a href="../entities/praeceptor-7e89ae32/">praeceptor</a> <span class="muted">— praeceptor</span></li><li><a href="../entities/bischof-f1e8b736/">bischof</a> <span class="muted">— Bischof</span></li><li><a href="../entities/abt-edee0519/">abt</a> <span class="muted">— Abt</span></li><li><a href="../entities/monch-4344504f/">monch</a> <span class="muted">— Mönch</span></li><li><a href="../entities/elder-9e59df81/">elder</a> <span class="muted">— Elder</span></li></ul><h3>SOCIAL_GROUP</h3><ul><li><a href="../entities/juden-969988f4/">juden</a> <span class="muted">— Juden</span></li><li><a href="../entities/vaganten-decfba91/">vaganten</a> <span class="muted">— Vaganten</span></li><li><a href="../entities/arme-l-t-5738a3a3/">arme lüt</a> <span class="muted">— arme lüt</span></li><li><a href="../entities/erbar-l-t-8d615cee/">erbar lüt</a> <span class="muted">— erbar lüt</span></li><li><a href="../entities/edel-und-hoch-geborn-fursten-201a8729/">edel und hoch geborn fursten</a> <span class="muted">— Edel und hoch geborn fursten</span></li></ul><h3>TITLE</h3><ul><li><a href="../entities/freiherr-c0c262d4/">freiherr</a> <span class="muted">— Freiherr</span></li><li><a href="../entities/lehnsherr-92905289/">lehnsherr</a> <span class="muted">— Lehnsherr</span></li></ul>
 <p><a href="entities.csv">Entitäten als CSV herunterladen</a> · <a href="../entities/">Alle Entitäten durchsuchen</a></p></section>
 
 <section id="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
 <pre class="transcription" tabindex="0"><code>--- e-codices_saa-0428_015v_large.jpg ---
---- SEITE 1 --- modios reina cum prato sive uysta Ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. Alhile er conuentus du vinus appendenda Darnm loro podo Anno dni. o. o. exxu. feria seda mcf octanam bi lchis bapte: Der abor buef von schafhusen vinbe die an sprache die er hatter An die lal Anoie dmi amen (chen ze stoken Nos Iohannes misaone dina. Albas Torusz conuentus Aon de schahuta ordinis sa bidei coniund dyoc tenore pncum prohtemur. Oß cum adnos ex quodam vago relatu er hdtone hib tempibz pucnillcr julsphnatus ecie m stöcken ppe Lenzburg. de confe dyoc tone Curab nri Aon qni twilla schafhusen mprocha de eckie debere nobis z nro Aon pnnie Aos ne kruft lup codem iure mc nos er Aon m chingsfult / de dyoc ordiniß sc clare mpollcrum dißensionis matiam otunger subouer / ne nos nci buccellosb z nem Aon mstuarum polten prextu impe acōnis seu actonis forlitam lyp ded jure paenatus pnos mthcucnde seu haben de mnnb debite calipme notari insa ma er frultä laboubz er expensb fra gari /deo adber penunda pricila deu re hnimodi pue enoari pleni cupiencs inquisidcn sup hib nri er Aon nci note cam pyxamiaedom plonaz Aon nri cr alioz fidedignoz z antiquoz of delhis qepin lare postc pluphim? qin y mspecoz, dim er singlow nri Aon pulegios er in lctumencoz scani diligencein Et qua vilio er cum diligenza plectis depōmb; er das pendacum plonatum unmer evamiaconum non omibz /A singt nri Aon leis pulegios er mitrumenab non mucninus nobis nl nco Aon feu dec cur a quies uib ndce ecie scöffen julsphnats, opere sed ym julsphnatus adpden Aon mlkungstudden exdonacne sibi fai p illn lrebs phopes dureb autrie er gyrie a. Comies mbabipurg a m kyburg ipius. Eckie in stöcken tunc paenos er qui aur. qnoz Pdcecllosb mpollcillone juriapar. natus Euntem eckie vils Adtempus do. naednis fide ipi Aon filanc atemper end. memoua no exilte inon exrionc legitima. er incoypanc de eckie subscunb debe. lille penic Er recognosceres pinab nomie. quo sup concordie duligent sup hib non. volum femel sed plusies me nos phabiro. etdnu modc crä adhoc capitulo nro nlln. uis nobis nris buccellobz nro. Aon feu. curu nie pde modc inter pac / nar? eckie in stöcken qindolb; opede k? vpm uis paenatus adpden Aon mlkungt. uelden expmislis cnis debere perno p. uncrc promisin/ cr ecra laa cr puna. menta nta abunoqz nem follempm me. potic rupulacne cölic m aias minb pilan. er micholonn subscptn pena / Cencu Aar. charum legnis argena pondis schafusen. pnuccm no vi aur metu mdnch sed ex. snulis hißdibs cr pbono paas libe prob. nris buccellobz z mon nro padö n echino. las .. Albaallam cr conuenci da Aon. m chingsfuden n cox buccellosb / sup. dey mrspahnatub demceps inperc n. qindolb; purbare n ipas n cox Aon/ leu buccendies mpete volenab; ul curba. re aliquarunus consentce Si auf q ablic. pnos albatem cr conuenci sen maiorem. prem conuentus ul mfurim yqincup
+--- SEITE 1 --- modios reina cum prato sive uysta Ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. Alhile er conuencius du vinus appendenda Darnm loro podo Anno dni. o. o. exxu. feria seda mcf octanam bi lchis bapte: Der abor buef von schafhusen vinbe die an sprache die er hatter An die lul Anoie dmi amen (chen ze stoken Nos Iohannes misaone dina. Albas Torusz conuencius Aon de schahuta ordinis sa bidei coniund dyoc renore pincum proktemur. Oß cum adnos ex quodam vago relatu er hdtone hib tempibz pucnillcr julsphnatus ecie m stöcken ppe Lenzburg. de confe dyoc tone Curab nri Aon qni twilla schafhusen mprochia de eackie debere nobis z nro Aon pnnie Aos ne kruft lup codem iure mc nos er Aon m chingsfult / de dyoc ordiniß sc clare mpollium / dißensionis matiam qtinger subouer / ne nos / nci fucelloueb / nem Aon mfiuarum polten prextu impe acōnis / su actomb fositam lup ded jure paenatus pnos mthcunde / su haben de mnnb debite calipme notari insa ma / er frultä laboubz er expenkb fra gari / deo adber penunda pricila deu re hnimodi pue enoari pleni cupienes inquisidem sup hib nri / er Aon nci note cam pyxamiaedom plonaz Aon nri er alioz fidedignoz / antiquoz of delhis qepin lare postc pluphim? qin y mspecoz, dim er singlow nri Aon pulegios er in lcrumentoz scani diligencein Et qua vilio / er cum diligenza plectis depōmb; er das pendacum plonatum uunmer evamiaconum non omibz / a singl nri Aon leis pulegios er mitrumenab non mucninus nobis nl nco Aon seu dec cur a quies uib ndce eacie scöffen julsphnats, opere sed ym julsphnatus adpden Aon mlkungstudden exdonacne sibi sai p illn ltres phopes dureb autrie er zyrie a. Comies mbabipurg a m kyburg ipius. Eackie in stöcken tunc paenos er qui aur. qnoz fadecellous mpollcillone juriapar. natus Euntem eackie vlih Adtempus do. naednis hice ipi Aon filanc atemper end. memoua no exilus inon exrusionc legitima. er incoypanc de eackie subscunus debe. lille penic Er recognosceres pinab nomie. quo sup concordie duligens sup hib non. volum femel sed plusies me nos phabiro. etdnu modc crä adhoc capitulo nro nlln. uis nobis nris fucelloubz nro. Aon seu. curu nie pde modc iure pac nat? eackie in stöcken qindolb; opede k? rpm uis paenatus adpden Aon mlkungt. ueden expmislis cnis debere peruo p. uncere promishin/ er excta laa cr puna. menta nta abunoqz nem follempm me. potic rupulatone cölic m dias minb pilan. er michlomni subscptn pena. Cencii Aar. charum legnhs argena pondis schafhusen. pruicim no vi aur metu mdnch sed ex. snulis hißdäb cr pbono paas libe prob. nris fucelloubz a mon nro padö n echino. las .. Albaillam cr conuenci da Aon. m chingsfuden n cox fucelloueb sip. deo mrcafnatus demceps inperc n. qindolb; purbare n ipas n cox Aon/ leu fuccendies mperc volenab; ul curba. re aliquarous consentce Si auf q ablic. pnos albatem cr conuenci sen maiorem. prem conuencius ul mfurim y qincup
 
 --- e-codices_saa-0428_016r_large.jpg ---
---- SEITE 16 --- Habem et conuentui ul maiores prem Conueni uti Hon qe premilla factum fuit m indico ul exé cxcic quicqs p præ leas ul reles ydones dehor amonu et m struch fiumus h no emendauim/ soluere tenem p dem uerdmcnti deo Hon mohi ngbuelc dom penam conu. Archavi noie nitule gu ane pnos ul nroo ut pre miate fuccelloes /tecio q hui modi mltm dcom fine dificultare audire nolimus michlomin&#x27; dom penam folue tenemr edon Hon priramenti pdom. Peniammer exen iad noie quo sup&#x27; exceptm doh mal excepn / QD metus ca conlududm hor uib porcetum bnhno retinuonib imtegn ob qmciqz cam luis er pumlegis ubilibis mpcctis er impercandis sub hqiqz Vboz forma. Eam h de co/ toto tenore deibos adibum foiet mhüs fmena menno hpalis ueris dicens genalem venusatom no valere er alios unuiis er singulis ex cepnib/ er defenionibs tam iuris qm facti repa / a non lepa conlucudinari a num cpalis quibz Fmilla adpfone ul mpolium policre hndolibs / inpre aut mto reaali. aut canari / pmiam/ sub debio da pnos/ pem latemena. cr subpena penala probis/ nire fuccellobz cr opon nro pado nuqin&#x27; volo repe quasine exrepiones feu defenioes uuis fa conlucudinis ul laura / qe pre mullos alqud opone ul quib uuis sen ju dias auexilum qe premilla imploaret sen quahus has Fmills mahquo pmdinales/ alde aplica uvalunde mpctte ul mpetas on/ len eus mpettis on volentibz akqua tinus conlenere tante ul expile. Se obe renenum sup&#x27;doy phopum cr idacum. denoallimar monialum lepeda Hon m Kingsfueden adher z adcoydem oin cr singlow obseruanciam nos nroo fuccelloes er nim Hon pdan/ subdebio da uerameni. n non sub pder pena Centum Archay pdan/ pnos nroo fuccelloes er Hon inem pden fol. uenda sub debio da ueramena pdo Hon m. Kingsfuedr hermit altengim mhüs lepas, reles qui Fmills mfserunt sur hu/ fræ. herman? por frat Jacob culos fræ. C. Canto: frat Erneshus daie wog. camas? frater Jokes capellanus er ali Honach/ da Hon schafusen inon Johannes dapi? de dijellenhouen lenoz. Frid a Egbrechius. schulten schafusen Aihres drub sellwar. Fud. de Gischper. Campreh? de Gieschln. kouen Omes schafusen er plures ali a. dedign/ adhor votan er vogns Inquoz. om telhdom er robur perui nos albae er conuentus Pelpa sigilla ma durimus punch apendenda Dacom schafusen sia. sexta post folium ba Archai.apli. Anno dm. 6. cc xxxdao &#x27;Di3 smr die buefvl&#x27; die laygen zehenden die gelegen smr mdem kilspeI zelteffen die koft wne dem mir dem silber das du Edel und hoch geborn fursten Lymg Elsberch von Pome vuler gnedigiu lshfm dem Closter gap an ir tode. A nomme dni amex. Quoniam que- geunaur intempc am tempe ransfemr. cr a memora homini denidint. mi vore- tchium cr scripantaz testimonio pennent. Hmc et: qd Nos Conradus dimna pmill- one.-Allbas donasterij oim fooy in scha- kula oidinis sa benedich. Confrmr- djoce genre cupimub, mmulob ltm, pre- lennum inspedtore qd gerennius Ailer- heint Gelleler. Hrimis a Pidolfius. fetos onb m mia conlunir preferua de- cmam Laycalcm fitam infa Territorium
+--- SEITE 16 --- Habem et conuentu ul maiozem prem Conueni nti Hon qe premilla factum fuit m indico ul exé cxcic quicqs p pnoe leas ul reles ydones dehor amonu et m struch fiumus h no emendauim/ soluere tenem p dem uerdmcnti deo Hon mohi ngbuelc dom penam conu. Archavi noie nitule gu ane pnos ul ncoo ut pre miate fuccelloes /tecio q huimodi mltm dcom fine dificultare audire nolimus michlomin&#x27; dom penam folue tenemr edon Hon priramenti pdom. Peniammer exen iad noie quo sup excepm doh mal excepm /D metus a conlududm hor uob porcetum bnhao retinutonis mntegn ob qmciqz cam luis er pumlegnis ubilibis mpcctis er impercandis sub hqniqz Vboz foma. Eam h de co/ toto tenore deibos adibum foiet mhüs fmena menno hpalo ueris dcnna genalem venusatom no valere er alios unuiis er hngulis ex cepmis/ er defenkonibs tmn ueris qm fint lepa /a non lepa conlucudinari a num cpalis quibz Fmilla adpionc ul mpoliun poltent hndolibs /mpte auc mto reaali. aut canari pmium/ sub debio da pnos/ pem latemena cr subpena penala probis/ nire fuccellobz cr opon nro pado nuqin&#x27; volo repe quasine exrepiones fuu defenbiods uuis fa conlucudinis ul lauua / qe pre mullos alqud opone ul quib uuis sen ju dias auexilum qe premilla mploaret sen quahus leas Fmilla mahquo pmdinales/ alde aplica uvalunde mpctte ul mpetas on/ len eus mpettis on volentibz akqua tinus conlenre tante ul expile. Se obe renenum sup doy phopum cr olacum. denoallimar monialum lepeda Hon m Kingsfueden adher z adcoydem oin cr singlow obseruanam nob nroo fuccelloes er nem Hon pdan fubdebio da uerameni. n non sub pdor pena Centum Archay pdan/ pnob nroo fuccelloes er Hon inem pdon fol uenda sub debio da ueramena pdo Hon m. Kingsfuedr hermit altcringim mhüs lepas, reles qui Fmilla mfserunt sur hu/ fras. herman? por frat Jacob culos fras. C. Canto: frat Erneshus daie wog. camas? frater Jokes capellanus er ali Honach/ da Hon schafusen inon Johannes dapi? de dijellenhouen lenoz frid a Egbrechius. schulten schafusen Aihres drub sellwar. Fud. de Gischper. Camprech? de Gieseln. kouen Omes schafusen er plures ali a. dedign/ adhor votan er vogns Inquoz. om telhdom er robur perui nos albae. er conuenius Pelpa sigilla ma durimus. punch apendenda Dacom schafusen sia. focta post folcum ba Archai apli. Anno dm. 6. cc xxxdao Wiz smr die buefvl&#x27; die laygen zehenden die gelegen smr. mdem kilspeI zelteffen die koft wne. dem mir dem silber das du Edel und hoch geborn fursten Lymg Elsberch von Pome vuler gnedigiu lshfm dem Closter gap an vr tode. A nomme dni amex. Quoniam que- geunaur intempc am tempe ransfemr. cr a memora homini deniunt. mi vore- tchium cr scripantaz testimonio pennent. Hmc et: ad Nos Conradus dimna pmill- one.-Allbas donasteri oim fooy in scha- kula oidinis sa benedich. Confrmr- djoce genre cupimub omulos ltm, pre- lennum inspedtore qd gerennius Ailer- heint Gelleler. Alrimis a Pidolfius. fetos onb m mia conlunur prefena de- cmam Laycalcm fitam infa Territorum
 
 --- e-codices_saa-0428_016v_large.jpg ---
---- SEITE 71 --- Eche stouffen quam anobis morg An tenchant in codum fulgniter dem Erbe lehen pro amuo cenfu sedecm Aodioz Bilginis vnios Aodii fabe A Triemta dem vthrum ad manub ntab libere er follempniter resignavint &amp; nos con dem deamam de consensu expreso. Capli. er Conuentus nri temstilimus in hono er Religiosas. Albatallam &amp; Conuentum Anonateri fante clare in kungfuele pure er simphinter pter dem honesto viro dno Walthero decmo in wmdliche preference er tempiente humodi. crnfla com vire a note carundem. Salus ta men nobis morg Anathio er speahe Camerario Anonateri nri qu pro tempe fuerit predab cenfibus aliqz juribus. er consuenidimbus nobis morg Aona tho huculz debins er confucas er noi anim crca felhim ba Galli quando pro da cenfus sunt dandi. Camerario vl&#x27; eur certo nunc petent conlub danda eir re fedo. in prindio vel cona uxta confue cudinen hactenus observatumm. zu vo clapla humodi penione suprada .. Albatalla &amp; Conuentus in kungfuele in foluone cenfus fuerint negligenes adoludom expensas quas exinde tempe cenfus no solui. Camerarius vl&#x27; eus certus niuus contreluerent. plenaria renchunt. In cui rei testimonium. floe .. Akas er Comuen pda nta sigilla dunimus prelenabs leis appendenda. Datum in scassula in die Bii Edalrin. Anno dni Ailhmo. Trecen. Decimo Iono:. Der eptillen buef von Sekingen uber trurman zehenden. goeef die disen buef lesent oder hozent le fen das wir vollen gewalt geben an disem buek Dietrich von Lenzbch / an unser stat vf ze nemene den ze heiden ze Tornichkon vn ze henschin cho vn ze Orwillingen von Aarchwatt Trurman burger ze Lutzeeren vn von sinen kinden den ge von uns ze erbe hat vn von unsm gorschuf den et verkoft hat dem Gorschuf von kungsvelt der.. Ebschim vn dem Conuent vn ze offenen wckunde- das er war si So henchcn wir uns&#x27; hngel an disen buef durre buef- wart geben ze fek-ingen do man zal- te von gotteb geburt wizchenhund- lar dar nach in dem einb vn zwein- goltem lart an sant agnelsen tage: Aber der eptillin vn des capitez. buef von Sekingen über trutmanz W ir adelheit von Echende: pv. Gottes gnaden .. Ebschim ze Sekingen, vn das Capitel gememlich. 72 Vn kwr. allen den die disen buef zehent oder hozent lesen.Daz wir verluhen haben dien Erwurdigen vrowen.. Der.. Ebschim vn dem Conuent von Kungsvelt den zehen den ze Orwillingen ze henschin kon/ vn ze Tornichon.Den Aarchwatt Trurman burger ze Lutzeeren von uns ze erbe hatte.den li von im gekofer hanr ze rechten erbe der voegenanten .. Ebschim vn dem Conuent Ar dien sedingen das si feelich zehen mvrt toggen / die von dem voogenanten zehenden ze zmfe gamt zullen antwurten ze Sek-ingen In die stat ze Sant Areff
+212 Cche grouten guam anobre non Oon roneban mleodum (ulomner den Crbe Eehen prs annue centu Gedeam Aodron Diligine vmue dodit Gabea geromis Jeit sonttum ad manue mat Ubere et Cotlempmiret Lebionarimt a nos en. des Secimann de tontenp exprèto. copls. et Comenart ni remttutimus mtont. et Lehgoti0. (lbsutam. a Connentam Ronatery Panite Axce SEITE 1 kraken Eche stouffen quam anobis morg An tenchant in codum fulgniter dem Erbe lehen pro amuo cenfu sedecim Aodioz Bilignis vnios Aodii fabe A Triemta dem vthrum ad manub ntab libere er follempniter resignavint &amp; nos con dem deamam de consensu expreso. Capli. er Conuentus nri temstilimus in hono er Religiosas. Albatallam &amp; Conuentum Anonateri fante clare in kungfuele pure er simphinter pter dem honesto viro dno Walthero decimo in windliche preference er tempiente humodi. crancla com vire a note carundem. Salus ta men nobis morg Anonatho er speahe Camerario Anonateri nri qu pro tempe fuerit predab cenfibus aliqz juribus. er consuendimbus nobis morg Aona tho hunciz debins er confucas er noi anim carci felium ba Galli quando pro da cenfus sunt dandi. Camerario vl&#x27; eur certo nunc petent coniub danda eir re fedo in prindio vel cona uxta confue cudinen hactenus observatumm zu vo clapla humodi penione suprada .. Albatalla &amp; Conuentus in kungfuele in solucione cenfus fuerint negligenes adludom expensas quas exinde tempe cenfus no soluti Camerarius vl&#x27; eus certus niusc conteral erent. plenaria renchunt. In cui rei testimonium. floe .. Akas er Comuen pda nta sigilla dunimus prelensabz leis appendenda. Datum in scassula in die Bii Edalrin. Anno dni Ailhmo. Trecen. Decimo Iono:. Der eptillen buef von Sekingen uber trurman zehenden. goet die disen buef lesent oder hozent le fen das wir vollen gewalt geben an dilem buek Dietrich von Lenzbch / an unser stat vß ze nemene den ze heiden ze Tornichkon vn ze henschin cho vn ze Orwillingen von Aarchwatt Trurman burger ze Lutzeeren vn von sinen kinden den ge von uns ze erbe hat vn von unsm gorschuf den et verkoft hat dem Gorschuf von kungsvelt der.. Ebschim vn dem Conuent vn ze offenen wklunde- das er war si So henchcn wir uns&#x27; hngel an disen buef durre buef- wart geben ze sel-ingen do man zal- te von gotteb geburt wizchenhund- lar dar nach in dem einb vn zwein- goltem lart an sant agnelsen tage: Aber der eptillin vn des capitez. buef von Sekingen über trutmanz W ir adelheit von Echende: pv. Gottes gnaden .. Ebschim ze Sekingen vn das Capitel gememlich. 72 Vn kwr. allen den die disen buef zehent oder hozent lesen.Daz wir verluhen haben dien Erwürdigen vrowen.. Der.. Ebschim vn dem Conuent von Kungsvelt den zehen den ze Orwillingen ze henschin kon vn ze Tornichon Den Aarchwatt Trurman burger ze Lutzeeren von uns ze erbe hatte.den li von im geköfer hanr ze rechten erbe der voegenanten .. Ebschim vn dem Conuent Ar dien sedingen das si leelich zehen mvv roggen die von dem voegenanten zehenden ze zmfe gamt sullen antwurten ze Sek-ingen In die stat ze Sant Areff
 
 --- e-codices_saa-0428_017r_large.jpg ---
---- SEITE 6 --- tag/ oder dar nach Annum vierzehen tagen / von Gerdtrut von Leisertil Tinntrowen unsers Gotzhuf vn Allen w nachomen des voigennanten Gotz hüs Tinntrowen dien der voigennan te zin6 gemakor wirt/ Ez si Ebnischin oder Tinntrowe /nder voigennanter Antwurten gullen / an Allen w schaden / vn we das / das der voigennä te zin6 ze dem voigennanten tage nicht bericht wrde / swaß schaden deme dů voigunnte vriowe / oder w nachomen Empfingge nach dem zin6 ze sendenne / oder In ze gewinnene den sol dů voigennante. Ebnischin / vn der Convent von Kūngsveld genzlich ab legen / vn dar umb wie wan si den zins von dielen zite immer mer Ant- werten sun / In unser Ant / an Allen schaden / dez si lieb gebunden hant / so haben /inen / die Gnade gemm vn v lühcn / das weder si noch en kein w nachkome / die voigennanten zehende mēmer mer enphahlen sun / noch ver- Erschärzen / vn ze einem offenen wz-künde / vn beletvunge / der vor genannten oidenunge. Sogeben wir den voigennanten vriowen von Kūn gehielt dien bues befigelt / mir unser Capitels Inigel. Dierc buesf wart geben / ze schklingen / do man zalre von Gotres geburt druzchen hundert jar vn zweinzig jar. Dar nach, in dem ersten jare / monen des nach, lant agten tage. Der trutmanz brief über den zehenden- Hllen die dien buesf fehent oder hözent lefen / künde ich Aarckwatt Trutman Burger ze Lucreten / und vernihe/ das ich einen zehenden gelegen ze hentschinkon/ ze Tornkon/ vn ze orwif- zingen/ der min rech-erbe war von dem Gotzhufe ze gekklingen/ han verköfer- vn zekofenne gegeben dien Etwiedigen krowen der .. Abbnischin und dem Con- uent ze Kūngsvelden. Omb achzig march gines gillers/ der ich von in vollecklich gewert bin. Und ich in minen nvts en phangen han. Und han den selben zehen den uf gegeben mit allen minen kinde- an des erbern mannes hant Meriches von Lenzburg/ der vollen gewalt hatte von dem selben Gotzhufe von gekklingen/ den selben zehenden von mir uf ze ne- menne/ ze des voz gestribenen Gotzhufes handen ze kūngsvelden. Diz belchach da ze gegen waren - heinrich der Stammer. Buchhart von Gartcn. Johans von sem- pach heinrich von Sewelsberg. Rudolf von aa. Ulrich von Eych. Vernher von Grepson. Und ander erber lüre gnüge. und har über ze einen vzkünde han ich min Angesigel an disen offenen brief. Der gegeben warrt ze Lucreten. an dem nechten zwitage nach samt Agn. then tage. Do man zalte von Gotres ge- bürte druzchenhundert jar. Dar nach, in dem ein und zwenzigolten jare: Der. brief den trutman hat von dem. Gotzhufe ze gekklingen: : W nullics preffensii insped Adelhei. die de berichtil cmodia Eccle se. Dario zercomien Confrnir dyot aKedni. caritans cum nonna subceptow Joimr. quos nosle fuir opozumii qv ai Arnoldus. dais Trutman de Berona Decmas vidz. in orwellingen in henonchon A i Tornichon, quas andone seu mica Echa vidz zercomerj</code></pre></section>
+--- SEITE 6 --- tag oder dar nach Annum vierzehen tagen / vion Gerdrit von Leisertil Tinwrowen vnserz Gotzhuf vn Allen w nachomen dez Voigennanten Gotz hüs Tinwrowen dien der vorgenan te zin6 gemakor wirt Ez si Ebrischin oder Tinwrowe /nder voigenanter Antwurten zullen / an Allen w schaden / vn we das / das der vorgenan te zins ze dem voigenanten tage nicht bericht wrde / swaß schaden deme dů voigunnte vriowe oder w nachomen Empfingge nach dem zin6 ze sendenne / oder In ze gewinnene den sol dů voigenante. Ebrischin / vn der Convent von Kūngsveld genzlich ab legen / vn dar umbc wan si den zinc von dielen zite immer mer Ant- werten sun / In unser Stnt / an Allen schaden / dez si lieb gebunden hant go so haben men / die Gnade gemm vn v lühcn / das weder si noch en kein w nachkome / die voigennanten zehende mēmer mer enphahlen sun / noch ver- Erschärzen / vn ze einem offenen wz-künde / vn beletvunge / der vor genannten oidenunge. Sogeben wir den voigenanten vriowen von Kūn gesielt dien bues befigelt / mir unser Capitels Inigel. Dvire buesf wart geben / ze schklingen / do man zalte von gottes geburt druzchen hundert jar vū zweinzig jar. Dar nach, in dem ersten jare / monen des nach, lant agten tnge. Des trutmanz brief über den zehenden- Hllen die dien buesf fehent oder hözent lefen / künde ich Aarckwart Trutman Burger ze Lucreten / und verihe/ das ich einen zehenden gelegen ze hentschinkon/ ze Tornkon/ vn ze orwif- zingen/ der min rech-erbe war von dem Gotzhufe ze gekklingen/ han verköfer- vn zekofenne gegeben dien Etwiedigen frowen der .. Abbrischin und dem Con- uent ze Kūngsvelden. Omb achzig march gines gillers/ der ich von in vollecklich gewert bin. Und ich in minen notz en phangen han. Und han den selben zehen den uf gegeben mit allen minen kinde- an des erbern mannes hant Meriches von Lenzburg/ der vollen gewalt hatte von dem selben Gotzhufe von gekklingen/ den selben zehenden von mir uf ze ne- menne/ ze des voz gestribenen Gotzhufes handen ze kūngsvelden. Diz belchach da ze gegen waren - heinrich der Stammer. Buchhart von Gartcn. Johans von sem- pach heinrich von Sewelsberg. Rudolf von aa. Ulrich von Eych. Vernher von Grepcon. Und ander erber lüre gnüge. und har über ze einen vulkünde han ich min Angesigel an disen offenen briefe. Der gegeben warrt ze Lucreten. an dem nechten zwitage nach samt Agn. then tnge. Do man zalte von Gotres ge- bürte druzchenhundert jar. Dar nach, in dem ein und zwenzigolten jare: Der. brief den trutman hat von dem. Gotzhufe ze gekklingen: : W nulhis preßensii insped Adelhei. die de berichtil cmodia Eccle se. Davio zercomien Conformt dyot aKedni. caritans cum nonna subceptow Joimr. quos nostle fuir opozumii qv ai Arnoldus. dais Trutman de Berona Decmas vidz. in orwellingen in henonchon A t Törichon, quas andone seu mün Ercha vidz zercomerj</code></pre></section>
 
-<section id="recognitions" aria-labelledby="rec-heading"><h2 id="rec-heading">Erkennungsversionen</h2><p class="rec-intro">Es liegen mehrere Erkennungsversionen vor. Wählen Sie eine Version zum Vergleichen; die ausgewählte Transkription bleibt ohne JavaScript sichtbar.</p><div class="rec-viewer" data-doc-id="u-17__"><div class="rec-tabs" role="tablist" aria-label="Erkennungsversionen"><input type="radio" name="rec-u-17__" id="tab-cand-0-vlm-internvl3-8b-instruct" value="cand-0-vlm-internvl3-8b-instruct" checked class="rec-tab-input"><label for="tab-cand-0-vlm-internvl3-8b-instruct" class="rec-tab-label">🔮 VLM (InternVL3-8B) ⮕</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-1-kraken-kraken-catmus_medieval" value="cand-1-kraken-kraken-catmus_medieval" class="rec-tab-input"><label for="tab-cand-1-kraken-kraken-catmus_medieval" class="rec-tab-label">📖 Kraken OCR</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-2-trocr-trocr-medieval-escriptmask" value="cand-2-trocr-trocr-medieval-escriptmask" class="rec-tab-input"><label for="tab-cand-2-trocr-trocr-medieval-escriptmask" class="rec-tab-label">🔤 TrOCR ❌</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-3-kraken-kraken-mccatmus" value="cand-3-kraken-kraken-mccatmus" class="rec-tab-input"><label for="tab-cand-3-kraken-kraken-mccatmus" class="rec-tab-label">📖 Kraken OCR</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-4-trocr-trocr-kurrent-xvi-xvii" value="cand-4-trocr-trocr-kurrent-xvi-xvii" class="rec-tab-input"><label for="tab-cand-4-trocr-trocr-kurrent-xvi-xvii" class="rec-tab-label">🔤 TrOCR ❌</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-5-vlm-internvl3-8b-instruct" value="cand-5-vlm-internvl3-8b-instruct" class="rec-tab-input"><label for="tab-cand-5-vlm-internvl3-8b-instruct" class="rec-tab-label">🔮 VLM (InternVL3-8B)</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-6-kraken-kraken-catmus_medieval" value="cand-6-kraken-kraken-catmus_medieval" class="rec-tab-input"><label for="tab-cand-6-kraken-kraken-catmus_medieval" class="rec-tab-label">📖 Kraken OCR</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-7-kraken-kraken-mccatmus" value="cand-7-kraken-kraken-mccatmus" class="rec-tab-input"><label for="tab-cand-7-kraken-kraken-mccatmus" class="rec-tab-label">📖 Kraken OCR</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-8-vlm-internvl3-8b-instruct" value="cand-8-vlm-internvl3-8b-instruct" class="rec-tab-input"><label for="tab-cand-8-vlm-internvl3-8b-instruct" class="rec-tab-label">🔮 VLM (InternVL3-8B)</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-9-kraken-kraken-catmus_medieval" value="cand-9-kraken-kraken-catmus_medieval" class="rec-tab-input"><label for="tab-cand-9-kraken-kraken-catmus_medieval" class="rec-tab-label">📖 Kraken OCR</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-10-kraken-kraken-mccatmus" value="cand-10-kraken-kraken-mccatmus" class="rec-tab-input"><label for="tab-cand-10-kraken-kraken-mccatmus" class="rec-tab-label">📖 Kraken OCR</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-11-vlm-internvl3-8b-instruct" value="cand-11-vlm-internvl3-8b-instruct" class="rec-tab-input"><label for="tab-cand-11-vlm-internvl3-8b-instruct" class="rec-tab-label">🔮 VLM (InternVL3-8B)</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-12-kraken-kraken-catmus_medieval" value="cand-12-kraken-kraken-catmus_medieval" class="rec-tab-input"><label for="tab-cand-12-kraken-kraken-catmus_medieval" class="rec-tab-label">📖 Kraken OCR</label></div><div class="rec-panels"><div class="rec-panel" id="cand-0-vlm-internvl3-8b-instruct"><div class="rec-summary">🔮 <strong>VLM (InternVL3-8B)</strong> <span class="rec-badge">✅ 80%</span> <span class="rec-model">internvl3-8b-instruct</span> · 2,804 Zeichen · <a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">--- SEITE 1 ---
+<section id="recognitions" aria-labelledby="recognitions-heading">
+<h2 id="recognitions-heading">Erkennungsversionen</h2>
+<p class="rec-intro">Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sichtbar. Konfidenzwerte verschiedener Engines sind nicht unmittelbar vergleichbar.</p>
+<div class="rec-viewer" data-recognition-viewer data-doc-id="u-17__">
+<nav class="rec-selector" aria-label="Erkennungsversionen"><ul><li><a href="#recognition-selected" data-recognition-select="selected" aria-controls="recognition-selected">Ausgewählt / Fusion</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct" data-recognition-select="vlm-internvl3-8b-instruct" aria-controls="recognition-vlm-internvl3-8b-instruct">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval" data-recognition-select="kraken-kraken-catmus-medieval" aria-controls="recognition-kraken-kraken-catmus-medieval">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-trocr-trocr-medieval-escriptmask" data-recognition-select="trocr-trocr-medieval-escriptmask" aria-controls="recognition-trocr-trocr-medieval-escriptmask">TrOCR · trocr-medieval-escriptmask</a> <span class="rec-status rec-status--fehlgeschlagen">Fehlgeschlagen</span></li><li><a href="#recognition-kraken-kraken-mccatmus" data-recognition-select="kraken-kraken-mccatmus" aria-controls="recognition-kraken-kraken-mccatmus">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-trocr-trocr-kurrent-xvi-xvii" data-recognition-select="trocr-trocr-kurrent-xvi-xvii" aria-controls="recognition-trocr-trocr-kurrent-xvi-xvii">TrOCR · trocr-kurrent-xvi-xvii</a> <span class="rec-status rec-status--fehlgeschlagen">Fehlgeschlagen</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct-2" data-recognition-select="vlm-internvl3-8b-instruct-2" aria-controls="recognition-vlm-internvl3-8b-instruct-2">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval-2" data-recognition-select="kraken-kraken-catmus-medieval-2" aria-controls="recognition-kraken-kraken-catmus-medieval-2">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-mccatmus-2" data-recognition-select="kraken-kraken-mccatmus-2" aria-controls="recognition-kraken-kraken-mccatmus-2">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct-3" data-recognition-select="vlm-internvl3-8b-instruct-3" aria-controls="recognition-vlm-internvl3-8b-instruct-3">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval-3" data-recognition-select="kraken-kraken-catmus-medieval-3" aria-controls="recognition-kraken-kraken-catmus-medieval-3">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-mccatmus-3" data-recognition-select="kraken-kraken-mccatmus-3" aria-controls="recognition-kraken-kraken-mccatmus-3">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct-4" data-recognition-select="vlm-internvl3-8b-instruct-4" aria-controls="recognition-vlm-internvl3-8b-instruct-4">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval-4" data-recognition-select="kraken-kraken-catmus-medieval-4" aria-controls="recognition-kraken-kraken-catmus-medieval-4">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li></ul></nav>
+<div class="rec-panels"><details class="rec-panel" id="recognition-selected" data-recognition-panel="selected" data-page="" open>
+<summary>Ausgewählt / Fusion — ausgewählt</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>fusion</dd></div><div><dt>Modell</dt><dd>—</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>Nicht angegeben</dd></div><div><dt>Zeichen</dt><dd>11811</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>--- e-codices_saa-0428_015v_large.jpg ---
+--- SEITE 1 --- modios reina cum prato sive uysta Ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. Alhile er conuencius du vinus appendenda Darnm loro podo Anno dni. o. o. exxu. feria seda mcf octanam bi lchis bapte: Der abor buef von schafhusen vinbe die an sprache die er hatter An die lul Anoie dmi amen (chen ze stoken Nos Iohannes misaone dina. Albas Torusz conuencius Aon de schahuta ordinis sa bidei coniund dyoc renore pincum proktemur. Oß cum adnos ex quodam vago relatu er hdtone hib tempibz pucnillcr julsphnatus ecie m stöcken ppe Lenzburg. de confe dyoc tone Curab nri Aon qni twilla schafhusen mprochia de eackie debere nobis z nro Aon pnnie Aos ne kruft lup codem iure mc nos er Aon m chingsfult / de dyoc ordiniß sc clare mpollium / dißensionis matiam qtinger subouer / ne nos / nci fucelloueb / nem Aon mfiuarum polten prextu impe acōnis / su actomb fositam lup ded jure paenatus pnos mthcunde / su haben de mnnb debite calipme notari insa ma / er frultä laboubz er expenkb fra gari / deo adber penunda pricila deu re hnimodi pue enoari pleni cupienes inquisidem sup hib nri / er Aon nci note cam pyxamiaedom plonaz Aon nri er alioz fidedignoz / antiquoz of delhis qepin lare postc pluphim? qin y mspecoz, dim er singlow nri Aon pulegios er in lcrumentoz scani diligencein Et qua vilio / er cum diligenza plectis depōmb; er das pendacum plonatum uunmer evamiaconum non omibz / a singl nri Aon leis pulegios er mitrumenab non mucninus nobis nl nco Aon seu dec cur a quies uib ndce eacie scöffen julsphnats, opere sed ym julsphnatus adpden Aon mlkungstudden exdonacne sibi sai p illn ltres phopes dureb autrie er zyrie a. Comies mbabipurg a m kyburg ipius. Eackie in stöcken tunc paenos er qui aur. qnoz fadecellous mpollcillone juriapar. natus Euntem eackie vlih Adtempus do. naednis hice ipi Aon filanc atemper end. memoua no exilus inon exrusionc legitima. er incoypanc de eackie subscunus debe. lille penic Er recognosceres pinab nomie. quo sup concordie duligens sup hib non. volum femel sed plusies me nos phabiro. etdnu modc crä adhoc capitulo nro nlln. uis nobis nris fucelloubz nro. Aon seu. curu nie pde modc iure pac nat? eackie in stöcken qindolb; opede k? rpm uis paenatus adpden Aon mlkungt. ueden expmislis cnis debere peruo p. uncere promishin/ er excta laa cr puna. menta nta abunoqz nem follempm me. potic rupulatone cölic m dias minb pilan. er michlomni subscptn pena. Cencii Aar. charum legnhs argena pondis schafhusen. pruicim no vi aur metu mdnch sed ex. snulis hißdäb cr pbono paas libe prob. nris fucelloubz a mon nro padö n echino. las .. Albaillam cr conuenci da Aon. m chingsfuden n cox fucelloueb sip. deo mrcafnatus demceps inperc n. qindolb; purbare n ipas n cox Aon/ leu fuccendies mperc volenab; ul curba. re aliquarous consentce Si auf q ablic. pnos albatem cr conuenci sen maiorem. prem conuencius ul mfurim y qincup
+
+--- e-codices_saa-0428_016r_large.jpg ---
+--- SEITE 16 --- Habem et conuentu ul maiozem prem Conueni nti Hon qe premilla factum fuit m indico ul exé cxcic quicqs p pnoe leas ul reles ydones dehor amonu et m struch fiumus h no emendauim/ soluere tenem p dem uerdmcnti deo Hon mohi ngbuelc dom penam conu. Archavi noie nitule gu ane pnos ul ncoo ut pre miate fuccelloes /tecio q huimodi mltm dcom fine dificultare audire nolimus michlomin&#x27; dom penam folue tenemr edon Hon priramenti pdom. Peniammer exen iad noie quo sup excepm doh mal excepm /D metus a conlududm hor uob porcetum bnhao retinutonis mntegn ob qmciqz cam luis er pumlegnis ubilibis mpcctis er impercandis sub hqniqz Vboz foma. Eam h de co/ toto tenore deibos adibum foiet mhüs fmena menno hpalo ueris dcnna genalem venusatom no valere er alios unuiis er hngulis ex cepmis/ er defenkonibs tmn ueris qm fint lepa /a non lepa conlucudinari a num cpalis quibz Fmilla adpionc ul mpoliun poltent hndolibs /mpte auc mto reaali. aut canari pmium/ sub debio da pnos/ pem latemena cr subpena penala probis/ nire fuccellobz cr opon nro pado nuqin&#x27; volo repe quasine exrepiones fuu defenbiods uuis fa conlucudinis ul lauua / qe pre mullos alqud opone ul quib uuis sen ju dias auexilum qe premilla mploaret sen quahus leas Fmilla mahquo pmdinales/ alde aplica uvalunde mpctte ul mpetas on/ len eus mpettis on volentibz akqua tinus conlenre tante ul expile. Se obe renenum sup doy phopum cr olacum. denoallimar monialum lepeda Hon m Kingsfueden adher z adcoydem oin cr singlow obseruanam nob nroo fuccelloes er nem Hon pdan fubdebio da uerameni. n non sub pdor pena Centum Archay pdan/ pnob nroo fuccelloes er Hon inem pdon fol uenda sub debio da ueramena pdo Hon m. Kingsfuedr hermit altcringim mhüs lepas, reles qui Fmilla mfserunt sur hu/ fras. herman? por frat Jacob culos fras. C. Canto: frat Erneshus daie wog. camas? frater Jokes capellanus er ali Honach/ da Hon schafusen inon Johannes dapi? de dijellenhouen lenoz frid a Egbrechius. schulten schafusen Aihres drub sellwar. Fud. de Gischper. Camprech? de Gieseln. kouen Omes schafusen er plures ali a. dedign/ adhor votan er vogns Inquoz. om telhdom er robur perui nos albae. er conuenius Pelpa sigilla ma durimus. punch apendenda Dacom schafusen sia. focta post folcum ba Archai apli. Anno dm. 6. cc xxxdao Wiz smr die buefvl&#x27; die laygen zehenden die gelegen smr. mdem kilspeI zelteffen die koft wne. dem mir dem silber das du Edel und hoch geborn fursten Lymg Elsberch von Pome vuler gnedigiu lshfm dem Closter gap an vr tode. A nomme dni amex. Quoniam que- geunaur intempc am tempe ransfemr. cr a memora homini deniunt. mi vore- tchium cr scripantaz testimonio pennent. Hmc et: ad Nos Conradus dimna pmill- one.-Allbas donasteri oim fooy in scha- kula oidinis sa benedich. Confrmr- djoce genre cupimub omulos ltm, pre- lennum inspedtore qd gerennius Ailer- heint Gelleler. Alrimis a Pidolfius. fetos onb m mia conlunur prefena de- cmam Laycalcm fitam infa Territorum
+
+--- e-codices_saa-0428_016v_large.jpg ---
+212 Cche grouten guam anobre non Oon roneban mleodum (ulomner den Crbe Eehen prs annue centu Gedeam Aodron Diligine vmue dodit Gabea geromis Jeit sonttum ad manue mat Ubere et Cotlempmiret Lebionarimt a nos en. des Secimann de tontenp exprèto. copls. et Comenart ni remttutimus mtont. et Lehgoti0. (lbsutam. a Connentam Ronatery Panite Axce SEITE 1 kraken Eche stouffen quam anobis morg An tenchant in codum fulgniter dem Erbe lehen pro amuo cenfu sedecim Aodioz Bilignis vnios Aodii fabe A Triemta dem vthrum ad manub ntab libere er follempniter resignavint &amp; nos con dem deamam de consensu expreso. Capli. er Conuentus nri temstilimus in hono er Religiosas. Albatallam &amp; Conuentum Anonateri fante clare in kungfuele pure er simphinter pter dem honesto viro dno Walthero decimo in windliche preference er tempiente humodi. crancla com vire a note carundem. Salus ta men nobis morg Anonatho er speahe Camerario Anonateri nri qu pro tempe fuerit predab cenfibus aliqz juribus. er consuendimbus nobis morg Aona tho hunciz debins er confucas er noi anim carci felium ba Galli quando pro da cenfus sunt dandi. Camerario vl&#x27; eur certo nunc petent coniub danda eir re fedo in prindio vel cona uxta confue cudinen hactenus observatumm zu vo clapla humodi penione suprada .. Albatalla &amp; Conuentus in kungfuele in solucione cenfus fuerint negligenes adludom expensas quas exinde tempe cenfus no soluti Camerarius vl&#x27; eus certus niusc conteral erent. plenaria renchunt. In cui rei testimonium. floe .. Akas er Comuen pda nta sigilla dunimus prelensabz leis appendenda. Datum in scassula in die Bii Edalrin. Anno dni Ailhmo. Trecen. Decimo Iono:. Der eptillen buef von Sekingen uber trurman zehenden. goet die disen buef lesent oder hozent le fen das wir vollen gewalt geben an dilem buek Dietrich von Lenzbch / an unser stat vß ze nemene den ze heiden ze Tornichkon vn ze henschin cho vn ze Orwillingen von Aarchwatt Trurman burger ze Lutzeeren vn von sinen kinden den ge von uns ze erbe hat vn von unsm gorschuf den et verkoft hat dem Gorschuf von kungsvelt der.. Ebschim vn dem Conuent vn ze offenen wklunde- das er war si So henchcn wir uns&#x27; hngel an disen buef durre buef- wart geben ze sel-ingen do man zal- te von gotteb geburt wizchenhund- lar dar nach in dem einb vn zwein- goltem lart an sant agnelsen tage: Aber der eptillin vn des capitez. buef von Sekingen über trutmanz W ir adelheit von Echende: pv. Gottes gnaden .. Ebschim ze Sekingen vn das Capitel gememlich. 72 Vn kwr. allen den die disen buef zehent oder hozent lesen.Daz wir verluhen haben dien Erwürdigen vrowen.. Der.. Ebschim vn dem Conuent von Kungsvelt den zehen den ze Orwillingen ze henschin kon vn ze Tornichon Den Aarchwatt Trurman burger ze Lutzeeren von uns ze erbe hatte.den li von im geköfer hanr ze rechten erbe der voegenanten .. Ebschim vn dem Conuent Ar dien sedingen das si leelich zehen mvv roggen die von dem voegenanten zehenden ze zmfe gamt sullen antwurten ze Sek-ingen In die stat ze Sant Areff
+
+--- e-codices_saa-0428_017r_large.jpg ---
+--- SEITE 6 --- tag oder dar nach Annum vierzehen tagen / vion Gerdrit von Leisertil Tinwrowen vnserz Gotzhuf vn Allen w nachomen dez Voigennanten Gotz hüs Tinwrowen dien der vorgenan te zin6 gemakor wirt Ez si Ebrischin oder Tinwrowe /nder voigenanter Antwurten zullen / an Allen w schaden / vn we das / das der vorgenan te zins ze dem voigenanten tage nicht bericht wrde / swaß schaden deme dů voigunnte vriowe oder w nachomen Empfingge nach dem zin6 ze sendenne / oder In ze gewinnene den sol dů voigenante. Ebrischin / vn der Convent von Kūngsveld genzlich ab legen / vn dar umbc wan si den zinc von dielen zite immer mer Ant- werten sun / In unser Stnt / an Allen schaden / dez si lieb gebunden hant go so haben men / die Gnade gemm vn v lühcn / das weder si noch en kein w nachkome / die voigennanten zehende mēmer mer enphahlen sun / noch ver- Erschärzen / vn ze einem offenen wz-künde / vn beletvunge / der vor genannten oidenunge. Sogeben wir den voigenanten vriowen von Kūn gesielt dien bues befigelt / mir unser Capitels Inigel. Dvire buesf wart geben / ze schklingen / do man zalte von gottes geburt druzchen hundert jar vū zweinzig jar. Dar nach, in dem ersten jare / monen des nach, lant agten tnge. Des trutmanz brief über den zehenden- Hllen die dien buesf fehent oder hözent lefen / künde ich Aarckwart Trutman Burger ze Lucreten / und verihe/ das ich einen zehenden gelegen ze hentschinkon/ ze Tornkon/ vn ze orwif- zingen/ der min rech-erbe war von dem Gotzhufe ze gekklingen/ han verköfer- vn zekofenne gegeben dien Etwiedigen frowen der .. Abbrischin und dem Con- uent ze Kūngsvelden. Omb achzig march gines gillers/ der ich von in vollecklich gewert bin. Und ich in minen notz en phangen han. Und han den selben zehen den uf gegeben mit allen minen kinde- an des erbern mannes hant Meriches von Lenzburg/ der vollen gewalt hatte von dem selben Gotzhufe von gekklingen/ den selben zehenden von mir uf ze ne- menne/ ze des voz gestribenen Gotzhufes handen ze kūngsvelden. Diz belchach da ze gegen waren - heinrich der Stammer. Buchhart von Gartcn. Johans von sem- pach heinrich von Sewelsberg. Rudolf von aa. Ulrich von Eych. Vernher von Grepcon. Und ander erber lüre gnüge. und har über ze einen vulkünde han ich min Angesigel an disen offenen briefe. Der gegeben warrt ze Lucreten. an dem nechten zwitage nach samt Agn. then tnge. Do man zalte von Gotres ge- bürte druzchenhundert jar. Dar nach, in dem ein und zwenzigolten jare: Der. brief den trutman hat von dem. Gotzhufe ze gekklingen: : W nulhis preßensii insped Adelhei. die de berichtil cmodia Eccle se. Davio zercomien Conformt dyot aKedni. caritans cum nonna subceptow Joimr. quos nostle fuir opozumii qv ai Arnoldus. dais Trutman de Berona Decmas vidz. in orwellingen in henonchon A t Törichon, quas andone seu mün Ercha vidz zercomerj</code></pre><p><a class="rec-download" href="recognitions/fused.txt" download>Diese Transkription herunterladen</a></p></details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct" data-recognition-panel="vlm-internvl3-8b-instruct" data-page="">
+<summary>VLM · internvl3-8b-instruct</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>vlm</dd></div><div><dt>Modell</dt><dd>internvl3-8b-instruct</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>80%</dd></div><div><dt>Zeichen</dt><dd>2907</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>--- SEITE 1 ---
 modios reina cum prato sive uysta
 Ottovillingen dequibz hre debet forum
 pccenum in horum emdenaam sigilla no
-lsta videlicz. Alhile er conuentus du
+lsta videlicz. Alhile er conuencius du
 vinus appendenda Darnm loro podo
 Anno dni. o. o. exxu. feria seda mcf
 octanam bi lchis bapte: Der abor
 buef von schafhusen vinbe die
-an sprache die er hatter An die lal
+an sprache die er hatter An die lul
 Anoie dmi amen (chen ze stoken
 Nos Iohannes misaone dina. Albas
-Torusz conuentus Aon de schahuta
-ordinis sa bidei coniund dyoc tenore
-pncum prohtemur. Oß cum adnos ex
+Torusz conuencius Aon de schahuta
+ordinis sa bidei coniund dyoc renore
+pincum proktemur. Oß cum adnos ex
 quodam vago relatu er hdtone hib
 tempibz pucnillcr julsphnatus ecie
 m stöcken ppe Lenzburg. de confe
 dyoc tone Curab nri Aon qni twilla
-schafhusen mprocha de eckie debere
+schafhusen mprochia de eackie debere
 nobis z nro Aon pnnie Aos ne kruft
 lup codem iure mc nos er Aon m
 chingsfult / de dyoc ordiniß sc clare
-mpollcrum dißensionis matiam otunger
-subouer / ne nos nci buccellosb z nem
-Aon mstuarum polten prextu impe
-acōnis seu actonis forlitam lyp ded jure
-paenatus pnos mthcucnde seu haben
+mpollium / dißensionis matiam qtinger
+subouer / ne nos / nci fucelloueb / nem
+Aon mfiuarum polten prextu impe
+acōnis / su actomb fositam lup ded jure
+paenatus pnos mthcunde / su haben
 de mnnb debite calipme notari insa
-ma er frultä laboubz er expensb fra
-gari /deo adber penunda pricila deu
-re hnimodi pue enoari pleni cupiencs
-inquisidcn sup hib nri er Aon nci note
-cam pyxamiaedom plonaz Aon nri cr
-alioz fidedignoz z antiquoz of delhis
+ma / er frultä laboubz er expenkb fra
+gari / deo adber penunda pricila deu
+re hnimodi pue enoari pleni cupienes
+inquisidem sup hib nri / er Aon nci note
+cam pyxamiaedom plonaz Aon nri er
+alioz fidedignoz / antiquoz of delhis
 qepin lare postc pluphim? qin y mspecoz,
 dim er singlow nri Aon pulegios er in
-lctumencoz scani diligencein Et qua
-vilio er cum diligenza plectis depōmb;
-er das pendacum plonatum unmer
+lcrumentoz scani diligencein Et qua
+vilio / er cum diligenza plectis depōmb;
+er das pendacum plonatum uunmer
 
-evamiaconum non omibz /A singt nri
+evamiaconum non omibz / a singl nri
 Aon leis pulegios er mitrumenab non
-mucninus nobis nl nco Aon feu dec cur
-a quies uib ndce ecie scöffen julsphnats,
+mucninus nobis nl nco Aon seu dec cur
+a quies uib ndce eacie scöffen julsphnats,
 opere sed ym julsphnatus adpden Aon
-mlkungstudden exdonacne sibi fai p illn
-lrebs phopes dureb autrie er gyrie a.
+mlkungstudden exdonacne sibi sai p illn
+ltres phopes dureb autrie er zyrie a.
 Comies mbabipurg a m kyburg ipius.
-Eckie in stöcken tunc paenos er qui aur.
-qnoz Pdcecllosb mpollcillone juriapar.
-natus Euntem eckie vils Adtempus do.
-naednis fide ipi Aon filanc atemper end.
-memoua no exilte inon exrionc legitima.
-er incoypanc de eckie subscunb debe.
+Eackie in stöcken tunc paenos er qui aur.
+qnoz fadecellous mpollcillone juriapar.
+natus Euntem eackie vlih Adtempus do.
+naednis hice ipi Aon filanc atemper end.
+memoua no exilus inon exrusionc legitima.
+er incoypanc de eackie subscunus debe.
 lille penic Er recognosceres pinab nomie.
-quo sup concordie duligent sup hib non.
+quo sup concordie duligens sup hib non.
 volum femel sed plusies me nos phabiro.
 etdnu modc crä adhoc capitulo nro nlln.
-uis nobis nris buccellobz nro. Aon feu.
-curu nie pde modc inter pac / nar?
-eckie in stöcken qindolb; opede k?
-vpm uis paenatus adpden Aon mlkungt.
-uelden expmislis cnis debere perno p.
-uncrc promisin/ cr ecra laa cr puna.
+uis nobis nris fucelloubz nro. Aon seu.
+curu nie pde modc iure pac nat?
+eackie in stöcken qindolb; opede k?
+rpm uis paenatus adpden Aon mlkungt.
+ueden expmislis cnis debere peruo p.
+uncere promishin/ er excta laa cr puna.
 menta nta abunoqz nem follempm me.
-potic rupulacne cölic m aias minb pilan.
-er micholonn subscptn pena / Cencu Aar.
-charum legnis argena pondis schafusen.
-pnuccm no vi aur metu mdnch sed ex.
-snulis hißdibs cr pbono paas libe prob.
-nris buccellobz z mon nro padö n echino.
-las .. Albaallam cr conuenci da Aon.
-m chingsfuden n cox buccellosb / sup.
-dey mrspahnatub demceps inperc n.
+potic rupulatone cölic m dias minb pilan.
+er michlomni subscptn pena. Cencii Aar.
+charum legnhs argena pondis schafhusen.
+pruicim no vi aur metu mdnch sed ex.
+snulis hißdäb cr pbono paas libe prob.
+nris fucelloubz a mon nro padö n echino.
+las .. Albaillam cr conuenci da Aon.
+m chingsfuden n cox fucelloueb sip.
+deo mrcafnatus demceps inperc n.
 qindolb; purbare n ipas n cox Aon/
-leu buccendies mpete volenab; ul curba.
-re aliquarunus consentce Si auf q ablic.
+leu fuccendies mperc volenab; ul curba.
+re aliquarous consentce Si auf q ablic.
 pnos albatem cr conuenci sen maiorem.
-prem conuentus ul mfurim yqincup</pre><a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-1-kraken-kraken-catmus_medieval"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 91%</span> <span class="rec-model">kraken-catmus_medieval</span> · 3,090 Zeichen · <a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">
+prem conuencius ul mfurim y qincup</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval" data-recognition-panel="kraken-kraken-catmus-medieval" data-page="">
+<summary>Kraken OCR · kraken-catmus_medieval</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>kraken-catmus_medieval</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>91%</dd></div><div><dt>Zeichen</dt><dd>3169</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>
 modios trititi cum prato sito iuyta
 ottarissingen dequibs hare debet sorium
 ppetuum in horum eidentiain sigilla no
@@ -209,9 +220,13 @@ quandolibz parrurbare n ipsras n eor gson
 seu suttessores nipete uolentibz ul turba
 re aliquatiis consentiresi aute qpu absst
 parnos abbatem et sonventn se maiorem
-partem coruentnsul nfutram par qencug</pre><a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel rec-panel--error" id="cand-2-trocr-trocr-medieval-escriptmask"><div class="rec-summary rec-summary--error">🔤 <strong>TrOCR</strong> <span class="rec-badge rec-badge--error">❌ Fehler</span> <span class="rec-model">trocr-medieval-escriptmask</span> · 0 Zeichen</div><pre class="rec-text rec-text--error">Kraken service error at http://130.92.59.240:8200/ocr: timed out</pre><p class="rec-error-note">❗ Kein Output — dieser Versuch ist fehlgeschlagen.</p></div>
-<div class="rec-panel" id="cand-3-kraken-kraken-mccatmus"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 81%</span> <span class="rec-model">kraken-mccatmus</span> · 2,737 Zeichen · <a href="recognitions/kraken-kraken-mccatmus.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">13
+partem coruentnsul nfutram par qencug</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-trocr-trocr-medieval-escriptmask" data-recognition-panel="trocr-trocr-medieval-escriptmask" data-page="">
+<summary>TrOCR · trocr-medieval-escriptmask</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>trocr</dd></div><div><dt>Modell</dt><dd>trocr-medieval-escriptmask</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>0%</dd></div><div><dt>Zeichen</dt><dd>0</dd></div><div><dt>Status</dt><dd>Fehlgeschlagen</dd></div></dl>
+<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Der Erkennungsdienst hat das Zeitlimit überschritten.</div><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus" data-recognition-panel="kraken-kraken-mccatmus" data-page="">
+<summary>Kraken OCR · kraken-mccatmus</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>kraken-mccatmus</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>81%</dd></div><div><dt>Zeichen</dt><dd>2816</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>13
 INGIIOS EEIRITS CIIN pEdES RTS IIPEA
 DeNITItEinOTI dequts JEe debes poosimn
 Rcemun  pornn eedenadun Groutan
@@ -290,90 +305,96 @@ Giodotilon ponbare, n nose n con gon)
 len Enendres mpece votenabz rit aube
 Le Ahgnsunue contenere, 91 aut p Ablie
 lnOS AIrcn et Comenit len monoient
-Jrem ComuenauE l suCucin p gínci9.</pre><a href="recognitions/kraken-kraken-mccatmus.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel rec-panel--error" id="cand-4-trocr-trocr-kurrent-xvi-xvii"><div class="rec-summary rec-summary--error">🔤 <strong>TrOCR</strong> <span class="rec-badge rec-badge--error">❌ Fehler</span> <span class="rec-model">trocr-kurrent-xvi-xvii</span> · 0 Zeichen</div><pre class="rec-text rec-text--error">Kraken service error at http://130.92.59.240:8200/ocr: timed out</pre><p class="rec-error-note">❗ Kein Output — dieser Versuch ist fehlgeschlagen.</p></div>
-<div class="rec-panel" id="cand-5-vlm-internvl3-8b-instruct"><div class="rec-summary">🔮 <strong>VLM (InternVL3-8B)</strong> <span class="rec-badge">✅ 80%</span> <span class="rec-model">internvl3-8b-instruct</span> · 2,872 Zeichen · <a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">--- SEITE 16 ---
-Habem et conuentui ul maiores prem
-Conueni uti Hon qe premilla factum
-fuit m indico ul exé cxcic quicqs p præ
+Jrem ComuenauE l suCucin p gínci9.</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-trocr-trocr-kurrent-xvi-xvii" data-recognition-panel="trocr-trocr-kurrent-xvi-xvii" data-page="">
+<summary>TrOCR · trocr-kurrent-xvi-xvii</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>trocr</dd></div><div><dt>Modell</dt><dd>trocr-kurrent-xvi-xvii</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>0%</dd></div><div><dt>Zeichen</dt><dd>0</dd></div><div><dt>Status</dt><dd>Fehlgeschlagen</dd></div></dl>
+<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Der Erkennungsdienst hat das Zeitlimit überschritten.</div><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-2" data-recognition-panel="vlm-internvl3-8b-instruct-2" data-page="">
+<summary>VLM · internvl3-8b-instruct</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>vlm</dd></div><div><dt>Modell</dt><dd>internvl3-8b-instruct</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>80%</dd></div><div><dt>Zeichen</dt><dd>2936</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>--- SEITE 16 ---
+Habem et conuentu ul maiozem prem
+Conueni nti Hon qe premilla factum
+fuit m indico ul exé cxcic quicqs p pnoe
 leas ul reles ydones dehor amonu et m
 struch fiumus h no emendauim/ soluere
 tenem p dem uerdmcnti deo Hon mohi
 ngbuelc dom penam conu. Archavi
-noie nitule gu ane pnos ul nroo ut pre
-miate fuccelloes /tecio q hui modi mltm
+noie nitule gu ane pnos ul ncoo ut pre
+miate fuccelloes /tecio q huimodi mltm
 dcom fine dificultare audire nolimus
 michlomin&#x27; dom penam folue tenemr
 edon Hon priramenti pdom. Peniammer
-exen iad noie quo sup&#x27; exceptm doh mal
-excepn / QD metus ca conlududm hor uib
-porcetum bnhno retinuonib imtegn
-ob qmciqz cam luis er pumlegis ubilibis
-mpcctis er impercandis sub hqiqz Vboz
-forma. Eam h de co/ toto tenore deibos
+exen iad noie quo sup excepm doh mal
+excepm /D metus a conlududm hor uob
+porcetum bnhao retinutonis mntegn
+ob qmciqz cam luis er pumlegnis ubilibis
+mpcctis er impercandis sub hqniqz Vboz
+foma. Eam h de co/ toto tenore deibos
 adibum foiet mhüs fmena menno
-hpalis ueris dicens genalem venusatom
-no valere er alios unuiis er singulis ex
-cepnib/ er defenionibs tam iuris qm facti
-repa / a non lepa conlucudinari a num
-cpalis quibz Fmilla adpfone ul mpolium
-policre hndolibs / inpre aut mto reaali.
-aut canari / pmiam/ sub debio da pnos/
-pem latemena. cr subpena penala probis/
+hpalo ueris dcnna genalem venusatom
+no valere er alios unuiis er hngulis ex
+cepmis/ er defenkonibs tmn ueris qm fint
+lepa /a non lepa conlucudinari a num
+cpalis quibz Fmilla adpionc ul mpoliun
+poltent hndolibs /mpte auc mto reaali.
+aut canari pmium/ sub debio da pnos/
+pem latemena cr subpena penala probis/
 nire fuccellobz cr opon nro pado nuqin&#x27;
-volo repe quasine exrepiones feu defenioes
-uuis fa conlucudinis ul laura / qe pre
+volo repe quasine exrepiones fuu defenbiods
+uuis fa conlucudinis ul lauua / qe pre
 mullos alqud opone ul quib uuis sen ju
-dias auexilum qe premilla imploaret sen
-quahus has Fmills mahquo pmdinales/
+dias auexilum qe premilla mploaret sen
+quahus leas Fmilla mahquo pmdinales/
 alde aplica uvalunde mpctte ul mpetas
 on/ len eus mpettis on volentibz akqua
-tinus conlenere tante ul expile. Se obe
-renenum sup&#x27;doy phopum cr idacum.
+tinus conlenre tante ul expile. Se obe
+renenum sup doy phopum cr olacum.
 denoallimar monialum lepeda Hon m
 Kingsfueden adher z adcoydem oin cr
 
-singlow obseruanciam nos nroo fuccelloes
-er nim Hon pdan/ subdebio da uerameni.
-n non sub pder pena Centum Archay pdan/
-pnos nroo fuccelloes er Hon inem pden fol.
+singlow obseruanam nob nroo fuccelloes
+er nem Hon pdan fubdebio da uerameni.
+n non sub pdor pena Centum Archay pdan/
+pnob nroo fuccelloes er Hon inem pdon fol
 uenda sub debio da ueramena pdo Hon m.
-Kingsfuedr hermit altengim mhüs lepas,
-reles qui Fmills mfserunt sur hu/ fræ.
-herman? por frat Jacob culos fræ. C.
+Kingsfuedr hermit altcringim mhüs lepas,
+reles qui Fmilla mfserunt sur hu/ fras.
+herman? por frat Jacob culos fras. C.
 Canto: frat Erneshus daie wog. camas?
 frater Jokes capellanus er ali Honach/
 da Hon schafusen inon Johannes dapi?
-de dijellenhouen lenoz. Frid a Egbrechius.
+de dijellenhouen lenoz frid a Egbrechius.
 schulten schafusen Aihres drub sellwar.
-Fud. de Gischper. Campreh? de Gieschln.
+Fud. de Gischper. Camprech? de Gieseln.
 kouen Omes schafusen er plures ali a.
 dedign/ adhor votan er vogns Inquoz.
-om telhdom er robur perui nos albae
-er conuentus Pelpa sigilla ma durimus
+om telhdom er robur perui nos albae.
+er conuenius Pelpa sigilla ma durimus.
 punch apendenda Dacom schafusen sia.
-sexta post folium ba Archai.apli. Anno dm.
-6. cc xxxdao &#x27;Di3 smr die buefvl&#x27;
-die laygen zehenden die gelegen smr
-mdem kilspeI zelteffen die koft wne
+focta post folcum ba Archai apli. Anno dm.
+6. cc xxxdao Wiz smr die buefvl&#x27;
+die laygen zehenden die gelegen smr.
+mdem kilspeI zelteffen die koft wne.
 dem mir dem silber das du Edel und
 hoch geborn fursten Lymg Elsberch von
 Pome vuler gnedigiu lshfm dem
-Closter gap an ir tode.
+Closter gap an vr tode.
 
 A nomme dni amex. Quoniam que-
 geunaur intempc am tempe ransfemr.
-cr a memora homini denidint. mi vore-
+cr a memora homini deniunt. mi vore-
 tchium cr scripantaz testimonio pennent.
-Hmc et: qd Nos Conradus dimna pmill-
-one.-Allbas donasterij oim fooy in scha-
+Hmc et: ad Nos Conradus dimna pmill-
+one.-Allbas donasteri oim fooy in scha-
 kula oidinis sa benedich. Confrmr-
-djoce genre cupimub, mmulob ltm, pre-
+djoce genre cupimub omulos ltm, pre-
 lennum inspedtore qd gerennius Ailer-
-heint Gelleler. Hrimis a Pidolfius.
-fetos onb m mia conlunir preferua de-
-cmam Laycalcm fitam infa Territorium</pre><a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-6-kraken-kraken-catmus_medieval"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 91%</span> <span class="rec-model">kraken-catmus_medieval</span> · 3,152 Zeichen · <a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">abbatem et sonuentu ul maiorem partem
+heint Gelleler. Alrimis a Pidolfius.
+fetos onb m mia conlunur prefena de-
+cmam Laycalcm fitam infa Territorum</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-2" data-recognition-panel="kraken-kraken-catmus-medieval-2" data-page="">
+<summary>Kraken OCR · kraken-catmus_medieval</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>kraken-catmus_medieval</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>91%</dd></div><div><dt>Zeichen</dt><dd>3230</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>abbatem et sonuentu ul maiorem partem
 sonuentus nostr oon cotr premissa fattun
 fuit m idito ul ext ex tñc qncũq par pntes
 bas ul testes ydones dehot amoniti et mn
@@ -451,8 +472,10 @@ sentium inspectores quod strennuus esiles
 hemr gessele vlritus et euerdolfus
 frens ouis in nera constirut presentia de
 comam laycalem sitam infea derrvorsn
-eni</pre><a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-7-kraken-kraken-mccatmus"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 81%</span> <span class="rec-model">kraken-mccatmus</span> · 2,785 Zeichen · <a href="recognitions/kraken-kraken-mccatmus.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">Narein et Comneni al Insisren piem
+eni</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus-2" data-recognition-panel="kraken-kraken-mccatmus-2" data-page="">
+<summary>Kraken OCR · kraken-mccatmus</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>kraken-mccatmus</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>81%</dd></div><div><dt>Zeichen</dt><dd>2863</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>Narein et Comneni al Insisren piem
 Conent nrs Don gr péemta Caclnm
 Prix mmdrs ul exe excue gueug 7 pnet
 IaE nl teteS donce Sehor Amomu et mu
@@ -530,12 +553,15 @@ Cenem inpéclores g grremmt ailer
 Gem Gestcler lrenut a Podotlus
 (Les cme sn iis conttnnn pre Penas de
 Cn Ajestem Gramn inles lecrirontmn
-1</pre><a href="recognitions/kraken-kraken-mccatmus.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-8-vlm-internvl3-8b-instruct"><div class="rec-summary">🔮 <strong>VLM (InternVL3-8B)</strong> <span class="rec-badge">✅ 80%</span> <span class="rec-model">internvl3-8b-instruct</span> · 2,578 Zeichen · <a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">--- SEITE 71 ---
+1</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-3" data-recognition-panel="vlm-internvl3-8b-instruct-3" data-page="">
+<summary>VLM · internvl3-8b-instruct</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>vlm</dd></div><div><dt>Modell</dt><dd>internvl3-8b-instruct</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>80%</dd></div><div><dt>Zeichen</dt><dd>2643</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>--- SEITE 1 ---
+
 Eche stouffen quam anobis morg An
 tenchant in codum fulgniter dem Erbe
-lehen pro amuo cenfu sedecm Aodioz
-Bilginis vnios Aodii fabe A Triemta
+lehen pro amuo cenfu sedecim Aodioz
+Bilignis vnios Aodii fabe A Triemta
 dem vthrum ad manub ntab libere
 er follempniter resignavint &amp; nos con
 dem deamam de consensu expreso. Capli.
@@ -543,49 +569,48 @@ er Conuentus nri temstilimus in hono
 er Religiosas. Albatallam &amp; Conuentum
 Anonateri fante clare in kungfuele
 pure er simphinter pter dem honesto
-viro dno Walthero decmo in wmdliche
-preference er tempiente humodi. crnfla
+viro dno Walthero decimo in windliche
+preference er tempiente humodi. crancla
 com vire a note carundem. Salus ta
-men nobis morg Anathio er speahe
+men nobis morg Anonatho er speahe
 Camerario Anonateri nri qu pro tempe
 fuerit predab cenfibus aliqz juribus.
-er consuenidimbus nobis morg Aona
-tho huculz debins er confucas er noi
-anim crca felhim ba Galli quando pro
+er consuendimbus nobis morg Aona
+tho hunciz debins er confucas er noi
+anim carci felium ba Galli quando pro
 da cenfus sunt dandi. Camerario vl&#x27; eur
-certo nunc petent conlub danda eir re
-fedo. in prindio vel cona uxta confue
-cudinen hactenus observatumm. zu vo
+certo nunc petent coniub danda eir re
+fedo in prindio vel cona uxta confue
+cudinen hactenus observatumm zu vo
 clapla humodi penione suprada ..
 Albatalla &amp; Conuentus in kungfuele
-in foluone cenfus fuerint negligenes
-adoludom expensas quas exinde tempe
-cenfus no solui. Camerarius vl&#x27; eus
-certus niuus contreluerent. plenaria
+in solucione cenfus fuerint negligenes
+adludom expensas quas exinde tempe
+cenfus no soluti Camerarius vl&#x27; eus
+certus niusc conteral erent. plenaria
 renchunt. In cui rei testimonium. floe
 .. Akas er Comuen pda nta sigilla
-dunimus prelenabs leis appendenda.
+dunimus prelensabz leis appendenda.
 Datum in scassula in die Bii Edalrin.
 Anno dni Ailhmo. Trecen. Decimo Iono:.
 Der eptillen buef von Sekingen
 uber trurman zehenden.
-goeef
+goet
 
 die disen buef lesent oder hozent le
 fen das wir vollen gewalt geben an
-disem buek Dietrich von Lenzbch /
-an unser stat vf ze nemene den ze
+dilem buek Dietrich von Lenzbch /
+an unser stat vß ze nemene den ze
 heiden ze Tornichkon vn ze henschin
 cho vn ze Orwillingen von Aarchwatt
-Trurman burger ze Lutzeeren vn
-von sinen kinden den ge von uns ze
+Trurman burger ze Lutzeeren vn von sinen kinden den ge von uns ze
 erbe hat vn von unsm gorschuf den
 et verkoft hat dem Gorschuf von
 kungsvelt der.. Ebschim vn dem
-Conuent vn ze offenen wckunde-
+Conuent vn ze offenen wklunde-
 das er war si So henchcn wir uns&#x27;
 hngel an disen buef durre buef-
-wart geben ze fek-ingen do man zal-
+wart geben ze sel-ingen do man zal-
 te von gotteb geburt wizchenhund-
 lar dar nach in dem einb vn zwein-
 goltem lart an sant agnelsen tage:
@@ -593,11 +618,13 @@ Aber der eptillin vn des capitez.
 buef von Sekingen über trutmanz
 
 W ir adelheit von Echende: pv.
-Gottes gnaden .. Ebschim ze Sekingen, vn das Capitel gememlich.
+Gottes gnaden .. Ebschim ze Sekingen vn das Capitel gememlich.
 72
 
-Vn kwr. allen den die disen buef zehent oder hozent lesen.Daz wir verluhen haben dien Erwurdigen vrowen.. Der.. Ebschim vn dem Conuent von Kungsvelt den zehen den ze Orwillingen ze henschin kon/ vn ze Tornichon.Den Aarchwatt Trurman burger ze Lutzeeren von uns ze erbe hatte.den li von im gekofer hanr ze rechten erbe der voegenanten .. Ebschim vn dem Conuent Ar dien sedingen das si feelich zehen mvrt toggen / die von dem voogenanten zehenden ze zmfe gamt zullen antwurten ze Sek-ingen In die stat ze Sant Areff</pre><a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-9-kraken-kraken-catmus_medieval"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 92%</span> <span class="rec-model">kraken-catmus_medieval</span> · 2,706 Zeichen · <a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">is
+Vn kwr. allen den die disen buef zehent oder hozent lesen.Daz wir verluhen haben dien Erwürdigen vrowen.. Der.. Ebschim vn dem Conuent von Kungsvelt den zehen den ze Orwillingen ze henschin kon vn ze Tornichon Den Aarchwatt Trurman burger ze Lutzeeren von uns ze erbe hatte.den li von im geköfer hanr ze rechten erbe der voegenanten .. Ebschim vn dem Conuent Ar dien sedingen das si leelich zehen mvv roggen die von dem voegenanten zehenden ze zmfe gamt sullen antwurten ze Sek-ingen In die stat ze Sant Areff</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-3" data-recognition-panel="kraken-kraken-catmus-medieval-3" data-page="">
+<summary>Kraken OCR · kraken-catmus_medieval</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>kraken-catmus_medieval</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>92%</dd></div><div><dt>Zeichen</dt><dd>2783</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>is
 eclie stouffoi quam nobis noerouz on
 tenebant infeodum fulonriter dcan erbe
 lehen pes amuio censu ghedetim gfodior
@@ -674,8 +701,10 @@ sonvent oit dien gedingen daz
 si serlich zehen mot tosgen die
 uon dem vorgenantem zehenden
 ze znse gant sullen antrourten je
-sel ingen in die stat ze sant esartis</pre><a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-10-kraken-kraken-mccatmus"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 83%</span> <span class="rec-model">kraken-mccatmus</span> · 2,494 Zeichen · <a href="recognitions/kraken-kraken-mccatmus.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">212
+sel ingen in die stat ze sant esartis</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus-3" data-recognition-panel="kraken-kraken-mccatmus-3" data-page="">
+<summary>Kraken OCR · kraken-mccatmus</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>kraken-mccatmus</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>83%</dd></div><div><dt>Zeichen</dt><dd>2571</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>212
 Cche grouten guam anobre non Oon
 roneban mleodum (ulomner den Crbe
 Eehen prs annue centu Gedeam Aodron
@@ -752,27 +781,29 @@ Connent su sien Eéomgen des
 l Jerhet Zeen mut Tooven die
 son dem Dorscnmnten retenden
 Le Jile snnt Gritlen amemutcen 35
-Selmden p die Rnt Ze Eam Ang.</pre><a href="recognitions/kraken-kraken-mccatmus.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-11-vlm-internvl3-8b-instruct"><div class="rec-summary">🔮 <strong>VLM (InternVL3-8B)</strong> <span class="rec-badge">✅ 80%</span> <span class="rec-model">internvl3-8b-instruct</span> · 2,755 Zeichen · <a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">--- SEITE 6 ---
+Selmden p die Rnt Ze Eam Ang.</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-4" data-recognition-panel="vlm-internvl3-8b-instruct-4" data-page="">
+<summary>VLM · internvl3-8b-instruct</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>vlm</dd></div><div><dt>Modell</dt><dd>internvl3-8b-instruct</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>80%</dd></div><div><dt>Zeichen</dt><dd>2822</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>--- SEITE 6 ---
 tag/ oder dar nach Annum vierzehen
-tagen / von Gerdtrut von Leisertil
-Tinntrowen unsers Gotzhuf vn Allen
-w nachomen des voigennanten Gotz
-hüs Tinntrowen dien der voigennan
-te zin6 gemakor wirt/ Ez si Ebnischin
-oder Tinntrowe /nder voigennanter
-Antwurten gullen / an Allen w
+tagen / vion Gerdrit von Leisertil
+Tinwrowen vnserz Gotzhuf vn Allen
+w nachomen dez Voigennanten Gotz
+hüs Tinwrowen dien der voigennan
+te zin6 gemakor wirt/ Ez si Ebrischin
+oder Tinwrowe /nder voigenanter
+Antwurten zullen / an Allen w
 schaden / vn we das / das der voigennä
-te zin6 ze dem voigennanten tage
+te zin6 ze dem voigenanten tage
 nicht bericht wrde / swaß schaden
-deme dů voigunnte vriowe / oder w
+deme dů voigunnte vriowe oder w
 nachomen Empfingge nach dem zin6
 ze sendenne / oder In ze gewinnene
-den sol dů voigennante. Ebnischin / vn
+den sol dů voigenante. Ebrischin / vn
 der Convent von Kūngsveld genzlich
-ab legen / vn dar umb wie wan si den
-zins von dielen zite immer mer Ant-
-werten sun / In unser Ant / an Allen
+ab legen / vn dar umbc wan si den
+zinc von dielen zite immer mer Ant-
+werten sun / In unser Stnt / an Allen
 schaden / dez si lieb gebunden hant / so
 haben /inen / die Gnade gemm vn v
 lühcn / das weder si noch en kein w
@@ -781,25 +812,25 @@ mēmer mer enphahlen sun / noch ver-
 Erschärzen / vn ze einem offenen
 wz-künde / vn beletvunge / der vor
 genannten oidenunge. Sogeben wir
-den voigennanten vriowen von Kūn
-gehielt dien bues befigelt / mir
-unser Capitels Inigel. Dierc buesf
+den voigenanten vriowen von Kūn
+gesielt dien bues befigelt / mir
+unser Capitels Inigel. Dvire buesf
 wart geben / ze schklingen / do man
 zalre von Gotres geburt druzchen
-hundert jar vn zweinzig jar. Dar nach,
+hundert jar vū zweinzig jar. Dar nach,
 in dem ersten jare / monen des nach,
-lant agten tage. Der trutmanz
+lant agten tnge. Des trutmanz
 brief über den zehenden-
 Hllen die dien buesf fehent oder
-hözent lefen / künde ich Aarckwatt
+hözent lefen / künde ich Aarckwart
 Trutman Burger ze Lucreten / und
 
-vernihe/ das ich einen zehenden gelegen
+verihe/ das ich einen zehenden gelegen
 ze hentschinkon/ ze Tornkon/ vn ze orwif-
 zingen/ der min rech-erbe war von dem
 Gotzhufe ze gekklingen/ han verköfer-
 vn zekofenne gegeben dien Etwiedigen
-krowen der .. Abbnischin und dem Con-
+frowen der .. Abbrischin und dem Con-
 uent ze Kūngsvelden. Omb achzig march
 gines gillers/ der ich von in vollecklich
 gewert bin. Und ich in minen nvts en
@@ -815,25 +846,27 @@ da ze gegen waren - heinrich der Stammer.
 Buchhart von Gartcn. Johans von sem-
 pach heinrich von Sewelsberg. Rudolf
 von aa. Ulrich von Eych. Vernher von
-Grepson. Und ander erber lüre gnüge.
-und har über ze einen vzkünde han ich
-min Angesigel an disen offenen brief.
+Grepcon. Und ander erber lüre gnüge.
+und har über ze einen vulkünde han ich
+min Angesigel an disen offenen briefe.
 Der gegeben warrt ze Lucreten.
 an dem nechten zwitage nach samt Agn.
-then tage. Do man zalte von Gotres ge-
+then tnge. Do man zalte von Gotres ge-
 bürte druzchenhundert jar. Dar nach,
 in dem ein und zwenzigolten jare: Der.
 brief den trutman hat von dem.
 Gotzhufe ze gekklingen: :
-W nullics preffensii insped Adelhei.
+W nulhis preßensii insped Adelhei.
 die de berichtil cmodia Eccle se.
-Dario zercomien Confrnir dyot aKedni.
+Davio zercomien Conformt dyot aKedni.
 caritans cum nonna subceptow Joimr.
-quos nosle fuir opozumii qv ai Arnoldus.
+quos nostle fuir opozumii qv ai Arnoldus.
 dais Trutman de Berona Decmas vidz.
-in orwellingen in henonchon A i Tornichon,
-quas andone seu mica Echa vidz zercomerj</pre><a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-12-kraken-kraken-catmus_medieval"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 91%</span> <span class="rec-model">kraken-catmus_medieval</span> · 2,684 Zeichen · <a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">eus
+in orwellingen in henonchon A t Törichon,
+quas andone seu mün Ercha vidz zercomerj</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-4" data-recognition-panel="kraken-kraken-catmus-medieval-4" data-page="">
+<summary>Kraken OCR · kraken-catmus_medieval</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>kraken-catmus_medieval</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>91%</dd></div><div><dt>Zeichen</dt><dd>2767</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>eus
 
 1
 tas oder dar nach mrunt uierzehen
@@ -916,7 +949,7 @@ dcuais erntman de berona rdecnas idiz
 in otoessingen in hencinchon set et dottichon
 1
 quas aucbie seu antra etlia ridi detoneri
-xus</pre><a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div></div></div></section><section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
+xus</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details></div></div></section><section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
 <ul><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
 <p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
 
@@ -925,55 +958,4 @@ xus</pre><a href="recognitions/kraken-kraken-catmus_medieval.txt" download class
 <p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/u-17__/">https://thodel.github.io/agentic-historian-outputs/u-17__/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/u-17__/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
 
 <section aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/79e08b5"><code>79e08b5</code></a> · <time datetime="2026-07-16T19:51:14+02:00">2026-07-16</time> · Publish u-17__</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/b0bb049"><code>b0bb049</code></a> · <time datetime="2026-07-15T20:31:21+02:00">2026-07-15</time> · Publish u-17__</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/1777d51"><code>1777d51</code></a> · <time datetime="2026-07-15T16:49:41+02:00">2026-07-15</time> · Publish u-17__</li></ol></section>
-// Recognition viewer — progressive enhancement (issues #2, #3)
-// - Tab switching without navigation
-// - URL persistence: ?rec=<candidate-id> restores selection
-// - Browser back/forward support
-// - Keyboard accessible
-document.querySelectorAll('.rec-viewer').forEach(function(viewer) {
-  var docId    = viewer.dataset.docId || '';
-  var panels   = Array.from(viewer.querySelectorAll('.rec-panel'));
-  var inputs   = Array.from(viewer.querySelectorAll('.rec-tab-input'));
-  var paramKey = 'rec';   // URL query parameter name
-
-  // ── helpers ──────────────────────────────────────────────────────────────
-  function getCandidateId() {
-    // 1. URL param takes precedence
-    var val = new URLSearchParams(window.location.search).get(paramKey);
-    if (val) { return val; }
-    // 2. currently checked radio
-    var checked = viewer.querySelector('.rec-tab-input:checked');
-    return checked ? checked.value : (inputs[0] ? inputs[0].value : null);
-  }
-
-  function activate(id) {
-    panels.forEach(function(p) {
-      p.classList.toggle('is-active', p.id === id);
-    });
-    inputs.forEach(function(inp) {
-      inp.checked = inp.value === id;
-    });
-  }
-
-  function persist(id) {
-    // Update URL without navigation
-    var url = new URL(window.location.href);
-    url.searchParams.set(paramKey, id);
-    history.replaceState({}, '', url.toString());
-  }
-
-  // ── init ─────────────────────────────────────────────────────────────────
-  viewer.classList.add('js');
-  var initial = getCandidateId();
-  if (initial) { activate(initial); }
-
-  // ── keyboard / mouse selection ───────────────────────────────────────────
-  inputs.forEach(function(inp) {
-    inp.addEventListener('change', function() {
-      activate(inp.value);
-      persist(inp.value);
-    });
-  });
-});
-
-
+<script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>

@@ -33,25 +33,24 @@ Verwenden Sie die stabile Adresse der Dokumentseite und geben Sie den Bearbeitun
 
 ## Erkennungsversionen
 
-Für Dokumente mit mehreren OCR-Kandidaten zeigt die Seite einen **Auswahl-Dialog** (Radio-Tabs), der alle verfügbaren Transkriptionsversionen vergleichbar macht.
+Für Dokumente mit mehreren OCR-Kandidaten zeigt die Seite die ausgewählte beziehungsweise fusionierte Transkription und alle einzelnen Erkennungsversuche.
 
 ### Was angezeigt wird
 
-- **Engine-Label** und **Modell-ID** je Kandidat, z. B. `VLM (InternVL3-8B)` oder `Kraken OCR`
-- **Konfidenzwert** als Prozentzahl (wenn vom Engine angegeben)
-- Bei Fehlern: Fehlertext und -grund — kein Download-Link
-- **Download-Link** pro Kandidat (`.txt`, sprachabhängig kodiert)
+- **Engine-Label**, **Modell-ID** und Seitenzuordnung je Kandidat
+- **Engine-Konfidenz** als Prozentzahl, wenn sie angegeben wurde; Werte verschiedener Engines sind nicht unmittelbar vergleichbar
+- Bei Fehlern: eine veröffentlichungssichere Fehlerkategorie ohne interne Endpunkte — kein Textdownload
+- **Download-Link** pro erfolgreichem Kandidat, sofern das passende Artefakt veröffentlicht wurde
 
 ### Auswahl und URL
 
-- Die Vorauswahl trifft der **Exakte-Match-Algorithmus**: er prüft, welcher Kandidat exakt mit der Pipeline-Transkription übereinstimmt (via `_is_selected`).
-- Stimmt kein Kandidat exakt, wird der erste fehlerfreie Kandidat vorausgewählt.
-- Die Auswahl wird als **URL-Anker** gespeichert (`#cand-<engine>-<model>-<index>`). Die URL ist somit shareable — beim Aufruf wird die gewählte Version direkt angezeigt.
-- Browser-Zurück funktioniert korrekt (History API).
+- Die ausgewählte beziehungsweise fusionierte Pipeline-Transkription ist die Vorauswahl.
+- Die Auswahl wird im Query-Parameter `rec` und als Abschnittsanker gespeichert. Der Link lässt sich teilen und beim erneuten Aufruf wiederherstellen.
+- Vor- und Zurücknavigation des Browsers stellt frühere Auswahlen wieder her.
 
 ### Verhalten ohne JavaScript
 
-Ohne JavaScript werden Panele via CSS-Selektoren (`radio:checked ~ .rec-panel`) angezeigt — alle Kandidaten bleiben discoverable, die Auswahl funktioniert identisch.
+Ohne JavaScript bleiben alle Kandidaten als semantische, aufklappbare Bereiche (`details`) erreichbar. JavaScript reduziert die Ansicht auf den jeweils ausgewählten Bereich.
 
 ### Anpassung am Original
 
