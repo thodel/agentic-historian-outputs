@@ -198,7 +198,8 @@ def recognition_viewer(data: dict, directory: Path) -> str:
         )
         page_text = candidate["page"] or "Nicht zugeordnet"
         selector.append(
-            f'<li><a href="#recognition-{candidate["id"]}">{html.escape(candidate["label"])}</a>'
+            f'<li><a href="#recognition-{candidate["id"]}" data-recognition-select="{candidate["id"]}"'
+            f' aria-controls="recognition-{candidate["id"]}">{html.escape(candidate["label"])}</a>'
             + (' <span class="selected-badge">Ausgewählt</span>' if candidate["selected"] else "")
             + f' <span class="recognition-status{status_class}">{status}</span></li>'
         )
@@ -213,13 +214,15 @@ def recognition_viewer(data: dict, directory: Path) -> str:
             if candidate["error"] else
             f'<pre class="transcription" tabindex="0"><code>{html.escape(candidate["text"]) if candidate["text"] else "Kein Text zurückgegeben."}</code></pre>'
         )
-        panels.append(f'''<details class="recognition-panel" id="recognition-{candidate["id"]}"{' open' if candidate["selected"] else ''}>
+        panels.append(f'''<details class="recognition-panel" id="recognition-{candidate["id"]}" data-recognition-panel="{candidate["id"]}" data-page="{html.escape(candidate["page"], quote=True)}"{' open' if candidate["selected"] else ''}>
 <summary>{html.escape(candidate["label"])}{' — ausgewählt' if candidate["selected"] else ''}</summary>
 <dl class="recognition-meta"><div><dt>Engine</dt><dd>{html.escape(candidate["engine"])}</dd></div><div><dt>Modell</dt><dd>{html.escape(candidate["model"]) or "—"}</dd></div><div><dt>Seite</dt><dd>{html.escape(page_text)}</dd></div><div><dt>Engine-Konfidenz</dt><dd>{confidence_text}</dd></div><div><dt>Zeichen</dt><dd>{len(candidate["text"])}</dd></div><div><dt>Status</dt><dd>{status}</dd></div></dl>
 {body}<p class="recognition-download">{download_html}</p></details>''')
 
-    return f'''<nav class="recognition-selector" aria-label="Erkennungsergebnis auswählen"><p><strong>Erkennungsergebnis:</strong></p><ul>{''.join(selector)}</ul></nav>
-<div class="recognition-panels">{''.join(panels)}</div>'''
+    return f'''<div class="recognition-viewer" data-recognition-viewer>
+<nav class="recognition-selector" aria-label="Erkennungsergebnis auswählen"><p><strong>Erkennungsergebnis:</strong></p><ul>{''.join(selector)}</ul></nav>
+<div class="recognition-panels">{''.join(panels)}</div></div>
+<script src="{{{{ '/assets/recognitions.js' | relative_url }}}}" defer></script>'''
 
 
 def source_panel(data: dict) -> str:

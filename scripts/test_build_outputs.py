@@ -38,6 +38,8 @@ class RecognitionViewerTests(unittest.TestCase):
         self.assertIn("vlm · v1", rendered)
         self.assertIn("service timeout", rendered)
         self.assertIn("Engine-Konfidenz", rendered)
+        self.assertIn('data-recognition-select="vlm-v1"', rendered)
+        self.assertIn("/assets/recognitions.js", rendered)
 
     def test_legacy_output_keeps_plain_transcription(self):
         with tempfile.TemporaryDirectory() as tmp:
