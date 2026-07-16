@@ -26,11 +26,18 @@ title: "order-ens"
 <p><a href="entities.csv">Entitäten als CSV herunterladen</a> · <a href="../entities/">Alle Entitäten durchsuchen</a></p></section>
 
 <section id="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
+<nav class="recognition-selector" aria-label="Erkennungsergebnis auswählen"><p><strong>Erkennungsergebnis:</strong></p><ul><li><a href="#recognition-selected">Ausgewählt / Fusion</a> <span class="selected-badge">Ausgewählt</span> <span class="recognition-status">Erfolgreich</span></li><li><a href="#recognition-kraken-k0">kraken · k0</a> <span class="recognition-status">Erfolgreich</span></li></ul></nav>
+<div class="recognition-panels"><details class="recognition-panel" id="recognition-selected" open>
+<summary>Ausgewählt / Fusion — ausgewählt</summary>
+<dl class="recognition-meta"><div><dt>Engine</dt><dd>fusion</dd></div><div><dt>Modell</dt><dd>—</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>Nicht angegeben</dd></div><div><dt>Zeichen</dt><dd>62</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
 <pre class="transcription" tabindex="0"><code>--- p1.jpg ---
 gut lesbar hier
 
 --- p2.jpg ---
-gut lesbar hier</code></pre></section>
+gut lesbar hier</code></pre><p class="recognition-download"><a href="recognitions/fused.txt">Diese Transkription herunterladen</a></p></details><details class="recognition-panel" id="recognition-kraken-k0">
+<summary>kraken · k0</summary>
+<dl class="recognition-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>k0</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>80%</dd></div><div><dt>Zeichen</dt><dd>15</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="transcription" tabindex="0"><code>gut lesbar hier</code></pre><p class="recognition-download"><a href="recognitions/kraken-k0.txt">Diese Transkription herunterladen</a></p></details></div></section>
 
 <section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
 <ul><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>

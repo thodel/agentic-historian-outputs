@@ -123,6 +123,105 @@ def write_tei(path: Path, doc_id: str, transcript: str, source_url: str) -> None
     path.write_text(tei, encoding="utf-8")
 
 
+def recognition_path(candidate: dict) -> str:
+    """Return the publisher's path for a recognition candidate."""
+    page = value(candidate.get("page")).strip()
+    engine = value(candidate.get("engine") or "engine").strip() or "engine"
+    model = value(candidate.get("model_id")).strip().replace("/", "_")
+    stem = f"{engine}-{model}" if model else engine
+    if page:
+        page_slug = re.sub(r"[^A-Za-z0-9._-]+", "_", page.rsplit(".", 1)[0])
+        return f"recognitions/{page_slug}/{stem}.txt"
+    return f"recognitions/{stem}.txt"
+
+
+def recognition_candidates(data: dict) -> list[dict]:
+    """Normalize the picked result and all raw recognition attempts."""
+    transcript = value(data.get("transcription"))
+    candidates = [{
+        "id": "selected",
+        "label": "Ausgewählt / Fusion",
+        "engine": "fusion",
+        "model": "",
+        "page": "",
+        "text": transcript,
+        "confidence": None,
+        "error": "",
+        "selected": True,
+        "path": "recognitions/fused.txt",
+    }]
+    seen = {"selected"}
+    for index, raw in enumerate(data.get("recognitions") or [], start=1):
+        if not isinstance(raw, dict):
+            continue
+        engine = value(raw.get("engine") or "Unbekannt")
+        model = value(raw.get("model_id"))
+        page = value(raw.get("page"))
+        base = re.sub(r"[^a-z0-9]+", "-", f"{page}-{engine}-{model}".casefold()).strip("-")
+        candidate_id = base or f"candidate-{index}"
+        suffix = 2
+        unique_id = candidate_id
+        while unique_id in seen:
+            unique_id = f"{candidate_id}-{suffix}"
+            suffix += 1
+        seen.add(unique_id)
+        candidates.append({
+            "id": unique_id,
+            "label": f"{engine} · {model}" if model else engine,
+            "engine": engine,
+            "model": model,
+            "page": page,
+            "text": value(raw.get("text")),
+            "confidence": raw.get("confidence"),
+            "error": value(raw.get("error")),
+            "selected": False,
+            "path": recognition_path(raw),
+        })
+    return candidates
+
+
+def recognition_viewer(data: dict, directory: Path) -> str:
+    """Server-render every candidate; JavaScript may enhance this later."""
+    candidates = recognition_candidates(data)
+    if len(candidates) == 1:
+        transcript = candidates[0]["text"]
+        return f'<pre class="transcription" tabindex="0"><code>{html.escape(transcript) if transcript else "Keine Transkription verfügbar."}</code></pre>'
+
+    selector = []
+    panels = []
+    for candidate in candidates:
+        status = "Fehlgeschlagen" if candidate["error"] else "Erfolgreich"
+        status_class = " recognition-status--error" if candidate["error"] else ""
+        confidence = candidate["confidence"]
+        confidence_text = (
+            f"{float(confidence):.0%}" if isinstance(confidence, (int, float)) else "Nicht angegeben"
+        )
+        page_text = candidate["page"] or "Nicht zugeordnet"
+        selector.append(
+            f'<li><a href="#recognition-{candidate["id"]}">{html.escape(candidate["label"])}</a>'
+            + (' <span class="selected-badge">Ausgewählt</span>' if candidate["selected"] else "")
+            + f' <span class="recognition-status{status_class}">{status}</span></li>'
+        )
+        download = directory / candidate["path"]
+        download_html = (
+            f'<a href="{html.escape(candidate["path"], quote=True)}">Diese Transkription herunterladen</a>'
+            if download.exists() else "Kein Textdownload verfügbar"
+        )
+        body = (
+            f'<div class="notice notice--warning"><strong>Erkennung fehlgeschlagen.</strong> '
+            f'{html.escape(candidate["error"])}</div>'
+            if candidate["error"] else
+            f'<pre class="transcription" tabindex="0"><code>{html.escape(candidate["text"]) if candidate["text"] else "Kein Text zurückgegeben."}</code></pre>'
+        )
+        panels.append(f'''<details class="recognition-panel" id="recognition-{candidate["id"]}"{' open' if candidate["selected"] else ''}>
+<summary>{html.escape(candidate["label"])}{' — ausgewählt' if candidate["selected"] else ''}</summary>
+<dl class="recognition-meta"><div><dt>Engine</dt><dd>{html.escape(candidate["engine"])}</dd></div><div><dt>Modell</dt><dd>{html.escape(candidate["model"]) or "—"}</dd></div><div><dt>Seite</dt><dd>{html.escape(page_text)}</dd></div><div><dt>Engine-Konfidenz</dt><dd>{confidence_text}</dd></div><div><dt>Zeichen</dt><dd>{len(candidate["text"])}</dd></div><div><dt>Status</dt><dd>{status}</dd></div></dl>
+{body}<p class="recognition-download">{download_html}</p></details>''')
+
+    return f'''<nav class="recognition-selector" aria-label="Erkennungsergebnis auswählen"><p><strong>Erkennungsergebnis:</strong></p><ul>{''.join(selector)}</ul></nav>
+<div class="recognition-panels">{''.join(panels)}</div>'''
+
+
 def source_panel(data: dict) -> str:
     url = value(data.get("iiif_manifest") or data.get("manifest_url") or data.get("source_url"))
     if valid_public_url(url):
@@ -241,7 +340,7 @@ license: "LicenseRef-Not-Specified"
 <p><a href="entities.csv">Entitäten als CSV herunterladen</a> · <a href="../entities/">Alle Entitäten durchsuchen</a></p></section>
 
 <section id="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
-<pre class="transcription" tabindex="0"><code>{html.escape(transcript) if transcript else 'Keine Transkription verfügbar.'}</code></pre></section>
+{recognition_viewer(data, path.parent)}</section>
 
 <section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
 <ul><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
