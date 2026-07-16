@@ -39,16 +39,16 @@ title: Katalog
 <p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">14 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
 
 <div id="catalogue-list" class="catalogue-list">
-<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="bat     bat_663_r_00050.jpg uuuu ss uuuuuuuuuuiuuuuuuu uuuuuuuiuuuuuuu uuuuuuuuuu uuuuuuuuu uuuuuuuuuuuuuu uuuuuuuuuuuuuuuu uuuuuuuuuu uiuuuuuuuuu uuuuuuuuuuuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu">
+<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="bat     bat_663_r_00050.jpg amen vndertwegen wulffin. densp. de vor lieben anehmen harte f. uff azzu von me de reitt vn auff den obern lieben anehmen hertzen ich klagen zempfchirf anwer er">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T21:19:05+02:00">15.07.2026, 21:19</time></p>
       <h2><a href="bat/">bat</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 80%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 43%</span></div>
   </div>
-  <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>0</dd></div><div><dt>Seiten</dt><dd>1</dd></div></dl>
-  <p class="catalogue-preview">BAT_663_r_00050.jpg uuuu ss uuuuuuuuuuiuuuuuuu uuuuuuuiuuuuuuu uuuuuuuuuu uuuuuuuuu uuuuuuuuuuuuuu uuuuuuuuuuuuuuuu uuuuuuuuuu uiuuuuuuuuu uuuuuuuuuuuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu…</p>
+  <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>13</dd></div><div><dt>Seiten</dt><dd>1</dd></div></dl>
+  <p class="catalogue-preview">BAT_663_r_00050.jpg Amen vndertwegen Wulffin. Densp. de vor lieben anehmen harte f. uff azzu von me de reitt vn auff den obern lieben anehmen hertzen ich klagen zempfchirf anwer er…</p>
   <p class="catalogue-actions"><a href="bat/" aria-label="Ausgabe bat öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
 </article>
 <article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="order-ens     p1.jpg gut lesbar hier p2.jpg gut lesbar hier">
