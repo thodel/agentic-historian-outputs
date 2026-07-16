@@ -37,3 +37,22 @@ title: "saa-0006-test"
 <p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/saa-0006-test/">https://thodel.github.io/agentic-historian-outputs/saa-0006-test/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/saa-0006-test/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
 
 <section aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/7a1fb5f"><code>7a1fb5f</code></a> · <time datetime="2026-07-08T12:44:46+02:00">2026-07-08</time> · Publish saa-0006-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/9671eb8"><code>9671eb8</code></a> · <time datetime="2026-07-08T09:05:39+02:00">2026-07-08</time> · Publish saa-0006-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/313e7bd"><code>313e7bd</code></a> · <time datetime="2026-07-08T09:04:23+02:00">2026-07-08</time> · Publish saa-0006-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/e271582"><code>e271582</code></a> · <time datetime="2026-07-08T09:03:36+02:00">2026-07-08</time> · Publish saa-0006-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/fb4d459"><code>fb4d459</code></a> · <time datetime="2026-07-08T09:03:26+02:00">2026-07-08</time> · Publish saa-0002-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/506cc85"><code>506cc85</code></a> · <time datetime="2026-07-08T09:03:23+02:00">2026-07-08</time> · Publish saa-0001-test</li></ol></section>
+<script>
+// Recognition viewer: progressive enhancement
+document.querySelectorAll('.rec-viewer').forEach(function(viewer) {
+  viewer.classList.add('js');
+  var panels = viewer.querySelectorAll('.rec-panel');
+  function showPanel(id) {
+    panels.forEach(function(p) {
+      p.classList.toggle('is-active', p.id === id);
+    });
+  }
+  var checked = viewer.querySelector('.rec-tab-input:checked');
+  if (checked) { showPanel(checked.value); }
+  viewer.querySelectorAll('.rec-tab-input').forEach(function(inp) {
+    inp.addEventListener('change', function() { showPanel(inp.value); });
+  });
+});
+
+</script>
+

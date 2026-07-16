@@ -46,3 +46,22 @@ Ar G͛r a</code></pre></section>
 <p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/BAT_664_r_00027/">https://thodel.github.io/agentic-historian-outputs/BAT_664_r_00027/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/BAT_664_r_00027/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
 
 <section aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/4589e1c"><code>4589e1c</code></a> · <time datetime="2026-07-07T15:25:18+02:00">2026-07-07</time> · Publish BAT_664_r_00027</li></ol></section>
+<script>
+// Recognition viewer: progressive enhancement
+document.querySelectorAll('.rec-viewer').forEach(function(viewer) {
+  viewer.classList.add('js');
+  var panels = viewer.querySelectorAll('.rec-panel');
+  function showPanel(id) {
+    panels.forEach(function(p) {
+      p.classList.toggle('is-active', p.id === id);
+    });
+  }
+  var checked = viewer.querySelector('.rec-tab-input:checked');
+  if (checked) { showPanel(checked.value); }
+  viewer.querySelectorAll('.rec-tab-input').forEach(function(inp) {
+    inp.addEventListener('change', function() { showPanel(inp.value); });
+  });
+});
+
+</script>
+

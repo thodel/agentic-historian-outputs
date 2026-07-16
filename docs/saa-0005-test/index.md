@@ -37,3 +37,22 @@ title: "saa-0005-test"
 <p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/saa-0005-test/">https://thodel.github.io/agentic-historian-outputs/saa-0005-test/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/saa-0005-test/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
 
 <section aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/2fecb94"><code>2fecb94</code></a> · <time datetime="2026-07-08T12:44:44+02:00">2026-07-08</time> · Publish saa-0005-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/70fb3fa"><code>70fb3fa</code></a> · <time datetime="2026-07-08T09:05:37+02:00">2026-07-08</time> · Publish saa-0005-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/56a5d65"><code>56a5d65</code></a> · <time datetime="2026-07-08T09:04:21+02:00">2026-07-08</time> · Publish saa-0005-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/5bb781c"><code>5bb781c</code></a> · <time datetime="2026-07-08T09:03:33+02:00">2026-07-08</time> · Publish saa-0005-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/578f6a7"><code>578f6a7</code></a> · <time datetime="2026-07-08T09:03:31+02:00">2026-07-08</time> · Publish saa-0004-test</li></ol></section>
+<script>
+// Recognition viewer: progressive enhancement
+document.querySelectorAll('.rec-viewer').forEach(function(viewer) {
+  viewer.classList.add('js');
+  var panels = viewer.querySelectorAll('.rec-panel');
+  function showPanel(id) {
+    panels.forEach(function(p) {
+      p.classList.toggle('is-active', p.id === id);
+    });
+  }
+  var checked = viewer.querySelector('.rec-tab-input:checked');
+  if (checked) { showPanel(checked.value); }
+  viewer.querySelectorAll('.rec-tab-input').forEach(function(inp) {
+    inp.addEventListener('change', function() { showPanel(inp.value); });
+  });
+});
+
+</script>
+

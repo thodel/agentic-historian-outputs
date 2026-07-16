@@ -32,7 +32,7 @@ gut lesbar hier
 --- p2.jpg ---
 gut lesbar hier</code></pre></section>
 
-<section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
+<section id="recognitions" aria-labelledby="rec-heading"><h2 id="rec-heading">Erkennungsversionen</h2><p class="rec-intro">Es liegen mehrere Erkennungsversionen vor. Wählen Sie eine Version zum Vergleichen; die ausgewählte Transkription bleibt ohne JavaScript sichtbar.</p><div class="rec-viewer" data-doc-id="order-ens"><div class="rec-tabs" role="tablist" aria-label="Erkennungsversionen"><input type="radio" name="rec-order-ens" id="tab-cand-kraken-k0" value="cand-kraken-k0" checked class="rec-tab-input"><label for="tab-cand-kraken-k0" class="rec-tab-label">📖 Kraken OCR ⮕</label></div><div class="rec-panels"><div class="rec-panel" id="cand-kraken-k0"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 80%</span> <span class="rec-model">k0</span> · 15 Zeichen · <a href="recognitions/kraken-k0.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">gut lesbar hier</pre><a href="recognitions/kraken-k0.txt" download class="rec-dl">⬇ Text herunterladen</a></div></div></div></section><section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
 <ul><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
 <p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
 
@@ -41,3 +41,22 @@ gut lesbar hier</code></pre></section>
 <p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/order-ens/">https://thodel.github.io/agentic-historian-outputs/order-ens/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/order-ens/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
 
 <section aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/570ccc2"><code>570ccc2</code></a> · <time datetime="2026-07-15T19:17:36+02:00">2026-07-15</time> · Publish order-ens</li></ol></section>
+<script>
+// Recognition viewer: progressive enhancement
+document.querySelectorAll('.rec-viewer').forEach(function(viewer) {
+  viewer.classList.add('js');
+  var panels = viewer.querySelectorAll('.rec-panel');
+  function showPanel(id) {
+    panels.forEach(function(p) {
+      p.classList.toggle('is-active', p.id === id);
+    });
+  }
+  var checked = viewer.querySelector('.rec-tab-input:checked');
+  if (checked) { showPanel(checked.value); }
+  viewer.querySelectorAll('.rec-tab-input').forEach(function(inp) {
+    inp.addEventListener('change', function() { showPanel(inp.value); });
+  });
+});
+
+</script>
+
