@@ -93,3 +93,4 @@ u</code></pre></section>
 <p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/kf/">https://thodel.github.io/agentic-historian-outputs/kf/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/kf/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
 
 <section aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/a4e998a"><code>a4e998a</code></a> · <time datetime="2026-07-07T15:29:12+02:00">2026-07-07</time> · Publish kf</li></ol></section>
+<script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>

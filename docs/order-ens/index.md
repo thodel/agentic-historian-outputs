@@ -32,7 +32,22 @@ gut lesbar hier
 --- p2.jpg ---
 gut lesbar hier</code></pre></section>
 
-<section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
+<section id="recognitions" aria-labelledby="recognitions-heading">
+<h2 id="recognitions-heading">Erkennungsversionen</h2>
+<p class="rec-intro">Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sichtbar. Konfidenzwerte verschiedener Engines sind nicht unmittelbar vergleichbar.</p>
+<div class="rec-viewer" data-recognition-viewer data-doc-id="order-ens">
+<nav class="rec-selector" aria-label="Erkennungsversionen"><ul><li><a href="#recognition-selected" data-recognition-select="selected" aria-controls="recognition-selected">Ausgewählt / Fusion</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-kraken-k0" data-recognition-select="kraken-k0" aria-controls="recognition-kraken-k0">Kraken OCR · k0</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li></ul></nav>
+<div class="rec-panels"><details class="rec-panel" id="recognition-selected" data-recognition-panel="selected" data-page="" open>
+<summary>Ausgewählt / Fusion — ausgewählt</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>fusion</dd></div><div><dt>Modell</dt><dd>—</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>Nicht angegeben</dd></div><div><dt>Zeichen</dt><dd>62</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>--- p1.jpg ---
+gut lesbar hier
+
+--- p2.jpg ---
+gut lesbar hier</code></pre><p><a class="rec-download" href="recognitions/fused.txt" download>Diese Transkription herunterladen</a></p></details><details class="rec-panel" id="recognition-kraken-k0" data-recognition-panel="kraken-k0" data-page="">
+<summary>Kraken OCR · k0</summary>
+<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>k0</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>80%</dd></div><div><dt>Zeichen</dt><dd>15</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<pre class="rec-text" tabindex="0"><code>gut lesbar hier</code></pre><p><a class="rec-download" href="recognitions/kraken-k0.txt" download>Diese Transkription herunterladen</a></p></details></div></div></section><section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
 <ul><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
 <p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
 
@@ -41,3 +56,4 @@ gut lesbar hier</code></pre></section>
 <p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/order-ens/">https://thodel.github.io/agentic-historian-outputs/order-ens/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/order-ens/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
 
 <section aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/570ccc2"><code>570ccc2</code></a> · <time datetime="2026-07-15T19:17:36+02:00">2026-07-15</time> · Publish order-ens</li></ol></section>
+<script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>

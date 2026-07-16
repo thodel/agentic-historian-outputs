@@ -30,3 +30,28 @@ Fehlt ein öffentliches Digitalisat, weist die Seite darauf hin. Lokale Verarbei
 ## Zitierempfehlung
 
 Verwenden Sie die stabile Adresse der Dokumentseite und geben Sie den Bearbeitungsstatus an. Für reproduzierbare Forschung sollte zusätzlich die konkrete Git-Version genannt werden.
+
+## Erkennungsversionen
+
+Für Dokumente mit mehreren OCR-Kandidaten zeigt die Seite die ausgewählte beziehungsweise fusionierte Transkription und alle einzelnen Erkennungsversuche.
+
+### Was angezeigt wird
+
+- **Engine-Label**, **Modell-ID** und Seitenzuordnung je Kandidat
+- **Engine-Konfidenz** als Prozentzahl, wenn sie angegeben wurde; Werte verschiedener Engines sind nicht unmittelbar vergleichbar
+- Bei Fehlern: eine veröffentlichungssichere Fehlerkategorie ohne interne Endpunkte — kein Textdownload
+- **Download-Link** pro erfolgreichem Kandidat, sofern das passende Artefakt veröffentlicht wurde
+
+### Auswahl und URL
+
+- Die ausgewählte beziehungsweise fusionierte Pipeline-Transkription ist die Vorauswahl.
+- Die Auswahl wird im Query-Parameter `rec` und als Abschnittsanker gespeichert. Der Link lässt sich teilen und beim erneuten Aufruf wiederherstellen.
+- Vor- und Zurücknavigation des Browsers stellt frühere Auswahlen wieder her.
+
+### Verhalten ohne JavaScript
+
+Ohne JavaScript bleiben alle Kandidaten als semantische, aufklappbare Bereiche (`details`) erreichbar. JavaScript reduziert die Ansicht auf den jeweils ausgewählten Bereich.
+
+### Anpassung am Original
+
+Für die finale Transkription sollten die generierten Lesarten stets am **Original-Digitalisat** überprüft werden. Die angebotenen Versionen sind keine edierten Lesarten, sondern Erkennungsvarianten, die der menschlichen Kontrolle bedürfen.
