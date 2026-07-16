@@ -1,3 +1,104 @@
 {
-  "entities": []
+  "entities": [
+    {
+      "text": "Wulffin",
+      "type": "PERSON",
+      "normalised": "Wulffin",
+      "context": "Amen vndertwegen Wulffin.",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "D. Dunkt",
+      "type": "PERSON",
+      "normalised": "D. Dunkt",
+      "context": "D. Dunkt mir ein enbillet von klagen...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Juden",
+      "type": "SOCIAL_GROUP",
+      "normalised": "Juden",
+      "context": "...ein Juden herfegen D. Dunkt...",
+      "controlled_vocab": "Juden",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    },
+    {
+      "text": "Annuwurt",
+      "type": "PLACE",
+      "normalised": "Annuwurt",
+      "context": "...Annuwurt. Gerni welt uf den knaben...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Warrag",
+      "type": "PLACE",
+      "normalised": "Warrag",
+      "context": "...Warrag frist hiegen es ist imme...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Abel",
+      "type": "PERSON",
+      "normalised": "Abel",
+      "context": "...Des 103 er Abel stent Durg ruck...",
+      "hub_id": "",
+      "gnd": "",
+      "hls": "",
+      "wikidata": "",
+      "hub_confidence": "high",
+      "link_method": "mcp_federation",
+      "mcp_sources": [
+        "eos"
+      ]
+    },
+    {
+      "text": "Emmit",
+      "type": "PERSON",
+      "normalised": "Emmit",
+      "context": "...Emmit wird irg im fulte aben 82...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "103",
+      "type": "DATE",
+      "normalised": "103",
+      "context": "...do Warrag frist hiegen es ist imme glemi..."
+    },
+    {
+      "text": "104",
+      "type": "DATE",
+      "normalised": "104",
+      "context": "...vn 103 104 irg da versprichen..."
+    },
+    {
+      "text": "83 jr",
+      "type": "DATE",
+      "normalised": "83",
+      "context": "...gsm 83 jr nu stier ein par..."
+    },
+    {
+      "text": "82",
+      "type": "DATE",
+      "normalised": "82",
+      "context": "...fulte aben 82. Wnt irg im fern..."
+    },
+    {
+      "text": "armestwalt",
+      "type": "SOCIAL_GROUP",
+      "normalised": "armestwalt",
+      "context": "...im v turkym nemem an einem von armestwalt..."
+    },
+    {
+      "text": "knaben",
+      "type": "ROLE",
+      "normalised": "knaben",
+      "context": "...knaben camm thun in schidung..."
+    }
+  ]
 }
