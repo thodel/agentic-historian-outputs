@@ -33,7 +33,7 @@ def _conf_html(conf) -> str:
     return ""
 
 
-def _recognition_candidate_html(rec, doc_id) -> str:
+def _recognition_candidate_html(rec, doc_id, i=0) -> str:
     engine = rec.get("engine", "unknown")
     model_id = rec.get("model_id", "—")
     confidence = rec.get("confidence")
@@ -43,7 +43,7 @@ def _recognition_candidate_html(rec, doc_id) -> str:
     has_text = bool(text.strip())
     icon = _engine_icon(engine)
     label = _engine_label(engine)
-    cand_id = f"cand-{engine}-{model_id.replace('/', '-')}"
+    cand_id = f"cand-{i}-{engine}-{model_id.replace('/', '-')}"
 
     if error:
         badge = '<span class="rec-badge rec-badge--error">❌ Fehler</span>'
@@ -106,7 +106,7 @@ def build_recognition_section(recognitions, doc_id, transcript) -> str:
     for i, rec in enumerate(recognitions):
         engine = rec.get("engine", "unk")
         model_id = rec.get("model_id", "")
-        cand_id = f"cand-{engine}-{model_id.replace('/', '-')}"
+        cand_id = f"cand-{i}-{engine}-{model_id.replace('/', '-')}"
         icon = _engine_icon(engine)
         label = f"{icon} {_engine_label(engine)}"
         if rec.get("error"):
@@ -118,7 +118,7 @@ def build_recognition_section(recognitions, doc_id, transcript) -> str:
             f'value="{cand_id}"{chk} class="rec-tab-input">'
             f'<label for="tab-{cand_id}" class="rec-tab-label">{label}{marker}</label>'
         )
-        panels.append(_recognition_candidate_html(rec, doc_id))
+        panels.append(_recognition_candidate_html(rec, doc_id, i))
 
     return (
         "<section id=\"recognitions\" aria-labelledby=\"rec-heading\">"

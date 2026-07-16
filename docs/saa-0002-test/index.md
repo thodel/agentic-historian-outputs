@@ -37,22 +37,55 @@ title: "saa-0002-test"
 <p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/saa-0002-test/">https://thodel.github.io/agentic-historian-outputs/saa-0002-test/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/saa-0002-test/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
 
 <section aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/3a583e3"><code>3a583e3</code></a> · <time datetime="2026-07-08T12:44:37+02:00">2026-07-08</time> · Publish saa-0002-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/31371b9"><code>31371b9</code></a> · <time datetime="2026-07-08T09:05:29+02:00">2026-07-08</time> · Publish saa-0002-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/dbb6fab"><code>dbb6fab</code></a> · <time datetime="2026-07-08T09:04:14+02:00">2026-07-08</time> · Publish saa-0002-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/fb4d459"><code>fb4d459</code></a> · <time datetime="2026-07-08T09:03:26+02:00">2026-07-08</time> · Publish saa-0002-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/506cc85"><code>506cc85</code></a> · <time datetime="2026-07-08T09:03:23+02:00">2026-07-08</time> · Publish saa-0001-test</li></ol></section>
-<script>
-// Recognition viewer: progressive enhancement
+// Recognition viewer — progressive enhancement (issues #2, #3)
+// - Tab switching without navigation
+// - URL persistence: ?rec=<candidate-id> restores selection
+// - Browser back/forward support
+// - Keyboard accessible
 document.querySelectorAll('.rec-viewer').forEach(function(viewer) {
-  viewer.classList.add('js');
-  var panels = viewer.querySelectorAll('.rec-panel');
-  function showPanel(id) {
+  var docId    = viewer.dataset.docId || '';
+  var panels   = Array.from(viewer.querySelectorAll('.rec-panel'));
+  var inputs   = Array.from(viewer.querySelectorAll('.rec-tab-input'));
+  var paramKey = 'rec';   // URL query parameter name
+
+  // ── helpers ──────────────────────────────────────────────────────────────
+  function getCandidateId() {
+    // 1. URL param takes precedence
+    var val = new URLSearchParams(window.location.search).get(paramKey);
+    if (val) { return val; }
+    // 2. currently checked radio
+    var checked = viewer.querySelector('.rec-tab-input:checked');
+    return checked ? checked.value : (inputs[0] ? inputs[0].value : null);
+  }
+
+  function activate(id) {
     panels.forEach(function(p) {
       p.classList.toggle('is-active', p.id === id);
     });
+    inputs.forEach(function(inp) {
+      inp.checked = inp.value === id;
+    });
   }
-  var checked = viewer.querySelector('.rec-tab-input:checked');
-  if (checked) { showPanel(checked.value); }
-  viewer.querySelectorAll('.rec-tab-input').forEach(function(inp) {
-    inp.addEventListener('change', function() { showPanel(inp.value); });
+
+  function persist(id) {
+    // Update URL without navigation
+    var url = new URL(window.location.href);
+    url.searchParams.set(paramKey, id);
+    history.replaceState({}, '', url.toString());
+  }
+
+  // ── init ─────────────────────────────────────────────────────────────────
+  viewer.classList.add('js');
+  var initial = getCandidateId();
+  if (initial) { activate(initial); }
+
+  // ── keyboard / mouse selection ───────────────────────────────────────────
+  inputs.forEach(function(inp) {
+    inp.addEventListener('change', function() {
+      activate(inp.value);
+      persist(inp.value);
+    });
   });
 });
 
-</script>
 

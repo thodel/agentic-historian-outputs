@@ -38,19 +38,19 @@ title: "u-17__"
 --- e-codices_saa-0428_017r_large.jpg ---
 --- SEITE 6 --- tag/ oder dar nach Annum vierzehen tagen / von Gerdtrut von Leisertil Tinntrowen unsers Gotzhuf vn Allen w nachomen des voigennanten Gotz hüs Tinntrowen dien der voigennan te zin6 gemakor wirt/ Ez si Ebnischin oder Tinntrowe /nder voigennanter Antwurten gullen / an Allen w schaden / vn we das / das der voigennä te zin6 ze dem voigennanten tage nicht bericht wrde / swaß schaden deme dů voigunnte vriowe / oder w nachomen Empfingge nach dem zin6 ze sendenne / oder In ze gewinnene den sol dů voigennante. Ebnischin / vn der Convent von Kūngsveld genzlich ab legen / vn dar umb wie wan si den zins von dielen zite immer mer Ant- werten sun / In unser Ant / an Allen schaden / dez si lieb gebunden hant / so haben /inen / die Gnade gemm vn v lühcn / das weder si noch en kein w nachkome / die voigennanten zehende mēmer mer enphahlen sun / noch ver- Erschärzen / vn ze einem offenen wz-künde / vn beletvunge / der vor genannten oidenunge. Sogeben wir den voigennanten vriowen von Kūn gehielt dien bues befigelt / mir unser Capitels Inigel. Dierc buesf wart geben / ze schklingen / do man zalre von Gotres geburt druzchen hundert jar vn zweinzig jar. Dar nach, in dem ersten jare / monen des nach, lant agten tage. Der trutmanz brief über den zehenden- Hllen die dien buesf fehent oder hözent lefen / künde ich Aarckwatt Trutman Burger ze Lucreten / und vernihe/ das ich einen zehenden gelegen ze hentschinkon/ ze Tornkon/ vn ze orwif- zingen/ der min rech-erbe war von dem Gotzhufe ze gekklingen/ han verköfer- vn zekofenne gegeben dien Etwiedigen krowen der .. Abbnischin und dem Con- uent ze Kūngsvelden. Omb achzig march gines gillers/ der ich von in vollecklich gewert bin. Und ich in minen nvts en phangen han. Und han den selben zehen den uf gegeben mit allen minen kinde- an des erbern mannes hant Meriches von Lenzburg/ der vollen gewalt hatte von dem selben Gotzhufe von gekklingen/ den selben zehenden von mir uf ze ne- menne/ ze des voz gestribenen Gotzhufes handen ze kūngsvelden. Diz belchach da ze gegen waren - heinrich der Stammer. Buchhart von Gartcn. Johans von sem- pach heinrich von Sewelsberg. Rudolf von aa. Ulrich von Eych. Vernher von Grepson. Und ander erber lüre gnüge. und har über ze einen vzkünde han ich min Angesigel an disen offenen brief. Der gegeben warrt ze Lucreten. an dem nechten zwitage nach samt Agn. then tage. Do man zalte von Gotres ge- bürte druzchenhundert jar. Dar nach, in dem ein und zwenzigolten jare: Der. brief den trutman hat von dem. Gotzhufe ze gekklingen: : W nullics preffensii insped Adelhei. die de berichtil cmodia Eccle se. Dario zercomien Confrnir dyot aKedni. caritans cum nonna subceptow Joimr. quos nosle fuir opozumii qv ai Arnoldus. dais Trutman de Berona Decmas vidz. in orwellingen in henonchon A i Tornichon, quas andone seu mica Echa vidz zercomerj</code></pre></section>
 
-<section id="recognitions" aria-labelledby="rec-heading"><h2 id="rec-heading">Erkennungsversionen</h2><p class="rec-intro">Es liegen mehrere Erkennungsversionen vor. Wählen Sie eine Version zum Vergleichen; die ausgewählte Transkription bleibt ohne JavaScript sichtbar.</p><div class="rec-viewer" data-doc-id="u-17__"><div class="rec-tabs" role="tablist" aria-label="Erkennungsversionen"><input type="radio" name="rec-u-17__" id="tab-cand-vlm-internvl3-8b-instruct" value="cand-vlm-internvl3-8b-instruct" checked class="rec-tab-input"><label for="tab-cand-vlm-internvl3-8b-instruct" class="rec-tab-label">🔮 VLM (InternVL3-8B) ⮕</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-kraken-kraken-catmus_medieval" value="cand-kraken-kraken-catmus_medieval" class="rec-tab-input"><label for="tab-cand-kraken-kraken-catmus_medieval" class="rec-tab-label">📖 Kraken OCR</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-trocr-trocr-medieval-escriptmask" value="cand-trocr-trocr-medieval-escriptmask" class="rec-tab-input"><label for="tab-cand-trocr-trocr-medieval-escriptmask" class="rec-tab-label">🔤 TrOCR ❌</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-kraken-kraken-mccatmus" value="cand-kraken-kraken-mccatmus" class="rec-tab-input"><label for="tab-cand-kraken-kraken-mccatmus" class="rec-tab-label">📖 Kraken OCR</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-trocr-trocr-kurrent-xvi-xvii" value="cand-trocr-trocr-kurrent-xvi-xvii" class="rec-tab-input"><label for="tab-cand-trocr-trocr-kurrent-xvi-xvii" class="rec-tab-label">🔤 TrOCR ❌</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-vlm-internvl3-8b-instruct" value="cand-vlm-internvl3-8b-instruct" class="rec-tab-input"><label for="tab-cand-vlm-internvl3-8b-instruct" class="rec-tab-label">🔮 VLM (InternVL3-8B)</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-kraken-kraken-catmus_medieval" value="cand-kraken-kraken-catmus_medieval" class="rec-tab-input"><label for="tab-cand-kraken-kraken-catmus_medieval" class="rec-tab-label">📖 Kraken OCR</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-kraken-kraken-mccatmus" value="cand-kraken-kraken-mccatmus" class="rec-tab-input"><label for="tab-cand-kraken-kraken-mccatmus" class="rec-tab-label">📖 Kraken OCR</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-vlm-internvl3-8b-instruct" value="cand-vlm-internvl3-8b-instruct" class="rec-tab-input"><label for="tab-cand-vlm-internvl3-8b-instruct" class="rec-tab-label">🔮 VLM (InternVL3-8B)</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-kraken-kraken-catmus_medieval" value="cand-kraken-kraken-catmus_medieval" class="rec-tab-input"><label for="tab-cand-kraken-kraken-catmus_medieval" class="rec-tab-label">📖 Kraken OCR</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-kraken-kraken-mccatmus" value="cand-kraken-kraken-mccatmus" class="rec-tab-input"><label for="tab-cand-kraken-kraken-mccatmus" class="rec-tab-label">📖 Kraken OCR</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-vlm-internvl3-8b-instruct" value="cand-vlm-internvl3-8b-instruct" class="rec-tab-input"><label for="tab-cand-vlm-internvl3-8b-instruct" class="rec-tab-label">🔮 VLM (InternVL3-8B)</label>
-<input type="radio" name="rec-u-17__" id="tab-cand-kraken-kraken-catmus_medieval" value="cand-kraken-kraken-catmus_medieval" class="rec-tab-input"><label for="tab-cand-kraken-kraken-catmus_medieval" class="rec-tab-label">📖 Kraken OCR</label></div><div class="rec-panels"><div class="rec-panel" id="cand-vlm-internvl3-8b-instruct"><div class="rec-summary">🔮 <strong>VLM (InternVL3-8B)</strong> <span class="rec-badge">✅ 80%</span> <span class="rec-model">internvl3-8b-instruct</span> · 2,804 Zeichen · <a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">--- SEITE 1 ---
+<section id="recognitions" aria-labelledby="rec-heading"><h2 id="rec-heading">Erkennungsversionen</h2><p class="rec-intro">Es liegen mehrere Erkennungsversionen vor. Wählen Sie eine Version zum Vergleichen; die ausgewählte Transkription bleibt ohne JavaScript sichtbar.</p><div class="rec-viewer" data-doc-id="u-17__"><div class="rec-tabs" role="tablist" aria-label="Erkennungsversionen"><input type="radio" name="rec-u-17__" id="tab-cand-0-vlm-internvl3-8b-instruct" value="cand-0-vlm-internvl3-8b-instruct" checked class="rec-tab-input"><label for="tab-cand-0-vlm-internvl3-8b-instruct" class="rec-tab-label">🔮 VLM (InternVL3-8B) ⮕</label>
+<input type="radio" name="rec-u-17__" id="tab-cand-1-kraken-kraken-catmus_medieval" value="cand-1-kraken-kraken-catmus_medieval" class="rec-tab-input"><label for="tab-cand-1-kraken-kraken-catmus_medieval" class="rec-tab-label">📖 Kraken OCR</label>
+<input type="radio" name="rec-u-17__" id="tab-cand-2-trocr-trocr-medieval-escriptmask" value="cand-2-trocr-trocr-medieval-escriptmask" class="rec-tab-input"><label for="tab-cand-2-trocr-trocr-medieval-escriptmask" class="rec-tab-label">🔤 TrOCR ❌</label>
+<input type="radio" name="rec-u-17__" id="tab-cand-3-kraken-kraken-mccatmus" value="cand-3-kraken-kraken-mccatmus" class="rec-tab-input"><label for="tab-cand-3-kraken-kraken-mccatmus" class="rec-tab-label">📖 Kraken OCR</label>
+<input type="radio" name="rec-u-17__" id="tab-cand-4-trocr-trocr-kurrent-xvi-xvii" value="cand-4-trocr-trocr-kurrent-xvi-xvii" class="rec-tab-input"><label for="tab-cand-4-trocr-trocr-kurrent-xvi-xvii" class="rec-tab-label">🔤 TrOCR ❌</label>
+<input type="radio" name="rec-u-17__" id="tab-cand-5-vlm-internvl3-8b-instruct" value="cand-5-vlm-internvl3-8b-instruct" class="rec-tab-input"><label for="tab-cand-5-vlm-internvl3-8b-instruct" class="rec-tab-label">🔮 VLM (InternVL3-8B)</label>
+<input type="radio" name="rec-u-17__" id="tab-cand-6-kraken-kraken-catmus_medieval" value="cand-6-kraken-kraken-catmus_medieval" class="rec-tab-input"><label for="tab-cand-6-kraken-kraken-catmus_medieval" class="rec-tab-label">📖 Kraken OCR</label>
+<input type="radio" name="rec-u-17__" id="tab-cand-7-kraken-kraken-mccatmus" value="cand-7-kraken-kraken-mccatmus" class="rec-tab-input"><label for="tab-cand-7-kraken-kraken-mccatmus" class="rec-tab-label">📖 Kraken OCR</label>
+<input type="radio" name="rec-u-17__" id="tab-cand-8-vlm-internvl3-8b-instruct" value="cand-8-vlm-internvl3-8b-instruct" class="rec-tab-input"><label for="tab-cand-8-vlm-internvl3-8b-instruct" class="rec-tab-label">🔮 VLM (InternVL3-8B)</label>
+<input type="radio" name="rec-u-17__" id="tab-cand-9-kraken-kraken-catmus_medieval" value="cand-9-kraken-kraken-catmus_medieval" class="rec-tab-input"><label for="tab-cand-9-kraken-kraken-catmus_medieval" class="rec-tab-label">📖 Kraken OCR</label>
+<input type="radio" name="rec-u-17__" id="tab-cand-10-kraken-kraken-mccatmus" value="cand-10-kraken-kraken-mccatmus" class="rec-tab-input"><label for="tab-cand-10-kraken-kraken-mccatmus" class="rec-tab-label">📖 Kraken OCR</label>
+<input type="radio" name="rec-u-17__" id="tab-cand-11-vlm-internvl3-8b-instruct" value="cand-11-vlm-internvl3-8b-instruct" class="rec-tab-input"><label for="tab-cand-11-vlm-internvl3-8b-instruct" class="rec-tab-label">🔮 VLM (InternVL3-8B)</label>
+<input type="radio" name="rec-u-17__" id="tab-cand-12-kraken-kraken-catmus_medieval" value="cand-12-kraken-kraken-catmus_medieval" class="rec-tab-input"><label for="tab-cand-12-kraken-kraken-catmus_medieval" class="rec-tab-label">📖 Kraken OCR</label></div><div class="rec-panels"><div class="rec-panel" id="cand-0-vlm-internvl3-8b-instruct"><div class="rec-summary">🔮 <strong>VLM (InternVL3-8B)</strong> <span class="rec-badge">✅ 80%</span> <span class="rec-model">internvl3-8b-instruct</span> · 2,804 Zeichen · <a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">--- SEITE 1 ---
 modios reina cum prato sive uysta
 Ottovillingen dequibz hre debet forum
 pccenum in horum emdenaam sigilla no
@@ -130,7 +130,7 @@ leu buccendies mpete volenab; ul curba.
 re aliquarunus consentce Si auf q ablic.
 pnos albatem cr conuenci sen maiorem.
 prem conuentus ul mfurim yqincup</pre><a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-kraken-kraken-catmus_medieval"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 91%</span> <span class="rec-model">kraken-catmus_medieval</span> · 3,090 Zeichen · <a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">
+<div class="rec-panel" id="cand-1-kraken-kraken-catmus_medieval"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 91%</span> <span class="rec-model">kraken-catmus_medieval</span> · 3,090 Zeichen · <a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">
 modios trititi cum prato sito iuyta
 ottarissingen dequibs hare debet sorium
 ppetuum in horum eidentiain sigilla no
@@ -210,8 +210,8 @@ seu suttessores nipete uolentibz ul turba
 re aliquatiis consentiresi aute qpu absst
 parnos abbatem et sonventn se maiorem
 partem coruentnsul nfutram par qencug</pre><a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel rec-panel--error" id="cand-trocr-trocr-medieval-escriptmask"><div class="rec-summary rec-summary--error">🔤 <strong>TrOCR</strong> <span class="rec-badge rec-badge--error">❌ Fehler</span> <span class="rec-model">trocr-medieval-escriptmask</span> · 0 Zeichen</div><pre class="rec-text rec-text--error">Kraken service error at http://130.92.59.240:8200/ocr: timed out</pre><p class="rec-error-note">❗ Kein Output — dieser Versuch ist fehlgeschlagen.</p></div>
-<div class="rec-panel" id="cand-kraken-kraken-mccatmus"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 81%</span> <span class="rec-model">kraken-mccatmus</span> · 2,737 Zeichen · <a href="recognitions/kraken-kraken-mccatmus.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">13
+<div class="rec-panel rec-panel--error" id="cand-2-trocr-trocr-medieval-escriptmask"><div class="rec-summary rec-summary--error">🔤 <strong>TrOCR</strong> <span class="rec-badge rec-badge--error">❌ Fehler</span> <span class="rec-model">trocr-medieval-escriptmask</span> · 0 Zeichen</div><pre class="rec-text rec-text--error">Kraken service error at http://130.92.59.240:8200/ocr: timed out</pre><p class="rec-error-note">❗ Kein Output — dieser Versuch ist fehlgeschlagen.</p></div>
+<div class="rec-panel" id="cand-3-kraken-kraken-mccatmus"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 81%</span> <span class="rec-model">kraken-mccatmus</span> · 2,737 Zeichen · <a href="recognitions/kraken-kraken-mccatmus.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">13
 INGIIOS EEIRITS CIIN pEdES RTS IIPEA
 DeNITItEinOTI dequts JEe debes poosimn
 Rcemun  pornn eedenadun Groutan
@@ -291,8 +291,8 @@ len Enendres mpece votenabz rit aube
 Le Ahgnsunue contenere, 91 aut p Ablie
 lnOS AIrcn et Comenit len monoient
 Jrem ComuenauE l suCucin p gínci9.</pre><a href="recognitions/kraken-kraken-mccatmus.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel rec-panel--error" id="cand-trocr-trocr-kurrent-xvi-xvii"><div class="rec-summary rec-summary--error">🔤 <strong>TrOCR</strong> <span class="rec-badge rec-badge--error">❌ Fehler</span> <span class="rec-model">trocr-kurrent-xvi-xvii</span> · 0 Zeichen</div><pre class="rec-text rec-text--error">Kraken service error at http://130.92.59.240:8200/ocr: timed out</pre><p class="rec-error-note">❗ Kein Output — dieser Versuch ist fehlgeschlagen.</p></div>
-<div class="rec-panel" id="cand-vlm-internvl3-8b-instruct"><div class="rec-summary">🔮 <strong>VLM (InternVL3-8B)</strong> <span class="rec-badge">✅ 80%</span> <span class="rec-model">internvl3-8b-instruct</span> · 2,872 Zeichen · <a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">--- SEITE 16 ---
+<div class="rec-panel rec-panel--error" id="cand-4-trocr-trocr-kurrent-xvi-xvii"><div class="rec-summary rec-summary--error">🔤 <strong>TrOCR</strong> <span class="rec-badge rec-badge--error">❌ Fehler</span> <span class="rec-model">trocr-kurrent-xvi-xvii</span> · 0 Zeichen</div><pre class="rec-text rec-text--error">Kraken service error at http://130.92.59.240:8200/ocr: timed out</pre><p class="rec-error-note">❗ Kein Output — dieser Versuch ist fehlgeschlagen.</p></div>
+<div class="rec-panel" id="cand-5-vlm-internvl3-8b-instruct"><div class="rec-summary">🔮 <strong>VLM (InternVL3-8B)</strong> <span class="rec-badge">✅ 80%</span> <span class="rec-model">internvl3-8b-instruct</span> · 2,872 Zeichen · <a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">--- SEITE 16 ---
 Habem et conuentui ul maiores prem
 Conueni uti Hon qe premilla factum
 fuit m indico ul exé cxcic quicqs p præ
@@ -373,7 +373,7 @@ lennum inspedtore qd gerennius Ailer-
 heint Gelleler. Hrimis a Pidolfius.
 fetos onb m mia conlunir preferua de-
 cmam Laycalcm fitam infa Territorium</pre><a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-kraken-kraken-catmus_medieval"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 91%</span> <span class="rec-model">kraken-catmus_medieval</span> · 3,152 Zeichen · <a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">abbatem et sonuentu ul maiorem partem
+<div class="rec-panel" id="cand-6-kraken-kraken-catmus_medieval"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 91%</span> <span class="rec-model">kraken-catmus_medieval</span> · 3,152 Zeichen · <a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">abbatem et sonuentu ul maiorem partem
 sonuentus nostr oon cotr premissa fattun
 fuit m idito ul ext ex tñc qncũq par pntes
 bas ul testes ydones dehot amoniti et mn
@@ -452,7 +452,7 @@ hemr gessele vlritus et euerdolfus
 frens ouis in nera constirut presentia de
 comam laycalem sitam infea derrvorsn
 eni</pre><a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-kraken-kraken-mccatmus"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 81%</span> <span class="rec-model">kraken-mccatmus</span> · 2,785 Zeichen · <a href="recognitions/kraken-kraken-mccatmus.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">Narein et Comneni al Insisren piem
+<div class="rec-panel" id="cand-7-kraken-kraken-mccatmus"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 81%</span> <span class="rec-model">kraken-mccatmus</span> · 2,785 Zeichen · <a href="recognitions/kraken-kraken-mccatmus.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">Narein et Comneni al Insisren piem
 Conent nrs Don gr péemta Caclnm
 Prix mmdrs ul exe excue gueug 7 pnet
 IaE nl teteS donce Sehor Amomu et mu
@@ -531,7 +531,7 @@ Gem Gestcler lrenut a Podotlus
 (Les cme sn iis conttnnn pre Penas de
 Cn Ajestem Gramn inles lecrirontmn
 1</pre><a href="recognitions/kraken-kraken-mccatmus.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-vlm-internvl3-8b-instruct"><div class="rec-summary">🔮 <strong>VLM (InternVL3-8B)</strong> <span class="rec-badge">✅ 80%</span> <span class="rec-model">internvl3-8b-instruct</span> · 2,578 Zeichen · <a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">--- SEITE 71 ---
+<div class="rec-panel" id="cand-8-vlm-internvl3-8b-instruct"><div class="rec-summary">🔮 <strong>VLM (InternVL3-8B)</strong> <span class="rec-badge">✅ 80%</span> <span class="rec-model">internvl3-8b-instruct</span> · 2,578 Zeichen · <a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">--- SEITE 71 ---
 Eche stouffen quam anobis morg An
 tenchant in codum fulgniter dem Erbe
 lehen pro amuo cenfu sedecm Aodioz
@@ -597,7 +597,7 @@ Gottes gnaden .. Ebschim ze Sekingen, vn das Capitel gememlich.
 72
 
 Vn kwr. allen den die disen buef zehent oder hozent lesen.Daz wir verluhen haben dien Erwurdigen vrowen.. Der.. Ebschim vn dem Conuent von Kungsvelt den zehen den ze Orwillingen ze henschin kon/ vn ze Tornichon.Den Aarchwatt Trurman burger ze Lutzeeren von uns ze erbe hatte.den li von im gekofer hanr ze rechten erbe der voegenanten .. Ebschim vn dem Conuent Ar dien sedingen das si feelich zehen mvrt toggen / die von dem voogenanten zehenden ze zmfe gamt zullen antwurten ze Sek-ingen In die stat ze Sant Areff</pre><a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-kraken-kraken-catmus_medieval"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 92%</span> <span class="rec-model">kraken-catmus_medieval</span> · 2,706 Zeichen · <a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">is
+<div class="rec-panel" id="cand-9-kraken-kraken-catmus_medieval"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 92%</span> <span class="rec-model">kraken-catmus_medieval</span> · 2,706 Zeichen · <a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">is
 eclie stouffoi quam nobis noerouz on
 tenebant infeodum fulonriter dcan erbe
 lehen pes amuio censu ghedetim gfodior
@@ -675,7 +675,7 @@ si serlich zehen mot tosgen die
 uon dem vorgenantem zehenden
 ze znse gant sullen antrourten je
 sel ingen in die stat ze sant esartis</pre><a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-kraken-kraken-mccatmus"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 83%</span> <span class="rec-model">kraken-mccatmus</span> · 2,494 Zeichen · <a href="recognitions/kraken-kraken-mccatmus.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">212
+<div class="rec-panel" id="cand-10-kraken-kraken-mccatmus"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 83%</span> <span class="rec-model">kraken-mccatmus</span> · 2,494 Zeichen · <a href="recognitions/kraken-kraken-mccatmus.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">212
 Cche grouten guam anobre non Oon
 roneban mleodum (ulomner den Crbe
 Eehen prs annue centu Gedeam Aodron
@@ -753,7 +753,7 @@ l Jerhet Zeen mut Tooven die
 son dem Dorscnmnten retenden
 Le Jile snnt Gritlen amemutcen 35
 Selmden p die Rnt Ze Eam Ang.</pre><a href="recognitions/kraken-kraken-mccatmus.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-vlm-internvl3-8b-instruct"><div class="rec-summary">🔮 <strong>VLM (InternVL3-8B)</strong> <span class="rec-badge">✅ 80%</span> <span class="rec-model">internvl3-8b-instruct</span> · 2,755 Zeichen · <a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">--- SEITE 6 ---
+<div class="rec-panel" id="cand-11-vlm-internvl3-8b-instruct"><div class="rec-summary">🔮 <strong>VLM (InternVL3-8B)</strong> <span class="rec-badge">✅ 80%</span> <span class="rec-model">internvl3-8b-instruct</span> · 2,755 Zeichen · <a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">--- SEITE 6 ---
 tag/ oder dar nach Annum vierzehen
 tagen / von Gerdtrut von Leisertil
 Tinntrowen unsers Gotzhuf vn Allen
@@ -833,7 +833,7 @@ quos nosle fuir opozumii qv ai Arnoldus.
 dais Trutman de Berona Decmas vidz.
 in orwellingen in henonchon A i Tornichon,
 quas andone seu mica Echa vidz zercomerj</pre><a href="recognitions/vlm-internvl3-8b-instruct.txt" download class="rec-dl">⬇ Text herunterladen</a></div>
-<div class="rec-panel" id="cand-kraken-kraken-catmus_medieval"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 91%</span> <span class="rec-model">kraken-catmus_medieval</span> · 2,684 Zeichen · <a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">eus
+<div class="rec-panel" id="cand-12-kraken-kraken-catmus_medieval"><div class="rec-summary">📖 <strong>Kraken OCR</strong> <span class="rec-badge">✅ 91%</span> <span class="rec-model">kraken-catmus_medieval</span> · 2,684 Zeichen · <a href="recognitions/kraken-kraken-catmus_medieval.txt" download class="rec-dl">⬇ Text herunterladen</a></div><pre class="rec-text">eus
 
 1
 tas oder dar nach mrunt uierzehen
@@ -925,22 +925,55 @@ xus</pre><a href="recognitions/kraken-kraken-catmus_medieval.txt" download class
 <p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/u-17__/">https://thodel.github.io/agentic-historian-outputs/u-17__/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/u-17__/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
 
 <section aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/79e08b5"><code>79e08b5</code></a> · <time datetime="2026-07-16T19:51:14+02:00">2026-07-16</time> · Publish u-17__</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/b0bb049"><code>b0bb049</code></a> · <time datetime="2026-07-15T20:31:21+02:00">2026-07-15</time> · Publish u-17__</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/1777d51"><code>1777d51</code></a> · <time datetime="2026-07-15T16:49:41+02:00">2026-07-15</time> · Publish u-17__</li></ol></section>
-<script>
-// Recognition viewer: progressive enhancement
+// Recognition viewer — progressive enhancement (issues #2, #3)
+// - Tab switching without navigation
+// - URL persistence: ?rec=<candidate-id> restores selection
+// - Browser back/forward support
+// - Keyboard accessible
 document.querySelectorAll('.rec-viewer').forEach(function(viewer) {
-  viewer.classList.add('js');
-  var panels = viewer.querySelectorAll('.rec-panel');
-  function showPanel(id) {
+  var docId    = viewer.dataset.docId || '';
+  var panels   = Array.from(viewer.querySelectorAll('.rec-panel'));
+  var inputs   = Array.from(viewer.querySelectorAll('.rec-tab-input'));
+  var paramKey = 'rec';   // URL query parameter name
+
+  // ── helpers ──────────────────────────────────────────────────────────────
+  function getCandidateId() {
+    // 1. URL param takes precedence
+    var val = new URLSearchParams(window.location.search).get(paramKey);
+    if (val) { return val; }
+    // 2. currently checked radio
+    var checked = viewer.querySelector('.rec-tab-input:checked');
+    return checked ? checked.value : (inputs[0] ? inputs[0].value : null);
+  }
+
+  function activate(id) {
     panels.forEach(function(p) {
       p.classList.toggle('is-active', p.id === id);
     });
+    inputs.forEach(function(inp) {
+      inp.checked = inp.value === id;
+    });
   }
-  var checked = viewer.querySelector('.rec-tab-input:checked');
-  if (checked) { showPanel(checked.value); }
-  viewer.querySelectorAll('.rec-tab-input').forEach(function(inp) {
-    inp.addEventListener('change', function() { showPanel(inp.value); });
+
+  function persist(id) {
+    // Update URL without navigation
+    var url = new URL(window.location.href);
+    url.searchParams.set(paramKey, id);
+    history.replaceState({}, '', url.toString());
+  }
+
+  // ── init ─────────────────────────────────────────────────────────────────
+  viewer.classList.add('js');
+  var initial = getCandidateId();
+  if (initial) { activate(initial); }
+
+  // ── keyboard / mouse selection ───────────────────────────────────────────
+  inputs.forEach(function(inp) {
+    inp.addEventListener('change', function() {
+      activate(inp.value);
+      persist(inp.value);
+    });
   });
 });
 
-</script>
 
