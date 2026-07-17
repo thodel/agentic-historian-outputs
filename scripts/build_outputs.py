@@ -13,7 +13,7 @@ import subprocess
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
-from build_recognitions import build_recognition_section
+from build_recognitions import build_recognition_section, write_package
 from source_references import normalize_source_reference, public_url
 from urllib.parse import urlparse
 from xml.sax.saxutils import escape as xml_escape
@@ -262,6 +262,9 @@ license: "LicenseRef-Not-Specified"
         transcript=transcript,
         directory=path.parent,
     )
+    package = write_package(path.parent, doc_id, data.get("recognitions", []), transcript) if data.get("recognitions") else None
+    package_link = (f'<li><a href="{html.escape(package.name, quote=True)}">Vollständiges Erkennungspaket (ZIP)</a></li>'
+                    if package else "")
 
     evidence = evidence_workspace(data, doc_id, transcript, recognition_section)
 
@@ -285,7 +288,7 @@ license: "LicenseRef-Not-Specified"
 <p><a href="entities.csv">Entitäten als CSV herunterladen</a> · <a href="../entities/">Alle Entitäten durchsuchen</a></p></section>
 
 <section id="downloads" class="page-section page-section--administrative" data-page-section="downloads" aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
-<ul><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
+<ul>{package_link}<li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
 <p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
 
 <section id="citation" class="page-section page-section--administrative" data-page-section="citation" aria-labelledby="citation-heading"><h2 id="citation-heading">Zitation und stabile Adresse</h2>

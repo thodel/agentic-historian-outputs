@@ -11,8 +11,10 @@ provenance contract, degeneration detection, and explanation keys.
 from __future__ import annotations
 
 import html
+import hashlib
 import json
 import re
+import zipfile
 from collections import Counter
 from pathlib import Path
 from urllib.parse import quote
@@ -94,6 +96,120 @@ def _recognition_path(candidate: dict) -> str:
         page_slug = re.sub(r"[^A-Za-z0-9._-]+", "_", page.rsplit(".", 1)[0])
         return f"recognitions/{page_slug}/{stem}.txt"
     return f"recognitions/{stem}.txt"
+
+
+def _error_path(candidate: dict) -> str:
+    return _recognition_path(candidate).removesuffix(".txt") + ".error.txt"
+
+
+def write_error_record(directory: Path, candidate: dict) -> Path | None:
+    error = _public_error(candidate.get("error"))
+    if not error:
+        return None
+    path = directory / _error_path(candidate)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({
+        "engine": str(candidate.get("engine") or ""),
+        "model_id": str(candidate.get("model_id") or ""),
+        "page": str(candidate.get("page") or ""),
+        "error": error,
+    }, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return path
+
+
+def compute_checksum(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(65536), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _catalogue_data(doc_id: str, candidates: list[dict]) -> dict:
+    return {
+        "doc_id": doc_id,
+        "version": "1.0",
+        "artifacts": [{
+            "id": candidate["id"],
+            "engine": candidate["engine"],
+            "model_id": candidate["model_id"] or None,
+            "page": candidate["page"] or None,
+            "status": "error" if candidate["error"] else "success",
+            "error": candidate["error"] or None,
+            "path": candidate["path"] if candidate["path"] and not candidate["error"] else None,
+            "error_path": _error_path(candidate) if candidate["error"] else None,
+            "characters": len(candidate["text"]) if not candidate["error"] else None,
+        } for candidate in candidates],
+    }
+
+
+def write_catalogue(directory: Path, doc_id: str, recognitions: list,
+                    transcript: str) -> Path:
+    path = directory / "recognitions" / "catalogue.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(_catalogue_data(
+        doc_id, _candidates(recognitions, transcript)), ensure_ascii=False,
+        indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return path
+
+
+def write_package(directory: Path, doc_id: str, recognitions: list,
+                  transcript: str) -> Path | None:
+    """Write a byte-reproducible ZIP with candidate texts and safe errors."""
+    candidates = _candidates(recognitions, transcript)
+    artifacts = []
+    entries: list[tuple[str, bytes]] = []
+    for candidate in candidates:
+        if candidate["selected"]:
+            name = "fused.txt"
+            payload = candidate["text"].encode("utf-8")
+            kind = "selected"
+        elif candidate["error"]:
+            stem = "/".join((
+                _safe_slug(candidate["page"], "unassigned"),
+                _safe_slug(candidate["id"]),
+            ))
+            name = f"candidates/{stem}.error.txt"
+            payload = json.dumps({
+                "engine": candidate["engine"], "model_id": candidate["model_id"],
+                "page": candidate["page"], "error": candidate["error"],
+            }, ensure_ascii=False, sort_keys=True).encode("utf-8")
+            kind = "error"
+        else:
+            stem = "/".join((
+                _safe_slug(candidate["page"], "unassigned"),
+                _safe_slug(candidate["id"]),
+            ))
+            name = f"candidates/{stem}.txt"
+            payload = candidate["text"].encode("utf-8")
+            kind = "candidate"
+        entries.append((name, payload))
+        artifacts.append({
+            "file": name, "type": kind, "engine": candidate["engine"],
+            "model_id": candidate["model_id"] or None,
+            "page": candidate["page"] or None,
+            "checksum": hashlib.sha256(payload).hexdigest(),
+        })
+    catalogue = json.dumps(_catalogue_data(doc_id, candidates), ensure_ascii=False,
+                           indent=2, sort_keys=True).encode("utf-8")
+    entries.append(("catalogue.json", catalogue))
+    manifest = json.dumps({
+        "doc_id": doc_id, "version": "1.0",
+        "package_type": "complete_recognition", "artifacts": artifacts,
+    }, ensure_ascii=False, indent=2, sort_keys=True).encode("utf-8")
+    entries.append(("manifest.json", manifest))
+    package = directory / f"{_safe_slug(doc_id, 'document')}-recognition-package.zip"
+    try:
+        with zipfile.ZipFile(package, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+            for name, payload in sorted(entries):
+                info = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+                info.compress_type = zipfile.ZIP_DEFLATED
+                info.external_attr = 0o644 << 16
+                archive.writestr(info, payload)
+        write_catalogue(directory, doc_id, recognitions, transcript)
+    except OSError:
+        return None
+    return package
 
 
 def _candidates(recognitions, transcript: str) -> list[dict]:
@@ -380,6 +496,37 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
 <button class="btn-rec-compare-close" type="button" data-rec-compare-close aria-label="Vergleich schliessen">&#215;</button>
 </div></div>'''
 
+    selected = candidates[0]
+    selected_exists = bool(selected["path"]) and (directory is None or (directory / selected["path"]).exists())
+    primary = (f'<div class="rec-primary-download"><a class="btn-rec-download" '
+               f'href="{quote(selected["path"], safe="/._-")}" download '
+               f'data-rec-primary-download>Aktuelle Transkription herunterladen '
+               f'<span class="rec-download-format">TXT</span></a>'
+               f'<span class="rec-download-provenance">{html.escape(selected["engine"])} · Seite {html.escape(selected["page"] or "nicht zugeordnet")}</span></div>'
+               if selected_exists else
+               '<div class="rec-primary-download rec-primary-download--unavailable"><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></div>')
+    inventory_rows = []
+    current_page = object()
+    for candidate in candidates:
+        page = candidate["page"] or "Nicht zugeordnet"
+        if page != current_page:
+            inventory_rows.append(
+                f'<tr class="rec-inv-page-header"><th colspan="6">{html.escape(page)}</th></tr>')
+            current_page = page
+        status = "Fehlgeschlagen" if candidate["error"] else "Erfolgreich"
+        download = ("—" if candidate["error"] or not candidate["path"] else
+                    f'<a href="{quote(candidate["path"], safe="/._-")}" download>{html.escape(Path(candidate["path"]).name)}</a>')
+        row_class = ' class="rec-inv-error"' if candidate["error"] else ""
+        dl_class = ' class="rec-inv-dl"' if download != "—" else ""
+        inventory_rows.append(
+            f'<tr{row_class}><td>{html.escape(candidate["engine"])}</td>'
+            f'<td>{html.escape(candidate["model_id"]) or "—"}</td>'
+            f'<td>{len(candidate["text"]) if not candidate["error"] else "—"}</td>'
+            f'<td>{status}</td><td>{html.escape(candidate["error"] or _confidence(candidate["confidence"]))}</td>'
+            f'<td{dl_class}>{download}</td></tr>')
+    inventory = f'''<details class="rec-inventory"><summary>Alle Erkennungsversionen herunterladen <span class="rec-inv-count">({len(candidates)} Versionen)</span></summary>
+<div class="table-scroll"><table class="rec-inv-table"><thead><tr><th>Engine</th><th>Modell</th><th>Zeichen</th><th>Status</th><th>Konfidenz/Fehler</th><th>Download</th></tr></thead><tbody>{''.join(inventory_rows)}</tbody></table></div></details>'''
+
     return f'''<section id="recognitions" class="page-section page-section--evidence" data-page-section="recognitions" aria-labelledby="recognitions-heading">
 <h2 id="recognitions-heading">Erkennungsversionen</h2>
 <p class="rec-intro">
@@ -388,6 +535,8 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 </p>
 {explanation_blocks}
 <div class="rec-viewer" data-recognition-viewer data-doc-id="{html.escape(doc_id, quote=True)}">
+{primary}
+{inventory}
 {compare_section}
 <nav class="rec-selector" aria-label="Erkennungsversionen"><ul>{''.join(links)}</ul></nav>
 <div class="rec-panels">{''.join(panels)}</div>

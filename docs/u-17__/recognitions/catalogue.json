@@ -1,0 +1,160 @@
+{
+  "artifacts": [
+    {
+      "characters": 11811,
+      "engine": "fusion",
+      "error": null,
+      "error_path": null,
+      "id": "selected",
+      "model_id": null,
+      "page": null,
+      "path": "recognitions/fused.txt",
+      "status": "success"
+    },
+    {
+      "characters": 2907,
+      "engine": "vlm",
+      "error": null,
+      "error_path": null,
+      "id": "vlm-internvl3-8b-instruct",
+      "model_id": "internvl3-8b-instruct",
+      "page": null,
+      "path": null,
+      "status": "success"
+    },
+    {
+      "characters": 3169,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-catmus-medieval",
+      "model_id": "kraken-catmus_medieval",
+      "page": null,
+      "path": null,
+      "status": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst hat das Zeitlimit überschritten.",
+      "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
+      "id": "trocr-trocr-medieval-escriptmask",
+      "model_id": "trocr-medieval-escriptmask",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 2816,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-mccatmus",
+      "model_id": "kraken-mccatmus",
+      "page": null,
+      "path": null,
+      "status": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst hat das Zeitlimit überschritten.",
+      "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
+      "id": "trocr-trocr-kurrent-xvi-xvii",
+      "model_id": "trocr-kurrent-xvi-xvii",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 2936,
+      "engine": "vlm",
+      "error": null,
+      "error_path": null,
+      "id": "vlm-internvl3-8b-instruct-2",
+      "model_id": "internvl3-8b-instruct",
+      "page": null,
+      "path": null,
+      "status": "success"
+    },
+    {
+      "characters": 3230,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-catmus-medieval-2",
+      "model_id": "kraken-catmus_medieval",
+      "page": null,
+      "path": null,
+      "status": "success"
+    },
+    {
+      "characters": 2863,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-mccatmus-2",
+      "model_id": "kraken-mccatmus",
+      "page": null,
+      "path": null,
+      "status": "success"
+    },
+    {
+      "characters": 2643,
+      "engine": "vlm",
+      "error": null,
+      "error_path": null,
+      "id": "vlm-internvl3-8b-instruct-3",
+      "model_id": "internvl3-8b-instruct",
+      "page": null,
+      "path": null,
+      "status": "success"
+    },
+    {
+      "characters": 2783,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-catmus-medieval-3",
+      "model_id": "kraken-catmus_medieval",
+      "page": null,
+      "path": null,
+      "status": "success"
+    },
+    {
+      "characters": 2571,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-mccatmus-3",
+      "model_id": "kraken-mccatmus",
+      "page": null,
+      "path": null,
+      "status": "success"
+    },
+    {
+      "characters": 2822,
+      "engine": "vlm",
+      "error": null,
+      "error_path": null,
+      "id": "vlm-internvl3-8b-instruct-4",
+      "model_id": "internvl3-8b-instruct",
+      "page": null,
+      "path": null,
+      "status": "success"
+    },
+    {
+      "characters": 2767,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-catmus-medieval-4",
+      "model_id": "kraken-catmus_medieval",
+      "page": null,
+      "path": null,
+      "status": "success"
+    }
+  ],
+  "doc_id": "u-17__",
+  "version": "1.0"
+}

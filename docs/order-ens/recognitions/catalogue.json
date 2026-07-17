@@ -1,0 +1,28 @@
+{
+  "artifacts": [
+    {
+      "characters": 62,
+      "engine": "fusion",
+      "error": null,
+      "error_path": null,
+      "id": "selected",
+      "model_id": null,
+      "page": null,
+      "path": "recognitions/fused.txt",
+      "status": "success"
+    },
+    {
+      "characters": 15,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-k0",
+      "model_id": "k0",
+      "page": null,
+      "path": "recognitions/kraken-k0.txt",
+      "status": "success"
+    }
+  ],
+  "doc_id": "order-ens",
+  "version": "1.0"
+}
