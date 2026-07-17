@@ -415,7 +415,7 @@ def _card(record: Record) -> str:
         f'data-review-status="{html.escape(summary.review_status, quote=True)}" '
         f'data-comparison-ready="{str(summary.comparison_ready).lower()}"'
     )
-    return f'''<article class="catalogue-card" data-kind="{kind}" data-language="{html.escape(record.language.casefold(), quote=True)}" data-script="{html.escape(record.script.casefold(), quote=True)}" data-search="{html.escape(search, quote=True)}" {summary_attrs}>
+    return f'''<article class="catalogue-card" data-document-id="{html.escape(record.doc_id.casefold(), quote=True)}" data-created="{created_iso}" data-kind="{kind}" data-language="{html.escape(record.language.casefold(), quote=True)}" data-script="{html.escape(record.script.casefold(), quote=True)}" data-search="{html.escape(search, quote=True)}" {summary_attrs}>
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="{created_iso}">{created_label}</time></p>
@@ -526,6 +526,21 @@ title: Katalog
       <option value="iiif_manifest">IIIF</option>
       <option value="image">Direktbild</option>
       <option value="landing_page">Archivseite</option>
+    </select>
+  </div>
+  <div>
+    <label for="catalogue-sort">Sortierung</label>
+    <select id="catalogue-sort">
+      <option value="created-desc">Erstellung: neueste zuerst</option>
+      <option value="created-asc">Erstellung: älteste zuerst</option>
+      <option value="title-asc">Dokument-ID: A–Z</option>
+      <option value="title-desc">Dokument-ID: Z–A</option>
+      <option value="pages-desc">Seiten: viele zuerst</option>
+      <option value="pages-asc">Seiten: wenige zuerst</option>
+      <option value="candidates-desc">Kandidaten: viele zuerst</option>
+      <option value="candidates-asc">Kandidaten: wenige zuerst</option>
+      <option value="failures-desc">Fehler: viele zuerst</option>
+      <option value="failures-asc">Fehler: wenige zuerst</option>
     </select>
   </div>
   <div class="catalogue-clear"><button id="catalogue-clear" type="button">Alle Filter zurücksetzen</button></div>

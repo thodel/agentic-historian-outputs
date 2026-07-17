@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
-const { catalogueMatches, catalogueParams, catalogueStateFromParams } =
+const { catalogueCompare, catalogueMatches, catalogueParams, catalogueStateFromParams } =
   require("../docs/assets/catalogue.js");
 
 const card = {
@@ -13,7 +13,7 @@ const card = {
   comparisonReady: "true", sourceAvailable: "true", sourceType: "iiif_manifest",
 };
 const all = { q: "", kind: "all", language: "all", script: "all", engine: "all",
-  readiness: "all", failure: "all", source: "all" };
+  readiness: "all", failure: "all", source: "all", sort: "created-desc" };
 
 test("provenance filters combine with AND semantics", () => {
   assert.equal(catalogueMatches(card, { ...all, engine: "kraken", readiness: "comparison", failure: "issues", source: "iiif_manifest" }), true);
@@ -30,4 +30,33 @@ test("URL state round trips and omits defaults", () => {
 
 test("legacy records are not silently classified as clean", () => {
   assert.equal(catalogueMatches({ ...card, recognitionProvenance: "legacy", recognitionFailed: "0" }, { ...all, failure: "clean" }), false);
+});
+
+test("sorts numeric fields with missing values last and stable document ID ties", () => {
+  const cards = [
+    { documentId: "doc-10", recognitionPages: "2" },
+    { documentId: "doc-2", recognitionPages: "2" },
+    { documentId: "unknown", recognitionPages: "" },
+    { documentId: "large", recognitionPages: "8" },
+  ];
+  assert.deepEqual(cards.toSorted((a, b) => catalogueCompare(a, b, "pages-desc")).map(x => x.documentId),
+    ["large", "doc-2", "doc-10", "unknown"]);
+  assert.deepEqual(cards.toSorted((a, b) => catalogueCompare(a, b, "pages-asc")).map(x => x.documentId),
+    ["doc-2", "doc-10", "large", "unknown"]);
+});
+
+test("date and title sort directions are explicit and deterministic", () => {
+  const cards = [
+    { documentId: "b", created: "2025-01-01T00:00:00Z" },
+    { documentId: "a", created: "2025-01-01T00:00:00Z" },
+    { documentId: "c", created: "2026-01-01T00:00:00Z" },
+  ];
+  assert.deepEqual(cards.toSorted((a, b) => catalogueCompare(a, b, "created-desc")).map(x => x.documentId), ["c", "a", "b"]);
+  assert.deepEqual(cards.toSorted((a, b) => catalogueCompare(a, b, "title-desc")).map(x => x.documentId), ["c", "b", "a"]);
+});
+
+test("non-default sort survives URL round trip", () => {
+  const state = { ...all, sort: "failures-desc" };
+  assert.equal(catalogueParams(state).toString(), "sort=failures-desc");
+  assert.deepEqual(catalogueStateFromParams(catalogueParams(state)), state);
 });
