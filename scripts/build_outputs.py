@@ -52,6 +52,9 @@ def git_history(path: Path) -> list[tuple[str, str, str]]:
         ).stdout
     except (OSError, subprocess.CalledProcessError):
         return []
+    # DEBUG
+    import sys
+    print(f"DEBUG git_history revision={revision} path={path} out={out!r}", file=sys.stderr, flush=True)
     rows = []
     for line in out.splitlines():
         parts = line.split("\t", 2)
