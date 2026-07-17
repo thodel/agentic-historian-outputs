@@ -54,6 +54,11 @@ def git_history(path: Path) -> list[tuple[str, str, str]]:
     for line in out.splitlines():
         parts = line.split("\t", 2)
         if len(parts) == 3:
+            # Git versions differ in rendering UTC as Z or +00:00.
+            # Canonicalize it so generated pages are reproducible in CI.
+            parts[1] = datetime.fromisoformat(
+                parts[1].replace("Z", "+00:00")
+            ).isoformat()
             rows.append(tuple(parts))
     return rows
 
