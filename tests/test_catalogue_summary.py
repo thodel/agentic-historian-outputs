@@ -5,7 +5,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from build_index import Record, _card, recognition_summary
+from build_index import Record, RecognitionSummary, _card, recognition_summary
+from datetime import datetime, timezone
 
 
 def rec(engine="kraken", model="m", page="p1", text="text", **extra):
@@ -13,6 +14,13 @@ def rec(engine="kraken", model="m", page="p1", text="text", **extra):
 
 
 class CatalogueSummaryTests(unittest.TestCase):
+    def card(self, summary):
+        return _card(Record(
+            "very-long-document-identifier", datetime.now(timezone.utc), "", "Latin", "Gothic",
+            "Letter", 0, 1, None, 0, False, "preview", summary.review_status,
+            recognition_summary=summary,
+        ))
+
     def test_current_counts_are_typed_and_deterministic(self):
         data = {"recognitions": [
             rec(), rec("vlm", "v", text=""),
@@ -66,6 +74,22 @@ class CatalogueSummaryTests(unittest.TestCase):
         long = recognition_summary({"transcription": "x" * 1_000_000, "recognitions": [rec(text="short")]})
         self.assertEqual(json.dumps(short.as_dict()), json.dumps(long.as_dict()))
         self.assertLess(len(json.dumps(long.as_dict())), 600)
+
+    def test_card_exposes_accessible_engine_chips_and_candidate_counts(self):
+        summary = recognition_summary({"recognitions": [rec("kraken", "a"), rec("trocr", "b")]})
+        card = self.card(summary)
+        self.assertIn('aria-label="Erkennungsprovenienz"', card)
+        self.assertIn('Erkennungsengine: </span>kraken', card)
+        self.assertIn('2 erfolgreich / 2 insgesamt', card)
+
+    def test_card_surfaces_failures_missing_source_and_legacy_provenance(self):
+        current = recognition_summary({"recognitions": [rec(), rec("vlm", "v", error="timeout")]})
+        card = self.card(current)
+        self.assertIn("1 fehlgeschlagene Erkennungsversuche", card)
+        self.assertIn("Keine digitale Quelle", card)
+        legacy = RecognitionSummary("legacy", None, None, None, None, None, (), 0, None,
+                                    False, "missing", "machine-generated", False)
+        self.assertIn("Begrenzte Provenienz", self.card(legacy))
 
 
 if __name__ == "__main__":

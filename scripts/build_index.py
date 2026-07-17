@@ -351,6 +351,28 @@ def _card(record: Record) -> str:
     summary = record.recognition_summary or RecognitionSummary(
         "legacy", None, None, None, None, None, (), 0, None, False,
         "missing", record.review_status, False)
+    engine_chips = "".join(
+        f'<li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>{html.escape(engine)}</li>'
+        for engine in summary.engines
+    )
+    recognition_status = []
+    if summary.provenance == "legacy":
+        recognition_status.append('<p class="catalogue-warning">Begrenzte Provenienz: Erkennungsversuche nicht vollständig dokumentiert.</p>')
+    else:
+        facts.append(("Kandidaten", f"{summary.successful or 0} erfolgreich / {summary.total or 0} insgesamt"))
+        if summary.failed:
+            recognition_status.append(
+                f'<p class="catalogue-warning"><span aria-hidden="true">⚠</span> {summary.failed} fehlgeschlagene Erkennungsversuche</p>')
+        if summary.degenerate:
+            recognition_status.append(
+                f'<p class="catalogue-warning"><span aria-hidden="true">⚠</span> {summary.degenerate} degenerierte Ergebnisse</p>')
+    if not summary.source_available:
+        recognition_status.append('<p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>')
+    status_html = "".join(recognition_status)
+    fact_html = "".join(
+        f'<div><dt>{html.escape(label)}</dt><dd>{html.escape(value)}</dd></div>'
+        for label, value in facts
+    )
     count = lambda value: "" if value is None else str(value)
     summary_attrs = (
         f'data-recognition-provenance="{summary.provenance}" '
@@ -376,6 +398,11 @@ def _card(record: Record) -> str:
     <div class="catalogue-badges">{"".join(badges)}</div>
   </div>
   <dl class="catalogue-facts">{fact_html}</dl>
+  <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
+    <p class="catalogue-provenance__label">Engines</p>
+    {f'<ul class="catalogue-engines">{engine_chips}</ul>' if engine_chips else '<p class="catalogue-muted">Nicht dokumentiert</p>'}
+    {status_html if status_html else '<span class="visually-hidden">Keine Warnungen</span>'}
+  </div>
   {preview}
   <p class="catalogue-actions"><a href="{html.escape(record.doc_id)}/" aria-label="Ausgabe {html.escape(record.doc_id)} öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
   {explain_btn}{explain_block}
