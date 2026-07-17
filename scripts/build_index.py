@@ -16,18 +16,6 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
-# Epic 5 quality vocabulary (#27)
-try:
-    from quality import (
-        EXPLANATIONS, detect_degeneration, format_confidence,
-        confidence_scope_label, explanation_button, explanation_block,
-    )
-except ImportError:
-    EXPLANATIONS, detect_degeneration, format_confidence = {}, lambda *a, **k: (False, ""), lambda v: "Nicht angegeben" if v is None else f"{max(0.0,min(1.0,float(v))):.0%}"
-    confidence_scope_label = lambda e, m, p: e
-    def explanation_button(k): return ""
-    def explanation_block(k): return ""
-
 DOCS = Path("docs")
 
 
@@ -98,11 +86,6 @@ class Record:
     is_test: bool
     preview: str
     review_status: str
-    # Epic 5 quality fields (#27, #28)
-    recognition_errors: int = 0       # candidates that failed or are degenerate
-    recognition_avg_confidence: float | None = None  # mean engine confidence
-    reference_cer: float | None = None  # reference-based CER if available
-    reference_wer: float | None = None
 
 
 def _record(path: Path) -> Record:
@@ -147,35 +130,6 @@ def _record(path: Path) -> Record:
     except (TypeError, ValueError):
         qa = None
 
-    # Epic 5 #28: Extract typed quality metrics from recognition data
-    recognitions = data.get("recognitions") if isinstance(data, dict) else None
-    rec_errors = 0
-    rec_confidences = []
-    ref_cer = None
-    ref_wer = None
-    if isinstance(recognitions, list):
-        for rec in recognitions:
-            if not isinstance(rec, dict):
-                continue
-            text = str(rec.get("text", ""))
-            conf = rec.get("confidence")
-            error = rec.get("error", "")
-            is_deg, _ = detect_degeneration(text, conf)
-            if error or is_deg:
-                rec_errors += 1
-            if conf is not None:
-                try:
-                    rec_confidences.append(float(conf))
-                except (TypeError, ValueError):
-                    pass
-        # Reference evaluation from a_meta.reference_eval
-        ref_eval = meta.get("reference_eval") if isinstance(meta, dict) else {}
-        if isinstance(ref_eval, dict):
-            ref_cer = ref_eval.get("cer")
-            ref_wer = ref_eval.get("wer")
-
-    rec_avg_conf = sum(rec_confidences) / len(rec_confidences) if rec_confidences else None
-
     return Record(
         doc_id=doc_id,
         created=created,
@@ -190,11 +144,6 @@ def _record(path: Path) -> Record:
         is_test="test" in doc_id.lower() or "example.com" in source_url,
         preview=compact_preview,
         review_status=_val(data.get("review_status") or meta.get("review_status") or "machine-generated"),
-        # Epic 5 quality fields
-        recognition_errors=rec_errors,
-        recognition_avg_confidence=rec_avg_conf,
-        reference_cer=ref_cer,
-        reference_wer=ref_wer,
     )
 
 
@@ -211,24 +160,8 @@ def _card(record: Record) -> str:
         badges.append(_badge("Testlauf", "test"))
     badges.append(_badge(record.review_status, "ok" if record.review_status == "human-verified" else "test"))
     badges.append(_badge("Ohne Fehler" if not record.errors else f"{record.errors} Fehler", "ok" if not record.errors else "error"))
-    # Epic 5 #28: Typed quality badges — replace ambiguous QA label
-    explain_btn = explanation_button("reference_evaluation")
-    explain_block = explanation_block("reference_evaluation")
-
-    if record.reference_cer is not None:
-        cer_pct = max(0.0, min(1.0, float(record.reference_cer))) * 100
-        badges.append(_badge(f"CER {cer_pct:.1f}%", "quality-confidence"))
-    if record.reference_wer is not None:
-        wer_pct = max(0.0, min(1.0, float(record.reference_wer))) * 100
-        badges.append(_badge(f"WER {wer_pct:.1f}%", "quality-confidence"))
-    if record.recognition_errors > 0:
-        badges.append(_badge(f"{record.recognition_errors} Erkennungsfehler", "quality-failed"))
-    if record.recognition_avg_confidence is not None and record.recognition_errors == 0:
-        badges.append(_badge(f"Ø Konfidenz {record.recognition_avg_confidence:.0%}", "quality-confidence"))
-
-    # Legacy qa_score — show with distinct style to signal it needs replacement
     if record.qa_score is not None:
-        badges.append(_badge(f"Legacy-QA {record.qa_score:.0%}", "legacy"))
+        badges.append(_badge(f"QA {record.qa_score:.0%}"))
 
     facts = []
     if record.date_label:
@@ -264,7 +197,6 @@ def _card(record: Record) -> str:
   <dl class="catalogue-facts">{fact_html}</dl>
   {preview}
   <p class="catalogue-actions"><a href="{html.escape(record.doc_id)}/" aria-label="Ausgabe {html.escape(record.doc_id)} öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
-  {explain_btn}{explain_block}
 </article>'''
 
 
@@ -286,16 +218,6 @@ title: Katalog
   <p class="catalogue-kicker">Forschungsdaten · automatisch erzeugt</p>
   <h1>Verarbeitete Dokumente</h1>
   <p>Transkriptionen, Quellenbeschreibungen und erkannte Entitäten. Die neuesten Ausgaben stehen zuerst. Automatisch erzeugte Angaben sind Forschungsangebote und müssen am Original überprüft werden.</p>
-  <details class="quality-explanation" id="catalogue-quality-explainer">
-    <summary>Qualitätsmetriken in diesem Katalog</summary>
-    <p>Jede Ausgabe zeigt bis zu vier Qualitätsmetriken:</p>
-    <dl>
-      <div><dt>Ø Konfidenz</dt><dd>Durchschnittliche Engine-Konfidenz aller Erkennungskandidaten (niedrig = unsicherer). Nicht zwischen Engines vergleichbar.</dd></div>
-      <div><dt>CER / WER</dt><dd>Character/Word Error Rate gegen eine bekannte Referenz (niedrig = weniger Fehler). Nur vorhanden wenn Referenz verfügbar.</dd></div>
-      <div><dt>Erkennungsfehler</dt><dd>Anzahl der Kandidaten, die fehlgeschlagen oder degeneriert sind.</dd></div>
-      <div><dt>Legacy-QA</dt><dd>QA-Wert aus älterem System ohne definierte Bedeutung. Ersetzen Sie durch eine der oben genannten Metriken.</dd></div>
-    </dl>
-  </details>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
   <p class="catalogue-summary"><strong>{len(records)}</strong> Einträge · {output_count} Ausgaben · {test_count} Testläufe</p>
 </div>
