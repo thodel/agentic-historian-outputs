@@ -51,6 +51,13 @@ Erfolgreiche textuelle Kandidaten können als TXT, JSON oder textorientiertes TE
 
 ALTO, PAGE-XML sowie TEI-Zeilen, -Regionen, Koordinaten und Faksimile-Verweise werden nicht erzeugt, solange der jeweilige Erkennungsdienst keine entsprechende Layoutstruktur geliefert hat. Eine solche Struktur aus einfachem Text abzuleiten würde nicht belegte räumliche Aussagen fabrizieren. Strukturierte Kandidaten bleiben maschinell erzeugte Forschungsdaten und sind nicht als verifizierte Transkriptionen zu zitieren.
 
+<a id="recognition-failures"></a>
+### Erkennungsfehler und Wiederholbarkeit
+
+Jeder Erkennungsversuch wird als `success`, `empty`, `timeout`, `unavailable`, `unsupported_model`, `backend_error`, `invalid_response`, `cancelled`, `degenerate` oder `missing` klassifiziert. Timeout-, Dienst-, Backend- und ungültige Antwortfehler können wiederholbar sein. Degenerierte Ausgaben sind abgeschlossene, aber mechanisch unbrauchbare Ergebnisse; eine identische Wiederholung gilt nicht als sinnvoll. Leere Ausgaben werden getrennt von technischen Fehlern und Degeneration ausgewiesen.
+
+Öffentliche Seiten und Pakete enthalten nur stabile Diagnosecodes und bereinigte Meldungen. Zugangsdaten, interne Adressen, lokale Pfade und Stacktraces werden nicht veröffentlicht. Die Kategorien beschreiben den technischen Ausgang eines Versuchs, nicht die historische Richtigkeit einer Transkription. Auch eine erfolgreiche oder zwischen Modellen übereinstimmende Ausgabe kann inhaltlich falsch sein.
+
 ## Erkennungsübersicht im Katalog
 
 Der Katalog leitet aus jeder `pipeline.json` eine kompakte Erkennungsübersicht ab. Sie zählt Versuche als erfolgreich, fehlgeschlagen, leer oder degeneriert; listet unterschiedliche Engine-Familien; zählt unterschiedliche Engine/Modell-Paare; und hält Seitenzahl, Quellentyp, Prüfstatus sowie Vergleichsbereitschaft fest. Vergleichsbereitschaft setzt mindestens zwei nutzbare Kandidaten derselben bekannten Seite voraus. Doppelte Datensätze erhöhen nicht die Engine- oder Modellzahl.

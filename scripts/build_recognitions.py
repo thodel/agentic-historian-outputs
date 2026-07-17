@@ -163,7 +163,7 @@ def _failure_provenance(candidate: dict) -> dict:
 def _catalogue_data(doc_id: str, candidates: list[dict]) -> dict:
     # Issue #52: compute aggregate counts for catalogue-level filtering
     total = len(candidates)
-    failed = sum(1 for c in candidates if c["error"])
+    failed = sum(1 for c in candidates if c["error"] and not c.get("is_degenerate"))
     degenerate = sum(1 for c in candidates if c.get("is_degenerate"))
     successful = sum(1 for c in candidates if not c["error"] and not c.get("is_degenerate"))
     empty = sum(1 for c in candidates
@@ -312,7 +312,10 @@ def _candidates(recognitions, transcript: str) -> list[dict]:
             error = "Der Erkennungsversuch lieferte keinen Text."
         # Degeneration check (#29): detect mechanically degenerate output
         # even when no technical error was reported.
-        is_degenerate, deg_reason = detect_degeneration(text, confidence)
+        is_degenerate, deg_reason = (
+            detect_degeneration(text, confidence) if not error and text.strip()
+            else (False, "")
+        )
         if is_degenerate and not error:
             error = f"Degenerierte Erkennung: {deg_reason}"
         result.append({
@@ -450,7 +453,7 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
 
     # Issue #52: compute aggregate counts for document-level failure summary
     total = len(candidates)
-    failed = sum(1 for c in candidates if c["error"])
+    failed = sum(1 for c in candidates if c["error"] and not c.get("is_degenerate"))
     degenerate = sum(1 for c in candidates if c.get("is_degenerate"))
     successful = sum(1 for c in candidates if not c["error"] and not c.get("is_degenerate"))
     empty = sum(1 for c in candidates if not c["error"] and not c.get("is_degenerate") and not c["text"])
@@ -458,10 +461,10 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
     # Derive run-quality label for document-level warning
     if failed + degenerate == total:
         run_quality = "total_failure"
-        run_label = "Alle Erkennungen fehlgeschlagen"
+        run_label = "Keine uneingeschränkt nutzbare Erkennung"
     elif failed + degenerate > 0:
         run_quality = "partial_failure"
-        run_label = f"{failed + degenerate} von {total} fehlgeschlagen"
+        run_label = f"{failed} technisch fehlgeschlagen; {degenerate} degeneriert (von {total})"
     elif empty > 0:
         run_quality = "empty"
         run_label = f"{empty} von {total} ohne Ausgabe"
@@ -540,10 +543,13 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
 
         if is_failed:
             # Issue #29/#51: failed candidates show explanatory panel with sanitized public_msg
-            status = normalize(candidate)
+            status_input = dict(candidate)
+            if is_degenerate:
+                status_input["status_code"] = "degenerate"
+            status = normalize(status_input)
             timing_info = f' <span class="rec-timing">({status.timing_ms} ms)</span>' if status.timing_ms else ""
             methodology_note = (
-                ' <a href="/docs/methodology/#recognition-failures" class="rec-methodology-link" rel="noopener">Erklaerung der Fehlerkategorien</a>'
+                ' <a href="/methodology/#recognition-failures" class="rec-methodology-link">Erklärung der Fehlerkategorien</a>'
                 if status.code not in ("success", "empty") else ""
             )
             retry_info = (

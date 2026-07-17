@@ -169,7 +169,7 @@
   ],
   "doc_id": "u-17__",
   "run_counts": {
-    "degenerate": 2,
+    "degenerate": 0,
     "empty": 0,
     "failed": 2,
     "successful": 12,

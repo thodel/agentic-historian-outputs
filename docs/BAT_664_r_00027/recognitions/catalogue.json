@@ -37,9 +37,9 @@
   ],
   "doc_id": "BAT_664_r_00027",
   "run_counts": {
-    "degenerate": 2,
+    "degenerate": 1,
     "empty": 0,
-    "failed": 2,
+    "failed": 1,
     "successful": 1,
     "total": 3
   },

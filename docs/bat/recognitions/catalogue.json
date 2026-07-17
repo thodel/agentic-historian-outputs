@@ -131,9 +131,9 @@
   ],
   "doc_id": "bat",
   "run_counts": {
-    "degenerate": 4,
+    "degenerate": 3,
     "empty": 0,
-    "failed": 4,
+    "failed": 1,
     "successful": 7,
     "total": 11
   },

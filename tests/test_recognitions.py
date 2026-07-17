@@ -434,6 +434,34 @@ class RecognitionContractTests(unittest.TestCase):
             self.assertEqual(record["run_id"], "run-1")
             self.assertIsNone(record["text_artifact"])
 
+    def test_degenerate_viewer_is_not_marked_retryable(self):
+        markup = build_recognition_section([{
+            "engine": "vlm", "model_id": "m", "page": "p1",
+            "text": "a" * 40, "confidence": 0.9,
+        }], "doc-54", "selected")
+        self.assertIn("Degeneriert", markup)
+        self.assertIn("Wiederholung nicht sinnvoll", markup)
+
+    def test_failure_methodology_link_resolves(self):
+        markup = build_recognition_section([{
+            "engine": "kraken", "model_id": "m", "page": "p1",
+            "text": "", "error": "timeout",
+        }], "doc-54", "selected")
+        self.assertIn('href="/methodology/#recognition-failures"', markup)
+        methodology = Path("docs/methodology.md").read_text(encoding="utf-8")
+        self.assertIn('id="recognition-failures"', methodology)
+
+    def test_partial_summary_separates_failure_and_degeneration(self):
+        markup = build_recognition_section([
+            {"engine": "kraken", "model_id": "ok", "text": "usable"},
+            {"engine": "trocr", "model_id": "timeout", "text": "",
+             "error": "timeout"},
+            {"engine": "vlm", "model_id": "deg", "text": "z" * 40,
+             "confidence": 0.9},
+        ], "doc-54", "selected")
+        self.assertIn("1 technisch fehlgeschlagen; 1 degeneriert (von 4)", markup)
+        self.assertNotIn("2 von 4 fehlgeschlagen", markup)
+
 
 
     # ---- #12 Harden & Verify: comparison edge cases ----
