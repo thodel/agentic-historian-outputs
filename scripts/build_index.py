@@ -33,6 +33,13 @@ except ImportError:
 
 DOCS = Path("docs")
 
+CATALOGUE_PERFORMANCE_BUDGETS = {
+    "summary_bytes_per_record": 600,
+    "card_bytes_per_record": 6000,
+    "large_fixture_records": 5000,
+    "large_fixture_interaction_ms": 2000,
+}
+
 
 def _val(value: object) -> str:
     if isinstance(value, dict):
@@ -445,7 +452,8 @@ def build() -> int:
         for record in records if record.recognition_summary is not None
     }
     (DOCS / "catalogue-summary.json").write_text(
-        json.dumps(summary_payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        json.dumps(summary_payload, ensure_ascii=False, separators=(",", ":"),
+                   sort_keys=True) + "\n",
         encoding="utf-8",
     )
 
@@ -549,7 +557,7 @@ title: Katalog
 <p id="catalogue-active-filters" class="catalogue-active-filters">Keine Filter aktiv.</p>
 <p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">{len(records)} Einträge, nach Erstellungsdatum absteigend sortiert.</p>
 
-<div id="catalogue-list" class="catalogue-list">
+<div id="catalogue-list" class="catalogue-list" data-enhanced="false">
 {cards}
 </div>
 

@@ -60,3 +60,20 @@ test("non-default sort survives URL round trip", () => {
   assert.equal(catalogueParams(state).toString(), "sort=failures-desc");
   assert.deepEqual(catalogueStateFromParams(catalogueParams(state)), state);
 });
+
+test("5000-record synthetic catalogue filters and sorts within budget", () => {
+  const records = Array.from({ length: 5000 }, (_, index) => ({
+    ...card,
+    documentId: `doc-${index}`,
+    search: `doc-${index} ${index % 2 ? "latin" : "german"}`,
+    language: index % 2 ? "latin" : "german",
+    recognitionFailed: String(index % 7 === 0 ? 1 : 0),
+    recognitionTotal: String((index % 5) + 1),
+  }));
+  const started = performance.now();
+  const matched = records.filter(item => catalogueMatches(item, { ...all, q: "latin" }));
+  matched.sort((a, b) => catalogueCompare(a, b, "failures-desc"));
+  const elapsed = performance.now() - started;
+  assert.equal(matched.length, 2500);
+  assert.ok(elapsed < 2000, `interaction took ${elapsed.toFixed(1)}ms`);
+});
