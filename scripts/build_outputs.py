@@ -47,7 +47,7 @@ def git_history(path: Path) -> list[tuple[str, str, str]]:
     revision = git_revision()
     try:
         out = subprocess.run(
-            ["git", "log", "--first-parent", "--format=%h%x09%aI%x09%s", f"--max-count=1", revision, "--", str(path)],
+            ["git", "log", "--follow", "--format=%h%x09%aI%x09%s", "--max-count=1", revision, "--", str(path)],
             check=True, capture_output=True, text=True,
         ).stdout
     except (OSError, subprocess.CalledProcessError):
