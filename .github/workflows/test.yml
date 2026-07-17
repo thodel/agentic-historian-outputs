@@ -29,3 +29,4 @@ jobs:
       - run: git diff --exit-code
       - run: node --check docs/assets/rec-viewer.js
       - run: node --check docs/assets/workspace.js
+      - run: node --check docs/assets/evidence-viewer.js

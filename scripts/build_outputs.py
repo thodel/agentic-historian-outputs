@@ -125,10 +125,16 @@ def source_panel(data: dict) -> str:
     payload = html.escape(json.dumps(source, ensure_ascii=False, separators=(",", ":")))
     if url:
         escaped = html.escape(url, quote=True)
-        if source["type"] == "iiif_manifest":
-            viewer = f'<iframe class="source-frame" title="IIIF-Quelle" loading="lazy" src="https://uv-v4.netlify.app/#?manifest={escaped}"></iframe>'
-        elif source["type"] == "image":
-            viewer = f'<a href="{escaped}"><img class="source-image" src="{escaped}" loading="lazy" alt="Digitalisat zu diesem Output"></a>'
+        if source["type"] in {"iiif_manifest", "image"}:
+            viewer = f'''<div class="evidence-viewer" data-evidence-viewer data-source-type="{source["type"]}" data-source-url="{escaped}">
+<div class="evidence-toolbar" role="toolbar" aria-label="Digitalisat steuern">
+<button type="button" data-evidence-action="zoom-out" aria-label="Verkleinern">−</button>
+<output data-evidence-zoom aria-label="Vergrößerung">100%</output>
+<button type="button" data-evidence-action="zoom-in" aria-label="Vergrößern">+</button>
+<button type="button" data-evidence-action="reset">Ansicht zurücksetzen</button>
+<button type="button" data-evidence-action="fullscreen">Vollbild</button></div>
+<div class="evidence-stage" data-evidence-stage tabindex="0" aria-label="Digitalisat, verschiebbar bei Vergrößerung"><img data-evidence-image hidden alt="Digitalisat zu diesem Output"></div>
+<p class="evidence-status" data-evidence-status role="status" aria-live="polite">Digitalisat wird geladen …</p></div>'''
         else:
             viewer = ""
         metadata = "".join(
@@ -280,6 +286,7 @@ license: "LicenseRef-Not-Specified"
 <section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol>{history_html}</ol></section>
 <script src="{{{{ '/assets/rec-viewer.js' | relative_url }}}}" defer></script>
 <script src="{{{{ '/assets/workspace.js' | relative_url }}}}" defer></script>
+<script src="{{{{ '/assets/evidence-viewer.js' | relative_url }}}}" defer></script>
 '''
     (path.parent / "index.md").write_text(page, encoding="utf-8")
     return is_test
@@ -314,6 +321,9 @@ def build() -> None:
     workspace_source = Path(__file__).with_name("workspace.js")
     (DOCS / "assets" / "workspace.js").write_text(
         workspace_source.read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_viewer_source = Path(__file__).with_name("evidence_viewer.js")
+    (DOCS / "assets" / "evidence-viewer.js").write_text(
+        evidence_viewer_source.read_text(encoding="utf-8"), encoding="utf-8")
     entity_index = defaultdict(list)
     tests = []
     for path in sorted(DOCS.glob("*/pipeline.json")):

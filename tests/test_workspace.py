@@ -26,6 +26,18 @@ class WorkspaceTests(unittest.TestCase):
             "doc", "text", "",
         )
         self.assertIn("data-evidence-workspace", markup)
+        self.assertIn('data-source-type="iiif_manifest"', markup)
+        self.assertIn('data-evidence-action="zoom-in"', markup)
+        self.assertIn('data-evidence-action="fullscreen"', markup)
+        self.assertIn('role="status"', markup)
+
+    def test_direct_image_uses_same_accessible_controls(self):
+        markup = evidence_workspace(
+            {"source_url": "https://archive.org/item.jpg"}, "doc", "text", "")
+        self.assertIn('data-source-type="image"', markup)
+        self.assertIn('aria-label="Digitalisat steuern"', markup)
+        self.assertIn('tabindex="0" aria-label="Digitalisat', markup)
+        self.assertIn('href="https://archive.org/item.jpg"', markup)
 
     def test_landing_page_and_missing_source_preserve_linear_layout(self):
         for data in ({}, {"source_url": "https://archive.org/item/1"}):

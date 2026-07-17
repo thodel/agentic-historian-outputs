@@ -97,3 +97,4 @@ u</code></pre></section>
 <section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/a4e998a"><code>a4e998a</code></a> · <time datetime="2026-07-07T15:29:12+02:00">2026-07-07</time> · Publish kf</li></ol></section>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
