@@ -137,10 +137,10 @@ def source_panel(data: dict) -> str:
             if source[key]
         )
         metadata = f'<dl class="source-meta">{metadata}</dl>' if metadata else ""
-        return f'''<section aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
+        return f'''<section id="source" class="page-section page-section--evidence" data-page-section="source" aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
 <p><a href="{escaped}">{html.escape(source["label"] or "Veröffentlichte Quelle öffnen")}</a></p>{metadata}{viewer}
 <script type="application/json" data-source-reference>{payload}</script></section>'''
-    return '''<section aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
+    return '''<section id="source" class="page-section page-section--evidence" data-page-section="source" aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
 <div class="notice notice--warning"><strong>Kein öffentliches Digitalisat verknüpft.</strong> Ein lokaler Verarbeitungspfad ist kein zitierbarer Quellenbeleg. Ergänzen Sie <code>source_url</code> oder <code>iiif_manifest</code> in der Pipeline-Ausgabe.</div></section>'''
 
 
@@ -234,7 +234,7 @@ license: "LicenseRef-Not-Specified"
     )
 
     page = frontmatter(doc_id) + f'''<nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> {html.escape(doc_id)}</nav>
-<header class="output-header">
+<header class="output-header page-section page-section--identity" data-page-section="identity">
   <p class="output-kicker">{state_label}</p><h1>{html.escape(doc_id)}</h1>
   <div class="output-status"><span>{html.escape(review)}</span><span>QA {qa_text}</span><span>{pages} Seiten</span></div>
   <p class="notice"><strong>Interpretationsstatus:</strong> Dieser Output wurde automatisch erzeugt. Nicht als Edition oder verifizierte Transkription zitieren, sofern der Status nicht ausdrücklich „human-verified“ lautet.</p>
@@ -242,28 +242,28 @@ license: "LicenseRef-Not-Specified"
 
 {source_panel(data)}
 
-<section aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
+<section id="transcription" class="page-section page-section--evidence" data-page-section="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
+<pre class="transcription" tabindex="0"><code>{html.escape(transcript) if transcript else 'Keine Transkription verfügbar.'}</code></pre></section>
+
+{recognition_section}<section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
 <p>{html.escape(interpretive)}</p>
 <p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt; keine unabhängige historische Interpretation. <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p></section>
 
-<section id="claims" aria-labelledby="claims-heading"><h2 id="claims-heading">Metadaten, Provenienz und Unsicherheit</h2>{field_table}</section>
+<section id="claims" class="page-section page-section--interpretation" data-page-section="claims" aria-labelledby="claims-heading"><h2 id="claims-heading">Metadaten, Provenienz und Unsicherheit</h2>{field_table}</section>
 
-<section aria-labelledby="entities-heading"><h2 id="entities-heading">Erkannte Entitäten</h2>
+<section id="entities" class="page-section page-section--interpretation" data-page-section="entities" aria-labelledby="entities-heading"><h2 id="entities-heading">Erkannte Entitäten</h2>
 {''.join(entity_html) or '<p>Keine Entitäten erkannt.</p>'}
 <p><a href="entities.csv">Entitäten als CSV herunterladen</a> · <a href="../entities/">Alle Entitäten durchsuchen</a></p></section>
 
-<section id="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
-<pre class="transcription" tabindex="0"><code>{html.escape(transcript) if transcript else 'Keine Transkription verfügbar.'}</code></pre></section>
-
-{recognition_section}<section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
+<section id="downloads" class="page-section page-section--administrative" data-page-section="downloads" aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
 <ul><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
 <p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
 
-<section aria-labelledby="citation-heading"><h2 id="citation-heading">Zitation und stabile Adresse</h2>
+<section id="citation" class="page-section page-section--administrative" data-page-section="citation" aria-labelledby="citation-heading"><h2 id="citation-heading">Zitation und stabile Adresse</h2>
 <p><code>Agentic Historian. ({datetime.now().year}). Agentic Historian output: {html.escape(doc_id)} [Machine-generated dataset]. {canonical}</code></p>
 <p>Stabile Seite: <a href="{canonical}">{canonical}</a> · <a href="{REPO}/commits/main/docs/{html.escape(doc_id)}/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
 
-<section aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol>{history_html}</ol></section>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol>{history_html}</ol></section>
 <script src="{{{{ '/assets/rec-viewer.js' | relative_url }}}}" defer></script>
 '''
     (path.parent / "index.md").write_text(page, encoding="utf-8")
