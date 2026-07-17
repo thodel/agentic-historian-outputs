@@ -43,7 +43,8 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 <div class="rec-compare-pane" data-rec-compare-pane="right" data-rec-compare-selected="kraken-k0">
 <div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-right">Version rechts</label></div>
 <select class="rec-compare-select" id="rec-compare-select-right" data-rec-compare-select="right"><option value="selected" data-page="">Ausgewählt / Fusion</option><option value="kraken-k0" data-page="">Kraken OCR · k0</option></select>
-<div class="rec-compare-body" data-rec-compare-body="right" tabindex="-1"></div></div>
+<div class="rec-compare-body" data-rec-compare-body="right" tabindex="-1"></div>
+<div class="rec-compare-diff" data-rec-compare-diff hidden role="region" aria-label="Unterschiede"></div></div>
 <button class="btn-rec-compare-close" type="button" data-rec-compare-close aria-label="Vergleich schliessen">&#215;</button>
 </div></div>
 <nav class="rec-selector" aria-label="Erkennungsversionen"><ul><li><a href="#recognition-selected" data-recognition-select="selected" data-page="" data-engine="fusion" data-model="" aria-controls="recognition-selected">Ausgewählt / Fusion</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-k0" data-recognition-select="kraken-k0" data-page="" data-engine="kraken" data-model="k0" aria-controls="recognition-kraken-k0">Kraken OCR · k0</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li></ul></nav>
