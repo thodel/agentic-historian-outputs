@@ -695,9 +695,11 @@
       "model_id": "trocr-medieval-escriptmask",
       "text": "",
       "confidence": 0.0,
-      "error": "Kraken service error at http://130.92.59.240:8200/ocr: timed out",
+      "error": "Der Erkennungsdienst hat das Zeitlimit überschritten.",
       "timing_ms": 0,
-      "segmented_by": null
+      "segmented_by": null,
+      "status_code": "timeout",
+      "retryable": true
     },
     {
       "engine": "kraken",
@@ -713,9 +715,11 @@
       "model_id": "trocr-kurrent-xvi-xvii",
       "text": "",
       "confidence": 0.0,
-      "error": "Kraken service error at http://130.92.59.240:8200/ocr: timed out",
+      "error": "Der Erkennungsdienst hat das Zeitlimit überschritten.",
       "timing_ms": 0,
-      "segmented_by": null
+      "segmented_by": null,
+      "status_code": "timeout",
+      "retryable": true
     },
     {
       "engine": "vlm",
