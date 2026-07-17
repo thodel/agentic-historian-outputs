@@ -204,5 +204,74 @@ class RecognitionContractTests(unittest.TestCase):
         self.assertEqual(_recognition_path(cand), "recognitions/fusion.txt")
 
 
+    def test_primary_download_appears_in_markup(self):
+        markup = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "hello"}],
+            "doc", "fused text")
+        self.assertIn("Aktuelle Transkription herunterladen", markup)
+        self.assertIn("btn-rec-download", markup)
+        self.assertIn("data-rec-primary-download", markup)
+        self.assertIn("rec-download-format", markup)
+
+    def test_primary_download_unavailable_when_artifact_missing(self):
+        markup = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "hello"}],
+            "doc", "fused text", directory=Path("/nonexistent"))
+        self.assertIn("Kein Textdownload verfügbar", markup)
+        self.assertIn("rec-primary-download--unavailable", markup)
+
+    def test_primary_download_provenance_shows_engine_and_page(self):
+        markup = build_recognition_section(
+            [{"engine": "vlm", "model_id": "internvl", "page": "Seite 50",
+              "text": "some text"}],
+            "doc", "fused text")
+        self.assertIn("vlm", markup)
+        self.assertIn("Seite", markup)
+        self.assertIn("rec-download-provenance", markup)
+    def test_inventory_shows_all_candidates(self):
+        markup = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "hello"},
+             {"engine": "trocr", "model_id": "large", "page": "p2", "text": "world"}],
+            "doc", "fused")
+        self.assertIn("rec-inventory", markup)
+        self.assertIn("rec-inv-table", markup)
+        self.assertIn("p1", markup)
+        self.assertIn("p2", markup)
+        self.assertIn("kraken", markup)
+        self.assertIn("trocr", markup)
+
+    def test_inventory_failed_has_no_download(self):
+        # Failed candidates appear as error rows with no text download link
+        markup = build_recognition_section(
+            [{"engine": "vlm", "model_id": "internvl", "page": "p1",
+              "error": "connection refused", "text": ""}],
+            "doc", "fused")
+        self.assertIn("rec-inv-error", markup)
+        # Verify error row has no rec-inv-dl (the "—" placeholder, not a link)
+        self.assertIn("Fehlgeschlagen", markup)
+        self.assertIn("Der Erkennungsdienst war nicht erreichbar", markup)
+
+    def test_inventory_page_grouping(self):
+        # Candidates on same page grouped under one header (selected has no page)
+        markup = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "Seite 5", "text": "a"},
+             {"engine": "trocr", "model_id": "large", "page": "Seite 5", "text": "b"}],
+            "doc", "fused")
+        self.assertIn("Seite 5", markup)
+        # Total version count shown: selected + 2 candidates = 3
+        self.assertIn("3 Versionen", markup)
+
+    def test_inventory_collapses_behaves_without_js(self):
+        markup = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "hello"}],
+            "doc", "fused")
+        # No JS required - uses <details>
+        self.assertIn("<details class=\"rec-inventory\">", markup)
+        self.assertIn("<summary>", markup)
+        self.assertIn("</summary>", markup)
+        self.assertIn("</details>", markup)
+
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -233,6 +233,39 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
         return ""
     directory = Path(directory) if directory is not None else None
     candidates = _candidates(recognitions, transcript)
+    # Primary download action (JS-enhanced, atomically updated on candidate switch)
+    selected = candidates[0]
+    sel_path = selected.get("path") or ""
+    sel_engine = selected.get("engine") or ""
+    sel_model = selected.get("model_id") or ""
+    sel_page = selected.get("page") or ""
+    if sel_path and (directory is None or (directory / sel_path).exists()):
+        safe_path = quote(sel_path, safe="/._-")
+        provenance_parts = []
+        if sel_engine:
+            provenance_parts.append(html.escape(sel_engine))
+        if sel_model:
+            provenance_parts.append(html.escape(sel_model))
+        if sel_page:
+            provenance_parts.append("Seite: " + html.escape(sel_page))
+        provenance_html = "".join(
+            f'<span class="rec-download-provenance">{p}</span>' for p in provenance_parts) if provenance_parts else ""
+        attrs = (
+            f' data-rec-path="{html.escape(sel_path, quote=True)}"'
+            f' data-rec-engine="{html.escape(sel_engine, quote=True)}"'
+            f' data-rec-model="{html.escape(sel_model, quote=True)}"'
+            f' data-rec-page="{html.escape(sel_page, quote=True)}"'
+        )
+        primary_dl = (
+            '<div class="rec-primary-download">'
+            '<a class="btn-rec-download" href="{path}" download{attrs} data-rec-primary-download>'
+            '<span>Aktuelle Transkription herunterladen</span>'
+            '<span class="rec-download-format">TXT</span></a>'
+            '{prov}'
+            '</div>').format(path=safe_path, attrs=attrs, prov=provenance_html)
+    else:
+        primary_dl = '<div class="rec-primary-download rec-primary-download--unavailable"><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></div>'
+
     links, panels = [], []
     for candidate in candidates:
         cid = candidate["id"]
@@ -267,9 +300,76 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
 <summary>{html.escape(label)}{' — ausgewählt' if candidate["selected"] else ''}</summary>
 <dl class="rec-meta"><div><dt>Engine</dt><dd>{html.escape(candidate["engine"])}</dd></div><div><dt>Modell</dt><dd>{html.escape(candidate["model_id"]) or '—'}</dd></div><div><dt>Seite</dt><dd>{html.escape(candidate["page"]) or 'Nicht zugeordnet'}</dd></div><div><dt>Engine-Konfidenz</dt><dd>{_confidence(candidate["confidence"])}</dd></div><div><dt>Zeichen</dt><dd>{len(candidate["text"])}</dd></div><div><dt>Status</dt><dd>{status}</dd></div></dl>
 {content}<p>{download}</p></details>''')
+    # Build inventory: all artifacts grouped by page (#36)
+    # Successful candidates: download link + metadata
+    # Failed candidates: error metadata, no text download
+    def _inventory_rows(artifacts, page_label):
+        rows = []
+        for a in artifacts:
+            eng = html.escape(a.get("engine") or "")
+            model = html.escape(a.get("model_id") or "") or "—"
+            chars = a.get("char_count", "—")
+            conf = _confidence(a.get("confidence"))
+            status = "Fehlgeschlagen" if a.get("error") else "Erfolgreich"
+            status_class = "rec-status--fehlgeschlagen" if a.get("error") else "rec-status--erfolgreich"
+            if a.get("error"):
+                err = html.escape(a.get("error") or "")
+                rows.append(
+                    f'<tr class="rec-inv-error">'
+                    f'<td class="rec-inv-cell">{eng}</td>'
+                    f'<td class="rec-inv-cell">{model}</td>'
+                    f'<td class="rec-inv-cell">{chars}</td>'
+                    f'<td class="rec-inv-cell"><span class="rec-status {status_class}">{status}</span></td>'
+                    f'<td class="rec-inv-cell rec-inv-note">{err}</td>'
+                    f'<td class="rec-inv-cell">—</td></tr>'
+                )
+            else:
+                path = a.get("path") or ""
+                safe_path = quote(path, safe="/._-") if path else ""
+                dl = (f'<a href="{safe_path}" download>{path.split("/")[-1] if path else "—"}</a>'
+                      if path and (directory is None or (directory / path).exists()) else "—")
+                rows.append(
+                    f'<tr>'
+                    f'<td class="rec-inv-cell">{eng}</td>'
+                    f'<td class="rec-inv-cell">{model}</td>'
+                    f'<td class="rec-inv-cell">{chars}</td>'
+                    f'<td class="rec-inv-cell"><span class="rec-status {status_class}">{status}</span></td>'
+                    f'<td class="rec-inv-cell rec-inv-note">{conf}</td>'
+                    f'<td class="rec-inv-cell rec-inv-dl">{dl}</td></tr>'
+                )
+        return rows
+
+    # Group candidates by page (None page = "Nicht zugeordnet")
+    by_page: dict[str, list] = {}
+    for c in candidates:
+        pg = c.get("page") or ""
+        by_page.setdefault(pg, []).append(c)
+
+    inv_sections = []
+    for pg, arts in by_page.items():
+        if pg:
+            pg_label = html.escape(pg)
+            page_header = f'<tr class="rec-inv-page-header"><th colspan="6">{pg_label}</th></tr>'
+        else:
+            page_header = '<tr class="rec-inv-page-header"><th colspan="6">Nicht zugeordnet</th></tr>'
+        rows = _inventory_rows(arts, pg)
+        inv_sections.append(page_header + "".join(rows))
+
+    inventory = (
+        '<details class="rec-inventory">'
+        '<summary>Alle Erkennungsversionen herunterladen'
+        f' <span class="rec-inv-count">({len(candidates)} Versionen)</span></summary>'
+        '<table class="rec-inv-table">'
+        '<thead><tr><th>Engine</th><th>Modell</th><th>Zeichen</th>'
+        '<th>Status</th><th>Konfidenz</th><th>Download</th></tr></thead>'
+        '<tbody>' + "".join(inv_sections) + '</tbody></table></details>'
+    )
+
     return f'''<section id="recognitions" aria-labelledby="recognitions-heading">
 <h2 id="recognitions-heading">Erkennungsversionen</h2>
 <p class="rec-intro">Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sichtbar. Konfidenzwerte verschiedener Engines sind nicht unmittelbar vergleichbar.</p>
+{primary_dl}
+{inventory}
 <div class="rec-viewer" data-recognition-viewer data-doc-id="{html.escape(doc_id, quote=True)}">
 <nav class="rec-selector" aria-label="Erkennungsversionen"><ul>{''.join(links)}</ul></nav>
 <div class="rec-panels">{''.join(panels)}</div></div></section>'''
