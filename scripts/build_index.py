@@ -9,6 +9,7 @@ It uses only the Python standard library.
 
 from __future__ import annotations
 
+import hashlib
 import html
 import json
 import re
@@ -326,8 +327,12 @@ def _card(record: Record) -> str:
     badges.append(_badge(record.review_status, "ok" if record.review_status == "human-verified" else "test"))
     badges.append(_badge("Ohne Fehler" if not record.errors else f"{record.errors} Fehler", "ok" if not record.errors else "error"))
     # Epic 5 #28: Typed quality badges — replace ambiguous QA label
-    explain_btn = explanation_button("reference_evaluation")
-    explain_block = explanation_block("reference_evaluation")
+    # Button and region must share one deterministic id.  Calling the quality
+    # helpers without an explicit suffix advances their independent counter
+    # and leaves aria-controls pointing at a non-existent element.
+    explanation_suffix = hashlib.sha1(record.doc_id.encode("utf-8")).hexdigest()[:12]
+    explain_btn = explanation_button("reference_evaluation", explanation_suffix)
+    explain_block = explanation_block("reference_evaluation", explanation_suffix)
 
     if record.reference_cer is not None:
         cer_pct = max(0.0, min(1.0, float(record.reference_cer))) * 100
@@ -556,6 +561,7 @@ title: Katalog
 
 <p id="catalogue-active-filters" class="catalogue-active-filters">Keine Filter aktiv.</p>
 <p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">{len(records)} Einträge, nach Erstellungsdatum absteigend sortiert.</p>
+<p id="catalogue-empty" class="catalogue-empty" role="status" hidden>Keine Einträge entsprechen den aktiven Filtern. Ändern Sie die Filter oder setzen Sie sie zurück.</p>
 
 <div id="catalogue-list" class="catalogue-list" data-enhanced="false">
 {cards}

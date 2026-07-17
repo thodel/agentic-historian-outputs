@@ -1,0 +1,56 @@
+[
+  {
+    "name": "multi-engine-comparison-ready",
+    "document_id": "fixture-multi-engine",
+    "data": {
+      "iiif_manifest": "https://archive.example.edu/iiif/manifest.json",
+      "recognitions": [
+        {"engine": "kraken", "model_id": "latin-a", "page": "p1", "text": "Prima recognitio"},
+        {"engine": "trocr", "model_id": "latin-b", "page": "p1", "text": "Secunda recognitio"}
+      ]
+    },
+    "expected": {"total": 2, "successful": 2, "engines": ["kraken", "trocr"], "comparison_ready": true, "source_available": true, "source_type": "iiif_manifest"}
+  },
+  {
+    "name": "failed-attempt",
+    "document_id": "fixture-failure",
+    "data": {"recognitions": [{"engine": "vlm", "model_id": "vision", "page": "p1", "error": "timeout"}]},
+    "expected": {"total": 1, "successful": 0, "failed": 1, "comparison_ready": false}
+  },
+  {
+    "name": "degenerate-attempt",
+    "document_id": "fixture-degenerate",
+    "data": {"recognitions": [{"engine": "trocr", "model_id": "repeat", "page": "p1", "text": "xxxxxxxxxxxxxxxxxxxxxxxxx"}]},
+    "expected": {"total": 1, "successful": 0, "degenerate": 1, "comparison_ready": false}
+  },
+  {
+    "name": "direct-image-source",
+    "document_id": "fixture-source",
+    "data": {"source_url": "https://archive.example.edu/page-1.jpg", "recognitions": [{"engine": "kraken", "model_id": "a", "page": "p1", "text": "Text"}]},
+    "expected": {"source_available": true, "source_type": "image", "successful": 1}
+  },
+  {
+    "name": "missing-source",
+    "document_id": "fixture-no-source",
+    "data": {"recognitions": [{"engine": "kraken", "model_id": "a", "page": "p1", "text": "Text"}]},
+    "expected": {"source_available": false, "source_type": "missing", "successful": 1}
+  },
+  {
+    "name": "legacy-output",
+    "document_id": "fixture-legacy",
+    "data": {"transcription": "Only the selected historical transcription survives."},
+    "expected": {"provenance": "legacy", "total": null, "comparison_ready": false}
+  },
+  {
+    "name": "test-output",
+    "document_id": "fixture-catalogue-test",
+    "data": {"recognitions": [{"engine": "kraken", "model_id": "test", "page": "p1", "text": "Test"}]},
+    "expected": {"successful": 1, "review_status": "machine-generated", "is_test": true}
+  },
+  {
+    "name": "human-reviewed",
+    "document_id": "fixture-human-reviewed",
+    "data": {"review_status": "human-reviewed", "recognitions": [{"engine": "kraken", "model_id": "reviewed", "page": "p1", "text": "Reviewed text"}]},
+    "expected": {"successful": 1, "review_status": "human-reviewed", "is_test": false}
+  }
+]
