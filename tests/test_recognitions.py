@@ -391,5 +391,78 @@ class RecognitionContractTests(unittest.TestCase):
 
 
 
+    # ---- #12 Harden & Verify: comparison edge cases ----
+
+    def test_compare_no_duplicate_pane_ids(self):
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "m", "page": "p1",
+              "text": "Hello", "confidence": 0.95}],
+            "doc-1", "Hello")
+        self.assertEqual(html.count('data-rec-compare-pane="left"'), 1)
+        self.assertEqual(html.count('data-rec-compare-pane="right"'), 1)
+
+    def test_compare_select_has_no_duplicate_option_values(self):
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "m", "page": "p1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "l", "page": "p1",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        import re
+        for select_match in re.finditer(
+                r'<select[^>]+data-rec-compare-select.*?</select>', html, re.DOTALL):
+            values = re.findall(r'value="([^"]+)"', select_match.group(0))
+            self.assertEqual(len(values), len(set(values)))
+
+    def test_compare_url_param_functions_present_in_js(self):
+        js = Path("scripts/rec_viewer.js").read_text()
+        self.assertIn("pushcmp(", js)
+        self.assertIn("readcmp(", js)
+
+    def test_compare_swap_button_click_handler_in_js(self):
+        js = Path("scripts/rec_viewer.js").read_text()
+        self.assertIn("leftSel.value", js)
+        self.assertIn("rightSel.value", js)
+
+    def test_compare_close_overlay_focus_restoration_in_js(self):
+        js = Path("scripts/rec_viewer.js").read_text()
+        self.assertIn("openBtn?.focus()", js)
+        self.assertIn("closeOverlay(", js)
+
+    def test_compare_unicode_model_names_handled(self):
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "münster-model/v1", "page": "Seite 1",
+              "text": "Hëllö wörld", "confidence": 0.95}],
+            "doc-1", "Hëllö wörld")
+        self.assertIn("data-rec-compare-open", html)
+        self.assertNotIn("undefined", html)
+
+    def test_compare_css_diff_rules_scoping(self):
+        css = Path("docs/assets/output.css").read_text()
+        self.assertIn(".rec-compare-diff .diff-insert", css)
+        self.assertIn(".rec-compare-diff .diff-delete", css)
+        self.assertIn(".rec-compare-diff .diff-change", css)
+
+    def test_compare_notice_styles_for_empty_and_error_states(self):
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "m", "page": "p1",
+              "text": "", "confidence": 0.0}],
+            "doc-1", "")
+        self.assertIn("notice--warning", html)
+
+    def test_compare_flex_layout_uses_gap_for_spacing(self):
+        css = Path("docs/assets/output.css").read_text()
+        idx = css.find(".rec-compare-panes")
+        self.assertNotEqual(idx, -1)
+        block = css[idx:idx + 300]
+        self.assertTrue(any(prop in block for prop in ("gap", "column-gap", "row-gap")))
+
+    def test_compare_swap_button_has_visible_focus_style(self):
+        css = Path("docs/assets/output.css").read_text()
+        idx = css.find(".btn-rec-compare-swap")
+        self.assertNotEqual(idx, -1)
+        self.assertIn(":focus-visible", css[idx:idx + 500])
+
+
 if __name__ == "__main__":
     unittest.main()
