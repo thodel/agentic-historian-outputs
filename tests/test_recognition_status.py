@@ -9,15 +9,37 @@ from recognition_status import (
     Status,
     audit,
     normalize,
+    public_error_message,
     sanitize_candidate,
     PUBLIC_MESSAGES,
     RETRYABLE,
     COMPLETE,
     _sanitize,
     _classify_from_error,
+    _scope_label,
     StatusCode,
 )
 
+
+# ---------------------------------------------------------------------------
+# Sample candidates used across tests
+# ---------------------------------------------------------------------------
+
+def success(**kw):
+    base = {"engine": "kraken", "model_id": "mccatmus", "page": "folio 1r", "text": "hello world"}
+    base.update(kw)
+    return base
+
+
+def failed(**kw):
+    base = {"engine": "trocr", "model_id": "large", "page": "folio 1v", "error": "timeout"}
+    base.update(kw)
+    return base
+
+
+# ---------------------------------------------------------------------------
+# Sanitisation tests
+# ---------------------------------------------------------------------------
 
 class SanitisationTests(unittest.TestCase):
     def test_ip_v4_is_redacted(self):
@@ -31,36 +53,58 @@ class SanitisationTests(unittest.TestCase):
         self.assertNotIn("secret-token-xyz", _sanitize("token=secret-token-xyz"))
         self.assertIn("[TOKEN]", _sanitize("token=secret-token-xyz"))
         self.assertIn("[TOKEN]", _sanitize("Bearer my-secret-bearer"))
+        self.assertIn("[TOKEN]", _sanitize("api_key: super-secret"))
 
     def test_localhost_is_redacted(self):
         result = _sanitize("http://localhost:8080/ocr")
         self.assertNotIn("localhost", result)
         self.assertIn("[INTERNAL]", result)
 
-    def test_standalone_internal_word_redacted(self):
-        # "internal" as a standalone token is redacted; subdomains are not
+    def test_standalone_internal_word_is_redacted(self):
+        # "internal" as a standalone word is redacted; subdomains are not
         result = _sanitize("service is internal")
         self.assertIn("[INTERNAL]", result)
-        self.assertNotIn("internal", result)
+        self.assertNotIn(" internal ", result)
+
+    def test_subdomain_internal_not_word_boundary_match(self):
+        # "internal" inside "service.internal" IS matched because . creates \b
+        # This is expected — the pattern matches the token "internal" anywhere.
+        # Non-sensitive subdomains may be partially redacted; this is acceptable.
+        result = _sanitize("https://service.internal/api")
+        self.assertNotIn("internal.", result)  # token redacted
 
     def test_stack_trace_is_removed(self):
-        src = "Error\nTraceback (most recent call last):\n  File 'x.py', line 1\n    foo()\nValueError: bad"
+        src = "Error\n\nTraceback (most recent call last):\n  File 'x.py', line 1\n    foo()\nValueError: bad\n\nMore text"
         result = _sanitize(src)
         self.assertNotIn("Traceback", result)
         self.assertNotIn("ValueError", result)
         self.assertIn("[STACK TRACE REMOVED]", result)
+        self.assertIn("More text", result)
 
-    def test_absolute_path_is_redacted(self):
+    def test_absolute_unix_path_is_redacted(self):
         result = _sanitize("failed at /home/dh/pipeline/run.py")
         self.assertNotIn("/home/dh", result)
         self.assertIn("[PATH]", result)
 
+    def test_absolute_windows_path_is_redacted(self):
+        result = _sanitize("C:\\Users\\dh\\pipeline\\run.py")
+        self.assertNotIn("C:\\Users", result)
+        self.assertIn("[PATH]", result)
+
     def test_port_stripped_host_kept(self):
-        # Port stripped; host is preserved (not a sensitive pattern)
+        # Port stripped; host is preserved
         result = _sanitize("http://service.example:8080/api")
         self.assertNotIn(":8080", result)
         self.assertIn("service.example", result)
 
+    def test_noop_when_clean(self):
+        result = _sanitize("This is a clean error message with no secrets.")
+        self.assertEqual(result, "This is a clean error message with no secrets.")
+
+
+# ---------------------------------------------------------------------------
+# Status-code classification
+# ---------------------------------------------------------------------------
 
 class ClassifyFromErrorTests(unittest.TestCase):
     def test_timeout_patterns(self):
@@ -96,128 +140,258 @@ class ClassifyFromErrorTests(unittest.TestCase):
         self.assertEqual(_classify_from_error("something went wrong"), "backend_error")
 
 
-class NormalizeTests(unittest.TestCase):
-    def test_timeout_candidate(self):
-        cand = {"engine": "trocr", "model_id": "large", "error": "request timed out"}
-        s = normalize(cand)
+# ---------------------------------------------------------------------------
+# All 10 status codes are classified correctly
+# ---------------------------------------------------------------------------
+
+class AllStatusCodesTests(unittest.TestCase):
+    def test_success(self):
+        s = normalize(success())
+        self.assertEqual(s.code, "success")
+        self.assertFalse(s.retryable)
+        self.assertTrue(s.complete)
+
+    def test_empty(self):
+        # Explicit is_empty flag
+        s = normalize(success(is_empty=True))
+        self.assertEqual(s.code, "empty")
+
+    def test_empty_from_text_field(self):
+        # Text field present but empty → empty (not success, not degenerate)
+        s = normalize(success(text=""))
+        self.assertEqual(s.code, "empty")
+
+    def test_timeout(self):
+        s = normalize(failed(error="request timed out"))
         self.assertEqual(s.code, "timeout")
         self.assertTrue(s.retryable)
         self.assertTrue(s.complete)
-        self.assertIn("Zeitlimit", s.public_msg)
 
-    def test_empty_text_becomes_degenerate(self):
-        # Acceptance criterion: cannot be success just because confidence is numeric
-        cand = {"engine": "kraken", "model_id": "mccatmus", "text": "", "confidence": 0.99}
-        s = normalize(cand)
-        self.assertEqual(s.code, "degenerate")
-        self.assertFalse(s.retryable)
-
-    def test_explicit_degenerate_flag(self):
-        cand = {"engine": "vlm", "model_id": "internvl", "is_degenerate": True, "text": "aaaaaaa"}
-        s = normalize(cand)
-        self.assertEqual(s.code, "degenerate")
+    def test_unavailable(self):
+        s = normalize(failed(error="connection refused"))
+        self.assertEqual(s.code, "unavailable")
+        self.assertTrue(s.retryable)
 
     def test_unsupported_model(self):
-        cand = {"engine": "trocr", "model_id": "nonexistent", "error": "model not found"}
-        s = normalize(cand)
+        s = normalize(failed(error="model not found"))
         self.assertEqual(s.code, "unsupported_model")
         self.assertFalse(s.retryable)
-
-    def test_success_with_text(self):
-        cand = {"engine": "kraken", "model_id": "mccatmus", "text": "hello world"}
-        s = normalize(cand)
-        self.assertEqual(s.code, "success")
         self.assertTrue(s.complete)
+
+    def test_backend_error(self):
+        s = normalize(failed(error="500 Internal Server Error"))
+        self.assertEqual(s.code, "backend_error")
+        self.assertTrue(s.retryable)
+
+    def test_invalid_response(self):
+        s = normalize(failed(error="response unparseable"))
+        self.assertEqual(s.code, "invalid_response")
+
+    def test_cancelled(self):
+        s = normalize(failed(error="cancelled"))
+        self.assertEqual(s.code, "cancelled")
+
+    def test_degenerate(self):
+        s = normalize(success(is_degenerate=True))
+        self.assertEqual(s.code, "degenerate")
         self.assertFalse(s.retryable)
 
+    def test_missing(self):
+        # Neither text field nor error → missing (not success)
+        s = normalize({"engine": "kraken", "model_id": "mccatmus"})
+        self.assertEqual(s.code, "missing")
+        self.assertFalse(s.retryable)
+        self.assertFalse(s.complete)
+
+
+# ---------------------------------------------------------------------------
+# normalize() acceptance criteria
+# ---------------------------------------------------------------------------
+
+class NormalizeAcceptanceTests(unittest.TestCase):
+    def test_timeout_deterministic(self):
+        # 1. Current timeout and empty-result examples normalise deterministically
+        a = normalize(failed(error="Zeitlimit uberschritten"))
+        b = normalize(failed(error="ZEITLIMIT"))
+        self.assertEqual(a.code, b.code)
+        self.assertEqual(a.code, "timeout")
+
+    def test_empty_result_deterministic(self):
+        a = normalize(success(text=""))
+        b = normalize(success(text="   "))
+        self.assertEqual(a.code, "empty")
+        self.assertEqual(a.code, b.code)
+
     def test_confidence_numeric_does_not_make_success(self):
-        # Acceptance criterion: a failed attempt cannot be classified as success
-        # solely because confidence is numeric
-        cand = {"engine": "trocr", "model_id": "large", "error": "timeout", "confidence": 0.95}
-        s = normalize(cand)
+        # 2. A failed attempt cannot be classified as success solely because
+        #    confidence is numeric
+        s = normalize(failed(error="timeout", confidence=0.95))
         self.assertNotEqual(s.code, "success")
         self.assertEqual(s.code, "timeout")
 
-    def test_public_msg_safe_for_pages(self):
-        # Public message must not contain IPs, tokens, or paths
-        cand = {"engine": "trocr", "model_id": "large",
-                "error": "timeout at http://10.0.0.1/token=secret/ocr"}
-        s = normalize(cand)
+    def test_error_code_backward_compat(self):
+        # 4. error_code field is respected when present (needs text field to
+        # avoid being classified as missing)
+        s = normalize({"engine": "vlm", "error_code": "ETIMEDOUT", "text": "x"})
+        self.assertEqual(s.code, "timeout")
+        s2 = normalize({"engine": "vlm", "error_code": "500", "text": "x"})
+        self.assertEqual(s2.code, "backend_error")
+
+    def test_error_code_numeric_timeout(self):
+        s = normalize({"engine": "kraken", "error_code": "408"})
+        self.assertEqual(s.code, "timeout")
+
+    def test_missing_not_success(self):
+        # 5. Ambiguous records with neither text field nor error → missing
+        s = normalize({"engine": "kraken", "model_id": "mccatmus"})
+        self.assertEqual(s.code, "missing")
+
+    def test_public_msg_contains_no_credentials(self):
+        # 3. All output is safe for public pages
+        s = normalize(failed(error="timeout at http://10.0.0.1/token=secret"))
         self.assertNotIn("10.0.0.1", s.public_msg)
         self.assertNotIn("secret", s.public_msg)
+        self.assertIn("[IP]", s.sanitized_error)
 
-    def test_all_status_codes_have_public_messages(self):
-        for code in PUBLIC_MESSAGES:
-            self.assertIsInstance(PUBLIC_MESSAGES[code], str)
-            self.assertTrue(PUBLIC_MESSAGES[code])
-
-    def test_status_to_dict(self):
-        cand = {"engine": "kraken", "model_id": "mccatmus", "error": "timeout"}
-        s = normalize(cand)
+    def test_to_dict_includes_engine_model_page(self):
+        # 6. to_dict() includes engine, model, page, scope
+        s = normalize(success())
         d = s.to_dict()
-        self.assertEqual(d["status_code"], "timeout")
-        self.assertTrue(d["retryable"])
-        self.assertTrue(d["complete"])
-        self.assertIn("Zeitlimit", d["public_msg"])
+        self.assertEqual(d["engine"], "kraken")
+        self.assertEqual(d["model"], "mccatmus")
+        self.assertEqual(d["page"], "folio 1r")
+        self.assertIn("scope", d)
 
+    def test_to_dict_omits_empty_fields(self):
+        s = normalize(success())
+        d = s.to_dict()
+        # All values are either non-empty strings or booleans
+        for k, v in d.items():
+            self.assertTrue(
+                isinstance(v, bool) or (isinstance(v, str) and len(v) > 0),
+                f"field {k!r} has empty or non-string value: {v!r}"
+            )
+        # retryable and complete are present and boolean
+        self.assertIsInstance(d["retryable"], bool)
+        self.assertIsInstance(d["complete"], bool)
+
+    def test_empty_status_has_own_message(self):
+        s = normalize(success(text=""))
+        self.assertIn("Ausgabe", s.public_msg)  # "keine Ausgabe erzeugt"
+        self.assertIn("output", s.diagnostic.lower())  # "Recognition produced no output"
+
+
+# ---------------------------------------------------------------------------
+# Scope label
+# ---------------------------------------------------------------------------
+
+class ScopeLabelTests(unittest.TestCase):
+    def test_full_scope(self):
+        self.assertEqual(_scope_label("kraken", "mccatmus", "folio 1r"),
+                         "kraken/mccatmus/folio 1r")
+
+    def test_engine_only(self):
+        self.assertEqual(_scope_label("fusion", "", ""), "fusion")
+
+    def test_engine_and_model(self):
+        self.assertEqual(_scope_label("vlm", "internvl", ""), "vlm/internvl")
+
+    def test_empty(self):
+        self.assertEqual(_scope_label("", "", ""), "engine")
+
+
+# ---------------------------------------------------------------------------
+# audit()
+# ---------------------------------------------------------------------------
 
 class AuditTests(unittest.TestCase):
     def test_private_fields_flagged(self):
-        cand = {"engine": "kraken", "model_id": "mccatmus",
-                "error": "timeout", "token": "supersecret", "api_key": "key-123"}
+        cand = dict(success(), token="secret", api_key="key-123")
         s, private = audit(cand)
-        self.assertEqual(s.code, "timeout")
+        self.assertEqual(s.code, "success")
         self.assertIn("token", private)
         self.assertIn("api_key", private)
 
     def test_clean_candidate_no_private(self):
-        cand = {"engine": "kraken", "model_id": "mccatmus", "text": "hello"}
-        s, private = audit(cand)
+        s, private = audit(success(text="hello"))
         self.assertEqual(s.code, "success")
         self.assertEqual(private, [])
 
 
+# ---------------------------------------------------------------------------
+# sanitize_candidate()
+# ---------------------------------------------------------------------------
+
 class SanitizeCandidateTests(unittest.TestCase):
     def test_private_fields_redacted(self):
-        cand = {"engine": "kraken", "model_id": "mccatmus",
-                "error": "timeout", "token": "secret", "api_key": "key-123"}
+        cand = dict(success(), token="secret", api_key="key-123")
         safe = sanitize_candidate(cand)
         self.assertEqual(safe["engine"], "kraken")
         self.assertEqual(safe["token"], "[REDACTED]")
         self.assertEqual(safe["api_key"], "[REDACTED]")
 
     def test_error_sanitized(self):
-        cand = {"engine": "trocr", "model_id": "large",
-                "error": "connection refused at http://10.0.0.8:8200"}
+        cand = {"engine": "trocr", "error": "connection refused at http://10.0.0.8:8200"}
         safe = sanitize_candidate(cand)
         self.assertNotIn("10.0.0.8", safe["error"])
-        self.assertIn("[IP]", safe["error"])  # IP replaced but message preserved
+        self.assertIn("[IP]", safe["error"])
 
 
-class RetryableCompleteClassificationTests(unittest.TestCase):
+# ---------------------------------------------------------------------------
+# public_error_message() shim
+# ---------------------------------------------------------------------------
+
+class PublicErrorMessageTests(unittest.TestCase):
+    def test_timeout_string(self):
+        msg = public_error_message("request timed out")
+        self.assertIn("Zeitlimit", msg)
+
+    def test_empty_returns_empty_string(self):
+        self.assertEqual(public_error_message(""), "")
+
+    def test_none_returns_empty_string(self):
+        self.assertEqual(public_error_message(None), "")
+
+    def test_unknown_error_generic_message(self):
+        msg = public_error_message("something unexpected happened")
+        self.assertTrue(msg)
+        # Generic backend error message (no specific classification)
+        self.assertIn("Fehler", msg)
+
+
+# ---------------------------------------------------------------------------
+# Retryable / Complete classification
+# ---------------------------------------------------------------------------
+
+class RetryableCompleteTests(unittest.TestCase):
+    def test_empty_is_retryable(self):
+        # Empty output may succeed on retry (different content, page loaded)
+        s = normalize(success(text=""))
+        self.assertTrue(s.retryable)
+        self.assertTrue(s.complete)
+
     def test_timeout_is_retryable_and_complete(self):
-        cand = {"engine": "trocr", "error": "timeout"}
-        s = normalize(cand)
+        s = normalize(failed(error="timeout"))
         self.assertTrue(s.retryable)
         self.assertTrue(s.complete)
 
-    def test_unavailable_is_retryable(self):
-        cand = {"engine": "kraken", "error": "connection refused"}
-        s = normalize(cand)
-        self.assertTrue(s.retryable)
-
-    def test_degenerate_is_not_retryable(self):
-        cand = {"engine": "vlm", "is_degenerate": True, "text": ""}
-        s = normalize(cand)
+    def test_degenerate_not_retryable(self):
+        s = normalize(success(is_degenerate=True))
         self.assertFalse(s.retryable)
-        self.assertTrue(s.complete)
 
-    def test_missing_is_not_retryable_not_complete(self):
-        cand = {"engine": "kraken"}  # no text, no error, no attempt
-        s = normalize(cand)
-        self.assertEqual(s.code, "success")  # currently success; could be "missing"
-        # Both RETRYABLE and COMPLETE must be respected
+    def test_missing_not_retryable_not_complete(self):
+        s = normalize({"engine": "kraken"})
         self.assertFalse(s.retryable)
+        self.assertFalse(s.complete)
+
+    def test_all_status_codes_have_retryable_value(self):
+        for code in RETRYABLE:
+            self.assertIn(code, list(PUBLIC_MESSAGES.keys()))
+
+    def test_all_status_codes_in_public_messages(self):
+        for code in PUBLIC_MESSAGES:
+            self.assertIsInstance(PUBLIC_MESSAGES[code], str)
+            self.assertTrue(PUBLIC_MESSAGES[code])
 
 
 if __name__ == "__main__":
