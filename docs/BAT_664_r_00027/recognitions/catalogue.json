@@ -1,0 +1,48 @@
+{
+  "artifacts": [
+    {
+      "characters": 570,
+      "engine": "fusion",
+      "error": null,
+      "error_path": null,
+      "id": "selected",
+      "model_id": null,
+      "page": null,
+      "path": "recognitions/fused.txt",
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "party",
+      "error": "Der Erkennungsdienst war nicht erreichbar.",
+      "error_path": "recognitions/party-10.5281_zenodo.20642057.error.txt",
+      "id": "party-10-5281-zenodo-20642057",
+      "model_id": "10.5281/zenodo.20642057",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortierte mit einem Fehler.",
+      "error_path": "recognitions/kraken-kraken-catmus_medieval.error.txt",
+      "id": "kraken-kraken-catmus-medieval",
+      "model_id": "kraken-catmus_medieval",
+      "page": null,
+      "path": null,
+      "status": "error"
+    }
+  ],
+  "doc_id": "BAT_664_r_00027",
+  "run_counts": {
+    "degenerate": 2,
+    "empty": 0,
+    "failed": 2,
+    "successful": 1,
+    "total": 3
+  },
+  "run_quality": "partial_failure",
+  "version": "1.0"
+}

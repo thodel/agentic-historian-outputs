@@ -2,18 +2,21 @@
   "BAT_664_r_00027": {
     "comparison_pair": null,
     "comparison_ready": false,
-    "degenerate": null,
-    "empty": null,
-    "engines": [],
-    "failed": null,
-    "model_count": 0,
-    "page_count": null,
-    "provenance": "legacy",
+    "degenerate": 1,
+    "empty": 0,
+    "engines": [
+      "kraken",
+      "party"
+    ],
+    "failed": 1,
+    "model_count": 2,
+    "page_count": 1,
+    "provenance": "current",
     "review_status": "machine-generated",
     "source_available": false,
     "source_type": "missing",
-    "successful": null,
-    "total": null
+    "successful": 0,
+    "total": 2
   },
   "bat": {
     "comparison_pair": [

@@ -1,39 +1,22 @@
 ---
 layout: default
-title: BAT_664_r_00027
+title: "BAT_664_r_00027"
 ---
 
-# BAT_664_r_00027
+<link rel="stylesheet" href="{{ '/assets/output.css' | relative_url }}">
 
-## Metadaten
+<nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> BAT_664_r_00027</nav>
+<header class="output-header page-section page-section--identity" data-page-section="identity">
+  <p class="output-kicker">Forschungsausgabe</p><h1>BAT_664_r_00027</h1>
+  <div class="output-status"><span>machine-generated</span><span>QA 10%</span><span>Nicht angegeben Seiten</span></div>
+  <p class="notice"><strong>Interpretationsstatus:</strong> Dieser Output wurde automatisch erzeugt. Nicht als Edition oder verifizierte Transkription zitieren, sofern der Status nicht ausdrücklich „human-verified“ lautet.</p>
+</header>
 
-| Feld | Wert |
-|---|---|
-| HTR | kraken (QA 0.1) |
+<section id="source" class="page-section page-section--evidence" data-page-section="source" aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
+<div class="notice notice--warning"><strong>Kein öffentliches Digitalisat verknüpft.</strong> Ein lokaler Verarbeitungspfad ist kein zitierbarer Quellenbeleg. Ergänzen Sie <code>source_url</code> oder <code>iiif_manifest</code> in der Pipeline-Ausgabe.</div></section>
 
-## Entitäten
-
-### ORG
-- ropse
-- furipians
-
-### PERSON
-- gerrmreuon
-- marhit
-- angeley
-- sarin
-- daimil
-- ehultz
-- fiisdz
-
-### PLACE
-- scosse
-- cabu
-
-## Transkription
-
-```
-duser feunilite grus vor liebe gerrmreuon de scosse roepse di fuitsriousthont
+<section id="transcription" class="page-section page-section--evidence" data-page-section="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
+<pre class="transcription" tabindex="0"><code>duser feunilite grus vor liebe gerrmreuon de scosse roepse di fuitsriousthont
 homn vast uud emraro oigon darmus ue bee selbe vast i digl cond uil furipians
 hat aodonoid inz esgerraih marhit iy cabu dai ji heit angeley stnun han
 poir darmnls ois gesthale du saus xff resthlaily dee ouch ist cgnt vud eil si ile
@@ -42,23 +25,46 @@ die sarin ustrchit und daimil se ist iantz ouse noun dx con olqutr vist
 sni gencqn lussou frden ili me st srrit ist uil ee uet n st resse
 e sirs lefhcis dan us di i u oiett
 ehultz vd
-fiisdz
-```
+fiisdz</code></pre></section>
 
-## Recognition results
-
-_2 independent candidate transcription(s), each exported separately._
-
-| Page | Engine | Model | Chars | Export |
-|---|---|---|---|---|
-| `—` | `party` | `10.5281/zenodo.20642057` | 0 | ⚠️ party unavailable (gateway unreachable,  |
-| `—` | `kraken` | `kraken-catmus_medieval` | 570 | [kraken-kraken-catmus_medieval.txt](recognitions/kraken-kraken-catmus_medieval.txt) |
-
-<details>
-<summary>kraken · kraken-catmus_medieval (570 chars)</summary>
-
-```
-duser feunilite grus vor liebe gerrmreuon de scosse roepse di fuitsriousthont
+<section id="recognitions" class="page-section page-section--evidence" data-page-section="recognitions" aria-labelledby="recognitions-heading">
+<h2 id="recognitions-heading">Erkennungsversionen</h2>
+<p class="rec-intro">
+Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sichtbar.
+<button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-incomparable_confidence">ⓘ Nicht vergleichbare Konfidenz</button>
+</p>
+<div class="quality-explanation" id="quality-explanation-engine_confidence-1" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><div class="quality-explanation" id="quality-explanation-agreement-2" role="region" aria-label="Engine-Übereinstimmung" hidden><p><strong>Engine-Übereinstimmung:</strong> Die Übereinstimmung zeigt, wie viele Engines dieselbe Lesart erzeugt haben.  Übereinstimmung bedeutet nicht, dass die Lesart korrekt ist — alle Engines können gemeinsam fehlgehen.  Übereinstimmungswerte sind nicht dasselbe wie Genauigkeitswerte.</p></div><div class="quality-explanation" id="quality-explanation-degenerate-3" role="region" aria-label="Degenerierte Ausgabe" hidden><p><strong>Degenerierte Ausgabe:</strong> Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.</p></div><div class="quality-explanation" id="quality-explanation-failed-4" role="region" aria-label="Fehlgeschlagene Erkennung" hidden><p><strong>Fehlgeschlagene Erkennung:</strong> Die Erkennung ist fehlgeschlagen (Timeout, Dienst nicht erreichbar oder anderer Fehler).  Es liegt keine verwertbare Transkription vor.</p></div><div class="quality-explanation" id="quality-explanation-reference_evaluation-5" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div><div class="quality-explanation" id="quality-explanation-incomparable_confidence-6" role="region" aria-label="Nicht vergleichbare Konfidenzwerte" hidden><p><strong>Nicht vergleichbare Konfidenzwerte:</strong> Konfidenzwerte verschiedener Engines stammen aus unterschiedlichen Modellen mit unterschiedlichen Skalen und Bedeutungen.  Ein höherer Wert einer Engine bedeutet nicht, dass deren Transkription genauer ist als die einer anderen Engine.</p></div>
+<div class="rec-viewer" data-recognition-viewer data-doc-id="BAT_664_r_00027">
+<div class="rec-primary-download"><a class="btn-rec-download" href="recognitions/fused.txt" download data-rec-primary-download>Aktuelle Transkription herunterladen <span class="rec-download-format">TXT</span></a><span class="rec-download-provenance">fusion · Seite nicht zugeordnet</span></div>
+<details class="rec-inventory"><summary>Alle Erkennungsversionen herunterladen <span class="rec-inv-count">(3 Versionen)</span></summary>
+<div class="table-scroll"><table class="rec-inv-table"><thead><tr><th>Engine</th><th>Modell</th><th>Zeichen</th><th>Status</th><th>Konfidenz/Fehler</th><th>Download</th></tr></thead><tbody><tr class="rec-inv-page-header"><th colspan="6">Nicht zugeordnet</th></tr><tr><td>fusion</td><td>—</td><td>570</td><td>Erfolgreich</td><td>Nicht angegeben</td><td class="rec-inv-dl"><a href="recognitions/fused.txt" download>fused.txt</a></td></tr><tr class="rec-inv-error"><td>party</td><td>10.5281/zenodo.20642057</td><td>—</td><td>Fehlgeschlagen</td><td>Der Erkennungsdienst war nicht erreichbar.</td><td>—</td></tr><tr class="rec-inv-error"><td>kraken</td><td>kraken-catmus_medieval</td><td>—</td><td>Fehlgeschlagen</td><td>Degenerierte Erkennung: sehr niedrige Engine-Konfidenz</td><td>—</td></tr></tbody></table></div></details>
+<div class="notice notice--warning rec-run-summary"><strong>Erkennungslauf:</strong> 4 von 3 fehlgeschlagen <span class="rec-run-chips"><span class="rec-chip rec-chip--ok">1 erfolgreich</span><span class="rec-chip rec-chip--failed">2 fehlgeschlagen</span><span class="rec-chip rec-chip--degenerate">2 degeneriert</span></span></div>
+<div class="rec-compare" data-recognition-compare>
+<div class="rec-compare-toolbar"><button class="btn-rec-compare" type="button" data-rec-compare-open aria-expanded="false">&#128269; Vergleichen</button></div>
+<div class="rec-compare-panes" data-rec-compare-panes hidden>
+<div class="rec-compare-pane" data-rec-compare-pane="left" data-rec-compare-selected="selected">
+<div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-left">Version links</label></div>
+<select class="rec-compare-select" id="rec-compare-select-left" data-rec-compare-select="left"><option value="selected" data-page="">Ausgewählt / Fusion</option><option value="party-10-5281-zenodo-20642057" data-page="" disabled>party · 10.5281/zenodo.20642057</option><option value="kraken-kraken-catmus-medieval" data-page="" disabled>Kraken OCR · kraken-catmus_medieval</option></select>
+<div class="rec-compare-body" data-rec-compare-body="left" tabindex="-1"></div></div>
+<div class="rec-compare-pane" data-rec-compare-pane="right" data-rec-compare-selected="selected">
+<div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-right">Version rechts</label></div>
+<select class="rec-compare-select" id="rec-compare-select-right" data-rec-compare-select="right"><option value="selected" data-page="">Ausgewählt / Fusion</option><option value="party-10-5281-zenodo-20642057" data-page="" disabled>party · 10.5281/zenodo.20642057</option><option value="kraken-kraken-catmus-medieval" data-page="" disabled>Kraken OCR · kraken-catmus_medieval</option></select>
+<div class="rec-compare-body" data-rec-compare-body="right" tabindex="-1"></div>
+<div class="rec-compare-diff" data-rec-compare-diff hidden role="region" aria-label="Unterschiede"></div></div>
+<button class="btn-rec-compare-close" type="button" data-rec-compare-close aria-label="Vergleich schliessen">&#215;</button>
+</div></div>
+<nav class="rec-selector" aria-label="Erkennungsversionen"><ul><li><a href="#recognition-selected" data-recognition-select="selected" data-page="" data-engine="fusion" data-model="" aria-controls="recognition-selected">Ausgewählt / Fusion</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-party-10-5281-zenodo-20642057" data-recognition-select="party-10-5281-zenodo-20642057" data-page="" data-engine="party" data-model="10.5281/zenodo.20642057" aria-controls="recognition-party-10-5281-zenodo-20642057">party · 10.5281/zenodo.20642057</a> <span class="rec-status rec-status--degenerate">Degeneriert</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval" data-recognition-select="kraken-kraken-catmus-medieval" data-page="" data-engine="kraken" data-model="kraken-catmus_medieval" aria-controls="recognition-kraken-kraken-catmus-medieval">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--degenerate">Degeneriert</span></li></ul></nav>
+<div class="rec-panels"><details class="rec-panel" id="recognition-selected" data-recognition-panel="selected" data-page="" data-engine="fusion" data-model="" open>
+<summary>Ausgewählt / Fusion — ausgewählt</summary>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>fusion</dd></div>
+<div><dt>Modell</dt><dd>—</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd>Nicht angegeben <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-7"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-8" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: fusion</p><p>Modell: —</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): None</p></details>
+<div><dt>Zeichen</dt><dd>570</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz Nicht angegeben</span></dd></div>
+</dl>
+<pre class="rec-text" tabindex="0"><code>duser feunilite grus vor liebe gerrmreuon de scosse roepse di fuitsriousthont
 homn vast uud emraro oigon darmus ue bee selbe vast i digl cond uil furipians
 hat aodonoid inz esgerraih marhit iy cabu dai ji heit angeley stnun han
 poir darmnls ois gesthale du saus xff resthlaily dee ouch ist cgnt vud eil si ile
@@ -67,16 +73,58 @@ die sarin ustrchit und daimil se ist iantz ouse noun dx con olqutr vist
 sni gencqn lussou frden ili me st srrit ist uil ee uet n st resse
 e sirs lefhcis dan us di i u oiett
 ehultz vd
-fiisdz
-```
-</details>
+fiisdz</code></pre>
 
-## Dateien
+<p><a class="rec-download" href="recognitions/fused.txt" download>Diese Transkription herunterladen</a></p>
+</details><details class="rec-panel" id="recognition-party-10-5281-zenodo-20642057" data-recognition-panel="party-10-5281-zenodo-20642057" data-page="" data-engine="party" data-model="10.5281/zenodo.20642057">
+<summary>party · 10.5281/zenodo.20642057</summary>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>party</dd></div>
+<div><dt>Modell</dt><dd>10.5281/zenodo.20642057</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
 
-- [description.json](description.json)
-- [description.md](description.md)
-- [entities.json](entities.json)
-- [entities.md](entities.md)
-- [recognitions/fused.txt](recognitions/fused.txt)
-- [recognitions/kraken-kraken-catmus_medieval.txt](recognitions/kraken-kraken-catmus_medieval.txt)
-- [transcription.txt](transcription.txt)
+<div><dt>Zeichen</dt><dd>0</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--degenerate" title="Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.">Degenerierte Ausgabe</span></dd></div>
+</dl>
+<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong><br>Der Erkennungsdienst war nicht erreichbar. <a href="/docs/methodology/#recognition-failures" class="rec-methodology-link" rel="noopener">Erklaerung der Fehlerkategorien</a> <span class="rec-retry-hint">— Wiederholung moeglich</span></div>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval" data-recognition-panel="kraken-kraken-catmus-medieval" data-page="" data-engine="kraken" data-model="kraken-catmus_medieval">
+<summary>Kraken OCR · kraken-catmus_medieval</summary>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>kraken</dd></div>
+<div><dt>Modell</dt><dd>kraken-catmus_medieval</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+
+<div><dt>Zeichen</dt><dd>570</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--degenerate" title="Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.">Degenerierte Ausgabe</span></dd></div>
+</dl>
+<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong><br>Der Erkennungsdienst antwortierte mit einem Fehler. <a href="/docs/methodology/#recognition-failures" class="rec-methodology-link" rel="noopener">Erklaerung der Fehlerkategorien</a> <span class="rec-retry-hint">— Wiederholung moeglich</span></div>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details></div>
+</div></section>
+
+<section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
+<p>Transkription unlesbar oder degeneriert (Wiederholungskollaps) — keine belastbare Quellenbeschreibung möglich.</p>
+<p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt; keine unabhängige historische Interpretation. <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p></section>
+
+<section id="claims" class="page-section page-section--interpretation" data-page-section="claims" aria-labelledby="claims-heading"><h2 id="claims-heading">Metadaten, Provenienz und Unsicherheit</h2><div class="table-scroll"><table><thead><tr><th>Feld</th><th>Wert</th><th>Sicherheit</th><th>Begründung</th><th>Nachweis</th></tr></thead><tbody><tr><td colspan="5">Keine strukturierten Beschreibungsfelder verfügbar.</td></tr></tbody></table></div></section>
+
+<section id="entities" class="page-section page-section--interpretation" data-page-section="entities" aria-labelledby="entities-heading"><h2 id="entities-heading">Erkannte Entitäten</h2>
+<h3>ORG</h3><ul><li><a href="../entities/ropse-0ae8ab46/">ropse</a> <span class="muted">— scosse ropse di fuitsriousthont</span></li><li><a href="../entities/furipians-7ec5a148/">furipians</a> <span class="muted">— uil furipians hat</span></li></ul><h3>PERSON</h3><ul><li><a href="../entities/gerrmreuon-43a713f1/">gerrmreuon</a> <span class="muted">— vor liebe gerrmreuon de scosse</span></li><li><a href="../entities/marhit-a1bdc5a9/">marhit</a> <span class="muted">— esgerraih marhit iy</span></li><li><a href="../entities/angeley-bc6a9f68/">angeley</a> <span class="muted">— heit angeley stnun</span></li><li><a href="../entities/sarin-d772c9f3/">sarin</a> <span class="muted">— die sarin ustrchit</span></li><li><a href="../entities/daimil-ea8260a0/">daimil</a> <span class="muted">— und daimil se ist</span></li><li><a href="../entities/ehultz-b39a72d2/">ehultz</a> <span class="muted">— ehultz vd</span></li><li><a href="../entities/fiisdz-9e51ef88/">fiisdz</a> <span class="muted">— fiisdz</span></li></ul><h3>PLACE</h3><ul><li><a href="../entities/scosse-bb874ced/">scosse</a> <span class="muted">— gerrmreuon de scosse ropse</span></li><li><a href="../entities/cabu-9bea1410/">cabu</a> <span class="muted">— iy cabu dai</span></li></ul>
+<p><a href="entities.csv">Entitäten als CSV herunterladen</a> · <a href="../entities/">Alle Entitäten durchsuchen</a></p></section>
+
+<section id="downloads" class="page-section page-section--administrative" data-page-section="downloads" aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
+<ul><li><a href="bat-664-r-00027-recognition-package.zip">Vollständiges Erkennungspaket (ZIP)</a></li><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
+<p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
+
+<section id="citation" class="page-section page-section--administrative" data-page-section="citation" aria-labelledby="citation-heading"><h2 id="citation-heading">Zitation und stabile Adresse</h2>
+<p><code>Agentic Historian. (2026). Agentic Historian output: BAT_664_r_00027 [Machine-generated dataset]. https://thodel.github.io/agentic-historian-outputs/BAT_664_r_00027/</code></p>
+<p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/BAT_664_r_00027/">https://thodel.github.io/agentic-historian-outputs/BAT_664_r_00027/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/BAT_664_r_00027/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
+
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/e0026d0"><code>e0026d0</code></a> · <time datetime="2026-07-17T21:04:46+02:00">2026-07-17</time> · Publish BAT_664_r_00027</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/4589e1c"><code>4589e1c</code></a> · <time datetime="2026-07-07T15:25:18+02:00">2026-07-07</time> · Publish BAT_664_r_00027</li></ol></section>
+<script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/page-sync.js' | relative_url }}" defer></script>
