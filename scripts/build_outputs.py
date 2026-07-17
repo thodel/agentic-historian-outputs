@@ -35,8 +35,17 @@ def valid_public_url(url: str) -> bool:
 
 def git_history(path: Path) -> list[tuple[str, str, str]]:
     try:
+        # Generated pages must not embed the current PR commit: doing so makes
+        # every rebuild one SHA behind its own commit.  Review builds therefore
+        # use the merge base with main; after merge that base is HEAD and the
+        # published history naturally advances when pipeline.json changes.
+        revision = subprocess.run(
+            ["git", "merge-base", "HEAD", "origin/main"],
+            check=True, capture_output=True, text=True,
+        ).stdout.strip() or "HEAD"
         out = subprocess.run(
-            ["git", "log", "--follow", "--format=%h%x09%aI%x09%s", "--", str(path)],
+            ["git", "log", revision, "--follow",
+             "--format=%h%x09%aI%x09%s", "--", str(path)],
             check=True, capture_output=True, text=True,
         ).stdout
     except (OSError, subprocess.CalledProcessError):
@@ -358,4 +367,3 @@ def build() -> None:
 
 if __name__ == "__main__":
     build()
-

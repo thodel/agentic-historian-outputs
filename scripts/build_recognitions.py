@@ -116,8 +116,8 @@ def _error_path(candidate: dict) -> str:
 
 
 def write_error_record(directory: Path, candidate: dict) -> Path | None:
-    error = _public_error(candidate.get("error"))
-    if not error:
+    provenance = _failure_provenance(candidate)
+    if provenance["status_code"] == "success":
         return None
     path = directory / _error_path(candidate)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -125,7 +125,7 @@ def write_error_record(directory: Path, candidate: dict) -> Path | None:
         "engine": str(candidate.get("engine") or ""),
         "model_id": str(candidate.get("model_id") or ""),
         "page": str(candidate.get("page") or ""),
-        "error": error,
+        **provenance,
     }, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return path
 
@@ -136,6 +136,28 @@ def compute_checksum(path: Path) -> str:
         for chunk in iter(lambda: handle.read(65536), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _failure_provenance(candidate: dict) -> dict:
+    """Return the safe, typed public record for one failed attempt."""
+    status = normalize(candidate)
+    return {
+        "status_code": status.code,
+        "retryable": status.retryable,
+        "complete": status.complete,
+        "diagnostic_code": status.error_code or status.code,
+        "error": status.public_msg,
+        "engine": status.engine,
+        "model_id": status.model or None,
+        "page": status.page or None,
+        "timing_ms": status.timing_ms,
+        "run_id": status.run_id or None,
+        "retry_count": status.retry_count,
+        "attempt": status.attempt,
+        "fusion_decision": candidate.get("fusion_decision") or "excluded",
+        "text_artifact": None,
+        "reuse_notice": "Incomplete recognition attempt; cite the failure record with the run provenance.",
+    }
 
 
 def _catalogue_data(doc_id: str, candidates: list[dict]) -> dict:
@@ -207,10 +229,9 @@ def write_package(directory: Path, doc_id: str, recognitions: list,
                 _safe_slug(candidate["id"]),
             ))
             name = f"candidates/{stem}.error.txt"
-            payload = json.dumps({
-                "engine": candidate["engine"], "model_id": candidate["model_id"],
-                "page": candidate["page"], "error": candidate["error"],
-            }, ensure_ascii=False, sort_keys=True).encode("utf-8")
+            failure = _failure_provenance(candidate)
+            payload = json.dumps(failure, ensure_ascii=False,
+                                 sort_keys=True).encode("utf-8")
             kind = "error"
         else:
             stem = "/".join((
@@ -221,12 +242,16 @@ def write_package(directory: Path, doc_id: str, recognitions: list,
             payload = candidate["text"].encode("utf-8")
             kind = "candidate"
         entries.append((name, payload))
-        artifacts.append({
+        artifact = {
             "file": name, "type": kind, "engine": candidate["engine"],
             "model_id": candidate["model_id"] or None,
             "page": candidate["page"] or None,
             "checksum": hashlib.sha256(payload).hexdigest(),
-        })
+        }
+        if kind == "error":
+            artifact.update(_failure_provenance(candidate))
+            artifact["reason_no_text"] = "recognition_attempt_failed"
+        artifacts.append(artifact)
     catalogue = json.dumps(_catalogue_data(doc_id, candidates), ensure_ascii=False,
                            indent=2, sort_keys=True).encode("utf-8")
     entries.append(("catalogue.json", catalogue))
@@ -300,6 +325,14 @@ def _candidates(recognitions, transcript: str) -> list[dict]:
             "error": error,
             "selected": False,
             "is_degenerate": is_degenerate,
+            # Preserve safe machine-readable attempt context for exports.
+            "status_code": raw.get("status_code"),
+            "error_code": raw.get("error_code"),
+            "timing_ms": raw.get("timing_ms"),
+            "run_id": raw.get("run_id"),
+            "retry_count": raw.get("retry_count", 0),
+            "attempt": raw.get("attempt", 1),
+            "fusion_decision": raw.get("fusion_decision") or "excluded",
             # Historical multi-page records without page attribution collide at
             # one publisher path. Never link a candidate to an ambiguous file.
             "path": (_recognition_path(raw)
