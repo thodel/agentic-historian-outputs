@@ -13,7 +13,8 @@ title: "saa-0005-test"
 </header>
 
 <section aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
-<p><a href="https://my.override.com/page/42">Veröffentlichte Quelle öffnen</a></p></section>
+<p><a href="https://my.override.com/page/42">Veröffentlichte Quelle öffnen</a></p>
+<script type="application/json" data-source-reference>{&quot;type&quot;:&quot;landing_page&quot;,&quot;label&quot;:&quot;&quot;,&quot;attribution&quot;:&quot;&quot;,&quot;rights&quot;:&quot;&quot;,&quot;url&quot;:&quot;https://my.override.com/page/42&quot;,&quot;manifest_url&quot;:&quot;&quot;,&quot;image_url&quot;:&quot;&quot;,&quot;pages&quot;:[]}</script></section>
 
 <section aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
 <p>Gerichtsbrief</p>

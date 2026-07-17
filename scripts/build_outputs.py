@@ -14,6 +14,7 @@ from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 from build_recognitions import build_recognition_section
+from source_references import normalize_source_reference, public_url
 from urllib.parse import urlparse
 from xml.sax.saxutils import escape as xml_escape
 
@@ -29,13 +30,7 @@ def value(item: object) -> str:
 
 
 def valid_public_url(url: str) -> bool:
-    if not url:
-        return False
-    parsed = urlparse(url)
-    blocked = ("example.com", "base", "localhost", "127.0.0.1")
-    return parsed.scheme in {"http", "https"} and parsed.hostname is not None and not any(
-        marker in parsed.hostname.lower() for marker in blocked
-    )
+    return bool(public_url(url))
 
 
 def git_history(path: Path) -> list[tuple[str, str, str]]:
@@ -125,18 +120,26 @@ def write_tei(path: Path, doc_id: str, transcript: str, source_url: str) -> None
 
 
 def source_panel(data: dict) -> str:
-    url = value(data.get("iiif_manifest") or data.get("manifest_url") or data.get("source_url"))
-    if valid_public_url(url):
+    source = normalize_source_reference(data)
+    url = source["url"]
+    payload = html.escape(json.dumps(source, ensure_ascii=False, separators=(",", ":")))
+    if url:
         escaped = html.escape(url, quote=True)
-        is_iiif = "manifest" in url.lower() or url.lower().endswith((".json", "/manifest"))
-        if is_iiif:
+        if source["type"] == "iiif_manifest":
             viewer = f'<iframe class="source-frame" title="IIIF-Quelle" loading="lazy" src="https://uv-v4.netlify.app/#?manifest={escaped}"></iframe>'
-        elif re.search(r"\.(?:jpe?g|png|webp|tiff?)(?:\?.*)?$", url, re.I):
+        elif source["type"] == "image":
             viewer = f'<a href="{escaped}"><img class="source-image" src="{escaped}" loading="lazy" alt="Digitalisat zu diesem Output"></a>'
         else:
             viewer = ""
+        metadata = "".join(
+            f'<dt>{label}</dt><dd>{html.escape(source[key])}</dd>'
+            for key, label in (("attribution", "Zuschreibung"), ("rights", "Rechte"))
+            if source[key]
+        )
+        metadata = f'<dl class="source-meta">{metadata}</dl>' if metadata else ""
         return f'''<section aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
-<p><a href="{escaped}">Veröffentlichte Quelle öffnen</a></p>{viewer}</section>'''
+<p><a href="{escaped}">{html.escape(source["label"] or "Veröffentlichte Quelle öffnen")}</a></p>{metadata}{viewer}
+<script type="application/json" data-source-reference>{payload}</script></section>'''
     return '''<section aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
 <div class="notice notice--warning"><strong>Kein öffentliches Digitalisat verknüpft.</strong> Ein lokaler Verarbeitungspfad ist kein zitierbarer Quellenbeleg. Ergänzen Sie <code>source_url</code> oder <code>iiif_manifest</code> in der Pipeline-Ausgabe.</div></section>'''
 
@@ -151,7 +154,7 @@ def build_document(path: Path, entity_index: dict) -> bool:
     fields = description.get("source_json") if isinstance(description.get("source_json"), dict) else {}
     meta = data.get("a_meta") if isinstance(data.get("a_meta"), dict) else {}
     transcript = value(data.get("transcription") or meta.get("transcription"))
-    source_url = value(data.get("iiif_manifest") or data.get("manifest_url") or data.get("source_url"))
+    source_url = normalize_source_reference(data)["url"]
     items = entities(data)
     is_test = "test" in doc_id.lower() or "example.com" in source_url
     review = value(data.get("review_status") or meta.get("review_status") or "machine-generated")

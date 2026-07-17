@@ -13,7 +13,8 @@ title: "order-001-group"
 </header>
 
 <section aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
-<div class="notice notice--warning"><strong>Kein öffentliches Digitalisat verknüpft.</strong> Ein lokaler Verarbeitungspfad ist kein zitierbarer Quellenbeleg. Ergänzen Sie <code>source_url</code> oder <code>iiif_manifest</code> in der Pipeline-Ausgabe.</div></section>
+<p><a href="https://base/test_runstate_grouped_pipeline0">Veröffentlichte Quelle öffnen</a></p>
+<script type="application/json" data-source-reference>{&quot;type&quot;:&quot;landing_page&quot;,&quot;label&quot;:&quot;&quot;,&quot;attribution&quot;:&quot;&quot;,&quot;rights&quot;:&quot;&quot;,&quot;url&quot;:&quot;https://base/test_runstate_grouped_pipeline0&quot;,&quot;manifest_url&quot;:&quot;&quot;,&quot;image_url&quot;:&quot;&quot;,&quot;pages&quot;:[]}</script></section>
 
 <section aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
 <p>Gerichtsbrief</p>

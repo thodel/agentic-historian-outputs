@@ -23,6 +23,12 @@ Jede Dokumentseite weist ihren Bearbeitungsstatus und – sofern vorhanden – d
 
 Fehlt ein öffentliches Digitalisat, weist die Seite darauf hin. Lokale Verarbeitungspfade gelten nicht als Quellenbeleg.
 
+### Öffentliche Quellenreferenzen
+
+Publisher können eine IIIF-Quelle über `iiif_manifest` oder das ältere Alias `manifest_url` angeben. `source_url` bezeichnet entweder ein direktes öffentliches Bild oder die Landingpage eines Archivs. Optionale Felder sind `source_label`, `source_attribution` und `source_rights`. Mehrseitige Ausgaben können `source_pages` mit `page` sowie `canvas_url` oder `image_url` verwenden, um Erkennungsseiten eindeutig auf Digitalisate abzubilden.
+
+Nur öffentliche HTTP(S)-Adressen werden veröffentlicht. Lokale Pfade, private IP-Adressen, Zugangsdaten in URLs, Platzhalter-Hosts und andere Protokolle werden verworfen. Ältere Ausgaben ohne diese Felder bleiben als reine Transkriptionsseiten nutzbar. Die normalisierte, bewusst kleine Quellenreferenz wird zusätzlich als JSON-Payload auf der Dokumentseite bereitgestellt; sie enthält keine vollständigen IIIF-Manifeste oder Erkennungstexte.
+
 ## Versionen und Nachnutzung
 
 Änderungen werden über Git protokolliert. Jede Dokumentseite verlinkt ihre Versionsgeschichte und bietet TEI-XML, CSV, JSON und eine maschinenlesbare Zitation an. Eine allgemeine Nachnutzungslizenz ist derzeit nicht festgelegt; Rechte am Digitalisat und an den zugrunde liegenden Quellen sind separat zu prüfen.
