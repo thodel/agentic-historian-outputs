@@ -132,3 +132,41 @@ a:focus-visible, .transcription:focus { outline: 3px solid #f5b942; outline-offs
   color: var(--text-muted, #555);
   margin-bottom: 0.75rem;
 }
+
+/* ── Active download section (issue #35) ──────────────────────────────────── */
+.dl-section { margin: 1.5rem 0; }
+.dl-meta { color: var(--text-muted, #666); font-size: 0.875rem; margin: 0.25rem 0 0.75rem; }
+.dl-primary { margin: 0.5rem 0; }
+.dl-btn {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background: #245b78;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.dl-btn:hover, .dl-btn:focus-visible { background: #1d4a63; }
+.dl-btn:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
+.dl-btn::before { content: "⬇ "; }
+.dl-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+}
+.dl-switcher label { color: var(--text-muted, #666); }
+.dl-cand-select {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border, #ccc);
+  border-radius: 3px;
+  font-size: 0.875rem;
+  max-width: 22rem;
+  background: var(--bg, #fff);
+}
+.dl-link { margin: 0 0.25rem; }
+.dl-link--txt { font-size: 0.85rem; color: #245b78; }
+.dl-error-note { font-size: 0.85rem; color: var(--text-muted, #666); margin-top: 0.25rem; }

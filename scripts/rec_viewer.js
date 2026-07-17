@@ -1,8 +1,9 @@
-// Recognition viewer — progressive enhancement (issues #2, #3)
+// Recognition viewer — progressive enhancement (issues #2, #3, #35)
 // - Tab switching without navigation
 // - URL persistence: ?rec=<candidate-id> restores selection
 // - Browser back/forward support
 // - Keyboard accessible
+// - Active download target updates on candidate switch (issue #35)
 document.querySelectorAll('.rec-viewer').forEach(function(viewer) {
   var docId    = viewer.dataset.docId || '';
   var panels   = Array.from(viewer.querySelectorAll('.rec-panel'));
@@ -49,3 +50,63 @@ document.querySelectorAll('.rec-viewer').forEach(function(viewer) {
   });
 });
 
+// ── Active download section (issue #35) ─────────────────────────────────────
+document.querySelectorAll('.dl-cand-select').forEach(function(select) {
+  var docId = select.dataset.docId || '';
+  var dlBtn = document.querySelector('.dl-btn[data-doc-id="' + docId + '"]');
+
+  // Map from candidate-id (tab value) to download href
+  // Gather all data-cand links from the recognition panels
+  var candToHref = {};
+  var candLabels = {};
+  document.querySelectorAll('.rec-panel').forEach(function(panel) {
+    var dlLink = panel.querySelector('a[data-cand]');
+    if (dlLink) {
+      var cand = dlLink.dataset.cand;
+      candToHref[cand] = dlLink.href;
+    }
+  });
+
+  // Default download button
+  var defaultHref = dlBtn ? dlBtn.dataset.defaultHref : null;
+
+  select.addEventListener('change', function() {
+    var cand = select.value;
+    if (cand && candToHref[cand]) {
+      dlBtn.href = candToHref[cand];
+      dlBtn.setAttribute('data-cand', cand);
+      // Update label to include engine/page info
+      var opt = select.querySelector('option[value="' + cand + '"]');
+      if (opt) {
+        dlBtn.setAttribute('aria-label', 'Aktuelle Transkription herunterladen (' + opt.text + ')');
+      }
+    } else if (defaultHref) {
+      dlBtn.href = defaultHref;
+    }
+    // Sync: also activate the corresponding tab in the viewer
+    var tabInput = document.querySelector('.rec-tab-input[value="' + cand + '"]');
+    if (tabInput) { tabInput.checked = true; }
+    // Update URL hash to match
+    if (cand) {
+      var url = new URL(window.location.href);
+      url.searchParams.set('rec', cand);
+      history.replaceState({}, '', url.toString());
+    }
+  });
+});
+
+// ── Sync: when viewer tab changes, update download select (bidirectional) ───
+document.querySelectorAll('.rec-viewer').forEach(function(viewer) {
+  var docId = viewer.dataset.docId || '';
+  var inputs = Array.from(viewer.querySelectorAll('.rec-tab-input'));
+  var dlSelect = document.querySelector('.dl-cand-select[data-doc-id="' + docId + '"]');
+  if (!dlSelect) return;
+
+  inputs.forEach(function(inp) {
+    inp.addEventListener('change', function() {
+      if (inp.checked) {
+        dlSelect.value = inp.value;
+      }
+    });
+  });
+});
