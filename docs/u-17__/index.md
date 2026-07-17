@@ -1084,7 +1084,9 @@ xus</code></pre>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
 </details></div>
-</div></section><section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
+</div></section>
+
+<section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
 <p>Transkription unlesbar oder degeneriert (Wiederholungskollaps) — keine belastbare Quellenbeschreibung möglich.</p>
 <p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt; keine unabhängige historische Interpretation. <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p></section>
 
@@ -1104,3 +1106,4 @@ xus</code></pre>
 
 <section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/ddc3a3d"><code>ddc3a3d</code></a> · <time datetime="2026-07-16T21:41:31+02:00">2026-07-16</time> · Publish u-17__</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/79e08b5"><code>79e08b5</code></a> · <time datetime="2026-07-16T19:51:14+02:00">2026-07-16</time> · Publish u-17__</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/b0bb049"><code>b0bb049</code></a> · <time datetime="2026-07-15T20:31:21+02:00">2026-07-15</time> · Publish u-17__</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/1777d51"><code>1777d51</code></a> · <time datetime="2026-07-15T16:49:41+02:00">2026-07-15</time> · Publish u-17__</li></ol></section>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>

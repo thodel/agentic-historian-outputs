@@ -18,6 +18,8 @@ title: "saa-0006-test"
 <section id="transcription" class="page-section page-section--evidence" data-page-section="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
 <pre class="transcription" tabindex="0"><code>Hans von Bern tuend kund…</code></pre></section>
 
+
+
 <section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
 <p>Gerichtsbrief</p>
 <p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt; keine unabhängige historische Interpretation. <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p></section>
@@ -38,3 +40,4 @@ title: "saa-0006-test"
 
 <section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/7a1fb5f"><code>7a1fb5f</code></a> · <time datetime="2026-07-08T12:44:46+02:00">2026-07-08</time> · Publish saa-0006-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/9671eb8"><code>9671eb8</code></a> · <time datetime="2026-07-08T09:05:39+02:00">2026-07-08</time> · Publish saa-0006-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/313e7bd"><code>313e7bd</code></a> · <time datetime="2026-07-08T09:04:23+02:00">2026-07-08</time> · Publish saa-0006-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/e271582"><code>e271582</code></a> · <time datetime="2026-07-08T09:03:36+02:00">2026-07-08</time> · Publish saa-0006-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/fb4d459"><code>fb4d459</code></a> · <time datetime="2026-07-08T09:03:26+02:00">2026-07-08</time> · Publish saa-0002-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/506cc85"><code>506cc85</code></a> · <time datetime="2026-07-08T09:03:23+02:00">2026-07-08</time> · Publish saa-0001-test</li></ol></section>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>

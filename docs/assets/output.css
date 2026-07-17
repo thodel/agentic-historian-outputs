@@ -18,6 +18,12 @@ section { scroll-margin-top: 1rem; }
 .page-section--evidence { border-inline-start: .25rem solid #245b78; padding-inline-start: 1rem; }
 .page-section--interpretation { border-inline-start: .25rem solid #8a6b20; padding-inline-start: 1rem; }
 .page-section--administrative { border-inline-start: .25rem solid #77838d; padding-inline-start: 1rem; }
+.evidence-workspace { display: grid; grid-template-columns: minmax(0, var(--source-pane-ratio, 50%)) .8rem minmax(0, 1fr); align-items: stretch; gap: .5rem; margin-block: 1.5rem; }
+.evidence-pane { min-width: 0; max-height: 80vh; overflow: auto; }
+.evidence-pane .page-section { margin-top: 0; }
+.workspace-divider { display: flex; align-items: center; justify-content: center; min-height: 8rem; border-radius: .4rem; background: #d7e3e9; color: #245b78; cursor: col-resize; touch-action: none; user-select: none; }
+.workspace-divider:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
+.evidence-pane--transcription .rec-selector { position: sticky; top: 0; z-index: 2; }
 a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
 
 .rec-intro { color: #5c6875; }
@@ -40,3 +46,9 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 .rec-viewer--enhanced .rec-panel[hidden] { display: none; }
 
 @media (prefers-contrast: more) { .notice, .transcription, .rec-text, .rec-panel, .page-section { border-width: 2px; } }
+@media (max-width: 55rem) {
+  .evidence-workspace { display: block; }
+  .evidence-pane { max-height: none; overflow: visible; }
+  .workspace-divider { display: none; }
+  .evidence-pane--transcription .rec-selector { position: static; }
+}
