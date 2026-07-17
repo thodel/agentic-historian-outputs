@@ -45,6 +45,12 @@ Nur öffentliche HTTP(S)-Adressen werden veröffentlicht. Lokale Pfade, private 
 
 Änderungen werden über Git protokolliert. Jede Dokumentseite verlinkt ihre Versionsgeschichte und bietet TEI-XML, CSV, JSON und eine maschinenlesbare Zitation an. Eine allgemeine Nachnutzungslizenz ist derzeit nicht festgelegt; Rechte am Digitalisat und an den zugrunde liegenden Quellen sind separat zu prüfen.
 
+### Strukturierte Erkennungskandidaten
+
+Erfolgreiche textuelle Kandidaten können als TXT, JSON oder textorientiertes TEI-XML ausgegeben werden. TXT bleibt die verlustarme Grundform. JSON bewahrt Dokument-, Seiten-, Engine-, Modell-, Konfidenz- und Ableitungsprovenienz; Fehler werden nur als bereinigte öffentliche Meldungen ausgegeben. Das TEI-XML kennzeichnet die maschinelle Erzeugung im `revisionDesc` und enthält ausschliesslich den erkannten Text sowie seine Provenienz.
+
+ALTO, PAGE-XML sowie TEI-Zeilen, -Regionen, Koordinaten und Faksimile-Verweise werden nicht erzeugt, solange der jeweilige Erkennungsdienst keine entsprechende Layoutstruktur geliefert hat. Eine solche Struktur aus einfachem Text abzuleiten würde nicht belegte räumliche Aussagen fabrizieren. Strukturierte Kandidaten bleiben maschinell erzeugte Forschungsdaten und sind nicht als verifizierte Transkriptionen zu zitieren.
+
 ## Erkennungsübersicht im Katalog
 
 Der Katalog leitet aus jeder `pipeline.json` eine kompakte Erkennungsübersicht ab. Sie zählt Versuche als erfolgreich, fehlgeschlagen, leer oder degeneriert; listet unterschiedliche Engine-Familien; zählt unterschiedliche Engine/Modell-Paare; und hält Seitenzahl, Quellentyp, Prüfstatus sowie Vergleichsbereitschaft fest. Vergleichsbereitschaft setzt mindestens zwei nutzbare Kandidaten derselben bekannten Seite voraus. Doppelte Datensätze erhöhen nicht die Engine- oder Modellzahl.
