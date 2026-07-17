@@ -40,12 +40,23 @@ title: "u-17__"
 
 <section id="recognitions" aria-labelledby="recognitions-heading">
 <h2 id="recognitions-heading">Erkennungsversionen</h2>
-<p class="rec-intro">Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sichtbar. Konfidenzwerte verschiedener Engines sind nicht unmittelbar vergleichbar.</p>
+<p class="rec-intro">
+Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sichtbar.
+<button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-incomparable_confidence">ⓘ Nicht vergleichbare Konfidenz</button>
+</p>
+<div class="quality-explanation" id="quality-explanation-engine_confidence-25" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><div class="quality-explanation" id="quality-explanation-reference_evaluation-26" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div><div class="quality-explanation" id="quality-explanation-agreement-27" role="region" aria-label="Engine-Übereinstimmung" hidden><p><strong>Engine-Übereinstimmung:</strong> Die Übereinstimmung zeigt, wie viele Engines dieselbe Lesart erzeugt haben.  Übereinstimmung bedeutet nicht, dass die Lesart korrekt ist — alle Engines können gemeinsam fehlgehen.  Übereinstimmungswerte sind nicht dasselbe wie Genauigkeitswerte.</p></div><div class="quality-explanation" id="quality-explanation-incomparable_confidence-28" role="region" aria-label="Nicht vergleichbare Konfidenzwerte" hidden><p><strong>Nicht vergleichbare Konfidenzwerte:</strong> Konfidenzwerte verschiedener Engines stammen aus unterschiedlichen Modellen mit unterschiedlichen Skalen und Bedeutungen.  Ein höherer Wert einer Engine bedeutet nicht, dass deren Transkription genauer ist als die einer anderen Engine.</p></div><div class="quality-explanation" id="quality-explanation-failed-29" role="region" aria-label="Fehlgeschlagene Erkennung" hidden><p><strong>Fehlgeschlagene Erkennung:</strong> Die Erkennung ist fehlgeschlagen (Timeout, Dienst nicht erreichbar oder anderer Fehler).  Es liegt keine verwertbare Transkription vor.</p></div><div class="quality-explanation" id="quality-explanation-degenerate-30" role="region" aria-label="Degenerierte Ausgabe" hidden><p><strong>Degenerierte Ausgabe:</strong> Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.</p></div>
 <div class="rec-viewer" data-recognition-viewer data-doc-id="u-17__">
-<nav class="rec-selector" aria-label="Erkennungsversionen"><ul><li><a href="#recognition-selected" data-recognition-select="selected" aria-controls="recognition-selected">Ausgewählt / Fusion</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct" data-recognition-select="vlm-internvl3-8b-instruct" aria-controls="recognition-vlm-internvl3-8b-instruct">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval" data-recognition-select="kraken-kraken-catmus-medieval" aria-controls="recognition-kraken-kraken-catmus-medieval">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-trocr-trocr-medieval-escriptmask" data-recognition-select="trocr-trocr-medieval-escriptmask" aria-controls="recognition-trocr-trocr-medieval-escriptmask">TrOCR · trocr-medieval-escriptmask</a> <span class="rec-status rec-status--fehlgeschlagen">Fehlgeschlagen</span></li><li><a href="#recognition-kraken-kraken-mccatmus" data-recognition-select="kraken-kraken-mccatmus" aria-controls="recognition-kraken-kraken-mccatmus">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-trocr-trocr-kurrent-xvi-xvii" data-recognition-select="trocr-trocr-kurrent-xvi-xvii" aria-controls="recognition-trocr-trocr-kurrent-xvi-xvii">TrOCR · trocr-kurrent-xvi-xvii</a> <span class="rec-status rec-status--fehlgeschlagen">Fehlgeschlagen</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct-2" data-recognition-select="vlm-internvl3-8b-instruct-2" aria-controls="recognition-vlm-internvl3-8b-instruct-2">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval-2" data-recognition-select="kraken-kraken-catmus-medieval-2" aria-controls="recognition-kraken-kraken-catmus-medieval-2">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-mccatmus-2" data-recognition-select="kraken-kraken-mccatmus-2" aria-controls="recognition-kraken-kraken-mccatmus-2">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct-3" data-recognition-select="vlm-internvl3-8b-instruct-3" aria-controls="recognition-vlm-internvl3-8b-instruct-3">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval-3" data-recognition-select="kraken-kraken-catmus-medieval-3" aria-controls="recognition-kraken-kraken-catmus-medieval-3">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-mccatmus-3" data-recognition-select="kraken-kraken-mccatmus-3" aria-controls="recognition-kraken-kraken-mccatmus-3">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct-4" data-recognition-select="vlm-internvl3-8b-instruct-4" aria-controls="recognition-vlm-internvl3-8b-instruct-4">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval-4" data-recognition-select="kraken-kraken-catmus-medieval-4" aria-controls="recognition-kraken-kraken-catmus-medieval-4">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--erfolgreich">Erfolgreich</span></li></ul></nav>
+<nav class="rec-selector" aria-label="Erkennungsversionen"><ul><li><a href="#recognition-selected" data-recognition-select="selected" aria-controls="recognition-selected">Ausgewählt / Fusion</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct" data-recognition-select="vlm-internvl3-8b-instruct" aria-controls="recognition-vlm-internvl3-8b-instruct">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval" data-recognition-select="kraken-kraken-catmus-medieval" aria-controls="recognition-kraken-kraken-catmus-medieval">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-trocr-trocr-medieval-escriptmask" data-recognition-select="trocr-trocr-medieval-escriptmask" aria-controls="recognition-trocr-trocr-medieval-escriptmask">TrOCR · trocr-medieval-escriptmask</a> <span class="rec-status rec-status--degenerate">Degeneriert</span></li><li><a href="#recognition-kraken-kraken-mccatmus" data-recognition-select="kraken-kraken-mccatmus" aria-controls="recognition-kraken-kraken-mccatmus">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-trocr-trocr-kurrent-xvi-xvii" data-recognition-select="trocr-trocr-kurrent-xvi-xvii" aria-controls="recognition-trocr-trocr-kurrent-xvi-xvii">TrOCR · trocr-kurrent-xvi-xvii</a> <span class="rec-status rec-status--degenerate">Degeneriert</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct-2" data-recognition-select="vlm-internvl3-8b-instruct-2" aria-controls="recognition-vlm-internvl3-8b-instruct-2">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval-2" data-recognition-select="kraken-kraken-catmus-medieval-2" aria-controls="recognition-kraken-kraken-catmus-medieval-2">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-mccatmus-2" data-recognition-select="kraken-kraken-mccatmus-2" aria-controls="recognition-kraken-kraken-mccatmus-2">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct-3" data-recognition-select="vlm-internvl3-8b-instruct-3" aria-controls="recognition-vlm-internvl3-8b-instruct-3">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval-3" data-recognition-select="kraken-kraken-catmus-medieval-3" aria-controls="recognition-kraken-kraken-catmus-medieval-3">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-mccatmus-3" data-recognition-select="kraken-kraken-mccatmus-3" aria-controls="recognition-kraken-kraken-mccatmus-3">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct-4" data-recognition-select="vlm-internvl3-8b-instruct-4" aria-controls="recognition-vlm-internvl3-8b-instruct-4">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval-4" data-recognition-select="kraken-kraken-catmus-medieval-4" aria-controls="recognition-kraken-kraken-catmus-medieval-4">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li></ul></nav>
 <div class="rec-panels"><details class="rec-panel" id="recognition-selected" data-recognition-panel="selected" data-page="" open>
 <summary>Ausgewählt / Fusion — ausgewählt</summary>
-<dl class="rec-meta"><div><dt>Engine</dt><dd>fusion</dd></div><div><dt>Modell</dt><dd>—</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>Nicht angegeben</dd></div><div><dt>Zeichen</dt><dd>11811</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>fusion</dd></div>
+<div><dt>Modell</dt><dd>—</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd>Nicht angegeben <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-31"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-32" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: fusion</p><p>Modell: —</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): None</p></details>
+<div><dt>Zeichen</dt><dd>11811</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz Nicht angegeben</span></dd></div>
+</dl>
 <pre class="rec-text" tabindex="0"><code>--- e-codices_saa-0428_015v_large.jpg ---
 --- SEITE 1 --- modios reina cum prato sive uysta Ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. Alhile er conuencius du vinus appendenda Darnm loro podo Anno dni. o. o. exxu. feria seda mcf octanam bi lchis bapte: Der abor buef von schafhusen vinbe die an sprache die er hatter An die lul Anoie dmi amen (chen ze stoken Nos Iohannes misaone dina. Albas Torusz conuencius Aon de schahuta ordinis sa bidei coniund dyoc renore pincum proktemur. Oß cum adnos ex quodam vago relatu er hdtone hib tempibz pucnillcr julsphnatus ecie m stöcken ppe Lenzburg. de confe dyoc tone Curab nri Aon qni twilla schafhusen mprochia de eackie debere nobis z nro Aon pnnie Aos ne kruft lup codem iure mc nos er Aon m chingsfult / de dyoc ordiniß sc clare mpollium / dißensionis matiam qtinger subouer / ne nos / nci fucelloueb / nem Aon mfiuarum polten prextu impe acōnis / su actomb fositam lup ded jure paenatus pnos mthcunde / su haben de mnnb debite calipme notari insa ma / er frultä laboubz er expenkb fra gari / deo adber penunda pricila deu re hnimodi pue enoari pleni cupienes inquisidem sup hib nri / er Aon nci note cam pyxamiaedom plonaz Aon nri er alioz fidedignoz / antiquoz of delhis qepin lare postc pluphim? qin y mspecoz, dim er singlow nri Aon pulegios er in lcrumentoz scani diligencein Et qua vilio / er cum diligenza plectis depōmb; er das pendacum plonatum uunmer evamiaconum non omibz / a singl nri Aon leis pulegios er mitrumenab non mucninus nobis nl nco Aon seu dec cur a quies uib ndce eacie scöffen julsphnats, opere sed ym julsphnatus adpden Aon mlkungstudden exdonacne sibi sai p illn ltres phopes dureb autrie er zyrie a. Comies mbabipurg a m kyburg ipius. Eackie in stöcken tunc paenos er qui aur. qnoz fadecellous mpollcillone juriapar. natus Euntem eackie vlih Adtempus do. naednis hice ipi Aon filanc atemper end. memoua no exilus inon exrusionc legitima. er incoypanc de eackie subscunus debe. lille penic Er recognosceres pinab nomie. quo sup concordie duligens sup hib non. volum femel sed plusies me nos phabiro. etdnu modc crä adhoc capitulo nro nlln. uis nobis nris fucelloubz nro. Aon seu. curu nie pde modc iure pac nat? eackie in stöcken qindolb; opede k? rpm uis paenatus adpden Aon mlkungt. ueden expmislis cnis debere peruo p. uncere promishin/ er excta laa cr puna. menta nta abunoqz nem follempm me. potic rupulatone cölic m dias minb pilan. er michlomni subscptn pena. Cencii Aar. charum legnhs argena pondis schafhusen. pruicim no vi aur metu mdnch sed ex. snulis hißdäb cr pbono paas libe prob. nris fucelloubz a mon nro padö n echino. las .. Albaillam cr conuenci da Aon. m chingsfuden n cox fucelloueb sip. deo mrcafnatus demceps inperc n. qindolb; purbare n ipas n cox Aon/ leu fuccendies mperc volenab; ul curba. re aliquarous consentce Si auf q ablic. pnos albatem cr conuenci sen maiorem. prem conuencius ul mfurim y qincup
 
@@ -56,9 +67,19 @@ title: "u-17__"
 212 Cche grouten guam anobre non Oon roneban mleodum (ulomner den Crbe Eehen prs annue centu Gedeam Aodron Diligine vmue dodit Gabea geromis Jeit sonttum ad manue mat Ubere et Cotlempmiret Lebionarimt a nos en. des Secimann de tontenp exprèto. copls. et Comenart ni remttutimus mtont. et Lehgoti0. (lbsutam. a Connentam Ronatery Panite Axce SEITE 1 kraken Eche stouffen quam anobis morg An tenchant in codum fulgniter dem Erbe lehen pro amuo cenfu sedecim Aodioz Bilignis vnios Aodii fabe A Triemta dem vthrum ad manub ntab libere er follempniter resignavint &amp; nos con dem deamam de consensu expreso. Capli. er Conuentus nri temstilimus in hono er Religiosas. Albatallam &amp; Conuentum Anonateri fante clare in kungfuele pure er simphinter pter dem honesto viro dno Walthero decimo in windliche preference er tempiente humodi. crancla com vire a note carundem. Salus ta men nobis morg Anonatho er speahe Camerario Anonateri nri qu pro tempe fuerit predab cenfibus aliqz juribus. er consuendimbus nobis morg Aona tho hunciz debins er confucas er noi anim carci felium ba Galli quando pro da cenfus sunt dandi. Camerario vl&#x27; eur certo nunc petent coniub danda eir re fedo in prindio vel cona uxta confue cudinen hactenus observatumm zu vo clapla humodi penione suprada .. Albatalla &amp; Conuentus in kungfuele in solucione cenfus fuerint negligenes adludom expensas quas exinde tempe cenfus no soluti Camerarius vl&#x27; eus certus niusc conteral erent. plenaria renchunt. In cui rei testimonium. floe .. Akas er Comuen pda nta sigilla dunimus prelensabz leis appendenda. Datum in scassula in die Bii Edalrin. Anno dni Ailhmo. Trecen. Decimo Iono:. Der eptillen buef von Sekingen uber trurman zehenden. goet die disen buef lesent oder hozent le fen das wir vollen gewalt geben an dilem buek Dietrich von Lenzbch / an unser stat vß ze nemene den ze heiden ze Tornichkon vn ze henschin cho vn ze Orwillingen von Aarchwatt Trurman burger ze Lutzeeren vn von sinen kinden den ge von uns ze erbe hat vn von unsm gorschuf den et verkoft hat dem Gorschuf von kungsvelt der.. Ebschim vn dem Conuent vn ze offenen wklunde- das er war si So henchcn wir uns&#x27; hngel an disen buef durre buef- wart geben ze sel-ingen do man zal- te von gotteb geburt wizchenhund- lar dar nach in dem einb vn zwein- goltem lart an sant agnelsen tage: Aber der eptillin vn des capitez. buef von Sekingen über trutmanz W ir adelheit von Echende: pv. Gottes gnaden .. Ebschim ze Sekingen vn das Capitel gememlich. 72 Vn kwr. allen den die disen buef zehent oder hozent lesen.Daz wir verluhen haben dien Erwürdigen vrowen.. Der.. Ebschim vn dem Conuent von Kungsvelt den zehen den ze Orwillingen ze henschin kon vn ze Tornichon Den Aarchwatt Trurman burger ze Lutzeeren von uns ze erbe hatte.den li von im geköfer hanr ze rechten erbe der voegenanten .. Ebschim vn dem Conuent Ar dien sedingen das si leelich zehen mvv roggen die von dem voegenanten zehenden ze zmfe gamt sullen antwurten ze Sek-ingen In die stat ze Sant Areff
 
 --- e-codices_saa-0428_017r_large.jpg ---
---- SEITE 6 --- tag oder dar nach Annum vierzehen tagen / vion Gerdrit von Leisertil Tinwrowen vnserz Gotzhuf vn Allen w nachomen dez Voigennanten Gotz hüs Tinwrowen dien der vorgenan te zin6 gemakor wirt Ez si Ebrischin oder Tinwrowe /nder voigenanter Antwurten zullen / an Allen w schaden / vn we das / das der vorgenan te zins ze dem voigenanten tage nicht bericht wrde / swaß schaden deme dů voigunnte vriowe oder w nachomen Empfingge nach dem zin6 ze sendenne / oder In ze gewinnene den sol dů voigenante. Ebrischin / vn der Convent von Kūngsveld genzlich ab legen / vn dar umbc wan si den zinc von dielen zite immer mer Ant- werten sun / In unser Stnt / an Allen schaden / dez si lieb gebunden hant go so haben men / die Gnade gemm vn v lühcn / das weder si noch en kein w nachkome / die voigennanten zehende mēmer mer enphahlen sun / noch ver- Erschärzen / vn ze einem offenen wz-künde / vn beletvunge / der vor genannten oidenunge. Sogeben wir den voigenanten vriowen von Kūn gesielt dien bues befigelt / mir unser Capitels Inigel. Dvire buesf wart geben / ze schklingen / do man zalte von gottes geburt druzchen hundert jar vū zweinzig jar. Dar nach, in dem ersten jare / monen des nach, lant agten tnge. Des trutmanz brief über den zehenden- Hllen die dien buesf fehent oder hözent lefen / künde ich Aarckwart Trutman Burger ze Lucreten / und verihe/ das ich einen zehenden gelegen ze hentschinkon/ ze Tornkon/ vn ze orwif- zingen/ der min rech-erbe war von dem Gotzhufe ze gekklingen/ han verköfer- vn zekofenne gegeben dien Etwiedigen frowen der .. Abbrischin und dem Con- uent ze Kūngsvelden. Omb achzig march gines gillers/ der ich von in vollecklich gewert bin. Und ich in minen notz en phangen han. Und han den selben zehen den uf gegeben mit allen minen kinde- an des erbern mannes hant Meriches von Lenzburg/ der vollen gewalt hatte von dem selben Gotzhufe von gekklingen/ den selben zehenden von mir uf ze ne- menne/ ze des voz gestribenen Gotzhufes handen ze kūngsvelden. Diz belchach da ze gegen waren - heinrich der Stammer. Buchhart von Gartcn. Johans von sem- pach heinrich von Sewelsberg. Rudolf von aa. Ulrich von Eych. Vernher von Grepcon. Und ander erber lüre gnüge. und har über ze einen vulkünde han ich min Angesigel an disen offenen briefe. Der gegeben warrt ze Lucreten. an dem nechten zwitage nach samt Agn. then tnge. Do man zalte von Gotres ge- bürte druzchenhundert jar. Dar nach, in dem ein und zwenzigolten jare: Der. brief den trutman hat von dem. Gotzhufe ze gekklingen: : W nulhis preßensii insped Adelhei. die de berichtil cmodia Eccle se. Davio zercomien Conformt dyot aKedni. caritans cum nonna subceptow Joimr. quos nostle fuir opozumii qv ai Arnoldus. dais Trutman de Berona Decmas vidz. in orwellingen in henonchon A t Törichon, quas andone seu mün Ercha vidz zercomerj</code></pre><p><a class="rec-download" href="recognitions/fused.txt" download>Diese Transkription herunterladen</a></p></details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct" data-recognition-panel="vlm-internvl3-8b-instruct" data-page="">
+--- SEITE 6 --- tag oder dar nach Annum vierzehen tagen / vion Gerdrit von Leisertil Tinwrowen vnserz Gotzhuf vn Allen w nachomen dez Voigennanten Gotz hüs Tinwrowen dien der vorgenan te zin6 gemakor wirt Ez si Ebrischin oder Tinwrowe /nder voigenanter Antwurten zullen / an Allen w schaden / vn we das / das der vorgenan te zins ze dem voigenanten tage nicht bericht wrde / swaß schaden deme dů voigunnte vriowe oder w nachomen Empfingge nach dem zin6 ze sendenne / oder In ze gewinnene den sol dů voigenante. Ebrischin / vn der Convent von Kūngsveld genzlich ab legen / vn dar umbc wan si den zinc von dielen zite immer mer Ant- werten sun / In unser Stnt / an Allen schaden / dez si lieb gebunden hant go so haben men / die Gnade gemm vn v lühcn / das weder si noch en kein w nachkome / die voigennanten zehende mēmer mer enphahlen sun / noch ver- Erschärzen / vn ze einem offenen wz-künde / vn beletvunge / der vor genannten oidenunge. Sogeben wir den voigenanten vriowen von Kūn gesielt dien bues befigelt / mir unser Capitels Inigel. Dvire buesf wart geben / ze schklingen / do man zalte von gottes geburt druzchen hundert jar vū zweinzig jar. Dar nach, in dem ersten jare / monen des nach, lant agten tnge. Des trutmanz brief über den zehenden- Hllen die dien buesf fehent oder hözent lefen / künde ich Aarckwart Trutman Burger ze Lucreten / und verihe/ das ich einen zehenden gelegen ze hentschinkon/ ze Tornkon/ vn ze orwif- zingen/ der min rech-erbe war von dem Gotzhufe ze gekklingen/ han verköfer- vn zekofenne gegeben dien Etwiedigen frowen der .. Abbrischin und dem Con- uent ze Kūngsvelden. Omb achzig march gines gillers/ der ich von in vollecklich gewert bin. Und ich in minen notz en phangen han. Und han den selben zehen den uf gegeben mit allen minen kinde- an des erbern mannes hant Meriches von Lenzburg/ der vollen gewalt hatte von dem selben Gotzhufe von gekklingen/ den selben zehenden von mir uf ze ne- menne/ ze des voz gestribenen Gotzhufes handen ze kūngsvelden. Diz belchach da ze gegen waren - heinrich der Stammer. Buchhart von Gartcn. Johans von sem- pach heinrich von Sewelsberg. Rudolf von aa. Ulrich von Eych. Vernher von Grepcon. Und ander erber lüre gnüge. und har über ze einen vulkünde han ich min Angesigel an disen offenen briefe. Der gegeben warrt ze Lucreten. an dem nechten zwitage nach samt Agn. then tnge. Do man zalte von Gotres ge- bürte druzchenhundert jar. Dar nach, in dem ein und zwenzigolten jare: Der. brief den trutman hat von dem. Gotzhufe ze gekklingen: : W nulhis preßensii insped Adelhei. die de berichtil cmodia Eccle se. Davio zercomien Conformt dyot aKedni. caritans cum nonna subceptow Joimr. quos nostle fuir opozumii qv ai Arnoldus. dais Trutman de Berona Decmas vidz. in orwellingen in henonchon A t Törichon, quas andone seu mün Ercha vidz zercomerj</code></pre>
+
+<p><a class="rec-download" href="recognitions/fused.txt" download>Diese Transkription herunterladen</a></p>
+</details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct" data-recognition-panel="vlm-internvl3-8b-instruct" data-page="">
 <summary>VLM · internvl3-8b-instruct</summary>
-<dl class="rec-meta"><div><dt>Engine</dt><dd>vlm</dd></div><div><dt>Modell</dt><dd>internvl3-8b-instruct</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>80%</dd></div><div><dt>Zeichen</dt><dd>2907</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>vlm</dd></div>
+<div><dt>Modell</dt><dd>internvl3-8b-instruct</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd><span class="rec-confidence-value">80%</span> <span class="rec-confidence-scope">— vlm/internvl3-8b-instruct</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-33"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-34" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: vlm</p><p>Modell: internvl3-8b-instruct</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): 0.8</p></details>
+<div><dt>Zeichen</dt><dd>2907</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz 80%</span></dd></div>
+</dl>
 <pre class="rec-text" tabindex="0"><code>--- SEITE 1 ---
 modios reina cum prato sive uysta
 Ottovillingen dequibz hre debet forum
@@ -138,9 +159,19 @@ qindolb; purbare n ipas n cox Aon/
 leu fuccendies mperc volenab; ul curba.
 re aliquarous consentce Si auf q ablic.
 pnos albatem cr conuenci sen maiorem.
-prem conuencius ul mfurim y qincup</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval" data-recognition-panel="kraken-kraken-catmus-medieval" data-page="">
+prem conuencius ul mfurim y qincup</code></pre>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval" data-recognition-panel="kraken-kraken-catmus-medieval" data-page="">
 <summary>Kraken OCR · kraken-catmus_medieval</summary>
-<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>kraken-catmus_medieval</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>91%</dd></div><div><dt>Zeichen</dt><dd>3169</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>kraken</dd></div>
+<div><dt>Modell</dt><dd>kraken-catmus_medieval</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd><span class="rec-confidence-value">91%</span> <span class="rec-confidence-scope">— kraken/kraken-catmus_medieval</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-35"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-36" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: kraken</p><p>Modell: kraken-catmus_medieval</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): 0.9073487277949087</p></details>
+<div><dt>Zeichen</dt><dd>3169</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz 91%</span></dd></div>
+</dl>
 <pre class="rec-text" tabindex="0"><code>
 modios trititi cum prato sito iuyta
 ottarissingen dequibs hare debet sorium
@@ -220,12 +251,32 @@ quandolibz parrurbare n ipsras n eor gson
 seu suttessores nipete uolentibz ul turba
 re aliquatiis consentiresi aute qpu absst
 parnos abbatem et sonventn se maiorem
-partem coruentnsul nfutram par qencug</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-trocr-trocr-medieval-escriptmask" data-recognition-panel="trocr-trocr-medieval-escriptmask" data-page="">
+partem coruentnsul nfutram par qencug</code></pre>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-trocr-trocr-medieval-escriptmask" data-recognition-panel="trocr-trocr-medieval-escriptmask" data-page="">
 <summary>TrOCR · trocr-medieval-escriptmask</summary>
-<dl class="rec-meta"><div><dt>Engine</dt><dd>trocr</dd></div><div><dt>Modell</dt><dd>trocr-medieval-escriptmask</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>0%</dd></div><div><dt>Zeichen</dt><dd>0</dd></div><div><dt>Status</dt><dd>Fehlgeschlagen</dd></div></dl>
-<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Der Erkennungsdienst hat das Zeitlimit überschritten.</div><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus" data-recognition-panel="kraken-kraken-mccatmus" data-page="">
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>trocr</dd></div>
+<div><dt>Modell</dt><dd>trocr-medieval-escriptmask</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+
+<div><dt>Zeichen</dt><dd>0</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--degenerate" title="Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.">Degenerierte Ausgabe</span></dd></div>
+</dl>
+<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Der Erkennungsdienst hat das Zeitlimit überschritten.</div>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus" data-recognition-panel="kraken-kraken-mccatmus" data-page="">
 <summary>Kraken OCR · kraken-mccatmus</summary>
-<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>kraken-mccatmus</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>81%</dd></div><div><dt>Zeichen</dt><dd>2816</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>kraken</dd></div>
+<div><dt>Modell</dt><dd>kraken-mccatmus</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd><span class="rec-confidence-value">81%</span> <span class="rec-confidence-scope">— kraken/kraken-mccatmus</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-37"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-38" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: kraken</p><p>Modell: kraken-mccatmus</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): 0.8119174105365555</p></details>
+<div><dt>Zeichen</dt><dd>2816</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz 81%</span></dd></div>
+</dl>
 <pre class="rec-text" tabindex="0"><code>13
 INGIIOS EEIRITS CIIN pEdES RTS IIPEA
 DeNITItEinOTI dequts JEe debes poosimn
@@ -305,12 +356,32 @@ Giodotilon ponbare, n nose n con gon)
 len Enendres mpece votenabz rit aube
 Le Ahgnsunue contenere, 91 aut p Ablie
 lnOS AIrcn et Comenit len monoient
-Jrem ComuenauE l suCucin p gínci9.</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-trocr-trocr-kurrent-xvi-xvii" data-recognition-panel="trocr-trocr-kurrent-xvi-xvii" data-page="">
+Jrem ComuenauE l suCucin p gínci9.</code></pre>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-trocr-trocr-kurrent-xvi-xvii" data-recognition-panel="trocr-trocr-kurrent-xvi-xvii" data-page="">
 <summary>TrOCR · trocr-kurrent-xvi-xvii</summary>
-<dl class="rec-meta"><div><dt>Engine</dt><dd>trocr</dd></div><div><dt>Modell</dt><dd>trocr-kurrent-xvi-xvii</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>0%</dd></div><div><dt>Zeichen</dt><dd>0</dd></div><div><dt>Status</dt><dd>Fehlgeschlagen</dd></div></dl>
-<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Der Erkennungsdienst hat das Zeitlimit überschritten.</div><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-2" data-recognition-panel="vlm-internvl3-8b-instruct-2" data-page="">
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>trocr</dd></div>
+<div><dt>Modell</dt><dd>trocr-kurrent-xvi-xvii</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+
+<div><dt>Zeichen</dt><dd>0</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--degenerate" title="Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.">Degenerierte Ausgabe</span></dd></div>
+</dl>
+<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Der Erkennungsdienst hat das Zeitlimit überschritten.</div>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-2" data-recognition-panel="vlm-internvl3-8b-instruct-2" data-page="">
 <summary>VLM · internvl3-8b-instruct</summary>
-<dl class="rec-meta"><div><dt>Engine</dt><dd>vlm</dd></div><div><dt>Modell</dt><dd>internvl3-8b-instruct</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>80%</dd></div><div><dt>Zeichen</dt><dd>2936</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>vlm</dd></div>
+<div><dt>Modell</dt><dd>internvl3-8b-instruct</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd><span class="rec-confidence-value">80%</span> <span class="rec-confidence-scope">— vlm/internvl3-8b-instruct</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-39"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-40" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: vlm</p><p>Modell: internvl3-8b-instruct</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): 0.8</p></details>
+<div><dt>Zeichen</dt><dd>2936</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz 80%</span></dd></div>
+</dl>
 <pre class="rec-text" tabindex="0"><code>--- SEITE 16 ---
 Habem et conuentu ul maiozem prem
 Conueni nti Hon qe premilla factum
@@ -391,9 +462,19 @@ djoce genre cupimub omulos ltm, pre-
 lennum inspedtore qd gerennius Ailer-
 heint Gelleler. Alrimis a Pidolfius.
 fetos onb m mia conlunur prefena de-
-cmam Laycalcm fitam infa Territorum</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-2" data-recognition-panel="kraken-kraken-catmus-medieval-2" data-page="">
+cmam Laycalcm fitam infa Territorum</code></pre>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-2" data-recognition-panel="kraken-kraken-catmus-medieval-2" data-page="">
 <summary>Kraken OCR · kraken-catmus_medieval</summary>
-<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>kraken-catmus_medieval</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>91%</dd></div><div><dt>Zeichen</dt><dd>3230</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>kraken</dd></div>
+<div><dt>Modell</dt><dd>kraken-catmus_medieval</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd><span class="rec-confidence-value">91%</span> <span class="rec-confidence-scope">— kraken/kraken-catmus_medieval</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-41"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-42" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: kraken</p><p>Modell: kraken-catmus_medieval</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): 0.9076149350445908</p></details>
+<div><dt>Zeichen</dt><dd>3230</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz 91%</span></dd></div>
+</dl>
 <pre class="rec-text" tabindex="0"><code>abbatem et sonuentu ul maiorem partem
 sonuentus nostr oon cotr premissa fattun
 fuit m idito ul ext ex tñc qncũq par pntes
@@ -472,9 +553,19 @@ sentium inspectores quod strennuus esiles
 hemr gessele vlritus et euerdolfus
 frens ouis in nera constirut presentia de
 comam laycalem sitam infea derrvorsn
-eni</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus-2" data-recognition-panel="kraken-kraken-mccatmus-2" data-page="">
+eni</code></pre>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus-2" data-recognition-panel="kraken-kraken-mccatmus-2" data-page="">
 <summary>Kraken OCR · kraken-mccatmus</summary>
-<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>kraken-mccatmus</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>81%</dd></div><div><dt>Zeichen</dt><dd>2863</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>kraken</dd></div>
+<div><dt>Modell</dt><dd>kraken-mccatmus</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd><span class="rec-confidence-value">81%</span> <span class="rec-confidence-scope">— kraken/kraken-mccatmus</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-43"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-44" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: kraken</p><p>Modell: kraken-mccatmus</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): 0.8132156133142335</p></details>
+<div><dt>Zeichen</dt><dd>2863</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz 81%</span></dd></div>
+</dl>
 <pre class="rec-text" tabindex="0"><code>Narein et Comneni al Insisren piem
 Conent nrs Don gr péemta Caclnm
 Prix mmdrs ul exe excue gueug 7 pnet
@@ -553,9 +644,19 @@ Cenem inpéclores g grremmt ailer
 Gem Gestcler lrenut a Podotlus
 (Les cme sn iis conttnnn pre Penas de
 Cn Ajestem Gramn inles lecrirontmn
-1</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-3" data-recognition-panel="vlm-internvl3-8b-instruct-3" data-page="">
+1</code></pre>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-3" data-recognition-panel="vlm-internvl3-8b-instruct-3" data-page="">
 <summary>VLM · internvl3-8b-instruct</summary>
-<dl class="rec-meta"><div><dt>Engine</dt><dd>vlm</dd></div><div><dt>Modell</dt><dd>internvl3-8b-instruct</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>80%</dd></div><div><dt>Zeichen</dt><dd>2643</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>vlm</dd></div>
+<div><dt>Modell</dt><dd>internvl3-8b-instruct</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd><span class="rec-confidence-value">80%</span> <span class="rec-confidence-scope">— vlm/internvl3-8b-instruct</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-45"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-46" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: vlm</p><p>Modell: internvl3-8b-instruct</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): 0.8</p></details>
+<div><dt>Zeichen</dt><dd>2643</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz 80%</span></dd></div>
+</dl>
 <pre class="rec-text" tabindex="0"><code>--- SEITE 1 ---
 
 Eche stouffen quam anobis morg An
@@ -621,9 +722,19 @@ W ir adelheit von Echende: pv.
 Gottes gnaden .. Ebschim ze Sekingen vn das Capitel gememlich.
 72
 
-Vn kwr. allen den die disen buef zehent oder hozent lesen.Daz wir verluhen haben dien Erwürdigen vrowen.. Der.. Ebschim vn dem Conuent von Kungsvelt den zehen den ze Orwillingen ze henschin kon vn ze Tornichon Den Aarchwatt Trurman burger ze Lutzeeren von uns ze erbe hatte.den li von im geköfer hanr ze rechten erbe der voegenanten .. Ebschim vn dem Conuent Ar dien sedingen das si leelich zehen mvv roggen die von dem voegenanten zehenden ze zmfe gamt sullen antwurten ze Sek-ingen In die stat ze Sant Areff</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-3" data-recognition-panel="kraken-kraken-catmus-medieval-3" data-page="">
+Vn kwr. allen den die disen buef zehent oder hozent lesen.Daz wir verluhen haben dien Erwürdigen vrowen.. Der.. Ebschim vn dem Conuent von Kungsvelt den zehen den ze Orwillingen ze henschin kon vn ze Tornichon Den Aarchwatt Trurman burger ze Lutzeeren von uns ze erbe hatte.den li von im geköfer hanr ze rechten erbe der voegenanten .. Ebschim vn dem Conuent Ar dien sedingen das si leelich zehen mvv roggen die von dem voegenanten zehenden ze zmfe gamt sullen antwurten ze Sek-ingen In die stat ze Sant Areff</code></pre>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-3" data-recognition-panel="kraken-kraken-catmus-medieval-3" data-page="">
 <summary>Kraken OCR · kraken-catmus_medieval</summary>
-<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>kraken-catmus_medieval</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>92%</dd></div><div><dt>Zeichen</dt><dd>2783</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>kraken</dd></div>
+<div><dt>Modell</dt><dd>kraken-catmus_medieval</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd><span class="rec-confidence-value">92%</span> <span class="rec-confidence-scope">— kraken/kraken-catmus_medieval</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-47"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-48" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: kraken</p><p>Modell: kraken-catmus_medieval</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): 0.9188885491035689</p></details>
+<div><dt>Zeichen</dt><dd>2783</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz 92%</span></dd></div>
+</dl>
 <pre class="rec-text" tabindex="0"><code>is
 eclie stouffoi quam nobis noerouz on
 tenebant infeodum fulonriter dcan erbe
@@ -701,9 +812,19 @@ sonvent oit dien gedingen daz
 si serlich zehen mot tosgen die
 uon dem vorgenantem zehenden
 ze znse gant sullen antrourten je
-sel ingen in die stat ze sant esartis</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus-3" data-recognition-panel="kraken-kraken-mccatmus-3" data-page="">
+sel ingen in die stat ze sant esartis</code></pre>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus-3" data-recognition-panel="kraken-kraken-mccatmus-3" data-page="">
 <summary>Kraken OCR · kraken-mccatmus</summary>
-<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>kraken-mccatmus</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>83%</dd></div><div><dt>Zeichen</dt><dd>2571</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>kraken</dd></div>
+<div><dt>Modell</dt><dd>kraken-mccatmus</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd><span class="rec-confidence-value">83%</span> <span class="rec-confidence-scope">— kraken/kraken-mccatmus</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-49"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-50" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: kraken</p><p>Modell: kraken-mccatmus</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): 0.8253127777610914</p></details>
+<div><dt>Zeichen</dt><dd>2571</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz 83%</span></dd></div>
+</dl>
 <pre class="rec-text" tabindex="0"><code>212
 Cche grouten guam anobre non Oon
 roneban mleodum (ulomner den Crbe
@@ -781,9 +902,19 @@ Connent su sien Eéomgen des
 l Jerhet Zeen mut Tooven die
 son dem Dorscnmnten retenden
 Le Jile snnt Gritlen amemutcen 35
-Selmden p die Rnt Ze Eam Ang.</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-4" data-recognition-panel="vlm-internvl3-8b-instruct-4" data-page="">
+Selmden p die Rnt Ze Eam Ang.</code></pre>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-4" data-recognition-panel="vlm-internvl3-8b-instruct-4" data-page="">
 <summary>VLM · internvl3-8b-instruct</summary>
-<dl class="rec-meta"><div><dt>Engine</dt><dd>vlm</dd></div><div><dt>Modell</dt><dd>internvl3-8b-instruct</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>80%</dd></div><div><dt>Zeichen</dt><dd>2822</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>vlm</dd></div>
+<div><dt>Modell</dt><dd>internvl3-8b-instruct</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd><span class="rec-confidence-value">80%</span> <span class="rec-confidence-scope">— vlm/internvl3-8b-instruct</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-51"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-52" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: vlm</p><p>Modell: internvl3-8b-instruct</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): 0.8</p></details>
+<div><dt>Zeichen</dt><dd>2822</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz 80%</span></dd></div>
+</dl>
 <pre class="rec-text" tabindex="0"><code>--- SEITE 6 ---
 tag/ oder dar nach Annum vierzehen
 tagen / vion Gerdrit von Leisertil
@@ -863,9 +994,19 @@ caritans cum nonna subceptow Joimr.
 quos nostle fuir opozumii qv ai Arnoldus.
 dais Trutman de Berona Decmas vidz.
 in orwellingen in henonchon A t Törichon,
-quas andone seu mün Ercha vidz zercomerj</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-4" data-recognition-panel="kraken-kraken-catmus-medieval-4" data-page="">
+quas andone seu mün Ercha vidz zercomerj</code></pre>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-4" data-recognition-panel="kraken-kraken-catmus-medieval-4" data-page="">
 <summary>Kraken OCR · kraken-catmus_medieval</summary>
-<dl class="rec-meta"><div><dt>Engine</dt><dd>kraken</dd></div><div><dt>Modell</dt><dd>kraken-catmus_medieval</dd></div><div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div><div><dt>Engine-Konfidenz</dt><dd>91%</dd></div><div><dt>Zeichen</dt><dd>2767</dd></div><div><dt>Status</dt><dd>Erfolgreich</dd></div></dl>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>kraken</dd></div>
+<div><dt>Modell</dt><dd>kraken-catmus_medieval</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd><span class="rec-confidence-value">91%</span> <span class="rec-confidence-scope">— kraken/kraken-catmus_medieval</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-53"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-54" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: kraken</p><p>Modell: kraken-catmus_medieval</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): 0.9099032127274853</p></details>
+<div><dt>Zeichen</dt><dd>2767</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz 91%</span></dd></div>
+</dl>
 <pre class="rec-text" tabindex="0"><code>eus
 
 1
@@ -949,7 +1090,11 @@ dcuais erntman de berona rdecnas idiz
 in otoessingen in hencinchon set et dottichon
 1
 quas aucbie seu antra etlia ridi detoneri
-xus</code></pre><p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p></details></div></div></section><section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
+xus</code></pre>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details></div>
+</div></section><section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
 <ul><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
 <p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
 

@@ -92,6 +92,35 @@ class RecognitionContractTests(unittest.TestCase):
         self.assertEqual(len(dom.ids), len(set(dom.ids)))
         self.assertEqual(len(dom.panels), 4)  # selected + three attempts
 
+    def test_single_and_multi_page_candidates_keep_page_provenance(self):
+        single = build_recognition_section(
+            [rec(page="folio-1")], "doc", "fused")
+        multi = build_recognition_section(
+            [rec(page="folio-1"), rec(model="model-2", page="folio-2")],
+            "doc", "fused",
+        )
+        self.assertIn('data-page="folio-1"', single)
+        self.assertIn('data-page="folio-1"', multi)
+        self.assertIn('data-page="folio-2"', multi)
+
+    def test_missing_page_is_explicit(self):
+        markup = build_recognition_section([rec()], "doc", "fused")
+        self.assertIn("Nicht zugeordnet", markup)
+
+    def test_duplicate_models_remain_independently_reachable(self):
+        markup = build_recognition_section(
+            [rec(page="one"), rec(page="two")], "doc", "fused")
+        dom = DOM(); dom.feed(markup)
+        candidate_panels = [
+            panel for panel in dom.panels
+            if panel["data-recognition-panel"] != "selected"
+        ]
+        self.assertEqual(len(candidate_panels), 2)
+        self.assertEqual(
+            len({panel["data-recognition-panel"] for panel in candidate_panels}),
+            2,
+        )
+
     def test_no_js_panels_are_semantic_details(self):
         markup = build_recognition_section([rec(), rec("kraken")], "doc", "fused")
         self.assertEqual(markup.count('<details class="rec-panel"'), 3)
