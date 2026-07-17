@@ -9,6 +9,18 @@ title: Methode
 
 Agentic Historian veröffentlicht automatisch erzeugte Transkriptionen, strukturierte Quellenbeschreibungen und erkannte Entitäten. Die Ausgaben sind Forschungsdaten in Bearbeitung und keine verifizierten Editionen.
 
+## Aufbau der Dokumentseiten
+
+Dokumentseiten folgen einer stabilen, evidenzorientierten Reihenfolge: Identität und Status; Quelle und ausgewählte Transkription samt Erkennungsvarianten; inhaltliche Orientierung und prüfbare Aussagen; strukturierte Metadaten und Entitäten; Downloads und Nachnutzung; Zitation; Versionsgeschichte. Primäre Evidenz, maschinell erzeugte Interpretation und administrative Provenienz sind semantisch sowie visuell voneinander unterschieden.
+
+Die Anker `#transcription` und `#claims` bleiben für bestehende Links stabil. Fehlen Digitalisat, Erkennungsvarianten oder ältere Provenienzfelder, bleibt dieselbe Grundstruktur erhalten und benennt die Lücke ausdrücklich. Fehlgeschlagene Erkennungen bleiben innerhalb des Evidenzbereichs sichtbar. Testausgaben tragen weiterhin deutlich die Kennzeichnung „Testlauf“.
+
+Ist ein öffentlich einbettbares Bild oder IIIF-Manifest vorhanden, erscheinen Quelle und Transkription auf breiten Bildschirmen in zwei beschrifteten Bereichen. Der Trenner lässt sich ziehen oder per Tastatur mit Pfeiltasten, Pos1 und Ende bedienen. Das Verhältnis wird ausschließlich lokal im Browser gespeichert und verändert keine teilbare URL. Auf schmalen Bildschirmen und bei starker Vergrößerung stehen Quelle und Transkription untereinander; ohne einbettbare Quelle bleibt die lineare Transkriptionsansicht erhalten.
+
+Der integrierte Digitalisat-Viewer verwendet keine externe Viewer-Plattform. Bei IIIF lädt er das angegebene Presentation-Manifest direkt und zeigt den ersten Canvas; bei direkten Bildadressen lädt er ausschließlich dieses Bild. Beide Varianten bieten Vergrößern, Verkleinern, Zurücksetzen und Vollbild sowie eine per Tastatur erreichbare, verschiebbare Bildfläche. Manifest- und Bildfehler werden nach außen verständlich gemeldet, während der Link zur Originalquelle erhalten bleibt. Browser übertragen beim Manifestabruf keine expliziten Zugangsdaten; CORS-Regeln des Quellservers können die Einbettung dennoch verhindern.
+
+Bei mehrseitigen Ausgaben teilen Digitalisat und Erkennungsviewer denselben Seitenzustand. Ein Wechsel der Quellenseite wählt nach Möglichkeit dieselbe Engine/Modell-Familie auf der neuen Seite; die Wahl einer seitengebundenen Erkennung bewegt umgekehrt das Digitalisat. Der Parameter `page` macht diesen Zustand teilbar und unterstützt die Browsernavigation. Fehlt eine Seitenzuordnung auf einer Seite, benennt die Oberfläche die Lücke ausdrücklich und lässt die manuelle Navigation verfügbar, statt Bild und Text stillschweigend falsch zuzuordnen.
+
 ## Verarbeitung
 
 Die Pipeline verarbeitet Digitalisate oder Bildgruppen, erzeugt eine maschinelle Transkription, leitet Beschreibungsfelder ab und erkennt Personen, Orte, Organisationen sowie weitere Entitäten. Die vollständigen Verarbeitungsergebnisse bleiben pro Dokument als `pipeline.json` verfügbar.
@@ -22,6 +34,12 @@ Jede Dokumentseite weist ihren Bearbeitungsstatus und – sofern vorhanden – d
 - `human-verified`: ausdrücklich fachlich geprüft
 
 Fehlt ein öffentliches Digitalisat, weist die Seite darauf hin. Lokale Verarbeitungspfade gelten nicht als Quellenbeleg.
+
+### Öffentliche Quellenreferenzen
+
+Publisher können eine IIIF-Quelle über `iiif_manifest` oder das ältere Alias `manifest_url` angeben. `source_url` bezeichnet entweder ein direktes öffentliches Bild oder die Landingpage eines Archivs. Optionale Felder sind `source_label`, `source_attribution` und `source_rights`. Mehrseitige Ausgaben können `source_pages` mit `page` sowie `canvas_url` oder `image_url` verwenden, um Erkennungsseiten eindeutig auf Digitalisate abzubilden.
+
+Nur öffentliche HTTP(S)-Adressen werden veröffentlicht. Lokale Pfade, private IP-Adressen, Zugangsdaten in URLs, Platzhalter-Hosts und andere Protokolle werden verworfen. Ältere Ausgaben ohne diese Felder bleiben als reine Transkriptionsseiten nutzbar. Die normalisierte, bewusst kleine Quellenreferenz wird zusätzlich als JSON-Payload auf der Dokumentseite bereitgestellt; sie enthält keine vollständigen IIIF-Manifeste oder Erkennungstexte.
 
 ## Versionen und Nachnutzung
 
@@ -51,6 +69,10 @@ Für Dokumente mit mehreren OCR-Kandidaten zeigt die Seite die ausgewählte bezi
 ### Verhalten ohne JavaScript
 
 Ohne JavaScript bleiben alle Kandidaten als semantische, aufklappbare Bereiche (`details`) erreichbar. JavaScript reduziert die Ansicht auf den jeweils ausgewählten Bereich.
+
+### Tastatur und assistive Technik
+
+Die Kandidatenauswahl besteht aus gewöhnlichen Links und kann deshalb mit der Tabulatortaste erreicht und mit Eingabe aktiviert werden. Nach einer Auswahl wechselt der Fokus zur Überschrift der gewählten Erkennungsversion. Der aktive Link wird zusätzlich mit `aria-current` ausgezeichnet; Fehlerzustände werden immer als Text und nicht nur durch Farbe vermittelt. Transkriptionen sind als eigene scrollbare Bereiche mit sichtbarer Fokusmarkierung erreichbar.
 
 ### Anpassung am Original
 

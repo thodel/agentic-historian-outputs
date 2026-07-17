@@ -98,6 +98,46 @@ class RecognitionContractTests(unittest.TestCase):
         self.assertEqual(len(dom.ids), len(set(dom.ids)))
         self.assertEqual(len(dom.panels), 4)  # selected + three attempts
 
+    def test_single_and_multi_page_candidates_keep_page_provenance(self):
+        single = build_recognition_section(
+            [rec(page="folio-1")], "doc", "fused")
+        multi = build_recognition_section(
+            [rec(page="folio-1"), rec(model="model-2", page="folio-2")],
+            "doc", "fused",
+        )
+        self.assertIn('data-page="folio-1"', single)
+        self.assertIn('data-page="folio-1"', multi)
+        self.assertIn('data-page="folio-2"', multi)
+
+    def test_missing_page_is_explicit(self):
+        markup = build_recognition_section([rec()], "doc", "fused")
+        self.assertIn("Nicht zugeordnet", markup)
+
+    def test_explanation_blocks_have_deterministic_order(self):
+        first = build_recognition_section([rec()], "doc", "fused")
+        second = build_recognition_section([rec()], "doc", "fused")
+        labels = (
+            "engine_confidence", "agreement", "degenerate", "failed",
+            "reference_evaluation", "incomparable_confidence",
+        )
+        for markup in (first, second):
+            positions = [markup.index(f'id="quality-explanation-{label}') for label in labels]
+            self.assertEqual(positions, sorted(positions))
+
+    def test_duplicate_models_remain_independently_reachable(self):
+        markup = build_recognition_section(
+            [rec(page="one"), rec(page="two")], "doc", "fused")
+        dom = DOM(); dom.feed(markup)
+        candidate_panels = [
+            panel for panel in dom.panels
+            if panel["data-recognition-panel"] != "selected"
+        ]
+        self.assertEqual(len(candidate_panels), 2)
+        self.assertEqual(
+            len({panel["data-recognition-panel"] for panel in candidate_panels}),
+            2,
+        )
+
     def test_no_js_panels_are_semantic_details(self):
         markup = build_recognition_section([rec(), rec("kraken")], "doc", "fused")
         self.assertEqual(markup.count('<details class="rec-panel"'), 3)
@@ -108,6 +148,27 @@ class RecognitionContractTests(unittest.TestCase):
         failed = markup.split('data-recognition-panel="trocr-model"', 1)[1]
         self.assertNotIn("rec-download\" href", failed)
         self.assertIn("Kein Textdownload verfügbar", failed)
+
+    def test_comparison_shell_is_opt_in_and_accessibly_labelled(self):
+        markup = build_recognition_section([rec(), rec("kraken")], "doc", "fused")
+        self.assertIn("data-recognition-compare", markup)
+        self.assertIn("data-rec-compare-panes hidden", markup)
+        self.assertIn('for="rec-compare-select-left">Version links', markup)
+        self.assertIn('for="rec-compare-select-right">Version rechts', markup)
+
+    def test_comparison_options_are_page_scoped_and_failures_disabled(self):
+        markup = build_recognition_section([
+            rec(page="p1"),
+            rec("kraken", page="p2"),
+            rec("trocr", text="", error="timeout", page="p2"),
+        ], "doc", "fused")
+        self.assertIn('data-page="p1"', markup)
+        self.assertIn('data-page="p2"', markup)
+        failed_id = _candidates([
+            rec(page="p1"), rec("kraken", page="p2"),
+            rec("trocr", text="", error="timeout", page="p2"),
+        ], "fused")[-1]["id"]
+        self.assertIn(f'value="{failed_id}" data-page="p2" disabled', markup)
 
     def test_download_only_when_artifact_exists(self):
         with tempfile.TemporaryDirectory() as tmp:

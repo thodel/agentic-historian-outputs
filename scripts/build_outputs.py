@@ -14,6 +14,7 @@ from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 from build_recognitions import build_recognition_section, write_package
+from source_references import normalize_source_reference, public_url
 from urllib.parse import urlparse
 from xml.sax.saxutils import escape as xml_escape
 
@@ -29,13 +30,7 @@ def value(item: object) -> str:
 
 
 def valid_public_url(url: str) -> bool:
-    if not url:
-        return False
-    parsed = urlparse(url)
-    blocked = ("example.com", "base", "localhost", "127.0.0.1")
-    return parsed.scheme in {"http", "https"} and parsed.hostname is not None and not any(
-        marker in parsed.hostname.lower() for marker in blocked
-    )
+    return bool(public_url(url))
 
 
 def git_history(path: Path) -> list[tuple[str, str, str]]:
@@ -125,20 +120,58 @@ def write_tei(path: Path, doc_id: str, transcript: str, source_url: str) -> None
 
 
 def source_panel(data: dict) -> str:
-    url = value(data.get("iiif_manifest") or data.get("manifest_url") or data.get("source_url"))
-    if valid_public_url(url):
+    source = normalize_source_reference(data)
+    url = source["url"]
+    payload = json.dumps(source, ensure_ascii=False, separators=(",", ":"))
+    payload = payload.replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e")
+    if url:
         escaped = html.escape(url, quote=True)
-        is_iiif = "manifest" in url.lower() or url.lower().endswith((".json", "/manifest"))
-        if is_iiif:
-            viewer = f'<iframe class="source-frame" title="IIIF-Quelle" loading="lazy" src="https://uv-v4.netlify.app/#?manifest={escaped}"></iframe>'
-        elif re.search(r"\.(?:jpe?g|png|webp|tiff?)(?:\?.*)?$", url, re.I):
-            viewer = f'<a href="{escaped}"><img class="source-image" src="{escaped}" loading="lazy" alt="Digitalisat zu diesem Output"></a>'
+        if source["type"] in {"iiif_manifest", "image"}:
+            page_buttons = "".join(
+                f'<button type="button" data-source-page="{html.escape(page["page"], quote=True)}">{html.escape(page["page"])}</button>'
+                for page in source["pages"]
+            )
+            page_nav = (f'<nav class="source-page-nav" aria-label="Quellenseite auswählen">{page_buttons}</nav>'
+                        if len(source["pages"]) > 1 else "")
+            viewer = f'''<div class="evidence-viewer" data-evidence-viewer data-source-type="{source["type"]}" data-source-url="{escaped}">
+{page_nav}
+<div class="evidence-toolbar" role="toolbar" aria-label="Digitalisat steuern">
+<button type="button" data-evidence-action="zoom-out" aria-label="Verkleinern">−</button>
+<output data-evidence-zoom aria-label="Vergrößerung">100%</output>
+<button type="button" data-evidence-action="zoom-in" aria-label="Vergrößern">+</button>
+<button type="button" data-evidence-action="reset">Ansicht zurücksetzen</button>
+<button type="button" data-evidence-action="fullscreen">Vollbild</button></div>
+<div class="evidence-stage" data-evidence-stage tabindex="0" aria-label="Digitalisat, verschiebbar bei Vergrößerung"><img data-evidence-image hidden alt="Digitalisat zu diesem Output"></div>
+<p class="evidence-status" data-evidence-status role="status" aria-live="polite">Digitalisat wird geladen …</p></div>'''
         else:
             viewer = ""
-        return f'''<section aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
-<p><a href="{escaped}">Veröffentlichte Quelle öffnen</a></p>{viewer}</section>'''
-    return '''<section aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
+        metadata = "".join(
+            f'<dt>{label}</dt><dd>{html.escape(source[key])}</dd>'
+            for key, label in (("attribution", "Zuschreibung"), ("rights", "Rechte"))
+            if source[key]
+        )
+        metadata = f'<dl class="source-meta">{metadata}</dl>' if metadata else ""
+        return f'''<section id="source" class="page-section page-section--evidence" data-page-section="source" aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
+<p><a href="{escaped}">{html.escape(source["label"] or "Veröffentlichte Quelle öffnen")}</a></p>{metadata}{viewer}
+<script type="application/json" data-source-reference>{payload}</script></section>'''
+    return '''<section id="source" class="page-section page-section--evidence" data-page-section="source" aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
 <div class="notice notice--warning"><strong>Kein öffentliches Digitalisat verknüpft.</strong> Ein lokaler Verarbeitungspfad ist kein zitierbarer Quellenbeleg. Ergänzen Sie <code>source_url</code> oder <code>iiif_manifest</code> in der Pipeline-Ausgabe.</div></section>'''
+
+
+def evidence_workspace(data: dict, doc_id: str, transcription: str,
+                       recognition_section: str) -> str:
+    """Compose evidence panes, enhancing only embeddable image/IIIF sources."""
+    source = source_panel(data)
+    transcript = f'''<section id="transcription" class="page-section page-section--evidence" data-page-section="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
+<pre class="transcription" tabindex="0"><code>{html.escape(transcription) if transcription else 'Keine Transkription verfügbar.'}</code></pre></section>'''
+    if normalize_source_reference(data)["type"] not in {"image", "iiif_manifest"}:
+        return f"{source}\n\n{transcript}\n\n{recognition_section}"
+    return f'''<div class="evidence-workspace" data-evidence-workspace data-doc-id="{html.escape(doc_id, quote=True)}">
+<div class="evidence-pane evidence-pane--source" role="region" aria-labelledby="source-heading">{source}</div>
+<div class="workspace-divider" role="separator" aria-label="Breite von Quelle und Transkription ändern" aria-orientation="vertical" aria-valuemin="25" aria-valuemax="75" aria-valuenow="50" tabindex="0" data-workspace-divider><span aria-hidden="true">⋮</span></div>
+<div class="evidence-pane evidence-pane--transcription" role="region" aria-labelledby="transcription-heading">{transcript}{recognition_section}</div>
+<p class="notice notice--warning page-sync-warning" data-page-sync-warning role="status" hidden></p>
+</div>'''
 
 
 def build_document(path: Path, entity_index: dict) -> bool:
@@ -151,7 +184,7 @@ def build_document(path: Path, entity_index: dict) -> bool:
     fields = description.get("source_json") if isinstance(description.get("source_json"), dict) else {}
     meta = data.get("a_meta") if isinstance(data.get("a_meta"), dict) else {}
     transcript = value(data.get("transcription") or meta.get("transcription"))
-    source_url = value(data.get("iiif_manifest") or data.get("manifest_url") or data.get("source_url"))
+    source_url = normalize_source_reference(data)["url"]
     items = entities(data)
     is_test = "test" in doc_id.lower() or "example.com" in source_url
     review = value(data.get("review_status") or meta.get("review_status") or "machine-generated")
@@ -229,48 +262,44 @@ license: "LicenseRef-Not-Specified"
         transcript=transcript,
         directory=path.parent,
     )
+    package = write_package(path.parent, doc_id, data.get("recognitions", []), transcript) if data.get("recognitions") else None
+    package_link = (f'<li><a href="{html.escape(package.name, quote=True)}">Vollständiges Erkennungspaket (ZIP)</a></li>'
+                    if package else "")
 
-    # Complete recognition package (#37)
-    pkg_zip = write_package(
-        directory=path.parent,
-        doc_id=doc_id,
-        recognitions=data.get("recognitions", []),
-        transcript=transcript,
-    )
-    pkg_link = f'<li><a href="{pkg_zip.name}">Vollständiges Erkennungspaket (ZIP)</a></li>' if pkg_zip else ""
+    evidence = evidence_workspace(data, doc_id, transcript, recognition_section)
 
     page = frontmatter(doc_id) + f'''<nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> {html.escape(doc_id)}</nav>
-<header class="output-header">
+<header class="output-header page-section page-section--identity" data-page-section="identity">
   <p class="output-kicker">{state_label}</p><h1>{html.escape(doc_id)}</h1>
   <div class="output-status"><span>{html.escape(review)}</span><span>QA {qa_text}</span><span>{pages} Seiten</span></div>
   <p class="notice"><strong>Interpretationsstatus:</strong> Dieser Output wurde automatisch erzeugt. Nicht als Edition oder verifizierte Transkription zitieren, sofern der Status nicht ausdrücklich „human-verified“ lautet.</p>
 </header>
 
-{source_panel(data)}
+{evidence}
 
-<section aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
+<section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
 <p>{html.escape(interpretive)}</p>
 <p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt; keine unabhängige historische Interpretation. <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p></section>
 
-<section id="claims" aria-labelledby="claims-heading"><h2 id="claims-heading">Metadaten, Provenienz und Unsicherheit</h2>{field_table}</section>
+<section id="claims" class="page-section page-section--interpretation" data-page-section="claims" aria-labelledby="claims-heading"><h2 id="claims-heading">Metadaten, Provenienz und Unsicherheit</h2>{field_table}</section>
 
-<section aria-labelledby="entities-heading"><h2 id="entities-heading">Erkannte Entitäten</h2>
+<section id="entities" class="page-section page-section--interpretation" data-page-section="entities" aria-labelledby="entities-heading"><h2 id="entities-heading">Erkannte Entitäten</h2>
 {''.join(entity_html) or '<p>Keine Entitäten erkannt.</p>'}
 <p><a href="entities.csv">Entitäten als CSV herunterladen</a> · <a href="../entities/">Alle Entitäten durchsuchen</a></p></section>
 
-<section id="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
-<pre class="transcription" tabindex="0"><code>{html.escape(transcript) if transcript else 'Keine Transkription verfügbar.'}</code></pre></section>
-
-{recognition_section}<section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
-<ul>{pkg_link}<li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
+<section id="downloads" class="page-section page-section--administrative" data-page-section="downloads" aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
+<ul>{package_link}<li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
 <p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
 
-<section aria-labelledby="citation-heading"><h2 id="citation-heading">Zitation und stabile Adresse</h2>
+<section id="citation" class="page-section page-section--administrative" data-page-section="citation" aria-labelledby="citation-heading"><h2 id="citation-heading">Zitation und stabile Adresse</h2>
 <p><code>Agentic Historian. ({datetime.now().year}). Agentic Historian output: {html.escape(doc_id)} [Machine-generated dataset]. {canonical}</code></p>
 <p>Stabile Seite: <a href="{canonical}">{canonical}</a> · <a href="{REPO}/commits/main/docs/{html.escape(doc_id)}/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
 
-<section aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol>{history_html}</ol></section>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol>{history_html}</ol></section>
 <script src="{{{{ '/assets/rec-viewer.js' | relative_url }}}}" defer></script>
+<script src="{{{{ '/assets/workspace.js' | relative_url }}}}" defer></script>
+<script src="{{{{ '/assets/evidence-viewer.js' | relative_url }}}}" defer></script>
+<script src="{{{{ '/assets/page-sync.js' | relative_url }}}}" defer></script>
 '''
     (path.parent / "index.md").write_text(page, encoding="utf-8")
     return is_test
@@ -302,6 +331,15 @@ def build() -> None:
     js_source = Path(__file__).with_name("rec_viewer.js")
     (DOCS / "assets" / "rec-viewer.js").write_text(
         js_source.read_text(encoding="utf-8"), encoding="utf-8")
+    workspace_source = Path(__file__).with_name("workspace.js")
+    (DOCS / "assets" / "workspace.js").write_text(
+        workspace_source.read_text(encoding="utf-8"), encoding="utf-8")
+    evidence_viewer_source = Path(__file__).with_name("evidence_viewer.js")
+    (DOCS / "assets" / "evidence-viewer.js").write_text(
+        evidence_viewer_source.read_text(encoding="utf-8"), encoding="utf-8")
+    page_sync_source = Path(__file__).with_name("page_sync.js")
+    (DOCS / "assets" / "page-sync.js").write_text(
+        page_sync_source.read_text(encoding="utf-8"), encoding="utf-8")
     entity_index = defaultdict(list)
     tests = []
     for path in sorted(DOCS.glob("*/pipeline.json")):
