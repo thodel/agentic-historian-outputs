@@ -50,6 +50,7 @@ class CatalogueSummaryTests(unittest.TestCase):
         self.assertTrue(same.comparison_ready)
         self.assertFalse(split.comparison_ready)
         self.assertFalse(unknown_multi.comparison_ready)
+        self.assertEqual(same.comparison_pair, ("p1-kraken-a", "p1-kraken-b", "p1"))
 
     def test_page_source_and_review_fields_are_derived(self):
         summary = recognition_summary({
@@ -90,6 +91,19 @@ class CatalogueSummaryTests(unittest.TestCase):
         legacy = RecognitionSummary("legacy", None, None, None, None, None, (), 0, None,
                                     False, "missing", "machine-generated", False)
         self.assertIn("Begrenzte Provenienz", self.card(legacy))
+
+    def test_card_has_exactly_one_capability_aware_primary_action(self):
+        compare = self.card(recognition_summary({"recognitions": [rec(model="a"), rec(model="b")]}))
+        self.assertIn("Modelle vergleichen", compare)
+        self.assertIn("?cmp=p1-kraken-a:p1-kraken-b&amp;page=p1#recognitions", compare)
+        inspect = self.card(recognition_summary({"recognitions": [rec()]}))
+        self.assertIn("Erkennungen ansehen", inspect)
+        self.assertIn("?rec=selected#recognition-selected", inspect)
+        legacy = RecognitionSummary("legacy", None, None, None, None, None, (), 0, None,
+                                    False, "missing", "machine-generated", False)
+        legacy_card = self.card(legacy)
+        self.assertIn("Ausgabe öffnen", legacy_card)
+        self.assertEqual(legacy_card.count('class="catalogue-actions"'), 1)
 
 
 if __name__ == "__main__":

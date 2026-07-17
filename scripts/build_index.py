@@ -11,10 +11,12 @@ from __future__ import annotations
 
 import html
 import json
+import re
 import subprocess
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 from source_references import normalize_source_reference
 
 # Epic 5 quality vocabulary (#27)
@@ -122,6 +124,7 @@ class RecognitionSummary:
     source_type: str
     review_status: str
     comparison_ready: bool
+    comparison_pair: tuple[str, str, str] | None = None
 
     def as_dict(self) -> dict:
         return {
@@ -138,6 +141,7 @@ class RecognitionSummary:
             "source_type": self.source_type,
             "review_status": self.review_status,
             "comparison_ready": self.comparison_ready,
+            "comparison_pair": list(self.comparison_pair) if self.comparison_pair else None,
         }
 
 
@@ -158,13 +162,19 @@ def recognition_summary(data: dict) -> RecognitionSummary:
     models: set[tuple[str, str]] = set()
     usable_by_page: dict[str, set[tuple[str, str, str]]] = {}
     attributed_pages: set[str] = set()
-    for index, candidate in enumerate(raw):
-        if not isinstance(candidate, dict):
-            continue
+    seen_ids = {"selected"}
+    for index, candidate in enumerate((item for item in raw if isinstance(item, dict)), start=1):
         total += 1
         engine = _val(candidate.get("engine") or "unknown").casefold()
         model = _val(candidate.get("model_id"))
         page = _val(candidate.get("page"))
+        base = re.sub(r"[^a-z0-9]+", "-", f"{page}-{engine}-{model}".casefold()).strip("-")[:100]
+        candidate_id = base or f"candidate-{index}"
+        suffix = 2
+        while candidate_id in seen_ids:
+            candidate_id = f"{base or f'candidate-{index}'}-{suffix}"
+            suffix += 1
+        seen_ids.add(candidate_id)
         text = _val(candidate.get("text"))
         error = bool(_val(candidate.get("error")))
         is_degenerate, _ = detect_degeneration(text, candidate.get("confidence"))
@@ -180,7 +190,7 @@ def recognition_summary(data: dict) -> RecognitionSummary:
             degenerate += 1
         else:
             successful += 1
-            usable_by_page.setdefault(page, set()).add((engine, model, str(index)))
+            usable_by_page.setdefault(page, []).append(candidate_id)
 
     declared_pages = meta.get("pages")
     try:
@@ -191,10 +201,12 @@ def recognition_summary(data: dict) -> RecognitionSummary:
         page_count = len(attributed_pages) or len(source["pages"]) or (1 if total else 0)
     comparable = any(len(items) >= 2 and (page or page_count == 1)
                      for page, items in usable_by_page.items())
+    pair = next(((items[0], items[1], page) for page, items in usable_by_page.items()
+                 if len(items) >= 2 and (page or page_count == 1)), None)
     return RecognitionSummary(
         "current", total, successful, failed, empty, degenerate,
         tuple(sorted(engines)), len(models), page_count,
-        bool(source["url"]), source["type"], review, comparable,
+        bool(source["url"]), source["type"], review, comparable, pair,
     )
 
 
@@ -374,6 +386,20 @@ def _card(record: Record) -> str:
         for label, value in facts
     )
     count = lambda value: "" if value is None else str(value)
+    doc_href = f"{quote(record.doc_id, safe='')}/"
+    if summary.comparison_pair:
+        left, right, page = summary.comparison_pair
+        query = f"cmp={quote(left)}:{quote(right)}"
+        if page:
+            query += f"&page={quote(page)}"
+        action_href = f"{doc_href}?{query}#recognitions"
+        action_label = "Modelle vergleichen"
+    elif summary.total:
+        action_href = f"{doc_href}?rec=selected#recognition-selected"
+        action_label = "Erkennungen ansehen"
+    else:
+        action_href = doc_href
+        action_label = "Ausgabe öffnen"
     summary_attrs = (
         f'data-recognition-provenance="{summary.provenance}" '
         f'data-recognition-total="{count(summary.total)}" '
@@ -404,7 +430,7 @@ def _card(record: Record) -> str:
     {status_html if status_html else '<span class="visually-hidden">Keine Warnungen</span>'}
   </div>
   {preview}
-  <p class="catalogue-actions"><a href="{html.escape(record.doc_id)}/" aria-label="Ausgabe {html.escape(record.doc_id)} öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a href="{html.escape(action_href, quote=True)}" aria-label="{html.escape(action_label)}: {html.escape(record.doc_id)}">{action_label} <span aria-hidden="true">→</span></a></p>
   {explain_btn}{explain_block}
 </article>'''
 
