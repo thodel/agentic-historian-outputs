@@ -96,3 +96,127 @@ Die Kandidatenauswahl besteht aus gewöhnlichen Links und kann deshalb mit der T
 ### Anpassung am Original
 
 Für die finale Transkription sollten die generierten Lesarten stets am **Original-Digitalisat** überprüft werden. Die angebotenen Versionen sind keine edierten Lesarten, sondern Erkennungsvarianten, die der menschlichen Kontrolle bedürfen.
+
+---
+
+<a id="quality-metrics"></a>
+## Qualitätsmetriken
+
+Agentic Historian unterscheidet mehrere Typen von Qualitätsindikatoren. Jeder Typ hat eine eigene Bedeutung, einen eigenen Geltungsbereich und eigene Grenzen. Diese Abschnitte erläutern, was jeder Indikator misst, woher er stammt und was er nicht aussagt. Die Erläuterungen werden auf Dokument-, Erkennungs- und Katalogansichten mit denselben Schlüsseln eingeblendet.
+
+Kein Qualitätsindikator auf dieser Seite ersetzt die Überprüfung am Original. Maschinell erzeugte Transkriptionen können fehlerhaft sein, auch wenn alle Metriken unauffällig aussehen.
+
+<a id="quality-metrics-engine-confidence"></a>
+### Engine-Konfidenz
+
+Die Engine-Konfidenz ist ein Wahrscheinlichkeitswert, den die jeweilige Erkennungs-Engine für ihren eigenen Output produziert. Er liegt üblicherweise im Bereich [0, 1] (0 = sehr unsicher, 1 = sehr sicher).
+
+**Geltungsbereich:** pro Kandidat (eine Engine, ein Modell, eine Seite).
+
+**Was er ausdrückt:** Wie sicher sich das Modell *laut seiner eigenen Kalibrierung* ist. Manche Modelle sind systematisch über- oder unterkalibriert.
+
+**Was er nicht aussagt:**
+- Hohe Konfidenz bedeutet nicht, dass die Transkription korrekt ist.
+- Konfidenzwerte verschiedener Engines stammen aus unterschiedlichen Modellen mit unterschiedlichen Skalen und Bedeutungen. Ein höherer Wert einer Engine sagt nichts darüber aus, ob deren Transkription genauer ist als die einer anderen Engine.
+- Konfidenzwerte verschiedener Engines dürfen nicht direkt verglichen oder gemittelt werden.
+
+**Anzeigeformat:** Prozentzahl, z. B. „87 %" mit Angabe von Engine, Modell und Seite.
+
+<a id="quality-metrics-agreement"></a>
+### Engine-Übereinstimmung
+
+Die Übereinstimmung gibt an, wie viele unabhängige Engines oder Kandidaten dieselbe Lesart für eine Textstelle erzeugt haben.
+
+**Berechnung:** Anteil der Kandidaten mit identischer oder normalisiert übereinstimmender Ausgabe an der Gesamtzahl der genutzten Kandidaten.
+
+**Was sie ausdrückt:** Konsens zwischen Erkennungssystemen — ein Indiz für Robustheit.
+
+**Was sie nicht aussagt:**
+- Übereinstimmung beweist keine Korrektheit. Alle Engines können sich gemeinsam irren, insbesondere bei häufigen Fehlern oder bei unklaren Schriftzeichen.
+- Übereinstimmungswerte sind kein Ersatz für Genauigkeitswerte.
+- Übereinstimmung ist nicht mit Engine-Konfidenz vergleichbar.
+
+**Anzeigeformat:** Prozentzahl, z. B. „3/4 Engines (75 %)".
+
+<a id="quality-metrics-reference-evaluation"></a>
+### Referenzbasierte Auswertung (CER / WER)
+
+CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.
+
+**Berechnung:**
+- CER = (Substitutionen + Einfügungen + Löschungen auf Zeichenebene) / Länge der Referenz
+- WER = entsprechend auf Wortebene
+- Beide Werte liegen im Bereich [0, 1]; niedrigere Werte bedeuten weniger Abweichungen.
+
+**Geltungsbereich:** Der Wert gilt nur für die angegebene Referenz (Name, Version, Normalisierung, Datensatz).
+
+**Was sie ausdrückt:** Wie stark die maschinelle Ausgabe von einer manuell erstellten Vorlage abweicht — soweit diese Vorlage vorhanden und korrekt ist.
+
+**Was sie nicht aussagen:**
+- CER/WER setzen eine korrekte Referenztranskription voraus. Ist die Referenz unvollständig oder fehlerhaft, gibt die Metrik deren Abweichungen wieder, nicht die Qualität des Originals.
+- Ein Wert gilt nur für die benannte Referenz und Normalisierung. Derselbe Kandidat kann gegenüber einer anderen Referenz einen anderen Wert erzielen.
+- Werte auf Korpusebene dürfen nicht als Dokumentgenauigkeit interpretiert werden.
+
+**Anzeigeformat:** Prozentzahl mit Normalisierungshinweis, z. B. „CER 4,2 % (niedrig = besser)" mit Quellenangabe.
+
+<a id="quality-metrics-degeneration"></a>
+### Degenerierte Ausgabe
+
+Eine degenerierte Ausgabe ist eine Transkription, die mechanisch unbrauchbar ist — also z. B. ausschliesslich aus wiederholten Zeichen besteht oder ungewöhnlich lang ist — auch wenn kein technischer Fehler gemeldet wurde.
+
+**Erkennungsregeln:**
+- 20 oder mehr identische aufeinanderfolgende Zeichen
+- 10 oder mehr Wiederholungen einer kurzen Zeichensequenz (bis 5 Zeichen)
+- 50 oder mehr aufeinanderfolgende Leerzeichen
+- Ausgabelänge über 1 Million Zeichen
+- Engine-Konfidenz unter 1 % (sofern vorhanden)
+
+**Was dies bedeutet:** Die Engine hat eine Ausgabe produziert, die mit hoher Wahrscheinlichkeit kein sinnvolles Transkriptionsergebnis enthält. Die Ausgabe wird als Fehler behandelt.
+
+**Was dies nicht bedeutet:** Kurze, unklare oder mehrdeutige Transkriptionen gelten nicht als degeneriert — nur mechanisch erkennbare Anomalien.
+
+<a id="quality-metrics-failure"></a>
+### Fehlgeschlagene Erkennung
+
+Eine fehlgeschlagene Erkennung ist ein Versuch, bei dem kein verwertbares Transkriptionsergebnis erzeugt wurde, weil ein technischer Fehler aufgetreten ist.
+
+**Fehlerkategorien:** `timeout`, `unavailable`, `backend_error`, `unsupported_model`, `invalid_response`, `cancelled`, `degenerate`, `empty`, `missing`.
+
+**Wiederholbarkeit:** Timeout-, Dienst-, Backend- und Antwortfehler können durch Wiederholung behoben werden. Degenerierte Ausgaben und `unsupported_model`-Fehler sind durch Wiederholung nicht zu beheben.
+
+**Was öffentlich sichtbar ist:** Nur stabile Diagnosecodes und bereinigte Meldungen. Interne Endpunkte, Pfade und Zugangsdaten werden nicht veröffentlicht.
+
+**Was dies nicht bedeutet:** Eine fehlgeschlagene Erkennung sagt nichts über den Inhalt des Originaldokuments aus.
+
+<a id="quality-metrics-selection-score"></a>
+### Ausgewählte Transkription / Fusion
+
+Die ausgewählte Transkription ist das Ergebnis, das die Pipeline als Haupttranskription weitergegeben hat. Sie kann aus einer einzigen Engine-Ausgabe bestehen (bei einer Engine) oder aus mehreren Kandidaten fusioniert worden sein (bei mehreren Engines).
+
+**Auswahlkriterien:** Die Pipeline wählt oder fusioniert nach Konfidenz, Übereinstimmung und Fehlerstatus; die genauen Gewichtungen können je nach Konfiguration variieren.
+
+**Was dies ausdrückt:** Den besten verfügbaren maschinellen Versuch auf Basis der Pipeline-Kriterien zum Zeitpunkt der Verarbeitung.
+
+**Was dies nicht aussagt:**
+- Die ausgewählte Transkription ist nicht zwingend die historisch korrekte Lesart.
+- Konfidenzwerte verschiedener Engines werden dabei nicht direkt summiert oder gemittelt.
+- Eine Fusion erhöht nicht automatisch die Genauigkeit; sie kann Fehler konsolidieren oder verstärken.
+
+**Überprüfung:** Das Ergebnis sollte stets am Original-Digitalisat überprüft werden.
+
+<a id="quality-metrics-verification"></a>
+### Menschliche Überprüfung und Verifikationsstatus
+
+Der Verifikationsstatus beschreibt, wie weit eine Transkription menschlich geprüft wurde.
+
+**Statuswerte:**
+- `machine-generated` — automatisch erzeugt, nicht geprüft
+- `under-review` — befindet sich in menschlicher Überprüfung
+- `human-reviewed` — manuell gesichtet, aber nicht vollständig als Transkription freigegeben
+- `human-verified` — ausdrücklich fachlich geprüft und als Transkription freigegeben
+
+**Was dies ausdrückt:** Den Bearbeitungsstand der Ausgabe, nicht ihre Qualität. Eine `machine-generated`-Ausgabe kann korrekt sein; eine `human-reviewed`-Ausgabe kann Fehler enthalten.
+
+**Was dies nicht aussagt:** Der Status ist kein numerischer Qualitätswert und nicht mit Konfidenz oder CER vergleichbar.
+
+**Anzeige:** Verifikationsstatus ist kategorisch und wird als Text und Symbol ausgedrückt — nie ausschliesslich durch Farbe.

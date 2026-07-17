@@ -67,6 +67,32 @@ MetricUnit = Literal["ratio", "probability", "CER", "WER", "percentage", "count"
 
 # Each entry is a (short_label, body_html) tuple.
 # Keys are used as explanation_key values throughout the codebase.
+# ---------------------------------------------------------------------------
+# Methodology anchors
+# ---------------------------------------------------------------------------
+
+# Maps each explanation key to the stable methodology section anchor URL.
+# The anchor path is absolute so it resolves correctly from any page depth.
+# These anchors MUST remain stable; the methodology.md section IDs are
+# kept in sync.
+METHODOLOGY_ANCHORS: dict[str, str] = {
+    "engine_confidence": "/methodology/#quality-metrics-engine-confidence",
+    "agreement": "/methodology/#quality-metrics-agreement",
+    "reference_evaluation": "/methodology/#quality-metrics-reference-evaluation",
+    "degenerate": "/methodology/#quality-metrics-degeneration",
+    "failed": "/methodology/#quality-metrics-failure",
+    "missing": "/methodology/#quality-metrics",
+    "legacy_qa": "/methodology/#quality-metrics",
+    "incomparable_confidence": "/methodology/#quality-metrics-engine-confidence",
+    "verification_needed": "/methodology/#quality-metrics-verification",
+    "selection_score": "/methodology/#quality-metrics-selection-score",
+}
+
+
+# ---------------------------------------------------------------------------
+# Explanation registry
+# ---------------------------------------------------------------------------
+
 EXPLANATIONS: dict[str, tuple[str, str]] = {
     "engine_confidence": (
         "Engine-Konfidenz",
@@ -122,6 +148,15 @@ EXPLANATIONS: dict[str, tuple[str, str]] = {
         "Diese Transkription ist maschinell erzeugt.  Sie sollte anhand des "
         "Originaldokuments überprüft werden, bevor sie in einer wissenschaftlichen "
         "Arbeit zitiert wird.",
+    ),
+    "selection_score": (
+        "Ausgewählte Transkription / Fusion",
+        "Die ausgewählte Transkription ist das Ergebnis, das die Pipeline als "
+        "Haupttranskription ausgewählt oder aus mehreren Engine-Ausgaben fusioniert "
+        "hat.  Sie stellt den besten maschinellen Versuch dar, nicht zwingend die "
+        "historisch korrekte Lesart.  Konfidenzwerte verschiedener Engines werden "
+        "dabei nicht direkt summiert oder gemittelt.  Das Ergebnis sollte stets am "
+        "Original überprüft werden.",
     ),
 }
 
@@ -259,9 +294,13 @@ def quality_badge(kind: MetricType, value: float | None, unit: MetricUnit,
     else:
         ek = "missing"
         label = "Keine Qualitätsmetrik"
+    # Use only the short label in the title attribute; full explanations are
+    # accessible through the explanation_button/explanation_block system.
+    # No critical meaning should depend solely on this hover-only tooltip.
+    short_title = EXPLANATIONS.get(ek, ("", ""))[0]
     return (
         f'<span class="quality-badge quality-badge--{kind}" '
-        f'title="{EXPLANATIONS.get(ek, ("", ""))[1]}">{label}</span>'
+        f'title="{html.escape(short_title)}">{label}</span>'
     )
 
 
@@ -297,16 +336,26 @@ def explanation_block(key: str, suffix: str = "") -> str:
 
     The div id is of form ``quality-explanation-{key}-{suffix}`` to ensure
     uniqueness when the same explanation key appears multiple times.
+
+    When a methodology anchor exists for the key, the block includes a link to
+    the stable methodology section so readers can find formulas, ranges,
+    provenance details, and limitations without depending on hover-only tooltips.
     """
     if key not in EXPLANATIONS:
         return ""
     short_label, body = EXPLANATIONS[key]
     _expl_counter[0] += 1
     uniq = suffix or str(_expl_counter[0])
+    anchor = METHODOLOGY_ANCHORS.get(key, "")
+    link_html = (
+        f' <a class="quality-explanation-link" href="{html.escape(anchor)}">'
+        f'Methodik <span aria-hidden="true">→</span></a>'
+        if anchor else ""
+    )
     return (
         f'<div class="quality-explanation" id="quality-explanation-{key}-{uniq}" '
         f'role="region" aria-label="{html.escape(short_label)}" hidden>'
-        f"<p><strong>{short_label}:</strong> {body}</p>"
+        f"<p><strong>{short_label}:</strong> {body}{link_html}</p>"
         f"</div>"
     )
 
