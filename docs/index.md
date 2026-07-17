@@ -9,6 +9,16 @@ title: Katalog
   <p class="catalogue-kicker">Forschungsdaten · automatisch erzeugt</p>
   <h1>Verarbeitete Dokumente</h1>
   <p>Transkriptionen, Quellenbeschreibungen und erkannte Entitäten. Die neuesten Ausgaben stehen zuerst. Automatisch erzeugte Angaben sind Forschungsangebote und müssen am Original überprüft werden.</p>
+  <details class="quality-explanation" id="catalogue-quality-explainer">
+    <summary>Qualitätsmetriken in diesem Katalog</summary>
+    <p>Jede Ausgabe zeigt bis zu vier Qualitätsmetriken:</p>
+    <dl>
+      <div><dt>Ø Konfidenz</dt><dd>Durchschnittliche Engine-Konfidenz aller Erkennungskandidaten (niedrig = unsicherer). Nicht zwischen Engines vergleichbar.</dd></div>
+      <div><dt>CER / WER</dt><dd>Character/Word Error Rate gegen eine bekannte Referenz (niedrig = weniger Fehler). Nur vorhanden wenn Referenz verfügbar.</dd></div>
+      <div><dt>Erkennungsfehler</dt><dd>Anzahl der Kandidaten, die fehlgeschlagen oder degeneriert sind.</dd></div>
+      <div><dt>Legacy-QA</dt><dd>QA-Wert aus älterem System ohne definierte Bedeutung. Ersetzen Sie durch eine der oben genannten Metriken.</dd></div>
+    </dl>
+  </details>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
   <p class="catalogue-summary"><strong>14</strong> Einträge · 8 Ausgaben · 6 Testläufe</p>
 </div>
@@ -39,173 +49,187 @@ title: Katalog
 <p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">14 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
 
 <div id="catalogue-list" class="catalogue-list">
-<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="bat     bat_663_r_00050.jpg amen vndertwegen wulffin. densp. de vor lieben anehmen harte f. uff azzu von me de reitt vn auff den obern lieben anehmen hertzen ich klagen zempfchirf anwer er">
+<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="bat     bat_663_r_00050.jpg amen vndertwegen wulffin. densp. de vor lieben anehmen harte f. uff azzu von me de reitt vn auff den obern lieben anehmen hertzen ich klagen zempfchirf anwer er" data-recognition-provenance="current" data-recognition-total="5" data-recognition-successful="3" data-recognition-failed="2" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="5" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T21:19:05+02:00">15.07.2026, 21:19</time></p>
       <h2><a href="bat/">bat</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 43%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-failed">2 Erkennungsfehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 43%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>13</dd></div><div><dt>Seiten</dt><dd>1</dd></div></dl>
   <p class="catalogue-preview">BAT_663_r_00050.jpg Amen vndertwegen Wulffin. Densp. de vor lieben anehmen harte f. uff azzu von me de reitt vn auff den obern lieben anehmen hertzen ich klagen zempfchirf anwer er…</p>
   <p class="catalogue-actions"><a href="bat/" aria-label="Ausgabe bat öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-reference_evaluation-1"><span aria-hidden="true">ⓘ</span> Referenzbasierte Auswertung (CER/WER)</button><div class="quality-explanation" id="quality-explanation-reference_evaluation-2" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div>
 </article>
-<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="order-ens     p1.jpg gut lesbar hier p2.jpg gut lesbar hier">
+<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="order-ens     p1.jpg gut lesbar hier p2.jpg gut lesbar hier" data-recognition-provenance="current" data-recognition-total="1" data-recognition-successful="1" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken" data-recognition-models="1" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T19:17:36+02:00">15.07.2026, 19:17</time></p>
       <h2><a href="order-ens/">order-ens</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 90%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-confidence">Ø Konfidenz 80%</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 90%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>0</dd></div><div><dt>Seiten</dt><dd>2</dd></div></dl>
   <p class="catalogue-preview">p1.jpg gut lesbar hier p2.jpg gut lesbar hier…</p>
   <p class="catalogue-actions"><a href="order-ens/" aria-label="Ausgabe order-ens öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-reference_evaluation-3"><span aria-hidden="true">ⓘ</span> Referenzbasierte Auswertung (CER/WER)</button><div class="quality-explanation" id="quality-explanation-reference_evaluation-4" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div>
 </article>
-<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="u-17__     e-codices_saa-0428_015v_large.jpg seite 1 modios reina cum prato sive uysta ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. alhile er conu">
+<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="u-17__     e-codices_saa-0428_015v_large.jpg seite 1 modios reina cum prato sive uysta ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. alhile er conu" data-recognition-provenance="current" data-recognition-total="13" data-recognition-successful="11" data-recognition-failed="2" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="5" data-recognition-pages="4" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T16:49:41+02:00">15.07.2026, 16:49</time></p>
       <h2><a href="u-17__/">u-17__</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 48%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-failed">2 Erkennungsfehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 48%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>82</dd></div><div><dt>Seiten</dt><dd>4</dd></div></dl>
   <p class="catalogue-preview">e-codices_saa-0428_015v_large.jpg SEITE 1 modios reina cum prato sive uysta Ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. Alhile er conu…</p>
   <p class="catalogue-actions"><a href="u-17__/" aria-label="Ausgabe u-17__ öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-reference_evaluation-5"><span aria-hidden="true">ⓘ</span> Referenzbasierte Auswertung (CER/WER)</button><div class="quality-explanation" id="quality-explanation-reference_evaluation-6" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div>
 </article>
-<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="u-17     e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu ">
+<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="u-17     e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu " data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="4" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T17:18:20+02:00">08.07.2026, 17:18</time></p>
       <h2><a href="u-17/">u-17</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 80%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 80%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>0</dd></div><div><dt>Seiten</dt><dd>4</dd></div></dl>
   <p class="catalogue-preview">e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu …</p>
   <p class="catalogue-actions"><a href="u-17/" aria-label="Ausgabe u-17 öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-reference_evaluation-7"><span aria-hidden="true">ⓘ</span> Referenzbasierte Auswertung (CER/WER)</button><div class="quality-explanation" id="quality-explanation-reference_evaluation-8" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div>
 </article>
-<article class="catalogue-card" data-kind="output" data-language="de" data-script="kurrent" data-search="order-001-group 15. jahrhundert de kurrent gerichtsbrief page_1.jpg page page_1.jpg page_2.jpg page page_2.jpg">
+<article class="catalogue-card" data-kind="output" data-language="de" data-script="kurrent" data-search="order-001-group 15. jahrhundert de kurrent gerichtsbrief page_1.jpg page page_1.jpg page_2.jpg page page_2.jpg" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="2" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:38+02:00">08.07.2026, 09:03</time></p>
       <h2><a href="order-001-group/">order-001-group</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 90%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 90%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Entitäten</dt><dd>1</dd></div><div><dt>Seiten</dt><dd>2</dd></div></dl>
   <p class="catalogue-preview">page_1.jpg page page_1.jpg page_2.jpg page page_2.jpg…</p>
   <p class="catalogue-actions"><a href="order-001-group/" aria-label="Ausgabe order-001-group öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-reference_evaluation-9"><span aria-hidden="true">ⓘ</span> Referenzbasierte Auswertung (CER/WER)</button><div class="quality-explanation" id="quality-explanation-reference_evaluation-10" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div>
 </article>
-<article class="catalogue-card" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0005-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…">
+<article class="catalogue-card" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0005-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:31+02:00">08.07.2026, 09:03</time></p>
       <h2><a href="saa-0005-test/">saa-0005-test</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 85%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Entitäten</dt><dd>1</dd></div></dl>
   <p class="catalogue-preview">Hans von Bern tuend kund……</p>
   <p class="catalogue-actions"><a href="saa-0005-test/" aria-label="Ausgabe saa-0005-test öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-reference_evaluation-11"><span aria-hidden="true">ⓘ</span> Referenzbasierte Auswertung (CER/WER)</button><div class="quality-explanation" id="quality-explanation-reference_evaluation-12" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div>
 </article>
-<article class="catalogue-card" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0004-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…">
+<article class="catalogue-card" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0004-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:31+02:00">08.07.2026, 09:03</time></p>
       <h2><a href="saa-0004-test/">saa-0004-test</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 85%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Entitäten</dt><dd>1</dd></div></dl>
   <p class="catalogue-preview">Hans von Bern tuend kund……</p>
   <p class="catalogue-actions"><a href="saa-0004-test/" aria-label="Ausgabe saa-0004-test öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-reference_evaluation-13"><span aria-hidden="true">ⓘ</span> Referenzbasierte Auswertung (CER/WER)</button><div class="quality-explanation" id="quality-explanation-reference_evaluation-14" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div>
 </article>
-<article class="catalogue-card" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0006-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…">
+<article class="catalogue-card" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0006-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:23+02:00">08.07.2026, 09:03</time></p>
       <h2><a href="saa-0006-test/">saa-0006-test</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 85%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Entitäten</dt><dd>1</dd></div></dl>
   <p class="catalogue-preview">Hans von Bern tuend kund……</p>
   <p class="catalogue-actions"><a href="saa-0006-test/" aria-label="Ausgabe saa-0006-test öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-reference_evaluation-15"><span aria-hidden="true">ⓘ</span> Referenzbasierte Auswertung (CER/WER)</button><div class="quality-explanation" id="quality-explanation-reference_evaluation-16" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div>
 </article>
-<article class="catalogue-card" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0003-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…">
+<article class="catalogue-card" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0003-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:23+02:00">08.07.2026, 09:03</time></p>
       <h2><a href="saa-0003-test/">saa-0003-test</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 85%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Entitäten</dt><dd>1</dd></div></dl>
   <p class="catalogue-preview">Hans von Bern tuend kund……</p>
   <p class="catalogue-actions"><a href="saa-0003-test/" aria-label="Ausgabe saa-0003-test öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-reference_evaluation-17"><span aria-hidden="true">ⓘ</span> Referenzbasierte Auswertung (CER/WER)</button><div class="quality-explanation" id="quality-explanation-reference_evaluation-18" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div>
 </article>
-<article class="catalogue-card" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0002-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…">
+<article class="catalogue-card" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0002-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:23+02:00">08.07.2026, 09:03</time></p>
       <h2><a href="saa-0002-test/">saa-0002-test</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 85%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Entitäten</dt><dd>1</dd></div></dl>
   <p class="catalogue-preview">Hans von Bern tuend kund……</p>
   <p class="catalogue-actions"><a href="saa-0002-test/" aria-label="Ausgabe saa-0002-test öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-reference_evaluation-19"><span aria-hidden="true">ⓘ</span> Referenzbasierte Auswertung (CER/WER)</button><div class="quality-explanation" id="quality-explanation-reference_evaluation-20" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div>
 </article>
-<article class="catalogue-card" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0001-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…">
+<article class="catalogue-card" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0001-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:23+02:00">08.07.2026, 09:03</time></p>
       <h2><a href="saa-0001-test/">saa-0001-test</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 85%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Entitäten</dt><dd>1</dd></div></dl>
   <p class="catalogue-preview">Hans von Bern tuend kund……</p>
   <p class="catalogue-actions"><a href="saa-0001-test/" aria-label="Ausgabe saa-0001-test öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-reference_evaluation-21"><span aria-hidden="true">ⓘ</span> Referenzbasierte Auswertung (CER/WER)</button><div class="quality-explanation" id="quality-explanation-reference_evaluation-22" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div>
 </article>
-<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="kf-     0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu">
+<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="kf-     0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu" data-recognition-provenance="legacy" data-recognition-total="" data-recognition-successful="" data-recognition-failed="" data-recognition-empty="" data-recognition-degenerate="" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:47:14+02:00">07.07.2026, 15:47</time></p>
       <h2><a href="kf-/">kf-</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 80%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 80%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>0</dd></div><div><dt>Seiten</dt><dd>3</dd></div></dl>
   <p class="catalogue-preview">0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu…</p>
   <p class="catalogue-actions"><a href="kf-/" aria-label="Ausgabe kf- öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-reference_evaluation-23"><span aria-hidden="true">ⓘ</span> Referenzbasierte Auswertung (CER/WER)</button><div class="quality-explanation" id="quality-explanation-reference_evaluation-24" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div>
 </article>
-<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="kf     0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu">
+<article class="catalogue-card" data-kind="output" data-language="" data-script="" data-search="kf     0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu" data-recognition-provenance="legacy" data-recognition-total="" data-recognition-successful="" data-recognition-failed="" data-recognition-empty="" data-recognition-degenerate="" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:29:12+02:00">07.07.2026, 15:29</time></p>
       <h2><a href="kf/">kf</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 80%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 80%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>0</dd></div><div><dt>Seiten</dt><dd>3</dd></div></dl>
   <p class="catalogue-preview">0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu…</p>
   <p class="catalogue-actions"><a href="kf/" aria-label="Ausgabe kf öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-reference_evaluation-25"><span aria-hidden="true">ⓘ</span> Referenzbasierte Auswertung (CER/WER)</button><div class="quality-explanation" id="quality-explanation-reference_evaluation-26" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div>
 </article>
-<article class="catalogue-card" data-kind="output" data-language="deutsch (unsicher)" data-script="gotische textschrift (unsicher)" data-search="bat_664_r_00027 15. jahrhundert (unsicher) deutsch (unsicher) gotische textschrift (unsicher)  ðiser pr mimítt͛. qrí͛g bøn͛ locb.iꝼetrinr.. evan dec scrsl.dor eẏ ꝼa da þʀit sziristn en s henm svastnð smrát .i c fø sarínii g̅ iuð de se̅dz sgst sƿir diɴl irð ni l͛. þni i ꝼian̅">
+<article class="catalogue-card" data-kind="output" data-language="deutsch (unsicher)" data-script="gotische textschrift (unsicher)" data-search="bat_664_r_00027 15. jahrhundert (unsicher) deutsch (unsicher) gotische textschrift (unsicher)  ðiser pr mimítt͛. qrí͛g bøn͛ locb.iꝼetrinr.. evan dec scrsl.dor eẏ ꝼa da þʀit sziristn en s henm svastnð smrát .i c fø sarínii g̅ iuð de se̅dz sgst sƿir diɴl irð ni l͛. þni i ꝼian̅" data-recognition-provenance="legacy" data-recognition-total="" data-recognition-successful="" data-recognition-failed="" data-recognition-empty="" data-recognition-degenerate="" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:25:18+02:00">07.07.2026, 15:25</time></p>
       <h2><a href="BAT_664_r_00027/">BAT_664_r_00027</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge">QA 80%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 80%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert (unsicher)</dd></div><div><dt>Sprache</dt><dd>Deutsch (unsicher)</dd></div><div><dt>Schrift</dt><dd>gotische Textschrift (unsicher)</dd></div><div><dt>Entitäten</dt><dd>14</dd></div></dl>
   <p class="catalogue-preview">ðiser Pr mimítt͛. qrí͛g bøn͛ locb.iꝼetrinr.. Evan dec scrsl.dor eẏ ꝼa Da þʀit sziristn en s henm svastnð Smrát .i c Fø Sarínii G̅ iuð de se̅dz sgst sƿir diɴl irð ni l͛. þni i ꝼian̅…</p>
   <p class="catalogue-actions"><a href="BAT_664_r_00027/" aria-label="Ausgabe BAT_664_r_00027 öffnen">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-reference_evaluation-27"><span aria-hidden="true">ⓘ</span> Referenzbasierte Auswertung (CER/WER)</button><div class="quality-explanation" id="quality-explanation-reference_evaluation-28" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div>
 </article>
 </div>
 

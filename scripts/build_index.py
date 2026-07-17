@@ -15,6 +15,7 @@ import subprocess
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
+from source_references import normalize_source_reference
 
 # Epic 5 quality vocabulary (#27)
 try:
@@ -103,6 +104,98 @@ class Record:
     recognition_avg_confidence: float | None = None  # mean engine confidence
     reference_cer: float | None = None  # reference-based CER if available
     reference_wer: float | None = None
+    recognition_summary: "RecognitionSummary | None" = None
+
+
+@dataclass(frozen=True)
+class RecognitionSummary:
+    provenance: str
+    total: int | None
+    successful: int | None
+    failed: int | None
+    empty: int | None
+    degenerate: int | None
+    engines: tuple[str, ...]
+    model_count: int
+    page_count: int | None
+    source_available: bool
+    source_type: str
+    review_status: str
+    comparison_ready: bool
+
+    def as_dict(self) -> dict:
+        return {
+            "provenance": self.provenance,
+            "total": self.total,
+            "successful": self.successful,
+            "failed": self.failed,
+            "empty": self.empty,
+            "degenerate": self.degenerate,
+            "engines": list(self.engines),
+            "model_count": self.model_count,
+            "page_count": self.page_count,
+            "source_available": self.source_available,
+            "source_type": self.source_type,
+            "review_status": self.review_status,
+            "comparison_ready": self.comparison_ready,
+        }
+
+
+def recognition_summary(data: dict) -> RecognitionSummary:
+    """Derive the bounded catalogue contract directly from pipeline metadata."""
+    meta = data.get("a_meta") if isinstance(data.get("a_meta"), dict) else {}
+    review = _val(data.get("review_status") or meta.get("review_status") or "machine-generated")
+    source = normalize_source_reference(data)
+    raw = data.get("recognitions")
+    if not isinstance(raw, list):
+        return RecognitionSummary(
+            "legacy", None, None, None, None, None, (), 0, None,
+            bool(source["url"]), source["type"], review, False,
+        )
+
+    total = successful = failed = empty = degenerate = 0
+    engines: set[str] = set()
+    models: set[tuple[str, str]] = set()
+    usable_by_page: dict[str, set[tuple[str, str, str]]] = {}
+    attributed_pages: set[str] = set()
+    for index, candidate in enumerate(raw):
+        if not isinstance(candidate, dict):
+            continue
+        total += 1
+        engine = _val(candidate.get("engine") or "unknown").casefold()
+        model = _val(candidate.get("model_id"))
+        page = _val(candidate.get("page"))
+        text = _val(candidate.get("text"))
+        error = bool(_val(candidate.get("error")))
+        is_degenerate, _ = detect_degeneration(text, candidate.get("confidence"))
+        engines.add(engine)
+        models.add((engine, model))
+        if page:
+            attributed_pages.add(page)
+        if error:
+            failed += 1
+        elif not text.strip():
+            empty += 1
+        elif is_degenerate:
+            degenerate += 1
+        else:
+            successful += 1
+            usable_by_page.setdefault(page, set()).add((engine, model, str(index)))
+
+    declared_pages = meta.get("pages")
+    try:
+        page_count = int(declared_pages) if declared_pages is not None else None
+    except (TypeError, ValueError):
+        page_count = None
+    if page_count is None:
+        page_count = len(attributed_pages) or len(source["pages"]) or (1 if total else 0)
+    comparable = any(len(items) >= 2 and (page or page_count == 1)
+                     for page, items in usable_by_page.items())
+    return RecognitionSummary(
+        "current", total, successful, failed, empty, degenerate,
+        tuple(sorted(engines)), len(models), page_count,
+        bool(source["url"]), source["type"], review, comparable,
+    )
 
 
 def _record(path: Path) -> Record:
@@ -176,6 +269,7 @@ def _record(path: Path) -> Record:
 
     rec_avg_conf = sum(rec_confidences) / len(rec_confidences) if rec_confidences else None
 
+    summary = recognition_summary(data)
     return Record(
         doc_id=doc_id,
         created=created,
@@ -195,6 +289,7 @@ def _record(path: Path) -> Record:
         recognition_avg_confidence=rec_avg_conf,
         reference_cer=ref_cer,
         reference_wer=ref_wer,
+        recognition_summary=summary,
     )
 
 
@@ -253,7 +348,26 @@ def _card(record: Record) -> str:
     )
     search = " ".join((record.doc_id, record.date_label, record.language, record.script, record.document_type, record.preview)).lower()
     kind = "test" if record.is_test else "output"
-    return f'''<article class="catalogue-card" data-kind="{kind}" data-language="{html.escape(record.language.casefold(), quote=True)}" data-script="{html.escape(record.script.casefold(), quote=True)}" data-search="{html.escape(search, quote=True)}">
+    summary = record.recognition_summary or RecognitionSummary(
+        "legacy", None, None, None, None, None, (), 0, None, False,
+        "missing", record.review_status, False)
+    count = lambda value: "" if value is None else str(value)
+    summary_attrs = (
+        f'data-recognition-provenance="{summary.provenance}" '
+        f'data-recognition-total="{count(summary.total)}" '
+        f'data-recognition-successful="{count(summary.successful)}" '
+        f'data-recognition-failed="{count(summary.failed)}" '
+        f'data-recognition-empty="{count(summary.empty)}" '
+        f'data-recognition-degenerate="{count(summary.degenerate)}" '
+        f'data-recognition-engines="{html.escape(",".join(summary.engines), quote=True)}" '
+        f'data-recognition-models="{summary.model_count}" '
+        f'data-recognition-pages="{count(summary.page_count)}" '
+        f'data-source-type="{summary.source_type}" '
+        f'data-source-available="{str(summary.source_available).lower()}" '
+        f'data-review-status="{html.escape(summary.review_status, quote=True)}" '
+        f'data-comparison-ready="{str(summary.comparison_ready).lower()}"'
+    )
+    return f'''<article class="catalogue-card" data-kind="{kind}" data-language="{html.escape(record.language.casefold(), quote=True)}" data-script="{html.escape(record.script.casefold(), quote=True)}" data-search="{html.escape(search, quote=True)}" {summary_attrs}>
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="{created_iso}">{created_label}</time></p>
@@ -273,6 +387,14 @@ def build() -> int:
     records.sort(key=lambda item: (item.created, item.doc_id.lower()), reverse=True)
     output_count = sum(not record.is_test for record in records)
     test_count = len(records) - output_count
+    summary_payload = {
+        record.doc_id: record.recognition_summary.as_dict()
+        for record in records if record.recognition_summary is not None
+    }
+    (DOCS / "catalogue-summary.json").write_text(
+        json.dumps(summary_payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
 
     cards = "\n".join(_card(record) for record in records)
     page = f'''---
