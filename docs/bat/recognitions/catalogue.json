@@ -130,5 +130,13 @@
     }
   ],
   "doc_id": "bat",
+  "run_counts": {
+    "degenerate": 4,
+    "empty": 0,
+    "failed": 4,
+    "successful": 7,
+    "total": 11
+  },
+  "run_quality": "partial_failure",
   "version": "1.0"
 }

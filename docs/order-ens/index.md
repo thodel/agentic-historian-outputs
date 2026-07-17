@@ -33,6 +33,7 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 <div class="rec-primary-download"><a class="btn-rec-download" href="recognitions/fused.txt" download data-rec-primary-download>Aktuelle Transkription herunterladen <span class="rec-download-format">TXT</span></a><span class="rec-download-provenance">fusion · Seite nicht zugeordnet</span></div>
 <details class="rec-inventory"><summary>Alle Erkennungsversionen herunterladen <span class="rec-inv-count">(2 Versionen)</span></summary>
 <div class="table-scroll"><table class="rec-inv-table"><thead><tr><th>Engine</th><th>Modell</th><th>Zeichen</th><th>Status</th><th>Konfidenz/Fehler</th><th>Download</th></tr></thead><tbody><tr class="rec-inv-page-header"><th colspan="6">Nicht zugeordnet</th></tr><tr><td>fusion</td><td>—</td><td>62</td><td>Erfolgreich</td><td>Nicht angegeben</td><td class="rec-inv-dl"><a href="recognitions/fused.txt" download>fused.txt</a></td></tr><tr><td>kraken</td><td>k0</td><td>15</td><td>Erfolgreich</td><td>80%</td><td class="rec-inv-dl"><a href="recognitions/kraken-k0.txt" download>kraken-k0.txt</a></td></tr></tbody></table></div></details>
+
 <div class="rec-compare" data-recognition-compare>
 <div class="rec-compare-toolbar"><button class="btn-rec-compare" type="button" data-rec-compare-open aria-expanded="false">&#128269; Vergleichen</button></div>
 <div class="rec-compare-panes" data-rec-compare-panes hidden>

@@ -139,9 +139,32 @@ def compute_checksum(path: Path) -> str:
 
 
 def _catalogue_data(doc_id: str, candidates: list[dict]) -> dict:
+    # Issue #52: compute aggregate counts for catalogue-level filtering
+    total = len(candidates)
+    failed = sum(1 for c in candidates if c["error"])
+    degenerate = sum(1 for c in candidates if c.get("is_degenerate"))
+    successful = sum(1 for c in candidates if not c["error"] and not c.get("is_degenerate"))
+    empty = sum(1 for c in candidates
+                 if not c["error"] and not c.get("is_degenerate") and not c["text"])
+    if failed + degenerate == total:
+        run_quality = "total_failure"
+    elif failed + degenerate > 0:
+        run_quality = "partial_failure"
+    elif empty > 0:
+        run_quality = "empty"
+    else:
+        run_quality = "clean"
     return {
         "doc_id": doc_id,
         "version": "1.0",
+        "run_quality": run_quality,
+        "run_counts": {
+            "total": total,
+            "successful": successful,
+            "failed": failed,
+            "degenerate": degenerate,
+            "empty": empty,
+        },
         "artifacts": [{
             "id": candidate["id"],
             "engine": candidate["engine"],
@@ -392,6 +415,45 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
         explanation_block(k) for k in all_explanation_keys if k in EXPLANATIONS
     )
 
+    # Issue #52: compute aggregate counts for document-level failure summary
+    total = len(candidates)
+    failed = sum(1 for c in candidates if c["error"])
+    degenerate = sum(1 for c in candidates if c.get("is_degenerate"))
+    successful = sum(1 for c in candidates if not c["error"] and not c.get("is_degenerate"))
+    empty = sum(1 for c in candidates if not c["error"] and not c.get("is_degenerate") and not c["text"])
+
+    # Derive run-quality label for document-level warning
+    if failed + degenerate == total:
+        run_quality = "total_failure"
+        run_label = "Alle Erkennungen fehlgeschlagen"
+    elif failed + degenerate > 0:
+        run_quality = "partial_failure"
+        run_label = f"{failed + degenerate} von {total} fehlgeschlagen"
+    elif empty > 0:
+        run_quality = "empty"
+        run_label = f"{empty} von {total} ohne Ausgabe"
+    else:
+        run_quality = "clean"
+        run_label = None
+
+    summary_html = ""
+    if run_label:
+        css_class = {
+            "total_failure": "notice--error",
+            "partial_failure": "notice--warning",
+            "empty": "notice--info",
+        }.get(run_quality, "notice--info")
+        chips_html = (
+            '<span class="rec-chip rec-chip--ok">' + str(successful) + ' erfolgreich</span>'
+            '<span class="rec-chip rec-chip--failed">' + str(failed) + ' fehlgeschlagen</span>'
+            '<span class="rec-chip rec-chip--degenerate">' + str(degenerate) + ' degeneriert</span>'
+        )
+        summary_html = (
+            '<div class="notice ' + css_class + ' rec-run-summary">'
+            '<strong>Erkennungslauf:</strong> ' + run_label +
+            ' <span class="rec-run-chips">' + chips_html + '</span></div>'
+        )
+
     links, panels = [], []
     for candidate in candidates:
         cid = candidate["id"]
@@ -565,6 +627,7 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 <div class="rec-viewer" data-recognition-viewer data-doc-id="{html.escape(doc_id, quote=True)}">
 {primary}
 {inventory}
+{summary_html}
 {compare_section}
 <nav class="rec-selector" aria-label="Erkennungsversionen"><ul>{''.join(links)}</ul></nav>
 <div class="rec-panels">{''.join(panels)}</div>

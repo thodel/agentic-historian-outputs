@@ -168,5 +168,13 @@
     }
   ],
   "doc_id": "u-17__",
+  "run_counts": {
+    "degenerate": 2,
+    "empty": 0,
+    "failed": 2,
+    "successful": 12,
+    "total": 14
+  },
+  "run_quality": "partial_failure",
   "version": "1.0"
 }
