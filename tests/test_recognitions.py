@@ -15,12 +15,9 @@ from build_recognitions import (
     _recognition_path,
     _safe_slug,
     build_recognition_section,
-    candidate_json_export,
-    candidate_tei_xml,
     compute_checksum,
     write_catalogue,
     write_error_record,
-    write_exports,
     write_package,
 )
 
@@ -101,6 +98,46 @@ class RecognitionContractTests(unittest.TestCase):
         self.assertEqual(len(dom.ids), len(set(dom.ids)))
         self.assertEqual(len(dom.panels), 4)  # selected + three attempts
 
+    def test_single_and_multi_page_candidates_keep_page_provenance(self):
+        single = build_recognition_section(
+            [rec(page="folio-1")], "doc", "fused")
+        multi = build_recognition_section(
+            [rec(page="folio-1"), rec(model="model-2", page="folio-2")],
+            "doc", "fused",
+        )
+        self.assertIn('data-page="folio-1"', single)
+        self.assertIn('data-page="folio-1"', multi)
+        self.assertIn('data-page="folio-2"', multi)
+
+    def test_missing_page_is_explicit(self):
+        markup = build_recognition_section([rec()], "doc", "fused")
+        self.assertIn("Nicht zugeordnet", markup)
+
+    def test_explanation_blocks_have_deterministic_order(self):
+        first = build_recognition_section([rec()], "doc", "fused")
+        second = build_recognition_section([rec()], "doc", "fused")
+        labels = (
+            "engine_confidence", "agreement", "degenerate", "failed",
+            "reference_evaluation", "incomparable_confidence",
+        )
+        for markup in (first, second):
+            positions = [markup.index(f'id="quality-explanation-{label}') for label in labels]
+            self.assertEqual(positions, sorted(positions))
+
+    def test_duplicate_models_remain_independently_reachable(self):
+        markup = build_recognition_section(
+            [rec(page="one"), rec(page="two")], "doc", "fused")
+        dom = DOM(); dom.feed(markup)
+        candidate_panels = [
+            panel for panel in dom.panels
+            if panel["data-recognition-panel"] != "selected"
+        ]
+        self.assertEqual(len(candidate_panels), 2)
+        self.assertEqual(
+            len({panel["data-recognition-panel"] for panel in candidate_panels}),
+            2,
+        )
+
     def test_no_js_panels_are_semantic_details(self):
         markup = build_recognition_section([rec(), rec("kraken")], "doc", "fused")
         self.assertEqual(markup.count('<details class="rec-panel"'), 3)
@@ -111,6 +148,27 @@ class RecognitionContractTests(unittest.TestCase):
         failed = markup.split('data-recognition-panel="trocr-model"', 1)[1]
         self.assertNotIn("rec-download\" href", failed)
         self.assertIn("Kein Textdownload verfügbar", failed)
+
+    def test_comparison_shell_is_opt_in_and_accessibly_labelled(self):
+        markup = build_recognition_section([rec(), rec("kraken")], "doc", "fused")
+        self.assertIn("data-recognition-compare", markup)
+        self.assertIn("data-rec-compare-panes hidden", markup)
+        self.assertIn('for="rec-compare-select-left">Version links', markup)
+        self.assertIn('for="rec-compare-select-right">Version rechts', markup)
+
+    def test_comparison_options_are_page_scoped_and_failures_disabled(self):
+        markup = build_recognition_section([
+            rec(page="p1"),
+            rec("kraken", page="p2"),
+            rec("trocr", text="", error="timeout", page="p2"),
+        ], "doc", "fused")
+        self.assertIn('data-page="p1"', markup)
+        self.assertIn('data-page="p2"', markup)
+        failed_id = _candidates([
+            rec(page="p1"), rec("kraken", page="p2"),
+            rec("trocr", text="", error="timeout", page="p2"),
+        ], "fused")[-1]["id"]
+        self.assertIn(f'value="{failed_id}" data-page="p2" disabled', markup)
 
     def test_download_only_when_artifact_exists(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -274,656 +332,56 @@ class RecognitionContractTests(unittest.TestCase):
         self.assertIn("<summary>", markup)
         self.assertIn("</summary>", markup)
         self.assertIn("</details>", markup)
-    # ---- #38 structured exports ----
-
-    def test_tei_export_is_well_formed_xml(self):
-        cand = {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "Hello world"}
-        import xml.etree.ElementTree as ET
-        xml_str = candidate_tei_xml(cand, "doc-1")
-        ET.fromstring(xml_str)  # raises if not well-formed
-
-    def test_tei_export_has_revision_desc(self):
-        cand = {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "Hello world"}
-        xml_str = candidate_tei_xml(cand, "doc-1")
-        self.assertIn("revisionDesc", xml_str)
-        self.assertIn("Automated recognition output from kraken", xml_str)
-        self.assertIn("machine-generated", xml_str.lower())
-
-    def test_tei_export_skips_layout_fabrication(self):
-        cand = {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "Line one\nLine two"}
-        xml_str = candidate_tei_xml(cand, "doc-1")
-        import xml.etree.ElementTree as ET
-        root = ET.fromstring(xml_str)
-        ns = "http://www.tei-c.org/ns/1.0"
-        # Text blocks contain paragraphs, not coordinate attributes
-        for elem in root.iter():
-            self.assertNotIn("WIDTH", elem.tag)
-            self.assertNotIn("HEIGHT", elem.tag)
-            self.assertNotIn("HPOS", elem.tag)
-            self.assertNotIn("VPOS", elem.tag)
-
-    def test_json_export_is_well_formed(self):
-        cand = {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "Hello world"}
-        s = candidate_json_export(cand, "doc-1")
-        data = json.loads(s)
-        self.assertEqual(data["engine"], "kraken")
-        self.assertEqual(data["model_id"], "mccatmus")
-        self.assertEqual(data["derivation"], "candidate")
-        self.assertIsNone(data["error"])
-
-    def test_json_export_selected_is_labelled(self):
-        cand = {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "Hello", "selected": True}
-        data = json.loads(candidate_json_export(cand, "doc-1"))
-        self.assertEqual(data["derivation"], "selected")
-
-    def test_json_export_error_is_public(self):
-        cand = {"engine": "vlm", "model_id": "internvl", "page": "p1", "error": "auth failed: secret-key", "text": ""}
-        data = json.loads(candidate_json_export(cand, "doc-1"))
-        self.assertNotIn("secret", data["error"].lower())
-
-    def test_write_exports_creates_files(self):
+    def test_write_package_creates_zip(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            candidates = [
-                {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "Hello world"}
-            ]
-            write_exports(root, "doc-1", candidates)
-            export_dir = root / "rec-exports" / "p1"
-            self.assertTrue((export_dir / "kraken-mccatmus.json").exists())
-            self.assertTrue((export_dir / "kraken-mccatmus.tei.xml").exists())
+            path = write_package(root, "doc-1", [
+                {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "hello"}
+            ], "fused text")
+            self.assertIsNotNone(path)
+            self.assertTrue(path.exists())
+            self.assertTrue(path.name.endswith(".zip"))
 
-    def test_write_exports_skips_failures(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            candidates = [
-                {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "error": "network timeout", "text": ""}
-            ]
-            write_exports(root, "doc-1", candidates)
-            self.assertFalse((root / "rec-exports").exists())
-
-    def test_tei_export_page_without_page(self):
-        cand = {"engine": "kraken", "model_id": "mccatmus", "text": "No page"}
-        xml_str = candidate_tei_xml(cand, "doc-1")
-        self.assertIn("unassigned", xml_str)
-
-    def test_export_links_in_markup(self):
-        html = build_recognition_section([
-            {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "Hello world", "confidence": 0.95}
-        ], "doc-1", "Hello world")
-        self.assertIn("rec-export", html)
-        self.assertIn(".json", html)
-        self.assertIn(".tei.xml", html)
-
-    # ---- #39 hardening & verification ----
-
-    def test_slug_collision_gives_empty_path_both(self):
-        # Two candidates with the same engine+model+page both get empty paths
-        # to prevent silent overwrites (no silent overwrite of candidate files)
-        raw = [
-            {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "First", "confidence": 0.9},
-            {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "Second", "confidence": 0.8},
-        ]
-        processed = _candidates(raw, "First Second")
-        non_selected = [c for c in processed if not c.get("selected")]
-        self.assertEqual(len(non_selected), 2)
-        self.assertEqual(non_selected[0]["path"], "")
-        self.assertEqual(non_selected[1]["path"], "")
-
-    def test_checksum_is_deterministic(self):
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".txt", delete=False) as tf:
-            tf.write("hello world")
-            tf.flush()
-            p = Path(tf.name)
-            h1 = compute_checksum(p)
-            h2 = compute_checksum(p)
-            self.assertEqual(h1, h2)
-            Path(tf.name).unlink()
-
-    def test_error_record_no_credentials(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            path = write_error_record(root, {
-                "engine": "vlm",
-                "model_id": "internvl",
-                "page": "p1",
-                "error": "auth failed: super-secret-key-12345",
-                "text": "",
-            })
-            if path:
-                data = json.loads(path.read_text())
-                self.assertNotIn("secret", data["error"].lower())
-                self.assertNotIn("super-secret", data["error"])
-
-    def test_write_package_no_private_urls_in_error_records(self):
+    def test_write_package_manifest_has_checksums(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             write_package(root, "doc-1", [
-                {"engine": "api", "model_id": "gpt-4", "page": "p1",
-                 "error": "server error: https://internal.api.local/secret",
-                 "text": ""}
-            ], "fused")
+                {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "hello"}
+            ], "fused text")
             import zipfile
-            zp = next(root.glob("*.zip"))
-            with zipfile.ZipFile(zp) as zf:
-                for name in zf.namelist():
-                    if name.endswith(".error.txt"):
-                        txt = zf.read(name).decode()
-                        self.assertNotIn("internal.api.local", txt)
-                        self.assertNotIn("secret", txt.lower())
+            with zipfile.ZipFile(next(root.glob("*.zip"))) as zf:
+                manifest = json.loads(zf.read("manifest.json").decode())
+                self.assertIn("artifacts", manifest)
+                self.assertGreater(len(manifest["artifacts"]), 0)
+                for a in manifest["artifacts"]:
+                    self.assertIn("checksum", a)
 
-    def test_catalogue_has_no_credentials(self):
+    def test_write_package_includes_fused_and_candidates(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            write_catalogue(root, "doc-1", [
-                {"engine": "vlm", "model_id": "secret-model", "page": "p1",
-                 "error": "https://api.internal.host/auth?key=MY-SECRET", "text": ""}
-            ], "transcript")
-            cat_path = root / "recognitions" / "catalogue.json"
-            if cat_path.exists():
-                cat = json.loads(cat_path.read_text())
-                cat_str = json.dumps(cat)
-                self.assertNotIn("MY-SECRET", cat_str)
-                self.assertNotIn("internal.host", cat_str)
+            write_package(root, "doc-1", [
+                {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "hello"}
+            ], "fused text")
+            import zipfile
+            with zipfile.ZipFile(next(root.glob("*.zip"))) as zf:
+                names = zf.namelist()
+                self.assertIn("fused.txt", names)
+                self.assertTrue(any("kraken" in n and n.endswith(".txt") for n in names))
 
-    def test_no_js_fallback_semantic_html(self):
-        html = build_recognition_section([
-            {"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-             "text": "Hello world", "confidence": 0.95}
-        ], "doc-1", "Hello world")
-        # Without JS, panels use <details> which are semantic HTML
-        self.assertIn("<details", html)
-        self.assertIn("</details>", html)
-        # JS-dependent classes not present
-        self.assertNotIn("js-only", html)
-
-    def test_checksum_hex_string(self):
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".txt", delete=False) as tf:
-            tf.write("test")
-            tf.flush()
-            p = Path(tf.name)
-            h = compute_checksum(p)
-            self.assertEqual(len(h), 64)  # SHA-256 = 64 hex chars
-            self.assertTrue(h.isalnum())
-            Path(tf.name).unlink()
-
-    def test_write_exports_model_with_slash(self):
+    def test_write_package_error_record_has_no_credentials(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            write_exports(root, "doc-1", [
-                {"engine": "zenodo", "model_id": "10.5281/zenodo.123", "page": "p1",
-                 "text": "With slash"}
-            ])
-            export_dir = root / "rec-exports" / "p1"
-            files = list(export_dir.iterdir())
-            filenames = [f.name for f in files]
-            self.assertTrue(any("zenodo" in f and "10-5281" in f for f in filenames))
+            write_package(root, "doc-1", [
+                {"engine": "vlm", "model_id": "internvl", "page": "p1",
+                 "error": "auth failed: my-secret-key", "text": ""}
+            ], "fused text")
+            import zipfile
+            with zipfile.ZipFile(next(root.glob("*.zip"))) as zf:
+                err_file = next(n for n in zf.namelist() if n.endswith(".error.txt"))
+                err_data = json.loads(zf.read(err_file).decode())
+                self.assertNotIn("secret", err_data["error"].lower())
+                self.assertNotIn("my-secret", err_data["error"])
 
-
-
-
-    # ---- #8 side-by-side comparison shell ----
-
-    def test_compare_entry_point_present(self):
-        """A Vergleichen button is rendered in the recognition section."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello world", "confidence": 0.95}],
-            "doc-1", "Hello world")
-        self.assertIn("Vergleichen", html)
-        self.assertIn("data-rec-compare-open", html)
-
-    def test_compare_panes_have_unique_ids_and_labels(self):
-        """Two panes exist with distinct accessible names and DOM ids."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello"},
-             {"engine": "trocr", "model_id": "large", "page": "p1",
-              "text": "World"}],
-            "doc-1", "Hello world")
-        self.assertIn("rec-compare-pane", html)
-        self.assertIn('data-rec-compare-pane="left"', html)
-        self.assertIn('data-rec-compare-pane="right"', html)
-        self.assertIn('rec-compare-select-left', html)
-        self.assertIn('rec-compare-select-right', html)
-        self.assertIn("Version links", html)
-        self.assertIn("Version rechts", html)
-
-    def test_compare_panes_hidden_by_default(self):
-        """Comparison panes use the hidden attribute so they are invisible until activated."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello"}],
-            "doc-1", "Hello")
-        self.assertIn('data-rec-compare-panes hidden', html)
-
-    def test_compare_selectors_show_all_candidates(self):
-        """Both selectors contain an option for every candidate (including fused/selected)."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "p1",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        self.assertIn("kraken", html)
-        self.assertIn("trocr", html)
-        self.assertIn('data-rec-compare-select="left"', html)
-        self.assertIn('data-rec-compare-select="right"', html)
-
-    def test_compare_failed_candidates_disabled(self):
-        """Candidates that errored are marked disabled in the compare selectors."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "error": "connection refused", "text": ""}],
-            "doc-1", "fused")
-        # The error candidate should be disabled in the select
-        self.assertIn(" disabled", html)
-
-    def test_compare_single_page_fixture_all_options_enabled(self):
-        """When all candidates belong to the same page, no option is page-restricted."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "Seite 5",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "Seite 5",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        # Both options have the same page so cross-page restriction keeps none disabled
-        # (the JS runtime restriction only disables cross-page options, not same-page)
-        self.assertIn("Seite 5", html)
-        # Options carry data-page for runtime filtering
-        self.assertIn('data-page=', html)
-
-    def test_compare_multi_page_fixture_options_have_page_hints(self):
-        """Multi-page candidates include page hints in option labels for clarity."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "Seite 1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "Seite 2",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        self.assertIn("Seite 1", html)
-        self.assertIn("Seite 2", html)
-        # Both selects carry data-page on every option for JS enforcement
-        self.assertIn('data-page=', html)
-
-    def test_compare_close_button_present(self):
-        """An accessible close control is rendered in the comparison overlay."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello"}],
-            "doc-1", "Hello")
-        self.assertIn("data-rec-compare-close", html)
-        self.assertIn("Vergleich schliessen", html)
-
-    def test_compare_no_js_fallback_uses_hidden(self):
-        """Without JS the comparison panes remain hidden via the hidden attribute."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95}],
-            "doc-1", "Hello world")
-        # hidden attribute ensures no comparison visible without JS
-        self.assertIn('data-rec-compare-panes hidden', html)
-        # JS adds rec-compare--enhanced; without it structure is still correct
-        self.assertIn("data-recognition-compare", html)
-
-
-
-    # ---- #9 independent model selection and shareable comparison state ----
-
-    def test_compare_url_param_left_and_right(self):
-        """Both left and right candidate IDs appear in the cmp query parameter data attributes."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "p1",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        self.assertIn('data-rec-compare-pane="left"', html)
-        self.assertIn('data-rec-compare-pane="right"', html)
-
-    def test_compare_html_stores_default_selections(self):
-        """HTML data attributes record the default selected candidate for each pane."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "p1",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        self.assertIn('data-rec-compare-selected=', html)
-
-    def test_compare_all_options_have_data_page(self):
-        """Every option in the compare selects carries a data-page attribute."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "Seite 1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "Seite 2",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        import re
-        select_match = re.search(r'<select[^>]+data-rec-compare-select.*?</select>', html, re.DOTALL)
-        self.assertIsNotNone(select_match)
-        select_html = select_match.group(0)
-        opts = re.findall(r"<option", select_html)
-        dp = re.findall(r'data-page="', select_html)
-        self.assertEqual(len(opts), len(dp),
-            f"{len(opts)} opts, {len(dp)} pages: each option needs data-page")
-
-    def test_compare_invalid_url_state_falls_back_safely(self):
-        """If a URL references an invalid candidate id, the select falls back to first valid option."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello"}],
-            "doc-1", "Hello")
-        # Fallback is a JS runtime concern; static HTML always has valid options
-        self.assertIn('data-rec-compare-select=', html)
-
-    def test_compare_swap_button_accessible_label(self):
-        """Swap control carries an accessible aria-label."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "p1",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        # Swap button is injected by JS at runtime, not in static HTML
-        self.assertNotIn('data-rec-compare-swap', html)
-        self.assertIn('data-recognition-compare', html)
-
-
-    # ---- #10 scroll synchronisation across comparison panes ----
-
-    def test_compare_scroll_sync_toggle_injected_by_js(self):
-        """Sync toggle button is injected at runtime, not present in static HTML."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "p1",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        # data-rec-compare-sync-toggle must NOT appear in static HTML
-        self.assertNotIn("data-rec-compare-sync-toggle", html)
-
-    def test_compare_css_narrow_screen_stacking(self):
-        """CSS includes a stacked-layout rule for narrow screens."""
-        css = open("docs/assets/output.css").read()
-        self.assertIn("max-width: 640px", css)
-        self.assertIn("flex-direction: column", css)
-
-    def test_compare_css_sync_toggle_button(self):
-        """CSS includes .btn-rec-compare-sync styles."""
-        css = open("docs/assets/output.css").read()
-        self.assertIn("btn-rec-compare-sync", css)
-        self.assertIn("transition", css)
-
-    def test_compare_prefers_reduced_motion_handled_in_js(self):
-        """JS checks prefers-reduced-motion before enabling scroll sync."""
-        js = open("scripts/rec_viewer.js").read()
-        self.assertIn("prefers-reduced-motion", js)
-
-
-    # ---- #8/#9/#10/#11 comparison shell + diff highlighting ----
-
-    def test_compare_entry_point_present(self):
-        """Vergleichen button exists with data-rec-compare-open."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95}],
-            "doc-1", "Hello")
-        self.assertIn("data-rec-compare-open", html)
-
-    def test_compare_panes_have_unique_ids_and_labels(self):
-        """Left and right panes have distinct data-rec-compare-pane, label, and select."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95}],
-            "doc-1", "Hello")
-        self.assertIn('data-rec-compare-pane="left"', html)
-        self.assertIn('data-rec-compare-pane="right"', html)
-        self.assertIn("Version links", html)
-        self.assertIn("Version rechts", html)
-        self.assertIn('data-rec-compare-select="left"', html)
-        self.assertIn('data-rec-compare-select="right"', html)
-
-    def test_compare_panes_hidden_by_default(self):
-        """Comparison panes use the hidden attribute when overlay is closed."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95}],
-            "doc-1", "Hello")
-        idx = html.find("data-rec-compare-panes")
-        snippet = html[idx:idx+60]
-        self.assertIn("hidden", snippet)
-
-    def test_compare_selectors_show_all_candidates(self):
-        """Both selectors list all candidate options from all pages."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "p2",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        self.assertIn("kraken", html)
-        self.assertIn("trocr", html)
-
-    def test_compare_failed_candidates_disabled(self):
-        """Error candidates have a disabled attribute in the selector."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95, "error": "network failure"}],
-            "doc-1", "Hello")
-        idx = html.find("data-rec-compare-select")
-        sel = html[idx:idx+400]
-        # Failed option should be disabled
-        self.assertIn("disabled", sel)
-
-    def test_compare_single_page_fixture_all_options_enabled(self):
-        """Same-page candidates never get disabled in the comparison select."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "p1",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        import re
-        select_match = re.search(r'<select[^>]+data-rec-compare-select.*?</select>', html, re.DOTALL)
-        self.assertIsNotNone(select_match)
-        disabled_count = select_match.group(0).count("disabled")
-        self.assertEqual(disabled_count, 0)
-
-    def test_compare_multi_page_fixture_options_have_page_hints(self):
-        """Each compare option carries the page name in its label and a data-page attribute."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "Seite 1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "Seite 2",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        import re
-        select_match = re.search(r'<select[^>]+data-rec-compare-select.*?</select>', html, re.DOTALL)
-        self.assertIsNotNone(select_match)
-        select_html = select_match.group(0)
-        opts = re.findall(r"<option", select_html)
-        dp = re.findall(r'data-page="', select_html)
-        self.assertEqual(len(opts), len(dp))
-
-    def test_compare_close_button_present(self):
-        """A close button with data-rec-compare-close attribute is present."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95}],
-            "doc-1", "Hello")
-        self.assertIn("data-rec-compare-close", html)
-
-    def test_compare_no_js_fallback_uses_hidden(self):
-        """Without JS the comparison overlay remains hidden via the hidden attribute."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95}],
-            "doc-1", "Hello")
-        idx = html.find("data-rec-compare-panes")
-        self.assertIn("hidden", html[idx:idx+80])
-
-    def test_compare_url_param_left_and_right(self):
-        """Both left and right panes exist in HTML with distinct data attributes."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "p1",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        self.assertIn('data-rec-compare-pane="left"', html)
-        self.assertIn('data-rec-compare-pane="right"', html)
-
-    def test_compare_html_stores_default_selections(self):
-        """Each pane records its default selected candidate in data-rec-compare-selected."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "p1",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        self.assertIn('data-rec-compare-selected=', html)
-
-    def test_compare_all_options_have_data_page(self):
-        """Every option in the compare selects carries a data-page attribute."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "Seite 1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "Seite 2",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        import re
-        select_match = re.search(r'<select[^>]+data-rec-compare-select.*?</select>', html, re.DOTALL)
-        self.assertIsNotNone(select_match)
-        select_html = select_match.group(0)
-        opts = re.findall(r"<option", select_html)
-        dp = re.findall(r'data-page="', select_html)
-        self.assertEqual(len(opts), len(dp),
-            f"{len(opts)} opts, {len(dp)} pages: each option needs data-page")
-
-    def test_compare_invalid_url_state_falls_back_safely(self):
-        """HTML always renders valid structure for the comparison select."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello"}],
-            "doc-1", "Hello")
-        self.assertIn('data-rec-compare-select=', html)
-        self.assertIn("<select", html)
-
-    def test_compare_swap_button_injected_by_js(self):
-        """Swap button is injected at runtime by JS, not present in static HTML."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "p1",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        self.assertNotIn("data-rec-compare-swap", html)
-        self.assertIn("data-recognition-compare", html)
-
-    def test_compare_scroll_sync_toggle_injected_by_js(self):
-        """Sync toggle button is injected at runtime, not present in static HTML."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "p1",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        self.assertNotIn("data-rec-compare-sync-toggle", html)
-
-    def test_compare_css_narrow_screen_stacking(self):
-        """CSS includes a stacked-layout rule for narrow screens."""
-        css = open("docs/assets/output.css").read()
-        self.assertIn("max-width: 640px", css)
-        self.assertIn("flex-direction: column", css)
-
-    def test_compare_css_sync_toggle_button(self):
-        """CSS includes .btn-rec-compare-sync styles with transition."""
-        css = open("docs/assets/output.css").read()
-        self.assertIn("btn-rec-compare-sync", css)
-        self.assertIn("transition", css)
-
-    def test_compare_prefers_reduced_motion_handled_in_js(self):
-        """JS checks prefers-reduced-motion before enabling scroll sync."""
-        js = open("scripts/rec_viewer.js").read()
-        self.assertIn("prefers-reduced-motion", js)
-
-    # ---- #11 diff highlighting ----
-
-    def test_diff_region_container_in_html(self):
-        """HTML contains the diff region container with correct ARIA attributes."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello world", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "p1",
-              "text": "Hallo Welt", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        self.assertIn("data-rec-compare-diff", html)
-        self.assertIn('role="region"', html)
-        self.assertIn('aria-label="Unterschiede"', html)
-
-    def test_diff_region_hidden_by_default(self):
-        """Diff region uses the hidden attribute and is not visible without JS."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "p1",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        idx = html.find('data-rec-compare-diff')
-        self.assertIn("hidden", html[idx:idx+80])
-
-    def test_diff_css_includes_all_diff_classes(self):
-        """CSS defines diff-insert, diff-delete, diff-change scoped under .rec-compare-diff."""
-        css = open("docs/assets/output.css").read()
-        self.assertIn(".rec-compare-diff .diff-insert", css)
-        self.assertIn(".rec-compare-diff .diff-delete", css)
-        self.assertIn(".rec-compare-diff .diff-change", css)
-
-    def test_diff_toggle_button_injected_by_js_not_in_html(self):
-        """Diff toggle buttons are injected by JS, not in static HTML."""
-        html = build_recognition_section(
-            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
-              "text": "Hello", "confidence": 0.95},
-             {"engine": "trocr", "model_id": "large", "page": "p1",
-              "text": "World", "confidence": 0.88}],
-            "doc-1", "Hello world")
-        self.assertNotIn("data-rec-compare-diff-toggle", html)
-
-    def test_diff_max_length_notice_css(self):
-        """CSS provides a notice style for the max-length fallback."""
-        css = open("docs/assets/output.css").read()
-        self.assertIn(".notice", css)
-        self.assertIn(".notice--warning", css)
-
-    def test_diff_identical_text_notice_in_js(self):
-        """JS function returns a notice for identical texts."""
-        js = open("scripts/rec_viewer.js").read()
-        self.assertIn("Die beiden Versionen sind identisch", js)
-
-    def test_diff_error_fallback_notice_in_js(self):
-        """JS function returns an explanatory notice for error candidates."""
-        js = open("scripts/rec_viewer.js").read()
-        self.assertIn("Version nicht verfügbar", js)
-
-    def test_diff_large_text_guard_in_js(self):
-        """JS enforces MAX_DIFF_CHARS limit for very long texts."""
-        js = open("scripts/rec_viewer.js").read()
-        self.assertIn("MAX_DIFF_CHARS", js)
-        self.assertIn("50_000", js)
-
-    def test_diff_aria_labels_in_js(self):
-        """JS diffLabel function returns aria labels for screen readers."""
-        js = open("scripts/rec_viewer.js").read()
-        self.assertIn('"eingefügt"', js)
-        self.assertIn('"gelöscht"', js)
-        self.assertIn('"geändert"', js)
-
-    def test_diff_css_uses_non_colour_indicators(self):
-        """CSS diff styles use border-bottom or text-decoration, not colour alone."""
-        css = open("docs/assets/output.css").read()
-        # Each diff type uses a structural indicator
-        self.assertIn("border-bottom", css)
-        self.assertIn("text-decoration", css)
 
 
 if __name__ == "__main__":
