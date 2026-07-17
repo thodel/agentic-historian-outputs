@@ -14,7 +14,6 @@ from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 from build_recognitions import build_recognition_section, write_package
-from recognition_status import normalize as _normalize_candidate
 from source_references import normalize_source_reference, public_url
 from urllib.parse import urlparse
 from xml.sax.saxutils import escape as xml_escape
@@ -36,8 +35,17 @@ def valid_public_url(url: str) -> bool:
 
 def git_history(path: Path) -> list[tuple[str, str, str]]:
     try:
+        # Generated pages must not embed the current PR commit: doing so makes
+        # every rebuild one SHA behind its own commit.  Review builds therefore
+        # use the merge base with main; after merge that base is HEAD and the
+        # published history naturally advances when pipeline.json changes.
+        revision = subprocess.run(
+            ["git", "merge-base", "HEAD", "origin/main"],
+            check=True, capture_output=True, text=True,
+        ).stdout.strip() or "HEAD"
         out = subprocess.run(
-            ["git", "log", "--follow", "--format=%h%x09%aI%x09%s", "--", str(path)],
+            ["git", "log", revision, "--follow",
+             "--format=%h%x09%aI%x09%s", "--", str(path)],
             check=True, capture_output=True, text=True,
         ).stdout
     except (OSError, subprocess.CalledProcessError):
@@ -257,18 +265,6 @@ license: "LicenseRef-Not-Specified"
     field_table = f'''<div class="table-scroll"><table><thead><tr><th>Feld</th><th>Wert</th><th>Sicherheit</th><th>Begründung</th><th>Nachweis</th></tr></thead><tbody>{''.join(uncertainty_rows) or '<tr><td colspan="5">Keine strukturierten Beschreibungsfelder verfügbar.</td></tr>'}</tbody></table></div>'''
 
     # Recognition viewer (progressive enhancement — issue #2)
-    # Issue #53: sanitize error messages in pipeline.json (write back)
-    for candidate in data.get("recognitions", []):
-        if candidate.get("error"):
-            s = _normalize_candidate(candidate)
-            candidate["error"] = s.public_msg
-            if s.code not in ("success", "empty"):
-                candidate["status_code"] = s.code
-                candidate["retryable"] = s.retryable
-                candidate["timing_ms"] = s.timing_ms or candidate.get("timing_ms", 0)
-    Path(path).write_text(
-        json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-
     recognition_section = build_recognition_section(
         recognitions=data.get("recognitions", []),
         doc_id=doc_id,

@@ -269,11 +269,9 @@
       "model_id": "kraken-medieval_charters",
       "text": "",
       "confidence": 0.0,
-      "error": "Der Erkennungsdienst antwortierte mit einem Fehler.",
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine error 500 at http://127.0.0.1:8201/recognize: Internal Server Error\"}",
       "timing_ms": 0,
-      "segmented_by": null,
-      "status_code": "backend_error",
-      "retryable": true
+      "segmented_by": null
     },
     {
       "engine": "trocr",

@@ -7,6 +7,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 import json
+import zipfile
 from build_recognitions import (
     _candidates,
     _confidence,
@@ -388,6 +389,50 @@ class RecognitionContractTests(unittest.TestCase):
                 err_data = json.loads(zf.read(err_file).decode())
                 self.assertNotIn("secret", err_data["error"].lower())
                 self.assertNotIn("my-secret", err_data["error"])
+
+    def test_failure_provenance_is_preserved_in_package_and_manifest(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_package(root, "doc-53", [{
+                "engine": "trocr", "model_id": "large", "page": "p2",
+                "text": "", "error": "timeout at http://10.0.0.8/token=x",
+                "error_code": "ETIMEDOUT", "timing_ms": 1234,
+                "run_id": "run-7", "retry_count": 2, "attempt": 3,
+                "fusion_decision": "excluded_timeout",
+            }], "fused")
+            with zipfile.ZipFile(next(root.glob("*.zip"))) as zf:
+                error_name = next(n for n in zf.namelist()
+                                  if n.endswith(".error.txt"))
+                record = json.loads(zf.read(error_name))
+                manifest = json.loads(zf.read("manifest.json"))
+            entry = next(a for a in manifest["artifacts"]
+                         if a["type"] == "error")
+            for obj in (record, entry):
+                self.assertEqual(obj["status_code"], "timeout")
+                self.assertTrue(obj["retryable"])
+                self.assertEqual(obj["timing_ms"], 1234)
+                self.assertEqual(obj["run_id"], "run-7")
+                self.assertEqual(obj["retry_count"], 2)
+                self.assertEqual(obj["attempt"], 3)
+                self.assertEqual(obj["fusion_decision"], "excluded_timeout")
+                self.assertIsNone(obj["text_artifact"])
+                self.assertNotIn("10.0.0.8", json.dumps(obj))
+            self.assertEqual(entry["reason_no_text"],
+                             "recognition_attempt_failed")
+
+    def test_standalone_error_record_has_typed_provenance(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = write_error_record(Path(tmp), {
+                "engine": "kraken", "model_id": "m", "page": "p1",
+                "text": "", "error": "connection refused",
+                "timing_ms": 77, "run_id": "run-1",
+            })
+            record = json.loads(path.read_text())
+            self.assertEqual(record["status_code"], "unavailable")
+            self.assertEqual(record["diagnostic_code"], "unavailable")
+            self.assertEqual(record["timing_ms"], 77)
+            self.assertEqual(record["run_id"], "run-1")
+            self.assertIsNone(record["text_artifact"])
 
 
 
