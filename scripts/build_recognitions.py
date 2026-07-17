@@ -53,7 +53,7 @@ except ImportError:
     def explanation_block(key): return ""
 
 try:
-    from recognition_status import public_error_message
+    from recognition_status import public_error_message, normalize
 except ImportError:
     # Fallback when recognition_status is not yet available (e.g., during initial bootstrap)
     def public_error_message(error):
@@ -148,7 +148,8 @@ def _catalogue_data(doc_id: str, candidates: list[dict]) -> dict:
             "model_id": candidate["model_id"] or None,
             "page": candidate["page"] or None,
             "status": "error" if candidate["error"] else "success",
-            "error": candidate["error"] or None,
+            **({"status_code": normalize(candidate).code} if not candidate["error"] else {}),
+            "error": _public_error(candidate.get("error")) or None,
             "path": candidate["path"] if candidate["path"] and not candidate["error"] else None,
             "error_path": _error_path(candidate) if candidate["error"] else None,
             "characters": len(candidate["text"]) if not candidate["error"] else None,
@@ -443,11 +444,24 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
         )
 
         if is_failed:
-            # Issue #29: failed candidates show error notice, NEVER a zero-confidence success state
+            # Issue #29/#51: failed candidates show explanatory panel with sanitized public_msg
+            status = normalize(candidate)
+            timing_info = f' <span class="rec-timing">({status.timing_ms} ms)</span>' if status.timing_ms else ""
+            methodology_note = (
+                ' <a href="/docs/methodology/#recognition-failures" class="rec-methodology-link" rel="noopener">Erklaerung der Fehlerkategorien</a>'
+                if status.code not in ("success", "empty") else ""
+            )
+            retry_info = (
+                f' <span class="rec-retry-hint">— Wiederholung {["moeglich","nicht sinnvoll"][int(status.retryable is False)]}</span>'
+                if status.code not in ("success", "empty") else ""
+            )
             content = (
                 f'<div class="notice notice--warning rec-error">'
-                f'<strong>Erkennung fehlgeschlagen.</strong> '
-                f'{html.escape(candidate["error"])}</div>'
+                f'<strong>Erkennung fehlgeschlagen.{timing_info}</strong><br>'
+                f'{html.escape(status.public_msg)}'
+                f'{methodology_note}'
+                f'{retry_info}'
+                f'</div>'
             )
             confidence_dl = ""
         else:

@@ -271,7 +271,7 @@ partem coruentnsul nfutram par qencug</code></pre>
 <div><dt>Zeichen</dt><dd>0</dd></div>
 <div><dt>Status</dt><dd><span class="quality-badge quality-badge--degenerate" title="Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.">Degenerierte Ausgabe</span></dd></div>
 </dl>
-<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Der Erkennungsdienst hat das Zeitlimit überschritten.</div>
+<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong><br>Der Erkennungsdienst hat das Zeitlimit überschritten. <a href="/docs/methodology/#recognition-failures" class="rec-methodology-link" rel="noopener">Erklaerung der Fehlerkategorien</a> <span class="rec-retry-hint">— Wiederholung moeglich</span></div>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
 </details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus" data-recognition-panel="kraken-kraken-mccatmus" data-page="" data-engine="kraken" data-model="kraken-mccatmus">
@@ -376,7 +376,7 @@ Jrem ComuenauE l suCucin p gínci9.</code></pre>
 <div><dt>Zeichen</dt><dd>0</dd></div>
 <div><dt>Status</dt><dd><span class="quality-badge quality-badge--degenerate" title="Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.">Degenerierte Ausgabe</span></dd></div>
 </dl>
-<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Der Erkennungsdienst hat das Zeitlimit überschritten.</div>
+<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong><br>Der Erkennungsdienst hat das Zeitlimit überschritten. <a href="/docs/methodology/#recognition-failures" class="rec-methodology-link" rel="noopener">Erklaerung der Fehlerkategorien</a> <span class="rec-retry-hint">— Wiederholung moeglich</span></div>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
 </details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-2" data-recognition-panel="vlm-internvl3-8b-instruct-2" data-page="" data-engine="vlm" data-model="internvl3-8b-instruct">

@@ -9,7 +9,8 @@
       "model_id": null,
       "page": null,
       "path": "recognitions/fused.txt",
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": 15,
@@ -20,7 +21,8 @@
       "model_id": "k0",
       "page": null,
       "path": "recognitions/kraken-k0.txt",
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     }
   ],
   "doc_id": "order-ens",
