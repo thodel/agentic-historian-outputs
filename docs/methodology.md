@@ -52,6 +52,10 @@ Für Dokumente mit mehreren OCR-Kandidaten zeigt die Seite die ausgewählte bezi
 
 Ohne JavaScript bleiben alle Kandidaten als semantische, aufklappbare Bereiche (`details`) erreichbar. JavaScript reduziert die Ansicht auf den jeweils ausgewählten Bereich.
 
+### Tastatur und assistive Technik
+
+Die Kandidatenauswahl besteht aus gewöhnlichen Links und kann deshalb mit der Tabulatortaste erreicht und mit Eingabe aktiviert werden. Nach einer Auswahl wechselt der Fokus zur Überschrift der gewählten Erkennungsversion. Der aktive Link wird zusätzlich mit `aria-current` ausgezeichnet; Fehlerzustände werden immer als Text und nicht nur durch Farbe vermittelt. Transkriptionen sind als eigene scrollbare Bereiche mit sichtbarer Fokusmarkierung erreichbar.
+
 ### Anpassung am Original
 
 Für die finale Transkription sollten die generierten Lesarten stets am **Original-Digitalisat** überprüft werden. Die angebotenen Versionen sind keine edierten Lesarten, sondern Erkennungsvarianten, die der menschlichen Kontrolle bedürfen.
