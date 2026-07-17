@@ -6,13 +6,19 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
+import json
 from build_recognitions import (
     _candidates,
     _confidence,
+    _error_path,
     _public_error,
     _recognition_path,
     _safe_slug,
     build_recognition_section,
+    compute_checksum,
+    write_catalogue,
+    write_error_record,
+    write_package,
 )
 
 
@@ -110,6 +116,211 @@ class RecognitionContractTests(unittest.TestCase):
             (root / "recognitions" / "fused.txt").write_text("fused")
             markup = build_recognition_section([rec()], "doc", "fused", root)
         self.assertEqual(markup.count("Diese Transkription herunterladen"), 1)
+    def test_error_path_replaces_txt_with_error(self):
+        cand = {"engine": "kraken", "model_id": "mccatmus", "page": "Page 1.jpg"}
+        self.assertEqual(_error_path(cand), "recognitions/Page_1/kraken-mccatmus.error.txt")
+
+    def test_error_path_without_page(self):
+        cand = {"engine": "trocr", "model_id": "base"}
+        self.assertEqual(_error_path(cand), "recognitions/trocr-base.error.txt")
+
+    def test_write_error_record_creates_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            cand = {"engine": "vlm", "model_id": "internvl", "page": "p1",
+                    "error": "connection refused"}
+            path = write_error_record(root, cand)
+            self.assertIsNotNone(path)
+            data = json.loads(path.read_text(encoding="utf-8"))
+            self.assertEqual(data["engine"], "vlm")
+            self.assertEqual(data["error"], "Der Erkennungsdienst war nicht erreichbar.")
+
+    def test_write_error_record_returns_none_for_success(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            cand = {"engine": "kraken", "model_id": "mccatmus", "text": "some text"}
+            self.assertIsNone(write_error_record(root, cand))
+
+    def test_compute_checksum_deterministic(self):
+        with tempfile.NamedTemporaryFile(delete=False) as tf:
+            tf.write(b"hello world")
+            tf.flush()
+            p = Path(tf.name)
+            c1 = compute_checksum(p)
+            c2 = compute_checksum(p)
+            self.assertEqual(c1, c2)
+            self.assertEqual(len(c1), 64)  # sha256 hex
+
+    def test_write_catalogue_includes_all_candidates(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            recs = [
+                {"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+                 "text": "hello"},
+                {"engine": "vlm", "model_id": "internvl", "page": "p1",
+                 "error": "timeout"},
+            ]
+            path = write_catalogue(root, "doc-1", recs, "fused text")
+            data = json.loads(path.read_text(encoding="utf-8"))
+            self.assertEqual(data["doc_id"], "doc-1")
+            self.assertEqual(len(data["artifacts"]), 3)  # fused + 2 candidates
+            success = next(a for a in data["artifacts"] if a["id"] != "selected")
+            self.assertEqual(success["status"], "success")
+            self.assertEqual(success["path"], "recognitions/p1/kraken-mccatmus.txt")
+            failed = next(a for a in data["artifacts"]
+                         if a["status"] == "error")
+            self.assertIn("Zeitlimit", failed["error"])
+            self.assertIsNone(failed["path"])
+            self.assertIsNotNone(failed["error_path"])
+
+    def test_slug_collision_prevention_duplicate_engine_model(self):
+        # Two candidates with identical engine+model+page should both have
+        # empty paths (ambiguous) to prevent silent overwrites
+        recs = [
+            {"engine": "kraken", "model_id": "mccatmus", "page": "Page 1.jpg"},
+            {"engine": "kraken", "model_id": "mccatmus", "page": "Page 1.jpg"},
+        ]
+        candidates = _candidates(recs, "fused")
+        paths = [c["path"] for c in candidates if not c["selected"]]
+        self.assertTrue(all(p == "" for p in paths))
+
+    def test_model_id_slash_becomes_underscore(self):
+        cand = {"engine": "vlm", "model_id": "10.5281/zenodo.123", "page": "p1.jpg"}
+        self.assertEqual(_recognition_path(cand),
+                         "recognitions/p1/vlm-10.5281_zenodo.123.txt")
+        # and error path too
+        self.assertEqual(_error_path(cand),
+                         "recognitions/p1/vlm-10.5281_zenodo.123.error.txt")
+
+    def test_missing_page_no_subdirectory(self):
+        cand = {"engine": "trocr", "model_id": "large"}
+        self.assertEqual(_recognition_path(cand), "recognitions/trocr-large.txt")
+
+    def test_empty_model_id_omits_model_part(self):
+        cand = {"engine": "fusion", "model_id": "", "page": "Page 2"}
+        self.assertEqual(_recognition_path(cand), "recognitions/Page_2/fusion.txt")
+
+    def test_fused_txt_path_is_stable(self):
+        cand = {"engine": "fusion", "model_id": ""}
+        self.assertEqual(_recognition_path(cand), "recognitions/fusion.txt")
+
+
+    def test_primary_download_appears_in_markup(self):
+        markup = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "hello"}],
+            "doc", "fused text")
+        self.assertIn("Aktuelle Transkription herunterladen", markup)
+        self.assertIn("btn-rec-download", markup)
+        self.assertIn("data-rec-primary-download", markup)
+        self.assertIn("rec-download-format", markup)
+
+    def test_primary_download_unavailable_when_artifact_missing(self):
+        markup = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "hello"}],
+            "doc", "fused text", directory=Path("/nonexistent"))
+        self.assertIn("Kein Textdownload verfügbar", markup)
+        self.assertIn("rec-primary-download--unavailable", markup)
+
+    def test_primary_download_provenance_shows_engine_and_page(self):
+        markup = build_recognition_section(
+            [{"engine": "vlm", "model_id": "internvl", "page": "Seite 50",
+              "text": "some text"}],
+            "doc", "fused text")
+        self.assertIn("vlm", markup)
+        self.assertIn("Seite", markup)
+        self.assertIn("rec-download-provenance", markup)
+    def test_inventory_shows_all_candidates(self):
+        markup = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "hello"},
+             {"engine": "trocr", "model_id": "large", "page": "p2", "text": "world"}],
+            "doc", "fused")
+        self.assertIn("rec-inventory", markup)
+        self.assertIn("rec-inv-table", markup)
+        self.assertIn("p1", markup)
+        self.assertIn("p2", markup)
+        self.assertIn("kraken", markup)
+        self.assertIn("trocr", markup)
+
+    def test_inventory_failed_has_no_download(self):
+        # Failed candidates appear as error rows with no text download link
+        markup = build_recognition_section(
+            [{"engine": "vlm", "model_id": "internvl", "page": "p1",
+              "error": "connection refused", "text": ""}],
+            "doc", "fused")
+        self.assertIn("rec-inv-error", markup)
+        # Verify error row has no rec-inv-dl (the "—" placeholder, not a link)
+        self.assertIn("Fehlgeschlagen", markup)
+        self.assertIn("Der Erkennungsdienst war nicht erreichbar", markup)
+
+    def test_inventory_page_grouping(self):
+        # Candidates on same page grouped under one header (selected has no page)
+        markup = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "Seite 5", "text": "a"},
+             {"engine": "trocr", "model_id": "large", "page": "Seite 5", "text": "b"}],
+            "doc", "fused")
+        self.assertIn("Seite 5", markup)
+        # Total version count shown: selected + 2 candidates = 3
+        self.assertIn("3 Versionen", markup)
+
+    def test_inventory_collapses_behaves_without_js(self):
+        markup = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "hello"}],
+            "doc", "fused")
+        # No JS required - uses <details>
+        self.assertIn("<details class=\"rec-inventory\">", markup)
+        self.assertIn("<summary>", markup)
+        self.assertIn("</summary>", markup)
+        self.assertIn("</details>", markup)
+    def test_write_package_creates_zip(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            path = write_package(root, "doc-1", [
+                {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "hello"}
+            ], "fused text")
+            self.assertIsNotNone(path)
+            self.assertTrue(path.exists())
+            self.assertTrue(path.name.endswith(".zip"))
+
+    def test_write_package_manifest_has_checksums(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_package(root, "doc-1", [
+                {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "hello"}
+            ], "fused text")
+            import zipfile
+            with zipfile.ZipFile(next(root.glob("*.zip"))) as zf:
+                manifest = json.loads(zf.read("manifest.json").decode())
+                self.assertIn("artifacts", manifest)
+                self.assertGreater(len(manifest["artifacts"]), 0)
+                for a in manifest["artifacts"]:
+                    self.assertIn("checksum", a)
+
+    def test_write_package_includes_fused_and_candidates(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_package(root, "doc-1", [
+                {"engine": "kraken", "model_id": "mccatmus", "page": "p1", "text": "hello"}
+            ], "fused text")
+            import zipfile
+            with zipfile.ZipFile(next(root.glob("*.zip"))) as zf:
+                names = zf.namelist()
+                self.assertIn("fused.txt", names)
+                self.assertTrue(any("kraken" in n and n.endswith(".txt") for n in names))
+
+    def test_write_package_error_record_has_no_credentials(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_package(root, "doc-1", [
+                {"engine": "vlm", "model_id": "internvl", "page": "p1",
+                 "error": "auth failed: my-secret-key", "text": ""}
+            ], "fused text")
+            import zipfile
+            with zipfile.ZipFile(next(root.glob("*.zip"))) as zf:
+                err_file = next(n for n in zf.namelist() if n.endswith(".error.txt"))
+                err_data = json.loads(zf.read(err_file).decode())
+                self.assertNotIn("secret", err_data["error"].lower())
+                self.assertNotIn("my-secret", err_data["error"])
+
 
 
 if __name__ == "__main__":

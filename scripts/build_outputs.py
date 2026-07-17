@@ -13,7 +13,7 @@ import subprocess
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
-from build_recognitions import build_recognition_section
+from build_recognitions import build_recognition_section, write_package
 from urllib.parse import urlparse
 from xml.sax.saxutils import escape as xml_escape
 
@@ -230,6 +230,15 @@ license: "LicenseRef-Not-Specified"
         directory=path.parent,
     )
 
+    # Complete recognition package (#37)
+    pkg_zip = write_package(
+        directory=path.parent,
+        doc_id=doc_id,
+        recognitions=data.get("recognitions", []),
+        transcript=transcript,
+    )
+    pkg_link = f'<li><a href="{pkg_zip.name}">Vollständiges Erkennungspaket (ZIP)</a></li>' if pkg_zip else ""
+
     page = frontmatter(doc_id) + f'''<nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> {html.escape(doc_id)}</nav>
 <header class="output-header">
   <p class="output-kicker">{state_label}</p><h1>{html.escape(doc_id)}</h1>
@@ -253,7 +262,7 @@ license: "LicenseRef-Not-Specified"
 <pre class="transcription" tabindex="0"><code>{html.escape(transcript) if transcript else 'Keine Transkription verfügbar.'}</code></pre></section>
 
 {recognition_section}<section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
-<ul><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
+<ul>{pkg_link}<li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
 <p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
 
 <section aria-labelledby="citation-heading"><h2 id="citation-heading">Zitation und stabile Adresse</h2>

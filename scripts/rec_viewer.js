@@ -5,6 +5,21 @@
 
   const requested = () => new URL(window.location.href).searchParams.get("rec") || "selected";
 
+  // Sync primary download button when active candidate changes (#35)
+  function syncPrimaryDownload(viewer, targetPanelId) {
+    const btn = viewer.querySelector("[data-rec-primary-download]");
+    if (!btn) return;
+    const panels = [...viewer.querySelectorAll("[data-recognition-panel]")];
+    const panel = panels.find(p => p.dataset.recognitionPanel === targetPanelId) ||
+      panels.find(p => p.dataset.recognitionPanel === "selected");
+    if (!panel) return;
+    const dl = panel.querySelector(".rec-download");
+    const newHref = dl ? dl.getAttribute("href") : "";
+    const filename = newHref.split("/").pop() || "transcription.txt";
+    btn.setAttribute("href", newHref);
+    btn.setAttribute("download", filename);
+  }
+
   function select(viewer, id, { push = false, focus = false } = {}) {
     const panels = [...viewer.querySelectorAll("[data-recognition-panel]")];
     const links = [...viewer.querySelectorAll("[data-recognition-select]")];
@@ -32,6 +47,7 @@
       history.pushState({ rec: target.dataset.recognitionPanel }, "", url);
     }
     if (focus) target.querySelector("summary")?.focus();
+    syncPrimaryDownload(viewer, target.dataset.recognitionPanel);
   }
 
   for (const viewer of viewers) {
