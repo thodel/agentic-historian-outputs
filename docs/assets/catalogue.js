@@ -73,6 +73,7 @@ function initCatalogue() {
   const active = document.querySelector("#catalogue-active-filters");
   const list = document.querySelector("#catalogue-list");
   if (Object.values(controls).some(control => !control) || !clear || !status || !active || !list) return;
+  list.dataset.enhanced = "true";
 
   const addOptions = (select, values) => {
     [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b, "de")).forEach(value => {

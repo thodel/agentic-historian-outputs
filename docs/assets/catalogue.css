@@ -63,3 +63,9 @@
 @media (prefers-contrast: more) {
   .catalogue-card, .catalogue-tools, .catalogue-tools input, .catalogue-tools select { border-width: 2px; }
 }
+/* #46: reserve card geometry while deferred filters initialize. */
+.catalogue-card { min-block-size: 18rem; contain: layout style; }
+
+@media (prefers-reduced-data: reduce) {
+  .catalogue-preview { display: none; }
+}
