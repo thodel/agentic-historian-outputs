@@ -148,7 +148,7 @@ def _catalogue_data(doc_id: str, candidates: list[dict]) -> dict:
             "model_id": candidate["model_id"] or None,
             "page": candidate["page"] or None,
             "status": "error" if candidate["error"] else "success",
-            "error": candidate["error"] or None,
+            "error": _public_error(candidate.get("error")) or None,
             "path": candidate["path"] if candidate["path"] and not candidate["error"] else None,
             "error_path": _error_path(candidate) if candidate["error"] else None,
             "characters": len(candidate["text"]) if not candidate["error"] else None,
@@ -185,7 +185,7 @@ def write_package(directory: Path, doc_id: str, recognitions: list,
             name = f"candidates/{stem}.error.txt"
             payload = json.dumps({
                 "engine": candidate["engine"], "model_id": candidate["model_id"],
-                "page": candidate["page"], "error": candidate["error"],
+                "page": candidate["page"], "error": _public_error(candidate.get("error")),
             }, ensure_ascii=False, sort_keys=True).encode("utf-8")
             kind = "error"
         else:

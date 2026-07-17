@@ -198,9 +198,9 @@ def _sanitize(value: str) -> str:
 
 # Legacy free-text patterns → status codes (order matters: most specific first)
 _LEGACY_PATTERNS: list[tuple[re.Pattern, StatusCode]] = [
-    (re.compile(r"(?i)timeout|timed out|Zeitlimit|etimedout"), "timeout"),
-    (re.compile(r"(?i)unavailable|nicht erreichbar|connection refused|ECONNREFUSED|ConnectionError|etimedout"), "unavailable"),
-    (re.compile(r"(?i)unsupported|not (found|available)|nicht (gefunden|verfugbar)"), "unsupported_model"),
+    (re.compile(r"(?i)timeout|timed out|Zeitlimit|etimedout|uberschritten|überschritten"), "timeout"),
+    (re.compile(r"(?i)unavailable|nicht erreichbar|connection refused|ECONNREFUSED|ConnectionError"), "unavailable"),
+    (re.compile(r"(?i)unsupported|not (found|available)|nicht (gefunden|verfugbar|verfübar|verfügen)"), "unsupported_model"),
     (re.compile(r"(?i)backend|server error|500|502|503|504|5xx|Internal Server Error"), "backend_error"),
     (re.compile(r"(?i)invalid.*response|unparseable|malformed|could not be parsed"), "invalid_response"),
     (re.compile(r"(?i)cancelled|cancel|abgebrochen|abbruch"), "cancelled"),
@@ -540,6 +540,12 @@ def public_error_message(error: str | object) -> str:
     if error is None:
         return ""
     raw = str(error).strip()
+    if not raw:
+        return ""
+    # Idempotence: if the input is already a known public message, return
+    # it as-is to prevent double-normalisation changing the text.
+    if raw in PUBLIC_MESSAGES.values():
+        return raw
     if not raw:
         return ""
     # Build a minimal candidate dict and normalise it

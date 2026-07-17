@@ -7,8 +7,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 import json
+import zipfile
 from build_recognitions import (
     _candidates,
+    _catalogue_data,
     _confidence,
     _error_path,
     _public_error,
@@ -20,6 +22,7 @@ from build_recognitions import (
     write_error_record,
     write_package,
 )
+import recognition_status
 
 
 class DOM(HTMLParser):
@@ -462,6 +465,65 @@ class RecognitionContractTests(unittest.TestCase):
         idx = css.find(".btn-rec-compare-swap")
         self.assertNotEqual(idx, -1)
         self.assertIn(":focus-visible", css[idx:idx + 500])
+
+
+class SanitisationHardeningTests(unittest.TestCase):
+    """Issue #50 — prove sanitization is applied in all public artifact paths."""
+
+    def test_catalogue_data_error_is_sanitized(self):
+        # Raw error with IP, token, and path must not appear in catalogue
+        raw = "timeout at http://10.0.0.8/token=secret-xyz /home/user/data: Connection refused"
+        candidates = [{
+            "id": "c1", "engine": "kraken", "model_id": "catmus",
+            "page": "1r", "text": "", "error": raw, "path": "", "selected": False,
+        }]
+        data = _catalogue_data("doc-1", candidates)
+        artifact = data["artifacts"][0]
+        # The error field must be the public message, not the raw string
+        self.assertNotIn("10.0.0.8", artifact["error"])
+        self.assertNotIn("secret", artifact["error"])
+        self.assertNotIn("/home/user", artifact["error"])
+        self.assertIn("Zeitlimit", artifact["error"])
+
+    def test_package_zip_error_artifact_sanitized(self):
+        # Error artifact inside the ZIP must be sanitized
+        raw = "500 Internal Server Error at http://192.168.1.1/api?key=secret123"
+        candidates = [{
+            "id": "c2", "engine": "trocr", "model_id": "large",
+            "page": "2v", "text": "", "error": raw, "selected": False,
+        }]
+        with tempfile.TemporaryDirectory() as tmpdir:
+            path = write_package(Path(tmpdir), "doc-2", candidates, "")
+            self.assertIsNotNone(path)
+            with zipfile.ZipFile(path) as zf:
+                names = zf.namelist()
+                error_files = [n for n in names if n.endswith(".error.txt")]
+                self.assertTrue(len(error_files) >= 1, f"No error artifact found in {names}")
+                content = json.loads(zf.read(error_files[0]))
+                self.assertNotIn("192.168.1.1", content["error"])
+                self.assertNotIn("secret123", content["error"])
+                self.assertIn("Fehler", content["error"])
+
+    def test_idempotent_public_message_not_double_normalized(self):
+        # A candidate whose error is already a known public message must not
+        # be corrupted by repeated sanitization/normalization passes.
+        for msg in recognition_status.PUBLIC_MESSAGES.values():
+            self.assertEqual(_public_error(msg), msg, msg=msg)
+
+    def test_repo_fixtures_have_no_private_leaks(self):
+        # Scan all fixture JSON/ZIP files in tests/fixtures/ for private data.
+        fixtures = Path("tests/fixtures").rglob("*.json")
+        leaks: list[str] = []
+        for fix in fixtures:
+            try:
+                text = fix.read_text(errors="replace")
+            except Exception:
+                continue
+            for pattern, _ in recognition_status.SANITIZE_PATTERNS:
+                if pattern.search(text):
+                    leaks.append(str(fix))
+                    break
+        self.assertEqual(leaks, [], f"Leaked private data found in fixtures: {leaks}")
 
 
 if __name__ == "__main__":
