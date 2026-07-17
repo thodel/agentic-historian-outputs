@@ -1,119 +1,135 @@
 ---
 layout: default
-title: "bat"
+title: bat
 ---
 
-<link rel="stylesheet" href="{{ '/assets/output.css' | relative_url }}">
+# bat
 
-<nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> bat</nav>
-<header class="output-header page-section page-section--identity" data-page-section="identity">
-  <p class="output-kicker">Forschungsausgabe</p><h1>bat</h1>
-  <div class="output-status"><span>machine-generated</span><span>QA 43%</span><span>1 Seiten</span></div>
-  <p class="notice"><strong>Interpretationsstatus:</strong> Dieser Output wurde automatisch erzeugt. Nicht als Edition oder verifizierte Transkription zitieren, sofern der Status nicht ausdrücklich „human-verified“ lautet.</p>
-</header>
+## Metadaten
 
-<section id="source" class="page-section page-section--evidence" data-page-section="source" aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
-<div class="notice notice--warning"><strong>Kein öffentliches Digitalisat verknüpft.</strong> Ein lokaler Verarbeitungspfad ist kein zitierbarer Quellenbeleg. Ergänzen Sie <code>source_url</code> oder <code>iiif_manifest</code> in der Pipeline-Ausgabe.</div></section>
+| Feld | Wert |
+|---|---|
+| Datierung | 15. Jahrhundert (unsicher) |
+| Sprache | Deutsch (mittelhochdeutsche und mitteldeutsche Konstruktionen, alemannischer Dialektraum) |
+| Schrift | Gotische Kurrentschrift, schwarz, Zeilenhöhe ca. 4,5 mm |
+| HTR | grouped-ensemble-criteria (QA 0.0) |
 
-<section id="transcription" class="page-section page-section--evidence" data-page-section="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
-<pre class="transcription" tabindex="0"><code>--- BAT_663_r_00050.jpg ---
-Amen vndertwegen Wulffin. Densp. de vor lieben anehmen harte f. uff azzu von me de reitt vn auff den obern lieben anehmen hertzen ich klagen zempfchirf anwer er wirdi kent Das ist wolt ze wullen ist es ich ein Enaben in wem statt Ein jar oder me han gelobt in einem geister die wil verharrt. Der hertzu war rafallt, magt versprechen vn zuret en botten linderung hat er mir verharrt. Es welle eine mm kintt dann drelm an eynen Juden herfegen D. Dunkt mir ein enbillet von klagen es durch wier verwichkent war trulich vn empflich. Fundarich warnt es auf schiden Er stern zu den basen 103 do Warrag frist hiegen es ist imme glemi marte reden von des knaben werent. Iaf welt in gern in em pakt legen Annuwurt. Gerni welt uf den knaben im lassen Er spelt um fruntlich hatten Do fürt uf den knaben camm thun in schidung huf. Do kant mir weder tuten ich sellt im den knaben mit laffen wan er war ein unmutige mennt. Dz vernam ale wi bo sprach er merk den knaben kann von welt im als wit sin als sim eigene kint Do sprach Ich zu im wzr welt neme zu eine jar sprach er er welt sim nur vn angschirf an mich keme bn mir dem knaben mit ammer tete sulte ich im mir selben Durg ist alswi in mir gsm 83 jr nu stier ein par Do Prang jich in oder er gestid gebürchte oder welte v welt mit im achen pralizer er er welt kein gelt Er vn sim frowe welten ich verholen im mutes in ewaerlich afm Do hieß ich im v turkym nemem an einem von armestwalt Des 103 er Abel stent Durg ruck men dauten, eine ruffen hon fint wegen An der im zu dem neschten die wiz vor pfennigen do ist im drelt erst an den vo armolmacht magt Do gelobt er mir den prancken en fine truwe am dem phrag abent Do schrift uf inne knergt am pandericht Do kam der knab mit einem bok kenerit zum hijm Do sprach er er welt den knaben selben hon kint dz irg in kezalti furt in auff gant er mir verspricht be ce sich mit den Enaben an em juden rezen Da bitten und nwe Ernwickent. Dz hier sine dur en wekent behoffen sim kam irg bz jeme vm purt verdient oder um die wiserem Bz wirf irg uern tien Vn 103 hinderst laut wint Emmit wird irg im fulte aben 82. Wnt irg im fern rechen Dach ham ich vernomt der knab in mit- ge schidt camm als er aber billig solte vn 103 104 irg da versprichen kann &amp; wir uffwach molt miffen Datir amm em vn af Don mir golt schind uwe nueri sene zu latten zetten</code></pre></section>
+## Entitäten
 
-<section id="recognitions" class="page-section page-section--evidence" data-page-section="recognitions" aria-labelledby="recognitions-heading">
-<h2 id="recognitions-heading">Erkennungsversionen</h2>
-<p class="rec-intro">
-Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sichtbar.
-<button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-incomparable_confidence">ⓘ Nicht vergleichbare Konfidenz</button>
-</p>
-<div class="quality-explanation" id="quality-explanation-engine_confidence-1" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><div class="quality-explanation" id="quality-explanation-agreement-2" role="region" aria-label="Engine-Übereinstimmung" hidden><p><strong>Engine-Übereinstimmung:</strong> Die Übereinstimmung zeigt, wie viele Engines dieselbe Lesart erzeugt haben.  Übereinstimmung bedeutet nicht, dass die Lesart korrekt ist — alle Engines können gemeinsam fehlgehen.  Übereinstimmungswerte sind nicht dasselbe wie Genauigkeitswerte.</p></div><div class="quality-explanation" id="quality-explanation-degenerate-3" role="region" aria-label="Degenerierte Ausgabe" hidden><p><strong>Degenerierte Ausgabe:</strong> Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.</p></div><div class="quality-explanation" id="quality-explanation-failed-4" role="region" aria-label="Fehlgeschlagene Erkennung" hidden><p><strong>Fehlgeschlagene Erkennung:</strong> Die Erkennung ist fehlgeschlagen (Timeout, Dienst nicht erreichbar oder anderer Fehler).  Es liegt keine verwertbare Transkription vor.</p></div><div class="quality-explanation" id="quality-explanation-reference_evaluation-5" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div><div class="quality-explanation" id="quality-explanation-incomparable_confidence-6" role="region" aria-label="Nicht vergleichbare Konfidenzwerte" hidden><p><strong>Nicht vergleichbare Konfidenzwerte:</strong> Konfidenzwerte verschiedener Engines stammen aus unterschiedlichen Modellen mit unterschiedlichen Skalen und Bedeutungen.  Ein höherer Wert einer Engine bedeutet nicht, dass deren Transkription genauer ist als die einer anderen Engine.</p></div>
-<div class="rec-viewer" data-recognition-viewer data-doc-id="bat">
-<div class="rec-primary-download"><a class="btn-rec-download" href="recognitions/fused.txt" download data-rec-primary-download>Aktuelle Transkription herunterladen <span class="rec-download-format">TXT</span></a><span class="rec-download-provenance">fusion · Seite nicht zugeordnet</span></div>
-<details class="rec-inventory"><summary>Alle Erkennungsversionen herunterladen <span class="rec-inv-count">(6 Versionen)</span></summary>
-<div class="table-scroll"><table class="rec-inv-table"><thead><tr><th>Engine</th><th>Modell</th><th>Zeichen</th><th>Status</th><th>Konfidenz/Fehler</th><th>Download</th></tr></thead><tbody><tr class="rec-inv-page-header"><th colspan="6">Nicht zugeordnet</th></tr><tr><td>fusion</td><td>—</td><td>2353</td><td>Erfolgreich</td><td>Nicht angegeben</td><td class="rec-inv-dl"><a href="recognitions/fused.txt" download>fused.txt</a></td></tr><tr><td>vlm</td><td>internvl3-8b-instruct</td><td>2343</td><td>Erfolgreich</td><td>80%</td><td class="rec-inv-dl"><a href="recognitions/vlm-internvl3-8b-instruct.txt" download>vlm-internvl3-8b-instruct.txt</a></td></tr><tr><td>kraken</td><td>kraken-catmus_medieval</td><td>2315</td><td>Erfolgreich</td><td>82%</td><td class="rec-inv-dl"><a href="recognitions/kraken-kraken-catmus_medieval.txt" download>kraken-kraken-catmus_medieval.txt</a></td></tr><tr class="rec-inv-error"><td>trocr</td><td>trocr-medieval-escriptmask</td><td>—</td><td>Fehlgeschlagen</td><td>Der Erkennungsdienst hat das Zeitlimit überschritten.</td><td>—</td></tr><tr><td>kraken</td><td>kraken-mccatmus</td><td>2299</td><td>Erfolgreich</td><td>76%</td><td class="rec-inv-dl"><a href="recognitions/kraken-kraken-mccatmus.txt" download>kraken-kraken-mccatmus.txt</a></td></tr><tr class="rec-inv-error"><td>trocr</td><td>trocr-kurrent-xvi-xvii</td><td>—</td><td>Fehlgeschlagen</td><td>Der Erkennungsdienst hat das Zeitlimit überschritten.</td><td>—</td></tr></tbody></table></div></details>
-<div class="rec-compare" data-recognition-compare>
-<div class="rec-compare-toolbar"><button class="btn-rec-compare" type="button" data-rec-compare-open aria-expanded="false">&#128269; Vergleichen</button></div>
-<div class="rec-compare-panes" data-rec-compare-panes hidden>
-<div class="rec-compare-pane" data-rec-compare-pane="left" data-rec-compare-selected="selected">
-<div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-left">Version links</label></div>
-<select class="rec-compare-select" id="rec-compare-select-left" data-rec-compare-select="left"><option value="selected" data-page="">Ausgewählt / Fusion</option><option value="vlm-internvl3-8b-instruct" data-page="">VLM · internvl3-8b-instruct</option><option value="kraken-kraken-catmus-medieval" data-page="">Kraken OCR · kraken-catmus_medieval</option><option value="trocr-trocr-medieval-escriptmask" data-page="" disabled>TrOCR · trocr-medieval-escriptmask</option><option value="kraken-kraken-mccatmus" data-page="">Kraken OCR · kraken-mccatmus</option><option value="trocr-trocr-kurrent-xvi-xvii" data-page="" disabled>TrOCR · trocr-kurrent-xvi-xvii</option></select>
-<div class="rec-compare-body" data-rec-compare-body="left" tabindex="-1"></div></div>
-<div class="rec-compare-pane" data-rec-compare-pane="right" data-rec-compare-selected="vlm-internvl3-8b-instruct">
-<div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-right">Version rechts</label></div>
-<select class="rec-compare-select" id="rec-compare-select-right" data-rec-compare-select="right"><option value="selected" data-page="">Ausgewählt / Fusion</option><option value="vlm-internvl3-8b-instruct" data-page="">VLM · internvl3-8b-instruct</option><option value="kraken-kraken-catmus-medieval" data-page="">Kraken OCR · kraken-catmus_medieval</option><option value="trocr-trocr-medieval-escriptmask" data-page="" disabled>TrOCR · trocr-medieval-escriptmask</option><option value="kraken-kraken-mccatmus" data-page="">Kraken OCR · kraken-mccatmus</option><option value="trocr-trocr-kurrent-xvi-xvii" data-page="" disabled>TrOCR · trocr-kurrent-xvi-xvii</option></select>
-<div class="rec-compare-body" data-rec-compare-body="right" tabindex="-1"></div>
-<div class="rec-compare-diff" data-rec-compare-diff hidden role="region" aria-label="Unterschiede"></div></div>
-<button class="btn-rec-compare-close" type="button" data-rec-compare-close aria-label="Vergleich schliessen">&#215;</button>
-</div></div>
-<nav class="rec-selector" aria-label="Erkennungsversionen"><ul><li><a href="#recognition-selected" data-recognition-select="selected" data-page="" data-engine="fusion" data-model="" aria-controls="recognition-selected">Ausgewählt / Fusion</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct" data-recognition-select="vlm-internvl3-8b-instruct" data-page="" data-engine="vlm" data-model="internvl3-8b-instruct" aria-controls="recognition-vlm-internvl3-8b-instruct">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval" data-recognition-select="kraken-kraken-catmus-medieval" data-page="" data-engine="kraken" data-model="kraken-catmus_medieval" aria-controls="recognition-kraken-kraken-catmus-medieval">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-trocr-trocr-medieval-escriptmask" data-recognition-select="trocr-trocr-medieval-escriptmask" data-page="" data-engine="trocr" data-model="trocr-medieval-escriptmask" aria-controls="recognition-trocr-trocr-medieval-escriptmask">TrOCR · trocr-medieval-escriptmask</a> <span class="rec-status rec-status--degenerate">Degeneriert</span></li><li><a href="#recognition-kraken-kraken-mccatmus" data-recognition-select="kraken-kraken-mccatmus" data-page="" data-engine="kraken" data-model="kraken-mccatmus" aria-controls="recognition-kraken-kraken-mccatmus">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-trocr-trocr-kurrent-xvi-xvii" data-recognition-select="trocr-trocr-kurrent-xvi-xvii" data-page="" data-engine="trocr" data-model="trocr-kurrent-xvi-xvii" aria-controls="recognition-trocr-trocr-kurrent-xvi-xvii">TrOCR · trocr-kurrent-xvi-xvii</a> <span class="rec-status rec-status--degenerate">Degeneriert</span></li></ul></nav>
-<div class="rec-panels"><details class="rec-panel" id="recognition-selected" data-recognition-panel="selected" data-page="" data-engine="fusion" data-model="" open>
-<summary>Ausgewählt / Fusion — ausgewählt</summary>
-<dl class="rec-meta">
-<div><dt>Engine</dt><dd>fusion</dd></div>
-<div><dt>Modell</dt><dd>—</dd></div>
-<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
-<div><dt>Engine-Konfidenz</dt><dd>Nicht angegeben <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-7"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-8" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: fusion</p><p>Modell: —</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): None</p></details>
-<div><dt>Zeichen</dt><dd>2353</dd></div>
-<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz Nicht angegeben</span></dd></div>
-</dl>
-<pre class="rec-text" tabindex="0"><code>--- BAT_663_r_00050.jpg ---
-Amen vndertwegen Wulffin. Densp. de vor lieben anehmen harte f. uff azzu von me de reitt vn auff den obern lieben anehmen hertzen ich klagen zempfchirf anwer er wirdi kent Das ist wolt ze wullen ist es ich ein Enaben in wem statt Ein jar oder me han gelobt in einem geister die wil verharrt. Der hertzu war rafallt, magt versprechen vn zuret en botten linderung hat er mir verharrt. Es welle eine mm kintt dann drelm an eynen Juden herfegen D. Dunkt mir ein enbillet von klagen es durch wier verwichkent war trulich vn empflich. Fundarich warnt es auf schiden Er stern zu den basen 103 do Warrag frist hiegen es ist imme glemi marte reden von des knaben werent. Iaf welt in gern in em pakt legen Annuwurt. Gerni welt uf den knaben im lassen Er spelt um fruntlich hatten Do fürt uf den knaben camm thun in schidung huf. Do kant mir weder tuten ich sellt im den knaben mit laffen wan er war ein unmutige mennt. Dz vernam ale wi bo sprach er merk den knaben kann von welt im als wit sin als sim eigene kint Do sprach Ich zu im wzr welt neme zu eine jar sprach er er welt sim nur vn angschirf an mich keme bn mir dem knaben mit ammer tete sulte ich im mir selben Durg ist alswi in mir gsm 83 jr nu stier ein par Do Prang jich in oder er gestid gebürchte oder welte v welt mit im achen pralizer er er welt kein gelt Er vn sim frowe welten ich verholen im mutes in ewaerlich afm Do hieß ich im v turkym nemem an einem von armestwalt Des 103 er Abel stent Durg ruck men dauten, eine ruffen hon fint wegen An der im zu dem neschten die wiz vor pfennigen do ist im drelt erst an den vo armolmacht magt Do gelobt er mir den prancken en fine truwe am dem phrag abent Do schrift uf inne knergt am pandericht Do kam der knab mit einem bok kenerit zum hijm Do sprach er er welt den knaben selben hon kint dz irg in kezalti furt in auff gant er mir verspricht be ce sich mit den Enaben an em juden rezen Da bitten und nwe Ernwickent. Dz hier sine dur en wekent behoffen sim kam irg bz jeme vm purt verdient oder um die wiserem Bz wirf irg uern tien Vn 103 hinderst laut wint Emmit wird irg im fulte aben 82. Wnt irg im fern rechen Dach ham ich vernomt der knab in mit- ge schidt camm als er aber billig solte vn 103 104 irg da versprichen kann &amp; wir uffwach molt miffen Datir amm em vn af Don mir golt schind uwe nueri sene zu latten zetten</code></pre>
+### DATE
+- Datum
+- 52
 
-<p><a class="rec-download" href="recognitions/fused.txt" download>Diese Transkription herunterladen</a></p>
-</details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct" data-recognition-panel="vlm-internvl3-8b-instruct" data-page="" data-engine="vlm" data-model="internvl3-8b-instruct">
-<summary>VLM · internvl3-8b-instruct</summary>
-<dl class="rec-meta">
-<div><dt>Engine</dt><dd>vlm</dd></div>
-<div><dt>Modell</dt><dd>internvl3-8b-instruct</dd></div>
-<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
-<div><dt>Engine-Konfidenz</dt><dd><span class="rec-confidence-value">80%</span> <span class="rec-confidence-scope">— vlm/internvl3-8b-instruct</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-9"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-10" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: vlm</p><p>Modell: internvl3-8b-instruct</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): 0.8</p></details>
-<div><dt>Zeichen</dt><dd>2343</dd></div>
-<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz 80%</span></dd></div>
-</dl>
-<pre class="rec-text" tabindex="0"><code>--- SEITE 50 ---
-Amen vndertwegen Wulffin. Densp. de vor lieben anehmen harte f. uff azzu von me de
-reitt vn auff den obern lieben anehmen hertzen ich klagen zempfchirf anwer er wirdi kent
-Das ist wolt ze wullen ist es ich ein Enaben in wem statt Ein jar oder me han gelobt
-in einem geister die wil verharrt. Der hertzu war rafallt, magt versprechen vn zuret en
-botten linderung hat er mir verharrt. Es welle eine mm kintt dann drelm an eynen
-Juden herfegen D. Dunkt mir ein enbillet von klagen es durch wier verwichkent
-war trulich vn empflich. Fundarich warnt es auf schiden Er stern zu den basen 103 do
-Warrag frist hiegen es ist imme glemi marte reden von des knaben werent. Iaf welt in gern
-in em pakt legen Annuwurt. Gerni welt uf den knaben im lassen Er spelt um fruntlich
-hatten Do fürt uf den knaben camm thun in schidung huf. Do kant mir weder tuten ich
+### ORG
+- Rat
+
+### PERSON
+- Aimien
+- Rnecht
+
+### PLACE
+- Enaben
+- Thun
+- Schillinas
+- Raben
+- Baden
+- Ruaben
+
+### SOCIAL_GROUP
+- Juden
+
+## Transkription
+
+```
+--- BAT_663_r_00050.jpg ---
+Aimien undectetngen willegen dicust be uor lieden gnediuen hacrẽ si ucq al zut uon nat be-
+rent uñ ouch deñ urern lieben quedien herren ich blahen eeusthlicq uwer et wirdient
+Das uch̃ weol ze wisẜen ist dr ich em Enaben in uwerstatt Em iar oder me han gehodit
+bii emem herẜeit aleroi tordach Der q̃ ett lui gar scalklich. worit uerschriben uñ uuch en
+betten sunderlich hait et mis uerschriben Es erello mir mi fiuit gami biielim an cien
+Iuden uersegen D dimleit mich iir unbillich uñ blagen es ouch̾ uirer erroirdilent
+gar trulich uñ erusthlich sundeclit warit es sich schiben d glerri inͥ den baden iy do
+warit es sich fienen d siq mit glemo. warit reden uon des Rnabeñ noegen Ic welt in gern
+in ein scul legen autaitit glemi welt ict den ruaben Ini lasẜen ee ireet punfrintlic
+halton do sa̾rit ith den enaben cai thun in schillinas huẜ Do warit muir roidet rnton Ica
+selt qi den enaben mnt la sẜeĩ wan er wer tin unrichitugr monst D uernam gle wi lo
+ꝓrats er er welt ren ꝑnaben hami uñ welt imi ols it tunals sim eigenẽ tuit d̾o sproth
+iu iui izer welt neme iͦ em̃o iar sprach er er welt sui git uñ centzlica an mi ch
+homẽ uñ iti et dem tnaben int cgu̾ut tete solte ich sui mͣt̾ geben Duch ist gle moi
+en mir i sin d ist n schiey em iat do ftaigt iiq̃ in oler et celtes bedoiffte oder welte
+co iuelt ng iu geben fpractier er er welt fem gelt Er uñ sin firio welten es uer bodinͭ
+siit males ist eto aber hie ge sin de hies ich mu u gulxin ne mem an emem uon grindatipalt
+des io er auol ꝯtentꝰ Quct ias sinem botten cinẽ gilbin uon sinẽ wegen uñ do et ii
+quͦ dem nechsten hue ioi uor psincsten do Iiħ Iuid glagelt an ben uõ grindel iraft sticis
+Do gelolt er mix don ꝑnaben ie schiken bni sine truare ami dom ꝑfincst abent Di
+ehi et ich mine Rnecht aii tandeesteg do llam ler knas int giena doc ꝑnecht tan
+tum De ppract er er welt den tnaben selben hon biiss d icq̃ in beialti siit masẜ
+hait et mir ersthnibẽ er wel mir den Enaben an em iudon seczen Da bitten ua
+ꝓͦ Ne Erwitibent d yer mit dir in wellonit beholffen sin Ran ich d ieme um̃ ꝓ u̾ta
+uerdienẽ oder um̃ tie uecim Id wit ich gorn tun uñ uo biderbat lu̾it gu̾it dil
+u hrich am sulle aeben d wil ich̃ ini gern geben Ouch̃ han itħ uer nomẽ der ꝑnab sii int
+ze schill igmagn als et aber billich sollte doñ i Ic utti da uerschriben hanm dr wil icħ oucti
+wol iisẜen Datũ onno din uii ui
+Uon mir iost schmd u rõe trũro c
+die ne in allem riten
+52
+```
+
+## Recognition results
+
+_10 independent candidate transcription(s), each exported separately._
+
+| Page | Engine | Model | Chars | Export |
+|---|---|---|---|---|
+| `—` | `vlm` | `internvl3-8b-instruct` | 2327 | [vlm-internvl3-8b-instruct.txt](recognitions/vlm-internvl3-8b-instruct.txt) |
+| `—` | `kraken` | `kraken-catmus_medieval` | 2315 | [kraken-kraken-catmus_medieval.txt](recognitions/kraken-kraken-catmus_medieval.txt) |
+| `—` | `trocr` | `trocr-medieval-escriptmask` | 2433 | [trocr-trocr-medieval-escriptmask.txt](recognitions/trocr-trocr-medieval-escriptmask.txt) |
+| `—` | `kraken` | `kraken-mccatmus` | 2299 | [kraken-kraken-mccatmus.txt](recognitions/kraken-kraken-mccatmus.txt) |
+| `—` | `trocr` | `trocr-kurrent-xvi-xvii` | 2453 | [trocr-trocr-kurrent-xvi-xvii.txt](recognitions/trocr-trocr-kurrent-xvi-xvii.txt) |
+| `—` | `kraken` | `kraken-medieval_charters` | 0 | ⚠️ Kraken service 502 at http://130.92.59.2 |
+| `—` | `trocr` | `trocr-essoins-middle-latin` | 2856 | [trocr-trocr-essoins-middle-latin.txt](recognitions/trocr-trocr-essoins-middle-latin.txt) |
+| `—` | `kraken` | `kraken-early_modern_german` | 2438 | [kraken-kraken-early_modern_german.txt](recognitions/kraken-kraken-early_modern_german.txt) |
+| `—` | `kraken` | `kraken-early_modern_german_16` | 2083 | [kraken-kraken-early_modern_german_16.txt](recognitions/kraken-kraken-early_modern_german_16.txt) |
+| `—` | `kraken` | `kraken-bohemian_19th` | 381 | [kraken-kraken-bohemian_19th.txt](recognitions/kraken-kraken-bohemian_19th.txt) |
+
+<details>
+<summary>vlm · internvl3-8b-instruct (2327 chars)</summary>
+
+```
+--- SEITE 50 ---
+Amen Understetigen Wulffin. Dencp de vor lieben anehien hore jn 16 a zu von me de
+reitt vn aus den omeren lieben anehien herren jch Klaen enstschirf anwer er wirdi kent
+Das ist wol ze wullen jn 83. ich ein Enaben in uwen statt Ein jar oder me han gelschit
+in einem geister die wil verharrt. Der lieb Klu war rafallig, magt verschrien vn zure en
+botten linderung han er eine wachrheiden. Es welle eine mm kintt dann drelm an eynen
+Juden herfegen D. Dunclett wirt an enbillet von Klaen so durch uwer verwichkent
+war trulich vn empflich. Undarlich wurt es auf schiden Er sterm zu den basen 103 do
+Wack-eg fric hiegen 83. jn 16 inm gleim marte reden von des knaben werer. Jn welt magern
+in em pakt legen Annuwurt. Seini welt vn den knaben im lassen Er spelt um fruntlich
+hatten Do fürt in den knaben camm thun in schidung huf. Do hant mir weder tuten ich
 sellt im den knaben mit laffen wan er war ein unmutige mennt. Dz vernam ale wi bo
-sprach er merk den knaben kann von welt im als wit sin als sim eigene kint Do sprach
-Ich zu im wzr welt neme zu eine jar sprach er er welt sim nur vn angschirf an mich
-keme bn mir dem knaben mit ammer tete sulte ich im mir selben Durg ist alswi
-in mir gsm 83 jr nu stier ein par Do Prang jich in oder er gestid gebürchte oder welte
-v welt mit im achen pralizer er er welt kein gelt Er vn sim frowe welten ich verholen
-im mutes in ewaerlich afm Do hieß ich im v turkym nemem an einem von armestwalt
-Des 103 er Abel stent Durg ruck men dauten, eine ruffen hon fint wegen An der im
-zu dem neschten die wiz vor pfennigen do ist im drelt erst an den vo armolmacht magt
-Do gelobt er mir den prancken en fine truwe am dem phrag abent Do
-schrift uf inne knergt am pandericht Do kam der knab mit einem bok kenerit zum
-hijm Do sprach er er welt den knaben selben hon kint dz irg in kezalti furt in auff
-gant er mir verspricht be ce sich mit den Enaben an em juden rezen Da bitten und
-nwe Ernwickent. Dz hier sine dur en wekent behoffen sim kam irg bz jeme vm purt
-verdient oder um die wiserem Bz wirf irg uern tien Vn 103 hinderst laut wint Emmit
-wird irg im fulte aben 82. Wnt irg im fern rechen Dach ham ich vernomt der knab in mit-
-ge schidt camm als er aber billig solte vn 103 104 irg da versprichen kann &amp; wir uffwach
-molt miffen Datir amm em vn af
+sprach er werlt den knaben gann von welt im als wit sin als fim eigene kint Do sprach
+Ich zu im wzr welt neme zu eine jar sprach er er welt im nur vn angschirf an mich
+keme vn mir dem knaben mit ammer tete füllte ich im mir selben Durg ist alswi
+in mir gsm 83. jn 16 stier ein par Do Prang jch in oder er geltlich belobigte oder welte
+v welt mit im achen pralizer er er welt kein gelt Er vn sin frow welten 88 verholen
+im mutes in ewaer ich aßm Do hieß ich im v kürkyn nemem an einem von armestwalt
+Des 103 er Abel stent Durg wak men dauten, eine ruffin hon fint wegen An der im
+zu dem neristen die wiz vor pframen do ist mdzr gelt an den vo armolmacht magt
+Do gelobt er mir den prablen en fine truwe am dem pfrag abent Do
+schrift uf inne knergt am pahderlich Do kam der knab mit einem bok knernt zum
+hijm Do sprach er er welt den knaben selben hon kint 83. jn 16 in kezalti jnt nach
+gant er mir verstriche ce wit mit den Enaben an em juden rezen Da bitten und
+wne Ermitkent. Dz hier sine dur en weltent beholffen fim kam ir 83. jeme vm pürk
+verdien …
+```
+</details>
 
-Don mir golt schind uwe nueri
-sene zu latten zetten</code></pre>
+<details>
+<summary>kraken · kraken-catmus_medieval (2315 chars)</summary>
 
-<p><a class="rec-download" href="recognitions/vlm-internvl3-8b-instruct.txt" download>Diese Transkription herunterladen</a></p>
-</details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval" data-recognition-panel="kraken-kraken-catmus-medieval" data-page="" data-engine="kraken" data-model="kraken-catmus_medieval">
-<summary>Kraken OCR · kraken-catmus_medieval</summary>
-<dl class="rec-meta">
-<div><dt>Engine</dt><dd>kraken</dd></div>
-<div><dt>Modell</dt><dd>kraken-catmus_medieval</dd></div>
-<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
-<div><dt>Engine-Konfidenz</dt><dd><span class="rec-confidence-value">82%</span> <span class="rec-confidence-scope">— kraken/kraken-catmus_medieval</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-11"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-12" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: kraken</p><p>Modell: kraken-catmus_medieval</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): 0.8218539245267563</p></details>
-<div><dt>Zeichen</dt><dd>2315</dd></div>
-<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz 82%</span></dd></div>
-</dl>
-<pre class="rec-text" tabindex="0"><code>le men unbertemgn villaen denst le vor luden gnebuen hare si uls atut von nit se
+```
+le men unbertemgn villaen denst le vor luden gnebuen hare si uls atut von nit se
 peut un ouii sen uroern lieben geduien herren jeh beaen constelics umer en roirdiseist
 das ui reot je roissen ist qi ies em lnaben i u roenstatt en jar ober me san gelioqit
 ene mem fenpbeit ille voilrordais der qi etru gar saqalelus rmorit ver segrilen vn ducus en
@@ -137,39 +153,46 @@ efet us miue necht amn dndqostet do tlain ler enas it gence lsorl enesst tru
 uon de sprais ey cy roest don tnaven sellin son cis lz s rme lesalte sit mohe
 ait et mis versiqi be ce voes mir don fnasen an em juden seciun daouten
 me errortibent di yer mie die in retlent deholffen sui ban ique lvie jeme vn pur
-verdiene oler vm be utocei poz ois ug nern tu un voz bideroit luit gint dues
-pbris mi sulle celen di mmit icqe mi gern pefen ouit ham ithi verpont ser bnas i ni
-aq ul ignicen alo it a ber billui solte van ioi ice vche da verseqriben qon di voil iehi ouces
-rool ioisfen da tu ome en vi
-un miy jost ahmis u men tru res
-du ne il l escln iuten
-</code></pre>
+verdiene oler vm be utoce…
+```
+</details>
 
-<p><a class="rec-download" href="recognitions/kraken-kraken-catmus_medieval.txt" download>Diese Transkription herunterladen</a></p>
-</details><details class="rec-panel" id="recognition-trocr-trocr-medieval-escriptmask" data-recognition-panel="trocr-trocr-medieval-escriptmask" data-page="" data-engine="trocr" data-model="trocr-medieval-escriptmask">
-<summary>TrOCR · trocr-medieval-escriptmask</summary>
-<dl class="rec-meta">
-<div><dt>Engine</dt><dd>trocr</dd></div>
-<div><dt>Modell</dt><dd>trocr-medieval-escriptmask</dd></div>
-<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<details>
+<summary>trocr · trocr-medieval-escriptmask (2433 chars)</summary>
 
-<div><dt>Zeichen</dt><dd>0</dd></div>
-<div><dt>Status</dt><dd><span class="quality-badge quality-badge--degenerate" title="Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.">Degenerierte Ausgabe</span></dd></div>
-</dl>
-<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Der Erkennungsdienst hat das Zeitlimit überschritten.</div>
+```
+leinen undertenigen willigen dienst be von lieben gnedigen herrē sy ùch alzitt von mir be¬
+reitt un̄ ouch den swern lieben gnedigen herren ich klagen ernschlich ùwer erwirdikeitt
+das ich wol ze wisszen ist dz ich ein knaben in acker statt ein jar oder me han gehelttˀ
+ein einem hoyszent alle wir vor hatt nū guͤt schiklich wort un̄ verscheiden un̄ dasz en¬
+botten sunderlich hàtt er mir vorgtheilen er welle mit wort bekandt wysen aùch
+juden versetzen on dunkett mich gar unbillich un̄ klagen es ouch ùwer erwirdikeit
+gar teulich un̄ ernschlich sunderlich wart es sich schaden des glorieux gelines bekant
+wart es sich fiegen dz ich mit glew wirtt reden von des kumen wegen ich recht nehain
+men schuͦl legen mit wurt glewi welt ich den knaben im lassen er wort inn frùntlich
+wie dasz sich hierinn̄ verkoùfft hùschn̄ dasz sich dasz sich ampt Geiszhuͦs alles
+gleit qui den knaben mit loͤssen minder wer ein vertiguͤnge und werden und wellen zuͤ Kuͤngsfelden
+sprucher er welt den graben han un̄ welt Im als guͦt tuͦn als sich eignē ein halbē wir
+zuͦ im wz er welt nemē zuͦ einē jar sprach er er welt sin gar un̄ gentzlich an mich
+komē un̄ wa er dem knaben nit genuͦg gette solle ich und geben durlich im
+by mir gesin dz ist nu schiez ein jar so fragt ich in oder er geltes beheliffe aber rechte
+so welt ich im geben sprachigt er er welt kein gelt er un̄ sin frow welten es verlouben
+sint tales ist ein aber hie gesin so hiesz ich min vˀ guͤtrem nemen an einem von geindat qu ’ ilt
+des wz er wol contentz ouch cas sinem botten einē guldin von sinē wegen un̄ da er im
+zuͦ dem nechsten hie wz vor pfingsten do ich im dz glbgelt an den vō gemeltwisz
+zuͦ gelobt er mir den knaben ze Schikon by sinē truwē ann sein pfingst abent so
+des maistres et gouverneulx de la confrairie des XIXX escuz d'Engleterre
+schulth̄ un̄ der spruch er er welt den knaben selben han wissˀ dz ich un̄ bezaltti sint malp
+tij amé wir der schribē et wol mir den kinden an ein juden setzen dahitten ꝫcꝭ
+hatt er mir und staͤ…
+```
+</details>
 
-<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
-</details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus" data-recognition-panel="kraken-kraken-mccatmus" data-page="" data-engine="kraken" data-model="kraken-mccatmus">
-<summary>Kraken OCR · kraken-mccatmus</summary>
-<dl class="rec-meta">
-<div><dt>Engine</dt><dd>kraken</dd></div>
-<div><dt>Modell</dt><dd>kraken-mccatmus</dd></div>
-<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
-<div><dt>Engine-Konfidenz</dt><dd><span class="rec-confidence-value">76%</span> <span class="rec-confidence-scope">— kraken/kraken-mccatmus</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-13"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-14" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: kraken</p><p>Modell: kraken-mccatmus</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): 0.7618946259560058</p></details>
-<div><dt>Zeichen</dt><dd>2299</dd></div>
-<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz 76%</span></dd></div>
-</dl>
-<pre class="rec-text" tabindex="0"><code>Amen bndeitemaen mntiaen sunf le vox Cuben nnediuen Gare G5 iitgaljet Von mc le
+<details>
+<summary>kraken · kraken-mccatmus (2299 chars)</summary>
+
+```
+Amen bndeitemaen mntiaen sunf le vox Cuben nnediuen Gare G5 iitgaljet Von mc le
 vent vioux den uvvenn liben nreinens Gevien pg Dedleen compglirt unver ensoudiCertt
 Oad no not e soylen s de ndom Essaben m uevvenitay dlin par odet sosc Gass eGotys
 Ey cmem Gezfert Lcevoitorbart Dre Genotie par galblif. nount ves pooiben si Eurt en
@@ -193,51 +216,186 @@ Aet n6 snse Aiergs am Cotsodofer ae blosss len Enat soit sên (Dots Essestt son
 écon de poart et et soct sen Endbon peosen fon Enf. 83 rt in lefatii pir maz0
 parr et mix aerpguibe et mois mt Sens Essabes au ein Judon pgen Ddbusen aa
 a re Crmitibennt 8 per sine dpr gnavetlenn Tegotgen pin Can n9 85 seme om ssine
-verdieme oder som lu mrvicin 8 sit nt neon pirs sn sos Esserbnt Cast aoiss fine
-a Bus son Cuole detens de st ingms aon sebens Durt Gamn 16 versont ler Enal p son
-depgse nmens at0 et adex Ciclont plir son 1s pn un da verpgrisben Gomn de voil ngont
-Aobriffets Dostis anms Ein on
-Don mx 70f Agrm8 à nor nnese
-duene 5d olehs gettien
-5</code></pre>
+verdieme oder som lu mrvicin 8 s…
+```
+</details>
 
-<p><a class="rec-download" href="recognitions/kraken-kraken-mccatmus.txt" download>Diese Transkription herunterladen</a></p>
-</details><details class="rec-panel" id="recognition-trocr-trocr-kurrent-xvi-xvii" data-recognition-panel="trocr-trocr-kurrent-xvi-xvii" data-page="" data-engine="trocr" data-model="trocr-kurrent-xvi-xvii">
-<summary>TrOCR · trocr-kurrent-xvi-xvii</summary>
-<dl class="rec-meta">
-<div><dt>Engine</dt><dd>trocr</dd></div>
-<div><dt>Modell</dt><dd>trocr-kurrent-xvi-xvii</dd></div>
-<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<details>
+<summary>trocr · trocr-kurrent-xvi-xvii (2453 chars)</summary>
 
-<div><dt>Zeichen</dt><dd>0</dd></div>
-<div><dt>Status</dt><dd><span class="quality-badge quality-badge--degenerate" title="Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.">Degenerierte Ausgabe</span></dd></div>
-</dl>
-<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Der Erkennungsdienst hat das Zeitlimit überschritten.</div>
+```
+lehnen vnderttingen willigen benst be vor lieben gnedigen herrn sy ich aljut von mir de¬
+nitt vn auch den uwen lieben gnedigen herren Joh Blaven ernstchlich umen er wirdibott
+dadurch wol ze wissen ist den ich ein knaben in Limesstatt ein jar oder me han gehabt
+sy einem heißen als wie vor Rauh , der herr Un gar schicklich woran verschrieben und zunck on¬
+bonen sunderlich hàt ce mir verstorben , er wolle mir min kmitt gann burdlin an enten¬
+Jndem versetzen dz dankett mich gar vnbillich , an klagen es ouch uwer erwirdikent
+gar teulich vmm ernstlich sunderbitt vartt , es sich schicken dz glecs zu dem boden wz ge¬
+merer es sich fragen , das just und als m. meine reden von des knaden wegen ich mitt in ihren
+mein susul kegen Aͤnthùttz zewi wol nach den knaben im lassen er wolt inn sonderlich
+sicen , So kurtz ich den knaben genn thun in schreibings huß , So komt mer jeder rahen , ich
+soͤlt im den knaben nit laßen Man er vor ein verpstrige molußt , das vernam gele wie
+gerach er er wolt von knaben konn vn̄ welt im ald zit teiln als sinn eigeno dient , de prenn¬
+zuͦ im wz er welt neme zuͦ einem jar spruch er er wolt sin an deren gantzlich an mich
+fernē bei mir dem knaben nit genuͤg tete solte ich im nit acken durch ist glewi¬
+by mir alßin dzyt im schier ein jure der Frage ich in oder er etwas betriffte aber wolte
+so weltung im geben spracht , je er wolt kein gelt , er vn sie zwar wolten es verlezen
+sy teuerlich ist er aber ihr gsin der hoch nehmen v. mithin nemam an einem von gemelt
+des von er wol gechetz ouch geb , inembotten eine guthin von sine wegen Vnnd habe im
+zu dem mechsten herren vor pfingsten , so sich im dz geleget in den vō grundelwahr sprich
+gehabt er mir den knaden ze schicken by sine trunwe inn dem pfingst abent de
+schikt ich , mine knecht ann dem hlostigen er kann her knab nit genug der knecht , ein
+nun ersprach er er wolt der knaben halben han biss dz mich in behaltei sint mahl
+hatt er mir verſchribe et wol mit den knaben an ein julon prezen debiren ich
+u nu…
+```
+</details>
 
-<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
-</details></div>
-</div></section>
+<details>
+<summary>trocr · trocr-essoins-middle-latin (2856 chars)</summary>
 
-<section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
-<p>Transkription unlesbar oder degeneriert (Wiederholungskollaps) — keine belastbare Quellenbeschreibung möglich.</p>
-<p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt; keine unabhängige historische Interpretation. <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p></section>
+```
+le Inuen vndeertemigen Willelm diuft le vor bieden queduen homitem si nichil autem non nunc be
+rent vnde ouch den uern Aleb een quedigen quodrem etc . Elatem Constelutis uer eum eumdem ei Wirdikent
+Dasuos rettum se nullum est de tribus eis in Kueben inuenstatt Em non oder me quam eius
+son emem tenebat ille non comball Et deo que extra Iulium que sequitur ‧ vocat vos Scherdon vnde concordia en
+boun sunde lude habeat et ius acras Theobaldum Et Willelmus nunc non fuerunt Cum brevia
+Iudem verificacionem Dicitim non vnhellus vnde blayenas auchil iurarii essent
+gue tenlich vnde consplich simberhik wirtt es sich solucion de glegni xii denarii vnden aux an
+novit eis sich fieren de placito nunc ele mi venit eidem venit vno dos Euasionem regni regis nichil inde in Comitatu
+in eum insulium legem Dicuntauit Glelmum wolt uel den Kuulon qui laissen Et post quin forma licenciam
+qui l‧ de fuerit uel den knuben comitatu Thome in Chulence quousiverunt Odo venit nunc witer racionis est
+seisitus deu kuodon nunc le serreuium veniunt eum voluntate mensem ‧ Dei Vernoun terre in
+pratiis ei exigantur tenementa pratiit seisinam quam vnde vellem qui aliquam tenementum uersus seinam euigant eum pertinenciis
+Iurata que In regis et Walterus nomine In misericordia Purificacionis Prioris et Etwelt sin vir vnde gentzlich an
+nostre vnde vi de decem brevenint toute placito etc qui fuiit nunc euien Guich quod a die vi
+sumonatus est ius seisitus cum pertinenciis Comitatu regis fuit sub in eodem sancti Michaelis de Ruffo illa incito
+so molt uel qui geben propinquior se de Wellekeking gek Et vnde sin frow Walterum es verledenciam
+nitmoles est eis obier que gressum Odo heres ut habitum uersus eum in misericordia noueam acram eiusdem non Molencul
+Das vos ei vel contentus Ciuit tribus ∧ inem bouem eiusdem Miloni non sine integen vnde dotem
+Iurisdem nouem breve vnzoris vos presentacionem de placito quibus quibus cedam terre in den non exindel iust fuerit
+de ledt ei tunc ibi Kunden de Schilton vnde finem bouu…
+```
+</details>
 
-<section id="claims" class="page-section page-section--interpretation" data-page-section="claims" aria-labelledby="claims-heading"><h2 id="claims-heading">Metadaten, Provenienz und Unsicherheit</h2><div class="table-scroll"><table><thead><tr><th>Feld</th><th>Wert</th><th>Sicherheit</th><th>Begründung</th><th>Nachweis</th></tr></thead><tbody><tr><td colspan="5">Keine strukturierten Beschreibungsfelder verfügbar.</td></tr></tbody></table></div></section>
+<details>
+<summary>kraken · kraken-early_modern_german (2438 chars)</summary>
 
-<section id="entities" class="page-section page-section--interpretation" data-page-section="entities" aria-labelledby="entities-heading"><h2 id="entities-heading">Erkannte Entitäten</h2>
-<h3>DATE</h3><ul><li><a href="../entities/103-9415be88/">103</a> <span class="muted">— ...do Warrag frist hiegen es ist imme glemi...</span></li><li><a href="../entities/104-0658d871/">104</a> <span class="muted">— ...vn 103 104 irg da versprichen...</span></li><li><a href="../entities/83-a0decbe8/">83</a> <span class="muted">— ...gsm 83 jr nu stier ein par...</span></li><li><a href="../entities/82-d362441f/">82</a> <span class="muted">— ...fulte aben 82. Wnt irg im fern...</span></li></ul><h3>PERSON</h3><ul><li><a href="../entities/wulffin-a705a3fe/">Wulffin</a> <span class="muted">— Amen vndertwegen Wulffin.</span></li><li><a href="../entities/d-dunkt-baeedd0d/">D. Dunkt</a> <span class="muted">— D. Dunkt mir ein enbillet von klagen...</span></li><li><a href="../entities/abel-64498a3d/">Abel</a> <span class="muted">— ...Des 103 er Abel stent Durg ruck...</span></li><li><a href="../entities/emmit-5aced2d9/">Emmit</a> <span class="muted">— ...Emmit wird irg im fulte aben 82...</span></li></ul><h3>PLACE</h3><ul><li><a href="../entities/annuwurt-c6f189d3/">Annuwurt</a> <span class="muted">— ...Annuwurt. Gerni welt uf den knaben...</span></li><li><a href="../entities/warrag-a6a47577/">Warrag</a> <span class="muted">— ...Warrag frist hiegen es ist imme...</span></li></ul><h3>ROLE</h3><ul><li><a href="../entities/knaben-4ce97519/">knaben</a> <span class="muted">— ...knaben camm thun in schidung...</span></li></ul><h3>SOCIAL_GROUP</h3><ul><li><a href="../entities/juden-95688a9f/">Juden</a> <span class="muted">— ...ein Juden herfegen D. Dunkt...</span></li><li><a href="../entities/armestwalt-91b4b040/">armestwalt</a> <span class="muted">— ...im v turkym nemem an einem von armestwalt...</span></li></ul>
-<p><a href="entities.csv">Entitäten als CSV herunterladen</a> · <a href="../entities/">Alle Entitäten durchsuchen</a></p></section>
+```
+Aimien undectetngen willegen dicust be uor lieden gnediuen hacrẽ si ucq al zut uon nat be-
+rent uñ ouch deñ urern lieben quedien herren ich blahen eeusthlicq uwer et wirdient
+Das uch̃ weol ze wisẜen ist dr ich em Enaben in uwerstatt Em iar oder me han gehodit
+bii emem herẜeit aleroi tordach Der q̃ ett lui gar scalklich. worit uerschriben uñ uuch en
+betten sunderlich hait et mis uerschriben Es erello mir mi fiuit gami biielim an cien
+Iuden uersegen D dimleit mich iir unbillich uñ blagen es ouch̾ uirer erroirdilent
+gar trulich uñ erusthlich sundeclit warit es sich schiben d glerri inͥ den baden iy do
+warit es sich fienen d siq mit glemo. warit reden uon des Rnabeñ noegen Ic welt in gern
+in ein scul legen autaitit glemi welt ict den ruaben Ini lasẜen ee ireet punfrintlic
+halton do sa̾rit ith den enaben cai thun in schillinas huẜ Do warit muir roidet rnton Ica
+selt qi den enaben mnt la sẜeĩ wan er wer tin unrichitugr monst D uernam gle wi lo
+ꝓrats er er welt ren ꝑnaben hami uñ welt imi ols it tunals sim eigenẽ tuit d̾o sproth
+iu iui izer welt neme iͦ em̃o iar sprach er er welt sui git uñ centzlica an mi ch
+homẽ uñ iti et dem tnaben int cgu̾ut tete solte ich sui mͣt̾ geben Duch ist gle moi
+en mir i sin d ist n schiey em iat do ftaigt iiq̃ in oler et celtes bedoiffte oder welte
+co iuelt ng iu geben fpractier er er welt fem gelt Er uñ sin firio welten es uer bodinͭ
+siit males ist eto aber hie ge sin de hies ich mu u gulxin ne mem an emem uon grindatipalt
+des io er auol ꝯtentꝰ Quct ias sinem botten cinẽ gilbin uon sinẽ wegen uñ do et ii
+quͦ dem nechsten hue ioi uor psincsten do Iiħ Iuid glagelt an ben uõ grindel iraft sticis
+Do gelolt er mix don ꝑnaben ie schiken bni sine truare ami dom ꝑfincst abent Di
+ehi et ich mine Rnecht aii tandeesteg do llam ler knas int giena doc ꝑnecht tan
+tum De ppract er er welt den tnaben selben hon biiss d icq̃ in beialti siit masẜ
+hait et mir ersthnibẽ er wel mir den Enaben an em iudon seczen Da bitten ua
+ꝓͦ Ne Erwi…
+```
+</details>
 
-<section id="downloads" class="page-section page-section--administrative" data-page-section="downloads" aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
-<ul><li><a href="bat-recognition-package.zip">Vollständiges Erkennungspaket (ZIP)</a></li><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
-<p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
+<details>
+<summary>kraken · kraken-early_modern_german_16 (2083 chars)</summary>
 
-<section id="citation" class="page-section page-section--administrative" data-page-section="citation" aria-labelledby="citation-heading"><h2 id="citation-heading">Zitation und stabile Adresse</h2>
-<p><code>Agentic Historian. (2026). Agentic Historian output: bat [Machine-generated dataset]. https://thodel.github.io/agentic-historian-outputs/bat/</code></p>
-<p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/bat/">https://thodel.github.io/agentic-historian-outputs/bat/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/bat/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
+```
+en nentemm en eifftęn Dicn st Qc et iedem gncfi uen Quavm u eu a put emee
+rcut eN u PeN EN eOE ęPm n MV  RT N MNT EIO IOi PcI
+iad uer i er e iscis it i ies enEna Pom mi icina es tat oethe Qam gese conit
+ einem e nporieit ee inilivt Maet coe Qcitusssu gae sialesue toguitu siemi Men on  iius en
+dvtem siPceu Quaitu et noesriddm e avridd sme inm Pmit iN PcFm m MC
+uem berfeten o Dambeit miss iat iMsim saiami Qoaiemn eo viuum ci ctmioi Dut
+goe Ttv Ee coium rmPe mceP IaiT  PMeN MEIM NSEN MCMNIRI
+rbuxit eo equs feem Mqu m N mi Iamit iCPon u Sed P nadcim neiem Jeru neEt sn em
+mem sal lendmm onitvint c ius ivclt i don pPnibem Im sem ee baEt Iium proim miCins
+Ne ions o aritus isi Dem nafen reun Hum m simis Quo iuarit e ioet irme
+res Et quam Nen G nabem meset Ca icmranu et inxi ti iigmdge sncns nam et E ni Po
+ipiaius et et mefe fen niben qam mu t o o egosi dna Cd presimu ci econe Pmit Mo an
+u prum iosoe me st are me quoi emo qai ppradqu es et ibest praomfgt oimentsui am nonu nse
+co me em r et rci Enadcmit iudit te te Mec  rs r m eu E Ec i
+dme ePrm Mit ni pgu mae  PiveiqumA et Ięid ac Ptpte bet mecta
+ ieET uT I ePcn probaiuęe er et ielt QPom et si De onmes mn fieiv x n  v C Pinn
+sst mi sestco estr ci ad ei Qo eepsroum o pns imi e foum ne mom diyein em  gemmau malt
+oco Ier o e enep i egess mam Qaetrem cinem egi sdim suon me merem sonm  et nu
+is sim ncrstem  Net praefioem  IBCEET MNDUN M m PMSIETRIci
+e que soE etmnę Po Pnabesi tsibem erm rinib am em profets O 
+iEte ie ime nert ani gaoqumste o sam Qei Pnos mnse ineneuld cs rnerst i
+Ham. De Ipmi eret est dn Enddem efoin on nis Dirss mn et sofratim sit ma 
+aait et mni ixerqni se et csmnte Den  nadm umem uci enem d Putn
+N N y PiP Ssst oe EE nEt SeoFfrm oipram i  aeme Mim SEr
+VeMSIenm Oee aomD IMeSnnE In egn ei on nCOn ParEi C st ieiuus Smi
+o sinamsuee disen u oe airn imn ę CnMuię Quam ive nmem Pet nab my
+que si qu droe ignerurm a so itus alet Oiocimsi relr dom  um da ctpoque ibsom quomi iu uesc tst ie quiri
+tdus nisps…
+```
+</details>
 
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/8028864"><code>8028864</code></a> · <time datetime="2026-07-16T17:13:23+02:00">2026-07-16</time> · Publish bat</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/796ad08"><code>796ad08</code></a> · <time datetime="2026-07-15T21:19:05+02:00">2026-07-15</time> · Publish bat</li></ol></section>
-<script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/page-sync.js' | relative_url }}" defer></script>
+<details>
+<summary>kraken · kraken-bohemian_19th (381 chars)</summary>
+
+```
+uuuu
+ss
+uuuuuuuuuuiuuuuuuu
+uuuuuuuiuuuuuuu
+uuuuuuuuuu
+uuuuuuuuu
+uuuuuuuuuuuuuu
+uuuuuuuuuuuuuuuu
+uuuuuuuuuu
+uiuuuuuuuuu
+uuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+uuuuuuuuuuuuuuu
+ss:
+uuuuuuuuuuuuuiiiuuui
+ssuuuuuuuuuuuuu
+uuuuuiuuuuuuuu
+uuuuuuuuuuuuu
+uuuuuuuuuuuuu
+iiu
+uuuuuuuuuuuuuuuu
+uuuuuiuuuu
+uuuuuuuuuuuuuuuu
+uuuuiuuuuuuuuuuuuuu
+uuuuuuuuuuuuuu
+uuuuuuuuuuuuuuu
+uuuuuuu
+uuuuuuuuuu
+uuuuuu
+u
+iiu
+
+```
+</details>
+
+## Dateien
+
+- [description.json](description.json)
+- [description.md](description.md)
+- [entities.json](entities.json)
+- [entities.md](entities.md)
+- [recognitions/fused.txt](recognitions/fused.txt)
+- [recognitions/kraken-kraken-bohemian_19th.txt](recognitions/kraken-kraken-bohemian_19th.txt)
+- [recognitions/kraken-kraken-catmus_medieval.txt](recognitions/kraken-kraken-catmus_medieval.txt)
+- [recognitions/kraken-kraken-early_modern_german.txt](recognitions/kraken-kraken-early_modern_german.txt)
+- [recognitions/kraken-kraken-early_modern_german_16.txt](recognitions/kraken-kraken-early_modern_german_16.txt)
+- [recognitions/kraken-kraken-mccatmus.txt](recognitions/kraken-kraken-mccatmus.txt)
+- [recognitions/trocr-trocr-essoins-middle-latin.txt](recognitions/trocr-trocr-essoins-middle-latin.txt)
+- [recognitions/trocr-trocr-kurrent-xvi-xvii.txt](recognitions/trocr-trocr-kurrent-xvi-xvii.txt)
+- [recognitions/trocr-trocr-medieval-escriptmask.txt](recognitions/trocr-trocr-medieval-escriptmask.txt)
+- [recognitions/vlm-internvl3-8b-instruct.txt](recognitions/vlm-internvl3-8b-instruct.txt)
+- [transcription.txt](transcription.txt)

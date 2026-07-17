@@ -1,9 +1,3 @@
-# Transkription: bat
-# QA-Score: 0.00
-# HTR-Source: grouped
-# Modell: qwen3-vl-30b-a3b-instruct
-
---- BAT_663_r_00050.jpg ---
 Aimien undectetngen willegen dicust be uor lieden gnediuen hacrẽ si ucq al zut uon nat be-
 rent uñ ouch deñ urern lieben quedien herren ich blahen eeusthlicq uwer et wirdient
 Das uch̃ weol ze wisẜen ist dr ich em Enaben in uwerstatt Em iar oder me han gehodit
