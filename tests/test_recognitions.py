@@ -170,6 +170,13 @@ class RecognitionContractTests(unittest.TestCase):
         ], "fused")[-1]["id"]
         self.assertIn(f'value="{failed_id}" data-page="p2" disabled', markup)
 
+    def test_comparison_diff_region_is_accessible_and_hidden_by_default(self):
+        markup = build_recognition_section([rec(), rec("kraken")], "doc", "fused")
+        self.assertIn(
+            'data-rec-compare-diff hidden role="region" aria-label="Unterschiede"',
+            markup,
+        )
+
     def test_download_only_when_artifact_exists(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
