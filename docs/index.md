@@ -44,8 +44,42 @@ title: Katalog
     <label for="catalogue-script">Schrift</label>
     <select id="catalogue-script"><option value="all">Alle Schriften</option></select>
   </div>
+  <div>
+    <label for="catalogue-engine">Erkennungsengine</label>
+    <select id="catalogue-engine"><option value="all">Alle Engines</option></select>
+  </div>
+  <div>
+    <label for="catalogue-readiness">Erkennungsdaten</label>
+    <select id="catalogue-readiness">
+      <option value="all">Alle Bereitschaftsstufen</option>
+      <option value="comparison">Vergleich möglich</option>
+      <option value="candidates">Kandidaten vorhanden</option>
+      <option value="legacy">Begrenzte Legacy-Provenienz</option>
+    </select>
+  </div>
+  <div>
+    <label for="catalogue-failure">Erkennungsstatus</label>
+    <select id="catalogue-failure">
+      <option value="all">Alle Status</option>
+      <option value="clean">Ohne bekannte Probleme</option>
+      <option value="issues">Fehler, leer oder degeneriert</option>
+    </select>
+  </div>
+  <div>
+    <label for="catalogue-source">Digitale Quelle</label>
+    <select id="catalogue-source">
+      <option value="all">Alle Quellenlagen</option>
+      <option value="available">Quelle vorhanden</option>
+      <option value="missing">Quelle fehlt</option>
+      <option value="iiif_manifest">IIIF</option>
+      <option value="image">Direktbild</option>
+      <option value="landing_page">Archivseite</option>
+    </select>
+  </div>
+  <div class="catalogue-clear"><button id="catalogue-clear" type="button">Alle Filter zurücksetzen</button></div>
 </form>
 
+<p id="catalogue-active-filters" class="catalogue-active-filters">Keine Filter aktiv.</p>
 <p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">14 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
 
 <div id="catalogue-list" class="catalogue-list">
