@@ -325,6 +325,183 @@ def confidence_scope_label(engine: str, model: str | None, page: str | None) -> 
 
 
 # ---------------------------------------------------------------------------
+# Reference evaluation display helpers
+# ---------------------------------------------------------------------------
+
+def evaluation_scope_label(scope: str) -> str:
+    """Return a human-readable German label for an evaluation scope."""
+    _labels: dict[str, str] = {
+        "candidate": "Einzelkandidat",
+        "page": "Seite",
+        "document": "Dokument",
+        "corpus": "Korpus",
+        "run": "Durchlauf",
+        "n/a": "k. A.",
+    }
+    return _labels.get(scope, scope)
+
+
+def is_evaluation_available(candidate: dict) -> bool:
+    """Return True only when *candidate* contains a usable reference evaluation.
+
+    A reference evaluation is usable when it has a ``reference_name`` — without
+    a named reference, the metric cannot be traced to its provenance.
+    """
+    if not isinstance(candidate, dict):
+        return False
+    # Preferred location: embedded reference_eval sub-dict
+    ref_eval = candidate.get("reference_eval")
+    if isinstance(ref_eval, dict) and ref_eval.get("reference_name"):
+        return True
+    # Fall back: top-level metric_type field
+    if (
+        candidate.get("metric_type") == "reference_evaluation"
+        and candidate.get("reference_name")
+    ):
+        return True
+    return False
+
+
+def render_evaluation_unavailable(suffix: str = "") -> str:
+    """Return accessible HTML notice for absent or missing reference evaluation."""
+    _expl_counter[0] += 1
+    return (
+        '<p class="quality-eval-unavailable" '
+        'aria-label="Keine Referenzauswertung verfügbar">'
+        '<span class="quality-badge quality-badge--missing" aria-hidden="true">⊘</span>'
+        " Keine Referenzauswertung verfügbar\u2009—\u2009"
+        "kein Referenzdatensatz für diesen Kandidaten."
+        "</p>"
+    )
+
+
+def render_reference_evaluation(
+    prov: "Provenance",
+    suffix: str = "",
+    doc_id: str = "",
+) -> str:
+    """Return fully provenance-annotated HTML for a reference evaluation metric.
+
+    Shows CER/WER with reference name, normalization, scope, dataset, and version.
+    Includes:
+    - A typed quality badge with the metric value
+    - An accessible explanation button/block
+    - A provenance table (reference, scope, version, normalization, dataset)
+    - A ``data-provenance`` attribute with the machine-readable Provenance dict
+    - A ``<details>`` element with a stable JSON export for download/tracing
+    - A corpus-scope warning when scope is "corpus"
+
+    Falls back to :func:`render_evaluation_unavailable` when *prov* is not a
+    ``reference_evaluation`` Provenance.
+    """
+    import json as _json
+
+    if prov is None or prov.metric_type != "reference_evaluation":
+        return render_evaluation_unavailable(suffix)
+
+    _expl_counter[0] += 1
+    uniq = suffix or str(_expl_counter[0])
+
+    # Format the metric value
+    if prov.value is not None:
+        pct = prov.value * 100
+        value_str = f"{pct:.1f}\u202f%"
+        aria_value = f"{prov.unit}\u00a0{value_str} (niedrig\u00a0=\u00a0besser)"
+    else:
+        value_str = "nicht angegeben"
+        aria_value = f"{prov.unit}: Wert nicht angegeben"
+
+    scope_label = evaluation_scope_label(prov.scope)
+    ref_display = html.escape(prov.reference_name or "Unbekannte Referenz")
+
+    # Provenance table rows
+    rows: list[str] = [
+        f"<tr><th scope=\"row\">Referenz</th><td>{ref_display}</td></tr>",
+        (
+            f"<tr><th scope=\"row\">Auswertungsebene</th>"
+            f"<td>{html.escape(scope_label)}</td></tr>"
+        ),
+    ]
+    if prov.reference_version:
+        rows.append(
+            f"<tr><th scope=\"row\">Referenzversion</th>"
+            f"<td>{html.escape(prov.reference_version)}</td></tr>"
+        )
+    if prov.normalisation:
+        rows.append(
+            f"<tr><th scope=\"row\">Normalisierung</th>"
+            f"<td>{html.escape(prov.normalisation)}</td></tr>"
+        )
+    if prov.dataset:
+        rows.append(
+            f"<tr><th scope=\"row\">Datensatz</th>"
+            f"<td>{html.escape(prov.dataset)}</td></tr>"
+        )
+
+    # Corpus-scope warning: must not be read as document-level accuracy
+    corpus_warning = ""
+    if prov.scope == "corpus":
+        corpus_warning = (
+            '<p class="quality-corpus-warning" role="note">'
+            "<strong>Hinweis:</strong> Dieser Wert gilt für das gesamte Korpus "
+            "und darf nicht als Dokumentgenauigkeit interpretiert werden."
+            "</p>"
+        )
+
+    # Machine-readable data attribute (compact)
+    machine_data = html.escape(_json.dumps(prov.to_dict(), ensure_ascii=False))
+
+    # Full JSON export shown in <details>
+    export_payload = {
+        "schema": "agentic-historian/reference-evaluation/v1",
+        "doc_id": doc_id,
+        "metric_type": prov.metric_type,
+        "unit": prov.unit,
+        "value": prov.value,
+        "scope": prov.scope,
+        "reference_name": prov.reference_name,
+        "reference_version": prov.reference_version,
+        "normalisation": prov.normalisation,
+        "dataset": prov.dataset,
+        "engine": prov.engine,
+        "model": prov.model,
+        "page": prov.page,
+        "is_comparable": prov.is_comparable,
+        "explanation_key": prov.explanation_key,
+    }
+    export_json_str = html.escape(
+        _json.dumps(export_payload, ensure_ascii=False, indent=2)
+    )
+
+    expl_btn = explanation_button("reference_evaluation", uniq)
+    expl_blk = explanation_block("reference_evaluation", uniq)
+    rows_html = "\n".join(rows)
+
+    return (
+        f'<div class="quality-reference-eval" '
+        f'data-provenance="{machine_data}" '
+        f'aria-label="Referenzbasierte Auswertung: {html.escape(aria_value)}">'
+        f'<p class="quality-eval-summary">'
+        f'<span class="quality-badge quality-badge--eval">'
+        f"{html.escape(prov.unit)}\u00a0{value_str}"
+        f"</span>"
+        f" {expl_btn}"
+        f"</p>"
+        f"{corpus_warning}"
+        f'<table class="quality-provenance-table" '
+        f'aria-label="Auswertungsherkunft">'
+        f"<tbody>{rows_html}</tbody>"
+        f"</table>"
+        f"{expl_blk}"
+        f'<details class="quality-machine-export">'
+        f"<summary>Maschinenlesbare Herkunftsdaten</summary>"
+        f'<pre><code class="language-json">{export_json_str}</code></pre>'
+        f"</details>"
+        f"</div>"
+    )
+
+
+# ---------------------------------------------------------------------------
 # Machine-readable quality export
 # ---------------------------------------------------------------------------
 
