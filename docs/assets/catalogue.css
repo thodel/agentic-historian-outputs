@@ -18,6 +18,9 @@
 .catalogue-tools { display: grid; grid-template-columns: minmax(15rem, 1fr) minmax(10rem, .35fr); gap: 1rem; padding: 1rem; border: 1px solid var(--catalogue-border); border-radius: .8rem; background: #f7f9fa; }
 .catalogue-tools label { display: block; margin-bottom: .3rem; font-size: .85rem; font-weight: 700; }
 .catalogue-tools input, .catalogue-tools select { box-sizing: border-box; width: 100%; min-height: 2.75rem; padding: .55rem .7rem; border: 1px solid #9ca9b5; border-radius: .4rem; color: var(--catalogue-ink); background: var(--catalogue-surface); font: inherit; }
+.catalogue-clear { align-self: end; }
+.catalogue-clear button { min-height: 2.75rem; padding: .55rem .8rem; border: 1px solid var(--catalogue-accent); border-radius: .4rem; color: var(--catalogue-accent); background: var(--catalogue-surface); font: inherit; font-weight: 700; }
+.catalogue-active-filters { margin: 1rem 0 .25rem; color: var(--catalogue-muted); font-size: .9rem; }
 .catalogue-tools input:focus, .catalogue-tools select:focus, .catalogue-card a:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
 .catalogue-status { margin: 1rem 0; color: var(--catalogue-muted); font-size: .9rem; }
 .catalogue-list { display: grid; gap: 1rem; }
