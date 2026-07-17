@@ -245,6 +245,44 @@ def build_page_nav(has_recognitions: bool = True) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Issue #23 — progressive disclosure for secondary research data
+# ---------------------------------------------------------------------------
+
+
+def _wrap_disclosure(
+    section_html: str,
+    section_id: str,
+    summary_title: str,
+    summary_detail: str = "",
+    open_default: bool = False,
+) -> str:
+    """Wrap a secondary section in a <details> progressive-disclosure widget.
+
+    Issue #23: collapsible, keyboard-accessible, print-safe.  The contained
+    <section> keeps its id and data-page-section so existing anchors and the
+    in-page nav (issue #22) continue to resolve without modification.  Print
+    CSS forces every disclosure open so no research content is hidden in hard
+    copy.  JS (page_disclosure.js) opens a closed disclosure when a deep-link
+    anchor targets a contained element.
+    """
+    open_attr = " open" if open_default else ""
+    detail_span = (
+        f' <span class="summary-detail">{html.escape(summary_detail)}</span>'
+        if summary_detail else ""
+    )
+    return (
+        f'<details class="page-section-disclosure"'
+        f' data-disclosure="{html.escape(section_id, quote=True)}"{open_attr}>\n'
+        f'<summary class="page-section-summary">'
+        f'<span class="summary-title">{html.escape(summary_title)}</span>'
+        f'{detail_span}'
+        f'</summary>\n'
+        f'{section_html}\n'
+        f'</details>'
+    )
+
+
+# ---------------------------------------------------------------------------
 # Issue #21 — redesigned document status header
 # ---------------------------------------------------------------------------
 
@@ -498,34 +536,113 @@ license: "LicenseRef-Not-Specified"
         recognitions=data.get("recognitions", []) or [],
     )
     _nav = build_page_nav(has_recognitions=bool(data.get("recognitions")))
-    page = frontmatter(doc_id) + f'<nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> {html.escape(doc_id)}</nav>\n' + _header + '\n' + _nav + f'''
 
-{evidence}
+    # --- Issue #23: progressive disclosure for secondary sections ---
+    n_entities = len(items)
+    n_fields = len(uncertainty_rows)
+    n_downloads = 4 + (1 if package else 0)
+    n_commits = len(history)
 
-<section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
-<p>{html.escape(interpretive)}</p>
-<p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt; keine unabhängige historische Interpretation. <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p></section>
+    _orientation = _wrap_disclosure(
+        '<section id="orientation" class="page-section page-section--interpretation"'
+        ' data-page-section="orientation" aria-labelledby="orientation-heading">'
+        '<h2 id="orientation-heading">Inhaltliche Orientierung</h2>\n'
+        f'<p>{html.escape(interpretive)}</p>\n'
+        '<p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt;'
+        ' keine unabhängige historische Interpretation.'
+        ' <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p>'
+        '</section>',
+        "orientation", "Inhaltliche Orientierung",
+        "Automatisch zusammengestellt", open_default=True,
+    )
+    _claims = _wrap_disclosure(
+        '<section id="claims" class="page-section page-section--interpretation"'
+        ' data-page-section="claims" aria-labelledby="claims-heading">'
+        '<h2 id="claims-heading">Metadaten, Provenienz und Unsicherheit</h2>'
+        f'{field_table}'
+        '</section>',
+        "claims", "Metadaten, Provenienz und Unsicherheit",
+        f"{n_fields}\u2009Felder" if n_fields else "Keine Beschreibungsfelder",
+        open_default=True,
+    )
+    _entity_body = ''.join(entity_html) or '<p>Keine Entitäten erkannt.</p>'
+    _entities = _wrap_disclosure(
+        '<section id="entities" class="page-section page-section--interpretation"'
+        ' data-page-section="entities" aria-labelledby="entities-heading">'
+        '<h2 id="entities-heading">Erkannte Entitäten</h2>\n'
+        f'{_entity_body}\n'
+        '<p><a href="entities.csv">Entitäten als CSV herunterladen</a>'
+        ' · <a href="../entities/">Alle Entitäten durchsuchen</a></p>'
+        '</section>',
+        "entities", "Erkannte Entitäten",
+        f"{n_entities}\u2009Entitäten" if n_entities else "Keine Entitäten",
+        open_default=False,
+    )
+    _downloads = _wrap_disclosure(
+        '<section id="downloads" class="page-section page-section--administrative"'
+        ' data-page-section="downloads" aria-labelledby="downloads-heading">'
+        '<h2 id="downloads-heading">Downloads und Nachnutzung</h2>\n'
+        f'<ul>{package_link}'
+        '<li><a href="transcription.tei.xml">TEI-XML</a></li>'
+        '<li><a href="entities.csv">Entitäten (CSV)</a></li>'
+        '<li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li>'
+        '<li><a href="CITATION.cff">CITATION.cff</a></li>'
+        '</ul>\n'
+        '<p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit'
+        ' keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde'
+        ' liegenden Quellen können separat bestehen.'
+        ' Vor einer Weiterverwendung Rechte klären.</p>'
+        '</section>',
+        "downloads", "Downloads und Nachnutzung",
+        f"{n_downloads}\u2009Dateien",
+        open_default=False,
+    )
+    _citation = _wrap_disclosure(
+        '<section id="citation" class="page-section page-section--administrative"'
+        ' data-page-section="citation" aria-labelledby="citation-heading">'
+        '<h2 id="citation-heading">Zitation und stabile Adresse</h2>\n'
+        f'<p><code>Agentic Historian. ({datetime.now().year}).'
+        f' Agentic Historian output: {html.escape(doc_id)} [Machine-generated dataset].'
+        f' {canonical}</code></p>\n'
+        f'<p>Stabile Seite: <a href="{canonical}">{canonical}</a>'
+        f' · <a href="{REPO}/commits/main/docs/{html.escape(doc_id)}/pipeline.json">'
+        f'Versionsverlauf auf GitHub</a></p>'
+        '</section>',
+        "citation", "Zitation und stabile Adresse",
+        "Stabile Adresse verfügbar",
+        open_default=False,
+    )
+    _history = _wrap_disclosure(
+        '<section id="history" class="page-section page-section--administrative"'
+        ' data-page-section="history" aria-labelledby="history-heading">'
+        '<h2 id="history-heading">Versionsgeschichte</h2>'
+        f'<ol>{history_html}</ol>'
+        '</section>',
+        "history", "Versionsgeschichte",
+        f"{n_commits}\u2009Commits" if n_commits else "Keine Git-Historie",
+        open_default=False,
+    )
 
-<section id="claims" class="page-section page-section--interpretation" data-page-section="claims" aria-labelledby="claims-heading"><h2 id="claims-heading">Metadaten, Provenienz und Unsicherheit</h2>{field_table}</section>
-
-<section id="entities" class="page-section page-section--interpretation" data-page-section="entities" aria-labelledby="entities-heading"><h2 id="entities-heading">Erkannte Entitäten</h2>
-{''.join(entity_html) or '<p>Keine Entitäten erkannt.</p>'}
-<p><a href="entities.csv">Entitäten als CSV herunterladen</a> · <a href="../entities/">Alle Entitäten durchsuchen</a></p></section>
-
-<section id="downloads" class="page-section page-section--administrative" data-page-section="downloads" aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
-<ul>{package_link}<li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
-<p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
-
-<section id="citation" class="page-section page-section--administrative" data-page-section="citation" aria-labelledby="citation-heading"><h2 id="citation-heading">Zitation und stabile Adresse</h2>
-<p><code>Agentic Historian. ({datetime.now().year}). Agentic Historian output: {html.escape(doc_id)} [Machine-generated dataset]. {canonical}</code></p>
-<p>Stabile Seite: <a href="{canonical}">{canonical}</a> · <a href="{REPO}/commits/main/docs/{html.escape(doc_id)}/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
-
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol>{history_html}</ol></section>
-<script src="{{{{ '/assets/rec-viewer.js' | relative_url }}}}" defer></script>
-<script src="{{{{ '/assets/workspace.js' | relative_url }}}}" defer></script>
-<script src="{{{{ '/assets/evidence-viewer.js' | relative_url }}}}" defer></script>
-<script src="{{{{ '/assets/page-sync.js' | relative_url }}}}" defer></script>
-'''
+    page = (
+        frontmatter(doc_id)
+        + f'<nav class="breadcrumbs" aria-label="Brotkrumen">'
+          f'<a href="../">Alle Ausgaben</a>'
+          f' <span aria-hidden="true">/</span> {html.escape(doc_id)}</nav>\n'
+        + _header + '\n'
+        + _nav + '\n\n'
+        + evidence + '\n\n'
+        + _orientation + '\n\n'
+        + _claims + '\n\n'
+        + _entities + '\n\n'
+        + _downloads + '\n\n'
+        + _citation + '\n\n'
+        + _history + '\n'
+        + "<script src=\"{{ '/assets/rec-viewer.js' | relative_url }}\" defer></script>\n"
+        + "<script src=\"{{ '/assets/workspace.js' | relative_url }}\" defer></script>\n"
+        + "<script src=\"{{ '/assets/evidence-viewer.js' | relative_url }}\" defer></script>\n"
+        + "<script src=\"{{ '/assets/page-sync.js' | relative_url }}\" defer></script>\n"
+        + "<script src=\"{{ '/assets/page-disclosure.js' | relative_url }}\" defer></script>\n"
+    )
     (path.parent / "index.md").write_text(page, encoding="utf-8")
     return is_test
 
@@ -568,6 +685,9 @@ def build() -> None:
     page_sync_source = Path(__file__).with_name("page_sync.js")
     (DOCS / "assets" / "page-sync.js").write_text(
         page_sync_source.read_text(encoding="utf-8"), encoding="utf-8")
+    page_disclosure_source = Path(__file__).with_name("page_disclosure.js")
+    (DOCS / "assets" / "page-disclosure.js").write_text(
+        page_disclosure_source.read_text(encoding="utf-8"), encoding="utf-8")
     entity_index = defaultdict(list)
     tests = []
     for path in sorted(DOCS.glob("*/pipeline.json")):

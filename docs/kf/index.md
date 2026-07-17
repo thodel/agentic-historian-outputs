@@ -80,26 +80,45 @@ u</code></pre></section>
 
 
 
+<details class="page-section-disclosure" data-disclosure="orientation" open>
+<summary class="page-section-summary"><span class="summary-title">Inhaltliche Orientierung</span> <span class="summary-detail">Automatisch zusammengestellt</span></summary>
 <section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
 <p>{ &quot;Aufbewahrungsort&quot;: { &quot;wert&quot;: &quot;&quot;, &quot;unsicher&quot;: true, &quot;notiz&quot;: &quot;keine gesicherten Angaben möglich&quot; }, &quot;Beschreibstoff&quot;: { &quot;wert&quot;: &quot;&quot;, &quot;unsicher&quot;: true, &quot;notiz&quot;: &quot;keine Sicht auf Material, Wasserzeichen, Qualität oder Palimpsest&quot; }, &quot;Blaetter&quot;: { &quot;wert&quot;: &quot;&quot;, &quot;unsicher&quot;: true, &quot;notiz&quot;: &quot;keine Zählung der Blätter, keine Angaben zu Foliierung oder Lagenstruktur&quot; }, &quot;Format&quot;: { &quot;wert&quot;: &quot;&quot;, &quot;unsicher&quot;: true, &quot;notiz&quot;: &quot;keine Messungen, kein Hinweis auf Folio/Quarto/Oktav&quot; }, &quot;Datierung&quot;: { &quot;wert&quot;: &quot;&quot;, </p>
 <p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt; keine unabhängige historische Interpretation. <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p></section>
+</details>
 
+<details class="page-section-disclosure" data-disclosure="claims" open>
+<summary class="page-section-summary"><span class="summary-title">Metadaten, Provenienz und Unsicherheit</span> <span class="summary-detail">Keine Beschreibungsfelder</span></summary>
 <section id="claims" class="page-section page-section--interpretation" data-page-section="claims" aria-labelledby="claims-heading"><h2 id="claims-heading">Metadaten, Provenienz und Unsicherheit</h2><div class="table-scroll"><table><thead><tr><th>Feld</th><th>Wert</th><th>Sicherheit</th><th>Begründung</th><th>Nachweis</th></tr></thead><tbody><tr><td colspan="5">Keine strukturierten Beschreibungsfelder verfügbar.</td></tr></tbody></table></div></section>
+</details>
 
+<details class="page-section-disclosure" data-disclosure="entities">
+<summary class="page-section-summary"><span class="summary-title">Erkannte Entitäten</span> <span class="summary-detail">Keine Entitäten</span></summary>
 <section id="entities" class="page-section page-section--interpretation" data-page-section="entities" aria-labelledby="entities-heading"><h2 id="entities-heading">Erkannte Entitäten</h2>
 <p>Keine Entitäten erkannt.</p>
 <p><a href="entities.csv">Entitäten als CSV herunterladen</a> · <a href="../entities/">Alle Entitäten durchsuchen</a></p></section>
+</details>
 
+<details class="page-section-disclosure" data-disclosure="downloads">
+<summary class="page-section-summary"><span class="summary-title">Downloads und Nachnutzung</span> <span class="summary-detail">4 Dateien</span></summary>
 <section id="downloads" class="page-section page-section--administrative" data-page-section="downloads" aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
 <ul><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
 <p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
+</details>
 
+<details class="page-section-disclosure" data-disclosure="citation">
+<summary class="page-section-summary"><span class="summary-title">Zitation und stabile Adresse</span> <span class="summary-detail">Stabile Adresse verfügbar</span></summary>
 <section id="citation" class="page-section page-section--administrative" data-page-section="citation" aria-labelledby="citation-heading"><h2 id="citation-heading">Zitation und stabile Adresse</h2>
 <p><code>Agentic Historian. (2026). Agentic Historian output: kf [Machine-generated dataset]. https://thodel.github.io/agentic-historian-outputs/kf/</code></p>
 <p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/kf/">https://thodel.github.io/agentic-historian-outputs/kf/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/kf/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
+</details>
 
+<details class="page-section-disclosure" data-disclosure="history">
+<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">1 Commits</span></summary>
 <section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/a4e998a"><code>a4e998a</code></a> · <time datetime="2026-07-07T15:29:12+02:00">2026-07-07</time> · Publish kf</li></ol></section>
+</details>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/page-sync.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/page-disclosure.js' | relative_url }}" defer></script>

@@ -223,3 +223,61 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 .btn-rec-compare-diff { margin-left: .25rem; font-weight: 700; }
 .btn-rec-compare-diff[aria-pressed="true"] { color: #245b78; }
 .btn-rec-compare-diff[aria-pressed="false"] { color: #8aa5b4; }
+
+/* ---- Progressive disclosure (issue #23) ---------------------------------- */
+.page-section-disclosure {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.page-section-summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  padding: .45rem 0;
+  border-top: 1px solid #d4c9b8;
+  color: #5a4e3c;
+  font-size: .9rem;
+  user-select: none;
+}
+.page-section-summary::-webkit-details-marker { display: none; }
+.page-section-summary::before {
+  content: "\25B6";   /* ▶ */
+  font-size: .65rem;
+  transition: transform .15s;
+  flex-shrink: 0;
+  margin-right: .2rem;
+}
+.page-section-disclosure[open] > .page-section-summary::before {
+  transform: rotate(90deg);
+}
+.summary-title {
+  font-weight: 600;
+  color: #3a2e1e;
+}
+.summary-detail {
+  color: #7a6e5c;
+  font-size: .85em;
+}
+.page-section-summary:hover {
+  color: #3a2e1e;
+  background: #f5efe6;
+}
+.page-section-summary:focus-visible {
+  outline: 2px solid #8b6914;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+/* Print: force all disclosures fully open */
+@media print {
+  .page-section-disclosure > summary { display: none; }
+  .page-section-disclosure > *:not(summary) { display: block !important; }
+}
+/* High-contrast */
+@media (forced-colors: active) {
+  .page-section-summary { border-top-color: ButtonText; }
+  .page-section-summary::before { color: ButtonText; }
+}
+/* ---- end #23 ---- */
