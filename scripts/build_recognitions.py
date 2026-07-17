@@ -1,5 +1,55 @@
-"""Accessible recognition-candidate rendering for generated output pages."""
+"""Accessible recognition-candidate rendering for generated output pages.
+
+Recognition Artifact Naming and Metadata Contract (#34)
+========================================================
+
+Path Structure
+--------------
+  recognitions/                          root for all artifacts
+    fused.txt                            selected/fused transcription
+    <page_slug>/                         optional page subdirectory
+      <engine>-<model>.txt               raw candidate for page
+      <engine>-<model>.error.txt         error record for failed candidate
+      <engine>-<model>.eval.txt          evaluation artifact (CER/WER etc.)
+    <engine>-<model>.txt                 candidate without page attribution
+    <engine>-<model>.error.txt           error record without page
+    catalogue.json                       machine-readable inventory of all artifacts
+    manifest.json                        package manifest for complete downloads
+
+Filename Sanitisation
+---------------------
+- Spaces, Unicode, slashes, and special characters become underscores.
+- Model IDs with slashes use "_" instead of "/".
+- Result is lowercased and truncated to 100 characters.
+- Collisions are resolved by path-count deduplication in _candidates.
+
+MIME, Encoding, Line-endings
+----------------------------
+- charset=utf-8 for all text artifacts.
+- LF line endings (Unix convention).
+- Unicode normalisation: NFD (decomposed).
+
+Artifact Types
+==============
+Suffix          Type             Contents
+===========     ===============  ======================================
+.txt            raw candidate    Raw engine transcription text only
+.error.txt      error record     JSON: engine, model_id, page, error, ts
+.eval.txt       evaluation       JSON: metric name, value, ref, scope
+fused.txt       selected output  Fused/selected transcription
+catalogue.json  inventory        JSON array of artifact metadata
+manifest.json   manifest         JSON: doc_id, version, checksums, rights
+===========     ===============  ======================================
+"""
+
 from __future__ import annotations
+
+import hashlib
+import json
+from collections import Counter
+from datetime import datetime, timezone
+from pathlib import Path
+from urllib.parse import quote
 
 import html
 import re
@@ -53,6 +103,77 @@ def _recognition_path(candidate: dict) -> str:
         page_slug = re.sub(r"[^A-Za-z0-9._-]+", "_", page.rsplit(".", 1)[0])
         return f"recognitions/{page_slug}/{stem}.txt"
     return f"recognitions/{stem}.txt"
+
+
+
+def _error_path(candidate: dict) -> str:
+    """Return the canonical path for an error-record artifact."""
+    raw = dict(page=candidate.get("page"), engine=candidate.get("engine"),
+               model_id=candidate.get("model_id"))
+    base = _recognition_path(raw)
+    return base.replace(".txt", ".error.txt") if base else ""
+
+
+def write_error_record(directory: Path, candidate: dict) -> Path | None:
+    """Write a JSON error record for a failed recognition attempt.
+
+    Returns the path of the written file, or None if the candidate succeeded.
+    """
+    error = _public_error(candidate.get("error"))
+    if not error:
+        return None
+    path = _error_path(candidate)
+    if not path:
+        return None
+    record = {
+        "engine": str(candidate.get("engine") or ""),
+        "model_id": str(candidate.get("model_id") or ""),
+        "page": str(candidate.get("page") or ""),
+        "error": error,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+    file_path = directory / path
+    file_path.parent.mkdir(parents=True, exist_ok=True)
+    file_path.write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
+    return file_path
+
+
+def compute_checksum(path: Path) -> str:
+    """Return the SHA-256 hex digest of a file."""
+    h = hashlib.sha256()
+    with path.open("rb") as fh:
+        for chunk in iter(lambda: fh.read(65536), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def write_catalogue(directory: Path, doc_id: str, recognitions: list,
+                    transcript: str) -> Path:
+    """Write a machine-readable JSON inventory of all recognition artifacts.
+
+    Includes selected/fused and every successful candidate; failed attempts
+    are listed with error metadata but no text artifact path.
+    """
+    candidates = _candidates(recognitions, transcript)
+    items = []
+    for cand in candidates:
+        item = {
+            "id": cand["id"],
+            "engine": cand["engine"],
+            "model_id": cand["model_id"] or None,
+            "page": cand["page"] or None,
+            "status": "error" if cand["error"] else "success",
+            "error": cand["error"] or None,
+            "path": cand["path"] if (cand["path"] and not cand["error"]) else None,
+            "error_path": _error_path(cand) if cand["error"] else None,
+            "characters": len(cand["text"]) if not cand["error"] else None,
+        }
+        items.append(item)
+    catalogue = {"doc_id": doc_id, "version": "1.0", "artifacts": items}
+    path = directory / "recognitions" / "catalogue.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(catalogue, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
 
 
 def _candidates(recognitions, transcript: str) -> list[dict]:
