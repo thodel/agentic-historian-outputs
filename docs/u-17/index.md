@@ -352,7 +352,7 @@ iii</code></pre></section>
 <p><code>Agentic Historian. (2026). Agentic Historian output: u-17 [Machine-generated dataset]. https://thodel.github.io/agentic-historian-outputs/u-17/</code></p>
 <p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/u-17/">https://thodel.github.io/agentic-historian-outputs/u-17/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/u-17/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
 
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/7eea6ce"><code>7eea6ce</code></a> · <time datetime="2026-07-08T17:18:20+02:00">2026-07-08</time> · Publish u-17</li></ol></section>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/d3a8d55"><code>d3a8d55</code></a> · <time datetime="2026-07-17T11:48:24+02:00">2026-07-17</time> · test(recognition): add #39 harden and verify recognition downloads (#86)</li></ol></section>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>

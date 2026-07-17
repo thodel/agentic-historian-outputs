@@ -33,10 +33,21 @@ def valid_public_url(url: str) -> bool:
     return bool(public_url(url))
 
 
+def git_revision() -> str:
+    try:
+        return subprocess.run(
+            ["git", "rev-parse", "--verify", "--quiet", "HEAD"],
+            check=True, capture_output=True, text=True,
+        ).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return "HEAD"
+
+
 def git_history(path: Path) -> list[tuple[str, str, str]]:
+    revision = git_revision()
     try:
         out = subprocess.run(
-            ["git", "log", "--follow", "--format=%h%x09%aI%x09%s", "--", str(path)],
+            ["git", "log", "--first-parent", "--format=%h%x09%aI%x09%s", f"--max-count=1", revision, "--", str(path)],
             check=True, capture_output=True, text=True,
         ).stdout
     except (OSError, subprocess.CalledProcessError):
