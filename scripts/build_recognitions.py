@@ -454,6 +454,7 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
     all_explanation_keys = (
         "engine_confidence", "agreement", "degenerate",
         "failed", "reference_evaluation", "incomparable_confidence",
+        "selection_score",
     )
     explanation_blocks = "".join(
         explanation_block(k) for k in all_explanation_keys if k in EXPLANATIONS
@@ -531,6 +532,8 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
                 candidate["engine"], candidate["model_id"], candidate["page"]
             ),
         )
+        # Issue #30: selected/fused candidate gets a selection_score explanation button
+        selection_btn = explanation_button("selection_score") if candidate["selected"] else ""
 
         links.append(
             f'<li><a href="#recognition-{cid}" data-recognition-select="{cid}" '
@@ -584,7 +587,7 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
         ref_eval_html = _build_ref_eval_html(candidate) if candidate.get("reference_eval") else ""
 
         panels.append(f'''<details class="rec-panel" id="recognition-{cid}" data-recognition-panel="{cid}" data-page="{html.escape(candidate["page"], quote=True)}" data-engine="{html.escape(candidate["engine"], quote=True)}" data-model="{html.escape(candidate["model_id"], quote=True)}"{' open' if candidate["selected"] else ''}>
-<summary>{html.escape(label)}{' — ausgewählt' if candidate["selected"] else ''}</summary>
+<summary>{html.escape(label)}{' — ausgewählt' if candidate["selected"] else ''}{selection_btn}</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>{html.escape(candidate["engine"])}</dd></div>
 <div><dt>Modell</dt><dd>{html.escape(candidate["model_id"]) or '—'}</dd></div>
