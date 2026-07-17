@@ -46,3 +46,4 @@ page page_2.jpg</code></pre></section>
 <section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/2397cba"><code>2397cba</code></a> · <time datetime="2026-07-08T12:36:17+02:00">2026-07-08</time> · Publish order-001-group</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/202031b"><code>202031b</code></a> · <time datetime="2026-07-08T09:03:38+02:00">2026-07-08</time> · Publish order-001-group</li></ol></section>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>

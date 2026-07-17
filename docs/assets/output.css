@@ -13,6 +13,15 @@
 .transcription, .rec-text { max-height: 42rem; overflow: auto; padding: 1rem; border: 1px solid #d7dee5; border-radius: .5rem; background: #f7f9fa; white-space: pre-wrap; overflow-wrap: anywhere; }
 .source-image { display: block; max-width: 100%; max-height: 70vh; margin: 1rem auto; object-fit: contain; }
 .source-frame { width: 100%; min-height: 70vh; border: 1px solid #d7dee5; }
+.evidence-viewer { border: 1px solid #aab8c2; border-radius: .5rem; overflow: hidden; background: #f7f9fa; }
+.evidence-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; padding: .55rem; border-bottom: 1px solid #d7dee5; background: white; }
+.evidence-toolbar button { min-height: 2.5rem; padding: .35rem .65rem; border: 1px solid #8aa5b4; border-radius: .35rem; background: white; color: #183b50; font: inherit; cursor: pointer; }
+.evidence-toolbar button:focus-visible, .evidence-stage:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
+.evidence-toolbar output { min-width: 3.5rem; text-align: center; font-variant-numeric: tabular-nums; }
+.evidence-stage { max-width: 100%; height: min(62vh, 42rem); overflow: auto; background: #20272c; }
+.evidence-stage img { display: block; max-width: none; height: auto; margin: 0 auto; }
+.evidence-stage img[hidden] { display: none; }
+.evidence-status { margin: 0; padding: .55rem .75rem; color: #4f5d67; background: white; }
 section { scroll-margin-top: 1rem; }
 .page-section { padding-block: .35rem; }
 .page-section--evidence { border-inline-start: .25rem solid #245b78; padding-inline-start: 1rem; }
@@ -45,7 +54,7 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 .rec-error { margin-top: 1rem; }
 .rec-viewer--enhanced .rec-panel[hidden] { display: none; }
 
-@media (prefers-contrast: more) { .notice, .transcription, .rec-text, .rec-panel, .page-section { border-width: 2px; } }
+@media (prefers-contrast: more) { .notice, .transcription, .rec-text, .rec-panel, .page-section, .evidence-viewer, .evidence-toolbar button { border-width: 2px; } }
 @media (max-width: 55rem) {
   .evidence-workspace { display: block; }
   .evidence-pane { max-height: none; overflow: visible; }

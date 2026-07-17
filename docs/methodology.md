@@ -17,6 +17,8 @@ Die Anker `#transcription` und `#claims` bleiben für bestehende Links stabil. F
 
 Ist ein öffentlich einbettbares Bild oder IIIF-Manifest vorhanden, erscheinen Quelle und Transkription auf breiten Bildschirmen in zwei beschrifteten Bereichen. Der Trenner lässt sich ziehen oder per Tastatur mit Pfeiltasten, Pos1 und Ende bedienen. Das Verhältnis wird ausschließlich lokal im Browser gespeichert und verändert keine teilbare URL. Auf schmalen Bildschirmen und bei starker Vergrößerung stehen Quelle und Transkription untereinander; ohne einbettbare Quelle bleibt die lineare Transkriptionsansicht erhalten.
 
+Der integrierte Digitalisat-Viewer verwendet keine externe Viewer-Plattform. Bei IIIF lädt er das angegebene Presentation-Manifest direkt und zeigt den ersten Canvas; bei direkten Bildadressen lädt er ausschließlich dieses Bild. Beide Varianten bieten Vergrößern, Verkleinern, Zurücksetzen und Vollbild sowie eine per Tastatur erreichbare, verschiebbare Bildfläche. Manifest- und Bildfehler werden nach außen verständlich gemeldet, während der Link zur Originalquelle erhalten bleibt. Browser übertragen beim Manifestabruf keine expliziten Zugangsdaten; CORS-Regeln des Quellservers können die Einbettung dennoch verhindern.
+
 ## Verarbeitung
 
 Die Pipeline verarbeitet Digitalisate oder Bildgruppen, erzeugt eine maschinelle Transkription, leitet Beschreibungsfelder ab und erkennt Personen, Orte, Organisationen sowie weitere Entitäten. Die vollständigen Verarbeitungsergebnisse bleiben pro Dokument als `pipeline.json` verfügbar.
