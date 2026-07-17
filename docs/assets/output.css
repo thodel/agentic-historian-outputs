@@ -57,6 +57,20 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 .rec-meta dd { margin: .1rem 0 0; overflow-wrap: anywhere; }
 .rec-error { margin-top: 1rem; }
 .rec-viewer--enhanced .rec-panel[hidden] { display: none; }
+.rec-compare { margin-bottom: 1rem; }
+.btn-rec-compare { padding: .35rem .7rem; border: 1px solid #8aa5b4; border-radius: .35rem; background: white; cursor: pointer; font: inherit; }
+.btn-rec-compare:hover { background: #f0f4f7; }
+.btn-rec-compare:focus-visible, .rec-compare-select:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
+.btn-rec-compare-close { position: absolute; top: .5rem; right: .5rem; border: 0; background: none; color: #5c6875; font-size: 1.5rem; cursor: pointer; }
+.rec-compare-panes { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: .75rem; padding: 1rem; border: 1px solid #d7dee5; border-radius: .5rem; background: #f7f9fa; }
+.rec-compare-pane { display: flex; min-width: 0; flex-direction: column; gap: .5rem; }
+.rec-compare-header { color: #245b78; font-size: .85rem; font-weight: 700; }
+.rec-compare-select { width: 100%; padding: .3rem .4rem; border: 1px solid #8aa5b4; border-radius: .35rem; background: white; }
+.rec-compare-body { min-height: 3rem; max-height: 28rem; overflow: auto; }
+.rec-compare-body .rec-meta { font-size: .82rem; }
+.rec-compare-body .rec-text { max-height: 20rem; font-size: .85rem; }
+.btn-rec-compare-swap { align-self: center; padding: .4rem .6rem; border-radius: 50%; }
+.btn-rec-compare-sync { margin-left: .5rem; }
 
 @media (prefers-contrast: more) { .notice, .transcription, .rec-text, .rec-panel, .page-section, .evidence-viewer, .evidence-toolbar button, .source-page-nav button { border-width: 2px; } }
 @media (max-width: 55rem) {
@@ -64,4 +78,5 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
   .evidence-pane { max-height: none; overflow: visible; }
   .workspace-divider { display: none; }
   .evidence-pane--transcription .rec-selector { position: static; }
+  .rec-compare-panes { grid-template-columns: 1fr; }
 }

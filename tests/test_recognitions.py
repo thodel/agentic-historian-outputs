@@ -143,6 +143,27 @@ class RecognitionContractTests(unittest.TestCase):
         self.assertNotIn("rec-download\" href", failed)
         self.assertIn("Kein Textdownload verfügbar", failed)
 
+    def test_comparison_shell_is_opt_in_and_accessibly_labelled(self):
+        markup = build_recognition_section([rec(), rec("kraken")], "doc", "fused")
+        self.assertIn("data-recognition-compare", markup)
+        self.assertIn("data-rec-compare-panes hidden", markup)
+        self.assertIn('for="rec-compare-select-left">Version links', markup)
+        self.assertIn('for="rec-compare-select-right">Version rechts', markup)
+
+    def test_comparison_options_are_page_scoped_and_failures_disabled(self):
+        markup = build_recognition_section([
+            rec(page="p1"),
+            rec("kraken", page="p2"),
+            rec("trocr", text="", error="timeout", page="p2"),
+        ], "doc", "fused")
+        self.assertIn('data-page="p1"', markup)
+        self.assertIn('data-page="p2"', markup)
+        failed_id = _candidates([
+            rec(page="p1"), rec("kraken", page="p2"),
+            rec("trocr", text="", error="timeout", page="p2"),
+        ], "fused")[-1]["id"]
+        self.assertIn(f'value="{failed_id}" data-page="p2" disabled', markup)
+
     def test_download_only_when_artifact_exists(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

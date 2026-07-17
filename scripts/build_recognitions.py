@@ -346,6 +346,40 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
 <p>{download}</p>
 </details>''')
 
+    def compare_options() -> str:
+        options = []
+        for candidate in candidates:
+            label = _engine_label(candidate["engine"])
+            if candidate["model_id"]:
+                label += f' · {candidate["model_id"]}'
+            if candidate["page"]:
+                label += f' ({candidate["page"]})'
+            disabled = " disabled" if candidate["error"] else ""
+            options.append(
+                f'<option value="{html.escape(candidate["id"], quote=True)}" '
+                f'data-page="{html.escape(candidate["page"], quote=True)}"{disabled}>'
+                f'{html.escape(label)}</option>'
+            )
+        return "".join(options)
+
+    usable = [candidate for candidate in candidates if not candidate["error"]]
+    left = usable[0]["id"] if usable else "selected"
+    right = usable[1]["id"] if len(usable) > 1 else left
+    options = compare_options()
+    compare_section = f'''<div class="rec-compare" data-recognition-compare>
+<div class="rec-compare-toolbar"><button class="btn-rec-compare" type="button" data-rec-compare-open aria-expanded="false">&#128269; Vergleichen</button></div>
+<div class="rec-compare-panes" data-rec-compare-panes hidden>
+<div class="rec-compare-pane" data-rec-compare-pane="left" data-rec-compare-selected="{html.escape(left, quote=True)}">
+<div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-left">Version links</label></div>
+<select class="rec-compare-select" id="rec-compare-select-left" data-rec-compare-select="left">{options}</select>
+<div class="rec-compare-body" data-rec-compare-body="left" tabindex="-1"></div></div>
+<div class="rec-compare-pane" data-rec-compare-pane="right" data-rec-compare-selected="{html.escape(right, quote=True)}">
+<div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-right">Version rechts</label></div>
+<select class="rec-compare-select" id="rec-compare-select-right" data-rec-compare-select="right">{options}</select>
+<div class="rec-compare-body" data-rec-compare-body="right" tabindex="-1"></div></div>
+<button class="btn-rec-compare-close" type="button" data-rec-compare-close aria-label="Vergleich schliessen">&#215;</button>
+</div></div>'''
+
     return f'''<section id="recognitions" class="page-section page-section--evidence" data-page-section="recognitions" aria-labelledby="recognitions-heading">
 <h2 id="recognitions-heading">Erkennungsversionen</h2>
 <p class="rec-intro">
@@ -354,6 +388,7 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 </p>
 {explanation_blocks}
 <div class="rec-viewer" data-recognition-viewer data-doc-id="{html.escape(doc_id, quote=True)}">
+{compare_section}
 <nav class="rec-selector" aria-label="Erkennungsversionen"><ul>{''.join(links)}</ul></nav>
 <div class="rec-panels">{''.join(panels)}</div>
 </div></section>'''
