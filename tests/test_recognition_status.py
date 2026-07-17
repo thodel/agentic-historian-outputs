@@ -97,6 +97,39 @@ class SanitisationTests(unittest.TestCase):
         self.assertNotIn(":8080", result)
         self.assertIn("service.example", result)
 
+    def test_url_credentials_user_pass_redacted(self):
+        # user:pass@ in URL must be replaced, host preserved
+        cases = [
+            ("https://admin:secret@example.com/api", "admin:secret", "[REDACTED]"),
+            ("http://user:password@example.com/file", "user:password", "[REDACTED]"),
+        ]
+        for text, bad, good in cases:
+            result = _sanitize(text)
+            self.assertNotIn(bad, result, msg=f"{bad!r} leaked from {text!r}")
+            self.assertIn(good, result, msg=f"{good!r} missing from {text!r}")
+            self.assertIn("example.com", result, msg="host must be preserved")
+
+    def test_token_key_and_signature_query_params(self):
+        # key=, api_key=, access_token=, signature= in query strings removed
+        cases = [
+            "http://api.example.com/v1/recognize?key=secret123",
+            "http://api.example.com/v1/recognize?api_key=token_abc",
+            "http://api.example.com/v1/recognize?access_token=xyz",
+            "http://api.example.com/v1/recognize?signature=sig_xyz",
+            "https://example.com?token=my-token&model=large",
+        ]
+        for text in cases:
+            result = _sanitize(text)
+            for secret in ["secret123", "token_abc", "xyz", "sig_xyz", "my-token"]:
+                self.assertNotIn(secret, result, msg=f"{secret!r} leaked from {text!r}")
+
+    def test_bracketed_internal_placeholder_not_double_redacted(self):
+        # [INTERNAL] itself must not be matched by pattern 4
+        result = _sanitize("http://[INTERNAL]:8080/api")
+        self.assertNotIn("[[INTERNAL]]", result)
+        self.assertIn("http://[INTERNAL]", result)
+        self.assertNotIn(":8080", result)
+
     def test_noop_when_clean(self):
         result = _sanitize("This is a clean error message with no secrets.")
         self.assertEqual(result, "This is a clean error message with no secrets.")

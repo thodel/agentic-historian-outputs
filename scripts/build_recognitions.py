@@ -19,6 +19,7 @@ import re
 import zipfile
 from collections import Counter
 from pathlib import Path
+import recognition_status
 from urllib.parse import quote
 
 try:
@@ -116,6 +117,9 @@ def _error_path(candidate: dict) -> str:
 
 
 def write_error_record(directory: Path, candidate: dict) -> Path | None:
+    # Defense-in-depth: reject candidates with forbidden diagnostic leakage
+    assert recognition_status._validate_no_forbidden_diagnostics(candidate), \
+        f"candidate {candidate.get('id', '?')} failed diagnostics validation"
     error = _public_error(candidate.get("error"))
     if not error:
         return None
@@ -139,6 +143,11 @@ def compute_checksum(path: Path) -> str:
 
 
 def _catalogue_data(doc_id: str, candidates: list[dict]) -> dict:
+    # Defense-in-depth: reject candidates with forbidden diagnostic leakage
+    # before any field is read or written to the public catalogue.
+    for c in candidates:
+        assert recognition_status._validate_no_forbidden_diagnostics(c), \
+            f"candidate {c.get('id', '?')} failed diagnostics validation"
     return {
         "doc_id": doc_id,
         "version": "1.0",
@@ -152,7 +161,7 @@ def _catalogue_data(doc_id: str, candidates: list[dict]) -> dict:
             "path": candidate["path"] if candidate["path"] and not candidate["error"] else None,
             "error_path": _error_path(candidate) if candidate["error"] else None,
             "characters": len(candidate["text"]) if not candidate["error"] else None,
-        } for candidate in candidates],
+        } for candidate in candidates],  # noqa: C416
     }
 
 
@@ -170,6 +179,10 @@ def write_package(directory: Path, doc_id: str, recognitions: list,
                   transcript: str) -> Path | None:
     """Write a byte-reproducible ZIP with candidate texts and safe errors."""
     candidates = _candidates(recognitions, transcript)
+    # Defense-in-depth: reject any candidate that leaked forbidden diagnostics
+    for c in candidates:
+        assert recognition_status._validate_no_forbidden_diagnostics(c), \
+            f"candidate {c.get('id', '?')} failed diagnostics validation"
     artifacts = []
     entries: list[tuple[str, bytes]] = []
     for candidate in candidates:

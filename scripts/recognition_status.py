@@ -161,15 +161,18 @@ SANITIZE_PATTERNS: list[tuple[re.Pattern, str]] = [
     (re.compile(r"\b\d{1,3}(?:\.\d{1,3}){3}(?::\d+)?"), "[IP]"),
     (re.compile(r"\[[0-9a-fA-F:]+(?::\d+)?\]"), "[IP]"),
     # Tokens / Bearer auth (space, colon or = after keyword)
-    (re.compile(r"(?i)(?:Bearer|token|bearer|api[_-]?key)[=:\s]+[^\s\"']+"), "[TOKEN]"),
+    # Covers: Bearer ..., token=, bearer:, api_key=..., key ..., signature=...
+    (re.compile(r"(?i)(?:(?:Bearer|api[_-]?key|key|token|signature|access[_-]?token)[=:\s]+[^\s\"']+|\?[a-z_][a-z_0-9]*(?:[=][^\s\"']+)?)"), "[TOKEN]"),
     # Localhost / internal hostnames — word-boundary anchored
     (re.compile(r"(?i)\b(?:localhost|127\.0\.0\.1|::1)\b"), "[INTERNAL]"),
     # "internal"/"intranet" as standalone words; not subdomains like service.internal
-    (re.compile(r"(?i)\b(?:internal|intranet)\b"), "[INTERNAL]"),
+    (re.compile(r"(?<!\[)\b(?:internal|intranet)\b(?!\])"), "[INTERNAL]"),
     # Stack traces (multi-line including trailing error lines)
     (re.compile(r"Traceback \(most recent call last\):.*?(?=\n\n|\Z)", re.DOTALL), "[STACK TRACE REMOVED]\n"),
     # File paths (absolute Unix and Windows)
     (re.compile(r"(?i)(?:/home/|/var/|/tmp/|[A-Z]:\\(?:Users|Program Files|Windows))[\w./\\-]+"), "[PATH]"),
+    # Credentials embedded in URL (user:pass@host)
+    (re.compile(r"(?i)(https?://)[^\s@/]+:[^\s@/]+(?=@)"), r"\1[REDACTED]"),
     # Port numbers attached to hostnames (keep the host)
     (re.compile(r"(?i)(https?://[^\s:]+):\d+(?=/)"), r"\1"),
 ]
@@ -190,6 +193,56 @@ def _sanitize(value: str) -> str:
     for pattern, replacement in SANITIZE_PATTERNS:
         result = pattern.sub(replacement, result)
     return result
+
+
+# ---------------------------------------------------------------------------
+# Field allowlist — defense-in-depth for candidate dictionaries
+# ----------------------------------------------------------------------------
+
+# Canonical public fields that may appear in a recognition candidate.
+# Any field NOT on this list must be dropped (not renamed or left as-is).
+_CANDIDATE_ALLOWLIST: frozenset[str] = frozenset([
+    "id", "engine", "model_id", "page", "text", "error",
+    "path", "characters", "status", "error_path",
+    "run_id", "timing_ms", "retry_count", "attempt",
+    "selected",
+    # Quality scoring fields (populated by _candidates from quality.py data)
+    "confidence", "is_degenerate",
+])
+
+
+def _filter_allowlist_fields(candidate: dict) -> dict:
+    """Drop any field not in the canonical allowlist.
+
+    This is the defense-in-depth gate: unknown fields are discarded rather
+    than passed through or renamed ad hoc. Call this before writing any
+    candidate to a public artifact.
+    """
+    return {k: v for k, v in candidate.items() if k in _CANDIDATE_ALLOWLIST}
+
+
+def _validate_no_forbidden_diagnostics(candidate: dict) -> bool:
+    """Return True if the candidate contains no forbidden diagnostic leakage.
+
+    A candidate is safe to publish if, after normalisation to a public message
+    (same transformation applied before every write), its error field is either
+    absent/empty or a known public message.
+
+    This is a publish-time assertion: it must reflect what actually gets written,
+    so it normalises first then checks the result.
+    """
+    # Check: all keys are in allowlist
+    unknown = set(candidate.keys()) - _CANDIDATE_ALLOWLIST
+    if unknown:
+        return False
+    # Normalise the error field the same way the write paths do
+    error_text = candidate.get("error", "") or ""
+    error_text = public_error_message(error_text)  # normalise first
+    # Error field is safe if absent/empty or a known public message
+    if error_text:
+        if error_text not in PUBLIC_MESSAGES.values():
+            return False
+    return True
 
 
 # ---------------------------------------------------------------------------
