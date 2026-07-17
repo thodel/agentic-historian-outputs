@@ -58,8 +58,29 @@ def _recognition_candidate_html(rec, doc_id, i=0) -> str:
         text_html = f'<pre class="rec-text">{html.escape(text)}</pre>'
         dl_note = ""
         if has_text:
-            fname = f"recognitions/{engine}-{model_id.replace('/', '-')}.txt"
-            dl_note = f'<a href="{fname}" download class="rec-dl" data-cand="cand-{i}-{engine}-{model_id.replace("/", "-")}">⬇ Text herunterladen</a>'
+            from rec_artifacts import candidate_export_filename, TEXT_MIME, TEI_MIME, MANIFEST_MIME
+            page_meta = rec.get("page")
+            fname_xml  = f"recognitions/{candidate_export_filename(doc_id, engine, model_id, '.xml', page=page_meta)}"
+            fname_json = f"recognitions/{candidate_export_filename(doc_id, engine, model_id, '.json', page=page_meta)}"
+            fname_txt  = f"recognitions/{candidate_export_filename(doc_id, engine, model_id, '.txt', page=page_meta)}"
+            page_label = f", Seite {page_meta}" if page_meta else ""
+            seg = f"cand-{i}-{engine}-{model_id.replace('/', '-')}"
+            dl_note = (
+                f'<span class="exports-list">'
+                f'<a href="{fname_xml}" download data-cand="{seg}" '
+                f'class="dl-link dl-link--xml" type="{TEI_MIME}" '
+                f'aria-label="TEI/XML herunterladen ({engine}{page_label})">'
+                f'<span class="exports-badge exports-badge--xml">TEI</span></a>'
+                f'<a href="{fname_json}" download data-cand="{seg}" '
+                f'class="dl-link dl-link--json" type="{MANIFEST_MIME}" '
+                f'aria-label="JSON herunterladen ({engine}{page_label})">'
+                f'<span class="exports-badge exports-badge--json">JSON</span></a>'
+                f'<a href="{fname_txt}" download data-cand="{seg}" '
+                f'class="dl-link dl-link--txt" type="{TEXT_MIME}" '
+                f'aria-label="Text herunterladen ({engine}{page_label})">'
+                f'<span class="exports-badge">TXT</span></a>'
+                f'</span>'
+            )
 
     status = (
         f"{icon} <strong>{label}</strong> {badge} "
@@ -67,13 +88,12 @@ def _recognition_candidate_html(rec, doc_id, i=0) -> str:
         f"· {char_count:,} Zeichen"
     )
     if dl_note and not error:
-        status += f" · {dl_note}"
+        status += f" {dl_note}"
 
     return (
         f'<div class="{cls}" id="{cand_id}">'
         f'<div class="{summary_cls}">{status}</div>'
         f"{text_html}"
-        + dl_note +
         "</div>"
     )
 
@@ -272,6 +292,9 @@ def build_recognition_section(recognitions, doc_id, transcript) -> str:
         )
         panels.append(_recognition_candidate_html(rec, doc_id, i))
 
+    # Structured exports section (issue #38)
+    exports_html = render_candidate_exports_section(recognitions, doc_id)
+
     return (
         "<section id=\"recognitions\" aria-labelledby=\"rec-heading\">"
         "<h2 id=\"rec-heading\">Erkennungsversionen</h2>"
@@ -284,7 +307,9 @@ def build_recognition_section(recognitions, doc_id, transcript) -> str:
         "</div>"
         "<div class=\"rec-panels\">"
         + "\n".join(panels) +
-        "</div></div></section>"
+        "</div></div>"
+        + exports_html +
+        "</section>"
     )
 
 
@@ -416,4 +441,135 @@ def _complete_package_section(doc_id, num_candidates, num_error, num_success):
         f'aria-label="Vollst\u00e4ndiges Erkennungspaket herunterladen">'
         f'21a7 Vollst\u00e4ndiges Paket herunterladen (.zip)</a>'
         f'</div></section>'
+    )
+
+
+# ── Candidate structured exports (issue #38) ─────────────────────────────────
+
+def _candidate_export_links_html(rec, cand_index, doc_id):
+    """Return a <ul> of TEI/XML, JSON, and TXT export links for one candidate.
+
+    Each link has proper type=, download=, aria-label, and a span badge.
+    Returns empty string if candidate has no text or is an error record.
+    """
+    error = rec.get("error", "")
+    text = rec.get("text", "") or ""
+    if error or not text.strip():
+        return ""
+
+    engine = rec.get("engine", "unknown")
+    model_id = rec.get("model_id", "unknown")
+    page_meta = rec.get("page")
+    page_label = f", Seite {page_meta}" if page_meta else ""
+
+    # Build per-format path using candidate_export_filename from rec_artifacts
+    from rec_artifacts import candidate_export_filename, TEXT_MIME, TEI_MIME, MANIFEST_MIME
+
+    fname_xml  = candidate_export_filename(doc_id, engine, model_id, ".xml", page=page_meta)
+    fname_json = candidate_export_filename(doc_id, engine, model_id, ".json", page=page_meta)
+    fname_txt  = candidate_export_filename(doc_id, engine, model_id, ".txt", page=page_meta)
+    fname_xml  = f"recognitions/{fname_xml}"
+    fname_json = f"recognitions/{fname_json}"
+    fname_txt  = f"recognitions/{fname_txt}"
+
+    seg = f"cand-{cand_index}-{engine}-{model_id.replace('/', '-')}"
+
+    badge_xml  = '<span class="exports-badge exports-badge--xml">TEI/XML</span>'
+    badge_json = '<span class="exports-badge exports-badge--json">JSON</span>'
+    badge_txt  = '<span class="exports-badge">TXT</span>'
+
+    aria_xml  = f"TEI/XML-Export herunterladen ({engine}{page_label})"
+    aria_json = f"JSON-Export herunterladen ({engine}{page_label})"
+    aria_txt  = f"Text-Export herunterladen ({engine}{page_label})"
+
+    items = [
+        f'<li>'
+        f'<a href="{fname_xml}" download data-cand="{seg}" '
+        f'class="dl-link dl-link--xml" type="{TEI_MIME}" aria-label="{aria_xml}">{badge_xml}</a>'
+        f'</li>',
+        f'<li>'
+        f'<a href="{fname_json}" download data-cand="{seg}" '
+        f'class="dl-link dl-link--json" type="{MANIFEST_MIME}" aria-label="{aria_json}">{badge_json}</a>'
+        f'</li>',
+        f'<li>'
+        f'<a href="{fname_txt}" download data-cand="{seg}" '
+        f'class="dl-link dl-link--txt" type="{TEXT_MIME}" aria-label="{aria_txt}">{badge_txt}</a>'
+        f'</li>',
+    ]
+
+    return (
+        f'<ul class="exports-list">'
+        + "".join(items)
+        + '</ul>'
+    )
+
+
+def render_candidate_exports_section(recognitions, doc_id):
+    """Render a structured-exports section listing all formats for every candidate.
+
+    Produces a grid of candidate headings each followed by their available
+    export links (TEI/XML, JSON, TXT). Error and empty candidates are skipped.
+
+    Returns an HTML string ready to drop into a page, or "" if there are no
+    downloadable candidates.
+    """
+    if not recognitions:
+        return ""
+
+    # Collect candidates that have downloadable content
+    candidates = []
+    for i, rec in enumerate(recognitions):
+        error = rec.get("error", "")
+        text = rec.get("text", "") or ""
+        if error or not text.strip():
+            continue
+        engine = rec.get("engine", "unk")
+        model_id = rec.get("model_id", "")
+        cand_id = f"cand-{i}-{engine}-{model_id.replace('/', '-')}"
+        icon = _engine_icon(engine)
+        label = _engine_label(engine)
+        page_meta = rec.get("page")
+        if page_meta is not None:
+            label += f", Seite {page_meta}"
+        confidence = rec.get("confidence")
+        if confidence is not None:
+            label += f" · {confidence:.0%} Konfidenz"
+        candidates.append({
+            "index": i,
+            "cand_id": cand_id,
+            "label": label,
+            "icon": icon,
+            "engine": engine,
+            "model_id": model_id,
+            "rec": rec,
+        })
+
+    if not candidates:
+        return ""
+
+    rows = []
+    for c in candidates:
+        links = _candidate_export_links_html(c["rec"], c["index"], doc_id)
+        if not links:
+            continue
+        rows.append(
+            f'<div class="exports-cand-block">'
+            f'<span class="exports-cand-heading">'
+            f'{c["icon"]} {html.escape(c["label"])}'
+            f'</span>'
+            f'{links}'
+            f'</div>'
+        )
+
+    if not rows:
+        return ""
+
+    return (
+        f'<section class="exports-section" aria-labelledby="exports-heading">'
+        f'<h3 id="exports-heading">Strukturierte Exporte</h3>'
+        f'<p>TEI/XML für wissenschaftlichen Austausch; JSON für Nachnutzung und Integration.</p>'
+        f'<div class="exports-grid">'
+        + "".join(rows)
+        + '</div>'
+        f'</section>'
     )

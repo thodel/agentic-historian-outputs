@@ -134,13 +134,17 @@ class TestRecognitionCandidateHtml:
     def test_download_link(self):
         rec = make_rec("kraken", "kraken-catmus", confidence=0.82, text="Hello")
         html = _recognition_candidate_html(rec, "bat")
-        assert 'href="recognitions/kraken-kraken-catmus.txt"' in html
-        assert "rec-dl" in html
+        # Multi-format export links (issue #38): TEI/XML, JSON, TXT
+        assert 'href="recognitions/' in html and '.txt"' in html
+        assert "dl-link dl-link--txt" in html
+        assert "dl-link dl-link--xml" in html
+        assert "dl-link dl-link--json" in html
 
     def test_no_download_on_error(self):
         rec = make_rec("trocr", error="timeout", text="")
         html = _recognition_candidate_html(rec, "bat")
-        assert "rec-dl" not in html
+        # No export links for error records
+        assert "dl-link" not in html
 
     def test_character_count(self):
         rec = make_rec("vlm", text="Hello")
