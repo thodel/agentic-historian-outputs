@@ -23,6 +23,8 @@
 .catalogue-active-filters { margin: 1rem 0 .25rem; color: var(--catalogue-muted); font-size: .9rem; }
 .catalogue-tools input:focus, .catalogue-tools select:focus, .catalogue-card a:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
 .catalogue-status { margin: 1rem 0; color: var(--catalogue-muted); font-size: .9rem; }
+.catalogue-empty { margin: 1rem 0; padding: 1rem; border: 2px dashed var(--catalogue-border); border-radius: .6rem; color: var(--catalogue-muted); background: #f7f9fa; }
+.catalogue-empty[hidden] { display: none; }
 .catalogue-list { display: grid; gap: 1rem; }
 .catalogue-card { padding: 1.2rem 1.25rem; border: 1px solid var(--catalogue-border); border-radius: .8rem; background: var(--catalogue-surface); box-shadow: 0 1px 2px rgb(24 33 43 / 5%); }
 .catalogue-card:hover { border-color: #a8b7c2; box-shadow: 0 5px 18px rgb(24 33 43 / 8%); }
