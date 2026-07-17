@@ -298,6 +298,9 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
 
         links.append(
             f'<li><a href="#recognition-{cid}" data-recognition-select="{cid}" '
+            f'data-page="{html.escape(candidate["page"], quote=True)}" '
+            f'data-engine="{html.escape(candidate["engine"], quote=True)}" '
+            f'data-model="{html.escape(candidate["model_id"], quote=True)}" '
             f'aria-controls="recognition-{cid}">{html.escape(label)}</a> '
             f'<span class="rec-status rec-status--{status_class}">{status}</span></li>'
         )
@@ -328,7 +331,7 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
         # Issue #31: add reference evaluation provenance if available
         ref_eval_html = _build_ref_eval_html(candidate) if candidate.get("reference_eval") else ""
 
-        panels.append(f'''<details class="rec-panel" id="recognition-{cid}" data-recognition-panel="{cid}" data-page="{html.escape(candidate["page"], quote=True)}"{' open' if candidate["selected"] else ''}>
+        panels.append(f'''<details class="rec-panel" id="recognition-{cid}" data-recognition-panel="{cid}" data-page="{html.escape(candidate["page"], quote=True)}" data-engine="{html.escape(candidate["engine"], quote=True)}" data-model="{html.escape(candidate["model_id"], quote=True)}"{' open' if candidate["selected"] else ''}>
 <summary>{html.escape(label)}{' — ausgewählt' if candidate["selected"] else ''}</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>{html.escape(candidate["engine"])}</dd></div>

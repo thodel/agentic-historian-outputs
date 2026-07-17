@@ -14,7 +14,7 @@ title: "saa-0005-test"
 
 <section id="source" class="page-section page-section--evidence" data-page-section="source" aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
 <p><a href="https://my.override.com/page/42">Veröffentlichte Quelle öffnen</a></p>
-<script type="application/json" data-source-reference>{&quot;type&quot;:&quot;landing_page&quot;,&quot;label&quot;:&quot;&quot;,&quot;attribution&quot;:&quot;&quot;,&quot;rights&quot;:&quot;&quot;,&quot;url&quot;:&quot;https://my.override.com/page/42&quot;,&quot;manifest_url&quot;:&quot;&quot;,&quot;image_url&quot;:&quot;&quot;,&quot;pages&quot;:[]}</script></section>
+<script type="application/json" data-source-reference>{"type":"landing_page","label":"","attribution":"","rights":"","url":"https://my.override.com/page/42","manifest_url":"","image_url":"","pages":[]}</script></section>
 
 <section id="transcription" class="page-section page-section--evidence" data-page-section="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
 <pre class="transcription" tabindex="0"><code>Hans von Bern tuend kund…</code></pre></section>
@@ -43,3 +43,4 @@ title: "saa-0005-test"
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/page-sync.js' | relative_url }}" defer></script>

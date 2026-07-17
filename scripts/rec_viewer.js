@@ -32,6 +32,12 @@
       history.pushState({ rec: target.dataset.recognitionPanel }, "", url);
     }
     if (focus) target.querySelector("summary")?.focus();
+    viewer.dispatchEvent(new CustomEvent("recognitionchange", { bubbles: true, detail: {
+      id: target.dataset.recognitionPanel,
+      page: target.dataset.page || "",
+      engine: target.dataset.engine || "",
+      model: target.dataset.model || "",
+    }}));
   }
 
   for (const viewer of viewers) {

@@ -36,8 +36,8 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 </p>
 <div class="quality-explanation" id="quality-explanation-engine_confidence-25" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><div class="quality-explanation" id="quality-explanation-agreement-26" role="region" aria-label="Engine-Übereinstimmung" hidden><p><strong>Engine-Übereinstimmung:</strong> Die Übereinstimmung zeigt, wie viele Engines dieselbe Lesart erzeugt haben.  Übereinstimmung bedeutet nicht, dass die Lesart korrekt ist — alle Engines können gemeinsam fehlgehen.  Übereinstimmungswerte sind nicht dasselbe wie Genauigkeitswerte.</p></div><div class="quality-explanation" id="quality-explanation-degenerate-27" role="region" aria-label="Degenerierte Ausgabe" hidden><p><strong>Degenerierte Ausgabe:</strong> Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.</p></div><div class="quality-explanation" id="quality-explanation-failed-28" role="region" aria-label="Fehlgeschlagene Erkennung" hidden><p><strong>Fehlgeschlagene Erkennung:</strong> Die Erkennung ist fehlgeschlagen (Timeout, Dienst nicht erreichbar oder anderer Fehler).  Es liegt keine verwertbare Transkription vor.</p></div><div class="quality-explanation" id="quality-explanation-reference_evaluation-29" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen.</p></div><div class="quality-explanation" id="quality-explanation-incomparable_confidence-30" role="region" aria-label="Nicht vergleichbare Konfidenzwerte" hidden><p><strong>Nicht vergleichbare Konfidenzwerte:</strong> Konfidenzwerte verschiedener Engines stammen aus unterschiedlichen Modellen mit unterschiedlichen Skalen und Bedeutungen.  Ein höherer Wert einer Engine bedeutet nicht, dass deren Transkription genauer ist als die einer anderen Engine.</p></div>
 <div class="rec-viewer" data-recognition-viewer data-doc-id="u-17__">
-<nav class="rec-selector" aria-label="Erkennungsversionen"><ul><li><a href="#recognition-selected" data-recognition-select="selected" aria-controls="recognition-selected">Ausgewählt / Fusion</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct" data-recognition-select="vlm-internvl3-8b-instruct" aria-controls="recognition-vlm-internvl3-8b-instruct">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval" data-recognition-select="kraken-kraken-catmus-medieval" aria-controls="recognition-kraken-kraken-catmus-medieval">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-trocr-trocr-medieval-escriptmask" data-recognition-select="trocr-trocr-medieval-escriptmask" aria-controls="recognition-trocr-trocr-medieval-escriptmask">TrOCR · trocr-medieval-escriptmask</a> <span class="rec-status rec-status--degenerate">Degeneriert</span></li><li><a href="#recognition-kraken-kraken-mccatmus" data-recognition-select="kraken-kraken-mccatmus" aria-controls="recognition-kraken-kraken-mccatmus">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-trocr-trocr-kurrent-xvi-xvii" data-recognition-select="trocr-trocr-kurrent-xvi-xvii" aria-controls="recognition-trocr-trocr-kurrent-xvi-xvii">TrOCR · trocr-kurrent-xvi-xvii</a> <span class="rec-status rec-status--degenerate">Degeneriert</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct-2" data-recognition-select="vlm-internvl3-8b-instruct-2" aria-controls="recognition-vlm-internvl3-8b-instruct-2">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval-2" data-recognition-select="kraken-kraken-catmus-medieval-2" aria-controls="recognition-kraken-kraken-catmus-medieval-2">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-mccatmus-2" data-recognition-select="kraken-kraken-mccatmus-2" aria-controls="recognition-kraken-kraken-mccatmus-2">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct-3" data-recognition-select="vlm-internvl3-8b-instruct-3" aria-controls="recognition-vlm-internvl3-8b-instruct-3">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval-3" data-recognition-select="kraken-kraken-catmus-medieval-3" aria-controls="recognition-kraken-kraken-catmus-medieval-3">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-mccatmus-3" data-recognition-select="kraken-kraken-mccatmus-3" aria-controls="recognition-kraken-kraken-mccatmus-3">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct-4" data-recognition-select="vlm-internvl3-8b-instruct-4" aria-controls="recognition-vlm-internvl3-8b-instruct-4">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval-4" data-recognition-select="kraken-kraken-catmus-medieval-4" aria-controls="recognition-kraken-kraken-catmus-medieval-4">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li></ul></nav>
-<div class="rec-panels"><details class="rec-panel" id="recognition-selected" data-recognition-panel="selected" data-page="" open>
+<nav class="rec-selector" aria-label="Erkennungsversionen"><ul><li><a href="#recognition-selected" data-recognition-select="selected" data-page="" data-engine="fusion" data-model="" aria-controls="recognition-selected">Ausgewählt / Fusion</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct" data-recognition-select="vlm-internvl3-8b-instruct" data-page="" data-engine="vlm" data-model="internvl3-8b-instruct" aria-controls="recognition-vlm-internvl3-8b-instruct">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval" data-recognition-select="kraken-kraken-catmus-medieval" data-page="" data-engine="kraken" data-model="kraken-catmus_medieval" aria-controls="recognition-kraken-kraken-catmus-medieval">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-trocr-trocr-medieval-escriptmask" data-recognition-select="trocr-trocr-medieval-escriptmask" data-page="" data-engine="trocr" data-model="trocr-medieval-escriptmask" aria-controls="recognition-trocr-trocr-medieval-escriptmask">TrOCR · trocr-medieval-escriptmask</a> <span class="rec-status rec-status--degenerate">Degeneriert</span></li><li><a href="#recognition-kraken-kraken-mccatmus" data-recognition-select="kraken-kraken-mccatmus" data-page="" data-engine="kraken" data-model="kraken-mccatmus" aria-controls="recognition-kraken-kraken-mccatmus">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-trocr-trocr-kurrent-xvi-xvii" data-recognition-select="trocr-trocr-kurrent-xvi-xvii" data-page="" data-engine="trocr" data-model="trocr-kurrent-xvi-xvii" aria-controls="recognition-trocr-trocr-kurrent-xvi-xvii">TrOCR · trocr-kurrent-xvi-xvii</a> <span class="rec-status rec-status--degenerate">Degeneriert</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct-2" data-recognition-select="vlm-internvl3-8b-instruct-2" data-page="" data-engine="vlm" data-model="internvl3-8b-instruct" aria-controls="recognition-vlm-internvl3-8b-instruct-2">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval-2" data-recognition-select="kraken-kraken-catmus-medieval-2" data-page="" data-engine="kraken" data-model="kraken-catmus_medieval" aria-controls="recognition-kraken-kraken-catmus-medieval-2">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-mccatmus-2" data-recognition-select="kraken-kraken-mccatmus-2" data-page="" data-engine="kraken" data-model="kraken-mccatmus" aria-controls="recognition-kraken-kraken-mccatmus-2">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct-3" data-recognition-select="vlm-internvl3-8b-instruct-3" data-page="" data-engine="vlm" data-model="internvl3-8b-instruct" aria-controls="recognition-vlm-internvl3-8b-instruct-3">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval-3" data-recognition-select="kraken-kraken-catmus-medieval-3" data-page="" data-engine="kraken" data-model="kraken-catmus_medieval" aria-controls="recognition-kraken-kraken-catmus-medieval-3">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-mccatmus-3" data-recognition-select="kraken-kraken-mccatmus-3" data-page="" data-engine="kraken" data-model="kraken-mccatmus" aria-controls="recognition-kraken-kraken-mccatmus-3">Kraken OCR · kraken-mccatmus</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-vlm-internvl3-8b-instruct-4" data-recognition-select="vlm-internvl3-8b-instruct-4" data-page="" data-engine="vlm" data-model="internvl3-8b-instruct" aria-controls="recognition-vlm-internvl3-8b-instruct-4">VLM · internvl3-8b-instruct</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-kraken-kraken-catmus-medieval-4" data-recognition-select="kraken-kraken-catmus-medieval-4" data-page="" data-engine="kraken" data-model="kraken-catmus_medieval" aria-controls="recognition-kraken-kraken-catmus-medieval-4">Kraken OCR · kraken-catmus_medieval</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li></ul></nav>
+<div class="rec-panels"><details class="rec-panel" id="recognition-selected" data-recognition-panel="selected" data-page="" data-engine="fusion" data-model="" open>
 <summary>Ausgewählt / Fusion — ausgewählt</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>fusion</dd></div>
@@ -60,7 +60,7 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 --- SEITE 6 --- tag oder dar nach Annum vierzehen tagen / vion Gerdrit von Leisertil Tinwrowen vnserz Gotzhuf vn Allen w nachomen dez Voigennanten Gotz hüs Tinwrowen dien der vorgenan te zin6 gemakor wirt Ez si Ebrischin oder Tinwrowe /nder voigenanter Antwurten zullen / an Allen w schaden / vn we das / das der vorgenan te zins ze dem voigenanten tage nicht bericht wrde / swaß schaden deme dů voigunnte vriowe oder w nachomen Empfingge nach dem zin6 ze sendenne / oder In ze gewinnene den sol dů voigenante. Ebrischin / vn der Convent von Kūngsveld genzlich ab legen / vn dar umbc wan si den zinc von dielen zite immer mer Ant- werten sun / In unser Stnt / an Allen schaden / dez si lieb gebunden hant go so haben men / die Gnade gemm vn v lühcn / das weder si noch en kein w nachkome / die voigennanten zehende mēmer mer enphahlen sun / noch ver- Erschärzen / vn ze einem offenen wz-künde / vn beletvunge / der vor genannten oidenunge. Sogeben wir den voigenanten vriowen von Kūn gesielt dien bues befigelt / mir unser Capitels Inigel. Dvire buesf wart geben / ze schklingen / do man zalte von gottes geburt druzchen hundert jar vū zweinzig jar. Dar nach, in dem ersten jare / monen des nach, lant agten tnge. Des trutmanz brief über den zehenden- Hllen die dien buesf fehent oder hözent lefen / künde ich Aarckwart Trutman Burger ze Lucreten / und verihe/ das ich einen zehenden gelegen ze hentschinkon/ ze Tornkon/ vn ze orwif- zingen/ der min rech-erbe war von dem Gotzhufe ze gekklingen/ han verköfer- vn zekofenne gegeben dien Etwiedigen frowen der .. Abbrischin und dem Con- uent ze Kūngsvelden. Omb achzig march gines gillers/ der ich von in vollecklich gewert bin. Und ich in minen notz en phangen han. Und han den selben zehen den uf gegeben mit allen minen kinde- an des erbern mannes hant Meriches von Lenzburg/ der vollen gewalt hatte von dem selben Gotzhufe von gekklingen/ den selben zehenden von mir uf ze ne- menne/ ze des voz gestribenen Gotzhufes handen ze kūngsvelden. Diz belchach da ze gegen waren - heinrich der Stammer. Buchhart von Gartcn. Johans von sem- pach heinrich von Sewelsberg. Rudolf von aa. Ulrich von Eych. Vernher von Grepcon. Und ander erber lüre gnüge. und har über ze einen vulkünde han ich min Angesigel an disen offenen briefe. Der gegeben warrt ze Lucreten. an dem nechten zwitage nach samt Agn. then tnge. Do man zalte von Gotres ge- bürte druzchenhundert jar. Dar nach, in dem ein und zwenzigolten jare: Der. brief den trutman hat von dem. Gotzhufe ze gekklingen: : W nulhis preßensii insped Adelhei. die de berichtil cmodia Eccle se. Davio zercomien Conformt dyot aKedni. caritans cum nonna subceptow Joimr. quos nostle fuir opozumii qv ai Arnoldus. dais Trutman de Berona Decmas vidz. in orwellingen in henonchon A t Törichon, quas andone seu mün Ercha vidz zercomerj</code></pre>
 
 <p><a class="rec-download" href="recognitions/fused.txt" download>Diese Transkription herunterladen</a></p>
-</details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct" data-recognition-panel="vlm-internvl3-8b-instruct" data-page="">
+</details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct" data-recognition-panel="vlm-internvl3-8b-instruct" data-page="" data-engine="vlm" data-model="internvl3-8b-instruct">
 <summary>VLM · internvl3-8b-instruct</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>vlm</dd></div>
@@ -152,7 +152,7 @@ pnos albatem cr conuenci sen maiorem.
 prem conuencius ul mfurim y qincup</code></pre>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
-</details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval" data-recognition-panel="kraken-kraken-catmus-medieval" data-page="">
+</details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval" data-recognition-panel="kraken-kraken-catmus-medieval" data-page="" data-engine="kraken" data-model="kraken-catmus_medieval">
 <summary>Kraken OCR · kraken-catmus_medieval</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>kraken</dd></div>
@@ -244,7 +244,7 @@ parnos abbatem et sonventn se maiorem
 partem coruentnsul nfutram par qencug</code></pre>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
-</details><details class="rec-panel" id="recognition-trocr-trocr-medieval-escriptmask" data-recognition-panel="trocr-trocr-medieval-escriptmask" data-page="">
+</details><details class="rec-panel" id="recognition-trocr-trocr-medieval-escriptmask" data-recognition-panel="trocr-trocr-medieval-escriptmask" data-page="" data-engine="trocr" data-model="trocr-medieval-escriptmask">
 <summary>TrOCR · trocr-medieval-escriptmask</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>trocr</dd></div>
@@ -257,7 +257,7 @@ partem coruentnsul nfutram par qencug</code></pre>
 <div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Der Erkennungsdienst hat das Zeitlimit überschritten.</div>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
-</details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus" data-recognition-panel="kraken-kraken-mccatmus" data-page="">
+</details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus" data-recognition-panel="kraken-kraken-mccatmus" data-page="" data-engine="kraken" data-model="kraken-mccatmus">
 <summary>Kraken OCR · kraken-mccatmus</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>kraken</dd></div>
@@ -349,7 +349,7 @@ lnOS AIrcn et Comenit len monoient
 Jrem ComuenauE l suCucin p gínci9.</code></pre>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
-</details><details class="rec-panel" id="recognition-trocr-trocr-kurrent-xvi-xvii" data-recognition-panel="trocr-trocr-kurrent-xvi-xvii" data-page="">
+</details><details class="rec-panel" id="recognition-trocr-trocr-kurrent-xvi-xvii" data-recognition-panel="trocr-trocr-kurrent-xvi-xvii" data-page="" data-engine="trocr" data-model="trocr-kurrent-xvi-xvii">
 <summary>TrOCR · trocr-kurrent-xvi-xvii</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>trocr</dd></div>
@@ -362,7 +362,7 @@ Jrem ComuenauE l suCucin p gínci9.</code></pre>
 <div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Der Erkennungsdienst hat das Zeitlimit überschritten.</div>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
-</details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-2" data-recognition-panel="vlm-internvl3-8b-instruct-2" data-page="">
+</details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-2" data-recognition-panel="vlm-internvl3-8b-instruct-2" data-page="" data-engine="vlm" data-model="internvl3-8b-instruct">
 <summary>VLM · internvl3-8b-instruct</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>vlm</dd></div>
@@ -455,7 +455,7 @@ fetos onb m mia conlunur prefena de-
 cmam Laycalcm fitam infa Territorum</code></pre>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
-</details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-2" data-recognition-panel="kraken-kraken-catmus-medieval-2" data-page="">
+</details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-2" data-recognition-panel="kraken-kraken-catmus-medieval-2" data-page="" data-engine="kraken" data-model="kraken-catmus_medieval">
 <summary>Kraken OCR · kraken-catmus_medieval</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>kraken</dd></div>
@@ -546,7 +546,7 @@ comam laycalem sitam infea derrvorsn
 eni</code></pre>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
-</details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus-2" data-recognition-panel="kraken-kraken-mccatmus-2" data-page="">
+</details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus-2" data-recognition-panel="kraken-kraken-mccatmus-2" data-page="" data-engine="kraken" data-model="kraken-mccatmus">
 <summary>Kraken OCR · kraken-mccatmus</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>kraken</dd></div>
@@ -637,7 +637,7 @@ Cn Ajestem Gramn inles lecrirontmn
 1</code></pre>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
-</details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-3" data-recognition-panel="vlm-internvl3-8b-instruct-3" data-page="">
+</details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-3" data-recognition-panel="vlm-internvl3-8b-instruct-3" data-page="" data-engine="vlm" data-model="internvl3-8b-instruct">
 <summary>VLM · internvl3-8b-instruct</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>vlm</dd></div>
@@ -715,7 +715,7 @@ Gottes gnaden .. Ebschim ze Sekingen vn das Capitel gememlich.
 Vn kwr. allen den die disen buef zehent oder hozent lesen.Daz wir verluhen haben dien Erwürdigen vrowen.. Der.. Ebschim vn dem Conuent von Kungsvelt den zehen den ze Orwillingen ze henschin kon vn ze Tornichon Den Aarchwatt Trurman burger ze Lutzeeren von uns ze erbe hatte.den li von im geköfer hanr ze rechten erbe der voegenanten .. Ebschim vn dem Conuent Ar dien sedingen das si leelich zehen mvv roggen die von dem voegenanten zehenden ze zmfe gamt sullen antwurten ze Sek-ingen In die stat ze Sant Areff</code></pre>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
-</details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-3" data-recognition-panel="kraken-kraken-catmus-medieval-3" data-page="">
+</details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-3" data-recognition-panel="kraken-kraken-catmus-medieval-3" data-page="" data-engine="kraken" data-model="kraken-catmus_medieval">
 <summary>Kraken OCR · kraken-catmus_medieval</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>kraken</dd></div>
@@ -805,7 +805,7 @@ ze znse gant sullen antrourten je
 sel ingen in die stat ze sant esartis</code></pre>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
-</details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus-3" data-recognition-panel="kraken-kraken-mccatmus-3" data-page="">
+</details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus-3" data-recognition-panel="kraken-kraken-mccatmus-3" data-page="" data-engine="kraken" data-model="kraken-mccatmus">
 <summary>Kraken OCR · kraken-mccatmus</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>kraken</dd></div>
@@ -895,7 +895,7 @@ Le Jile snnt Gritlen amemutcen 35
 Selmden p die Rnt Ze Eam Ang.</code></pre>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
-</details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-4" data-recognition-panel="vlm-internvl3-8b-instruct-4" data-page="">
+</details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct-4" data-recognition-panel="vlm-internvl3-8b-instruct-4" data-page="" data-engine="vlm" data-model="internvl3-8b-instruct">
 <summary>VLM · internvl3-8b-instruct</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>vlm</dd></div>
@@ -987,7 +987,7 @@ in orwellingen in henonchon A t Törichon,
 quas andone seu mün Ercha vidz zercomerj</code></pre>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
-</details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-4" data-recognition-panel="kraken-kraken-catmus-medieval-4" data-page="">
+</details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-4" data-recognition-panel="kraken-kraken-catmus-medieval-4" data-page="" data-engine="kraken" data-model="kraken-catmus_medieval">
 <summary>Kraken OCR · kraken-catmus_medieval</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>kraken</dd></div>
@@ -1108,3 +1108,4 @@ xus</code></pre>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/page-sync.js' | relative_url }}" defer></script>

@@ -4,8 +4,9 @@
     return value && (value.id || value["@id"] || "");
   }
 
-  function iiifImageUrl(manifest) {
-    const canvas = manifest?.items?.[0] || manifest?.sequences?.[0]?.canvases?.[0];
+  function iiifImageUrl(manifest, canvasId = "") {
+    const canvases = manifest?.items || manifest?.sequences?.[0]?.canvases || [];
+    const canvas = canvases.find(item => identifier(item) === canvasId) || canvases[0];
     const body = canvas?.items?.[0]?.items?.[0]?.body || canvas?.images?.[0]?.resource;
     if (!body) return "";
     const direct = identifier(body);
@@ -24,6 +25,7 @@
     const status = viewer.querySelector("[data-evidence-status]");
     const sourceUrl = viewer.dataset.sourceUrl;
     let zoom = 1;
+    let manifestPromise;
 
     const announce = message => { status.textContent = message; };
     const applyZoom = value => {
@@ -53,19 +55,25 @@
     });
 
     applyZoom(1);
-    if (viewer.dataset.sourceType === "image") {
-      show(sourceUrl);
-    } else {
+    function load(detail = {}) {
+      announce("Digitalisat wird geladen …");
+      if (detail.imageUrl) { show(detail.imageUrl); return; }
+      if (viewer.dataset.sourceType === "image") { show(sourceUrl); return; }
+      if (!manifestPromise) {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 12000);
-      fetch(sourceUrl, { signal: controller.signal, credentials: "omit" })
+      manifestPromise = fetch(sourceUrl, { signal: controller.signal, credentials: "omit" })
         .then(response => {
           if (!response.ok) throw new Error(`HTTP ${response.status}`);
           return response.json();
         })
-        .then(manifest => show(iiifImageUrl(manifest)))
-        .catch(() => announce("Das IIIF-Manifest konnte nicht geladen werden. Öffnen Sie die Originalquelle."))
         .finally(() => clearTimeout(timeout));
+      }
+      manifestPromise
+        .then(manifest => show(iiifImageUrl(manifest, detail.canvasUrl || "")))
+        .catch(() => announce("Das IIIF-Manifest konnte nicht geladen werden. Öffnen Sie die Originalquelle."));
     }
+    viewer.addEventListener("evidencepagechange", event => load(event.detail));
+    load();
   }
 })();

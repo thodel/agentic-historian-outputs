@@ -22,6 +22,10 @@
 .evidence-stage img { display: block; max-width: none; height: auto; margin: 0 auto; }
 .evidence-stage img[hidden] { display: none; }
 .evidence-status { margin: 0; padding: .55rem .75rem; color: #4f5d67; background: white; }
+.source-page-nav { display: flex; flex-wrap: wrap; gap: .4rem; padding: .55rem; background: white; }
+.source-page-nav button { min-height: 2.5rem; border: 1px solid #8aa5b4; border-radius: .35rem; background: white; font: inherit; }
+.source-page-nav button[aria-current="page"] { color: white; background: #245b78; }
+.page-sync-warning { grid-column: 1 / -1; margin: 0; }
 section { scroll-margin-top: 1rem; }
 .page-section { padding-block: .35rem; }
 .page-section--evidence { border-inline-start: .25rem solid #245b78; padding-inline-start: 1rem; }
@@ -54,7 +58,7 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 .rec-error { margin-top: 1rem; }
 .rec-viewer--enhanced .rec-panel[hidden] { display: none; }
 
-@media (prefers-contrast: more) { .notice, .transcription, .rec-text, .rec-panel, .page-section, .evidence-viewer, .evidence-toolbar button { border-width: 2px; } }
+@media (prefers-contrast: more) { .notice, .transcription, .rec-text, .rec-panel, .page-section, .evidence-viewer, .evidence-toolbar button, .source-page-nav button { border-width: 2px; } }
 @media (max-width: 55rem) {
   .evidence-workspace { display: block; }
   .evidence-pane { max-height: none; overflow: visible; }
