@@ -252,10 +252,12 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
 
     # Build explanation blocks for all keys used in this section
     # (ensures they are present in the DOM even if no candidate uses them yet)
-    all_explanation_keys = {
+    # Keep output deterministic: generated pages are committed and CI verifies that
+    # rebuilding them leaves the tree clean.
+    all_explanation_keys = (
         "engine_confidence", "agreement", "degenerate",
         "failed", "reference_evaluation", "incomparable_confidence",
-    }
+    )
     explanation_blocks = "".join(
         explanation_block(k) for k in all_explanation_keys if k in EXPLANATIONS
     )

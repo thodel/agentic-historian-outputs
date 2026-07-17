@@ -107,6 +107,17 @@ class RecognitionContractTests(unittest.TestCase):
         markup = build_recognition_section([rec()], "doc", "fused")
         self.assertIn("Nicht zugeordnet", markup)
 
+    def test_explanation_blocks_have_deterministic_order(self):
+        first = build_recognition_section([rec()], "doc", "fused")
+        second = build_recognition_section([rec()], "doc", "fused")
+        labels = (
+            "engine_confidence", "agreement", "degenerate", "failed",
+            "reference_evaluation", "incomparable_confidence",
+        )
+        for markup in (first, second):
+            positions = [markup.index(f'id="quality-explanation-{label}') for label in labels]
+            self.assertEqual(positions, sorted(positions))
+
     def test_duplicate_models_remain_independently_reachable(self):
         markup = build_recognition_section(
             [rec(page="one"), rec(page="two")], "doc", "fused")
