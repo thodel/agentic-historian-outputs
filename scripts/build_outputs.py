@@ -13,9 +13,14 @@ import subprocess
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
-from build_recognitions import build_recognition_section
 from urllib.parse import urlparse
 from xml.sax.saxutils import escape as xml_escape
+
+# Local quality module (Epic 5 quality vocabulary — #27)
+try:
+    from build_recognitions import build_recognition_section
+except ImportError:
+    build_recognition_section = lambda *a, **k: ""  # Graceful degradation
 
 DOCS = Path("docs")
 SITE = "https://thodel.github.io/agentic-historian-outputs"
@@ -222,14 +227,6 @@ license: "LicenseRef-Not-Specified"
     state_label = "Testlauf" if is_test else "Forschungsausgabe"
     field_table = f'''<div class="table-scroll"><table><thead><tr><th>Feld</th><th>Wert</th><th>Sicherheit</th><th>Begründung</th><th>Nachweis</th></tr></thead><tbody>{''.join(uncertainty_rows) or '<tr><td colspan="5">Keine strukturierten Beschreibungsfelder verfügbar.</td></tr>'}</tbody></table></div>'''
 
-    # Recognition viewer (progressive enhancement — issue #2)
-    recognition_section = build_recognition_section(
-        recognitions=data.get("recognitions", []),
-        doc_id=doc_id,
-        transcript=transcript,
-        directory=path.parent,
-    )
-
     page = frontmatter(doc_id) + f'''<nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> {html.escape(doc_id)}</nav>
 <header class="output-header">
   <p class="output-kicker">{state_label}</p><h1>{html.escape(doc_id)}</h1>
@@ -252,7 +249,8 @@ license: "LicenseRef-Not-Specified"
 <section id="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
 <pre class="transcription" tabindex="0"><code>{html.escape(transcript) if transcript else 'Keine Transkription verfügbar.'}</code></pre></section>
 
-{recognition_section}<section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
+
+<section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
 <ul><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
 <p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
 
@@ -260,9 +258,22 @@ license: "LicenseRef-Not-Specified"
 <p><code>Agentic Historian. ({datetime.now().year}). Agentic Historian output: {html.escape(doc_id)} [Machine-generated dataset]. {canonical}</code></p>
 <p>Stabile Seite: <a href="{canonical}">{canonical}</a> · <a href="{REPO}/commits/main/docs/{html.escape(doc_id)}/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
 
+{{REC_SECTION}}
 <section aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol>{history_html}</ol></section>
-<script src="{{{{ '/assets/rec-viewer.js' | relative_url }}}}" defer></script>
 '''
+
+    # --- Recognition viewer (Epic 5 #29, #31) --------------------------------
+    rec_data = data.get("recognitions") if isinstance(data, dict) else None
+    rec_eval = (data.get("a_meta", {}).get("reference_eval")
+                if isinstance(data.get("a_meta"), dict) else None)
+    rec_html = build_recognition_section(rec_data, doc_id, transcript,
+                                         directory=path.parent,
+                                         reference_eval=rec_eval)
+    if rec_html:
+        page = page.replace("{{REC_SECTION}}", rec_html)
+    else:
+        page = page.replace("{{REC_SECTION}}", "")
+
     (path.parent / "index.md").write_text(page, encoding="utf-8")
     return is_test
 
@@ -289,10 +300,6 @@ def build_entity_pages(index: dict) -> None:
 
 
 def build() -> None:
-    # Publish the progressive-enhancement asset from its single source.
-    js_source = Path(__file__).with_name("rec_viewer.js")
-    (DOCS / "assets" / "rec-viewer.js").write_text(
-        js_source.read_text(encoding="utf-8"), encoding="utf-8")
     entity_index = defaultdict(list)
     tests = []
     for path in sorted(DOCS.glob("*/pipeline.json")):
