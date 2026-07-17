@@ -257,5 +257,70 @@
       updatePane(rightPane, allPanels, rightSel);
       openOverlay(wrap);
     });
+    // ── Scroll synchronisation (#10) ────────────────────────────
+    const leftBody  = leftPane .querySelector("[data-rec-compare-body]");
+    const rightBody = rightPane.querySelector("[data-rec-compare-body]");
+    if (leftBody && rightBody) {
+      let syncEnabled = true;
+      let isScrolling = false;  // guard against recursive events
+
+      // Inject the sync toggle button beside the close button
+      const syncToggle = document.createElement("button");
+      syncToggle.setAttribute("class", "btn-rec-compare btn-rec-compare-sync");
+      syncToggle.setAttribute("type", "button");
+      syncToggle.setAttribute("data-rec-compare-sync-toggle", "");
+      syncToggle.setAttribute("aria-pressed", "true");
+      syncToggle.setAttribute("aria-label", "Scroll-Synchronisation deaktivieren");
+      syncToggle.textContent = "\u21c4\uFE0e"; // sync icon with variation selector
+      panesEl.appendChild(syncToggle);
+
+      function applyProportionalScroll(source, target) {
+        if (!syncEnabled) return;
+        const sourceEl  = source;
+        const targetEl  = target;
+        const sourceMax = sourceEl.scrollHeight - sourceEl.clientHeight;
+        const targetMax = targetEl.scrollHeight - targetEl.clientHeight;
+        if (sourceMax <= 0 || targetMax <= 0) return;
+        const ratio  = sourceEl.scrollTop / sourceMax;
+        targetEl.scrollTop = Math.round(ratio * targetMax);
+      }
+
+      leftBody.addEventListener("scroll", () => {
+        if (isScrolling) return;
+        isScrolling = true;
+        requestAnimationFrame(() => {
+          applyProportionalScroll(leftBody, rightBody);
+          isScrolling = false;
+        });
+      });
+
+      rightBody.addEventListener("scroll", () => {
+        if (isScrolling) return;
+        isScrolling = true;
+        requestAnimationFrame(() => {
+          applyProportionalScroll(rightBody, leftBody);
+          isScrolling = false;
+        });
+      });
+
+      syncToggle.addEventListener("click", () => {
+        syncEnabled = !syncEnabled;
+        syncToggle.setAttribute("aria-pressed", String(syncEnabled));
+        syncToggle.setAttribute("aria-label",
+          syncEnabled
+            ? "Scroll-Synchronisation deaktivieren"
+            : "Scroll-Synchronisation aktivieren");
+        syncToggle.style.opacity = syncEnabled ? "1" : "0.45";
+      });
+
+      // Respect prefers-reduced-motion: disable sync by default
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        syncEnabled = false;
+        syncToggle.style.opacity = "0.45";
+        syncToggle.setAttribute("aria-pressed", "false");
+        syncToggle.setAttribute("aria-label", "Scroll-Synchronisation aktivieren");
+      }
+    }
+
   }
 })();

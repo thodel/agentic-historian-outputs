@@ -107,3 +107,22 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 .btn-rec-compare-swap:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
 /* Ensure the panes grid holds the swap button in the center */
 .rec-compare-panes { position: relative; }
+/* #10 scroll synchronization */
+.btn-rec-compare-sync {
+  margin-left: .5rem; opacity: 1; cursor: pointer;
+  transition: opacity .15s;
+}
+.btn-rec-compare-sync:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
+
+/* Stack panes vertically on narrow screens (mobile/tablet) */
+@media (max-width: 640px) {
+  .rec-compare-panes {
+    flex-direction: column !important;
+    gap: .75rem;
+  }
+  .rec-compare-pane { min-width: 0; }
+  .btn-rec-compare-swap {
+    position: static; transform: none;
+    display: block; margin: 0 auto;
+  }
+}
