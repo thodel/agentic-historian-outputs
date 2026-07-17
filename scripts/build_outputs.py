@@ -327,6 +327,9 @@ def build_entity_pages(index: dict) -> None:
 
 
 def build() -> None:
+    # Reset quality explanation counter so IDs are stable across runs.
+    from quality import _expl_counter
+    _expl_counter[0] = 0
     # Publish the progressive-enhancement asset from its single source.
     js_source = Path(__file__).with_name("rec_viewer.js")
     (DOCS / "assets" / "rec-viewer.js").write_text(
@@ -355,3 +358,4 @@ def build() -> None:
 
 if __name__ == "__main__":
     build()
+
