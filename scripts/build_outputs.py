@@ -201,6 +201,50 @@ def evidence_workspace(data: dict, doc_id: str, transcription: str,
 
 
 # ---------------------------------------------------------------------------
+# Issue #22 — accessible in-page navigation for long document pages
+# ---------------------------------------------------------------------------
+
+# Section tuples: (html-id, German display label, always-present?)
+# The «recognitions» section is only emitted when recognition data exist.
+_DOCUMENT_SECTIONS: tuple[tuple[str, str, bool], ...] = (
+    ("source",        "Quelle",              True),
+    ("transcription", "Transkription",        True),
+    ("recognitions",  "Erkennungen",          False),  # conditional
+    ("orientation",   "Orientierung",         True),
+    ("claims",        "Metadaten",            True),
+    ("entities",      "Entit\u00e4ten",       True),
+    ("downloads",     "Downloads",            True),
+    ("citation",      "Zitation",             True),
+    ("history",       "Versionsgeschichte",   True),
+)
+
+
+def build_page_nav(has_recognitions: bool = True) -> str:
+    """Return a compact in-page navigation for long document output pages.
+
+    Issue #22: sticky, keyboard-accessible, screen-reader-friendly, no-JS-complete.
+    Generate links only for sections that are actually present on the page.
+    """
+    sections = [
+        (sid, label)
+        for sid, label, always in _DOCUMENT_SECTIONS
+        if always or (sid == "recognitions" and has_recognitions)
+    ]
+    if not sections:
+        return ""
+    items = "".join(
+        f'<li><a href="#{html.escape(sid, quote=True)}">{html.escape(label)}</a></li>'
+        for sid, label in sections
+    )
+    return (
+        '<nav class="page-section-nav" aria-label="Seitennavigation" '
+        'data-page-nav>\n'
+        f'<ol class="page-section-nav-list">{items}</ol>\n'
+        '</nav>'
+    )
+
+
+# ---------------------------------------------------------------------------
 # Issue #21 — redesigned document status header
 # ---------------------------------------------------------------------------
 
@@ -453,7 +497,8 @@ license: "LicenseRef-Not-Specified"
         is_test=is_test,
         recognitions=data.get("recognitions", []) or [],
     )
-    page = frontmatter(doc_id) + f'<nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> {html.escape(doc_id)}</nav>\n' + _header + f'''
+    _nav = build_page_nav(has_recognitions=bool(data.get("recognitions")))
+    page = frontmatter(doc_id) + f'<nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> {html.escape(doc_id)}</nav>\n' + _header + '\n' + _nav + f'''
 
 {evidence}
 
