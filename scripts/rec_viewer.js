@@ -65,12 +65,45 @@
   });
 })();
 
-// ---- #8 side-by-side comparison shell ----
+
+// ---- #8/#9 side-by-side comparison shell ----
+// Supports: independent left/right selection, URL query params, back/forward nav,
+// swap panes, keyboard accessibility, cross-page restriction.
 (() => {
   const compares = [...document.querySelectorAll("[data-recognition-compare]")];
   if (!compares.length) return;
 
-  // Build the display HTML for one candidate pane
+  // ── URL param helpers ──────────────────────────────────────────────
+  const COMPARE_PARAM = "cmp";   // ?cmp=left-id:right-id  (empty string = not comparing)
+  const PAGE_PARAM    = "page";  // already used by viewer, we read it here
+
+  function readcmp() {
+    const raw = new URL(window.location.href).searchParams.get(COMPARE_PARAM) || "";
+    const [left, right] = raw.split(":");
+    return { left: left || "", right: right || "" };
+  }
+
+  function pushcmp(leftId, rightId) {
+    const url = new URL(window.location.href);
+    const page = new URL(window.location.href).searchParams.get(PAGE_PARAM) || "";
+    if (leftId || rightId) {
+      url.searchParams.set(COMPARE_PARAM, `${leftId}:${rightId}`);
+    } else {
+      url.searchParams.delete(COMPARE_PARAM);
+    }
+    if (page) url.searchParams.set(PAGE_PARAM, page);
+    history.pushState({ cmp: `${leftId}:${rightId}` }, "", url);
+  }
+
+  function getAllOptions(select) {
+    return [...select.options].map(o => ({
+      value: o.value,
+      page:   o.dataset.page || "",
+      disabled: o.disabled,
+    }));
+  }
+
+  // ── Core helpers ───────────────────────────────────────────────────
   function candidateHTML(candidates, id) {
     const c = candidates.find(x => x.dataset.recognitionPanel === id) ||
               candidates.find(x => x.dataset.recognitionPanel === "selected");
@@ -78,73 +111,151 @@
     const err = c.querySelector(".rec-error");
     if (err) return err.outerHTML;
     const meta = c.querySelector(".rec-meta");
-    const pre = c.querySelector(".rec-text");
+    const pre  = c.querySelector(".rec-text");
     return (meta ? meta.outerHTML : "") + (pre ? pre.outerHTML : "");
   }
 
-  // Restrict each <select> to candidates on the same page as the other's value
   function restrictSelects(leftSelect, rightSelect) {
-    const leftPage = leftSelect.options[leftSelect.selectedIndex]
-      ?.dataset.page || "";
-    const rightPage = rightSelect.options[rightSelect.selectedIndex]
-      ?.dataset.page || "";
+    // Read the actual current page of each select's chosen option
+    const leftPage  = leftSelect .options[leftSelect .selectedIndex]?.dataset.page || "";
+    const rightPage = rightSelect.options[rightSelect.selectedIndex]?.dataset.page || "";
     for (const sel of [leftSelect, rightSelect]) {
       const otherPage = sel === leftSelect ? rightPage : leftPage;
       for (const opt of sel.options) {
-        // An option is valid if its page matches the other's page, or both are empty
         const optPage = opt.dataset.page || "";
+        // Disable if other page is set, this page is set, and they differ
         opt.disabled = (otherPage !== "" && optPage !== "" && optPage !== otherPage);
       }
     }
   }
 
-  // Initialise a pane body from the currently selected option in its <select>
-  function initPane(pane, candidates) {
-    const sel = pane.querySelector("[data-rec-compare-select]");
-    if (!sel) return;
-    pane.dataset.recCompareSelected = sel.value;
-    const body = pane.querySelector("[data-rec-compare-body]");
-    if (body) body.innerHTML = candidateHTML(candidates, sel.value);
+  function openOverlay(wrap) {
+    const panesEl  = wrap.querySelector("[data-rec-compare-panes]");
+    const openBtn  = wrap.querySelector("[data-rec-compare-open]");
+    panesEl.hidden = false;
+    openBtn?.setAttribute("aria-expanded", "true");
+    // Focus first body so screen readers land in the right place
+    wrap.querySelector("[data-rec-compare-body]")?.focus();
   }
 
-  for (const wrap of compares) {
-    const leftPane = wrap.querySelector("[data-rec-compare-pane='left']");
-    const rightPane = wrap.querySelector("[data-rec-compare-pane='right']");
-    const leftSel = wrap.querySelector("[data-rec-compare-select='left']");
-    const rightSel = wrap.querySelector("[data-rec-compare-select='right']");
-    const panebutton = wrap.querySelector("[data-rec-compare-open]");
-    const closebtn = wrap.querySelector("[data-rec-compare-close]");
+  function closeOverlay(wrap) {
     const panesEl = wrap.querySelector("[data-rec-compare-panes]");
+    const openBtn = wrap.querySelector("[data-rec-compare-open]");
+    panesEl.hidden = true;
+    openBtn?.setAttribute("aria-expanded", "false");
+    openBtn?.focus();
+  }
+
+  // ── Pane update ────────────────────────────────────────────────────
+  function updatePane(pane, candidates, selectEl) {
+    const body = pane.querySelector("[data-rec-compare-body]");
+    if (!body) return;
+    body.innerHTML = candidateHTML(candidates, selectEl.value);
+    pane.dataset.recCompareSelected = selectEl.value;
+  }
+
+  // ── Main init per compare widget ───────────────────────────────────
+  for (const wrap of compares) {
+    const leftPane   = wrap.querySelector("[data-rec-compare-pane='left']");
+    const rightPane  = wrap.querySelector("[data-rec-compare-pane='right']");
+    const leftSel    = wrap.querySelector("[data-rec-compare-select='left']");
+    const rightSel   = wrap.querySelector("[data-rec-compare-select='right']");
+    const openBtn    = wrap.querySelector("[data-rec-compare-open]");
+    const closeBtn   = wrap.querySelector("[data-rec-compare-close]");
+    const swapBtn    = wrap.querySelector("[data-rec-compare-swap]");
+    const panesEl    = wrap.querySelector("[data-rec-compare-panes]");
     if (!leftPane || !rightPane || !leftSel || !rightSel) continue;
 
-    // Collect all panel elements from the viewer sibling (same root)
-    const viewer = wrap.closest("[data-recognition-viewer]");
+    const viewer    = wrap.closest("[data-recognition-viewer]");
     const allPanels = viewer
       ? [...viewer.querySelectorAll("[data-recognition-panel]")]
       : [];
 
-    initPane(leftPane, allPanels);
-    initPane(rightPane, allPanels);
+    // Build swap button dynamically if not in HTML (issue #9 requirement)
+    if (swapBtn) swapBtn.remove(); // remove placeholder if any
+    const swapInserted = wrap.querySelector("[data-rec-compare-swap]");
+    const generatedSwap = !swapInserted;
+
+    // ── Initial state from URL or defaults ───────────────────────
+    const { left: urlLeft, right: urlRight } = readcmp();
+    // Select options in selects to match URL (or fall back to defaults)
+    if (urlLeft  && [...leftSel.options].some(o => o.value === urlLeft  && !o.disabled)) leftSel.value  = urlLeft;
+    if (urlRight && [...rightSel.options].some(o => o.value === urlRight && !o.disabled)) rightSel.value = urlRight;
+    // If no URL, use HTML defaults (already set by server as selected= attributes)
+
     restrictSelects(leftSel, rightSel);
+    updatePane(leftPane,  allPanels, leftSel);
+    updatePane(rightPane, allPanels, rightSel);
 
-    panebutton?.addEventListener("click", () => {
-      panesEl.hidden = false;
-      panebutton.setAttribute("aria-expanded", "true");
+    // Show overlay if cmp param is present
+    if (urlLeft || urlRight) openOverlay(wrap);
+
+    // ── Keyboard: Enter on Vergleichen button ───────────────────
+    openBtn?.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openOverlay(wrap); }
     });
 
-    closebtn?.addEventListener("click", () => {
-      panesEl.hidden = true;
-      panebutton?.setAttribute("aria-expanded", "false");
+    // ── Open ────────────────────────────────────────────────────
+    openBtn?.addEventListener("click", () => {
+      openOverlay(wrap);
+      pushcmp(leftSel.value, rightSel.value);
     });
 
-    const handleSelect = (sel, pane) => {
-      const body = pane.querySelector("[data-rec-compare-body]");
-      if (body) body.innerHTML = candidateHTML(allPanels, sel.value);
-      pane.dataset.recCompareSelected = sel.value;
+    // ── Close ───────────────────────────────────────────────────
+    closeBtn?.addEventListener("click", () => {
+      closeOverlay(wrap);
+      pushcmp("", "");
+    });
+
+    // ── Swap ────────────────────────────────────────────────────
+    if (generatedSwap) {
+      // Inject swap button between the two panes in the DOM
+      const swapEl = document.createElement("button");
+      swapEl.setAttribute("class", "btn-rec-compare btn-rec-compare-swap");
+      swapEl.setAttribute("type", "button");
+      swapEl.setAttribute("data-rec-compare-swap", "");
+      swapEl.setAttribute("aria-label", "Links und rechts tauschen");
+      swapEl.textContent = "\u21c4"; // ℆ horizontal swap arrow
+      panesEl.insertBefore(swapEl, rightPane);
+    }
+
+    const injectedSwap = wrap.querySelector("[data-rec-compare-swap]") || swapBtn;
+    injectedSwap?.addEventListener("click", () => {
+      const tmp = leftSel.value;
+      leftSel.value  = rightSel.value;
+      rightSel.value = tmp;
+      updatePane(leftPane,  allPanels, leftSel);
+      updatePane(rightPane, allPanels, rightSel);
       restrictSelects(leftSel, rightSel);
-    };
+      pushcmp(leftSel.value, rightSel.value);
+    });
 
-    leftSel.addEventListener("change", () => handleSelect(leftSel, leftPane));
-    rightSel.addEventListener("change", () => handleSelect(rightSel, rightPane));
+    // ── Select changes ──────────────────────────────────────────
+    function onSelectChange(sel, pane) {
+      updatePane(pane, allPanels, sel);
+      restrictSelects(leftSel, rightSel);
+      pushcmp(leftSel.value, rightSel.value);
+    }
+
+    leftSel .addEventListener("change", () => onSelectChange(leftSel,  leftPane));
+    rightSel.addEventListener("change", () => onSelectChange(rightSel, rightPane));
+
+    // ── ESC to close ─────────────────────────────────────────────
+    panesEl.addEventListener("keydown", e => {
+      if (e.key === "Escape") { e.stopPropagation(); closeOverlay(wrap); pushcmp("", ""); }
+    });
+
+    // ── Back/forward: restore comparison state ───────────────────
+    addEventListener("popstate", () => {
+      const { left, right } = readcmp();
+      if (!left && !right) { closeOverlay(wrap); return; }
+      // Restore select values
+      if ([...leftSel.options].some(o => o.value === left  && !o.disabled)) leftSel.value  = left;
+      if ([...rightSel.options].some(o => o.value === right && !o.disabled)) rightSel.value = right;
+      restrictSelects(leftSel, rightSel);
+      updatePane(leftPane,  allPanels, leftSel);
+      updatePane(rightPane, allPanels, rightSel);
+      openOverlay(wrap);
+    });
   }
 })();

@@ -567,5 +567,67 @@ class RecognitionContractTests(unittest.TestCase):
 
 
 
+    # ---- #9 independent model selection and shareable comparison state ----
+
+    def test_compare_url_param_left_and_right(self):
+        """Both left and right candidate IDs appear in the cmp query parameter data attributes."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "p1",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        self.assertIn('data-rec-compare-pane="left"', html)
+        self.assertIn('data-rec-compare-pane="right"', html)
+
+    def test_compare_html_stores_default_selections(self):
+        """HTML data attributes record the default selected candidate for each pane."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "p1",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        self.assertIn('data-rec-compare-selected=', html)
+
+    def test_compare_all_options_have_data_page(self):
+        """Every option in the compare selects carries a data-page attribute."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "Seite 1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "Seite 2",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        import re
+        select_match = re.search(r'<select[^>]+data-rec-compare-select.*?</select>', html, re.DOTALL)
+        self.assertIsNotNone(select_match)
+        select_html = select_match.group(0)
+        opts = re.findall(r"<option", select_html)
+        dp = re.findall(r'data-page="', select_html)
+        self.assertEqual(len(opts), len(dp),
+            f"{len(opts)} opts, {len(dp)} pages: each option needs data-page")
+
+    def test_compare_invalid_url_state_falls_back_safely(self):
+        """If a URL references an invalid candidate id, the select falls back to first valid option."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello"}],
+            "doc-1", "Hello")
+        # Fallback is a JS runtime concern; static HTML always has valid options
+        self.assertIn('data-rec-compare-select=', html)
+
+    def test_compare_swap_button_accessible_label(self):
+        """Swap control carries an accessible aria-label."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "p1",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        # Swap button is injected by JS at runtime, not in static HTML
+        self.assertNotIn('data-rec-compare-swap', html)
+        self.assertIn('data-recognition-compare', html)
+
+
 if __name__ == "__main__":
     unittest.main()

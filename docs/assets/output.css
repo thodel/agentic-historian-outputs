@@ -97,3 +97,13 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 .rec-compare-body { min-height: 3rem; }
 .rec-compare-body .rec-meta { font-size: .82rem; }
 .rec-compare-body .rec-text { font-size: .85rem; max-height: 20rem; }
+.btn-rec-compare-swap {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  padding: .4rem .6rem; border: 1px solid #8aa5b4; border-radius: 50%;
+  background: white; cursor: pointer; font-size: 1.1rem; line-height: 1;
+  z-index: 1;
+}
+.btn-rec-compare-swap:hover { background: #e8f0f4; }
+.btn-rec-compare-swap:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
+/* Ensure the panes grid holds the swap button in the center */
+.rec-compare-panes { position: relative; }
