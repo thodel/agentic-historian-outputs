@@ -62,7 +62,9 @@ gut lesbar hier</code></pre>
 
 <p><a class="rec-download" href="recognitions/kraken-k0.txt" download>Diese Transkription herunterladen</a></p>
 </details></div>
-</div></section><section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
+</div></section>
+
+<section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
 <p>x</p>
 <p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt; keine unabhängige historische Interpretation. <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p></section>
 
@@ -82,3 +84,4 @@ gut lesbar hier</code></pre>
 
 <section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/570ccc2"><code>570ccc2</code></a> · <time datetime="2026-07-15T19:17:36+02:00">2026-07-15</time> · Publish order-ens</li></ol></section>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>

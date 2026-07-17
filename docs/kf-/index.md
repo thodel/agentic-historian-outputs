@@ -74,6 +74,8 @@ uuuuuuuuuuu
 uiiiiiuuu
 u</code></pre></section>
 
+
+
 <section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
 <p>Kodizologische Beschreibung (Ad‑Fontes‑Richtlinien, UZH) 1. Aufbewahrungsort Keine gesicherten Angaben möglich. Der aktuelle Standort der Handschrift ist nicht aus den vorliegenden Bilddateien oder der Transkription ableitbar. 2. Beschreibstoff Der Text besteht ausschließlich aus den Buchstaben u und i, was keinerlei Hinweise auf den verwendeten Beschreibstoff (Pergament, Papier, Papyrus) liefert. Auch ein eventuelles Wasserzeichen, Qualitätsmerkmale (Dicke, Vergilbung) oder Palimpsest‑Spuren si</p>
 <p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt; keine unabhängige historische Interpretation. <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p></section>
@@ -94,3 +96,4 @@ u</code></pre></section>
 
 <section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/9d630fb"><code>9d630fb</code></a> · <time datetime="2026-07-07T15:47:14+02:00">2026-07-07</time> · Publish kf-</li></ol></section>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>

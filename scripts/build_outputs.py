@@ -144,6 +144,21 @@ def source_panel(data: dict) -> str:
 <div class="notice notice--warning"><strong>Kein öffentliches Digitalisat verknüpft.</strong> Ein lokaler Verarbeitungspfad ist kein zitierbarer Quellenbeleg. Ergänzen Sie <code>source_url</code> oder <code>iiif_manifest</code> in der Pipeline-Ausgabe.</div></section>'''
 
 
+def evidence_workspace(data: dict, doc_id: str, transcription: str,
+                       recognition_section: str) -> str:
+    """Compose evidence panes, enhancing only embeddable image/IIIF sources."""
+    source = source_panel(data)
+    transcript = f'''<section id="transcription" class="page-section page-section--evidence" data-page-section="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
+<pre class="transcription" tabindex="0"><code>{html.escape(transcription) if transcription else 'Keine Transkription verfügbar.'}</code></pre></section>'''
+    if normalize_source_reference(data)["type"] not in {"image", "iiif_manifest"}:
+        return f"{source}\n\n{transcript}\n\n{recognition_section}"
+    return f'''<div class="evidence-workspace" data-evidence-workspace data-doc-id="{html.escape(doc_id, quote=True)}">
+<div class="evidence-pane evidence-pane--source" role="region" aria-labelledby="source-heading">{source}</div>
+<div class="workspace-divider" role="separator" aria-label="Breite von Quelle und Transkription ändern" aria-orientation="vertical" aria-valuemin="25" aria-valuemax="75" aria-valuenow="50" tabindex="0" data-workspace-divider><span aria-hidden="true">⋮</span></div>
+<div class="evidence-pane evidence-pane--transcription" role="region" aria-labelledby="transcription-heading">{transcript}{recognition_section}</div>
+</div>'''
+
+
 def build_document(path: Path, entity_index: dict) -> bool:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -233,6 +248,8 @@ license: "LicenseRef-Not-Specified"
         directory=path.parent,
     )
 
+    evidence = evidence_workspace(data, doc_id, transcript, recognition_section)
+
     page = frontmatter(doc_id) + f'''<nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> {html.escape(doc_id)}</nav>
 <header class="output-header page-section page-section--identity" data-page-section="identity">
   <p class="output-kicker">{state_label}</p><h1>{html.escape(doc_id)}</h1>
@@ -240,12 +257,9 @@ license: "LicenseRef-Not-Specified"
   <p class="notice"><strong>Interpretationsstatus:</strong> Dieser Output wurde automatisch erzeugt. Nicht als Edition oder verifizierte Transkription zitieren, sofern der Status nicht ausdrücklich „human-verified“ lautet.</p>
 </header>
 
-{source_panel(data)}
+{evidence}
 
-<section id="transcription" class="page-section page-section--evidence" data-page-section="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
-<pre class="transcription" tabindex="0"><code>{html.escape(transcript) if transcript else 'Keine Transkription verfügbar.'}</code></pre></section>
-
-{recognition_section}<section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
+<section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
 <p>{html.escape(interpretive)}</p>
 <p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt; keine unabhängige historische Interpretation. <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p></section>
 
@@ -265,6 +279,7 @@ license: "LicenseRef-Not-Specified"
 
 <section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol>{history_html}</ol></section>
 <script src="{{{{ '/assets/rec-viewer.js' | relative_url }}}}" defer></script>
+<script src="{{{{ '/assets/workspace.js' | relative_url }}}}" defer></script>
 '''
     (path.parent / "index.md").write_text(page, encoding="utf-8")
     return is_test
@@ -296,6 +311,9 @@ def build() -> None:
     js_source = Path(__file__).with_name("rec_viewer.js")
     (DOCS / "assets" / "rec-viewer.js").write_text(
         js_source.read_text(encoding="utf-8"), encoding="utf-8")
+    workspace_source = Path(__file__).with_name("workspace.js")
+    (DOCS / "assets" / "workspace.js").write_text(
+        workspace_source.read_text(encoding="utf-8"), encoding="utf-8")
     entity_index = defaultdict(list)
     tests = []
     for path in sorted(DOCS.glob("*/pipeline.json")):

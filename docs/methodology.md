@@ -15,6 +15,8 @@ Dokumentseiten folgen einer stabilen, evidenzorientierten Reihenfolge: Identitä
 
 Die Anker `#transcription` und `#claims` bleiben für bestehende Links stabil. Fehlen Digitalisat, Erkennungsvarianten oder ältere Provenienzfelder, bleibt dieselbe Grundstruktur erhalten und benennt die Lücke ausdrücklich. Fehlgeschlagene Erkennungen bleiben innerhalb des Evidenzbereichs sichtbar. Testausgaben tragen weiterhin deutlich die Kennzeichnung „Testlauf“.
 
+Ist ein öffentlich einbettbares Bild oder IIIF-Manifest vorhanden, erscheinen Quelle und Transkription auf breiten Bildschirmen in zwei beschrifteten Bereichen. Der Trenner lässt sich ziehen oder per Tastatur mit Pfeiltasten, Pos1 und Ende bedienen. Das Verhältnis wird ausschließlich lokal im Browser gespeichert und verändert keine teilbare URL. Auf schmalen Bildschirmen und bei starker Vergrößerung stehen Quelle und Transkription untereinander; ohne einbettbare Quelle bleibt die lineare Transkriptionsansicht erhalten.
+
 ## Verarbeitung
 
 Die Pipeline verarbeitet Digitalisate oder Bildgruppen, erzeugt eine maschinelle Transkription, leitet Beschreibungsfelder ab und erkennt Personen, Orte, Organisationen sowie weitere Entitäten. Die vollständigen Verarbeitungsergebnisse bleiben pro Dokument als `pipeline.json` verfügbar.

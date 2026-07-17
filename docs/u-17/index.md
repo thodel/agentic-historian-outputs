@@ -332,6 +332,8 @@ u
 
 iii</code></pre></section>
 
+
+
 <section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
 <p>Handschriftenbeschreibung (Ad‑fontes‑Richtlinien, UZH) 1. Aufbewahrungsort Keine gesicherten Angaben möglich. Ohne weitere kontextuelle Informationen lässt sich der aktuelle Aufbewahrungsort nicht bestimmen. 2. Beschreibstoff Der vorliegende Transkript‑Auszug enthält ausschließlich die Zeichen u, i, g, s und Trennstriche. Aus dem Bildmaterial (nicht vorliegend) kann deshalb weder der Grundstoff (Pergament, Papier, Papyrus) noch mögliche Wasserzeichen, Qualitätsmerkmale (Dicke, Vergilbung, Flecke</p>
 <p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt; keine unabhängige historische Interpretation. <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p></section>
@@ -352,3 +354,4 @@ iii</code></pre></section>
 
 <section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/7eea6ce"><code>7eea6ce</code></a> · <time datetime="2026-07-08T17:18:20+02:00">2026-07-08</time> · Publish u-17</li></ol></section>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
