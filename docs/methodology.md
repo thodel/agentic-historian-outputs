@@ -45,6 +45,12 @@ Nur öffentliche HTTP(S)-Adressen werden veröffentlicht. Lokale Pfade, private 
 
 Änderungen werden über Git protokolliert. Jede Dokumentseite verlinkt ihre Versionsgeschichte und bietet TEI-XML, CSV, JSON und eine maschinenlesbare Zitation an. Eine allgemeine Nachnutzungslizenz ist derzeit nicht festgelegt; Rechte am Digitalisat und an den zugrunde liegenden Quellen sind separat zu prüfen.
 
+## Erkennungsübersicht im Katalog
+
+Der Katalog leitet aus jeder `pipeline.json` eine kompakte Erkennungsübersicht ab. Sie zählt Versuche als erfolgreich, fehlgeschlagen, leer oder degeneriert; listet unterschiedliche Engine-Familien; zählt unterschiedliche Engine/Modell-Paare; und hält Seitenzahl, Quellentyp, Prüfstatus sowie Vergleichsbereitschaft fest. Vergleichsbereitschaft setzt mindestens zwei nutzbare Kandidaten derselben bekannten Seite voraus. Doppelte Datensätze erhöhen nicht die Engine- oder Modellzahl.
+
+Ausgaben ohne `recognitions`-Feld werden ausdrücklich als ältere Ausgaben mit unbekannter Versuchsprovenienz behandelt, nicht als fehlerfreie Läufe mit null Kandidaten. Die Werte stehen als stabile `data-*`-Attribute auf den Katalogkarten und gesammelt in `catalogue-summary.json`. Weder die Transkription noch Kandidatentexte werden in diese Filterdaten übernommen, sodass ihre Größe unabhängig von der Textlänge bleibt.
+
 ## Zitierempfehlung
 
 Verwenden Sie die stabile Adresse der Dokumentseite und geben Sie den Bearbeitungsstatus an. Für reproduzierbare Forschung sollte zusätzlich die konkrete Git-Version genannt werden.
