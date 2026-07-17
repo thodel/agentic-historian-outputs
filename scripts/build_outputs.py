@@ -13,7 +13,8 @@ import subprocess
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
-from build_recognitions import build_recognition_section
+from build_recognitions import build_recognition_section, _recognition_inventory_section, _complete_package_section
+from rec_artifacts import collect_artifacts
 from urllib.parse import urlparse
 from xml.sax.saxutils import escape as xml_escape
 
@@ -223,11 +224,17 @@ license: "LicenseRef-Not-Specified"
     field_table = f'''<div class="table-scroll"><table><thead><tr><th>Feld</th><th>Wert</th><th>Sicherheit</th><th>Begründung</th><th>Nachweis</th></tr></thead><tbody>{''.join(uncertainty_rows) or '<tr><td colspan="5">Keine strukturierten Beschreibungsfelder verfügbar.</td></tr>'}</tbody></table></div>'''
 
     # Recognition viewer (progressive enhancement — issue #2)
+    recs = data.get("recognitions", [])
+    artifact_metas = collect_artifacts(doc_id, recs, transcript=transcript)
     recognition_section = build_recognition_section(
-        recognitions=data.get("recognitions", []),
+        recognitions=recs,
         doc_id=doc_id,
         transcript=transcript,
     )
+    inventory_section = _recognition_inventory_section(recs, doc_id, artifact_metas)
+    num_success = sum(1 for r in recs if not r.get("error") and r.get("text"))
+    num_error   = sum(1 for r in recs if r.get("error"))
+    package_section = _complete_package_section(doc_id, len(recs), num_error, num_success)
 
     # Inline JS for tab switching (read from disk to avoid f-string issues)
     _rec_js_path = Path(__file__).parent / "rec_viewer.js"
@@ -255,7 +262,7 @@ license: "LicenseRef-Not-Specified"
 <section id="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
 <pre class="transcription" tabindex="0"><code>{html.escape(transcript) if transcript else 'Keine Transkription verfügbar.'}</code></pre></section>
 
-{recognition_section}<section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
+{recognition_section}{inventory_section}{package_section}<section aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
 <ul><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
 <p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
 

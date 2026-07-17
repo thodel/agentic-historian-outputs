@@ -286,3 +286,134 @@ def build_recognition_section(recognitions, doc_id, transcript) -> str:
         + "\n".join(panels) +
         "</div></div></section>"
     )
+
+
+# ── Recognition inventory section (issue #36) ────────────────────────────────
+
+def _recognition_inventory_section(recognitions, doc_id, artifact_metas):
+    """Render a complete inventory of all recognition artifacts for a document.
+
+    Shows every candidate .txt file with type, page, character count, and
+    download link — plus the fused/selected transcription if available.
+
+    artifact_metas: list of ArtifactMeta from rec_artifacts.collect_artifacts()
+    """
+    if not recognitions:
+        return ""
+
+    # Build metadata lookup: cand_index → ArtifactMeta
+    meta_by_index = {m.cand_index: m for m in artifact_metas}
+
+    rows = []
+    for i, rec in enumerate(recognitions):
+        engine   = rec.get("engine", "unknown")
+        model_id = rec.get("model_id", "unknown")
+        page_meta = rec.get("page")
+        error    = rec.get("error", "")
+        text     = rec.get("text", "") or ""
+        char_count = len(text.replace("\r", "").replace("\n", ""))
+        is_error = bool(error)
+        confidence = rec.get("confidence")
+
+        meta = meta_by_index.get(i)
+        path = meta.path if meta else f"recognitions/{engine}-{model_id.replace('/', '-')}.txt"
+        has_text_flag = bool(text.strip()) and not is_error
+
+        # Type badge
+        if is_error:
+            type_badge = '<span class="badge badge--error">Fehler</span>'
+        elif page_meta is not None:
+            type_badge = f'<span class="badge badge--raw">roh · S. {page_meta}</span>'
+        else:
+            type_badge = '<span class="badge badge--raw">roh</span>'
+
+        # Size
+        if is_error:
+            size_str = "—"
+        else:
+            size_str = f"{char_count:,} Z."
+
+        # Confidence
+        conf_str = f"{confidence:.0%}" if confidence is not None else "—"
+
+        # Page label
+        page_str = f"Seite {page_meta}" if page_meta is not None else "—"
+
+        # Download link
+        if has_text_flag:
+            dl_link = (
+                f'<a href="{path}" download class="inv-dl" '
+                f'type="{meta.mime if meta else "text/plain"}" '
+                f'aria-label="Herunterladen {engine} {model_id}">⬇</a>'
+            )
+        else:
+            dl_link = ""
+
+        rows.append(
+            f'<tr>'
+            f'<td>{html.escape(engine)}</td>'
+            f'<td class="inv-model"><code>{html.escape(model_id)}</code></td>'
+            f'<td>{page_str}</td>'
+            f'<td>{type_badge}</td>'
+            f'<td class="inv-right">{size_str}</td>'
+            f'<td class="inv-right">{conf_str}</td>'
+            f'<td class="inv-center">{dl_link}</td>'
+            f'</tr>'
+        )
+
+    rows_html = "\n".join(rows)
+
+    return (
+        f'<section class="inv-section" id="rec-inventory" aria-labelledby="inv-heading">'
+        f'<h2 id="inv-heading">Erkennungsdateien</h2>'
+        f'<p class="inv-intro">Alle Erkennungsversionen und Download-Links.</p>'
+        f'<div class="table-wrapper">'
+        f'<table class="inv-table">'
+        f'<thead><tr>'
+        f'<th>Engine</th><th>Modell</th><th>Seite</th><th>Typ</th>'
+        f'<th class="inv-right">Umfang</th><th class="inv-right">Konfidenz</th>'
+        f'<th class="inv-center">DL</th>'
+        f'</tr></thead>'
+        f'<tbody>{rows_html}</tbody>'
+        f'</table></div></section>'
+    )
+
+
+# ── Complete download package (issue #37) ────────────────────────────────────
+
+def _complete_package_section(doc_id, num_candidates, num_error, num_success):
+    """Render the complete-download package section.
+
+    Offers a ZIP bundle containing:
+    - All recognition .txt files
+    - manifest.json with document and pipeline metadata
+    - selected/fused transcription (fused.txt)
+    """
+    if num_success == 0:
+        return ""
+
+    pkg_name = f"{doc_id}-complete.zip"
+    size_note = ""
+    if num_error > 0:
+        size_note = (
+            f' <span class="inv-note">({num_error} Versuch=num fehlgeschlagen)</span>'
+        )
+
+    return (
+        f'<section class="pkg-section" id="complete-package" aria-labelledby="pkg-heading">'
+        f'<h2 id="pkg-heading">Vollst\u00e4ndiges Erkennungspaket herunterladen</h2>'
+        f'<div class="pkg-body">'
+        f'<p>Alle Erkennungsversionen, das ausgew\u00e4hlte Transkript '
+        f'und die Manifest-Datei in einer ZIP-Datei.</p>'
+        f'<ul>'
+        f'<li>Alle {num_success} erfolgreichen Erkennungen als Textdateien</li>'
+        f'<li>Ausgew\u00e4hltes Transkript (<code>fused.txt</code>)</li>'
+        f'<li>Manifest-Datei (<code>manifest.json</code>) mit Pipeline-Metadaten</li>'
+        f'{size_note}'
+        f'</ul>'
+        f'<a href="{pkg_name}" download class="pkg-btn" '
+        f'type="application/zip" '
+        f'aria-label="Vollst\u00e4ndiges Erkennungspaket herunterladen">'
+        f'21a7 Vollst\u00e4ndiges Paket herunterladen (.zip)</a>'
+        f'</div></section>'
+    )

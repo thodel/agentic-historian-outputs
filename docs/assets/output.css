@@ -170,3 +170,72 @@ a:focus-visible, .transcription:focus { outline: 3px solid #f5b942; outline-offs
 .dl-link { margin: 0 0.25rem; }
 .dl-link--txt { font-size: 0.85rem; color: #245b78; }
 .dl-error-note { font-size: 0.85rem; color: var(--text-muted, #666); margin-top: 0.25rem; }
+
+/* ── Recognition inventory table (issue #36) ──────────────────────────────── */
+.inv-section { margin: 2rem 0; }
+.inv-intro { color: var(--text-muted, #666); font-size: 0.875rem; margin: 0.25rem 0 0.75rem; }
+.table-wrapper { overflow-x: auto; margin: 0.5rem 0 1rem; }
+.inv-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.inv-table th { text-align: left; padding: 0.4rem 0.6rem; border-bottom: 2px solid var(--border, #ccc); font-size: 0.8rem; color: var(--text-muted, #666); }
+.inv-table td { padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--border, #e8e8e8); vertical-align: middle; }
+.inv-table tr:hover td { background: var(--bg-hover, #f8f8f8); }
+.inv-right { text-align: right; }
+.inv-center { text-align: center; }
+.inv-model code { font-size: 0.8rem; word-break: break-all; }
+.inv-dl { color: #245b78; text-decoration: none; font-size: 0.9rem; }
+.inv-dl:hover { text-decoration: underline; }
+.inv-note { color: var(--text-muted, #666); font-size: 0.8rem; }
+.badge { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.75rem; font-weight: 600; }
+.badge--raw { background: #e8f4f8; color: #245b78; }
+.badge--error { background: #fde8e8; color: #c0392b; }
+.badge--fused { background: #e8f8ee; color: #27ae60; }
+
+/* ── Complete package section (issue #37) ─────────────────────────────────── */
+.pkg-section { margin: 2rem 0; }
+.pkg-body { background: var(--bg-alt, #f8f8f8); border-radius: 6px; padding: 1rem 1.25rem; }
+.pkg-body ul { margin: 0.5rem 0 0.75rem 1.25rem; }
+.pkg-body li { margin: 0.25rem 0; }
+.pkg-btn { display: inline-block; padding: 0.5rem 1.25rem; background: #245b78; color: #fff; border-radius: 4px; text-decoration: none; font-weight: 600; margin-top: 0.5rem; }
+.pkg-btn:hover { background: #1d4a63; }
+.dl-link--xml { font-size: 0.85rem; color: #1a6b3a; }
+.dl-link--json { font-size: 0.85rem; color: #7b4f9e; }
+.dl-error-note { font-size: 0.85rem; color: var(--text-muted, #666); margin-top: 0.25rem; }
+
+/* ── Candidate exports section (issue #38) ─────────────────────────────────── */
+.exports-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 0.75rem;
+}
+.exports-cand-heading {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted, #666);
+  margin: 0.5rem 0 0.25rem;
+  display: block;
+}
+.exports-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+}
+.exports-list li { display: flex; align-items: center; gap: 0.2rem; }
+.exports-badge {
+  font-size: 0.7rem;
+  padding: 0.05em 0.4em;
+  border-radius: 3px;
+  background: #e9f3f7;
+  color: #245b78;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.exports-badge--xml  { background: #e6f4ea; color: #1a6b3a; }
+.exports-badge--json { background: #f3e8fd; color: #7b4f9e; }
+.exports-section { margin: 1.5rem 0; }
+.exports-section h3 { font-size: 1rem; margin: 0 0 0.25rem; }
+.exports-section p { font-size: 0.85rem; color: var(--text-muted, #666); margin: 0 0 0.75rem; }
