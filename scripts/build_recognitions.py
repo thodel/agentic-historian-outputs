@@ -371,14 +371,22 @@ def _engine_confidence_dl(candidate: dict) -> str:
 
     if confidence is None:
         conf_html = "Nicht angegeben"
+        aria_label = (
+            f'aria-label="Engine-Konfidenz: Nicht angegeben, '
+            f'Geltungsbereich: {html.escape(scope)}"'
+        )
     else:
         conf_html = (
             f'<span class="rec-confidence-value">{format_confidence(confidence)}</span> '
             f'<span class="rec-confidence-scope">— {html.escape(scope)}</span>'
         )
+        aria_label = (
+            f'aria-label="Engine-Konfidenz: {format_confidence(confidence)}, '
+            f'Einheit: Wahrscheinlichkeit, Geltungsbereich: {html.escape(scope)}"'
+        )
 
     return (
-        f'<div><dt>Engine-Konfidenz</dt><dd>{conf_html} {explain_btn}'
+        f'<div><dt>Engine-Konfidenz</dt><dd {aria_label}>{conf_html} {explain_btn}'
         f'</dd></div>{explain_block}{raw}'
     )
 
@@ -616,11 +624,11 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
 <div class="rec-compare-pane" data-rec-compare-pane="left" data-rec-compare-selected="{html.escape(left, quote=True)}">
 <div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-left">Version links</label></div>
 <select class="rec-compare-select" id="rec-compare-select-left" data-rec-compare-select="left">{options}</select>
-<div class="rec-compare-body" data-rec-compare-body="left" tabindex="-1"></div></div>
+<div class="rec-compare-body" data-rec-compare-body="left" tabindex="-1" aria-live="polite"></div></div>
 <div class="rec-compare-pane" data-rec-compare-pane="right" data-rec-compare-selected="{html.escape(right, quote=True)}">
 <div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-right">Version rechts</label></div>
 <select class="rec-compare-select" id="rec-compare-select-right" data-rec-compare-select="right">{options}</select>
-<div class="rec-compare-body" data-rec-compare-body="right" tabindex="-1"></div>
+<div class="rec-compare-body" data-rec-compare-body="right" tabindex="-1" aria-live="polite"></div>
 <div class="rec-compare-diff" data-rec-compare-diff hidden role="region" aria-label="Unterschiede"></div></div>
 <button class="btn-rec-compare-close" type="button" data-rec-compare-close aria-label="Vergleich schliessen">&#215;</button>
 </div></div>'''

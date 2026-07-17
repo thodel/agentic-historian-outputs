@@ -49,11 +49,11 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 <div class="rec-compare-pane" data-rec-compare-pane="left" data-rec-compare-selected="selected">
 <div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-left">Version links</label></div>
 <select class="rec-compare-select" id="rec-compare-select-left" data-rec-compare-select="left"><option value="selected" data-page="">Ausgewählt / Fusion</option><option value="party-10-5281-zenodo-20642057" data-page="" disabled>party · 10.5281/zenodo.20642057</option><option value="kraken-kraken-catmus-medieval" data-page="" disabled>Kraken OCR · kraken-catmus_medieval</option></select>
-<div class="rec-compare-body" data-rec-compare-body="left" tabindex="-1"></div></div>
+<div class="rec-compare-body" data-rec-compare-body="left" tabindex="-1" aria-live="polite"></div></div>
 <div class="rec-compare-pane" data-rec-compare-pane="right" data-rec-compare-selected="selected">
 <div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-right">Version rechts</label></div>
 <select class="rec-compare-select" id="rec-compare-select-right" data-rec-compare-select="right"><option value="selected" data-page="">Ausgewählt / Fusion</option><option value="party-10-5281-zenodo-20642057" data-page="" disabled>party · 10.5281/zenodo.20642057</option><option value="kraken-kraken-catmus-medieval" data-page="" disabled>Kraken OCR · kraken-catmus_medieval</option></select>
-<div class="rec-compare-body" data-rec-compare-body="right" tabindex="-1"></div>
+<div class="rec-compare-body" data-rec-compare-body="right" tabindex="-1" aria-live="polite"></div>
 <div class="rec-compare-diff" data-rec-compare-diff hidden role="region" aria-label="Unterschiede"></div></div>
 <button class="btn-rec-compare-close" type="button" data-rec-compare-close aria-label="Vergleich schliessen">&#215;</button>
 </div></div>
@@ -64,7 +64,7 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 <div><dt>Engine</dt><dd>fusion</dd></div>
 <div><dt>Modell</dt><dd>—</dd></div>
 <div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
-<div><dt>Engine-Konfidenz</dt><dd>Nicht angegeben <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-7"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-8" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: fusion</p><p>Modell: —</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): None</p></details>
+<div><dt>Engine-Konfidenz</dt><dd aria-label="Engine-Konfidenz: Nicht angegeben, Geltungsbereich: fusion">Nicht angegeben <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence-7"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><div class="quality-explanation" id="quality-explanation-engine_confidence-8" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.</p></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: fusion</p><p>Modell: —</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): None</p></details>
 <div><dt>Zeichen</dt><dd>570</dd></div>
 <div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist.">Konfidenz Nicht angegeben</span></dd></div>
 </dl>
