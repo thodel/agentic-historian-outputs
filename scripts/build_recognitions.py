@@ -343,7 +343,7 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
 <p>{download}</p>
 </details>''')
 
-    return f'''<section id="recognitions" aria-labelledby="recognitions-heading">
+    return f'''<section id="recognitions" class="page-section page-section--evidence" data-page-section="recognitions" aria-labelledby="recognitions-heading">
 <h2 id="recognitions-heading">Erkennungsversionen</h2>
 <p class="rec-intro">
 Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sichtbar.

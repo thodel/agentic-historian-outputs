@@ -14,6 +14,10 @@
 .source-image { display: block; max-width: 100%; max-height: 70vh; margin: 1rem auto; object-fit: contain; }
 .source-frame { width: 100%; min-height: 70vh; border: 1px solid #d7dee5; }
 section { scroll-margin-top: 1rem; }
+.page-section { padding-block: .35rem; }
+.page-section--evidence { border-inline-start: .25rem solid #245b78; padding-inline-start: 1rem; }
+.page-section--interpretation { border-inline-start: .25rem solid #8a6b20; padding-inline-start: 1rem; }
+.page-section--administrative { border-inline-start: .25rem solid #77838d; padding-inline-start: 1rem; }
 a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
 
 .rec-intro { color: #5c6875; }
@@ -35,4 +39,4 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 .rec-error { margin-top: 1rem; }
 .rec-viewer--enhanced .rec-panel[hidden] { display: none; }
 
-@media (prefers-contrast: more) { .notice, .transcription, .rec-text, .rec-panel { border-width: 2px; } }
+@media (prefers-contrast: more) { .notice, .transcription, .rec-text, .rec-panel, .page-section { border-width: 2px; } }

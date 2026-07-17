@@ -9,6 +9,12 @@ title: Methode
 
 Agentic Historian veröffentlicht automatisch erzeugte Transkriptionen, strukturierte Quellenbeschreibungen und erkannte Entitäten. Die Ausgaben sind Forschungsdaten in Bearbeitung und keine verifizierten Editionen.
 
+## Aufbau der Dokumentseiten
+
+Dokumentseiten folgen einer stabilen, evidenzorientierten Reihenfolge: Identität und Status; Quelle und ausgewählte Transkription samt Erkennungsvarianten; inhaltliche Orientierung und prüfbare Aussagen; strukturierte Metadaten und Entitäten; Downloads und Nachnutzung; Zitation; Versionsgeschichte. Primäre Evidenz, maschinell erzeugte Interpretation und administrative Provenienz sind semantisch sowie visuell voneinander unterschieden.
+
+Die Anker `#transcription` und `#claims` bleiben für bestehende Links stabil. Fehlen Digitalisat, Erkennungsvarianten oder ältere Provenienzfelder, bleibt dieselbe Grundstruktur erhalten und benennt die Lücke ausdrücklich. Fehlgeschlagene Erkennungen bleiben innerhalb des Evidenzbereichs sichtbar. Testausgaben tragen weiterhin deutlich die Kennzeichnung „Testlauf“.
+
 ## Verarbeitung
 
 Die Pipeline verarbeitet Digitalisate oder Bildgruppen, erzeugt eine maschinelle Transkription, leitet Beschreibungsfelder ab und erkennt Personen, Orte, Organisationen sowie weitere Entitäten. Die vollständigen Verarbeitungsergebnisse bleiben pro Dokument als `pipeline.json` verfügbar.
