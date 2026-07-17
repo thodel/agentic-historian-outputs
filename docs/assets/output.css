@@ -39,7 +39,59 @@
 .source-page-nav button { min-height: 2.5rem; border: 1px solid #8aa5b4; border-radius: .35rem; background: white; font: inherit; }
 .source-page-nav button[aria-current="page"] { color: white; background: #245b78; }
 .page-sync-warning { grid-column: 1 / -1; margin: 0; }
-section { scroll-margin-top: 1rem; }
+/* #22 in-page section navigation ----------------------------------------- */
+.page-section-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #fff;
+  border-bottom: 1px solid #d7dee5;
+  padding: .35rem .5rem;
+  margin-bottom: 1.25rem;
+}
+.page-section-nav-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: .15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;           /* Firefox */
+}
+.page-section-nav-list::-webkit-scrollbar { display: none; }
+.page-section-nav-list a {
+  display: inline-block;
+  padding: .25rem .55rem;
+  border-radius: .3rem;
+  color: #245b78;
+  font-size: .78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.page-section-nav-list a:hover { background: #eef6f9; }
+.page-section-nav-list a:focus-visible {
+  outline: 3px solid #f5b942;
+  outline-offset: 2px;
+  border-radius: .3rem;
+}
+.page-section-nav-list a[aria-current="true"] {
+  background: #245b78;
+  color: #fff;
+}
+/* Space section headings clear of the sticky nav (~2.2rem height + 0.5rem gap) */
+section { scroll-margin-top: 3rem; }
+@media (prefers-contrast: more) {
+  .page-section-nav { border-bottom-width: 2px; }
+  .page-section-nav-list a { text-decoration: underline; }
+}
+/* Smooth-scroll only when the user has not requested reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+/* ---- end #22 ---- */
 .page-section { padding-block: .35rem; }
 .page-section--evidence { border-inline-start: .25rem solid #245b78; padding-inline-start: 1rem; }
 .page-section--interpretation { border-inline-start: .25rem solid #8a6b20; padding-inline-start: 1rem; }

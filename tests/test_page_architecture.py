@@ -226,5 +226,133 @@ class StatusHeaderTests(unittest.TestCase):
         self.assertIn('<h1>my-doc-001</h1>', markup)
 
 
+class PageNavTests(unittest.TestCase):
+    """Issue #22: accessible in-page navigation for long document pages."""
+
+    def render(self, data, doc_id="nav-doc"):
+        with tempfile.TemporaryDirectory() as tmp:
+            directory = Path(tmp) / doc_id
+            directory.mkdir()
+            pipeline = directory / "pipeline.json"
+            pipeline.write_text(json.dumps(data), encoding="utf-8")
+            build_document(pipeline, defaultdict(list))
+            return (directory / "index.md").read_text(encoding="utf-8")
+
+    # --- Nav presence and role ---
+
+    def test_page_nav_present_in_document_page(self):
+        """A page-section-nav element is rendered on every document page."""
+        markup = self.render({"transcription": "text"})
+        self.assertIn('class="page-section-nav"', markup)
+
+    def test_page_nav_has_accessible_label(self):
+        """Nav has aria-label for screen readers."""
+        markup = self.render({"transcription": "text"})
+        self.assertIn('aria-label="Seitennavigation"', markup)
+
+    def test_page_nav_has_data_attribute(self):
+        """Nav carries data-page-nav for potential JS enhancement."""
+        markup = self.render({"transcription": "text"})
+        self.assertIn('data-page-nav', markup)
+
+    def test_page_nav_uses_ordered_list(self):
+        """Nav list is an <ol> (reflects page document order)."""
+        markup = self.render({"transcription": "text"})
+        self.assertIn('class="page-section-nav-list"', markup)
+        # The list element used must be ol, not ul
+        nav_start = markup.index('class="page-section-nav"')
+        nav_slice = markup[nav_start:nav_start + 300]
+        self.assertIn('<ol', nav_slice)
+        self.assertNotIn('<ul', nav_slice)
+
+    # --- Nav items target real section IDs ---
+
+    def test_all_nav_items_target_existing_section_ids(self):
+        """Every href in the nav corresponds to a section ID present in the page."""
+        markup = self.render({
+            "transcription": "sample",
+            "recognitions": [{"engine": "k", "model_id": "m", "text": "x"}],
+        })
+        parser = StructureParser()
+        parser.feed(markup)
+        # Extract href anchors from within the nav
+        import re
+        nav_match = re.search(
+            r'<nav[^>]*data-page-nav[^>]*>(.*?)</nav>', markup, re.DOTALL
+        )
+        self.assertIsNotNone(nav_match, "No page-section-nav found")
+        hrefs = re.findall(r'href="#([^"]+)"', nav_match.group(1))
+        self.assertGreater(len(hrefs), 0, "Nav has no links")
+        for href in hrefs:
+            self.assertIn(href, parser.ids, f"Nav links to #{href} but section not found")
+
+    def test_nav_has_core_sections(self):
+        """Core always-present sections appear in the nav."""
+        markup = self.render({"transcription": "text"})
+        for sid in ("source", "transcription", "orientation", "claims",
+                    "entities", "downloads", "citation", "history"):
+            self.assertIn(f'href="#{sid}"', markup, f"Nav missing link to #{sid}")
+
+    def test_recognitions_nav_item_present_when_recognitions_exist(self):
+        """#recognitions link in nav only when recognition data is present."""
+        markup = self.render({
+            "transcription": "text",
+            "recognitions": [{"engine": "k", "model_id": "m", "text": "x"}],
+        })
+        self.assertIn('href="#recognitions"', markup)
+
+    def test_recognitions_nav_item_absent_when_no_recognitions(self):
+        """#recognitions nav link omitted when there are no recognitions."""
+        markup = self.render({"transcription": "text"})
+        self.assertNotIn('href="#recognitions"', markup)
+
+    def test_no_duplicate_nav_hrefs(self):
+        """Each section appears at most once in the nav."""
+        import re
+        markup = self.render({"transcription": "text"})
+        nav_match = re.search(
+            r'<nav[^>]*data-page-nav[^>]*>(.*?)</nav>', markup, re.DOTALL
+        )
+        self.assertIsNotNone(nav_match)
+        hrefs = re.findall(r'href="#([^"]+)"', nav_match.group(1))
+        self.assertEqual(len(hrefs), len(set(hrefs)), "Duplicate section links in nav")
+
+    def test_nav_links_are_anchors(self):
+        """Nav list items contain <a> tags with fragment hrefs."""
+        import re
+        markup = self.render({"transcription": "text"})
+        nav_match = re.search(
+            r'<nav[^>]*data-page-nav[^>]*>(.*?)</nav>', markup, re.DOTALL
+        )
+        self.assertIsNotNone(nav_match)
+        anchors = re.findall(r'<a href="#', nav_match.group(1))
+        self.assertGreater(len(anchors), 0)
+
+    # --- Nav placement relative to page sections ---
+
+    def test_nav_appears_after_header_before_evidence(self):
+        """Nav is inserted between the identity header and the first evidence section."""
+        markup = self.render({"transcription": "text"})
+        header_pos = markup.find('data-page-section="identity"')
+        nav_pos    = markup.find('data-page-nav')
+        source_pos = markup.find('data-page-section="source"')
+        self.assertGreater(nav_pos, header_pos,
+                           "Nav should appear after identity header")
+        self.assertLess(nav_pos, source_pos,
+                        "Nav should appear before source section")
+
+    # --- Regression: existing section IDs must not be removed ---
+
+    def test_section_ids_unchanged_by_nav_addition(self):
+        """Adding nav must not disturb the canonical section IDs."""
+        markup = self.render({"transcription": "text"})
+        parser = StructureParser()
+        parser.feed(markup)
+        for expected_id in ("source", "transcription", "orientation",
+                            "claims", "entities", "downloads", "citation", "history"):
+            self.assertIn(expected_id, parser.ids,
+                          f"Section #{expected_id} missing after nav addition")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -12,6 +12,9 @@ title: "order-001-group"
   <div class="quality-explanation" id="quality-explanation-verification_needed-hdr" role="region" aria-label="Menschliche Überprüfung empfohlen" hidden><p><strong>Menschliche Überprüfung empfohlen:</strong> Diese Transkription ist maschinell erzeugt.  Sie sollte anhand des Originaldokuments überprüft werden, bevor sie in einer wissenschaftlichen Arbeit zitiert wird.</p></div><div class="quality-explanation" id="quality-explanation-legacy_qa-hdr" role="region" aria-label="Legacy-QA-Wert (unspezifiziert)" hidden><p><strong>Legacy-QA-Wert (unspezifiziert):</strong> Dieser QA-Wert stammt aus einem älteren System mit unbekannter Bedeutung.  Er kann nicht als Genauigkeitswert interpretiert werden.  Ersetzen Sie ihn durch eine der oben genannten Metriken.</p></div>
   <p class="notice"><strong>Maschinell erzeugt:</strong> Dieser Output wurde automatisch erzeugt und nicht menschlich überprüft. Nicht als Edition oder verifizierte Transkription zitieren.</p>
 </header>
+<nav class="page-section-nav" aria-label="Seitennavigation" data-page-nav>
+<ol class="page-section-nav-list"><li><a href="#source">Quelle</a></li><li><a href="#transcription">Transkription</a></li><li><a href="#orientation">Orientierung</a></li><li><a href="#claims">Metadaten</a></li><li><a href="#entities">Entitäten</a></li><li><a href="#downloads">Downloads</a></li><li><a href="#citation">Zitation</a></li><li><a href="#history">Versionsgeschichte</a></li></ol>
+</nav>
 
 <section id="source" class="page-section page-section--evidence" data-page-section="source" aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
 <p><a href="https://base/test_runstate_grouped_pipeline0">Veröffentlichte Quelle öffnen</a></p>
