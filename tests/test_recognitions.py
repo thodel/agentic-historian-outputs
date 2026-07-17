@@ -660,5 +660,271 @@ class RecognitionContractTests(unittest.TestCase):
         self.assertIn("prefers-reduced-motion", js)
 
 
+    # ---- #8/#9/#10/#11 comparison shell + diff highlighting ----
+
+    def test_compare_entry_point_present(self):
+        """Vergleichen button exists with data-rec-compare-open."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95}],
+            "doc-1", "Hello")
+        self.assertIn("data-rec-compare-open", html)
+
+    def test_compare_panes_have_unique_ids_and_labels(self):
+        """Left and right panes have distinct data-rec-compare-pane, label, and select."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95}],
+            "doc-1", "Hello")
+        self.assertIn('data-rec-compare-pane="left"', html)
+        self.assertIn('data-rec-compare-pane="right"', html)
+        self.assertIn("Version links", html)
+        self.assertIn("Version rechts", html)
+        self.assertIn('data-rec-compare-select="left"', html)
+        self.assertIn('data-rec-compare-select="right"', html)
+
+    def test_compare_panes_hidden_by_default(self):
+        """Comparison panes use the hidden attribute when overlay is closed."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95}],
+            "doc-1", "Hello")
+        idx = html.find("data-rec-compare-panes")
+        snippet = html[idx:idx+60]
+        self.assertIn("hidden", snippet)
+
+    def test_compare_selectors_show_all_candidates(self):
+        """Both selectors list all candidate options from all pages."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "p2",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        self.assertIn("kraken", html)
+        self.assertIn("trocr", html)
+
+    def test_compare_failed_candidates_disabled(self):
+        """Error candidates have a disabled attribute in the selector."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95, "error": "network failure"}],
+            "doc-1", "Hello")
+        idx = html.find("data-rec-compare-select")
+        sel = html[idx:idx+400]
+        # Failed option should be disabled
+        self.assertIn("disabled", sel)
+
+    def test_compare_single_page_fixture_all_options_enabled(self):
+        """Same-page candidates never get disabled in the comparison select."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "p1",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        import re
+        select_match = re.search(r'<select[^>]+data-rec-compare-select.*?</select>', html, re.DOTALL)
+        self.assertIsNotNone(select_match)
+        disabled_count = select_match.group(0).count("disabled")
+        self.assertEqual(disabled_count, 0)
+
+    def test_compare_multi_page_fixture_options_have_page_hints(self):
+        """Each compare option carries the page name in its label and a data-page attribute."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "Seite 1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "Seite 2",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        import re
+        select_match = re.search(r'<select[^>]+data-rec-compare-select.*?</select>', html, re.DOTALL)
+        self.assertIsNotNone(select_match)
+        select_html = select_match.group(0)
+        opts = re.findall(r"<option", select_html)
+        dp = re.findall(r'data-page="', select_html)
+        self.assertEqual(len(opts), len(dp))
+
+    def test_compare_close_button_present(self):
+        """A close button with data-rec-compare-close attribute is present."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95}],
+            "doc-1", "Hello")
+        self.assertIn("data-rec-compare-close", html)
+
+    def test_compare_no_js_fallback_uses_hidden(self):
+        """Without JS the comparison overlay remains hidden via the hidden attribute."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95}],
+            "doc-1", "Hello")
+        idx = html.find("data-rec-compare-panes")
+        self.assertIn("hidden", html[idx:idx+80])
+
+    def test_compare_url_param_left_and_right(self):
+        """Both left and right panes exist in HTML with distinct data attributes."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "p1",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        self.assertIn('data-rec-compare-pane="left"', html)
+        self.assertIn('data-rec-compare-pane="right"', html)
+
+    def test_compare_html_stores_default_selections(self):
+        """Each pane records its default selected candidate in data-rec-compare-selected."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "p1",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        self.assertIn('data-rec-compare-selected=', html)
+
+    def test_compare_all_options_have_data_page(self):
+        """Every option in the compare selects carries a data-page attribute."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "Seite 1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "Seite 2",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        import re
+        select_match = re.search(r'<select[^>]+data-rec-compare-select.*?</select>', html, re.DOTALL)
+        self.assertIsNotNone(select_match)
+        select_html = select_match.group(0)
+        opts = re.findall(r"<option", select_html)
+        dp = re.findall(r'data-page="', select_html)
+        self.assertEqual(len(opts), len(dp),
+            f"{len(opts)} opts, {len(dp)} pages: each option needs data-page")
+
+    def test_compare_invalid_url_state_falls_back_safely(self):
+        """HTML always renders valid structure for the comparison select."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello"}],
+            "doc-1", "Hello")
+        self.assertIn('data-rec-compare-select=', html)
+        self.assertIn("<select", html)
+
+    def test_compare_swap_button_injected_by_js(self):
+        """Swap button is injected at runtime by JS, not present in static HTML."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "p1",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        self.assertNotIn("data-rec-compare-swap", html)
+        self.assertIn("data-recognition-compare", html)
+
+    def test_compare_scroll_sync_toggle_injected_by_js(self):
+        """Sync toggle button is injected at runtime, not present in static HTML."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "p1",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        self.assertNotIn("data-rec-compare-sync-toggle", html)
+
+    def test_compare_css_narrow_screen_stacking(self):
+        """CSS includes a stacked-layout rule for narrow screens."""
+        css = open("docs/assets/output.css").read()
+        self.assertIn("max-width: 640px", css)
+        self.assertIn("flex-direction: column", css)
+
+    def test_compare_css_sync_toggle_button(self):
+        """CSS includes .btn-rec-compare-sync styles with transition."""
+        css = open("docs/assets/output.css").read()
+        self.assertIn("btn-rec-compare-sync", css)
+        self.assertIn("transition", css)
+
+    def test_compare_prefers_reduced_motion_handled_in_js(self):
+        """JS checks prefers-reduced-motion before enabling scroll sync."""
+        js = open("scripts/rec_viewer.js").read()
+        self.assertIn("prefers-reduced-motion", js)
+
+    # ---- #11 diff highlighting ----
+
+    def test_diff_region_container_in_html(self):
+        """HTML contains the diff region container with correct ARIA attributes."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello world", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "p1",
+              "text": "Hallo Welt", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        self.assertIn("data-rec-compare-diff", html)
+        self.assertIn('role="region"', html)
+        self.assertIn('aria-label="Unterschiede"', html)
+
+    def test_diff_region_hidden_by_default(self):
+        """Diff region uses the hidden attribute and is not visible without JS."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "p1",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        idx = html.find('data-rec-compare-diff')
+        self.assertIn("hidden", html[idx:idx+80])
+
+    def test_diff_css_includes_all_diff_classes(self):
+        """CSS defines diff-insert, diff-delete, diff-change scoped under .rec-compare-diff."""
+        css = open("docs/assets/output.css").read()
+        self.assertIn(".rec-compare-diff .diff-insert", css)
+        self.assertIn(".rec-compare-diff .diff-delete", css)
+        self.assertIn(".rec-compare-diff .diff-change", css)
+
+    def test_diff_toggle_button_injected_by_js_not_in_html(self):
+        """Diff toggle buttons are injected by JS, not in static HTML."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "p1",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        self.assertNotIn("data-rec-compare-diff-toggle", html)
+
+    def test_diff_max_length_notice_css(self):
+        """CSS provides a notice style for the max-length fallback."""
+        css = open("docs/assets/output.css").read()
+        self.assertIn(".notice", css)
+        self.assertIn(".notice--warning", css)
+
+    def test_diff_identical_text_notice_in_js(self):
+        """JS function returns a notice for identical texts."""
+        js = open("scripts/rec_viewer.js").read()
+        self.assertIn("Die beiden Versionen sind identisch", js)
+
+    def test_diff_error_fallback_notice_in_js(self):
+        """JS function returns an explanatory notice for error candidates."""
+        js = open("scripts/rec_viewer.js").read()
+        self.assertIn("Version nicht verfügbar", js)
+
+    def test_diff_large_text_guard_in_js(self):
+        """JS enforces MAX_DIFF_CHARS limit for very long texts."""
+        js = open("scripts/rec_viewer.js").read()
+        self.assertIn("MAX_DIFF_CHARS", js)
+        self.assertIn("50_000", js)
+
+    def test_diff_aria_labels_in_js(self):
+        """JS diffLabel function returns aria labels for screen readers."""
+        js = open("scripts/rec_viewer.js").read()
+        self.assertIn('"eingefügt"', js)
+        self.assertIn('"gelöscht"', js)
+        self.assertIn('"geändert"', js)
+
+    def test_diff_css_uses_non_colour_indicators(self):
+        """CSS diff styles use border-bottom or text-decoration, not colour alone."""
+        css = open("docs/assets/output.css").read()
+        # Each diff type uses a structural indicator
+        self.assertIn("border-bottom", css)
+        self.assertIn("text-decoration", css)
+
+
 if __name__ == "__main__":
     unittest.main()

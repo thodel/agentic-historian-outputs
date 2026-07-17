@@ -602,6 +602,8 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
         '<select class="rec-compare-select" id="rec-compare-select-right" '
         'data-rec-compare-select="right">{compare_options}</select>'
         '<div class="rec-compare-body" data-rec-compare-body="right"></div>'
+        '<div class="rec-compare-diff" data-rec-compare-diff hidden '
+        'role="region" aria-label="Unterschiede"></div>'
         '</div>'
         '<button class="btn-rec-compare-close" type="button" '
         'data-rec-compare-close aria-label="Vergleich schliessen">&#215;</button>'

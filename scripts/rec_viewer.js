@@ -246,6 +246,227 @@
     });
 
     // ── Back/forward: restore comparison state ───────────────────
+
+  // ── #11 diff highlighting ──────────────────────────────────────
+  const DIFF_DISABLED_ATTR = "data-rec-compare-diff-disabled";
+  const MAX_DIFF_CHARS = 50_000;
+
+  function escapeHTML(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  // Word-level diff: returns array of {type, left, right}
+  // type in "equal", "insert", "delete", "change"
+  function wordLevelDiff(left, right) {
+    const lWords = left.split(/(\s+)/);
+    const rWords = right.split(/(\s+)/);
+    const m = lWords.length, n = rWords.length;
+    // Build DP table for LCS of words
+    const dp = Array.from({length: m + 1}, () => new Array(n + 1).fill(0));
+    for (let i = 1; i <= m; i++) {
+      for (let j = 1; j <= n; j++) {
+        if (lWords[i-1] === rWords[j-1]) dp[i][j] = dp[i-1][j-1] + 1;
+        else dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
+      }
+    }
+    // Backtrack
+    const pairs = [];
+    let i = m, j = n;
+    while (i > 0 || j > 0) {
+      if (i > 0 && j > 0 && lWords[i-1] === rWords[j-1]) {
+        pairs.unshift({type: "equal", left: lWords[i-1], right: rWords[j-1]});
+        i--; j--;
+      } else if (j > 0 && (i === 0 || dp[i][j-1] >= dp[i-1][j])) {
+        pairs.unshift({type: "insert", left: "", right: rWords[j-1]});
+        j--;
+      } else {
+        pairs.unshift({type: "delete", left: lWords[i-1], right: ""});
+        i--;
+      }
+    }
+    // Merge consecutive runs of the same type
+    const merged = [];
+    for (const p of pairs) {
+      if (merged.length && merged[merged.length-1].type === p.type) {
+        merged[merged.length-1].left  += p.left;
+        merged[merged.length-1].right += p.right;
+      } else {
+        merged.push({...p});
+      }
+    }
+    return merged;
+  }
+
+  function diffMarkType(type) {
+    switch (type) {
+      case "insert":  return "diff-insert";
+      case "delete":  return "diff-delete";
+      case "change":  return "diff-change";
+      default:        return null;
+    }
+  }
+
+  function diffLabel(type) {
+    switch (type) {
+      case "insert":  return "eingefügt";
+      case "delete":  return "gelöscht";
+      case "change":  return "geändert";
+      default:        return null;
+    }
+  }
+
+  function renderDiffHTML(pairs) {
+    return pairs.map(p => {
+      const cls = diffMarkType(p.type);
+      if (!cls) return `<span>${escapeHTML(p.left)}</span>`;
+      const label = diffLabel(p.type);
+      return `<span class="${cls}" aria-label="${label}">` +
+             `<span>${escapeHTML(p.left)}</span>` +
+             (p.type !== "delete" ? `<span>${escapeHTML(p.right)}</span>` : "") +
+             `</span>`;
+    }).join("");
+  }
+
+  // Find plain text from candidate panel
+  function extractText(candidates, id) {
+    const c = candidates.find(x => x.dataset.recognitionPanel === id) ||
+              candidates.find(x => x.dataset.recognitionPanel === "selected");
+    if (!c) return null;
+    const pre = c.querySelector(".rec-text");
+    return pre ? pre.textContent : null;
+  }
+
+  function diffContent(leftText, rightText) {
+    if (leftText === null || rightText === null) {
+      return `<p class="notice notice--warning">Version nicht verfügbar.</p>`;
+    }
+    const max = Math.max(leftText.length, rightText.length);
+    if (max > MAX_DIFF_CHARS) {
+      return `<p class="notice">Diff für sehr lange Texte (${max} Zeichen) nicht verfügbar. ` +
+             `Zum Vergleichen bitte kürzere Versionen wählen.</p>`;
+    }
+    if (leftText.trim() === rightText.trim()) {
+      return `<p class="notice">Die beiden Versionen sind identisch.</p>`;
+    }
+    const pairs = wordLevelDiff(leftText, rightText);
+    // Detect change: equal words on one side, insert+delete on other = "change"
+    const simplified = pairs.map(p => {
+      // If left and right are both non-empty and different, mark as "change"
+      if (p.type !== "equal" && p.left && p.right) {
+        return {type: "change", left: p.left, right: p.right};
+      }
+      return p;
+    });
+    return renderDiffHTML(simplified);
+  }
+
+  // ── Inject diff toggle button ──────────────────────────────────
+  // Find or create the diff toggle button in the pane toolbar
+  function ensureDiffToggle(pane) {
+    if (pane.querySelector("[data-rec-compare-diff-toggle]")) return;
+    const btn = document.createElement("button");
+    btn.setAttribute("class", "btn-rec-compare btn-rec-compare-diff");
+    btn.setAttribute("type", "button");
+    btn.setAttribute("data-rec-compare-diff-toggle", "");
+    btn.setAttribute("aria-pressed", "false");
+    btn.setAttribute("aria-label", "Unterschiede hervorheben");
+    btn.textContent = "\u2194"; // horizontal arrow ↔
+    // Insert after the sync toggle if present, else append
+    const syncToggle = pane.querySelector("[data-rec-compare-sync-toggle]");
+    if (syncToggle) syncToggle.insertAdjacentElement("afterend", btn);
+    else pane.appendChild(btn);
+  }
+
+  // Create diff region between the two panes
+  function ensureDiffRegion() {
+    if (wrap.querySelector("[data-rec-compare-diff]")) return wrap.querySelector("[data-rec-compare-diff]");
+    const el = document.createElement("div");
+    el.setAttribute("class", "rec-compare-diff");
+    el.setAttribute("data-rec-compare-diff", "");
+    el.setAttribute("role", "region");
+    el.setAttribute("aria-label", "Unterschiede");
+    el.hidden = true;
+    // Insert after the panes, before the close button toolbar
+    const toolbar = wrap.querySelector(".rec-compare-toolbar");
+    if (toolbar) toolbar.insertAdjacentElement("afterend", el);
+    else panesEl.insertBefore(el, panesEl.querySelector("[data-rec-compare-pane='right']")?.nextSibling);
+    return el;
+  }
+
+  function updateDiff(leftSelVal, rightSelVal) {
+    const diffEl  = wrap.querySelector("[data-rec-compare-diff]");
+    const toggle  = wrap.querySelector("[data-rec-compare-diff-toggle]");
+    if (!diffEl) return;
+    const disabled = diffEl.hasAttribute(DIFF_DISABLED_ATTR);
+    if (disabled) { diffEl.hidden = true; return; }
+    const leftText  = extractText(allPanels, leftSelVal);
+    const rightText = extractText(allPanels, rightSelVal);
+    diffEl.innerHTML = diffContent(leftText, rightText);
+    diffEl.hidden = false;
+  }
+
+  // Inject toggle into each pane header
+  ensureDiffToggle(leftPane);
+  ensureDiffToggle(rightPane);
+  const diffEl = ensureDiffRegion();
+
+  // Update diff whenever selections change
+  function onDiffSelectChange(sel, pane) {
+    updatePane(pane, allPanels, sel);
+    restrictSelects(leftSel, rightSel);
+    pushcmp(leftSel.value, rightSel.value);
+    updateDiff(leftSel.value, rightSel.value);
+  }
+
+  // Re-attach select listeners to include diff update
+  leftSel.removeEventListener("change", onSelectChange);
+  rightSel.removeEventListener("change", onSelectChange);
+
+  leftSel .addEventListener("change", () => onDiffSelectChange(leftSel,  leftPane));
+  rightSel.addEventListener("change", () => onDiffSelectChange(rightSel, rightPane));
+
+  // Diff toggle button
+  for (const btn of wrap.querySelectorAll("[data-rec-compare-diff-toggle]")) {
+    btn.addEventListener("click", () => {
+      const diffRegion = wrap.querySelector("[data-rec-compare-diff]");
+      if (!diffRegion) return;
+      const isDisabled = diffRegion.hasAttribute(DIFF_DISABLED_ATTR);
+      if (isDisabled) {
+        diffRegion.removeAttribute(DIFF_DISABLED_ATTR);
+        btn.setAttribute("aria-pressed", "true");
+        btn.setAttribute("aria-label", "Unterschiede hervorheben");
+        updateDiff(leftSel.value, rightSel.value);
+      } else {
+        diffRegion.setAttribute(DIFF_DISABLED_ATTR, "");
+        diffRegion.hidden = true;
+        btn.setAttribute("aria-pressed", "false");
+        btn.setAttribute("aria-label", "Unterschiede anzeigen");
+      }
+    });
+  }
+
+  // Swap must update diff
+  injectedSwap?.addEventListener("click", () => {
+    const tmp = leftSel.value;
+    leftSel.value  = rightSel.value;
+    rightSel.value = tmp;
+    updatePane(leftPane,  allPanels, leftSel);
+    updatePane(rightPane, allPanels, rightSel);
+    restrictSelects(leftSel, rightSel);
+    pushcmp(leftSel.value, rightSel.value);
+    updateDiff(leftSel.value, rightSel.value);
+  });
+
+  // ── Initial diff render ────────────────────────────────────────
+  if (leftSel.value && rightSel.value) {
+    updateDiff(leftSel.value, rightSel.value);
+  }
+
+
+
     addEventListener("popstate", () => {
       const { left, right } = readcmp();
       if (!left && !right) { closeOverlay(wrap); return; }
