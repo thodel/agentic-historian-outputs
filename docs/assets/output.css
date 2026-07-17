@@ -271,10 +271,76 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
   border-radius: 2px;
 }
 /* Print: force all disclosures fully open */
+/* ---- Print layout (issue #24) ---- */
 @media print {
+  /* 1. Progressive disclosures and rec-panels: always expanded */
   .page-section-disclosure > summary { display: none; }
   .page-section-disclosure > *:not(summary) { display: block !important; }
+  .rec-panel > summary { display: none; }
+  .rec-panel { border: none; }
+  .rec-panel[open] > summary { display: none; }
+  .rec-panel > *:not(summary) { display: block !important; }
+  .rec-inventory > summary { display: none; }
+  .rec-inventory > *:not(summary) { display: block !important; }
+
+  /* 2. Remove sticky and interactive navigation chrome */
+  .page-section-nav { display: none; }
+  .evidence-toolbar { display: none; }
+  .workspace-divider { display: none; }
+  .source-page-nav { display: none; }
+
+  /* 3. Remove comparison UI (not meaningful in print) */
+  .btn-rec-compare,
+  .btn-rec-compare-close,
+  .btn-rec-compare-swap,
+  .btn-rec-compare-diff,
+  .rec-compare { display: none; }
+
+  /* 4. Hide explanation toggle buttons */
+  .quality-explain-btn { display: none; }
+
+  /* 5. Replace interactive IIIF/image viewer with source link only */
+  .evidence-viewer { display: none; }
+
+  /* 6. Collapse evidence workspace to single column */
+  .evidence-workspace { display: block; }
+  .evidence-pane { max-height: none; overflow: visible; }
+
+  /* 7. Remove max-height from scrollable text regions so no line is clipped */
+  .transcription,
+  .rec-text {
+    max-height: none;
+    overflow: visible;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  /* 8. Ensure table containers do not clip columns */
+  .table-scroll { overflow: visible; max-width: 100%; }
+
+  /* 9. Page-break control: keep semantic units together */
+  .output-header { page-break-inside: avoid; break-inside: avoid; }
+  .output-status-bar { page-break-inside: avoid; break-inside: avoid; }
+  .notice { page-break-inside: avoid; break-inside: avoid; }
+  h2 { page-break-after: avoid; break-after: avoid; }
+  h3 { page-break-after: avoid; break-after: avoid; }
+  .rec-meta { page-break-inside: avoid; break-inside: avoid; }
+
+  /* 10. Print the canonical URL after every link in the citation section */
+  #citation a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: .82em;
+    color: #444;
+    word-break: break-all;
+  }
+
+  /* 11. Show the rec-selector label text but hide the switcher buttons */
+  .rec-selector ul { display: none; }
+
+  /* 12. Body overflow: no clipping */
+  body { overflow: visible; }
 }
+/* ---- end #24 ---- */
 /* High-contrast */
 @media (forced-colors: active) {
   .page-section-summary { border-top-color: ButtonText; }
