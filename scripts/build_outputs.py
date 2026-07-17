@@ -15,6 +15,18 @@ from datetime import datetime
 from pathlib import Path
 from build_recognitions import build_recognition_section, write_package
 from source_references import normalize_source_reference, public_url
+
+# Epic 3 quality vocabulary (issue #21 status header)
+try:
+    from quality import (
+        legacy_qa_score, detect_degeneration,
+        explanation_button, explanation_block,
+    )
+except ImportError:  # pragma: no cover
+    def legacy_qa_score(v): return (False, "")  # type: ignore[misc]
+    def detect_degeneration(t, c=None): return (False, "")  # type: ignore[misc]
+    def explanation_button(k, s=""): return ""  # type: ignore[misc]
+    def explanation_block(k, s=""): return ""  # type: ignore[misc]
 from urllib.parse import urlparse
 from xml.sax.saxutils import escape as xml_escape
 
@@ -188,6 +200,159 @@ def evidence_workspace(data: dict, doc_id: str, transcription: str,
 </div>'''
 
 
+# ---------------------------------------------------------------------------
+# Issue #21 — redesigned document status header
+# ---------------------------------------------------------------------------
+
+_REVIEW_MAP = {
+    "human-verified":    ("human-verified",    "\u2713 Menschlich verifiziert"),
+    "human-reviewed":    ("human-reviewed",    "\u007e Menschlich gepr\u00fcft"),
+    "machine-generated": ("machine-generated", "\u2699 Maschinell erzeugt"),
+}
+
+
+def _count_recognition_problems(recognitions: list) -> int:
+    """Return the number of failed, empty, or degenerate recognition candidates."""
+    count = 0
+    for cand in recognitions:
+        if not isinstance(cand, dict):
+            continue
+        error = cand.get("error") or cand.get("status", "")
+        text = cand.get("text") or ""
+        if error:
+            count += 1
+        elif not text:
+            count += 1
+        else:
+            try:
+                conf = cand.get("confidence")
+                is_deg, _ = detect_degeneration(text, float(conf) if conf is not None else None)
+            except (TypeError, ValueError):
+                is_deg = False
+            if is_deg:
+                count += 1
+    return count
+
+
+def build_status_header(
+    doc_id: str,
+    review: str,
+    qa: object,
+    pages: str,
+    is_test: bool,
+    recognitions: list,
+) -> str:
+    """Build the redesigned document status header (issue #21).
+
+    Replaces the ambiguous generic QA percentage with typed quality indicators
+    and provides semantically meaningful, accessible verification-status badges.
+    Warnings (failed/degenerate candidates) use both icon text and CSS colour so
+    they are not conveyed by colour alone.
+    """
+    review_norm = review.strip().lower()
+    cls, badge_label = _REVIEW_MAP.get(review_norm, ("machine-generated", "\u2699 Maschinell erzeugt"))
+
+    # Verification-status badge + optional accessible explanation
+    status_btn = explanation_button("verification_needed", "hdr") if cls != "human-verified" else ""
+    status_badge = (
+        f'<span class="output-status-badge output-status-badge--{cls}"'
+        f' data-review-status="{html.escape(review)}">'
+        f'{badge_label}'
+        f'{status_btn}'
+        f'</span>'
+    )
+
+    # Pages badge (omit when unknown)
+    pages_badge = (
+        f'<span class="output-status-badge output-status-badge--pages">'
+        f'{html.escape(pages)}&thinsp;Seiten'
+        f'</span>'
+        if pages and pages != "Nicht angegeben" else ""
+    )
+
+    # Recognition-problem warning badge
+    problem_badge = ""
+    if isinstance(recognitions, list) and recognitions:
+        n_problems = _count_recognition_problems(recognitions)
+        if n_problems:
+            noun = "Erkennungsproblem" + ("e" if n_problems != 1 else "")
+            prob_btn = explanation_button("failed", "hdr")
+            problem_badge = (
+                f'<span class="output-status-badge output-status-badge--warning"'
+                f' role="img" aria-label="Warnung: {n_problems} {noun}">'
+                f'\u26a0 {n_problems}\u2009{noun}'
+                f'{prob_btn}'
+                f'</span>'
+            )
+
+    # Legacy-QA badge — typed, never labelled as accuracy
+    legacy_badge = ""
+    is_legacy, legacy_label = legacy_qa_score(qa)
+    if is_legacy:
+        lqa_btn = explanation_button("legacy_qa", "hdr")
+        legacy_badge = (
+            f'<span class="output-status-badge output-status-badge--legacy">'
+            f'{html.escape(legacy_label)}{lqa_btn}'
+            f'</span>'
+        )
+
+    # Assemble status bar
+    bar_parts = [p for p in [status_badge, pages_badge, problem_badge, legacy_badge] if p]
+    status_bar = (
+        '<div class="output-status-bar" role="group"'
+        ' aria-label="Verifikationsstatus und Qualit\u00e4t">'
+        + "".join(bar_parts)
+        + '</div>'
+    )
+
+    # Explanation blocks (hidden, toggled by buttons above)
+    expl_html = ""
+    if cls != "human-verified":
+        expl_html += explanation_block("verification_needed", "hdr")
+    if is_legacy:
+        expl_html += explanation_block("legacy_qa", "hdr")
+    if problem_badge:
+        expl_html += explanation_block("failed", "hdr")
+
+    # Interpretation notice — differentiated by verification level
+    if cls == "human-verified":
+        notice = (
+            '<p class="notice notice--ok">'
+            '<strong>Verifiziert:</strong> '
+            'Dieser Output wurde menschlich \u00fcberpr\u00fcft und als Transkription freigegeben.'
+            '</p>'
+        )
+    elif cls == "human-reviewed":
+        notice = (
+            '<p class="notice">'
+            '<strong>Gepr\u00fcft (nicht vollst\u00e4ndig verifiziert):</strong> '
+            'Dieser Output wurde gesichtet, aber nicht umfassend mit dem Original abgeglichen. '
+            'F\u00fcr Zitationen bitte die Quelle selbst pr\u00fcfen.'
+            '</p>'
+        )
+    else:
+        notice = (
+            '<p class="notice">'
+            '<strong>Maschinell erzeugt:</strong> '
+            'Dieser Output wurde automatisch erzeugt und nicht menschlich \u00fcberpr\u00fcft. '
+            'Nicht als Edition oder verifizierte Transkription zitieren.'
+            '</p>'
+        )
+
+    state_label = "Testlauf" if is_test else "Forschungsausgabe"
+    expl_line = f'  {expl_html}\n' if expl_html else ''
+    return (
+        '<header class="output-header page-section page-section--identity"'
+        ' data-page-section="identity">\n'
+        f'  <p class="output-kicker">{html.escape(state_label)}</p>'
+        f'<h1>{html.escape(doc_id)}</h1>\n'
+        f'  {status_bar}\n'
+        + expl_line
+        + f'  {notice}\n'
+        '</header>'
+    )
+
+
 def build_document(path: Path, entity_index: dict) -> bool:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -264,9 +429,7 @@ license: "LicenseRef-Not-Specified"
     ) or "<li>Noch keine Git-Historie verfügbar.</li>"
 
     qa = meta.get("qa_score")
-    qa_text = f"{float(qa):.0%}" if isinstance(qa, (int, float)) else "Nicht angegeben"
     pages = value(meta.get("pages")) or "Nicht angegeben"
-    state_label = "Testlauf" if is_test else "Forschungsausgabe"
     field_table = f'''<div class="table-scroll"><table><thead><tr><th>Feld</th><th>Wert</th><th>Sicherheit</th><th>Begründung</th><th>Nachweis</th></tr></thead><tbody>{''.join(uncertainty_rows) or '<tr><td colspan="5">Keine strukturierten Beschreibungsfelder verfügbar.</td></tr>'}</tbody></table></div>'''
 
     # Recognition viewer (progressive enhancement — issue #2)
@@ -282,12 +445,15 @@ license: "LicenseRef-Not-Specified"
 
     evidence = evidence_workspace(data, doc_id, transcript, recognition_section)
 
-    page = frontmatter(doc_id) + f'''<nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> {html.escape(doc_id)}</nav>
-<header class="output-header page-section page-section--identity" data-page-section="identity">
-  <p class="output-kicker">{state_label}</p><h1>{html.escape(doc_id)}</h1>
-  <div class="output-status"><span>{html.escape(review)}</span><span>QA {qa_text}</span><span>{pages} Seiten</span></div>
-  <p class="notice"><strong>Interpretationsstatus:</strong> Dieser Output wurde automatisch erzeugt. Nicht als Edition oder verifizierte Transkription zitieren, sofern der Status nicht ausdrücklich „human-verified“ lautet.</p>
-</header>
+    _header = build_status_header(
+        doc_id=doc_id,
+        review=review,
+        qa=qa,
+        pages=pages,
+        is_test=is_test,
+        recognitions=data.get("recognitions", []) or [],
+    )
+    page = frontmatter(doc_id) + f'<nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> {html.escape(doc_id)}</nav>\n' + _header + f'''
 
 {evidence}
 
