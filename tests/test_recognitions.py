@@ -143,7 +143,9 @@ class RecognitionContractTests(unittest.TestCase):
 
     def test_no_js_panels_are_semantic_details(self):
         markup = build_recognition_section([rec(), rec("kraken")], "doc", "fused")
-        self.assertEqual(markup.count('<details class="rec-panel"'), 3)
+        # Count all details tags with rec-panel class (base "rec-panel" or "rec-panel rec-panel--...")
+        import re
+        self.assertEqual(len(re.findall(r'<details class="rec-panel', markup)), 3)
         self.assertIn("<summary>", markup)
 
     def test_failed_candidate_has_no_download(self):

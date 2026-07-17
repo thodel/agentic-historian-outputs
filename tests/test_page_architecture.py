@@ -70,7 +70,7 @@ class PageArchitectureTests(unittest.TestCase):
         })
         page = self.parse(markup)
         self.assertIn("recognitions", page.sections)
-        self.assertIn("Erkennung fehlgeschlagen", markup)
+        self.assertIn("rec-panel--error", markup)
 
     def test_stable_deep_links_and_heading_hierarchy(self):
         page = self.parse(self.render({"transcription": "text", "recognitions": [recognition()]}))

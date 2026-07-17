@@ -1,13 +1,13 @@
 """Accessible recognition-candidate rendering for generated output pages.
 
 This module is the Epic 5 reference implementation for issue #29
-(candidate-level confidence and failure indicators) and issue #31
-(reference-based CER/WER with provenance).
+(candidate-level confidence with scope, failure states, degeneration) and
+issue #31 (reference-based CER/WER with provenance).
 
 It uses scripts/quality as the canonical source for all quality vocabulary,
 provenance contract, degeneration detection, and explanation keys.
 It uses scripts/recognition_status as the canonical source for all error
-taxonomy, public message derivation, and sanitisation (issue #49).
+taxonomy, public message derivation, and sanitisation (issues #49, #51).
 """
 
 from __future__ import annotations
@@ -386,6 +386,7 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
     - #29: candidate-level confidence with scope, failure states, degeneration
     - #31: reference-based CER/WER with provenance when reference_eval is provided
     - #30: accessible explanation buttons + blocks for all metric types
+    - #51: typed recognition-status taxonomy visible in viewer (StatusCode, retryable flag)
     """
     if not recognitions:
         return ""
@@ -406,25 +407,38 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
 
     links, panels = [], []
     for candidate in candidates:
+        # Issue #51: normalise to typed Status — gives us code, retryable,
+        # complete, and public_msg for the viewer and inventory nav.
+        norm = recognition_status.normalize(candidate)
+        code = norm.code
+        retryable = norm.retryable
+        complete = norm.complete
+        public_msg = norm.public_msg
+
         cid = candidate["id"]
         label = _engine_label(candidate["engine"])
         if candidate["model_id"]:
             label += f" · {candidate['model_id']}"
 
-        # Failure state: distinct from zero-confidence success (#29)
         is_failed = bool(candidate["error"])
         is_degenerate = candidate.get("is_degenerate", False)
 
-        if is_failed:
-            if is_degenerate:
-                status = "Degeneriert"
-                status_class = "degenerate"
-            else:
-                status = "Fehlgeschlagen"
-                status_class = "failed"
-        else:
+        # Map StatusCode to the CSS class vocabulary used in the viewer
+        if code in ("success", "empty"):
             status = "Erfolgreich"
             status_class = "ok"
+        elif code == "degenerate":
+            status = "Degeneriert"
+            status_class = "degenerate"
+        elif code == "missing":
+            status = "Fehlgeschlagen"
+            status_class = "failed"
+        elif code in recognition_status.RETRYABLE:
+            status = public_msg
+            status_class = "failed"
+        else:
+            status = public_msg
+            status_class = "failed"
 
         # Issue #29: show typed status badge, not just text
         status_badge = quality_badge(
@@ -438,11 +452,25 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
             ),
         )
 
+        # Build aria-label for the panel so screen readers announce the status
+        aria_status = f"{label} — {status}"
+        if retryable:
+            aria_status += " (wiederholbar)"
+
+        # Issue #51: mark error panels with rec-panel--error for CSS differentiation
+        panel_classes = "rec-panel"
+        if is_failed:
+            panel_classes += " rec-panel--error"
+        if candidate["selected"]:
+            panel_classes += " rec-panel--selected"
+
         links.append(
             f'<li><a href="#recognition-{cid}" data-recognition-select="{cid}" '
             f'data-page="{html.escape(candidate["page"], quote=True)}" '
             f'data-engine="{html.escape(candidate["engine"], quote=True)}" '
             f'data-model="{html.escape(candidate["model_id"], quote=True)}" '
+            f'data-status-code="{html.escape(code, quote=True)}" '
+            f'data-retryable={"true" if retryable else "false"} '
             f'aria-controls="recognition-{cid}">{html.escape(label)}</a> '
             f'<span class="rec-status rec-status--{status_class}">{status}</span></li>'
         )
@@ -456,10 +484,11 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
         )
 
         if is_failed:
-            # Issue #29: failed candidates show error notice, NEVER a zero-confidence success state
+            # Issue #51: show the typed Status.public_msg, not just "Erkennung fehlgeschlagen"
+            # Include the specific error detail for human review.
             content = (
                 f'<div class="notice notice--warning rec-error">'
-                f'<strong>Erkennung fehlgeschlagen.</strong> '
+                f'<strong>{html.escape(public_msg)}</strong><br>'
                 f'{html.escape(candidate["error"])}</div>'
             )
             confidence_dl = ""
@@ -473,7 +502,9 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
         # Issue #31: add reference evaluation provenance if available
         ref_eval_html = _build_ref_eval_html(candidate) if candidate.get("reference_eval") else ""
 
-        panels.append(f'''<details class="rec-panel" id="recognition-{cid}" data-recognition-panel="{cid}" data-page="{html.escape(candidate["page"], quote=True)}" data-engine="{html.escape(candidate["engine"], quote=True)}" data-model="{html.escape(candidate["model_id"], quote=True)}"{' open' if candidate["selected"] else ''}>
+        panels.append(f'''<details class="{panel_classes}" id="recognition-{cid}" data-recognition-panel="{cid}" data-page="{html.escape(candidate["page"], quote=True)}" data-engine="{html.escape(candidate["engine"], quote=True)}" data-model="{html.escape(candidate["model_id"], quote=True)}" data-status-code="{html.escape(code, quote=True)}" data-retryable={"true" if retryable else "false"} data-complete={"true" if complete else "false"}
+  aria-label="{html.escape(aria_status, quote=True)}"
+  {' open' if candidate["selected"] else ''}>
 <summary>{html.escape(label)}{' — ausgewählt' if candidate["selected"] else ''}</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>{html.escape(candidate["engine"])}</dd></div>
@@ -482,6 +513,7 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
 {confidence_dl}
 <div><dt>Zeichen</dt><dd>{len(candidate["text"])}</dd></div>
 <div><dt>Status</dt><dd>{status_badge}</dd></div>
+<div><dt>Code</dt><dd><code>{html.escape(code)}</code>{' — wiederholbar' if retryable else ''}</dd></div>
 </dl>
 {content}
 {ref_eval_html}
