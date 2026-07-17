@@ -6,6 +6,8 @@ This module is the Epic 5 reference implementation for issue #29
 
 It uses scripts/quality as the canonical source for all quality vocabulary,
 provenance contract, degeneration detection, and explanation keys.
+It uses scripts/recognition_status as the canonical source for all error
+taxonomy, public message derivation, and sanitisation (issue #49).
 """
 
 from __future__ import annotations
@@ -50,6 +52,23 @@ except ImportError:
     def explanation_button(key): return ""
     def explanation_block(key): return ""
 
+try:
+    from recognition_status import public_error_message
+except ImportError:
+    # Fallback when recognition_status is not yet available (e.g., during initial bootstrap)
+    def public_error_message(error):
+        message = str(error or "").strip()
+        lowered = message.casefold()
+        if not message:
+            return ""
+        if "timed out" in lowered or "timeout" in lowered:
+            return "Der Erkennungsdienst hat das Zeitlimit uberschritten."
+        if "unavailable" in lowered or "connection" in lowered:
+            return "Der Erkennungsdienst war nicht erreichbar."
+        if "unsupported" in lowered or "not found" in lowered:
+            return "Das angeforderte Erkennungsmodell war nicht verfügbar."
+        return "Der Erkennungsversuch ist fehlgeschlagen."
+
 
 # Backward-compatible wrapper for test_recognitions.py (origin/main).
 def _confidence(confidence: object) -> str:
@@ -72,18 +91,12 @@ def _safe_slug(value: object, fallback: str = "candidate") -> str:
 
 
 def _public_error(error: object) -> str:
-    """Return a useful public message without endpoints, paths, or credentials."""
-    message = str(error or "").strip()
-    lowered = message.casefold()
-    if not message:
-        return ""
-    if "timed out" in lowered or "timeout" in lowered:
-        return "Der Erkennungsdienst hat das Zeitlimit überschritten."
-    if "unavailable" in lowered or "connection" in lowered:
-        return "Der Erkennungsdienst war nicht erreichbar."
-    if "unsupported" in lowered or "not found" in lowered:
-        return "Das angeforderte Erkennungsmodell war nicht verfügbar."
-    return "Der Erkennungsversuch ist fehlgeschlagen."
+    """Return a useful public message without endpoints, paths, or credentials.
+
+    Delegates to ``recognition_status.public_error_message`` which applies the
+    canonical status taxonomy (issue #49) and sanitisation patterns.
+    """
+    return public_error_message(error)
 
 
 def _recognition_path(candidate: dict) -> str:

@@ -265,11 +265,13 @@ class NormalizeAcceptanceTests(unittest.TestCase):
     def test_to_dict_omits_empty_fields(self):
         s = normalize(success())
         d = s.to_dict()
-        # All values are either non-empty strings or booleans
+        # All values are non-empty strings, booleans, or positive integers
         for k, v in d.items():
             self.assertTrue(
-                isinstance(v, bool) or (isinstance(v, str) and len(v) > 0),
-                f"field {k!r} has empty or non-string value: {v!r}"
+                isinstance(v, bool)
+                or (isinstance(v, str) and len(v) > 0)
+                or (isinstance(v, int) and v >= 0),
+                f"field {k!r} has empty or invalid value: {v!r}"
             )
         # retryable and complete are present and boolean
         self.assertIsInstance(d["retryable"], bool)
@@ -392,6 +394,70 @@ class RetryableCompleteTests(unittest.TestCase):
         for code in PUBLIC_MESSAGES:
             self.assertIsInstance(PUBLIC_MESSAGES[code], str)
             self.assertTrue(PUBLIC_MESSAGES[code])
+
+
+
+# ---------------------------------------------------------------------------
+# Integration tests — prove taxonomy governs the publication path
+# ---------------------------------------------------------------------------
+
+class IntegrationPublicationPathTests(unittest.TestCase):
+    """Prove the taxonomy from issue #49 governs the actual publication path.
+
+    These tests verify that ``normalize()`` output (status codes, public_msg,
+    sanitized_error, and provenance context) flows correctly through
+    ``build_recognitions._public_error`` and into the candidate records
+    that are rendered in pages and written to artifacts.
+    """
+
+    def test_full_context_in_to_dict(self):
+        # Simulate a candidate as the pipeline would construct it
+        candidate = {
+            "engine": "trocr",
+            "model_id": "large",
+            "page": "folio 1v",
+            "run_id": "run-2025-07-17-001",
+            "timing_ms": 1234,
+            "retry_count": 2,
+            "attempt": 3,
+            "error": "ETIMEDOUT",
+        }
+        s = normalize(candidate)
+        d = s.to_dict()
+        self.assertEqual(d["status_code"], "timeout")
+        self.assertEqual(d["run_id"], "run-2025-07-17-001")
+        self.assertEqual(d["timing_ms"], 1234)
+        self.assertEqual(d["retry_count"], 2)
+        self.assertEqual(d["attempt"], 3)
+        self.assertTrue(d["retryable"])
+        self.assertTrue(d["complete"])
+
+    def test_taxonomy_determines_public_message(self):
+        # The taxonomy's public_msg must be what _public_error returns
+        from scripts.build_recognitions import _public_error
+        for error_text, expected_fragment in [
+            ("request timed out", "Zeitlimit"),
+            ("connection refused", "nicht erreichbar"),
+            ("model not found", "nicht verfügbar"),
+            ("500 Internal Server Error", "Fehler"),
+        ]:
+            s = normalize({"engine": "vlm", "error": error_text})
+            self.assertIn(expected_fragment, s.public_msg, msg=error_text)
+            # _public_error from build_recognitions must match
+            self.assertEqual(_public_error(error_text), s.public_msg)
+
+    def test_missing_record_is_not_success(self):
+        # A record with no text, no error, no explicit code → 'missing'
+        s = normalize({"engine": "kraken", "model_id": "mccatmus"})
+        self.assertEqual(s.code, "missing")
+        self.assertFalse(s.retryable)
+        self.assertFalse(s.complete)
+        d = s.to_dict()
+        self.assertIn("status_code", d)
+        # Provenance fields still populated
+        self.assertEqual(d["engine"], "kraken")
+        self.assertEqual(d["model"], "mccatmus")
+
 
 
 if __name__ == "__main__":

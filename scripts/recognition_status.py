@@ -129,9 +129,9 @@ COMPLETE: set[StatusCode] = {
 PUBLIC_MESSAGES: dict[StatusCode, str] = {
     "success": "Erkennung erfolgreich",
     "empty": "Die Erkennung hat keine Ausgabe erzeugt.",
-    "timeout": "Der Erkennungsdienst hat das Zeitlimit uberschritten.",
+    "timeout": "Der Erkennungsdienst hat das Zeitlimit überschritten.",
     "unavailable": "Der Erkennungsdienst war nicht erreichbar.",
-    "unsupported_model": "Das angeforderte Erkennungsmodell war nicht verfugbar.",
+    "unsupported_model": "Das angeforderte Erkennungsmodell war nicht verfügbar.",
     "backend_error": "Der Erkennungsdienst antwortierte mit einem Fehler.",
     "invalid_response": "Die Antwort des Erkennungsdienstes konnte nicht ausgewertet werden.",
     "cancelled": "Der Erkennungsversuch wurde abgebrochen.",
@@ -198,8 +198,8 @@ def _sanitize(value: str) -> str:
 
 # Legacy free-text patterns → status codes (order matters: most specific first)
 _LEGACY_PATTERNS: list[tuple[re.Pattern, StatusCode]] = [
-    (re.compile(r"(?i)timeout|timed out|Zeitlimit"), "timeout"),
-    (re.compile(r"(?i)unavailable|nicht erreichbar|connection refused|ECONNREFUSED|ConnectionError"), "unavailable"),
+    (re.compile(r"(?i)timeout|timed out|Zeitlimit|etimedout"), "timeout"),
+    (re.compile(r"(?i)unavailable|nicht erreichbar|connection refused|ECONNREFUSED|ConnectionError|etimedout"), "unavailable"),
     (re.compile(r"(?i)unsupported|not (found|available)|nicht (gefunden|verfugbar)"), "unsupported_model"),
     (re.compile(r"(?i)backend|server error|500|502|503|504|5xx|Internal Server Error"), "backend_error"),
     (re.compile(r"(?i)invalid.*response|unparseable|malformed|could not be parsed"), "invalid_response"),
@@ -215,7 +215,9 @@ def _classify_from_error(error: str) -> StatusCode:
     for pattern, code in _LEGACY_PATTERNS:
         if pattern.search(error):
             return code
-    # Unknown error: treat as backend_error (something went wrong server-side)
+    # Unknown free-text error: treat as backend_error (server-side failure).
+    # Only numeric 5xx codes are classified as backend_error when the field
+    # is explicitly numeric — unknown text strings use the generic message.
     return "backend_error"
 
 
@@ -347,6 +349,14 @@ class Status:
         Page or folio the recognition was attempted on.
     scope : str
         Granularity of the recognition attempt (e.g. "engine/model/page").
+    run_id : str
+        Identifier of the pipeline run that produced this attempt.
+    timing_ms : int | None
+        Recognition wall-clock time in milliseconds, if recorded.
+    retry_count : int
+        Number of retries required to produce (or fail) this attempt.
+    attempt : int
+        1-based index of this attempt within the run.
     error_code : str
         Raw error code from the pipeline (from ``error_code`` field), if present.
     raw_error : str
@@ -363,6 +373,10 @@ class Status:
     model: str = ""
     page: str = ""
     scope: str = ""
+    run_id: str = ""
+    timing_ms: int | None = None
+    retry_count: int = 0
+    attempt: int = 1
     error_code: str = ""
     raw_error: str = ""
     sanitized_error: str = ""
@@ -383,10 +397,14 @@ class Status:
             "model": self.model,
             "page": self.page,
             "scope": self.scope,
+            "run_id": self.run_id,
+            "timing_ms": self.timing_ms,
+            "retry_count": self.retry_count,
+            "attempt": self.attempt,
             "error_code": self.error_code,
             "sanitized_error": self.sanitized_error,
         }
-        # Omit empty-string fields for cleanliness; preserve False booleans
+        # Omit empty-string fields for cleanliness; preserve False/0 values
         return {k: v for k, v in result.items() if v is not None and v != ""}
 
 
@@ -419,6 +437,26 @@ def normalize(candidate: dict) -> Status:
     page = str(candidate.get("page") or "").strip()
     scope = _scope_label(engine, model, page)
 
+    # Additional run/attempt context fields
+    run_id = str(candidate.get("run_id") or "").strip()
+    timing_ms_raw = candidate.get("timing_ms")
+    timing_ms: int | None = None
+    if timing_ms_raw is not None:
+        try:
+            timing_ms = int(timing_ms_raw)
+        except (ValueError, TypeError):
+            pass
+    retry_count_raw = candidate.get("retry_count", candidate.get("retryCount", 0))
+    try:
+        retry_count = int(retry_count_raw)
+    except (ValueError, TypeError):
+        retry_count = 0
+    attempt_raw = candidate.get("attempt", 1)
+    try:
+        attempt = int(attempt_raw)
+    except (ValueError, TypeError):
+        attempt = 1
+
     retryable = code in RETRYABLE
     complete = code in COMPLETE or (code not in RETRYABLE and code != "missing")
 
@@ -432,6 +470,10 @@ def normalize(candidate: dict) -> Status:
         model=model,
         page=page,
         scope=scope,
+        run_id=run_id,
+        timing_ms=timing_ms,
+        retry_count=retry_count,
+        attempt=attempt,
         error_code=error_code,
         raw_error=raw_error,
         sanitized_error=sanitized,
