@@ -1,7 +1,7 @@
 {
   "artifacts": [
     {
-      "characters": 2353,
+      "characters": 2466,
       "engine": "fusion",
       "error": null,
       "error_path": null,
@@ -12,7 +12,7 @@
       "status": "success"
     },
     {
-      "characters": 2343,
+      "characters": 2327,
       "engine": "vlm",
       "error": null,
       "error_path": null,
@@ -36,7 +36,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst hat das Zeitlimit überschritten.",
+      "error": "Degenerierte Erkennung: sehr niedrige Engine-Konfidenz",
       "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
       "id": "trocr-trocr-medieval-escriptmask",
       "model_id": "trocr-medieval-escriptmask",
@@ -58,13 +58,68 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst hat das Zeitlimit überschritten.",
+      "error": "Degenerierte Erkennung: sehr niedrige Engine-Konfidenz",
       "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
       "id": "trocr-trocr-kurrent-xvi-xvii",
       "model_id": "trocr-kurrent-xvi-xvii",
       "page": null,
       "path": null,
       "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortierte mit einem Fehler.",
+      "error_path": "recognitions/kraken-kraken-medieval_charters.error.txt",
+      "id": "kraken-kraken-medieval-charters",
+      "model_id": "kraken-medieval_charters",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Degenerierte Erkennung: sehr niedrige Engine-Konfidenz",
+      "error_path": "recognitions/trocr-trocr-essoins-middle-latin.error.txt",
+      "id": "trocr-trocr-essoins-middle-latin",
+      "model_id": "trocr-essoins-middle-latin",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 2438,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-early-modern-german",
+      "model_id": "kraken-early_modern_german",
+      "page": null,
+      "path": "recognitions/kraken-kraken-early_modern_german.txt",
+      "status": "success"
+    },
+    {
+      "characters": 2083,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-early-modern-german-16",
+      "model_id": "kraken-early_modern_german_16",
+      "page": null,
+      "path": "recognitions/kraken-kraken-early_modern_german_16.txt",
+      "status": "success"
+    },
+    {
+      "characters": 381,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-bohemian-19th",
+      "model_id": "kraken-bohemian_19th",
+      "page": null,
+      "path": "recognitions/kraken-kraken-bohemian_19th.txt",
+      "status": "success"
     }
   ],
   "doc_id": "bat",

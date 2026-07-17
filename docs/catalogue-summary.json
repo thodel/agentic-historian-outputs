@@ -22,22 +22,22 @@
       ""
     ],
     "comparison_ready": true,
-    "degenerate": 0,
+    "degenerate": 3,
     "empty": 0,
     "engines": [
       "kraken",
       "trocr",
       "vlm"
     ],
-    "failed": 2,
-    "model_count": 5,
+    "failed": 1,
+    "model_count": 10,
     "page_count": 1,
     "provenance": "current",
     "review_status": "machine-generated",
     "source_available": false,
     "source_type": "missing",
-    "successful": 3,
-    "total": 5
+    "successful": 6,
+    "total": 10
   },
   "kf": {
     "comparison_pair": null,
