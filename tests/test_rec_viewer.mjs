@@ -35,10 +35,14 @@ function fixture(href = "https://example.test/doc/?rec=kraken") {
       return selector === "[data-recognition-panel]" ? panels : links;
     },
     addEventListener(type, handler) { listeners[type] = handler; },
+    dispatchEvent(event) { listeners[event.type]?.(event); return true; },
     contains(value) { return links.includes(value); },
   };
   const context = {
     URL,
+    CustomEvent: class CustomEvent {
+      constructor(type, options = {}) { this.type = type; this.detail = options.detail; }
+    },
     window: { location: { href } },
     document: {
       querySelectorAll(selector) {

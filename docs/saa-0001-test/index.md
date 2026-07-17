@@ -42,3 +42,4 @@ title: "saa-0001-test"
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/page-sync.js' | relative_url }}" defer></script>

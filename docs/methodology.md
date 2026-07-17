@@ -19,6 +19,8 @@ Ist ein öffentlich einbettbares Bild oder IIIF-Manifest vorhanden, erscheinen Q
 
 Der integrierte Digitalisat-Viewer verwendet keine externe Viewer-Plattform. Bei IIIF lädt er das angegebene Presentation-Manifest direkt und zeigt den ersten Canvas; bei direkten Bildadressen lädt er ausschließlich dieses Bild. Beide Varianten bieten Vergrößern, Verkleinern, Zurücksetzen und Vollbild sowie eine per Tastatur erreichbare, verschiebbare Bildfläche. Manifest- und Bildfehler werden nach außen verständlich gemeldet, während der Link zur Originalquelle erhalten bleibt. Browser übertragen beim Manifestabruf keine expliziten Zugangsdaten; CORS-Regeln des Quellservers können die Einbettung dennoch verhindern.
 
+Bei mehrseitigen Ausgaben teilen Digitalisat und Erkennungsviewer denselben Seitenzustand. Ein Wechsel der Quellenseite wählt nach Möglichkeit dieselbe Engine/Modell-Familie auf der neuen Seite; die Wahl einer seitengebundenen Erkennung bewegt umgekehrt das Digitalisat. Der Parameter `page` macht diesen Zustand teilbar und unterstützt die Browsernavigation. Fehlt eine Seitenzuordnung auf einer Seite, benennt die Oberfläche die Lücke ausdrücklich und lässt die manuelle Navigation verfügbar, statt Bild und Text stillschweigend falsch zuzuordnen.
+
 ## Verarbeitung
 
 Die Pipeline verarbeitet Digitalisate oder Bildgruppen, erzeugt eine maschinelle Transkription, leitet Beschreibungsfelder ab und erkennt Personen, Orte, Organisationen sowie weitere Entitäten. Die vollständigen Verarbeitungsergebnisse bleiben pro Dokument als `pipeline.json` verfügbar.

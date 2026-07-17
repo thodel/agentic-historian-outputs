@@ -60,6 +60,23 @@ class WorkspaceTests(unittest.TestCase):
         self.assertIn('id="transcription"', transcription_pane)
         self.assertIn('id="recognitions"', transcription_pane)
 
+    def test_multi_page_mapping_renders_source_navigation_and_sync_metadata(self):
+        recognition = build_recognition_section([
+            {"engine": "kraken", "model_id": "m", "page": "p1", "text": "one"},
+            {"engine": "kraken", "model_id": "m", "page": "p2", "text": "two"},
+        ], "doc", "selected")
+        markup = evidence_workspace({
+            "iiif_manifest": "https://iiif.archive.org/item/manifest",
+            "source_pages": [
+                {"page": "p1", "canvas_url": "https://iiif.archive.org/canvas/1"},
+                {"page": "p2", "canvas_url": "https://iiif.archive.org/canvas/2"},
+            ],
+        }, "doc", "selected", recognition)
+        self.assertIn('aria-label="Quellenseite auswählen"', markup)
+        self.assertEqual(markup.count("data-source-page="), 2)
+        self.assertIn('data-page="p1" data-engine="kraken" data-model="m"', markup)
+        self.assertIn("data-page-sync-warning", markup)
+
 
 if __name__ == "__main__":
     unittest.main()

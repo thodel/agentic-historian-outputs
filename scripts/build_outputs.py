@@ -122,11 +122,19 @@ def write_tei(path: Path, doc_id: str, transcript: str, source_url: str) -> None
 def source_panel(data: dict) -> str:
     source = normalize_source_reference(data)
     url = source["url"]
-    payload = html.escape(json.dumps(source, ensure_ascii=False, separators=(",", ":")))
+    payload = json.dumps(source, ensure_ascii=False, separators=(",", ":"))
+    payload = payload.replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e")
     if url:
         escaped = html.escape(url, quote=True)
         if source["type"] in {"iiif_manifest", "image"}:
+            page_buttons = "".join(
+                f'<button type="button" data-source-page="{html.escape(page["page"], quote=True)}">{html.escape(page["page"])}</button>'
+                for page in source["pages"]
+            )
+            page_nav = (f'<nav class="source-page-nav" aria-label="Quellenseite auswählen">{page_buttons}</nav>'
+                        if len(source["pages"]) > 1 else "")
             viewer = f'''<div class="evidence-viewer" data-evidence-viewer data-source-type="{source["type"]}" data-source-url="{escaped}">
+{page_nav}
 <div class="evidence-toolbar" role="toolbar" aria-label="Digitalisat steuern">
 <button type="button" data-evidence-action="zoom-out" aria-label="Verkleinern">−</button>
 <output data-evidence-zoom aria-label="Vergrößerung">100%</output>
@@ -162,6 +170,7 @@ def evidence_workspace(data: dict, doc_id: str, transcription: str,
 <div class="evidence-pane evidence-pane--source" role="region" aria-labelledby="source-heading">{source}</div>
 <div class="workspace-divider" role="separator" aria-label="Breite von Quelle und Transkription ändern" aria-orientation="vertical" aria-valuemin="25" aria-valuemax="75" aria-valuenow="50" tabindex="0" data-workspace-divider><span aria-hidden="true">⋮</span></div>
 <div class="evidence-pane evidence-pane--transcription" role="region" aria-labelledby="transcription-heading">{transcript}{recognition_section}</div>
+<p class="notice notice--warning page-sync-warning" data-page-sync-warning role="status" hidden></p>
 </div>'''
 
 
@@ -287,6 +296,7 @@ license: "LicenseRef-Not-Specified"
 <script src="{{{{ '/assets/rec-viewer.js' | relative_url }}}}" defer></script>
 <script src="{{{{ '/assets/workspace.js' | relative_url }}}}" defer></script>
 <script src="{{{{ '/assets/evidence-viewer.js' | relative_url }}}}" defer></script>
+<script src="{{{{ '/assets/page-sync.js' | relative_url }}}}" defer></script>
 '''
     (path.parent / "index.md").write_text(page, encoding="utf-8")
     return is_test
@@ -324,6 +334,9 @@ def build() -> None:
     evidence_viewer_source = Path(__file__).with_name("evidence_viewer.js")
     (DOCS / "assets" / "evidence-viewer.js").write_text(
         evidence_viewer_source.read_text(encoding="utf-8"), encoding="utf-8")
+    page_sync_source = Path(__file__).with_name("page_sync.js")
+    (DOCS / "assets" / "page-sync.js").write_text(
+        page_sync_source.read_text(encoding="utf-8"), encoding="utf-8")
     entity_index = defaultdict(list)
     tests = []
     for path in sorted(DOCS.glob("*/pipeline.json")):
