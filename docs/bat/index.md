@@ -216,7 +216,7 @@ du ne il l escln iuten
 <div><dt>Zeichen</dt><dd>2433</dd></div>
 <div><dt>Status</dt><dd><span class="quality-badge quality-badge--degenerate" title="Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.">Degenerierte Ausgabe</span></dd></div>
 </dl>
-<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Degenerierte Erkennung: sehr niedrige Engine-Konfidenz</div>
+<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong><br>Der Erkennungsdienst antwortierte mit einem Fehler. <a href="/docs/methodology/#recognition-failures" class="rec-methodology-link" rel="noopener">Erklaerung der Fehlerkategorien</a> <span class="rec-retry-hint">— Wiederholung moeglich</span></div>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
 </details><details class="rec-panel" id="recognition-kraken-kraken-mccatmus" data-recognition-panel="kraken-kraken-mccatmus" data-page="" data-engine="kraken" data-model="kraken-mccatmus">
@@ -272,7 +272,7 @@ duene 5d olehs gettien
 <div><dt>Zeichen</dt><dd>2453</dd></div>
 <div><dt>Status</dt><dd><span class="quality-badge quality-badge--degenerate" title="Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.">Degenerierte Ausgabe</span></dd></div>
 </dl>
-<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Degenerierte Erkennung: sehr niedrige Engine-Konfidenz</div>
+<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong><br>Der Erkennungsdienst antwortierte mit einem Fehler. <a href="/docs/methodology/#recognition-failures" class="rec-methodology-link" rel="noopener">Erklaerung der Fehlerkategorien</a> <span class="rec-retry-hint">— Wiederholung moeglich</span></div>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
 </details><details class="rec-panel" id="recognition-kraken-kraken-medieval-charters" data-recognition-panel="kraken-kraken-medieval-charters" data-page="" data-engine="kraken" data-model="kraken-medieval_charters">
@@ -285,7 +285,7 @@ duene 5d olehs gettien
 <div><dt>Zeichen</dt><dd>0</dd></div>
 <div><dt>Status</dt><dd><span class="quality-badge quality-badge--degenerate" title="Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.">Degenerierte Ausgabe</span></dd></div>
 </dl>
-<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Der Erkennungsdienst antwortierte mit einem Fehler.</div>
+<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong><br>Der Erkennungsdienst antwortierte mit einem Fehler. <a href="/docs/methodology/#recognition-failures" class="rec-methodology-link" rel="noopener">Erklaerung der Fehlerkategorien</a> <span class="rec-retry-hint">— Wiederholung moeglich</span></div>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
 </details><details class="rec-panel" id="recognition-trocr-trocr-essoins-middle-latin" data-recognition-panel="trocr-trocr-essoins-middle-latin" data-page="" data-engine="trocr" data-model="trocr-essoins-middle-latin">
@@ -298,7 +298,7 @@ duene 5d olehs gettien
 <div><dt>Zeichen</dt><dd>2856</dd></div>
 <div><dt>Status</dt><dd><span class="quality-badge quality-badge--degenerate" title="Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden.">Degenerierte Ausgabe</span></dd></div>
 </dl>
-<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong> Degenerierte Erkennung: sehr niedrige Engine-Konfidenz</div>
+<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong><br>Der Erkennungsdienst antwortierte mit einem Fehler. <a href="/docs/methodology/#recognition-failures" class="rec-methodology-link" rel="noopener">Erklaerung der Fehlerkategorien</a> <span class="rec-retry-hint">— Wiederholung moeglich</span></div>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
 </details><details class="rec-panel" id="recognition-kraken-kraken-early-modern-german" data-recognition-panel="kraken-kraken-early-modern-german" data-page="" data-engine="kraken" data-model="kraken-early_modern_german">
