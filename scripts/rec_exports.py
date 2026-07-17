@@ -1,4 +1,11 @@
-"""Provenance-aware structured exports for recognition candidates."""
+"""Provenance-aware structured exports for recognition candidates.
+
+Includes:
+- candidate_json_export: stable JSON for one recognition candidate
+- candidate_tei_xml: text-only TEI for one recognition candidate
+- reference_evaluation_json_export: machine-readable JSON for a reference
+  evaluation Provenance (issue #31 — CER/WER with full provenance context)
+"""
 
 from __future__ import annotations
 
@@ -83,3 +90,58 @@ def candidate_tei_xml(candidate: dict, doc_id: str = "") -> str:
     if text:
         ET.SubElement(body, tag("p")).text = text
     return ET.tostring(root, encoding="unicode", xml_declaration=True)
+
+
+def reference_evaluation_json_export(
+    prov: object,  # quality.Provenance
+    doc_id: str = "",
+) -> str:
+    """Return stable machine-readable JSON for a reference evaluation Provenance.
+
+    The schema key is ``agentic-historian/reference-evaluation/v1``.  All
+    provenance fields are included so users can trace displayed values back to
+    the evaluation context (reference dataset, normalization, scope, version).
+
+    Parameters
+    ----------
+    prov:
+        A :class:`quality.Provenance` with ``metric_type="reference_evaluation"``.
+        Non-reference Provenance objects produce a minimal "unavailable" record.
+    doc_id:
+        The document identifier to embed in the export.
+
+    Returns
+    -------
+    str
+        Stable, sorted JSON with a trailing newline.
+    """
+    # Accept Provenance or anything with .metric_type / .to_dict()
+    metric_type = getattr(prov, "metric_type", "missing")
+    if metric_type != "reference_evaluation":
+        payload = {
+            "schema": "agentic-historian/reference-evaluation/v1",
+            "doc_id": _text(doc_id),
+            "metric_type": metric_type,
+            "status": "unavailable",
+        }
+        return json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+
+    payload = {
+        "schema": "agentic-historian/reference-evaluation/v1",
+        "doc_id": _text(doc_id),
+        "metric_type": prov.metric_type,  # type: ignore[union-attr]
+        "unit": getattr(prov, "unit", None),
+        "value": getattr(prov, "value", None),
+        "scope": getattr(prov, "scope", None),
+        "reference_name": getattr(prov, "reference_name", None),
+        "reference_version": getattr(prov, "reference_version", None),
+        "normalisation": getattr(prov, "normalisation", None),
+        "dataset": getattr(prov, "dataset", None),
+        "engine": getattr(prov, "engine", None),
+        "model": getattr(prov, "model", None),
+        "page": getattr(prov, "page", None),
+        "is_comparable": getattr(prov, "is_comparable", False),
+        "explanation_key": getattr(prov, "explanation_key", "reference_evaluation"),
+        "status": "available",
+    }
+    return json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
