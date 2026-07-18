@@ -623,6 +623,18 @@ license: "LicenseRef-Not-Specified"
         open_default=False,
     )
 
+    # schema.org/Dataset JSON-LD for structured discoverability (issue #119)
+    created_iso = history[-1][1] if history else datetime.now().isoformat()
+    modified_iso = history[0][1] if history else created_iso
+    jsonld = _jsonld_dataset(
+        doc_id=doc_id,
+        canonical=canonical,
+        source_url=source_url,
+        description_text=interpretive,
+        created_iso=created_iso,
+        modified_iso=modified_iso,
+    )
+
     page = (
         frontmatter(doc_id)
         + f'<nav class="breadcrumbs" aria-label="Brotkrumen">'
@@ -642,9 +654,55 @@ license: "LicenseRef-Not-Specified"
         + "<script src=\"{{ '/assets/evidence-viewer.js' | relative_url }}\" defer></script>\n"
         + "<script src=\"{{ '/assets/page-sync.js' | relative_url }}\" defer></script>\n"
         + "<script src=\"{{ '/assets/page-disclosure.js' | relative_url }}\" defer></script>\n"
+        + jsonld + '\n'
     )
     (path.parent / "index.md").write_text(page, encoding="utf-8")
     return is_test
+
+
+def _jsonld_dataset(doc_id: str, canonical: str, source_url: str,
+                    description_text: str, created_iso: str,
+                    modified_iso: str) -> str:
+    """Return a schema.org/Dataset JSON-LD script block for a document page.
+
+    Args:
+        doc_id: document identifier used as Dataset name
+        canonical: canonical URL of this page
+        source_url: URL of the original source, if any
+        description_text: plain-text content description (may be empty)
+        created_iso: ISO-8601 date or datetime of first publication
+        modified_iso: ISO-8601 date or datetime of most recent change
+    """
+    CC_BY = "https://creativecommons.org/licenses/by/4.0/"
+    distributions = [
+        {"@type": "DataDownload", "name": "Pipeline JSON",
+         "contentUrl": canonical + "pipeline.json", "encodingFormat": "application/json"},
+        {"@type": "DataDownload", "name": "TEI-XML Transkription",
+         "contentUrl": canonical + "transcription.tei.xml", "encodingFormat": "application/tei+xml"},
+        {"@type": "DataDownload", "name": "Entit\u00e4ten (CSV)",
+         "contentUrl": canonical + "entities.csv", "encodingFormat": "text/csv"},
+        {"@type": "DataDownload", "name": "CITATION.cff",
+         "contentUrl": canonical + "CITATION.cff",
+         "encodingFormat": "text/x-yaml"},
+    ]
+    ld: dict = {
+        "@context": "https://schema.org/",
+        "@type": "Dataset",
+        "name": f"Agentic Historian output: {doc_id}",
+        "url": canonical,
+        "creator": {"@type": "SoftwareApplication", "name": "Agentic Historian"},
+        "publisher": {"@type": "SoftwareApplication", "name": "Agentic Historian"},
+        "license": CC_BY,
+        "dateCreated": created_iso,
+        "dateModified": modified_iso,
+        "distribution": distributions,
+    }
+    if description_text:
+        ld["description"] = description_text[:500]
+    if valid_public_url(source_url):
+        ld["isBasedOn"] = source_url
+    payload = json.dumps(ld, ensure_ascii=False, indent=2)
+    return f'<script type="application/ld+json">{payload}</script>'
 
 
 def build_entity_pages(index: dict) -> None:

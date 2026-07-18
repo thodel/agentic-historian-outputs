@@ -447,6 +447,108 @@ def _card(record: Record) -> str:
 </article>'''
 
 
+# ---------------------------------------------------------------------------
+# Structured discoverability: sitemap.xml and Atom feed (issue #119)
+# ---------------------------------------------------------------------------
+SITE = "https://thodel.github.io/agentic-historian-outputs"
+_RFC3339_FMT = "%Y-%m-%dT%H:%M:%S+00:00"
+
+
+def _url_entry(loc: str, lastmod: str | None = None, priority: str = "0.7") -> str:
+    """Return a <url> element for sitemap.xml."""
+    lastmod_tag = f"<lastmod>{lastmod}</lastmod>" if lastmod else ""
+    return f"<url><loc>{loc}</loc>{lastmod_tag}<priority>{priority}</priority></url>"
+
+
+def build_sitemap(records: list) -> None:
+    """Generate docs/sitemap.xml listing all site URLs."""
+    entity_dirs = sorted(d for d in (DOCS / "entities").iterdir() if d.is_dir()) if (DOCS / "entities").exists() else []
+
+    entries: list[str] = [
+        # Static pages
+        _url_entry(f"{SITE}/",                  priority="1.0"),
+        _url_entry(f"{SITE}/methodology.html",  priority="0.8"),
+        _url_entry(f"{SITE}/about.html",        priority="0.6"),
+        _url_entry(f"{SITE}/entities/",         priority="0.7"),
+        _url_entry(f"{SITE}/tests/",            priority="0.4"),
+    ]
+    # Document pages
+    for record in records:
+        lastmod = record.created.strftime(_RFC3339_FMT)
+        entries.append(_url_entry(
+            f"{SITE}/{record.doc_id}/",
+            lastmod=lastmod,
+            priority="0.9" if not record.is_test else "0.4",
+        ))
+    # Entity pages
+    for d in entity_dirs:
+        entries.append(_url_entry(f"{SITE}/entities/{d.name}/", priority="0.5"))
+
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "\n".join(f"  {e}" for e in entries)
+        + "\n</urlset>\n"
+    )
+    (DOCS / "sitemap.xml").write_text(xml, encoding="utf-8")
+    print(f"Wrote docs/sitemap.xml with {len(entries)} URLs")
+
+
+def build_atom_feed(records: list) -> None:
+    """Generate docs/feed.xml (Atom 1.0) for newly published outputs."""
+    from xml.sax.saxutils import escape as xml_escape  # noqa: PLC0415
+
+    # Include only research outputs (not tests), newest first, capped at 20
+    feed_records = [r for r in records if not r.is_test][:20]
+
+    updated = (
+        feed_records[0].created.strftime(_RFC3339_FMT)
+        if feed_records else "1970-01-01T00:00:00+00:00"
+    )
+
+    entries_xml: list[str] = []
+    for record in feed_records:
+        entry_id = f"{SITE}/{record.doc_id}/"
+        published = record.created.strftime(_RFC3339_FMT)
+        title = f"Agentic Historian output: {record.doc_id}"
+        summary_parts = []
+        if record.document_type:
+            summary_parts.append(record.document_type)
+        if record.date_label:
+            summary_parts.append(record.date_label)
+        if record.language:
+            summary_parts.append(record.language)
+        if record.preview:
+            summary_parts.append(record.preview[:120])
+        summary = xml_escape(" · ".join(summary_parts) or "Agentic Historian dataset")
+        entries_xml.append(
+            f"  <entry>\n"
+            f"    <id>{xml_escape(entry_id)}</id>\n"
+            f"    <title>{xml_escape(title)}</title>\n"
+            f"    <link rel=\"alternate\" type=\"text/html\" href=\"{xml_escape(entry_id)}\"/>\n"
+            f"    <published>{published}</published>\n"
+            f"    <updated>{published}</updated>\n"
+            f"    <summary type=\"text\">{summary}</summary>\n"
+            f"    <rights>CC BY 4.0 https://creativecommons.org/licenses/by/4.0/</rights>\n"
+            f"  </entry>"
+        )
+
+    atom = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<feed xmlns="http://www.w3.org/2005/Atom">\n'
+        f'  <id>{SITE}/feed.xml</id>\n'
+        f'  <title>Agentic Historian — Veröffentlichte Ausgaben</title>\n'
+        f'  <link rel="self" type="application/atom+xml" href="{SITE}/feed.xml"/>\n'
+        f'  <link rel="alternate" type="text/html" href="{SITE}/"/>\n'
+        f'  <updated>{updated}</updated>\n'
+        f'  <rights>CC BY 4.0 https://creativecommons.org/licenses/by/4.0/</rights>\n'
+        + "\n".join(entries_xml)
+        + "\n</feed>\n"
+    )
+    (DOCS / "feed.xml").write_text(atom, encoding="utf-8")
+    print(f"Wrote docs/feed.xml with {len(entries_xml)} entries")
+
+
 def build() -> int:
     records = [_record(path) for path in DOCS.glob("*/pipeline.json")]
     records.sort(key=lambda item: (item.created, item.doc_id.lower()), reverse=True)
@@ -573,6 +675,8 @@ title: Katalog
     (DOCS / "index.md").write_text(page, encoding="utf-8")
     from build_outputs import build as build_outputs
     build_outputs()
+    build_sitemap(records)
+    build_atom_feed(records)
     print(f"Wrote docs/index.md with {len(records)} record(s), newest first")
     return len(records)
 
