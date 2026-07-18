@@ -358,7 +358,9 @@ def _engine_confidence_dl(candidate: dict) -> str:
     scope = confidence_scope_label(engine, model, page)
 
     explain_btn = explanation_button("engine_confidence")
-    explain_block = explanation_block("engine_confidence", page_depth=1)
+    # No inline block: the global explanation_blocks section at the bottom of
+    # build_recognition_section() carries the matching block with the same
+    # suffix-free id (quality-explanation-engine_confidence).  Issue #112.
     raw = (
         f'<details class="rec-confidence-raw">'
         f"<summary>Rohtext</summary>"
@@ -387,7 +389,7 @@ def _engine_confidence_dl(candidate: dict) -> str:
 
     return (
         f'<div><dt>Engine-Konfidenz</dt><dd {aria_label}>{conf_html} {explain_btn}'
-        f'</dd></div>{explain_block}{raw}'
+        f'</dd></div>{raw}'
     )
 
 
@@ -408,7 +410,8 @@ def _build_ref_eval_html(candidate: dict) -> str:
     norm = ref_eval.get("normalisation", "unspezifiziert")
     scope = ref_eval.get("scope", "document")
     explain_btn = explanation_button("reference_evaluation")
-    explain_block = explanation_block("reference_evaluation", page_depth=1)
+    # No inline block: the global explanation_blocks section carries the
+    # matching block with id quality-explanation-reference_evaluation.  #112.
 
     cer_html = ""
     if cer is not None:
@@ -427,7 +430,7 @@ def _build_ref_eval_html(candidate: dict) -> str:
         f"<div><dt>Normalisierung</dt><dd>{html.escape(norm)}</dd></div>"
         f"<div><dt>Scope</dt><dd>{html.escape(scope)}</dd></div>"
         f"{cer_html}{wer_html}"
-        f"</dl>{explain_btn}{explain_block}"
+        f"</dl>{explain_btn}"
         f"</details>"
     )
 
