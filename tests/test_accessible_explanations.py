@@ -75,12 +75,18 @@ class MethodologyAnchorTests(unittest.TestCase):
                           f"{key!r} missing from METHODOLOGY_ANCHORS")
 
     def test_anchors_are_absolute_paths(self):
-        """Anchor URLs must be absolute paths starting with /methodology/#."""
+        """Anchor URLs must be page-relative links starting with 'methodology.html#'.
+
+        Absolute paths like /methodology/# break on GitHub Pages when the
+        site is served under a subpath (baseurl).  Page-relative links
+        resolve correctly from any page depth when combined with the
+        page_depth parameter of explanation_block().
+        """
         for key, url in METHODOLOGY_ANCHORS.items():
             self.assertTrue(
-                url.startswith("/methodology/#"),
+                url.startswith("methodology.html#"),
                 f"METHODOLOGY_ANCHORS[{key!r}] = {url!r} does not start with "
-                f"'/methodology/#'; must be an absolute path for cross-depth resolution",
+                f"'methodology.html#'; must be a catalogue-root-relative path",
             )
 
     def test_anchor_ids_valid_css_identifiers(self):
@@ -158,16 +164,23 @@ class ExplanationBlockAccessibilityTests(unittest.TestCase):
         html = explanation_block("engine_confidence", "t5")
         self.assertIn('quality-explanation-link', html,
                       "explanation_block must include a methodology link element")
-        self.assertIn('/methodology/#', html,
-                      "explanation_block methodology link must point to /methodology/#...")
+        self.assertIn('methodology.html#', html,
+                      "explanation_block methodology link must point to methodology.html#...")
 
     def test_block_methodology_link_matches_anchor(self):
-        """The methodology link href in explanation_block must match METHODOLOGY_ANCHORS."""
+        """The methodology link href in explanation_block must match METHODOLOGY_ANCHORS.
+
+        At default depth 0 (catalogue root), the href equals the stored anchor.
+        At depth 1 (document page), a '../' prefix is prepended.
+        """
         key = "reference_evaluation"
         expected_href = METHODOLOGY_ANCHORS[key]
-        html = explanation_block(key, "t6")
-        self.assertIn(f'href="{expected_href}"', html,
-                      f"explanation_block href must be {expected_href!r}")
+        html_depth0 = explanation_block(key, "t6")
+        self.assertIn(f'href="{expected_href}"', html_depth0,
+                      f"explanation_block depth=0 href must be {expected_href!r}")
+        html_depth1 = explanation_block(key, "t6b", page_depth=1)
+        self.assertIn(f'href="../{expected_href}"', html_depth1,
+                      f"explanation_block depth=1 href must be '../{expected_href}'")
 
     def test_block_missing_key_returns_empty(self):
         """Unknown key must return an empty string."""
@@ -435,7 +448,7 @@ class RecognitionSectionExplanationTests(unittest.TestCase):
         self.assertTrue(blocks, "Must find at least one explanation block in section")
         for i, block in enumerate(blocks):
             self.assertIn(
-                "/methodology/",
+                "methodology.html#",
                 block,
                 f"Explanation block #{i} in recognition section missing methodology link",
             )
