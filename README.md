@@ -93,6 +93,22 @@ budgets in [`docs/catalogue-performance.md`](docs/catalogue-performance.md).
 | `tests/` | Python (`unittest`) and Node (`node --test`) suites with fixtures |
 | `.github/workflows/` | Test gate and catalogue auto-rebuild |
 
+## Document id policy
+
+Each document's folder name (`docs/<id>/`) becomes a permanent public URL, so ids
+must be stable and meaningful rather than collision-avoidance artifacts:
+
+- an id **must start and end with a letter or digit**;
+- internal `.`, `_` and `-` are allowed, so archival signatures such as
+  `BAT_664_r_00027` are valid;
+- **no leading or trailing separators** (`kf-`, `u-17__` are rejected).
+
+The build (`scripts/build_outputs.py` → `validate_slugs`) fails with an actionable
+message if a document violates this. When a source is re-processed, relate the new
+run to its predecessor with a `supersedes` field (see the roadmap) instead of
+mangling the id. Two ids that predate the policy (`kf-`, `u-17__`) are grandfathered
+to keep existing links working.
+
 ## Roadmap
 
 Work is organized as epic meta-issues with per-task issues:

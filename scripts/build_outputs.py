@@ -35,6 +35,57 @@ DOCS = Path("docs")
 SITE = "https://thodel.github.io/agentic-historian-outputs"
 REPO = "https://github.com/thodel/agentic-historian-outputs"
 
+# Issue #126 — document slug policy.
+#
+# A document id becomes a permanent public URL (docs/<id>/), so it must not be
+# a collision-avoidance artifact.  The publisher previously emitted ids such as
+# ``kf-`` and ``u-17__`` when a re-run's preferred id was already taken; the
+# trailing separators are meaningless and ugly.  The correct way to relate a
+# re-run to its predecessor is the ``supersedes`` field (issue #125), not a
+# mangled id.
+#
+# Policy: an id must start and end with an alphanumeric character.  Internal
+# ``.``, ``_`` and ``-`` are allowed so legitimate archival signatures such as
+# ``BAT_664_r_00027`` remain valid.
+SLUG_PATTERN = re.compile(r"^[A-Za-z0-9]([A-Za-z0-9._-]*[A-Za-z0-9])?$")
+
+# Ids that predate the policy and are already published at stable URLs.  They
+# are grandfathered so existing links keep working; the supersedes relation
+# (#125) de-emphasizes them in the catalogue.  No new id may join this set.
+GRANDFATHERED_SLUGS = frozenset({"kf-", "u-17__"})
+
+
+def slug_violation(doc_id: str) -> str:
+    """Return a human-readable reason if *doc_id* breaks the slug policy, else ""."""
+    if SLUG_PATTERN.match(doc_id):
+        return ""
+    if doc_id and (doc_id[0] in "._-" or doc_id[-1] in "._-"):
+        return "must start and end with a letter or digit (no leading/trailing '.', '_' or '-')"
+    return "may only contain letters, digits, '.', '_' and '-'"
+
+
+def validate_slugs(doc_ids: "list[str]") -> None:
+    """Fail the build if any non-grandfathered document id breaks the policy.
+
+    Raising here (rather than silently normalizing) keeps ids stable: a
+    normalized id could collide with an existing document and silently move a
+    published URL.  The publisher must choose a valid id or declare a
+    supersedes relation instead.
+    """
+    offenders = [
+        f"  - {doc_id!r}: {reason}"
+        for doc_id in sorted(doc_ids)
+        if (reason := slug_violation(doc_id)) and doc_id not in GRANDFATHERED_SLUGS
+    ]
+    if offenders:
+        raise SystemExit(
+            "Invalid document id(s) — a document id becomes a permanent URL and "
+            "must follow the slug policy (see README → Document id policy):\n"
+            + "\n".join(offenders)
+            + "\nChoose a valid id, or relate a re-run to its predecessor with a "
+            "'supersedes' field instead of a mangled id."
+        )
+
 
 def value(item: object) -> str:
     if isinstance(item, dict):
@@ -773,7 +824,9 @@ def build() -> None:
         page_disclosure_source.read_text(encoding="utf-8"), encoding="utf-8")
     entity_index = defaultdict(list)
     tests = []
-    for path in sorted(DOCS.glob("*/pipeline.json")):
+    doc_paths = sorted(DOCS.glob("*/pipeline.json"))
+    validate_slugs([path.parent.name for path in doc_paths])
+    for path in doc_paths:
         if build_document(path, entity_index):
             tests.append(path.parent.name)
     build_entity_pages(entity_index)
