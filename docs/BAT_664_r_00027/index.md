@@ -132,7 +132,7 @@ fiisdz</code></pre>
 <summary class="page-section-summary"><span class="summary-title">Downloads und Nachnutzung</span> <span class="summary-detail">5 Dateien</span></summary>
 <section id="downloads" class="page-section page-section--administrative" data-page-section="downloads" aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
 <ul><li><a href="bat-664-r-00027-recognition-package.zip">Vollständiges Erkennungspaket (ZIP)</a></li><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
-<p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
+<p><strong>Rechtehinweis:</strong> Diese Forschungsdaten stehen unter <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Namensnennung erforderlich: Agentic Historian. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Bitte prüfen Sie die Quellenrechte vor der Nachnutzung.</p></section>
 </details>
 
 <details class="page-section-disclosure" data-disclosure="citation">

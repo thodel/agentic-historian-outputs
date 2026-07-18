@@ -43,7 +43,9 @@ Nur öffentliche HTTP(S)-Adressen werden veröffentlicht. Lokale Pfade, private 
 
 ## Versionen und Nachnutzung
 
-Änderungen werden über Git protokolliert. Jede Dokumentseite verlinkt ihre Versionsgeschichte und bietet TEI-XML, CSV, JSON und eine maschinenlesbare Zitation an. Eine allgemeine Nachnutzungslizenz ist derzeit nicht festgelegt; Rechte am Digitalisat und an den zugrunde liegenden Quellen sind separat zu prüfen.
+Änderungen werden über Git protokolliert. Jede Dokumentseite verlinkt ihre Versionsgeschichte und bietet TEI-XML, CSV, JSON und eine maschinenlesbare Zitation an.
+
+Die von Agentic Historian erzeugten Forschungsdaten stehen unter [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (SPDX: `CC-BY-4.0`). Namensnennung erforderlich: Agentic Historian. Rechte am Digitalisat und an den zugrunde liegenden Quellen können separat bestehen und sind vor der Nachnutzung zu prüfen.
 
 ### Strukturierte Erkennungskandidaten
 
