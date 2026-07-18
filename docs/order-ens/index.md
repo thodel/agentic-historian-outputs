@@ -128,6 +128,7 @@ gut lesbar hier</code></pre>
 <script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/page-sync.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/page-disclosure.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/quality-explain.js' | relative_url }}" defer></script>
 <script type="application/ld+json">{
   "@context": "https://schema.org/",
   "@type": "Dataset",
