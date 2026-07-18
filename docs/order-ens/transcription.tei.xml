@@ -3,10 +3,10 @@
   <teiHeader>
     <fileDesc>
       <titleStmt><title>Machine transcription: order-ens</title></titleStmt>
-      <publicationStmt><p>Agentic Historian output; reuse rights not specified.</p></publicationStmt>
+      <publicationStmt><p>Agentic Historian output. License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).</p></publicationStmt>
       <sourceDesc><p>Source image not published</p></sourceDesc>
     </fileDesc>
-    <revisionDesc><change when="2026-07-17">Generated from pipeline.json.</change></revisionDesc>
+    <revisionDesc><change when="2026-07-18">Generated from pipeline.json.</change></revisionDesc>
   </teiHeader>
   <text><body><div type="transcription"><p>--- p1.jpg ---
 gut lesbar hier

@@ -134,7 +134,7 @@ def write_tei(path: Path, doc_id: str, transcript: str, source_url: str) -> None
   <teiHeader>
     <fileDesc>
       <titleStmt><title>Machine transcription: {xml_escape(doc_id)}</title></titleStmt>
-      <publicationStmt><p>Agentic Historian output; reuse rights not specified.</p></publicationStmt>
+      <publicationStmt><p>Agentic Historian output. License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).</p></publicationStmt>
       <sourceDesc><p>{source}</p></sourceDesc>
     </fileDesc>
     <revisionDesc><change when="{datetime.now().date().isoformat()}">Generated from pipeline.json.</change></revisionDesc>
@@ -467,7 +467,7 @@ authors:
 repository-code: "{REPO}"
 url: "{canonical}"
 date-released: "{datetime.now().date().isoformat()}"
-license: "LicenseRef-Not-Specified"
+license: "CC-BY-4.0"
 '''
     (path.parent / "CITATION.cff").write_text(citation, encoding="utf-8")
 
@@ -588,10 +588,11 @@ license: "LicenseRef-Not-Specified"
         '<li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li>'
         '<li><a href="CITATION.cff">CITATION.cff</a></li>'
         '</ul>\n'
-        '<p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit'
-        ' keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde'
-        ' liegenden Quellen können separat bestehen.'
-        ' Vor einer Weiterverwendung Rechte klären.</p>'
+        '<p><strong>Rechtehinweis:</strong> Diese Forschungsdaten stehen unter'
+        ' <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.'
+        ' Namensnennung erforderlich: Agentic Historian.'
+        ' Rechte am Digitalisat und an zugrunde liegenden Quellen können'
+        ' separat bestehen. Bitte prüfen Sie die Quellenrechte vor der Nachnutzung.</p>'
         '</section>',
         "downloads", "Downloads und Nachnutzung",
         f"{n_downloads}\u2009Dateien",
