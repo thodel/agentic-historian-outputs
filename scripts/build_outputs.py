@@ -20,13 +20,14 @@ from source_references import normalize_source_reference, public_url
 try:
     from quality import (
         legacy_qa_score, detect_degeneration,
-        explanation_button, explanation_block,
+        explanation_button, explanation_block, de_plural,
     )
 except ImportError:  # pragma: no cover
     def legacy_qa_score(v): return (False, "")  # type: ignore[misc]
     def detect_degeneration(t, c=None): return (False, "")  # type: ignore[misc]
     def explanation_button(k, s=""): return ""  # type: ignore[misc]
     def explanation_block(k, s=""): return ""  # type: ignore[misc]
+    def de_plural(n, s, p): return f"{n} {s if n == 1 else p}"  # type: ignore[misc]
 from urllib.parse import urlparse
 from xml.sax.saxutils import escape as xml_escape
 
@@ -369,9 +370,14 @@ def build_status_header(
     )
 
     # Pages badge (omit when unknown)
+    try:
+        _pages_int = int(pages) if pages and pages != "Nicht angegeben" else None
+    except (TypeError, ValueError):
+        _pages_int = None
+    _pages_word = de_plural(_pages_int or 0, "Seite", "Seiten") if _pages_int is not None else ""
     pages_badge = (
         f'<span class="output-status-badge output-status-badge--pages">'
-        f'{html.escape(pages)}&thinsp;Seiten'
+        f'{html.escape(_pages_word)}'
         f'</span>'
         if pages and pages != "Nicht angegeben" else ""
     )

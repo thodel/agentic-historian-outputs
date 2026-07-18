@@ -39,7 +39,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortierte mit einem Fehler.",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
       "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
       "id": "trocr-trocr-medieval-escriptmask",
       "model_id": "trocr-medieval-escriptmask",
@@ -62,7 +62,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortierte mit einem Fehler.",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
       "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
       "id": "trocr-trocr-kurrent-xvi-xvii",
       "model_id": "trocr-kurrent-xvi-xvii",
@@ -73,7 +73,7 @@
     {
       "characters": null,
       "engine": "kraken",
-      "error": "Der Erkennungsdienst antwortierte mit einem Fehler.",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
       "error_path": "recognitions/kraken-kraken-medieval_charters.error.txt",
       "id": "kraken-kraken-medieval-charters",
       "model_id": "kraken-medieval_charters",
@@ -84,7 +84,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortierte mit einem Fehler.",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
       "error_path": "recognitions/trocr-trocr-essoins-middle-latin.error.txt",
       "id": "trocr-trocr-essoins-middle-latin",
       "model_id": "trocr-essoins-middle-latin",

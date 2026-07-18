@@ -132,7 +132,7 @@ PUBLIC_MESSAGES: dict[StatusCode, str] = {
     "timeout": "Der Erkennungsdienst hat das Zeitlimit überschritten.",
     "unavailable": "Der Erkennungsdienst war nicht erreichbar.",
     "unsupported_model": "Das angeforderte Erkennungsmodell war nicht verfügbar.",
-    "backend_error": "Der Erkennungsdienst antwortierte mit einem Fehler.",
+    "backend_error": "Der Erkennungsdienst antwortete mit einem Fehler.",
     "invalid_response": "Die Antwort des Erkennungsdienstes konnte nicht ausgewertet werden.",
     "cancelled": "Der Erkennungsversuch wurde abgebrochen.",
     "degenerate": "Die Erkennung lieferte keine verwertbare Ausgabe.",

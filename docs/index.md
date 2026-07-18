@@ -111,7 +111,7 @@ title: Katalog
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
     <p class="catalogue-provenance__label">Engines</p>
     <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
-    <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 1 fehlgeschlagene Erkennungsversuche</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> 3 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+    <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 1 fehlgeschlagener Erkennungsversuch</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> 3 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
   </div>
   <p class="catalogue-preview">BAT_663_r_00050.jpg Aimien undectetngen willegen dicust be uor lieden gnediuen hacrẽ si ucq al zut uon nat be- rent uñ ouch deñ urern lieben quedien herren ich blahen eeusthlicq…</p>
   <p class="catalogue-actions"><a href="bat/?cmp=vlm-internvl3-8b-instruct:kraken-kraken-catmus-medieval#recognitions" aria-label="Modelle vergleichen: bat">Modelle vergleichen <span aria-hidden="true">→</span></a></p>
@@ -345,7 +345,7 @@ title: Katalog
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
     <p class="catalogue-provenance__label">Engines</p>
     <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>party</li></ul>
-    <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 1 fehlgeschlagene Erkennungsversuche</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> 1 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+    <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 1 fehlgeschlagener Erkennungsversuch</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> 1 degeneriertes Ergebnis</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
   </div>
   <p class="catalogue-preview">duser feunilite grus vor liebe gerrmreuon de scosse roepse di fuitsriousthont homn vast uud emraro oigon darmus ue bee selbe vast i digl cond uil furipians hat aodonoid inz esgerra…</p>
   <p class="catalogue-actions"><a href="BAT_664_r_00027/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: BAT_664_r_00027">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>

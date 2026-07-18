@@ -367,7 +367,7 @@ def _engine_confidence_dl(candidate: dict) -> str:
         f"<p>Engine: {html.escape(engine)}</p>"
         f'<p>Modell: {html.escape(model) or "—"}</p>'
         f'<p>Seite: {html.escape(page) or "Nicht zugeordnet"}</p>'
-        f"<p>Konfidenz (raw): {confidence}</p>"
+        f"<p>Konfidenz: {html.escape(str(confidence)) if confidence is not None else 'Nicht angegeben'}</p>"
         f"</details>"
     )
 
