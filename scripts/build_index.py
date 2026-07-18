@@ -57,16 +57,10 @@ def sync_browser_scripts() -> list[str]:
     return copied
 
 # Epic 5 quality vocabulary (#27)
-try:
-    from quality import (
-        EXPLANATIONS, detect_degeneration, format_confidence,
-        confidence_scope_label, explanation_button, explanation_block,
-    )
-except ImportError:
-    EXPLANATIONS, detect_degeneration, format_confidence = {}, lambda *a, **k: (False, ""), lambda v: "Nicht angegeben" if v is None else f"{max(0.0,min(1.0,float(v))):.0%}"
-    confidence_scope_label = lambda e, m, p: e
-    def explanation_button(k): return ""
-    def explanation_block(k): return ""
+from quality import (
+    EXPLANATIONS, detect_degeneration, format_confidence,
+    confidence_scope_label, explanation_button, explanation_block,
+)
 
 DOCS = Path("docs")
 
