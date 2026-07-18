@@ -222,3 +222,14 @@ Der Verifikationsstatus beschreibt, wie weit eine Transkription menschlich gepr�
 **Was dies nicht aussagt:** Der Status ist kein numerischer Qualitätswert und nicht mit Konfidenz oder CER vergleichbar.
 
 **Anzeige:** Verifikationsstatus ist kategorisch und wird als Text und Symbol ausgedrückt — nie ausschliesslich durch Farbe.
+
+<a id="quality-metrics-legacy-qa"></a>
+### Legacy-QA-Wert
+
+Der Legacy-QA-Wert (`qa_score`) ist ein Überrest aus einer früheren Verarbeitungsversion. Er wurde als einzelner Float im Bereich [0, 1] gespeichert, ohne definierte Einheit, Berechnungsformel oder Geltungsbereich.
+
+**Was dieser Wert bedeutet (für Leserinnen und Leser):** Er gibt keinen Aufschluss darüber, wie korrekt die Transkription ist. Verlässlichere Qualitätshinweise sind Erkennungskonfidenz, Erkennungsfehler oder — wenn vorhanden — CER/WER gegen eine Referenztranskription.
+
+**Warum er noch angezeigt wird:** Transparenz und Reproduzierbarkeit — vorhandene Werte werden nicht stillschweigend unterdrückt.
+
+**Hinweis für Projektmitarbeitende:** Neue Dokumente sollen diesen Wert nicht mehr befüllen. Stattdessen sind typisierte Metriken (engine_confidence, reference_evaluation) zu verwenden, die auf dieser Methodikseite beschrieben sind. Der `qa_score`-Eintrag in `a_meta` wird in einer künftigen Version entfernt.

@@ -133,9 +133,11 @@ EXPLANATIONS: dict[str, tuple[str, str]] = {
     ),
     "legacy_qa": (
         "Legacy-QA-Wert (unspezifiziert)",
-        "Dieser QA-Wert stammt aus einem älteren System mit unbekannter Bedeutung.  "
-        "Er kann nicht als Genauigkeitswert interpretiert werden.  Ersetzen Sie ihn "
-        "durch eine der oben genannten Metriken.",
+        "Dieser QA-Wert stammt aus einem älteren Verarbeitungsschritt und hat keine "
+        "definierte Bedeutung oder Einheit.  Er gibt keinen Aufschluss darüber, wie "
+        "korrekt die Transkription ist.  Verlässlichere Qualitätshinweise sind "
+        "Erkennungskonfidenz, Erkennungsfehler oder — wenn vorhanden — CER/WER gegen "
+        "eine Referenztranskription.",
     ),
     "incomparable_confidence": (
         "Nicht vergleichbare Konfidenzwerte",

@@ -16,7 +16,7 @@ title: Katalog
       <div><dt>Ø Konfidenz</dt><dd>Durchschnittliche Engine-Konfidenz aller Erkennungskandidaten (niedrig = unsicherer). Nicht zwischen Engines vergleichbar.</dd></div>
       <div><dt>CER / WER</dt><dd>Character/Word Error Rate gegen eine bekannte Referenz (niedrig = weniger Fehler). Nur vorhanden wenn Referenz verfügbar.</dd></div>
       <div><dt>Erkennungsfehler</dt><dd>Anzahl der Kandidaten, die fehlgeschlagen oder degeneriert sind.</dd></div>
-      <div><dt>Legacy-QA</dt><dd>QA-Wert aus älterem System ohne definierte Bedeutung. Ersetzen Sie durch eine der oben genannten Metriken.</dd></div>
+      <div><dt>Legacy-QA</dt><dd>Wert aus älterem Verarbeitungsschritt ohne definierte Bedeutung oder Einheit — gibt keinen Aufschluss über die Transkriptionsqualität. Für belastbare Qualitätshinweise bitte Erkennungskonfidenz oder CER/WER heranziehen.</dd></div>
     </dl>
   </details>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
