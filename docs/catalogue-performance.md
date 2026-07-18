@@ -3,6 +3,8 @@ layout: default
 title: "Catalogue performance budgets"
 ---
 
+> **Internal engineering document.** This page is a working document for project contributors. It is not part of the public-facing German site and is not linked from the global navigation. See the [language policy](about.html#sprachpolitik) for context.
+
 # Catalogue performance budgets
 
 The catalogue is server-generated so every document link remains available without JavaScript. JavaScript only filters and reorders existing cards. Candidate texts and candidate arrays are never embedded in the compact `catalogue-summary.json` payload.

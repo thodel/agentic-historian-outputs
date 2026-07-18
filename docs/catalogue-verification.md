@@ -3,6 +3,8 @@ layout: default
 title: "Catalogue verification"
 ---
 
+> **Internal engineering document.** This page is a working document for project contributors. It is not part of the public-facing German site and is not linked from the global navigation. See the [language policy](about.html#sprachpolitik) for context.
+
 # Recognition-aware catalogue verification
 
 This checklist is the release gate for recognition-aware catalogue cards and controls. The catalogue is server-rendered: JavaScript enhances search, filtering, sorting, URL state, and history navigation, but every document and primary action remains available without it.
