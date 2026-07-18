@@ -488,17 +488,18 @@ class RecognitionContractTests(unittest.TestCase):
             self.assertEqual(len(values), len(set(values)))
 
     def test_compare_url_param_functions_present_in_js(self):
-        js = Path("scripts/rec_viewer.js").read_text()
+        # Load from docs/assets/ — the file the site actually serves.
+        js = (Path(__file__).parent.parent / "docs" / "assets" / "rec-viewer.js").read_text()
         self.assertIn("pushcmp(", js)
         self.assertIn("readcmp(", js)
 
     def test_compare_swap_button_click_handler_in_js(self):
-        js = Path("scripts/rec_viewer.js").read_text()
+        js = (Path(__file__).parent.parent / "docs" / "assets" / "rec-viewer.js").read_text()
         self.assertIn("leftSel.value", js)
         self.assertIn("rightSel.value", js)
 
     def test_compare_close_overlay_focus_restoration_in_js(self):
-        js = Path("scripts/rec_viewer.js").read_text()
+        js = (Path(__file__).parent.parent / "docs" / "assets" / "rec-viewer.js").read_text()
         self.assertIn("openBtn?.focus()", js)
         self.assertIn("closeOverlay(", js)
 
