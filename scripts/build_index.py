@@ -356,7 +356,7 @@ def _card(record: Record) -> str:
     if record.is_test:
         badges.append(_badge("Testlauf", "test"))
     badges.append(_badge(record.review_status, "ok" if record.review_status == "human-verified" else "test"))
-    badges.append(_badge("Ohne Fehler" if not record.errors else f"{record.errors} Fehler", "ok" if not record.errors else "error"))
+    badges.append(_badge("Pipeline: Ohne Fehler" if not record.errors else f"Pipeline: {record.errors} Fehler", "ok" if not record.errors else "error"))
     # Epic 5 #28: Typed quality badges — replace ambiguous QA label
     # Button and region must share one deterministic id.  Calling the quality
     # helpers without an explicit suffix advances their independent counter

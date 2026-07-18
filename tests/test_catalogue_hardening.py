@@ -25,7 +25,7 @@ class CatalogueHardeningTests(unittest.TestCase):
         self.assertEqual(names, {
             "multi-engine-comparison-ready", "failed-attempt", "degenerate-attempt",
             "direct-image-source", "missing-source", "legacy-output", "test-output",
-            "human-reviewed",
+            "human-reviewed", "pipeline-ok-recognition-errors",
         })
         with tempfile.TemporaryDirectory() as temp:
             for case in self.cases:
@@ -121,6 +121,29 @@ class CatalogueHardeningTests(unittest.TestCase):
         self.assertIn("@media (prefers-reduced-motion: no-preference)", css)
         self.assertIn(":focus-visible", css)
         self.assertIn("min-height: 2.75rem", css)
+
+
+    def test_pipeline_badge_is_scoped_when_recognition_errors_present(self):
+        """Issue #120: a card must not show an unscoped 'Ohne Fehler' badge
+        alongside a recognition-error badge — that would be contradictory.
+        The pipeline badge must carry the 'Pipeline:' scope prefix."""
+        # Find the bat-like fixture: no pipeline errors but recognition failures
+        case = next(c for c in self.cases if c["name"] == "pipeline-ok-recognition-errors")
+        with tempfile.TemporaryDirectory() as temp:
+            target = Path(temp) / case["document_id"] / "pipeline.json"
+            target.parent.mkdir(parents=True)
+            target.write_text(json.dumps(case["data"]), encoding="utf-8")
+            record = _record(target)
+            markup = _card(record)
+            # Must show scoped pipeline badge
+            self.assertIn("Pipeline: Ohne Fehler", markup,
+                          "Pipeline-OK badge must carry 'Pipeline:' scope prefix")
+            # Must NOT show bare unscoped 'Ohne Fehler' badge
+            self.assertNotIn(">Ohne Fehler<", markup,
+                             "Bare unscoped 'Ohne Fehler' badge must not appear")
+            # Recognition errors badge must still be present
+            self.assertIn("Erkennungsfehler", markup,
+                          "Recognition-error badge must appear alongside scoped pipeline badge")
 
 
 if __name__ == "__main__":
