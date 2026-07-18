@@ -682,6 +682,7 @@ license: "CC-BY-4.0"
         + "<script src=\"{{ '/assets/evidence-viewer.js' | relative_url }}\" defer></script>\n"
         + "<script src=\"{{ '/assets/page-sync.js' | relative_url }}\" defer></script>\n"
         + "<script src=\"{{ '/assets/page-disclosure.js' | relative_url }}\" defer></script>\n"
+        + "<script src=\"{{ '/assets/quality-explain.js' | relative_url }}\" defer></script>\n"
         + jsonld + '\n'
     )
     (path.parent / "index.md").write_text(page, encoding="utf-8")

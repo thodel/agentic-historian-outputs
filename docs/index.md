@@ -355,3 +355,4 @@ title: Katalog
 
 <noscript><p>Die Suche benötigt JavaScript. Alle Einträge bleiben ohne JavaScript sichtbar und sind bereits nach Erstellungsdatum sortiert.</p></noscript>
 <script src="{{ '/assets/catalogue.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/quality-explain.js' | relative_url }}" defer></script>

@@ -24,6 +24,7 @@ BROWSER_SCRIPT_MAP = [
     ("evidence_viewer.js",  "evidence-viewer.js"),
     ("page_disclosure.js",  "page-disclosure.js"),
     ("page_sync.js",        "page-sync.js"),
+    ("quality-explain.js",  "quality-explain.js"),
     ("rec_viewer.js",       "rec-viewer.js"),
     ("workspace.js",        "workspace.js"),
 ]

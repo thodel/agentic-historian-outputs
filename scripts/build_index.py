@@ -30,11 +30,12 @@ from source_references import normalize_source_reference
 # The mapping below drives the copy step.  Editing docs/assets/ directly will
 # be overwritten on the next build, and CI's git-diff check will catch drift.
 _BROWSER_SCRIPTS: list[tuple[str, str]] = [
-    ("evidence_viewer.js",  "evidence-viewer.js"),
-    ("page_disclosure.js",  "page-disclosure.js"),
-    ("page_sync.js",        "page-sync.js"),
-    ("rec_viewer.js",       "rec-viewer.js"),
-    ("workspace.js",        "workspace.js"),
+    ("evidence_viewer.js",   "evidence-viewer.js"),
+    ("page_disclosure.js",   "page-disclosure.js"),
+    ("page_sync.js",         "page-sync.js"),
+    ("quality-explain.js",   "quality-explain.js"),
+    ("rec_viewer.js",        "rec-viewer.js"),
+    ("workspace.js",         "workspace.js"),
 ]
 SCRIPTS_DIR = Path("scripts")
 ASSETS_DIR  = Path("docs") / "assets"
@@ -691,6 +692,7 @@ title: Katalog
 
 <noscript><p>Die Suche benötigt JavaScript. Alle Einträge bleiben ohne JavaScript sichtbar und sind bereits nach Erstellungsdatum sortiert.</p></noscript>
 <script src="{{{{ '/assets/catalogue.js' | relative_url }}}}" defer></script>
+<script src="{{{{ '/assets/quality-explain.js' | relative_url }}}}" defer></script>
 '''
     (DOCS / "index.md").write_text(page, encoding="utf-8")
     from build_outputs import build as build_outputs
