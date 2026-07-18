@@ -98,18 +98,18 @@ budgets in [`docs/catalogue-performance.md`](docs/catalogue-performance.md).
 Work is organized as epic meta-issues with per-task issues:
 
 - [#106](https://github.com/thodel/agentic-historian-outputs/issues/106) — repair the interactive quality layer
-- [#107](https://github.com/thodel/agentic-historian-outputs/issues/107) — reproducible and citable builds
 - [#108](https://github.com/thodel/agentic-historian-outputs/issues/108) — coherent status display and language
 - [#109](https://github.com/thodel/agentic-historian-outputs/issues/109) — document lineage and data hygiene
 - [#110](https://github.com/thodel/agentic-historian-outputs/issues/110) — reader experience and behavioral testing
 
-Earlier epics (page architecture, recognition transparency, quality indicators) are
-recorded in the closed issues and in `docs/epic5-quality-principles/`.
+Earlier epics (page architecture, recognition transparency, quality indicators,
+reproducible/citable builds) are recorded in the closed issues and in
+`docs/epic5-quality-principles/`.
 
 ## Reuse and citation
 
-A reuse license for the generated research data has not been finalized yet
-([#118](https://github.com/thodel/agentic-historian-outputs/issues/118)); rights to
-digitized source images remain with the holding institutions. Each document page
-provides a citation string and a `CITATION.cff`; version history per document is
-available through the git history of its `pipeline.json`.
+The generated research data is licensed **CC BY 4.0** (see [`LICENSE`](LICENSE) and each
+`CITATION.cff`); rights to digitized source images remain with the holding
+institutions. Each document page provides a citation string and a `CITATION.cff`;
+version history per document is available through the git history of its
+`pipeline.json`.
