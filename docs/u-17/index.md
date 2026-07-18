@@ -380,3 +380,47 @@ iii</code></pre></section>
 <script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/page-sync.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/page-disclosure.js' | relative_url }}" defer></script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "name": "Agentic Historian output: u-17",
+  "url": "https://thodel.github.io/agentic-historian-outputs/u-17/",
+  "creator": {
+    "@type": "SoftwareApplication",
+    "name": "Agentic Historian"
+  },
+  "publisher": {
+    "@type": "SoftwareApplication",
+    "name": "Agentic Historian"
+  },
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "dateCreated": "2026-07-08T17:18:20+02:00",
+  "dateModified": "2026-07-08T17:18:20+02:00",
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "name": "Pipeline JSON",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/u-17/pipeline.json",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "TEI-XML Transkription",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/u-17/transcription.tei.xml",
+      "encodingFormat": "application/tei+xml"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Entitäten (CSV)",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/u-17/entities.csv",
+      "encodingFormat": "text/csv"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "CITATION.cff",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/u-17/CITATION.cff",
+      "encodingFormat": "text/x-yaml"
+    }
+  ],
+  "description": "Handschriftenbeschreibung (Ad‑fontes‑Richtlinien, UZH) 1. Aufbewahrungsort Keine gesicherten Angaben möglich. Ohne weitere kontextuelle Informationen lässt sich der aktuelle Aufbewahrungsort nicht bestimmen. 2. Beschreibstoff Der vorliegende Transkript‑Auszug enthält ausschließlich die Zeichen u, i, g, s und Trennstriche. Aus dem Bildmaterial (nicht vorliegend) kann deshalb weder der Grundstoff (Pergament, Papier, Papyrus) noch mögliche Wasserzeichen, Qualitätsmerkmale (Dicke, Vergilbung, Flecke"
+}</script>
