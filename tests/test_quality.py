@@ -158,6 +158,9 @@ def test_typed_quality_badges_in_card():
     assert "Ø Konfidenz" in card
     assert "CER" in card
     assert "Legacy-QA" not in card
+    # With CER present the explanation button and block must be rendered (issue #114)
+    assert "aria-controls" in card
+    assert "quality-explain-btn" in card
     print("test_typed_quality_badges_in_card: PASS")
 
 
@@ -189,6 +192,9 @@ def test_legacy_qa_badge_has_distinct_style():
     )
     card = _card(record)
     assert "Legacy-QA" in card
+    # Without CER/WER, no explanation button or block should appear (issue #114)
+    assert "aria-controls" not in card
+    assert "quality-explain-btn" not in card
     print("test_legacy_qa_badge_has_distinct_style: PASS")
 
 
