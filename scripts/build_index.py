@@ -350,13 +350,33 @@ def _badge(text: str, kind: str = "") -> str:
     return f'<span class="{classes}">{html.escape(text)}</span>'
 
 
+# Issue #122: canonical map from review-status enum → (German label, CSS modifier)
+# CSS class carries semantic meaning; enum is preserved in data-review-status.
+_REVIEW_STATUS_LABELS: dict[str, tuple[str, str]] = {
+    "machine-generated": ("Maschinell erzeugt", "review-machine"),
+    "human-verified":    ("Menschlich geprüft",  "review-human"),
+}
+
+
+def _review_badge(review_status: str) -> str:
+    """Return a localized, semantically-classed badge for a review-status enum.
+
+    The badge text is German; the enum value is preserved in data-review-status
+    on the surrounding <article> element for JavaScript filtering.
+    """
+    label, css_mod = _REVIEW_STATUS_LABELS.get(
+        review_status, (review_status, "review-unknown")
+    )
+    return _badge(label, css_mod)
+
+
 def _card(record: Record) -> str:
     created_iso = record.created.isoformat()
     created_label = record.created.strftime("%d.%m.%Y, %H:%M")
     badges = []
     if record.is_test:
         badges.append(_badge("Testlauf", "test"))
-    badges.append(_badge(record.review_status, "ok" if record.review_status == "human-verified" else "test"))
+    badges.append(_review_badge(record.review_status))
     badges.append(_badge("Pipeline: Ohne Fehler" if not record.errors else f"Pipeline: {record.errors} Fehler", "ok" if not record.errors else "error"))
     # Epic 5 #28: Typed quality badges — replace ambiguous QA label
     # Button and region must share one deterministic id.  Calling the quality

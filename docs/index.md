@@ -105,7 +105,7 @@ title: Katalog
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T21:19:05+02:00">15.07.2026, 21:19</time></p>
       <h2><a href="bat/">bat</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-failed">4 Erkennungsfehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 0%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-failed">4 Erkennungsfehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 0%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert (unsicher)</dd></div><div><dt>Sprache</dt><dd>Deutsch (mittelhochdeutsche und mitteldeutsche Konstruktionen, alemannischer Dialektraum)</dd></div><div><dt>Schrift</dt><dd>Gotische Kurrentschrift, schwarz, Zeilenhöhe ca. 4,5 mm</dd></div><div><dt>Entitäten</dt><dd>12</dd></div><div><dt>Seiten</dt><dd>1</dd></div><div><dt>Kandidaten</dt><dd>6 erfolgreich / 10 insgesamt</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
@@ -123,7 +123,7 @@ title: Katalog
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T19:17:36+02:00">15.07.2026, 19:17</time></p>
       <h2><a href="order-ens/">order-ens</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-confidence">Ø Konfidenz 80%</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 90%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-confidence">Ø Konfidenz 80%</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 90%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>0</dd></div><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Kandidaten</dt><dd>1 erfolgreich / 1 insgesamt</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
@@ -141,7 +141,7 @@ title: Katalog
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T16:49:41+02:00">15.07.2026, 16:49</time></p>
       <h2><a href="u-17__/">u-17__</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-failed">2 Erkennungsfehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 48%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-failed">2 Erkennungsfehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 48%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>82</dd></div><div><dt>Seiten</dt><dd>4</dd></div><div><dt>Kandidaten</dt><dd>11 erfolgreich / 13 insgesamt</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
@@ -159,7 +159,7 @@ title: Katalog
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T17:18:20+02:00">08.07.2026, 17:18</time></p>
       <h2><a href="u-17/">u-17</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 80%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 80%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>0</dd></div><div><dt>Seiten</dt><dd>4</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 0 insgesamt</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
@@ -177,7 +177,7 @@ title: Katalog
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:38+02:00">08.07.2026, 09:03</time></p>
       <h2><a href="order-001-group/">order-001-group</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 90%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 90%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Entitäten</dt><dd>1</dd></div><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 0 insgesamt</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
@@ -195,7 +195,7 @@ title: Katalog
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:31+02:00">08.07.2026, 09:03</time></p>
       <h2><a href="saa-0005-test/">saa-0005-test</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Entitäten</dt><dd>1</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 0 insgesamt</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
@@ -213,7 +213,7 @@ title: Katalog
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:31+02:00">08.07.2026, 09:03</time></p>
       <h2><a href="saa-0004-test/">saa-0004-test</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Entitäten</dt><dd>1</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 0 insgesamt</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
@@ -231,7 +231,7 @@ title: Katalog
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:23+02:00">08.07.2026, 09:03</time></p>
       <h2><a href="saa-0006-test/">saa-0006-test</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Entitäten</dt><dd>1</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 0 insgesamt</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
@@ -249,7 +249,7 @@ title: Katalog
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:23+02:00">08.07.2026, 09:03</time></p>
       <h2><a href="saa-0003-test/">saa-0003-test</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Entitäten</dt><dd>1</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 0 insgesamt</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
@@ -267,7 +267,7 @@ title: Katalog
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:23+02:00">08.07.2026, 09:03</time></p>
       <h2><a href="saa-0002-test/">saa-0002-test</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Entitäten</dt><dd>1</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 0 insgesamt</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
@@ -285,7 +285,7 @@ title: Katalog
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:23+02:00">08.07.2026, 09:03</time></p>
       <h2><a href="saa-0001-test/">saa-0001-test</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 85%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Entitäten</dt><dd>1</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 0 insgesamt</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
@@ -303,7 +303,7 @@ title: Katalog
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:47:14+02:00">07.07.2026, 15:47</time></p>
       <h2><a href="kf-/">kf-</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 80%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 80%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>0</dd></div><div><dt>Seiten</dt><dd>3</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
@@ -321,7 +321,7 @@ title: Katalog
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:29:12+02:00">07.07.2026, 15:29</time></p>
       <h2><a href="kf/">kf</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 80%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 80%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>0</dd></div><div><dt>Seiten</dt><dd>3</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
@@ -339,7 +339,7 @@ title: Katalog
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:25:18+02:00">07.07.2026, 15:25</time></p>
       <h2><a href="BAT_664_r_00027/">BAT_664_r_00027</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">machine-generated</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-failed">2 Erkennungsfehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 10%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-failed">2 Erkennungsfehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 10%</span></div>
   </div>
   <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>11</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 2 insgesamt</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
