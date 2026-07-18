@@ -57,8 +57,24 @@ class CatalogueHardeningTests(unittest.TestCase):
                     self.assertIn(f'data-recognition-total="{summary.total if summary.total is not None else ""}"', markup)
                     controls = re.findall(r'aria-controls="([^"]+)"', markup)
                     ids = set(re.findall(r'\bid="([^"]+)"', markup))
-                    self.assertTrue(controls)
-                    self.assertTrue(set(controls).issubset(ids), (controls, ids))
+                    # aria-controls / explanation button should only be present
+                    # when CER or WER is available on this record (issue #114).
+                    has_cer_wer = (
+                        record.reference_cer is not None
+                        or record.reference_wer is not None
+                    )
+                    if has_cer_wer:
+                        self.assertTrue(
+                            controls,
+                            "Card with CER/WER must contain aria-controls",
+                        )
+                    else:
+                        self.assertFalse(
+                            controls,
+                            "Card without CER/WER must not emit aria-controls",
+                        )
+                    if controls:
+                        self.assertTrue(set(controls).issubset(ids), (controls, ids))
                     action = re.search(r'class="catalogue-actions"><a href="([^"]+)"', markup)
                     self.assertIsNotNone(action)
                     href = html.unescape(action.group(1))

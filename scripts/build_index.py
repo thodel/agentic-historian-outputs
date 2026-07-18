@@ -361,8 +361,9 @@ def _card(record: Record) -> str:
     # helpers without an explicit suffix advances their independent counter
     # and leaves aria-controls pointing at a non-existent element.
     explanation_suffix = hashlib.sha1(record.doc_id.encode("utf-8")).hexdigest()[:12]
-    explain_btn = explanation_button("reference_evaluation", explanation_suffix)
-    explain_block = explanation_block("reference_evaluation", explanation_suffix)
+    has_cer_wer = record.reference_cer is not None or record.reference_wer is not None
+    explain_btn = explanation_button("reference_evaluation", explanation_suffix) if has_cer_wer else ""
+    explain_blk = explanation_block("reference_evaluation", explanation_suffix) if has_cer_wer else ""
 
     if record.reference_cer is not None:
         cer_pct = max(0.0, min(1.0, float(record.reference_cer))) * 100
@@ -473,7 +474,7 @@ def _card(record: Record) -> str:
   </div>
   {preview}
   <p class="catalogue-actions"><a href="{html.escape(action_href, quote=True)}" aria-label="{html.escape(action_label)}: {html.escape(record.doc_id)}">{action_label} <span aria-hidden="true">→</span></a></p>
-  {explain_btn}{explain_block}
+  {explain_btn}{explain_blk}
 </article>'''
 
 
