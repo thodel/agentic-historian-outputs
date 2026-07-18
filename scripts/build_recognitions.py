@@ -358,7 +358,7 @@ def _engine_confidence_dl(candidate: dict) -> str:
     scope = confidence_scope_label(engine, model, page)
 
     explain_btn = explanation_button("engine_confidence")
-    explain_block = explanation_block("engine_confidence")
+    explain_block = explanation_block("engine_confidence", page_depth=1)
     raw = (
         f'<details class="rec-confidence-raw">'
         f"<summary>Rohtext</summary>"
@@ -408,7 +408,7 @@ def _build_ref_eval_html(candidate: dict) -> str:
     norm = ref_eval.get("normalisation", "unspezifiziert")
     scope = ref_eval.get("scope", "document")
     explain_btn = explanation_button("reference_evaluation")
-    explain_block = explanation_block("reference_evaluation")
+    explain_block = explanation_block("reference_evaluation", page_depth=1)
 
     cer_html = ""
     if cer is not None:
@@ -457,7 +457,7 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
         "selection_score",
     )
     explanation_blocks = "".join(
-        explanation_block(k) for k in all_explanation_keys if k in EXPLANATIONS
+        explanation_block(k, page_depth=1) for k in all_explanation_keys if k in EXPLANATIONS
     )
 
     # Issue #52: compute aggregate counts for document-level failure summary

@@ -414,11 +414,11 @@ def build_status_header(
     # Explanation blocks (hidden, toggled by buttons above)
     expl_html = ""
     if cls != "human-verified":
-        expl_html += explanation_block("verification_needed", "hdr")
+        expl_html += explanation_block("verification_needed", "hdr", page_depth=1)
     if is_legacy:
-        expl_html += explanation_block("legacy_qa", "hdr")
+        expl_html += explanation_block("legacy_qa", "hdr", page_depth=1)
     if problem_badge:
-        expl_html += explanation_block("failed", "hdr")
+        expl_html += explanation_block("failed", "hdr", page_depth=1)
 
     # Interpretation notice — differentiated by verification level
     if cls == "human-verified":

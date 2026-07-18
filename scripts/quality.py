@@ -76,16 +76,16 @@ MetricUnit = Literal["ratio", "probability", "CER", "WER", "percentage", "count"
 # These anchors MUST remain stable; the methodology.md section IDs are
 # kept in sync.
 METHODOLOGY_ANCHORS: dict[str, str] = {
-    "engine_confidence": "/methodology/#quality-metrics-engine-confidence",
-    "agreement": "/methodology/#quality-metrics-agreement",
-    "reference_evaluation": "/methodology/#quality-metrics-reference-evaluation",
-    "degenerate": "/methodology/#quality-metrics-degeneration",
-    "failed": "/methodology/#quality-metrics-failure",
-    "missing": "/methodology/#quality-metrics",
-    "legacy_qa": "/methodology/#quality-metrics",
-    "incomparable_confidence": "/methodology/#quality-metrics-engine-confidence",
-    "verification_needed": "/methodology/#quality-metrics-verification",
-    "selection_score": "/methodology/#quality-metrics-selection-score",
+    "engine_confidence": "methodology.html#quality-metrics-engine-confidence",
+    "agreement": "methodology.html#quality-metrics-agreement",
+    "reference_evaluation": "methodology.html#quality-metrics-reference-evaluation",
+    "degenerate": "methodology.html#quality-metrics-degeneration",
+    "failed": "methodology.html#quality-metrics-failure",
+    "missing": "methodology.html#quality-metrics",
+    "legacy_qa": "methodology.html#quality-metrics",
+    "incomparable_confidence": "methodology.html#quality-metrics-engine-confidence",
+    "verification_needed": "methodology.html#quality-metrics-verification",
+    "selection_score": "methodology.html#quality-metrics-selection-score",
 }
 
 
@@ -331,7 +331,7 @@ def explanation_button(key: str, suffix: str = "") -> str:
     )
 
 
-def explanation_block(key: str, suffix: str = "") -> str:
+def explanation_block(key: str, suffix: str = "", page_depth: int = 0) -> str:
     """Return a hidden ``<div>`` with the explanation text, plus a visible toggle.
 
     The div id is of form ``quality-explanation-{key}-{suffix}`` to ensure
@@ -340,6 +340,12 @@ def explanation_block(key: str, suffix: str = "") -> str:
     When a methodology anchor exists for the key, the block includes a link to
     the stable methodology section so readers can find formulas, ranges,
     provenance details, and limitations without depending on hover-only tooltips.
+
+    ``page_depth`` controls the relative prefix prepended to the anchor URL:
+    0 (default) means the page is at the site root (e.g. the catalogue),
+    1 means one level deep (e.g. a document or entity page), and so on.
+    The stored anchor URLs are relative to the catalogue root
+    (``methodology.html#...``); deeper pages receive a ``../`` per level.
     """
     if key not in EXPLANATIONS:
         return ""
@@ -347,6 +353,8 @@ def explanation_block(key: str, suffix: str = "") -> str:
     _expl_counter[0] += 1
     uniq = suffix or str(_expl_counter[0])
     anchor = METHODOLOGY_ANCHORS.get(key, "")
+    if anchor and page_depth > 0:
+        anchor = ("../" * page_depth) + anchor
     link_html = (
         f' <a class="quality-explanation-link" href="{html.escape(anchor)}">'
         f'Methodik <span aria-hidden="true">→</span></a>'
@@ -428,6 +436,7 @@ def render_reference_evaluation(
     prov: "Provenance",
     suffix: str = "",
     doc_id: str = "",
+    page_depth: int = 0,
 ) -> str:
     """Return fully provenance-annotated HTML for a reference evaluation metric.
 
@@ -523,7 +532,7 @@ def render_reference_evaluation(
     )
 
     expl_btn = explanation_button("reference_evaluation", uniq)
-    expl_blk = explanation_block("reference_evaluation", uniq)
+    expl_blk = explanation_block("reference_evaluation", uniq, page_depth=page_depth)
     rows_html = "\n".join(rows)
 
     return (
