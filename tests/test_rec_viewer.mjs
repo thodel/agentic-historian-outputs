@@ -3,7 +3,9 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import vm from "node:vm";
 
-const source = readFileSync(new URL("../scripts/rec_viewer.js", import.meta.url), "utf8");
+// Load from docs/assets/ — the file the site actually serves.
+// scripts/rec_viewer.js is the canonical source; the build copies it here.
+const source = readFileSync(new URL("../docs/assets/rec-viewer.js", import.meta.url), "utf8");
 
 function fixture(href = "https://example.test/doc/?rec=kraken") {
   const focused = [];

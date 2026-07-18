@@ -285,16 +285,21 @@ class ProgressiveDisclosureTests(unittest.TestCase):
     # ------------------------------------------------------------------ #
 
     def test_page_disclosure_js_script_exists(self):
+        # Canonical source in scripts/; build copies to docs/assets/
         js_path = Path(__file__).parent.parent / "scripts" / "page_disclosure.js"
         self.assertTrue(js_path.exists(), "page_disclosure.js not found in scripts/")
+        # Also verify the deployed copy exists
+        deployed = Path(__file__).parent.parent / "docs" / "assets" / "page-disclosure.js"
+        self.assertTrue(deployed.exists(), "page-disclosure.js not found in docs/assets/ (run build_index.py)")
 
     def test_page_disclosure_js_contains_hashchange_handler(self):
-        js_path = Path(__file__).parent.parent / "scripts" / "page_disclosure.js"
+        # Load deployed copy — the file the site actually serves
+        js_path = Path(__file__).parent.parent / "docs" / "assets" / "page-disclosure.js"
         js = js_path.read_text(encoding="utf-8")
         self.assertIn("hashchange", js)
 
     def test_page_disclosure_js_references_page_section_disclosure(self):
-        js_path = Path(__file__).parent.parent / "scripts" / "page_disclosure.js"
+        js_path = Path(__file__).parent.parent / "docs" / "assets" / "page-disclosure.js"
         js = js_path.read_text(encoding="utf-8")
         self.assertIn("page-section-disclosure", js)
 

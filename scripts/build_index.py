@@ -13,12 +13,48 @@ import hashlib
 import html
 import json
 import re
+import shutil
 import subprocess
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
 from source_references import normalize_source_reference
+
+# ---------------------------------------------------------------------------
+# Browser-script single source of truth (issue #117)
+# ---------------------------------------------------------------------------
+# scripts/*.js  — canonical hand-edited copies (snake_case naming)
+# docs/assets/  — deployed copies produced by the build (kebab-case naming)
+#
+# The mapping below drives the copy step.  Editing docs/assets/ directly will
+# be overwritten on the next build, and CI's git-diff check will catch drift.
+_BROWSER_SCRIPTS: list[tuple[str, str]] = [
+    ("evidence_viewer.js",  "evidence-viewer.js"),
+    ("page_disclosure.js",  "page-disclosure.js"),
+    ("page_sync.js",        "page-sync.js"),
+    ("rec_viewer.js",       "rec-viewer.js"),
+    ("workspace.js",        "workspace.js"),
+]
+SCRIPTS_DIR = Path("scripts")
+ASSETS_DIR  = Path("docs") / "assets"
+
+
+def sync_browser_scripts() -> list[str]:
+    """Copy canonical browser scripts from scripts/ to docs/assets/.
+
+    Returns a list of destination filenames that were written.
+    """
+    ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+    copied: list[str] = []
+    for src_name, dst_name in _BROWSER_SCRIPTS:
+        src = SCRIPTS_DIR / src_name
+        dst = ASSETS_DIR / dst_name
+        if not src.exists():
+            raise FileNotFoundError(f"Canonical browser script not found: {src}")
+        shutil.copy2(src, dst)
+        copied.append(dst_name)
+    return copied
 
 # Epic 5 quality vocabulary (#27)
 try:
@@ -573,7 +609,9 @@ title: Katalog
     (DOCS / "index.md").write_text(page, encoding="utf-8")
     from build_outputs import build as build_outputs
     build_outputs()
+    copied = sync_browser_scripts()
     print(f"Wrote docs/index.md with {len(records)} record(s), newest first")
+    print(f"Synced {len(copied)} browser scripts to docs/assets/: {', '.join(copied)}")
     return len(records)
 
 

@@ -3,7 +3,9 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import vm from "node:vm";
 
-const source = readFileSync(new URL("../scripts/page_sync.js", import.meta.url), "utf8");
+// Load from docs/assets/ — the file the site actually serves.
+// scripts/page_sync.js is the canonical source; the build copies it here.
+const source = readFileSync(new URL("../docs/assets/page-sync.js", import.meta.url), "utf8");
 const context = { globalThis: {} };
 vm.runInNewContext(source, context);
 const { chooseCandidate } = context.globalThis.AgenticPageSync;
