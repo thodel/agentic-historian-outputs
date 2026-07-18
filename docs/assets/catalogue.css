@@ -36,6 +36,10 @@
 .catalogue-badge--test { color: var(--catalogue-warning); background: var(--catalogue-warning-soft); }
 .catalogue-badge--ok { color: #1f6544; background: #e3f4ea; }
 .catalogue-badge--error { color: var(--catalogue-error); background: #fbe8ea; }
+/* Issue #122: semantic review-status badge classes */
+.catalogue-badge--review-machine { color: #5a4200; background: #fdf3d0; }
+.catalogue-badge--review-human { color: #1f6544; background: #e3f4ea; }
+.catalogue-badge--review-unknown { color: #35414c; background: #edf0f2; }
 .catalogue-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: .7rem 1rem; margin: .5rem 0 1rem; }
 .catalogue-facts div { min-width: 0; }
 .catalogue-facts dt { color: var(--catalogue-muted); font-size: .72rem; font-weight: 700; letter-spacing: .035em; text-transform: uppercase; }
