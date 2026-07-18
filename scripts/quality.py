@@ -308,34 +308,54 @@ def quality_badge(kind: MetricType, value: float | None, unit: MetricUnit,
 # Accessible explanation disclosure
 # ---------------------------------------------------------------------------
 
-_expl_counter = [0]
+def _expl_id(key: str, suffix: str) -> str:
+    """Return the shared element id for a button/block pair.
+
+    When *suffix* is non-empty the id is ``quality-explanation-{key}-{suffix}``
+    (useful for pages that repeat the same explanation key, e.g. the catalogue
+    that has one card per document).  When *suffix* is empty the id is simply
+    ``quality-explanation-{key}``.
+
+    Both :func:`explanation_button` and :func:`explanation_block` call this
+    helper, so the button's ``aria-controls`` always resolves to the block's
+    ``id`` when the same arguments are passed.
+    """
+    return f"quality-explanation-{key}-{suffix}" if suffix else f"quality-explanation-{key}"
+
 
 def explanation_button(key: str, suffix: str = "") -> str:
     """Return an accessible ``<button>`` that toggles an inline explanation.
 
-    The button targets an id of form ``quality-explanation-{key}-{suffix}``.
-    When suffix is empty, a global counter increments to ensure uniqueness.
+    The button targets an id of form ``quality-explanation-{key}`` (when
+    *suffix* is empty) or ``quality-explanation-{key}-{suffix}`` (when a
+    suffix is supplied).  The matching :func:`explanation_block` call must
+    use the *same* suffix to guarantee the ``aria-controls`` resolves.
+
     CSS shows/hides the linked element.  Keyboard, touch, and screen-reader
     accessible by default (native <button> + aria-expanded + aria-controls).
     """
     if key not in EXPLANATIONS:
         return ""
     short_label, _ = EXPLANATIONS[key]
-    _expl_counter[0] += 1
-    uniq = suffix or str(_expl_counter[0])
+    block_id = _expl_id(key, suffix)
     return (
         f'<button class="quality-explain-btn" type="button" '
-        f'aria-expanded="false" aria-controls="quality-explanation-{key}-{uniq}">'
+        f'aria-expanded="false" aria-controls="{block_id}">'
         f'<span aria-hidden="true">ⓘ</span> {short_label}'
         f"</button>"
     )
 
 
 def explanation_block(key: str, suffix: str = "", page_depth: int = 0) -> str:
-    """Return a hidden ``<div>`` with the explanation text, plus a visible toggle.
+    """Return a hidden ``<div>`` with the explanation text.
 
-    The div id is of form ``quality-explanation-{key}-{suffix}`` to ensure
-    uniqueness when the same explanation key appears multiple times.
+    The div id matches the ``aria-controls`` value of the paired
+    :func:`explanation_button` call.  Both functions compute the id via
+    :func:`_expl_id`, so passing the *same* ``suffix`` argument guarantees
+    that the button's ``aria-controls`` resolves to this element's ``id``.
+
+    When *suffix* is empty the id is ``quality-explanation-{key}``; when
+    *suffix* is provided it is ``quality-explanation-{key}-{suffix}``.
 
     When a methodology anchor exists for the key, the block includes a link to
     the stable methodology section so readers can find formulas, ranges,
@@ -350,8 +370,7 @@ def explanation_block(key: str, suffix: str = "", page_depth: int = 0) -> str:
     if key not in EXPLANATIONS:
         return ""
     short_label, body = EXPLANATIONS[key]
-    _expl_counter[0] += 1
-    uniq = suffix or str(_expl_counter[0])
+    block_id = _expl_id(key, suffix)
     anchor = METHODOLOGY_ANCHORS.get(key, "")
     if anchor and page_depth > 0:
         anchor = ("../" * page_depth) + anchor
@@ -361,7 +380,7 @@ def explanation_block(key: str, suffix: str = "", page_depth: int = 0) -> str:
         if anchor else ""
     )
     return (
-        f'<div class="quality-explanation" id="quality-explanation-{key}-{uniq}" '
+        f'<div class="quality-explanation" id="{block_id}" '
         f'role="region" aria-label="{html.escape(short_label)}" hidden>'
         f"<p><strong>{short_label}:</strong> {body}{link_html}</p>"
         f"</div>"
@@ -421,7 +440,6 @@ def is_evaluation_available(candidate: dict) -> bool:
 
 def render_evaluation_unavailable(suffix: str = "") -> str:
     """Return accessible HTML notice for absent or missing reference evaluation."""
-    _expl_counter[0] += 1
     return (
         '<p class="quality-eval-unavailable" '
         'aria-label="Keine Referenzauswertung verfügbar">'
@@ -457,8 +475,7 @@ def render_reference_evaluation(
     if prov is None or prov.metric_type != "reference_evaluation":
         return render_evaluation_unavailable(suffix)
 
-    _expl_counter[0] += 1
-    uniq = suffix or str(_expl_counter[0])
+    uniq = suffix  # suffix is passed through to explanation_button/block unchanged
 
     # Format the metric value
     if prov.value is not None:
