@@ -11,7 +11,7 @@ import json
 import re
 import subprocess
 from collections import defaultdict
-from datetime import datetime
+from datetime import date, datetime, timezone
 from pathlib import Path
 from build_recognitions import build_recognition_section, write_package
 from source_references import normalize_source_reference, public_url
@@ -127,17 +127,41 @@ def write_csv(path: Path, items: list[dict[str, str]]) -> None:
         writer.writerows(items)
 
 
-def write_tei(path: Path, doc_id: str, transcript: str, source_url: str) -> None:
+def pipeline_date(path: Path) -> date:
+    """Return the date of the most recent git commit touching *path*.
+
+    Falls back to the file's mtime if git is unavailable, ensuring the date
+    never changes unless the underlying pipeline.json actually changes.
+    """
+    try:
+        revision = subprocess.run(
+            ["git", "merge-base", "HEAD", "origin/main"],
+            check=True, capture_output=True, text=True,
+        ).stdout.strip() or "HEAD"
+        out = subprocess.run(
+            ["git", "log", revision, "--follow", "--format=%aI", "-1", "--", str(path)],
+            check=True, capture_output=True, text=True,
+        ).stdout.strip()
+        if out:
+            return datetime.fromisoformat(out.replace("Z", "+00:00")).date()
+    except (OSError, subprocess.CalledProcessError):
+        pass
+    return datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc).date()
+
+
+def write_tei(path: Path, doc_id: str, transcript: str, source_url: str,
+              doc_date: "date | None" = None) -> None:
     source = f'<ref target="{xml_escape(source_url)}">Digital source</ref>' if valid_public_url(source_url) else "Source image not published"
+    when = (doc_date or pipeline_date(path)).isoformat()
     tei = f'''<?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
     <fileDesc>
       <titleStmt><title>Machine transcription: {xml_escape(doc_id)}</title></titleStmt>
-      <publicationStmt><p>Agentic Historian output; reuse rights not specified.</p></publicationStmt>
+      <publicationStmt><p>Agentic Historian output. License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).</p></publicationStmt>
       <sourceDesc><p>{source}</p></sourceDesc>
     </fileDesc>
-    <revisionDesc><change when="{datetime.now().date().isoformat()}">Generated from pipeline.json.</change></revisionDesc>
+    <revisionDesc><change when="{when}">Generated from pipeline.json.</change></revisionDesc>
   </teiHeader>
   <text><body><div type="transcription"><p>{xml_escape(transcript)}</p></div></body></text>
 </TEI>
@@ -454,8 +478,10 @@ def build_document(path: Path, entity_index: dict) -> bool:
         key = (item["type"], item["label"])
         entity_index[key].append({"doc_id": doc_id, **item})
 
+    doc_date = pipeline_date(path)
     write_csv(path.parent / "entities.csv", items)
-    write_tei(path.parent / "transcription.tei.xml", doc_id, transcript, source_url)
+    write_tei(path.parent / "transcription.tei.xml", doc_id, transcript, source_url,
+              doc_date=doc_date)
 
     canonical = f"{SITE}/{doc_id}/"
     citation = f'''cff-version: 1.2.0
@@ -466,8 +492,8 @@ authors:
   - name: "Agentic Historian"
 repository-code: "{REPO}"
 url: "{canonical}"
-date-released: "{datetime.now().date().isoformat()}"
-license: "LicenseRef-Not-Specified"
+date-released: "{doc_date.isoformat()}"
+license: "CC-BY-4.0"
 '''
     (path.parent / "CITATION.cff").write_text(citation, encoding="utf-8")
 
@@ -601,7 +627,7 @@ license: "LicenseRef-Not-Specified"
         '<section id="citation" class="page-section page-section--administrative"'
         ' data-page-section="citation" aria-labelledby="citation-heading">'
         '<h2 id="citation-heading">Zitation und stabile Adresse</h2>\n'
-        f'<p><code>Agentic Historian. ({datetime.now().year}).'
+        f'<p><code>Agentic Historian. ({doc_date.year}).'  # noqa: E501
         f' Agentic Historian output: {html.escape(doc_id)} [Machine-generated dataset].'
         f' {canonical}</code></p>\n'
         f'<p>Stabile Seite: <a href="{canonical}">{canonical}</a>'
