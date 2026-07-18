@@ -122,3 +122,47 @@ u</code></pre></section>
 <script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/page-sync.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/page-disclosure.js' | relative_url }}" defer></script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "name": "Agentic Historian output: kf",
+  "url": "https://thodel.github.io/agentic-historian-outputs/kf/",
+  "creator": {
+    "@type": "SoftwareApplication",
+    "name": "Agentic Historian"
+  },
+  "publisher": {
+    "@type": "SoftwareApplication",
+    "name": "Agentic Historian"
+  },
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "dateCreated": "2026-07-07T15:29:12+02:00",
+  "dateModified": "2026-07-07T15:29:12+02:00",
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "name": "Pipeline JSON",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/kf/pipeline.json",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "TEI-XML Transkription",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/kf/transcription.tei.xml",
+      "encodingFormat": "application/tei+xml"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Entitäten (CSV)",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/kf/entities.csv",
+      "encodingFormat": "text/csv"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "CITATION.cff",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/kf/CITATION.cff",
+      "encodingFormat": "text/x-yaml"
+    }
+  ],
+  "description": "{ \"Aufbewahrungsort\": { \"wert\": \"\", \"unsicher\": true, \"notiz\": \"keine gesicherten Angaben möglich\" }, \"Beschreibstoff\": { \"wert\": \"\", \"unsicher\": true, \"notiz\": \"keine Sicht auf Material, Wasserzeichen, Qualität oder Palimpsest\" }, \"Blaetter\": { \"wert\": \"\", \"unsicher\": true, \"notiz\": \"keine Zählung der Blätter, keine Angaben zu Foliierung oder Lagenstruktur\" }, \"Format\": { \"wert\": \"\", \"unsicher\": true, \"notiz\": \"keine Messungen, kein Hinweis auf Folio/Quarto/Oktav\" }, \"Datierung\": { \"wert\": \"\", "
+}</script>

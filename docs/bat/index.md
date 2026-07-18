@@ -480,3 +480,47 @@ iiu
 <script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/page-sync.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/page-disclosure.js' | relative_url }}" defer></script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "name": "Agentic Historian output: bat",
+  "url": "https://thodel.github.io/agentic-historian-outputs/bat/",
+  "creator": {
+    "@type": "SoftwareApplication",
+    "name": "Agentic Historian"
+  },
+  "publisher": {
+    "@type": "SoftwareApplication",
+    "name": "Agentic Historian"
+  },
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "dateCreated": "2026-07-15T21:19:05+02:00",
+  "dateModified": "2026-07-17T19:34:40+00:00",
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "name": "Pipeline JSON",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/bat/pipeline.json",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "TEI-XML Transkription",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/bat/transcription.tei.xml",
+      "encodingFormat": "application/tei+xml"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Entitäten (CSV)",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/bat/entities.csv",
+      "encodingFormat": "text/csv"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "CITATION.cff",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/bat/CITATION.cff",
+      "encodingFormat": "text/x-yaml"
+    }
+  ],
+  "description": "Verwaltungsdokument (Anklage oder Klagebrief), Thematik: Verlust von Knaben, Erbanspruch, Versetzung in eine jüdische Gemeinschaft, Verpflichtungen"
+}</script>

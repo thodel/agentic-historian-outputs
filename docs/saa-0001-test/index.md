@@ -66,3 +66,47 @@ title: "saa-0001-test"
 <script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/page-sync.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/page-disclosure.js' | relative_url }}" defer></script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "name": "Agentic Historian output: saa-0001-test",
+  "url": "https://thodel.github.io/agentic-historian-outputs/saa-0001-test/",
+  "creator": {
+    "@type": "SoftwareApplication",
+    "name": "Agentic Historian"
+  },
+  "publisher": {
+    "@type": "SoftwareApplication",
+    "name": "Agentic Historian"
+  },
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "dateCreated": "2026-07-08T09:03:23+02:00",
+  "dateModified": "2026-07-08T12:44:34+02:00",
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "name": "Pipeline JSON",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/saa-0001-test/pipeline.json",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "TEI-XML Transkription",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/saa-0001-test/transcription.tei.xml",
+      "encodingFormat": "application/tei+xml"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Entitäten (CSV)",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/saa-0001-test/entities.csv",
+      "encodingFormat": "text/csv"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "CITATION.cff",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/saa-0001-test/CITATION.cff",
+      "encodingFormat": "text/x-yaml"
+    }
+  ],
+  "description": "Gerichtsbrief"
+}</script>

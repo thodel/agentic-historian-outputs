@@ -1150,3 +1150,47 @@ xus</code></pre>
 <script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/page-sync.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/page-disclosure.js' | relative_url }}" defer></script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "name": "Agentic Historian output: u-17__",
+  "url": "https://thodel.github.io/agentic-historian-outputs/u-17__/",
+  "creator": {
+    "@type": "SoftwareApplication",
+    "name": "Agentic Historian"
+  },
+  "publisher": {
+    "@type": "SoftwareApplication",
+    "name": "Agentic Historian"
+  },
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "dateCreated": "2026-07-15T16:49:41+02:00",
+  "dateModified": "2026-07-17T19:34:40+00:00",
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "name": "Pipeline JSON",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/u-17__/pipeline.json",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "TEI-XML Transkription",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/u-17__/transcription.tei.xml",
+      "encodingFormat": "application/tei+xml"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Entitäten (CSV)",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/u-17__/entities.csv",
+      "encodingFormat": "text/csv"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "CITATION.cff",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/u-17__/CITATION.cff",
+      "encodingFormat": "text/x-yaml"
+    }
+  ],
+  "description": "Transkription unlesbar oder degeneriert (Wiederholungskollaps) — keine belastbare Quellenbeschreibung möglich."
+}</script>
