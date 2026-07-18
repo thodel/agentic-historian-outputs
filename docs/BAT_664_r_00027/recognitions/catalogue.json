@@ -26,7 +26,7 @@
     {
       "characters": null,
       "engine": "kraken",
-      "error": "Der Erkennungsdienst antwortierte mit einem Fehler.",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
       "error_path": "recognitions/kraken-kraken-catmus_medieval.error.txt",
       "id": "kraken-kraken-catmus-medieval",
       "model_id": "kraken-catmus_medieval",

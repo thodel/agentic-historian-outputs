@@ -944,3 +944,22 @@ def normalize_candidate_metrics(candidate: dict) -> "Provenance":
 
     return Provenance(metric_type="missing", explanation_key="missing")
 
+
+
+# ---------------------------------------------------------------------------
+# German pluralization helper (issue #121)
+# ---------------------------------------------------------------------------
+
+def de_plural(n: int, singular: str, plural: str) -> str:
+    """Return ``"n singular"`` or ``"n plural"`` depending on *n*.
+
+    Examples::
+
+        de_plural(1, "Erkennungsversuch", "Erkennungsversuche")
+        # → "1 Erkennungsversuch"
+        de_plural(2, "Erkennungsversuch", "Erkennungsversuche")
+        # → "2 Erkennungsversuche"
+        de_plural(0, "Erkennungsversuch", "Erkennungsversuche")
+        # → "0 Erkennungsversuche"
+    """
+    return f"{n} {singular if n == 1 else plural}"

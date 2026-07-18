@@ -61,6 +61,7 @@ def sync_browser_scripts() -> list[str]:
 from quality import (
     EXPLANATIONS, detect_degeneration, format_confidence,
     confidence_scope_label, explanation_button, explanation_block,
+    de_plural,
 )
 
 DOCS = Path("docs")
@@ -418,10 +419,10 @@ def _card(record: Record) -> str:
         facts.append(("Kandidaten", f"{summary.successful or 0} erfolgreich / {summary.total or 0} insgesamt"))
         if summary.failed:
             recognition_status.append(
-                f'<p class="catalogue-warning"><span aria-hidden="true">⚠</span> {summary.failed} fehlgeschlagene Erkennungsversuche</p>')
+                f'<p class="catalogue-warning"><span aria-hidden="true">⚠</span> {de_plural(summary.failed, "fehlgeschlagener Erkennungsversuch", "fehlgeschlagene Erkennungsversuche")}</p>')
         if summary.degenerate:
             recognition_status.append(
-                f'<p class="catalogue-warning"><span aria-hidden="true">⚠</span> {summary.degenerate} degenerierte Ergebnisse</p>')
+                f'<p class="catalogue-warning"><span aria-hidden="true">⚠</span> {de_plural(summary.degenerate, "degeneriertes Ergebnis", "degenerierte Ergebnisse")}</p>')
     if not summary.source_available:
         recognition_status.append('<p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>')
     status_html = "".join(recognition_status)

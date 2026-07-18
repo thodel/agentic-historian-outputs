@@ -64,7 +64,7 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 <div><dt>Engine</dt><dd>fusion</dd></div>
 <div><dt>Modell</dt><dd>—</dd></div>
 <div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
-<div><dt>Engine-Konfidenz</dt><dd aria-label="Engine-Konfidenz: Nicht angegeben, Geltungsbereich: fusion">Nicht angegeben <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: fusion</p><p>Modell: —</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz (raw): None</p></details>
+<div><dt>Engine-Konfidenz</dt><dd aria-label="Engine-Konfidenz: Nicht angegeben, Geltungsbereich: fusion">Nicht angegeben <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: fusion</p><p>Modell: —</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz: Nicht angegeben</p></details>
 <div><dt>Zeichen</dt><dd>570</dd></div>
 <div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Engine-Konfidenz">Konfidenz Nicht angegeben</span></dd></div>
 </dl>

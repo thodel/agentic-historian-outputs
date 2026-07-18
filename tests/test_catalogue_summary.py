@@ -109,7 +109,7 @@ class CatalogueSummaryTests(unittest.TestCase):
     def test_card_surfaces_failures_missing_source_and_legacy_provenance(self):
         current = recognition_summary({"recognitions": [rec(), rec("vlm", "v", error="timeout")]})
         card = self.card(current)
-        self.assertIn("1 fehlgeschlagene Erkennungsversuche", card)
+        self.assertIn("1 fehlgeschlagener Erkennungsversuch", card)
         self.assertIn("Keine digitale Quelle", card)
         legacy = RecognitionSummary("legacy", None, None, None, None, None, (), 0, None,
                                     False, "missing", "machine-generated", False)
