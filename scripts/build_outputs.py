@@ -159,12 +159,84 @@ def source_panel(data: dict) -> str:
 <div class="notice notice--warning"><strong>Kein öffentliches Digitalisat verknüpft.</strong> Ein lokaler Verarbeitungspfad ist kein zitierbarer Quellenbeleg. Ergänzen Sie <code>source_url</code> oder <code>iiif_manifest</code> in der Pipeline-Ausgabe.</div></section>'''
 
 
+
+def _highlight_entities(text: str, data: dict) -> str:
+    """Wrap entity mentions in <mark> spans. Returns HTML with entity highlights."""
+    raw = data.get("entities") or {}
+    items = []
+    if isinstance(raw, dict) and isinstance(raw.get("entities"), list):
+        items = raw["entities"]
+    elif isinstance(raw, dict):
+        for group, group_items in raw.items():
+            if not isinstance(group_items, list):
+                continue
+            for item in group_items:
+                if isinstance(item, dict):
+                    items.append({**item, "type": item.get("type") or group.rstrip("s").upper()})
+                else:
+                    items.append({"text": str(item), "type": group.rstrip("s").upper()})
+    elif isinstance(raw, list):
+        items = raw
+    if not items:
+        return html.escape(text)
+    surfaces = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        surface = item.get("text") or item.get("name") or ""
+        if surface:
+            surfaces.append((len(surface), surface, item.get("type", "UNKNOWN").upper()))
+    if not surfaces:
+        return html.escape(text)
+    escaped_text = html.escape(text)
+    escaped_surfaces = [(html.escape(surf), surf, etype) for _, surf, etype in surfaces]
+    escaped_surfaces.sort(key=lambda x: -len(x[0]))
+    placeholders = {}
+    for esc_surf, orig_surf, etype in escaped_surfaces:
+        placeholder = f"\x00{esc_surf}\x01"
+        escaped_text = escaped_text.replace(esc_surf, placeholder)
+        placeholders[placeholder] = (esc_surf, etype)
+    for placeholder, (esc_surf, etype) in placeholders.items():
+        css_class = f"entity-{etype.lower()}"
+        escaped_text = escaped_text.replace(placeholder, f'<mark class="{css_class}">{esc_surf}</mark>')
+    return escaped_text
+
+
+def _build_transcription_content(transcription: str, data: dict) -> str:
+    """Build line-numbered transcription HTML with copy button and entity highlights."""
+    if not transcription:
+        return '<p class="transcription-empty">Keine Transkription verfügbar.</p>'
+    content = _highlight_entities(transcription, data)
+    lines = content.split("\n")
+    numbered_lines = []
+    for i, line in enumerate(lines, start=1):
+        numbered_lines.append(
+            f'<span class="line" data-line="{i}" role="row">'
+            f'<span class="line-number" aria-hidden="true">{i}</span>'
+            f'<span class="line-text">{line if line else " "}</span>'
+            f'</span>'
+        )
+    return (
+        '<div class="transcription-toolbar">'
+        '<button type="button" class="copy-btn" data-copy-transcript aria-label="Transkription in die Zwischenablage kopieren">'
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>'
+        'Transkription kopieren'
+        '</button>'
+        '</div>'
+        f'<div class="transcription-wrap" role="table" aria-label="Transkription mit Zeilennummern">'
+        f'{"".join(numbered_lines)}'
+        '</div>'
+    )
+
+
 def evidence_workspace(data: dict, doc_id: str, transcription: str,
                        recognition_section: str) -> str:
     """Compose evidence panes, enhancing only embeddable image/IIIF sources."""
     source = source_panel(data)
+    transcript_html = _build_transcription_content(transcription, data)
     transcript = f'''<section id="transcription" class="page-section page-section--evidence" data-page-section="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
-<pre class="transcription" tabindex="0"><code>{html.escape(transcription) if transcription else 'Keine Transkription verfügbar.'}</code></pre></section>'''
+{transcript_html}
+</section>'''
     if normalize_source_reference(data)["type"] not in {"image", "iiif_manifest"}:
         return f"{source}\n\n{transcript}\n\n{recognition_section}"
     return f'''<div class="evidence-workspace" data-evidence-workspace data-doc-id="{html.escape(doc_id, quote=True)}">
@@ -173,7 +245,6 @@ def evidence_workspace(data: dict, doc_id: str, transcription: str,
 <div class="evidence-pane evidence-pane--transcription" role="region" aria-labelledby="transcription-heading">{transcript}{recognition_section}</div>
 <p class="notice notice--warning page-sync-warning" data-page-sync-warning role="status" hidden></p>
 </div>'''
-
 
 def build_document(path: Path, entity_index: dict) -> bool:
     try:

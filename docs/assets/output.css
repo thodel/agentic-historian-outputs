@@ -227,3 +227,109 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 .btn-rec-compare-diff { margin-left: .25rem; font-weight: 700; }
 .btn-rec-compare-diff[aria-pressed="true"] { color: var(--output-accent); }
 .btn-rec-compare-diff[aria-pressed="false"] { color: var(--output-muted); }
+
+/* ─── Transcription Reading Aids (#130) ─────────────────────────── */
+
+.transcription-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--output-border);
+  border-radius: 0.35rem;
+  background: var(--output-surface-raised);
+  color: var(--output-ink);
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.copy-btn:hover { background: var(--output-surface); }
+.copy-btn:focus-visible { outline: 3px solid var(--output-accent); outline-offset: 2px; }
+.copy-btn--copied { color: #25623b; border-color: #25623b; }
+
+/* Line-numbered transcription */
+.transcription-wrap {
+  display: block;
+  max-height: 42rem;
+  overflow: auto;
+  padding: 1rem;
+  border: 1px solid var(--output-border);
+  border-radius: 0.5rem;
+  background: var(--output-surface);
+  color: var(--output-ink);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1.65;
+}
+
+/* Individual line row */
+.line {
+  display: flex;
+  align-items: baseline;
+}
+
+/* Line number — muted, non-selectable, right-aligned in fixed-width column */
+.line-number {
+  flex-shrink: 0;
+  width: 2.8rem;
+  padding-right: 0.75rem;
+  text-align: right;
+  color: var(--output-muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.78rem;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Line text takes remaining width */
+.line-text { flex: 1; }
+
+/* Entity highlighting — WCAG AA contrast on both light and dark backgrounds */
+.entity-person  { background: #d4edda; color: #1a3a1f; padding: 0 1px; border-radius: 2px; }
+.entity-place   { background: #dce3f0; color: #1a2a50; padding: 0 1px; border-radius: 2px; }
+.entity-org     { background: #f0e3d4; color: #4a2a0a; padding: 0 1px; border-radius: 2px; }
+.entity-unknown { background: #e8e3d4; color: #3a3020; padding: 0 1px; border-radius: 2px; }
+.entity-unpecified { background: #e8e3d4; color: #3a3020; padding: 0 1px; border-radius: 2px; }
+
+@media (prefers-color-scheme: dark) {
+  .entity-person  { background: #1e3a24; color: #9ed4a8; }
+  .entity-place   { background: #1e2840; color: #9eaad4; }
+  .entity-org     { background: #3a2414; color: #d4a870; }
+  .entity-unknown,
+  .entity-unpecified { background: #2e2820; color: #c8b890; }
+}
+
+/* Print: no copy button, keep entity highlights readable */
+@media print {
+  .copy-btn { display: none; }
+  .transcription-wrap {
+    max-height: none;
+    overflow: visible;
+    background: #fff;
+    color: #000;
+    border-color: #999;
+  }
+  .line-number { color: #666; }
+  .entity-person  { background: #e8f5e9; color: #1a3a1f; }
+  .entity-place   { background: #e8edf5; color: #1a2a50; }
+  .entity-org     { background: #f5ede3; color: #4a2a0a; }
+  .entity-unknown,
+  .entity-unpecified { background: #f0ede3; color: #3a3020; }
+}
+
+/* High-contrast mode */
+@media (prefers-contrast: more) {
+  .entity-person  { background: #b2dfb2; outline: 1px solid #1a3a1f; }
+  .entity-place   { background: #bbc3df; outline: 1px solid #1a2a50; }
+  .entity-org     { background: #dfc9a8; outline: 1px solid #4a2a0a; }
+  .line { border-bottom: 1px solid #ccc; }
+}
