@@ -1,6 +1,8 @@
 const CATALOGUE_DEFAULTS = {
   q: "", kind: "all", language: "all", script: "all", engine: "all",
-  readiness: "all", failure: "all", source: "all", sort: "created-desc",
+  readiness: "all", failure: "all", source: "all",
+  "entity-type": "all", completeness: "all",
+  sort: "created-desc",
 };
 
 function catalogueStateFromParams(params) {
@@ -25,12 +27,17 @@ function catalogueMatches(data, state) {
     (state.source === "available" && data.sourceAvailable === "true") ||
     (state.source === "missing" && data.sourceAvailable !== "true") ||
     data.sourceType === state.source;
+  const matchesEntityType = state["entity-type"] === "all" ||
+    (data.entityTypes || "").split(",").filter(Boolean).includes(state["entity-type"]);
+  const matchesCompleteness = state.completeness === "all" ||
+    data.completeness === state.completeness;
   return (!state.q || (data.search || "").includes(state.q.toLocaleLowerCase("de"))) &&
     (state.kind === "all" || data.kind === state.kind) &&
     (state.language === "all" || data.language === state.language) &&
     (state.script === "all" || data.script === state.script) &&
     (state.engine === "all" || engines.includes(state.engine)) &&
-    matchesReadiness && matchesFailure && matchesSource;
+    matchesReadiness && matchesFailure && matchesSource &&
+    matchesEntityType && matchesCompleteness;
 }
 
 function catalogueParams(state) {
@@ -65,7 +72,7 @@ function catalogueCompare(left, right, sort) {
 }
 
 function initCatalogue() {
-  const ids = ["search", "filter", "language", "script", "engine", "readiness", "failure", "source", "sort"];
+  const ids = ["search", "filter", "language", "script", "engine", "readiness", "failure", "source", "entity-type", "completeness", "sort"];
   const controls = Object.fromEntries(ids.map(id => [id, document.querySelector(`#catalogue-${id}`)]));
   const clear = document.querySelector("#catalogue-clear");
   const cards = [...document.querySelectorAll(".catalogue-card")];
@@ -83,17 +90,21 @@ function initCatalogue() {
   addOptions(controls.language, cards.map(card => card.dataset.language));
   addOptions(controls.script, cards.map(card => card.dataset.script));
   addOptions(controls.engine, cards.flatMap(card => (card.dataset.recognitionEngines || "").split(",")));
+  addOptions(controls["entity-type"], cards.flatMap(card => (card.dataset.entityTypes || "").split(",").filter(Boolean)));
 
   const readState = () => ({
     q: controls.search.value.trim(), kind: controls.filter.value,
     language: controls.language.value, script: controls.script.value,
     engine: controls.engine.value, readiness: controls.readiness.value,
-    failure: controls.failure.value, source: controls.source.value, sort: controls.sort.value,
+    failure: controls.failure.value, source: controls.source.value,
+    "entity-type": controls["entity-type"].value,
+    completeness: controls.completeness.value,
+    sort: controls.sort.value,
   });
   const writeState = state => {
     controls.search.value = state.q;
     controls.filter.value = state.kind;
-    for (const key of ["language", "script", "engine", "readiness", "failure", "source", "sort"])
+    for (const key of ["language", "script", "engine", "readiness", "failure", "source", "entity-type", "completeness", "sort"])
       controls[key].value = state[key];
   };
   const update = ({ push = true } = {}) => {
@@ -108,9 +119,13 @@ function initCatalogue() {
     const filters = Object.entries(state).filter(([key, value]) => key !== "sort" && value && value !== CATALOGUE_DEFAULTS[key]);
     const sortLabel = controls.sort.options[controls.sort.selectedIndex].textContent;
     active.textContent = filters.length ? `Aktive Filter: ${filters.map(([, value]) => value).join(", ")}.` : "Keine Filter aktiv.";
-    status.textContent = visible
-      ? `${visible} ${visible === 1 ? "Eintrag" : "Einträge"} sichtbar; Sortierung: ${sortLabel}.`
-      : `Keine Einträge entsprechen den aktiven Filtern (${filters.map(([, value]) => value).join(", ") || "keine"}).`;
+    if (visible === 0) {
+      status.innerHTML = `<strong>Keine Ergebnisse</strong> für die gewählten Filter${filters.length ? " (" + filters.map(([, v]) => v).join(", ") + ")" : ""}. <button id="catalogue-empty-clear" type="button" class="catalogue-empty-clear">Filter zurücksetzen</button>`;
+      const emptyClear = document.getElementById("catalogue-empty-clear");
+      if (emptyClear) emptyClear.addEventListener("click", () => { writeState({ ...CATALOGUE_DEFAULTS }); update(); controls.search.focus(); });
+    } else {
+      status.textContent = `${visible} ${visible === 1 ? "Eintrag" : "Einträge"} sichtbar; Sortierung: ${sortLabel}.`;
+    }
     if (push) {
       const url = new URL(window.location.href); url.search = catalogueParams(state).toString();
       history.pushState(state, "", url);

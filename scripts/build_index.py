@@ -13,7 +13,7 @@ import html
 import json
 import re
 import subprocess
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
@@ -86,6 +86,39 @@ def _entity_count(entities: object) -> int:
     return sum(len(value) for value in entities.values() if isinstance(value, list))
 
 
+def _entity_types(entities: object) -> list[str]:
+    types: set[str] = set()
+    if isinstance(entities, list):
+        for item in entities:
+            if isinstance(item, dict):
+                t = _val(item.get("type")).strip().upper()
+                if t:
+                    types.add(t)
+    elif isinstance(entities, dict):
+        bucket = entities.get("entities")
+        if isinstance(bucket, list):
+            for item in bucket:
+                if isinstance(item, dict):
+                    t = _val(item.get("type")).strip().upper()
+                    if t:
+                        types.add(t)
+        for key, bucket in entities.items():
+            if key == "entities":
+                continue
+            if isinstance(bucket, list) and bucket:
+                types.add(key.rstrip("s").upper())
+    return sorted(types)
+
+
+def _completeness(record: Record) -> str:
+    summary = record.recognition_summary
+    has_source = summary.source_available if summary else False
+    has_recognition = bool(summary and summary.total)
+    has_entity_types = record.entities > 0
+    score = int(has_source) + int(has_recognition) + int(has_entity_types)
+    return "vollstaendig" if score >= 3 else ("teilweise" if score >= 2 else "minimal")
+
+
 @dataclass
 class Record:
     doc_id: str
@@ -106,6 +139,7 @@ class Record:
     recognition_avg_confidence: float | None = None  # mean engine confidence
     reference_cer: float | None = None  # reference-based CER if available
     reference_wer: float | None = None
+    entity_types: list = field(default_factory=list)  # Issue #132
     recognition_summary: "RecognitionSummary | None" = None
 
 
@@ -301,6 +335,7 @@ def _record(path: Path) -> Record:
         recognition_avg_confidence=rec_avg_conf,
         reference_cer=ref_cer,
         reference_wer=ref_wer,
+        entity_types=_entity_types(data.get("entities")),
         recognition_summary=summary,
     )
 
@@ -400,6 +435,8 @@ def _card(record: Record) -> str:
     else:
         action_href = doc_href
         action_label = "Ausgabe öffnen"
+    entity_types_str = ",".join(record.entity_types) if record.entity_types else ""
+    completeness = _completeness(record)
     summary_attrs = (
         f'data-recognition-provenance="{summary.provenance}" '
         f'data-recognition-total="{count(summary.total)}" '
@@ -413,7 +450,9 @@ def _card(record: Record) -> str:
         f'data-source-type="{summary.source_type}" '
         f'data-source-available="{str(summary.source_available).lower()}" '
         f'data-review-status="{html.escape(summary.review_status, quote=True)}" '
-        f'data-comparison-ready="{str(summary.comparison_ready).lower()}"'
+        f'data-comparison-ready="{str(summary.comparison_ready).lower()}" '
+        f'data-entity-types="{html.escape(entity_types_str, quote=True)}" '
+        f'data-completeness="{completeness}"'
     )
     return f'''<article class="catalogue-card" data-document-id="{html.escape(record.doc_id.casefold(), quote=True)}" data-created="{created_iso}" data-kind="{kind}" data-language="{html.escape(record.language.casefold(), quote=True)}" data-script="{html.escape(record.script.casefold(), quote=True)}" data-search="{html.escape(search, quote=True)}" {summary_attrs}>
   <div class="catalogue-card__heading">
@@ -526,6 +565,29 @@ title: Katalog
       <option value="iiif_manifest">IIIF</option>
       <option value="image">Direktbild</option>
       <option value="landing_page">Archivseite</option>
+    </select>
+  </div>
+  <div>
+    <label for="catalogue-entity-type">Entitätstyp</label>
+    <select id="catalogue-entity-type">
+      <option value="all">Alle Entitätstypen</option>
+      <option value="PERSON">Personen</option>
+      <option value="PLACE">Orte</option>
+      <option value="ORG">Organisationen</option>
+      <option value="DATE">Datumsangaben</option>
+      <option value="EVENT">Ereignisse</option>
+      <option value="ROLE">Rollen</option>
+      <option value="TITLE">Titel</option>
+      <option value="SOCIAL_GROUP">Sozialgruppe</option>
+    </select>
+  </div>
+  <div>
+    <label for="catalogue-completeness">Vollständigkeit</label>
+    <select id="catalogue-completeness">
+      <option value="all">Alle Stufen</option>
+      <option value="vollstaendig">Vollständig</option>
+      <option value="teilweise">Teilweise</option>
+      <option value="minimal">Minimal</option>
     </select>
   </div>
   <div>
