@@ -1,11 +1,99 @@
-(() => {
-  const search = document.querySelector("#catalogue-search");
-  const filter = document.querySelector("#catalogue-filter");
-  const language = document.querySelector("#catalogue-language");
-  const script = document.querySelector("#catalogue-script");
+const CATALOGUE_DEFAULTS = {
+  q: "", kind: "all", language: "all", script: "all", engine: "all",
+  readiness: "all", failure: "all", source: "all", sort: "created-desc",
+};
+
+const CATALOGUE_FIXED_VALUES = {
+  kind: ["all", "output", "test"],
+  readiness: ["all", "comparison", "candidates", "legacy"],
+  failure: ["all", "clean", "issues"],
+  source: ["all", "available", "missing", "iiif_manifest", "image", "landing_page"],
+  sort: ["created-desc", "created-asc", "title-asc", "title-desc", "pages-desc", "pages-asc",
+    "candidates-desc", "candidates-asc", "failures-desc", "failures-asc"],
+};
+
+function catalogueStateFromParams(params) {
+  const state = { ...CATALOGUE_DEFAULTS };
+  for (const key of Object.keys(state)) {
+    const value = params.get(key);
+    if (!value) continue;
+    if (!CATALOGUE_FIXED_VALUES[key] || CATALOGUE_FIXED_VALUES[key].includes(value)) state[key] = value;
+  }
+  return state;
+}
+
+function catalogueMatches(data, state) {
+  const number = key => Number(data[key] || 0);
+  const engines = (data.recognitionEngines || "").split(",").filter(Boolean);
+  const matchesReadiness = state.readiness === "all" ||
+    (state.readiness === "comparison" && data.comparisonReady === "true") ||
+    (state.readiness === "candidates" && number("recognitionTotal") > 0) ||
+    (state.readiness === "legacy" && data.recognitionProvenance === "legacy");
+  const hasIssues = number("recognitionFailed") + number("recognitionEmpty") +
+    number("recognitionDegenerate") > 0;
+  const matchesFailure = state.failure === "all" ||
+    (state.failure === "issues" && hasIssues) ||
+    (state.failure === "clean" && data.recognitionProvenance !== "legacy" && !hasIssues);
+  const matchesSource = state.source === "all" ||
+    (state.source === "available" && data.sourceAvailable === "true") ||
+    (state.source === "missing" && data.sourceAvailable !== "true") ||
+    data.sourceType === state.source;
+  return (!state.q || (data.search || "").includes(state.q.toLocaleLowerCase("de"))) &&
+    (state.kind === "all" || data.kind === state.kind) &&
+    (state.language === "all" || data.language === state.language) &&
+    (state.script === "all" || data.script === state.script) &&
+    (state.engine === "all" || engines.includes(state.engine)) &&
+    matchesReadiness && matchesFailure && matchesSource;
+}
+
+function catalogueParams(state) {
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(state)) {
+    if (value && value !== CATALOGUE_DEFAULTS[key]) params.set(key, value);
+  }
+  return params;
+}
+
+function catalogueCompare(left, right, sort) {
+  const [field, direction] = sort.split("-");
+  const idCompare = (left.documentId || "").localeCompare(right.documentId || "", "de", { numeric: true });
+  if (field === "title") return direction === "desc" ? -idCompare : idCompare;
+  const key = field === "created" ? "created" :
+    field === "pages" ? "recognitionPages" : "recognitionTotal";
+  const parse = (data, value) => {
+    if (field === "failures") {
+      const parts = [data.recognitionFailed, data.recognitionEmpty, data.recognitionDegenerate];
+      if (parts.every(part => part === undefined || part === null || part === "")) return null;
+      return parts.reduce((sum, part) => sum + Number(part || 0), 0);
+    }
+    if (value === undefined || value === null || value === "") return null;
+    const number = field === "created" ? Date.parse(value) : Number(value);
+    return Number.isFinite(number) ? number : null;
+  };
+  const a = parse(left, left[key]); const b = parse(right, right[key]);
+  if (a === null && b !== null) return 1;
+  if (a !== null && b === null) return -1;
+  if (a !== b) return (a - b) * (direction === "desc" ? -1 : 1);
+  return idCompare;
+}
+
+function catalogueStatusText(visible, filters, sortLabel) {
+  if (visible) return `${visible} ${visible === 1 ? "Eintrag" : "Einträge"} sichtbar; Sortierung: ${sortLabel}.`;
+  const values = filters.map(([, value]) => value).join(", ") || "keine";
+  return `Keine Einträge entsprechen den aktiven Filtern (${values}).`;
+}
+
+function initCatalogue() {
+  const ids = ["search", "filter", "language", "script", "engine", "readiness", "failure", "source", "sort"];
+  const controls = Object.fromEntries(ids.map(id => [id, document.querySelector(`#catalogue-${id}`)]));
+  const clear = document.querySelector("#catalogue-clear");
   const cards = [...document.querySelectorAll(".catalogue-card")];
   const status = document.querySelector("#catalogue-status");
-  if (!search || !filter || !language || !script || !status) return;
+  const active = document.querySelector("#catalogue-active-filters");
+  const empty = document.querySelector("#catalogue-empty");
+  const list = document.querySelector("#catalogue-list");
+  if (Object.values(controls).some(control => !control) || !clear || !status || !active || !empty || !list) return;
+  list.dataset.enhanced = "true";
 
   const addOptions = (select, values) => {
     [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b, "de")).forEach(value => {
@@ -13,26 +101,59 @@
       select.appendChild(option);
     });
   };
-  addOptions(language, cards.map(card => card.dataset.language));
-  addOptions(script, cards.map(card => card.dataset.script));
+  addOptions(controls.language, cards.map(card => card.dataset.language));
+  addOptions(controls.script, cards.map(card => card.dataset.script));
+  addOptions(controls.engine, cards.flatMap(card => (card.dataset.recognitionEngines || "").split(",")));
 
-  const update = () => {
-    const query = search.value.trim().toLocaleLowerCase("de");
-    const kind = filter.value;
+  const readState = () => ({
+    q: controls.search.value.trim(), kind: controls.filter.value,
+    language: controls.language.value, script: controls.script.value,
+    engine: controls.engine.value, readiness: controls.readiness.value,
+    failure: controls.failure.value, source: controls.source.value, sort: controls.sort.value,
+  });
+  const writeState = state => {
+    controls.search.value = state.q;
+    for (const key of ["filter", "language", "script", "engine", "readiness", "failure", "source", "sort"]) {
+      const stateKey = key === "filter" ? "kind" : key;
+      const requested = state[stateKey];
+      controls[key].value = [...controls[key].options].some(option => option.value === requested)
+        ? requested : CATALOGUE_DEFAULTS[stateKey];
+    }
+  };
+  const update = ({ push = true } = {}) => {
+    const state = readState();
+    cards.sort((left, right) => catalogueCompare(left.dataset, right.dataset, state.sort));
+    for (const card of cards) list.appendChild(card);
     let visible = 0;
     for (const card of cards) {
-      const matchesText = !query || (card.dataset.search || "").includes(query);
-      const matchesKind = kind === "all" || card.dataset.kind === kind;
-      const matchesLanguage = language.value === "all" || card.dataset.language === language.value;
-      const matchesScript = script.value === "all" || card.dataset.script === script.value;
-      card.hidden = !(matchesText && matchesKind && matchesLanguage && matchesScript);
+      card.hidden = !catalogueMatches(card.dataset, state);
       if (!card.hidden) visible += 1;
     }
-    status.textContent = `${visible} ${visible === 1 ? "Eintrag" : "Einträge"} sichtbar; nach Erstellungsdatum absteigend sortiert.`;
+    const filters = Object.entries(state).filter(([key, value]) => key !== "sort" && value && value !== CATALOGUE_DEFAULTS[key]);
+    const sortLabel = controls.sort.options[controls.sort.selectedIndex].textContent;
+    active.textContent = filters.length ? `Aktive Filter: ${filters.map(([, value]) => value).join(", ")}.` : "Keine Filter aktiv.";
+    status.textContent = catalogueStatusText(visible, filters, sortLabel);
+    empty.hidden = visible !== 0;
+    if (push) {
+      const url = new URL(window.location.href); url.search = catalogueParams(state).toString();
+      history.pushState(state, "", url);
+    }
   };
 
-  search.addEventListener("input", update);
-  filter.addEventListener("change", update);
-  language.addEventListener("change", update);
-  script.addEventListener("change", update);
-})();
+  writeState(catalogueStateFromParams(new URL(window.location.href).searchParams));
+  update({ push: false });
+  controls.search.addEventListener("input", update);
+  for (const control of Object.values(controls).filter(control => control !== controls.search))
+    control.addEventListener("change", update);
+  clear.addEventListener("click", () => { writeState({ ...CATALOGUE_DEFAULTS }); update(); controls.search.focus(); });
+  addEventListener("popstate", () => {
+    writeState(catalogueStateFromParams(new URL(window.location.href).searchParams));
+    update({ push: false });
+  });
+}
+
+if (typeof document !== "undefined") initCatalogue();
+if (typeof module !== "undefined") module.exports = {
+  CATALOGUE_DEFAULTS, catalogueCompare, catalogueMatches, catalogueParams, catalogueStateFromParams,
+  catalogueStatusText, initCatalogue,
+};
