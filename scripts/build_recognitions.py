@@ -1,687 +1,575 @@
-"""Accessible recognition-candidate rendering for generated output pages.
-
-This module is the Epic 5 reference implementation for issue #29
-(candidate-level confidence and failure indicators) and issue #31
-(reference-based CER/WER with provenance).
-
-It uses scripts/quality as the canonical source for all quality vocabulary,
-provenance contract, degeneration detection, and explanation keys.
-It uses scripts/recognition_status as the canonical source for all error
-taxonomy, public message derivation, and sanitisation (issue #49).
-"""
-
+"""Recognition candidate helpers — used by build_outputs.py (issues #2, #3, #35)."""
 from __future__ import annotations
-
 import html
-import hashlib
-import json
-import re
-import zipfile
-from collections import Counter
-from pathlib import Path
-from urllib.parse import quote
-
-try:
-    from quality import (
-        EXPLANATIONS,
-        detect_degeneration,
-        format_confidence,
-        quality_badge,
-        confidence_scope_label,
-        explanation_button,
-        explanation_block,
-        BADGE_CLASS_MAP,
-        Provenance,
-    )
-except ImportError:
-    # Fallback when quality.py is not yet available (e.g., during initial bootstrap)
-    Provenance = object
-
-    def detect_degeneration(text, confidence=None): return False, ""
-    def format_confidence(value): return "Nicht angegeben" if value is None else f"{max(0.0, min(1.0, float(value))):.0%}"
-    def confidence_scope_label(engine, model, page): return engine
-
-    BADGE_CLASS_MAP = {}
-    EXPLANATIONS = {}
-
-    def quality_badge(kind, value, unit, scope, is_legacy=False):
-        if kind == "engine_confidence":
-            return f'<span class="quality-badge quality-badge--{kind}">Konfidenz {format_confidence(value)}</span>'
-        return f'<span class="quality-badge quality-badge--{kind}">{kind}</span>'
-
-    def explanation_button(key): return ""
-    def explanation_block(key): return ""
-
-try:
-    from recognition_status import public_error_message, normalize
-except ImportError:
-    # Fallback when recognition_status is not yet available (e.g., during initial bootstrap)
-    def public_error_message(error):
-        message = str(error or "").strip()
-        lowered = message.casefold()
-        if not message:
-            return ""
-        if "timed out" in lowered or "timeout" in lowered:
-            return "Der Erkennungsdienst hat das Zeitlimit uberschritten."
-        if "unavailable" in lowered or "connection" in lowered:
-            return "Der Erkennungsdienst war nicht erreichbar."
-        if "unsupported" in lowered or "not found" in lowered:
-            return "Das angeforderte Erkennungsmodell war nicht verfügbar."
-        return "Der Erkennungsversuch ist fehlgeschlagen."
-
-
-# Backward-compatible wrapper for test_recognitions.py (origin/main).
-def _confidence(confidence: object) -> str:
-    """Return a human-readable confidence string.  Matches origin/main signature."""
-    return format_confidence(confidence)
 
 
 def _engine_label(engine: str) -> str:
     return {
-        "vlm": "VLM",
+        "vlm": "VLM (InternVL3-8B)",
         "kraken": "Kraken OCR",
         "trocr": "TrOCR",
-        "fusion": "Ausgewählt / Fusion",
-    }.get(str(engine).lower(), str(engine) or "Unbekannte Engine")
+        "fusion": "Fusion",
+        "fused": "Fused output",
+    }.get(engine.lower(), engine)
 
 
-def _safe_slug(value: object, fallback: str = "candidate") -> str:
-    slug = re.sub(r"[^a-z0-9]+", "-", str(value).casefold()).strip("-")
-    return slug[:100] or fallback
-
-
-def _public_error(error: object) -> str:
-    """Return a useful public message without endpoints, paths, or credentials.
-
-    Delegates to ``recognition_status.public_error_message`` which applies the
-    canonical status taxonomy (issue #49) and sanitisation patterns.
-    """
-    return public_error_message(error)
-
-
-def _recognition_path(candidate: dict) -> str:
-    """Mirror the publisher's page-aware candidate path contract (#284)."""
-    page = str(candidate.get("page") or "").strip()
-    engine = str(candidate.get("engine") or "engine").strip() or "engine"
-    model = str(candidate.get("model_id") or "").strip().replace("/", "_")
-    stem = f"{engine}-{model}" if model else engine
-    if page:
-        page_slug = re.sub(r"[^A-Za-z0-9._-]+", "_", page.rsplit(".", 1)[0])
-        return f"recognitions/{page_slug}/{stem}.txt"
-    return f"recognitions/{stem}.txt"
-
-
-def _error_path(candidate: dict) -> str:
-    return _recognition_path(candidate).removesuffix(".txt") + ".error.txt"
-
-
-def write_error_record(directory: Path, candidate: dict) -> Path | None:
-    provenance = _failure_provenance(candidate)
-    if provenance["status_code"] == "success":
-        return None
-    path = directory / _error_path(candidate)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps({
-        "engine": str(candidate.get("engine") or ""),
-        "model_id": str(candidate.get("model_id") or ""),
-        "page": str(candidate.get("page") or ""),
-        **provenance,
-    }, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    return path
-
-
-def compute_checksum(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(65536), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
-
-
-def _failure_provenance(candidate: dict) -> dict:
-    """Return the safe, typed public record for one failed attempt."""
-    status = normalize(candidate)
+def _engine_icon(engine: str) -> str:
     return {
-        "status_code": status.code,
-        "retryable": status.retryable,
-        "complete": status.complete,
-        "diagnostic_code": status.error_code or status.code,
-        "error": status.public_msg,
-        "engine": status.engine,
-        "model_id": status.model or None,
-        "page": status.page or None,
-        "timing_ms": status.timing_ms,
-        "run_id": status.run_id or None,
-        "retry_count": status.retry_count,
-        "attempt": status.attempt,
-        "fusion_decision": candidate.get("fusion_decision") or "excluded",
-        "text_artifact": None,
-        "reuse_notice": "Incomplete recognition attempt; cite the failure record with the run provenance.",
-    }
+        "vlm": "🔮",   # crystal ball
+        "kraken": "📖",  # book
+        "trocr": "🔤",   # abc
+        "fusion": "🔗",  # link
+        "fused": "✅",
+    }.get(engine.lower(), "🤖")  # robot
 
 
-def _catalogue_data(doc_id: str, candidates: list[dict]) -> dict:
-    # Issue #52: compute aggregate counts for catalogue-level filtering
-    total = len(candidates)
-    failed = sum(1 for c in candidates if c["error"] and not c.get("is_degenerate"))
-    degenerate = sum(1 for c in candidates if c.get("is_degenerate"))
-    successful = sum(1 for c in candidates if not c["error"] and not c.get("is_degenerate"))
-    empty = sum(1 for c in candidates
-                 if not c["error"] and not c.get("is_degenerate") and not c["text"])
-    if failed + degenerate == total:
-        run_quality = "total_failure"
-    elif failed + degenerate > 0:
-        run_quality = "partial_failure"
-    elif empty > 0:
-        run_quality = "empty"
+def _is_selected(rec, transcript) -> bool:
+    return rec.get("text", "").strip() == transcript.strip()
+
+
+def _conf_html(conf) -> str:
+    if isinstance(conf, (int, float)):
+        return f'<span class="rec-badge">✅ {conf:.0%}</span>'
+    return ""
+
+
+def _recognition_candidate_html(rec, doc_id, i=0) -> str:
+    engine = rec.get("engine", "unknown")
+    model_id = rec.get("model_id", "—")
+    confidence = rec.get("confidence")
+    error = rec.get("error", "")
+    text = rec.get("text", "")
+    char_count = len(text.replace("\r", "").replace("\n", ""))
+    has_text = bool(text.strip())
+    icon = _engine_icon(engine)
+    label = _engine_label(engine)
+    cand_id = f"cand-{i}-{engine}-{model_id.replace('/', '-')}"
+
+    if error:
+        badge = '<span class="rec-badge rec-badge--error">❌ Fehler</span>'
+        cls = "rec-panel rec-panel--error"
+        summary_cls = "rec-summary rec-summary--error"
+        text_html = f'<pre class="rec-text rec-text--error">{html.escape(error)}</pre>'
+        dl_note = '<p class="rec-error-note">❗ Kein Output — dieser Versuch ist fehlgeschlagen.</p>'
     else:
-        run_quality = "clean"
-    return {
-        "doc_id": doc_id,
-        "version": "1.0",
-        "run_quality": run_quality,
-        "run_counts": {
-            "total": total,
-            "successful": successful,
-            "failed": failed,
-            "degenerate": degenerate,
-            "empty": empty,
-        },
-        "artifacts": [{
-            "id": candidate["id"],
-            "engine": candidate["engine"],
-            "model_id": candidate["model_id"] or None,
-            "page": candidate["page"] or None,
-            "status": "error" if candidate["error"] else "success",
-            **({"status_code": normalize(candidate).code} if not candidate["error"] else {}),
-            "error": _public_error(candidate.get("error")) or None,
-            "path": candidate["path"] if candidate["path"] and not candidate["error"] else None,
-            "error_path": _error_path(candidate) if candidate["error"] else None,
-            "characters": len(candidate["text"]) if not candidate["error"] else None,
-        } for candidate in candidates],
-    }
+        badge = _conf_html(confidence)
+        cls = "rec-panel"
+        summary_cls = "rec-summary"
+        text_html = f'<pre class="rec-text">{html.escape(text)}</pre>'
+        dl_note = ""
+        if has_text:
+            from rec_artifacts import candidate_export_filename, TEXT_MIME, TEI_MIME, MANIFEST_MIME
+            page_meta = rec.get("page")
+            fname_xml  = f"recognitions/{candidate_export_filename(doc_id, engine, model_id, '.xml', page=page_meta)}"
+            fname_json = f"recognitions/{candidate_export_filename(doc_id, engine, model_id, '.json', page=page_meta)}"
+            fname_txt  = f"recognitions/{candidate_export_filename(doc_id, engine, model_id, '.txt', page=page_meta)}"
+            page_label = f", Seite {page_meta}" if page_meta else ""
+            seg = f"cand-{i}-{engine}-{model_id.replace('/', '-')}"
+            dl_note = (
+                f'<span class="exports-list">'
+                f'<a href="{fname_xml}" download data-cand="{seg}" '
+                f'class="dl-link dl-link--xml" type="{TEI_MIME}" '
+                f'aria-label="TEI/XML herunterladen ({engine}{page_label})">'
+                f'<span class="exports-badge exports-badge--xml">TEI</span></a>'
+                f'<a href="{fname_json}" download data-cand="{seg}" '
+                f'class="dl-link dl-link--json" type="{MANIFEST_MIME}" '
+                f'aria-label="JSON herunterladen ({engine}{page_label})">'
+                f'<span class="exports-badge exports-badge--json">JSON</span></a>'
+                f'<a href="{fname_txt}" download data-cand="{seg}" '
+                f'class="dl-link dl-link--txt" type="{TEXT_MIME}" '
+                f'aria-label="Text herunterladen ({engine}{page_label})">'
+                f'<span class="exports-badge">TXT</span></a>'
+                f'</span>'
+            )
 
-
-def write_catalogue(directory: Path, doc_id: str, recognitions: list,
-                    transcript: str) -> Path:
-    path = directory / "recognitions" / "catalogue.json"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(_catalogue_data(
-        doc_id, _candidates(recognitions, transcript)), ensure_ascii=False,
-        indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    return path
-
-
-def write_package(directory: Path, doc_id: str, recognitions: list,
-                  transcript: str) -> Path | None:
-    """Write a byte-reproducible ZIP with candidate texts and safe errors."""
-    candidates = _candidates(recognitions, transcript)
-    artifacts = []
-    entries: list[tuple[str, bytes]] = []
-    for candidate in candidates:
-        if candidate["selected"]:
-            name = "fused.txt"
-            payload = candidate["text"].encode("utf-8")
-            kind = "selected"
-        elif candidate["error"]:
-            stem = "/".join((
-                _safe_slug(candidate["page"], "unassigned"),
-                _safe_slug(candidate["id"]),
-            ))
-            name = f"candidates/{stem}.error.txt"
-            failure = _failure_provenance(candidate)
-            payload = json.dumps(failure, ensure_ascii=False,
-                                 sort_keys=True).encode("utf-8")
-            kind = "error"
-        else:
-            stem = "/".join((
-                _safe_slug(candidate["page"], "unassigned"),
-                _safe_slug(candidate["id"]),
-            ))
-            name = f"candidates/{stem}.txt"
-            payload = candidate["text"].encode("utf-8")
-            kind = "candidate"
-        entries.append((name, payload))
-        artifact = {
-            "file": name, "type": kind, "engine": candidate["engine"],
-            "model_id": candidate["model_id"] or None,
-            "page": candidate["page"] or None,
-            "checksum": hashlib.sha256(payload).hexdigest(),
-        }
-        if kind == "error":
-            artifact.update(_failure_provenance(candidate))
-            artifact["reason_no_text"] = "recognition_attempt_failed"
-        artifacts.append(artifact)
-    catalogue = json.dumps(_catalogue_data(doc_id, candidates), ensure_ascii=False,
-                           indent=2, sort_keys=True).encode("utf-8")
-    entries.append(("catalogue.json", catalogue))
-    manifest = json.dumps({
-        "doc_id": doc_id, "version": "1.0",
-        "package_type": "complete_recognition", "artifacts": artifacts,
-    }, ensure_ascii=False, indent=2, sort_keys=True).encode("utf-8")
-    entries.append(("manifest.json", manifest))
-    package = directory / f"{_safe_slug(doc_id, 'document')}-recognition-package.zip"
-    try:
-        with zipfile.ZipFile(package, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-            for name, payload in sorted(entries):
-                info = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
-                info.compress_type = zipfile.ZIP_DEFLATED
-                info.external_attr = 0o644 << 16
-                archive.writestr(info, payload)
-        write_catalogue(directory, doc_id, recognitions, transcript)
-    except OSError:
-        return None
-    return package
-
-
-def _candidates(recognitions, transcript: str) -> list[dict]:
-    """Normalize selected output and every attempted recognition."""
-    result = [{
-        "id": "selected",
-        "engine": "fusion",
-        "model_id": "",
-        "page": "",
-        "text": str(transcript or ""),
-        "confidence": None,
-        "error": "",
-        "selected": True,
-        "path": "recognitions/fused.txt",
-    }]
-    raw_candidates = [raw for raw in (recognitions or []) if isinstance(raw, dict)]
-    path_counts = Counter(_recognition_path(raw) for raw in raw_candidates)
-    seen = {"selected"}
-    for index, raw in enumerate(raw_candidates, start=1):
-        if not isinstance(raw, dict):
-            continue
-        engine = str(raw.get("engine") or "unknown")
-        model = str(raw.get("model_id") or "")
-        page = str(raw.get("page") or "")
-        base = _safe_slug(f"{page}-{engine}-{model}", f"candidate-{index}")
-        candidate_id = base
-        suffix = 2
-        while candidate_id in seen:
-            candidate_id = f"{base}-{suffix}"
-            suffix += 1
-        seen.add(candidate_id)
-        text = str(raw.get("text") or "")
-        error = _public_error(raw.get("error"))
-        confidence = raw.get("confidence")
-        # Empty-text check before degeneration (backward-compat with test
-        # "empty_success_becomes_failure" which expects "keinen Text").
-        if not error and not text.strip():
-            error = "Der Erkennungsversuch lieferte keinen Text."
-        # Degeneration check (#29): detect mechanically degenerate output
-        # even when no technical error was reported.
-        is_degenerate, deg_reason = (
-            detect_degeneration(text, confidence) if not error and text.strip()
-            else (False, "")
-        )
-        if is_degenerate and not error:
-            error = f"Degenerierte Erkennung: {deg_reason}"
-        result.append({
-            "id": candidate_id,
-            "engine": engine,
-            "model_id": model,
-            "page": page,
-            "text": text,
-            "confidence": confidence,
-            "error": error,
-            "selected": False,
-            "is_degenerate": is_degenerate,
-            # Preserve safe machine-readable attempt context for exports.
-            "status_code": raw.get("status_code"),
-            "error_code": raw.get("error_code"),
-            "timing_ms": raw.get("timing_ms"),
-            "run_id": raw.get("run_id"),
-            "retry_count": raw.get("retry_count", 0),
-            "attempt": raw.get("attempt", 1),
-            "fusion_decision": raw.get("fusion_decision") or "excluded",
-            # Historical multi-page records without page attribution collide at
-            # one publisher path. Never link a candidate to an ambiguous file.
-            "path": (_recognition_path(raw)
-                     if path_counts[_recognition_path(raw)] == 1 else ""),
-        })
-    return result
-
-
-def _engine_confidence_dl(candidate: dict) -> str:
-    """Build the confidence portion of the metadata <dl>, with scope label and explanation.
-
-    Issue #29: label engine confidence with engine/model/page scope, show
-    confidence ranges/units, preserve raw values in accessible details, and
-    include an explanation button.
-    """
-    engine = candidate["engine"]
-    model = candidate["model_id"]
-    page = candidate["page"]
-    confidence = candidate["confidence"]
-    scope = confidence_scope_label(engine, model, page)
-
-    explain_btn = explanation_button("engine_confidence")
-    # No inline block: the global explanation_blocks section at the bottom of
-    # build_recognition_section() carries the matching block with the same
-    # suffix-free id (quality-explanation-engine_confidence).  Issue #112.
-    raw = (
-        f'<details class="rec-confidence-raw">'
-        f"<summary>Rohtext</summary>"
-        f"<p>Engine: {html.escape(engine)}</p>"
-        f'<p>Modell: {html.escape(model) or "—"}</p>'
-        f'<p>Seite: {html.escape(page) or "Nicht zugeordnet"}</p>'
-        f"<p>Konfidenz: {html.escape(str(confidence)) if confidence is not None else 'Nicht angegeben'}</p>"
-        f"</details>"
+    status = (
+        f"{icon} <strong>{label}</strong> {badge} "
+        f'<span class="rec-model">{html.escape(model_id)}</span> '
+        f"· {char_count:,} Zeichen"
     )
-
-    if confidence is None:
-        conf_html = "Nicht angegeben"
-        aria_label = (
-            f'aria-label="Engine-Konfidenz: Nicht angegeben, '
-            f'Geltungsbereich: {html.escape(scope)}"'
-        )
-    else:
-        conf_html = (
-            f'<span class="rec-confidence-value">{format_confidence(confidence)}</span> '
-            f'<span class="rec-confidence-scope">— {html.escape(scope)}</span>'
-        )
-        aria_label = (
-            f'aria-label="Engine-Konfidenz: {format_confidence(confidence)}, '
-            f'Einheit: Wahrscheinlichkeit, Geltungsbereich: {html.escape(scope)}"'
-        )
+    if dl_note and not error:
+        status += f" {dl_note}"
 
     return (
-        f'<div><dt>Engine-Konfidenz</dt><dd {aria_label}>{conf_html} {explain_btn}'
-        f'</dd></div>{raw}'
+        f'<div class="{cls}" id="{cand_id}">'
+        f'<div class="{summary_cls}">{status}</div>'
+        f"{text_html}"
+        "</div>"
     )
 
 
-def _build_ref_eval_html(candidate: dict) -> str:
-    """Build reference evaluation (CER/WER) HTML block for a candidate.
 
-    Issue #31: tracks reference-based CER/WER with full provenance.
-    Called only when reference_eval data is present in the candidate dict.
+def _download_formats(rec, doc_id, cand_index, artifact_meta):
+    """Return HTML for available download formats for a candidate.
+
+    rec: recognition dict
+    doc_id: document ID
+    cand_index: 0-based candidate index
+    artifact_meta: ArtifactMeta from rec_artifacts (optional)
     """
-    ref_eval = candidate.get("reference_eval") or {}
-    if not ref_eval:
+    error = rec.get("error", "")
+    text = rec.get("text", "") or ""
+    engine = rec.get("engine", "unknown")
+    model_id = rec.get("model_id", "unknown")
+    confidence = rec.get("confidence")
+
+    if error or not text.strip():
         return ""
 
-    cer = ref_eval.get("cer")
-    wer = ref_eval.get("wer")
-    ref_name = ref_eval.get("reference_name", "Unbekannte Referenz")
-    ref_version = ref_eval.get("reference_version", "")
-    norm = ref_eval.get("normalisation", "unspezifiziert")
-    scope = ref_eval.get("scope", "document")
-    explain_btn = explanation_button("reference_evaluation")
-    # No inline block: the global explanation_blocks section carries the
-    # matching block with id quality-explanation-reference_evaluation.  #112.
+    # Determine available formats
+    from rec_artifacts import candidate_export_filename, TEXT_MIME
 
-    cer_html = ""
-    if cer is not None:
-        cer_pct = max(0.0, min(1.0, float(cer))) * 100
-        cer_html = f'<div><dt>CER</dt><dd>{cer_pct:.1f} % <span class="muted">(niedrig = besser)</span></dd></div>'
-    wer_html = ""
-    if wer is not None:
-        wer_pct = max(0.0, min(1.0, float(wer))) * 100
-        wer_html = f'<div><dt>WER</dt><dd>{wer_pct:.1f} % <span class="muted">(niedrig = besser)</span></dd></div>'
+    seg = f"cand-{cand_index}-{engine}-{model_id.replace('/', '-')}"
 
-    return (
-        f'<details class="rec-ref-eval"><summary>Referenzbasierte Auswertung</summary>'
-        f"<dl>"
-        f"<div><dt>Referenz</dt><dd>{html.escape(ref_name)}"
-        f'{f" — Version {html.escape(ref_version)}" if ref_version else ""}</dd></div>'
-        f"<div><dt>Normalisierung</dt><dd>{html.escape(norm)}</dd></div>"
-        f"<div><dt>Scope</dt><dd>{html.escape(scope)}</dd></div>"
-        f"{cer_html}{wer_html}"
-        f"</dl>{explain_btn}"
-        f"</details>"
-    )
+    # Primary TXT download (always available)
+    fname = f"recognitions/{engine}-{model_id.replace('/', '-')}.txt"
+    # Use the artifact_meta path if available for accuracy
+    if artifact_meta:
+        fname = artifact_meta.path
+
+    # Page label
+    page_meta = rec.get("page")
+    page_label = f", Seite {page_meta}" if page_meta else ""
+
+    formats = [
+        ("TXT", fname, TEXT_MIME, ""),
+    ]
+
+    lines = []
+    for fmt, path, mime, extra in formats:
+        safe_name = path.split("/")[-1]
+        label = f"{fmt} herunterladen"
+        lines.append(
+            f'<a href="{path}" download data-cand="{seg}" '
+            f'class="dl-link dl-link--{fmt.lower()}" '
+            f'type="{mime}" aria-label="{label} ({engine}{page_label})">{fmt}</a>'
+        )
+
+    return " · ".join(lines)
 
 
-def build_recognition_section(recognitions, doc_id: str, transcript: str,
-                              directory: Path | None = None,
-                              reference_eval: dict | None = None) -> str:
-    """Render a no-JS-complete viewer that JavaScript enhances to switching.
+def _active_download_section(recognitions, doc_id, transcript):
+    """Primary download action for the currently selected candidate.
 
-    Issues implemented:
-    - #29: candidate-level confidence with scope, failure states, degeneration
-    - #31: reference-based CER/WER with provenance when reference_eval is provided
-    - #30: accessible explanation buttons + blocks for all metric types
+    No-JS fallback: uses the pre-selected candidate (matches transcript or first non-error).
+    With JS: updates when active candidate changes.
+
+    Returns HTML string or empty string if no downloadable candidate exists.
     """
     if not recognitions:
         return ""
-    directory = Path(directory) if directory is not None else None
-    candidates = _candidates(recognitions, transcript)
 
-    # Build explanation blocks for all keys used in this section
-    # (ensures they are present in the DOM even if no candidate uses them yet)
-    # Keep output deterministic: generated pages are committed and CI verifies that
-    # rebuilding them leaves the tree clean.
-    all_explanation_keys = (
-        "engine_confidence", "agreement", "degenerate",
-        "failed", "reference_evaluation", "incomparable_confidence",
-        "selection_score",
-    )
-    explanation_blocks = "".join(
-        explanation_block(k, page_depth=1) for k in all_explanation_keys if k in EXPLANATIONS
-    )
-
-    # Issue #52: compute aggregate counts for document-level failure summary
-    total = len(candidates)
-    failed = sum(1 for c in candidates if c["error"] and not c.get("is_degenerate"))
-    degenerate = sum(1 for c in candidates if c.get("is_degenerate"))
-    successful = sum(1 for c in candidates if not c["error"] and not c.get("is_degenerate"))
-    empty = sum(1 for c in candidates if not c["error"] and not c.get("is_degenerate") and not c["text"])
-
-    # Derive run-quality label for document-level warning
-    if failed + degenerate == total:
-        run_quality = "total_failure"
-        run_label = "Keine uneingeschränkt nutzbare Erkennung"
-    elif failed + degenerate > 0:
-        run_quality = "partial_failure"
-        run_label = f"{failed} technisch fehlgeschlagen; {degenerate} degeneriert (von {total})"
-    elif empty > 0:
-        run_quality = "empty"
-        run_label = f"{empty} von {total} ohne Ausgabe"
+    # Determine default selected candidate (same logic as build_recognition_section)
+    default_idx = 0
+    exact_match = False
+    for i, r in enumerate(recognitions):
+        if _is_selected(r, transcript):
+            default_idx = i
+            exact_match = True
+            break
     else:
-        run_quality = "clean"
-        run_label = None
+        for i, r in enumerate(recognitions):
+            if not r.get("error") and r.get("text"):
+                default_idx = i
+                break
 
-    summary_html = ""
-    if run_label:
-        css_class = {
-            "total_failure": "notice--error",
-            "partial_failure": "notice--warning",
-            "empty": "notice--info",
-        }.get(run_quality, "notice--info")
-        chips_html = (
-            '<span class="rec-chip rec-chip--ok">' + str(successful) + ' erfolgreich</span>'
-            '<span class="rec-chip rec-chip--failed">' + str(failed) + ' fehlgeschlagen</span>'
-            '<span class="rec-chip rec-chip--degenerate">' + str(degenerate) + ' degeneriert</span>'
+    rec = recognitions[default_idx]
+    engine = rec.get("engine", "unknown")
+    model_id = rec.get("model_id", "—")
+    error = rec.get("error", "")
+    text = rec.get("text", "") or ""
+    confidence = rec.get("confidence")
+    page_meta = rec.get("page")
+    char_count = len(text.replace("\r", "").replace("\n", ""))
+
+    if error or not text.strip():
+        return (
+            f'<div class="dl-section" id="downloads">'
+            f'<h2 id="dl-heading">Transkription herunterladen</h2>'
+            f'<div class="notice notice--warning">'
+            f'❗ Die automatische Erkennung ist für dieses Dokument nicht '
+            f'verfügbar oder fehlgeschlagen. Es steht kein Transkriptionstext '
+            f'zum Download bereit.</div>'
+            f'</div>'
         )
-        summary_html = (
-            '<div class="notice ' + css_class + ' rec-run-summary">'
-            '<strong>Erkennungslauf:</strong> ' + run_label +
-            ' <span class="rec-run-chips">' + chips_html + '</span></div>'
+
+    label_parts = [_engine_label(engine)]
+    if page_meta is not None:
+        label_parts.append(f"Seite {page_meta}")
+    if confidence is not None:
+        label_parts.append(f"{confidence:.0%} Konfidenz")
+    meta_str = " · ".join(label_parts)
+
+    # Primary download link (TXT)
+    fname = f"recognitions/{engine}-{model_id.replace('/', '-')}.txt"
+    page_label = f", Seite {page_meta}" if page_meta else ""
+    alt_text = f"Transkription {doc_id} — {engine} ({model_id}){page_label}"
+
+    # Build candidate selector for switching
+    options = []
+    for i, r in enumerate(recognitions):
+        r_engine = r.get("engine", "unk")
+        r_model = r.get("model_id", "")
+        r_error = r.get("error", "")
+        r_text = r.get("text", "") or ""
+        r_page = r.get("page")
+        r_conf = r.get("confidence")
+        r_cand_id = f"cand-{i}-{r_engine}-{r_model.replace('/', '-')}"
+        disabled = 'disabled ' if (r_error or not r_text.strip()) else ''
+        label = _engine_label(r_engine)
+        if r_page is not None:
+            label += f", Seite {r_page}"
+        if r_error:
+            label += " ❌"
+        elif r_conf is not None:
+            label += f" · {r_conf:.0%}"
+        options.append(
+            f'<option value="{r_cand_id}" {disabled}>{label}</option>'
         )
 
-    links, panels = [], []
-    for candidate in candidates:
-        cid = candidate["id"]
-        label = _engine_label(candidate["engine"])
-        if candidate["model_id"]:
-            label += f" · {candidate['model_id']}"
+    return (
+        f'<div class="dl-section" id="downloads">'
+        f'<h2 id="dl-heading">Transkription herunterladen</h2>'
+        f'<p class="dl-meta">{meta_str}</p>'
+        f'<div class="dl-primary">'
+        f'<a href="{fname}" download class="dl-btn dl-btn--primary" '
+        f'data-default-href="{fname}" '
+        f'data-cand="cand-{default_idx}-{engine}-{model_id.replace("/", "-")}" '
+        f'aria-label="Aktuelle Transkription herunterladen ({engine}{page_label})">'
+        f'⬇ Aktuelle Transkription herunterladen (.txt)</a>'
+        f'</div>'
+        # Candidate switcher (updates download target via JS)
+        + (f'<div class="dl-switcher">'
+           f'<label for="dl-cand-select">Andere Version wählen:</label> '
+           f'<select id="dl-cand-select" class="dl-cand-select" '
+           f'data-doc-id="{html.escape(doc_id)}">'
+           + "\n".join(options) +
+           f'</select></div>'
+           if len(recognitions) > 1 else '') +
+        f'</div>'
+    )
 
-        # Failure state: distinct from zero-confidence success (#29)
-        is_failed = bool(candidate["error"])
-        is_degenerate = candidate.get("is_degenerate", False)
 
-        if is_failed:
-            if is_degenerate:
-                status = "Degeneriert"
-                status_class = "degenerate"
-            else:
-                status = "Fehlgeschlagen"
-                status_class = "failed"
+def build_recognition_section(recognitions, doc_id, transcript) -> str:
+    """Render the full recognition-viewer section (progressive enhancement).
+
+    No JS: all panels visible, radio defaults to selected/fused candidate.
+    With JS (added separately): only active panel shown.
+    """
+    if not recognitions:
+        return ""
+
+    # Pick default: first candidate matching the fused transcript, else
+    # first non-error candidate
+    default_idx = 0
+    exact_match = False
+    for i, r in enumerate(recognitions):
+        if _is_selected(r, transcript):
+            default_idx = i
+            exact_match = True
+            break
+    else:
+        for i, r in enumerate(recognitions):
+            if not r.get("error") and r.get("text"):
+                default_idx = i
+                break
+
+    tabs, panels = [], []
+    for i, rec in enumerate(recognitions):
+        engine = rec.get("engine", "unk")
+        model_id = rec.get("model_id", "")
+        cand_id = f"cand-{i}-{engine}-{model_id.replace('/', '-')}"
+        icon = _engine_icon(engine)
+        label = f"{icon} {_engine_label(engine)}"
+        if rec.get("error"):
+            label += " ❌"
+        chk = " checked" if i == default_idx else ""
+        marker = " ✔" if (i == default_idx and exact_match) else (" ⮕" if i == default_idx else "")
+        tabs.append(
+            f'<input type="radio" name="rec-{doc_id}" id="tab-{cand_id}" '
+            f'value="{cand_id}"{chk} class="rec-tab-input">'
+            f'<label for="tab-{cand_id}" class="rec-tab-label">{label}{marker}</label>'
+        )
+        panels.append(_recognition_candidate_html(rec, doc_id, i))
+
+    # Structured exports section (issue #38)
+    exports_html = render_candidate_exports_section(recognitions, doc_id)
+
+    return (
+        "<section id=\"recognitions\" aria-labelledby=\"rec-heading\">"
+        "<h2 id=\"rec-heading\">Erkennungsversionen</h2>"
+        "<p class=\"rec-intro\">Es liegen mehrere Erkennungsversionen vor. "
+        "W\u00e4hlen Sie eine Version zum Vergleichen; "
+        "die ausgew\u00e4hlte Transkription bleibt ohne JavaScript sichtbar.</p>"
+        f'<div class="rec-viewer" data-doc-id="{html.escape(doc_id)}">'
+        "<div class=\"rec-tabs\" role=\"tablist\" aria-label=\"Erkennungsversionen\">"
+        + "\n".join(tabs) +
+        "</div>"
+        "<div class=\"rec-panels\">"
+        + "\n".join(panels) +
+        "</div></div>"
+        + exports_html +
+        "</section>"
+    )
+
+
+# ── Recognition inventory section (issue #36) ────────────────────────────────
+
+def _recognition_inventory_section(recognitions, doc_id, artifact_metas):
+    """Render a complete inventory of all recognition artifacts for a document.
+
+    Shows every candidate .txt file with type, page, character count, and
+    download link — plus the fused/selected transcription if available.
+
+    artifact_metas: list of ArtifactMeta from rec_artifacts.collect_artifacts()
+    """
+    if not recognitions:
+        return ""
+
+    # Build metadata lookup: cand_index → ArtifactMeta
+    meta_by_index = {m.cand_index: m for m in artifact_metas}
+
+    rows = []
+    for i, rec in enumerate(recognitions):
+        engine   = rec.get("engine", "unknown")
+        model_id = rec.get("model_id", "unknown")
+        page_meta = rec.get("page")
+        error    = rec.get("error", "")
+        text     = rec.get("text", "") or ""
+        char_count = len(text.replace("\r", "").replace("\n", ""))
+        is_error = bool(error)
+        confidence = rec.get("confidence")
+
+        meta = meta_by_index.get(i)
+        path = meta.path if meta else f"recognitions/{engine}-{model_id.replace('/', '-')}.txt"
+        has_text_flag = bool(text.strip()) and not is_error
+
+        # Type badge
+        if is_error:
+            type_badge = '<span class="badge badge--error">Fehler</span>'
+        elif page_meta is not None:
+            type_badge = f'<span class="badge badge--raw">roh · S. {page_meta}</span>'
         else:
-            status = "Erfolgreich"
-            status_class = "ok"
+            type_badge = '<span class="badge badge--raw">roh</span>'
 
-        # Issue #29: show typed status badge, not just text
-        status_badge = quality_badge(
-            "failed" if is_failed and not is_degenerate else
-            "degenerate" if is_degenerate else
-            "engine_confidence",
-            candidate.get("confidence"),
-            "probability",
-            confidence_scope_label(
-                candidate["engine"], candidate["model_id"], candidate["page"]
-            ),
-        )
-        # Issue #30: selected/fused candidate gets a selection_score explanation button
-        selection_btn = explanation_button("selection_score") if candidate["selected"] else ""
-
-        links.append(
-            f'<li><a href="#recognition-{cid}" data-recognition-select="{cid}" '
-            f'data-page="{html.escape(candidate["page"], quote=True)}" '
-            f'data-engine="{html.escape(candidate["engine"], quote=True)}" '
-            f'data-model="{html.escape(candidate["model_id"], quote=True)}" '
-            f'aria-controls="recognition-{cid}">{html.escape(label)}</a> '
-            f'<span class="rec-status rec-status--{status_class}">{status}</span></li>'
-        )
-        path = candidate["path"]
-        artifact_exists = bool(path) and (directory is None or (directory / path).exists())
-        download = (
-            f'<a class="rec-download" href="{quote(path, safe="/._-")}" download>'
-            "Diese Transkription herunterladen</a>"
-            if not is_failed and artifact_exists else
-            '<span class="rec-download-unavailable">Kein Textdownload verfügbar</span>'
-        )
-
-        if is_failed:
-            # Issue #29/#51: failed candidates show explanatory panel with sanitized public_msg
-            status_input = dict(candidate)
-            if is_degenerate:
-                status_input["status_code"] = "degenerate"
-            status = normalize(status_input)
-            timing_info = f' <span class="rec-timing">({status.timing_ms} ms)</span>' if status.timing_ms else ""
-            methodology_note = (
-                ' <a href="/methodology/#recognition-failures" class="rec-methodology-link">Erklärung der Fehlerkategorien</a>'
-                if status.code not in ("success", "empty") else ""
-            )
-            retry_info = (
-                f' <span class="rec-retry-hint">— Wiederholung {["moeglich","nicht sinnvoll"][int(status.retryable is False)]}</span>'
-                if status.code not in ("success", "empty") else ""
-            )
-            content = (
-                f'<div class="notice notice--warning rec-error">'
-                f'<strong>Erkennung fehlgeschlagen.{timing_info}</strong><br>'
-                f'{html.escape(status.public_msg)}'
-                f'{methodology_note}'
-                f'{retry_info}'
-                f'</div>'
-            )
-            confidence_dl = ""
+        # Size
+        if is_error:
+            size_str = "—"
         else:
-            content = (
-                '<pre class="rec-text" tabindex="0"><code>'
-                f'{html.escape(candidate["text"])}</code></pre>'
+            size_str = f"{char_count:,} Z."
+
+        # Confidence
+        conf_str = f"{confidence:.0%}" if confidence is not None else "—"
+
+        # Page label
+        page_str = f"Seite {page_meta}" if page_meta is not None else "—"
+
+        # Download link
+        if has_text_flag:
+            dl_link = (
+                f'<a href="{path}" download class="inv-dl" '
+                f'type="{meta.mime if meta else "text/plain"}" '
+                f'aria-label="Herunterladen {engine} {model_id}">⬇</a>'
             )
-            confidence_dl = _engine_confidence_dl(candidate)
+        else:
+            dl_link = ""
 
-        # Issue #31: add reference evaluation provenance if available
-        ref_eval_html = _build_ref_eval_html(candidate) if candidate.get("reference_eval") else ""
+        rows.append(
+            f'<tr>'
+            f'<td>{html.escape(engine)}</td>'
+            f'<td class="inv-model"><code>{html.escape(model_id)}</code></td>'
+            f'<td>{page_str}</td>'
+            f'<td>{type_badge}</td>'
+            f'<td class="inv-right">{size_str}</td>'
+            f'<td class="inv-right">{conf_str}</td>'
+            f'<td class="inv-center">{dl_link}</td>'
+            f'</tr>'
+        )
 
-        panels.append(f'''<details class="rec-panel" id="recognition-{cid}" data-recognition-panel="{cid}" data-page="{html.escape(candidate["page"], quote=True)}" data-engine="{html.escape(candidate["engine"], quote=True)}" data-model="{html.escape(candidate["model_id"], quote=True)}"{' open' if candidate["selected"] else ''}>
-<summary>{html.escape(label)}{' — ausgewählt' if candidate["selected"] else ''}{selection_btn}</summary>
-<dl class="rec-meta">
-<div><dt>Engine</dt><dd>{html.escape(candidate["engine"])}</dd></div>
-<div><dt>Modell</dt><dd>{html.escape(candidate["model_id"]) or '—'}</dd></div>
-<div><dt>Seite</dt><dd>{html.escape(candidate["page"]) or 'Nicht zugeordnet'}</dd></div>
-{confidence_dl}
-<div><dt>Zeichen</dt><dd>{len(candidate["text"])}</dd></div>
-<div><dt>Status</dt><dd>{status_badge}</dd></div>
-</dl>
-{content}
-{ref_eval_html}
-<p>{download}</p>
-</details>''')
+    rows_html = "\n".join(rows)
 
-    def compare_options() -> str:
-        options = []
-        for candidate in candidates:
-            label = _engine_label(candidate["engine"])
-            if candidate["model_id"]:
-                label += f' · {candidate["model_id"]}'
-            if candidate["page"]:
-                label += f' ({candidate["page"]})'
-            disabled = " disabled" if candidate["error"] else ""
-            options.append(
-                f'<option value="{html.escape(candidate["id"], quote=True)}" '
-                f'data-page="{html.escape(candidate["page"], quote=True)}"{disabled}>'
-                f'{html.escape(label)}</option>'
-            )
-        return "".join(options)
+    return (
+        f'<section class="inv-section" id="rec-inventory" aria-labelledby="inv-heading">'
+        f'<h2 id="inv-heading">Erkennungsdateien</h2>'
+        f'<p class="inv-intro">Alle Erkennungsversionen und Download-Links.</p>'
+        f'<div class="table-wrapper">'
+        f'<table class="inv-table">'
+        f'<thead><tr>'
+        f'<th>Engine</th><th>Modell</th><th>Seite</th><th>Typ</th>'
+        f'<th class="inv-right">Umfang</th><th class="inv-right">Konfidenz</th>'
+        f'<th class="inv-center">DL</th>'
+        f'</tr></thead>'
+        f'<tbody>{rows_html}</tbody>'
+        f'</table></div></section>'
+    )
 
-    usable = [candidate for candidate in candidates if not candidate["error"]]
-    left = usable[0]["id"] if usable else "selected"
-    right = usable[1]["id"] if len(usable) > 1 else left
-    options = compare_options()
-    compare_section = f'''<div class="rec-compare" data-recognition-compare>
-<div class="rec-compare-toolbar"><button class="btn-rec-compare" type="button" data-rec-compare-open aria-expanded="false">&#128269; Vergleichen</button></div>
-<div class="rec-compare-panes" data-rec-compare-panes hidden>
-<div class="rec-compare-pane" data-rec-compare-pane="left" data-rec-compare-selected="{html.escape(left, quote=True)}">
-<div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-left">Version links</label></div>
-<select class="rec-compare-select" id="rec-compare-select-left" data-rec-compare-select="left">{options}</select>
-<div class="rec-compare-body" data-rec-compare-body="left" tabindex="-1" aria-live="polite"></div></div>
-<div class="rec-compare-pane" data-rec-compare-pane="right" data-rec-compare-selected="{html.escape(right, quote=True)}">
-<div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-right">Version rechts</label></div>
-<select class="rec-compare-select" id="rec-compare-select-right" data-rec-compare-select="right">{options}</select>
-<div class="rec-compare-body" data-rec-compare-body="right" tabindex="-1" aria-live="polite"></div>
-<div class="rec-compare-diff" data-rec-compare-diff hidden role="region" aria-label="Unterschiede"></div></div>
-<button class="btn-rec-compare-close" type="button" data-rec-compare-close aria-label="Vergleich schliessen">&#215;</button>
-</div></div>'''
 
-    selected = candidates[0]
-    selected_exists = bool(selected["path"]) and (directory is None or (directory / selected["path"]).exists())
-    primary = (f'<div class="rec-primary-download"><a class="btn-rec-download" '
-               f'href="{quote(selected["path"], safe="/._-")}" download '
-               f'data-rec-primary-download>Aktuelle Transkription herunterladen '
-               f'<span class="rec-download-format">TXT</span></a>'
-               f'<span class="rec-download-provenance">{html.escape(selected["engine"])} · Seite {html.escape(selected["page"] or "nicht zugeordnet")}</span></div>'
-               if selected_exists else
-               '<div class="rec-primary-download rec-primary-download--unavailable"><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></div>')
-    inventory_rows = []
-    current_page = object()
-    for candidate in candidates:
-        page = candidate["page"] or "Nicht zugeordnet"
-        if page != current_page:
-            inventory_rows.append(
-                f'<tr class="rec-inv-page-header"><th colspan="6">{html.escape(page)}</th></tr>')
-            current_page = page
-        status = "Fehlgeschlagen" if candidate["error"] else "Erfolgreich"
-        download = ("—" if candidate["error"] or not candidate["path"] else
-                    f'<a href="{quote(candidate["path"], safe="/._-")}" download>{html.escape(Path(candidate["path"]).name)}</a>')
-        row_class = ' class="rec-inv-error"' if candidate["error"] else ""
-        dl_class = ' class="rec-inv-dl"' if download != "—" else ""
-        inventory_rows.append(
-            f'<tr{row_class}><td>{html.escape(candidate["engine"])}</td>'
-            f'<td>{html.escape(candidate["model_id"]) or "—"}</td>'
-            f'<td>{len(candidate["text"]) if not candidate["error"] else "—"}</td>'
-            f'<td>{status}</td><td>{html.escape(candidate["error"] or _confidence(candidate["confidence"]))}</td>'
-            f'<td{dl_class}>{download}</td></tr>')
-    inventory = f'''<details class="rec-inventory"><summary>Alle Erkennungsversionen herunterladen <span class="rec-inv-count">({len(candidates)} Versionen)</span></summary>
-<div class="table-scroll"><table class="rec-inv-table"><thead><tr><th>Engine</th><th>Modell</th><th>Zeichen</th><th>Status</th><th>Konfidenz/Fehler</th><th>Download</th></tr></thead><tbody>{''.join(inventory_rows)}</tbody></table></div></details>'''
+# ── Complete download package (issue #37) ────────────────────────────────────
 
-    return f'''<section id="recognitions" class="page-section page-section--evidence" data-page-section="recognitions" aria-labelledby="recognitions-heading">
-<h2 id="recognitions-heading">Erkennungsversionen</h2>
-<p class="rec-intro">
-Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sichtbar.
-<button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-incomparable_confidence">ⓘ Nicht vergleichbare Konfidenz</button>
-</p>
-{explanation_blocks}
-<div class="rec-viewer" data-recognition-viewer data-doc-id="{html.escape(doc_id, quote=True)}">
-{primary}
-{inventory}
-{summary_html}
-{compare_section}
-<nav class="rec-selector" aria-label="Erkennungsversionen"><ul>{''.join(links)}</ul></nav>
-<div class="rec-panels">{''.join(panels)}</div>
-</div></section>'''
+def _complete_package_section(doc_id, num_candidates, num_error, num_success):
+    """Render the complete-download package section.
+
+    Offers a ZIP bundle containing:
+    - All recognition .txt files
+    - manifest.json with document and pipeline metadata
+    - selected/fused transcription (fused.txt)
+    """
+    if num_success == 0:
+        return ""
+
+    pkg_name = f"{doc_id}-complete.zip"
+    size_note = ""
+    if num_error > 0:
+        size_note = (
+            f' <span class="inv-note">({num_error} Versuch=num fehlgeschlagen)</span>'
+        )
+
+    return (
+        f'<section class="pkg-section" id="complete-package" aria-labelledby="pkg-heading">'
+        f'<h2 id="pkg-heading">Vollst\u00e4ndiges Erkennungspaket herunterladen</h2>'
+        f'<div class="pkg-body">'
+        f'<p>Alle Erkennungsversionen, das ausgew\u00e4hlte Transkript '
+        f'und die Manifest-Datei in einer ZIP-Datei.</p>'
+        f'<ul>'
+        f'<li>Alle {num_success} erfolgreichen Erkennungen als Textdateien</li>'
+        f'<li>Ausgew\u00e4hltes Transkript (<code>fused.txt</code>)</li>'
+        f'<li>Manifest-Datei (<code>manifest.json</code>) mit Pipeline-Metadaten</li>'
+        f'{size_note}'
+        f'</ul>'
+        f'<a href="{pkg_name}" download class="pkg-btn" '
+        f'type="application/zip" '
+        f'aria-label="Vollst\u00e4ndiges Erkennungspaket herunterladen">'
+        f'21a7 Vollst\u00e4ndiges Paket herunterladen (.zip)</a>'
+        f'</div></section>'
+    )
+
+
+# ── Candidate structured exports (issue #38) ─────────────────────────────────
+
+def _candidate_export_links_html(rec, cand_index, doc_id):
+    """Return a <ul> of TEI/XML, JSON, and TXT export links for one candidate.
+
+    Each link has proper type=, download=, aria-label, and a span badge.
+    Returns empty string if candidate has no text or is an error record.
+    """
+    error = rec.get("error", "")
+    text = rec.get("text", "") or ""
+    if error or not text.strip():
+        return ""
+
+    engine = rec.get("engine", "unknown")
+    model_id = rec.get("model_id", "unknown")
+    page_meta = rec.get("page")
+    page_label = f", Seite {page_meta}" if page_meta else ""
+
+    # Build per-format path using candidate_export_filename from rec_artifacts
+    from rec_artifacts import candidate_export_filename, TEXT_MIME, TEI_MIME, MANIFEST_MIME
+
+    fname_xml  = candidate_export_filename(doc_id, engine, model_id, ".xml", page=page_meta)
+    fname_json = candidate_export_filename(doc_id, engine, model_id, ".json", page=page_meta)
+    fname_txt  = candidate_export_filename(doc_id, engine, model_id, ".txt", page=page_meta)
+    fname_xml  = f"recognitions/{fname_xml}"
+    fname_json = f"recognitions/{fname_json}"
+    fname_txt  = f"recognitions/{fname_txt}"
+
+    seg = f"cand-{cand_index}-{engine}-{model_id.replace('/', '-')}"
+
+    badge_xml  = '<span class="exports-badge exports-badge--xml">TEI/XML</span>'
+    badge_json = '<span class="exports-badge exports-badge--json">JSON</span>'
+    badge_txt  = '<span class="exports-badge">TXT</span>'
+
+    aria_xml  = f"TEI/XML-Export herunterladen ({engine}{page_label})"
+    aria_json = f"JSON-Export herunterladen ({engine}{page_label})"
+    aria_txt  = f"Text-Export herunterladen ({engine}{page_label})"
+
+    items = [
+        f'<li>'
+        f'<a href="{fname_xml}" download data-cand="{seg}" '
+        f'class="dl-link dl-link--xml" type="{TEI_MIME}" aria-label="{aria_xml}">{badge_xml}</a>'
+        f'</li>',
+        f'<li>'
+        f'<a href="{fname_json}" download data-cand="{seg}" '
+        f'class="dl-link dl-link--json" type="{MANIFEST_MIME}" aria-label="{aria_json}">{badge_json}</a>'
+        f'</li>',
+        f'<li>'
+        f'<a href="{fname_txt}" download data-cand="{seg}" '
+        f'class="dl-link dl-link--txt" type="{TEXT_MIME}" aria-label="{aria_txt}">{badge_txt}</a>'
+        f'</li>',
+    ]
+
+    return (
+        f'<ul class="exports-list">'
+        + "".join(items)
+        + '</ul>'
+    )
+
+
+def render_candidate_exports_section(recognitions, doc_id):
+    """Render a structured-exports section listing all formats for every candidate.
+
+    Produces a grid of candidate headings each followed by their available
+    export links (TEI/XML, JSON, TXT). Error and empty candidates are skipped.
+
+    Returns an HTML string ready to drop into a page, or "" if there are no
+    downloadable candidates.
+    """
+    if not recognitions:
+        return ""
+
+    # Collect candidates that have downloadable content
+    candidates = []
+    for i, rec in enumerate(recognitions):
+        error = rec.get("error", "")
+        text = rec.get("text", "") or ""
+        if error or not text.strip():
+            continue
+        engine = rec.get("engine", "unk")
+        model_id = rec.get("model_id", "")
+        cand_id = f"cand-{i}-{engine}-{model_id.replace('/', '-')}"
+        icon = _engine_icon(engine)
+        label = _engine_label(engine)
+        page_meta = rec.get("page")
+        if page_meta is not None:
+            label += f", Seite {page_meta}"
+        confidence = rec.get("confidence")
+        if confidence is not None:
+            label += f" · {confidence:.0%} Konfidenz"
+        candidates.append({
+            "index": i,
+            "cand_id": cand_id,
+            "label": label,
+            "icon": icon,
+            "engine": engine,
+            "model_id": model_id,
+            "rec": rec,
+        })
+
+    if not candidates:
+        return ""
+
+    rows = []
+    for c in candidates:
+        links = _candidate_export_links_html(c["rec"], c["index"], doc_id)
+        if not links:
+            continue
+        rows.append(
+            f'<div class="exports-cand-block">'
+            f'<span class="exports-cand-heading">'
+            f'{c["icon"]} {html.escape(c["label"])}'
+            f'</span>'
+            f'{links}'
+            f'</div>'
+        )
+
+    if not rows:
+        return ""
+
+    return (
+        f'<section class="exports-section" aria-labelledby="exports-heading">'
+        f'<h3 id="exports-heading">Strukturierte Exporte</h3>'
+        f'<p>TEI/XML für wissenschaftlichen Austausch; JSON für Nachnutzung und Integration.</p>'
+        f'<div class="exports-grid">'
+        + "".join(rows)
+        + '</div>'
+        f'</section>'
+    )
