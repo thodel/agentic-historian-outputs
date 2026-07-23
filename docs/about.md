@@ -27,3 +27,9 @@ Die meisten Ausgaben sind maschinell erzeugte Arbeitsstände. Sie dienen der Exp
 ## Repository
 
 Quell- und Ausgabedaten: <https://github.com/thodel/agentic-historian-outputs>
+
+## Sprachpolitik
+
+Die öffentlich zugänglichen Seiten dieses Projekts sind ausschließlich auf Deutsch gehalten. Technische Internas (Checklisten, Qualitätsbudgets, CI-Dokumentation) können intern auf Englisch verfaßt sein, werden aber nicht in der globalen Navigation aufgeführt und sind nicht als Bestandteil des öffentlichen Angebots zu verstehen.
+
+Seiten mit englischsprachigem Inhalt sind interne Arbeitsdokumente für Projektmitarbeitende; sie enthalten einen entsprechenden Hinweis am Seitenanfang.
