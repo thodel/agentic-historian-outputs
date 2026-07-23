@@ -1,0 +1,77 @@
+{
+  "doc_id": "könige",
+  "ad_fontes_version": "UZH 16-element",
+  "elements": {
+    "Aufbewahrungsort": {
+      "wert": "nicht bekannt",
+      "unsicher": true
+    },
+    "Beschreibstoff": {
+      "wert": "Papier",
+      "unsicher": false
+    },
+    "Blaetter": {
+      "wert": "1",
+      "unsicher": false
+    },
+    "Format": {
+      "wert": "31 x 21 cm",
+      "unsicher": false
+    },
+    "Datierung": {
+      "wert": "1518",
+      "unsicher": false
+    },
+    "Lagen": {
+      "wert": "unregelmäßig",
+      "unsicher": false
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "Einzelne Spalte, keine Linien oder Rasterung, Schriftraum 20 x 15 cm",
+      "unsicher": false
+    },
+    "Schrift": {
+      "wert": "Gothische Kurrentschrift, braune Tinte, Schriftgroße ca. 6 mm, Abkürzungen wie 'de', 'zu', 'in', 'der', 'daz', 'v' statt 'w', Rasuren und Korrekturen im Text, keine farbige Rubrizierung oder Initialen",
+      "unsicher": false
+    },
+    "Schreiber": {
+      "wert": "Ein unbekannter Schreiber (anonym), mehrere Autoren und Korrekturhände vermutlich vorhanden",
+      "unsicher": false
+    },
+    "Ausstattung": {
+      "wert": "Keine Buchschmuckelemente, keine Miniaturen, keine verzierten Initialen oder Rubrizierungen",
+      "unsicher": false
+    },
+    "Sprache": {
+      "wert": "Mittelhochdeutsch (oder Frühneuhochdeutsch), Dialekt: alemannisch oder ostschweizerisch",
+      "unsicher": false
+    },
+    "Einband": {
+      "wert": "nicht bekannt",
+      "unsicher": true
+    },
+    "Provenienz": {
+      "wert": "nicht bekannt",
+      "unsicher": true
+    },
+    "Literatur": {
+      "wert": "nicht bekannt",
+      "unsicher": true
+    },
+    "Inhalt": {
+      "wert": "Drei Urkunden: Ein Verleihungsurkunde (U-17_0057_r.jpg) von Leopold von Österreich an einen Diener, eine Ablass- oder Freiheitsurkunde von Leopold zu Künigsveld (U-17_0479_r.jpg), und eine Quittung (U-17_0788_r.jpg) von Rudolf Tüfel. Die Dokumente betreffen Gütervergaben, Rechtsverhältnisse und Dienstleistungen.",
+      "unsicher": false
+    },
+    "Weitere_Hinweise": {
+      "wert": "Dokument trägt einen Wachssiegel mit einem Schild und einer königlichen Krone; die Siegelbeschreibung deutet auf das Haus Habsburg hin. Der Text ist auf einem einzelnen Blatt Papier geschrieben, das mit einem kleinen, runden Siegel am unteren Rand gesichert ist. Die Abkürzungen und Schreibweise sind typisch für spätmittelalterliche Verwaltungsschrift im deutschsprachigen Raum.",
+      "unsicher": false
+    }
+  },
+  "care_flag": {
+    "is_care_related": false,
+    "care_context": "",
+    "care_types": [],
+    "beteiligte": []
+  },
+  "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/_orders/agentic_historian_hotfolder__könige/U-17_0057_r.jpg"
+}

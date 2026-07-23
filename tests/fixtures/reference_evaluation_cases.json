@@ -1,0 +1,200 @@
+[
+  {
+    "name": "cer_document_full",
+    "desc": "Full CER at document scope with all provenance fields",
+    "candidate": {
+      "reference_eval": {
+        "metric_type": "reference_evaluation",
+        "cer": 0.042,
+        "reference_name": "KF-GT-2024",
+        "reference_version": "v2",
+        "normalisation": "nfc",
+        "dataset": "koenigsfelden-2024",
+        "scope": "document"
+      }
+    },
+    "expected": {
+      "metric_type": "reference_evaluation",
+      "unit": "CER",
+      "value": 0.042,
+      "scope": "document",
+      "reference_name": "KF-GT-2024",
+      "reference_version": "v2",
+      "normalisation": "nfc",
+      "dataset": "koenigsfelden-2024",
+      "is_comparable": false
+    },
+    "is_available": true
+  },
+  {
+    "name": "wer_page_scope",
+    "desc": "WER at page scope; no CER present so WER used",
+    "candidate": {
+      "reference_eval": {
+        "metric_type": "reference_evaluation",
+        "wer": 0.075,
+        "reference_name": "KF-GT-2024",
+        "scope": "page"
+      }
+    },
+    "expected": {
+      "metric_type": "reference_evaluation",
+      "unit": "WER",
+      "value": 0.075,
+      "scope": "page",
+      "reference_name": "KF-GT-2024",
+      "is_comparable": false
+    },
+    "is_available": true
+  },
+  {
+    "name": "cer_corpus_scope",
+    "desc": "CER at corpus scope; must not be collapsed to document scope",
+    "candidate": {
+      "reference_eval": {
+        "metric_type": "reference_evaluation",
+        "cer": 0.031,
+        "reference_name": "KF-GT-2024",
+        "scope": "corpus",
+        "dataset": "koenigsfelden-full-corpus"
+      }
+    },
+    "expected": {
+      "metric_type": "reference_evaluation",
+      "unit": "CER",
+      "value": 0.031,
+      "scope": "corpus",
+      "reference_name": "KF-GT-2024",
+      "is_comparable": false
+    },
+    "is_available": true
+  },
+  {
+    "name": "unevaluated_no_reference_eval",
+    "desc": "Candidate with no reference_eval field at all",
+    "candidate": {
+      "engine": "tesseract",
+      "confidence": 0.88,
+      "text": "Some text"
+    },
+    "expected": {
+      "metric_type": "engine_confidence",
+      "is_comparable": false
+    },
+    "is_available": false
+  },
+  {
+    "name": "unevaluated_empty_reference_eval",
+    "desc": "Candidate with reference_eval dict but no reference_name",
+    "candidate": {
+      "reference_eval": {
+        "metric_type": "reference_evaluation",
+        "cer": 0.05
+      }
+    },
+    "expected": {
+      "metric_type": "missing"
+    },
+    "is_available": false
+  },
+  {
+    "name": "partially_evaluated_cer_only",
+    "desc": "CER present but no WER; CER takes priority",
+    "candidate": {
+      "reference_eval": {
+        "metric_type": "reference_evaluation",
+        "cer": 0.055,
+        "wer": null,
+        "reference_name": "KF-GT-2024",
+        "scope": "document"
+      }
+    },
+    "expected": {
+      "metric_type": "reference_evaluation",
+      "unit": "CER",
+      "value": 0.055,
+      "scope": "document"
+    },
+    "is_available": true
+  },
+  {
+    "name": "partially_evaluated_wer_only",
+    "desc": "WER present, CER null; WER used",
+    "candidate": {
+      "reference_eval": {
+        "metric_type": "reference_evaluation",
+        "cer": null,
+        "wer": 0.12,
+        "reference_name": "KF-GT-2024",
+        "scope": "document"
+      }
+    },
+    "expected": {
+      "metric_type": "reference_evaluation",
+      "unit": "WER",
+      "value": 0.12,
+      "scope": "document"
+    },
+    "is_available": true
+  },
+  {
+    "name": "partially_evaluated_no_value",
+    "desc": "Both CER and WER are null; reference exists but no numeric value",
+    "candidate": {
+      "reference_eval": {
+        "metric_type": "reference_evaluation",
+        "cer": null,
+        "wer": null,
+        "reference_name": "KF-GT-2024",
+        "scope": "document"
+      }
+    },
+    "expected": {
+      "metric_type": "reference_evaluation",
+      "value": null,
+      "unit": "n/a",
+      "scope": "document",
+      "reference_name": "KF-GT-2024"
+    },
+    "is_available": true
+  },
+  {
+    "name": "raw_percentage_cer_rejected",
+    "desc": "CER value > 1.0 is a raw percentage and must be rejected (value = null)",
+    "candidate": {
+      "reference_eval": {
+        "metric_type": "reference_evaluation",
+        "cer": 4.2,
+        "reference_name": "KF-GT-2024",
+        "scope": "document"
+      }
+    },
+    "expected": {
+      "metric_type": "reference_evaluation",
+      "value": null,
+      "unit": "n/a",
+      "scope": "document"
+    },
+    "is_available": true
+  },
+  {
+    "name": "evaluation_with_normalization_nfc_lower",
+    "desc": "Normalization field preserved in provenance",
+    "candidate": {
+      "reference_eval": {
+        "metric_type": "reference_evaluation",
+        "cer": 0.038,
+        "reference_name": "KF-GT-2024",
+        "normalisation": "nfc+lowercase",
+        "scope": "document"
+      }
+    },
+    "expected": {
+      "metric_type": "reference_evaluation",
+      "value": 0.038,
+      "normalisation": "nfc+lowercase",
+      "scope": "document"
+    },
+    "is_available": true
+  }
+]

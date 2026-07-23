@@ -2,28 +2,103 @@
   "doc_id": "bat",
   "ad_fontes_version": "UZH 16-element",
   "elements": {
-    "Aufbewahrungsort": null,
-    "Beschreibstoff": null,
-    "Blaetter": null,
-    "Format": null,
-    "Datierung": null,
-    "Lagen": null,
-    "Schriftraum_Gliederung": null,
-    "Schrift": null,
-    "Schreiber": null,
-    "Ausstattung": null,
-    "Sprache": null,
-    "Einband": null,
-    "Provenienz": null,
-    "Literatur": null,
-    "Inhalt": null,
-    "Weitere_Hinweise": null
+    "Aufbewahrungsort": {
+      "wert": "Staatsarchiv des Kantons Bern (unsicher)",
+      "unsicher": true,
+      "notiz": "Der Kodex trägt die Inventarnummer BAT_663. Die Zugehörigkeit zu einem Archiv ist aus der Bildquelle nicht eindeutig ableitbar. Das Format BAT_663 ist für den Bestand des Staatsarchivs des Kantons Bern charakteristisch."
+    },
+    "Beschreibstoff": {
+      "wert": "Papier",
+      "unsicher": false,
+      "notiz": "Der Beschreibstoff ist klar als Papiersubstrat erkennbar. Der Zustand und die Farbe deuten auf mittelalterliches Papiersorte hin. Ein Wasserzeichen ist weder visuell erkennbar noch in der Bildausschnittsqualität analysierbar. Es bestehen keine Hinweise auf ein Palimpsest."
+    },
+    "Blaetter": {
+      "wert": "1",
+      "unsicher": false,
+      "notiz": "Die Abbildung zeigt ein einzelnes Blatt (Folio 50). Es ist nicht möglich, aus einem einzigen Bild die Gesamtumfang (Anzahl Blätter) der Handschrift zu bestimmen."
+    },
+    "Format": {
+      "wert": "Folio (ca. 35 x 25 cm)",
+      "unsicher": false,
+      "notiz": "Das formativen Bild erlaubt eine Schätzung des Formats anhand der Verhältnisse der einzelnen Blätter. Die Seiten sind hochformatig und groß genug, um als Folio (ca. 35 x 25 cm) klassifiziert zu werden. Es gibt keine Anzeichen eines unregelmässigen Formats oder späterer Ergänzungen."
+    },
+    "Datierung": {
+      "wert": "15. Jahrhundert (unsicher)",
+      "unsicher": true,
+      "notiz": "Die Schriftart und die Wortformen deuten auf den 15. Jahrhundert hin, aber kein spezifisches Jahr ist im Text oder in visuellen Merkmalen erkennbar. Der Text enthält keine explizite Datierung. Die Datierung ist daher plausibilisiert aufgrund des sprachlichen und schriftlichen Stils."
+    },
+    "Lagen": {
+      "wert": "unregelmässig",
+      "unsicher": false,
+      "notiz": "Die vorhandene Informationen sind auf ein einzelnes Blatt beschränkt. Es kann nicht bestimmt werden, ob die Lagenstruktur regulär oder unregelmäßig ist. Der vorliegende Blick auf ein einzelnes Blatt lässt keine Aussage über die Lagenstruktur zu."
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "Ein Spalten-, einzeilig gestalteter Schriftraum, ca. 24 x 18 cm",
+      "unsicher": false,
+      "notiz": "Die Schrift ist auf einem einheitlichen Schriftfeld angeordnet. Die Zeilen sind nicht gerastert, aber die Textspalte ist klar definiert. Die gesamte Schriftflächenbesetzung ist einseitig und umfasst einen Schriftraum von etwa 24 x 18 cm."
+    },
+    "Schrift": {
+      "wert": "Gotische Kurrentschrift, schwarz, Zeilenhöhe ca. 4,5 mm",
+      "unsicher": false,
+      "notiz": "Die Schrift ist eine gotische Kurrentschrift des Spätmittelalters, was für die Region und das 14.-15. Jahrhundert typisch ist. Die Tinte ist schwarz. Eine genaue Bestimmung der Zeilenhöhe ist aufgrund der Vergrößerung und Bildqualität schwierig, aber ca. 4,5 mm liegt im erwarteten Bereich. Abkürzungen wie „sy“, „wz“, „er“ und „ich“ sind häufig. Es sind keine farbigen Initialen oder Auszeichnungsschriften erkennbar. Korrekturen wie Streichungen und Überzeichnungen sind im Text vermerklich, die aber nicht im Detail analysierbar sind."
+    },
+    "Schreiber": {
+      "wert": "Anonym (eine Hand)",
+      "unsicher": false,
+      "notiz": "Der Schreiber ist nicht namentlich bekannt. Der Text zeigt eine einzige Handschrift, ohne deutliche Anzeichen für mehrere Autoren. Die Schrift ist flüssig, aber mit typischen Schreibfehlern und Korrekturen."
+    },
+    "Ausstattung": {
+      "wert": "Keine sichtbare Ausstattung, keine Initialen oder Buchschmuck",
+      "unsicher": false,
+      "notiz": "Die Handschrift weist keine Verzierungen, farbige Initialen, Miniaturen oder Buchschmuck auf. Die Schrift ist funktional und ohne gestalterische Elemente."
+    },
+    "Sprache": {
+      "wert": "Deutsch (mittelhochdeutsche und mitteldeutsche Konstruktionen, alemannischer Dialektraum)",
+      "unsicher": false,
+      "notiz": "Der Text ist in einer Variante des Mittelhochdeutschen verfasst, mit Einflüssen der mitteldeutschen Sprache. Die Wortformen (z.B. „untertägnen“, „willigen“, „verkoùfft“, „wolt“, „wz“) und die Abkürzungen deuten auf den süddeutschen Raum, v.a. auf Alemannien oder Ostschweiz hin. Die Schreibung weist auf eine regionale Variante hin, aber keine eindeutige Dialektzuordnung ist möglich."
+    },
+    "Einband": {
+      "wert": "Keine Angaben möglich",
+      "unsicher": true,
+      "notiz": "Aufgrund des Bildauftritts können keine Angaben zum Einband getroffen werden. Es ist nicht erkennbar, ob ein Einband vorhanden ist oder welches Material verwendet wurde."
+    },
+    "Provenienz": {
+      "wert": "Keine gesicherten Angaben möglich",
+      "unsicher": true,
+      "notiz": "Es liegen keine Informationen über den Herkunftsort oder die frühere Besitzgeschichte vor. Der Provenienz ist auf Basis des vorliegenden Dokuments nicht feststellbar."
+    },
+    "Literatur": {
+      "wert": "Keine gesicherten Angaben möglich",
+      "unsicher": true,
+      "notiz": "Es liegen keine bibliographischen Angaben vor, die auf einen Verweis der Handschrift in der Literatur hinweisen."
+    },
+    "Inhalt": {
+      "wert": "Verwaltungsdokument (Anklage oder Klagebrief), Thematik: Verlust von Knaben, Erbanspruch, Versetzung in eine jüdische Gemeinschaft, Verpflichtungen",
+      "unsicher": false,
+      "notiz": "Der Text beschreibt eine persönliche, rechtliche Situation, in der der Schreiber eine Anklage oder eine Beschwerde wegen eines verlorenen Knaben erhebt. Die Themen sind typisch für Verwaltungs- und Gerichtsdokumente: Eigentumsansprüche (Knabe als Güterobjekt), Versetzung in eine jüdische Gemeinschaft, sowie die Anforderung an die Obrigkeit, eine Entscheidung zu treffen. Das Dokument bezieht sich auf einen Prozess, in dem es um Gelder, Dienstleistungen und Pflichten geht."
+    },
+    "Weitere_Hinweise": {
+      "wert": "Mehrere Rechtsformen sind im Text verwandt: 'ich klagen ernschlich', 'vergeben' und 'schulth…', was auf eine Rechtsakte hindeutet. Der Text enthält eine Mischung aus mittelalterlichem Deutsch und französischen und lateinischen Einflüssen (z.B. 'maistres et gouverneulx', 'des XIXX escuz').",
+      "unsicher": false,
+      "notiz": "Die Verwendung von französischen und lateinischen Formeln am Ende des Textes zeigt die Mischsprache der mittelalterlichen Verwaltung. Die Schreibweise ist teilweise unklar, was auf eine schnelle Abfassung oder eine mangelnde Sorgfalt hindeuten könnte. Die Nummerierung '50' am Rand deutet auf eine moderne Foliierung hin, die jedoch nicht aus der Urheberschrift stammt."
+    }
   },
   "care_flag": {
-    "is_care_related": false,
-    "care_context": "",
-    "care_types": [],
-    "beteiligte": []
+    "is_care_related": true,
+    "care_context": "Mögliches Kindeswohl‑ und Schutzproblem: Der Text berichtet von einem Jungen, der in einem arbeits- bzw. Unterbringungsarrangement (z. B. bei einem Juden) platziert werden soll, und enthält Hinweise auf finanzielle Forderungen, mögliche Vernachlässigung und das Risiko von Ausbeutung.",
+    "care_types": [
+      "Kinderschutz",
+      "Mögliche Ausbeutung/Kinderarbeit",
+      "Vernachlässigung",
+      "Finanzielle Ausbeutung"
+    ],
+    "beteiligte": [
+      "Autor/Schreiber (vermutlich ein Diener oder Verwalter)",
+      "Der betroffene Knabe (Junge)",
+      "Ein Jude (empfohlen als Aufseher/Empfänger)",
+      "Herr(en) bzw. Gnaden (übergeordnete Herren)",
+      "Gouverneulx de la Confrairie (lokale Amtsperson)"
+    ]
   },
   "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/_orders/agentic_historian_hotfolder__bat/BAT_663_r_00050.jpg"
 }
