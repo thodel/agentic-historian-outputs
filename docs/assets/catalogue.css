@@ -20,6 +20,8 @@
 .catalogue-tools input, .catalogue-tools select { box-sizing: border-box; width: 100%; min-height: 2.75rem; padding: .55rem .7rem; border: 1px solid #9ca9b5; border-radius: .4rem; color: var(--catalogue-ink); background: var(--catalogue-surface); font: inherit; }
 .catalogue-clear { align-self: end; }
 .catalogue-clear button { min-height: 2.75rem; padding: .55rem .8rem; border: 1px solid var(--catalogue-accent); border-radius: .4rem; color: var(--catalogue-accent); background: var(--catalogue-surface); font: inherit; font-weight: 700; }
+.catalogue-empty-clear { margin-left: .5rem; padding: .3rem .7rem; border: 1px solid var(--catalogue-accent); border-radius: .4rem; color: var(--catalogue-accent); background: var(--catalogue-surface); font: inherit; font-weight: 700; cursor: pointer; }
+.catalogue-empty-clear:hover { background: var(--catalogue-accent); color: var(--catalogue-surface); }
 .catalogue-active-filters { margin: 1rem 0 .25rem; color: var(--catalogue-muted); font-size: .9rem; }
 .catalogue-tools input:focus, .catalogue-tools select:focus, .catalogue-card a:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
 .catalogue-status { margin: 1rem 0; color: var(--catalogue-muted); font-size: .9rem; }
