@@ -181,9 +181,10 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 .rec-compare-diff {
   grid-column: 1 / -1;
   padding: .75rem 1rem;
-  border: 1px solid #d7dee5;
+  border: 1px solid var(--output-border);
   border-radius: .4rem;
-  background: #f7f9fa;
+  background: var(--output-surface);
+  color: var(--output-ink);
   font-size: .9rem;
   line-height: 1.6;
   max-height: 20rem;
@@ -198,31 +199,31 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
   display: inline;
 }
 .rec-compare-diff .diff-insert {
-  background: #d4edda;
-  border-bottom: 2px solid #28a745;
+  background: #2d5a3d;
+  border-bottom: 2px solid #4caf6a;
+  color: #a8d5b8;
   padding: 0 1px;
-  position: relative;
 }
 .rec-compare-diff .diff-delete {
-  background: #f8d7da;
+  background: #5a2d2d;
   text-decoration: line-through;
-  color: #721c24;
+  color: #f0a8a8;
   padding: 0 1px;
 }
 .rec-compare-diff .diff-change {
-  background: #fff3cd;
-  border-bottom: 2px solid #f5b942;
+  background: #5a4a2d;
+  border-bottom: 2px solid #c98a00;
+  color: #e0c87a;
   padding: 0 1px;
 }
-.rec-compare-diff .diff-insert::before { content: "+\a0"; color: #28a745; font-weight: 700; }
-.rec-compare-diff .diff-delete::before { content: "-\a0"; color: #721c24; font-weight: 700; }
-.rec-compare-diff .diff-change::before { content: "~\a0"; color: #856404; font-weight: 700; }
-/* Icons via pseudo-elements on the mark (copy-safe — pseudo-content not in clipboard) */
+.rec-compare-diff .diff-insert::before { content: "+\a0"; color: #4caf6a; font-weight: 700; }
+.rec-compare-diff .diff-delete::before { content: "-\a0"; color: #f08080; font-weight: 700; }
+.rec-compare-diff .diff-change::before { content: "~\a0"; color: #c98a00; font-weight: 700; }
 
 /* Toggle button for diff */
 .btn-rec-compare-diff { margin-left: .25rem; font-weight: 700; }
-.btn-rec-compare-diff[aria-pressed="true"] { color: #245b78; }
-.btn-rec-compare-diff[aria-pressed="false"] { color: #8aa5b4; }
+.btn-rec-compare-diff[aria-pressed="true"] { color: var(--output-accent); }
+.btn-rec-compare-diff[aria-pressed="false"] { color: var(--output-muted); }
 
 /* ---- Progressive disclosure (issue #23) ---------------------------------- */
 .page-section-disclosure {
