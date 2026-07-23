@@ -3,135 +3,140 @@
     {
       "text": "Ottovillingen",
       "type": "PLACE",
-      "normalised": "Ottovillingen",
-      "context": "Ottovillingen dequibz",
+      "normalised": "ottovillingen",
+      "context": "modios reina cum prato sive uysta Ottovillingen dequibz",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Darnm",
+      "type": "PERSON",
+      "normalised": "darnm",
+      "context": "appendenda Darnm loro podo",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Anno dni",
+      "type": "DATE",
+      "normalised": "anno dni",
+      "context": "Anno dni. o. o. exxu."
+    },
+    {
+      "text": "Iohannes",
+      "type": "PERSON",
+      "normalised": "iohannes",
+      "context": "Nos Iohannes misaone dina.",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Albas Torusz",
+      "type": "PERSON",
+      "normalised": "albas torusz",
+      "context": "Albas Torusz conuencius Aon de schahuta",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
       "text": "Lenzburg",
       "type": "PLACE",
-      "normalised": "Lenzburg",
-      "context": "p e Lenzburg",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Schafhusen",
-      "type": "PLACE",
-      "normalised": "Schafhusen",
-      "context": "Schafhusen vinbe",
+      "normalised": "lenzburg",
+      "context": "pue Lenzburg",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
       "text": "Kyburg",
       "type": "PLACE",
-      "normalised": "Kyburg",
-      "context": "Comies mbabipurg a m kyburg",
+      "normalised": "kyburg",
+      "context": "Comies mbabipurg a m kyburg ipius",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
       "text": "Aar",
       "type": "PLACE",
-      "normalised": "Aar",
-      "context": "Cencu Aar",
+      "normalised": "aar",
+      "context": "Cencii Aar. charum legnhs argena pondis schafhusen",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "Sekingen",
+      "text": "Schafhusen",
       "type": "PLACE",
-      "normalised": "Sekingen",
-      "context": "eptillen buef von Sekingen",
+      "normalised": "schafhusen",
+      "context": "Cencii Aar. charum legnhs argena pondis schafhusen",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "Küngsveld",
-      "type": "PLACE",
-      "normalised": "Küngsveld",
-      "context": "Convent von Kūngsveld",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Ebschim",
-      "type": "PLACE",
-      "normalised": "Ebschim",
-      "context": "Ebschim vn dem Conuent",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Archwatt",
-      "type": "PLACE",
-      "normalised": "Archwatt",
-      "context": "Aarchwatt Trurman",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Trurman",
-      "type": "PLACE",
-      "normalised": "Trurman",
-      "context": "Trurman burger",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Lutzeeren",
-      "type": "PLACE",
-      "normalised": "Lutzeeren",
-      "context": "Lutzeeren vn von sinen",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Orwillingen",
-      "type": "PLACE",
-      "normalised": "Orwillingen",
-      "context": "Orwillingen von Aarchwatt",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Tornichon",
-      "type": "PLACE",
-      "normalised": "Tornichon",
-      "context": "Tornichon",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Johannes",
+      "text": "Euntem",
       "type": "PERSON",
-      "normalised": "Johannes",
-      "context": "Nos Iohannes misaone",
-      "hub_id": "",
-      "gnd": "",
-      "hls": "",
-      "wikidata": "",
-      "hub_confidence": "high",
-      "link_method": "mcp_federation",
-      "mcp_sources": [
-        "eos"
-      ]
+      "normalised": "euntem",
+      "context": "natus Euntem eackie vlih",
+      "hub_confidence": "unverified",
+      "link_method": "none"
     },
     {
-      "text": "Torusz",
+      "text": "Convent",
+      "type": "ORG",
+      "normalised": "convent",
+      "context": "Habem et conuentu ul maiozem prem Conueni"
+    },
+    {
+      "text": "Conventus",
+      "type": "ORG",
+      "normalised": "conventus",
+      "context": "Conventus nri temstilimus in hono"
+    },
+    {
+      "text": "Camerario",
+      "type": "ORG",
+      "normalised": "camerario",
+      "context": "Camerario Anonateri"
+    },
+    {
+      "text": "Camerarius",
+      "type": "ROLE",
+      "normalised": "camerarius",
+      "context": "Camerarius vl' eur certo"
+    },
+    {
+      "text": "Capellanus",
+      "type": "ROLE",
+      "normalised": "capellanus",
+      "context": "Frater Jokes capellanus er ali Honach"
+    },
+    {
+      "text": "Frat Jacob",
       "type": "PERSON",
-      "normalised": "Torusz",
-      "context": "Albas Torusz conuentus",
+      "normalised": "frat jacob",
+      "context": "frat Jacob culos fras",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Frater Jokes",
+      "type": "PERSON",
+      "normalised": "frater jokes",
+      "context": "Frater Jokes capellanus",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Lymg Elsberch von Pome",
+      "type": "PERSON",
+      "normalised": "lymg elsberch von pome",
+      "context": "Lymg Elsberch von Pome vuler",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
       "text": "Conradus",
       "type": "PERSON",
-      "normalised": "Conradus",
-      "context": "Nos Conradus dimna",
+      "normalised": "conradus",
+      "context": "Conradus dimna",
       "hub_id": "",
       "gnd": "",
       "hls": "",
@@ -143,30 +148,110 @@
       ]
     },
     {
+      "text": "Alrimis a Pidolfius",
+      "type": "PERSON",
+      "normalised": "alrimis a pidolfius",
+      "context": "Alrimis a Pidolfius",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Gelleler",
+      "type": "PERSON",
+      "normalised": "gelleler",
+      "context": "Gelleler",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sekingen",
+      "type": "PLACE",
+      "normalised": "sekingen",
+      "context": "der eptillin vn des capitez. buef von Sekingen",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Ebschim",
+      "type": "PLACE",
+      "normalised": "ebschim",
+      "context": "Ebschim vn dem Conuent",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Kungsvelt",
+      "type": "PLACE",
+      "normalised": "kungsvelt",
+      "context": "Conuent vn ze Kungsvelt",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Orwillingen",
+      "type": "PLACE",
+      "normalised": "orwillingen",
+      "context": "Orwillingen",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Tornichkon",
+      "type": "PLACE",
+      "normalised": "tornichkon",
+      "context": "Tornichkon",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Aarchwatt Trurman",
+      "type": "PLACE",
+      "normalised": "aarchwatt trurman",
+      "context": "Aarchwatt Trurman",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Lutzeeren",
+      "type": "PLACE",
+      "normalised": "lutzeeren",
+      "context": "Lutzeeren",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Dietrich von Lenzbch",
+      "type": "PERSON",
+      "normalised": "dietrich von lenzbch",
+      "context": "Dietrich von Lenzbch",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
       "text": "Heinrich der Stammer",
       "type": "PERSON",
-      "normalised": "Heinrich der Stammer",
+      "normalised": "heinrich der stammer",
       "context": "Heinrich der Stammer",
       "hub_id": "hub_p_example",
       "wikidata": "",
       "gnd": "",
       "hls": "",
       "hub_confidence": "medium",
-      "semantic_score": 0.387,
+      "semantic_score": 0.321,
       "link_method": "embedding_rerank"
     },
     {
-      "text": "Buchhart von Gartcn.",
+      "text": "Buchhart von Gartcn",
       "type": "PERSON",
-      "normalised": "Buchhart von Gartcn",
-      "context": "Buchhart von Gartcn.",
+      "normalised": "buchhart von gartcn",
+      "context": "Buchhart von Gartcn",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
       "text": "Johans von sem- pach",
       "type": "PERSON",
-      "normalised": "Johans von sem- pach",
+      "normalised": "johans von sem- pach",
       "context": "Johans von sem- pach",
       "hub_confidence": "unverified",
       "link_method": "none"
@@ -174,16 +259,21 @@
     {
       "text": "Heinrich von Sewelsberg",
       "type": "PERSON",
-      "normalised": "Heinrich von Sewelsberg",
+      "normalised": "heinrich von sewelsberg",
       "context": "Heinrich von Sewelsberg",
-      "hub_confidence": "unverified",
-      "link_method": "none"
+      "hub_id": "hub_p_example",
+      "wikidata": "",
+      "gnd": "",
+      "hls": "",
+      "hub_confidence": "medium",
+      "semantic_score": 0.336,
+      "link_method": "embedding_rerank"
     },
     {
-      "text": "Rudolf von aa.",
+      "text": "Rudolf von aa",
       "type": "PERSON",
-      "normalised": "Rudolf von aa",
-      "context": "Rudolf von aa.",
+      "normalised": "rudolf von aa",
+      "context": "Rudolf von aa",
       "hub_id": "",
       "gnd": "",
       "hls": "",
@@ -197,233 +287,348 @@
     {
       "text": "Ulrich von Eych",
       "type": "PERSON",
-      "normalised": "Ulrich von Eych",
+      "normalised": "ulrich von eych",
       "context": "Ulrich von Eych",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "Vernher von Grepson.",
+      "text": "Vernher von Grepcon",
       "type": "PERSON",
-      "normalised": "Vernher von Grepson",
-      "context": "Vernher von Grepson.",
+      "normalised": "vernher von grepcon",
+      "context": "Vernher von Grepcon",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "Jacob",
+      "text": "Gerdrit von Leisertil Tinwrowen",
       "type": "PERSON",
-      "normalised": "Jacob",
-      "context": "frat Jacob culos",
-      "hub_id": "",
-      "gnd": "",
-      "hls": "",
-      "wikidata": "",
-      "hub_confidence": "high",
-      "link_method": "mcp_federation",
-      "mcp_sources": [
-        "eos"
-      ]
-    },
-    {
-      "text": "Erneshus",
-      "type": "PERSON",
-      "normalised": "Erneshus",
-      "context": "frat Erneshus",
+      "normalised": "gerdrt von leisertil tinwrowen",
+      "context": "Gerdrit von Leisertil Tinwrowen",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "Jokes",
-      "type": "PERSON",
-      "normalised": "Jokes",
-      "context": "frater Jokes capellanus",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Walthero",
-      "type": "PERSON",
-      "normalised": "Walthero",
-      "context": "Walthero decmo",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Lymg Elsberch von Pome",
-      "type": "PERSON",
-      "normalised": "Lymg Elsberch von Pome",
-      "context": "Lymg Elsberch von Pome",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Frid a Egbrechius",
-      "type": "PERSON",
-      "normalised": "Frid a Egbrechius",
-      "context": "Frid a Egbrechius",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Gischper",
-      "type": "PERSON",
-      "normalised": "Gischper",
-      "context": "Fud. de Gischper",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Gieschln",
-      "type": "PERSON",
-      "normalised": "Gieschln",
-      "context": "Campreh? de Gieschln",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Omes",
-      "type": "PERSON",
-      "normalised": "Omes",
-      "context": "kouen Omes schafusen",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Pelpa",
-      "type": "PERSON",
-      "normalised": "Pelpa",
-      "context": "Pelpa sigilla",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Arnoldus",
-      "type": "PERSON",
-      "normalised": "Arnoldus",
-      "context": "Arnoldus",
-      "hub_id": "",
-      "gnd": "",
-      "hls": "",
-      "wikidata": "",
-      "hub_confidence": "high",
-      "link_method": "mcp_federation",
-      "mcp_sources": [
-        "eos"
-      ]
-    },
-    {
-      "text": "Capellanus",
-      "type": "ROLE",
-      "normalised": "Capellanus",
-      "context": "Jokes capellanus"
-    },
-    {
-      "text": "Camerarius",
-      "type": "ROLE",
-      "normalised": "Camerarius",
-      "context": "Camerario Anonateri"
-    },
-    {
-      "text": "Convent",
+      "text": "Gotzhuf",
       "type": "ORG",
-      "normalised": "Convent",
-      "context": "Convent von Kūngsveld"
+      "normalised": "gotzhuf",
+      "context": "Gotzhuf vn Allen"
     },
     {
-      "text": "Conuent",
-      "type": "ORG",
-      "normalised": "Conuent",
-      "context": "Conuentul majors"
+      "text": "Ebrischin",
+      "type": "PERSON",
+      "normalised": "ebrischin",
+      "context": "Ebrischin",
+      "hub_confidence": "unverified",
+      "link_method": "none"
     },
     {
-      "text": "Capitel",
-      "type": "ORG",
-      "normalised": "Capitel",
-      "context": "Datum in scassula in die Bii Edalrin"
-    },
-    {
-      "text": "vago",
+      "text": "Juden",
       "type": "SOCIAL_GROUP",
-      "normalised": "vago",
-      "context": "vago relatu"
+      "normalised": "juden",
+      "context": "Juden",
+      "controlled_vocab": "Juden",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    },
+    {
+      "text": "Vaganten",
+      "type": "SOCIAL_GROUP",
+      "normalised": "vaganten",
+      "context": "Vaganten",
+      "controlled_vocab": "Vaganten",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    },
+    {
+      "text": "arme lüt",
+      "type": "SOCIAL_GROUP",
+      "normalised": "arme lüt",
+      "context": "arme lüt",
+      "controlled_vocab": "arme lüt",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    },
+    {
+      "text": "erbar lüt",
+      "type": "SOCIAL_GROUP",
+      "normalised": "erbar lüt",
+      "context": "erbar lüt",
+      "controlled_vocab": "erbar lüt",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
     },
     {
       "text": "Almosen",
       "type": "CARE_ACTION",
-      "normalised": "Almosen",
-      "context": "nicht explizit, aber im Kontext von Fürsorge erwähnt",
+      "normalised": "almosen",
+      "context": "Almosen",
       "controlled_vocab": "almosen",
       "hub_confidence": "medium",
       "link_method": "controlled_vocab"
     },
     {
-      "text": "Johannes",
-      "type": "CARE_ACTOR",
-      "normalised": "Johannes",
-      "context": "Nos Iohannes misaone — möglicher Pflegebezug"
-    },
-    {
-      "text": "Anno domini",
-      "type": "DATE",
-      "normalised": "AD",
-      "context": "Anno dni."
-    },
-    {
-      "text": "Anno dm. 6.",
-      "type": "DATE",
-      "normalised": "6 AD",
-      "context": "Anno dm. 6."
-    },
-    {
-      "text": "Decimo Iono",
-      "type": "DATE",
-      "normalised": "10 Iono",
-      "context": "Decimo Iono"
-    },
-    {
-      "text": "die zehenden",
-      "type": "DATE",
-      "normalised": "10th",
-      "context": "die zehenden"
-    },
-    {
-      "text": "Zehn Tage",
-      "type": "DATE",
-      "normalised": "10 days",
-      "context": "vierzehen tagen"
-    },
-    {
-      "text": "trutmanz brief",
-      "type": "DOC",
-      "normalised": "Trutmanz Brief",
-      "context": "trutmanz brief über den zehenden"
-    },
-    {
-      "text": "Vogt",
-      "type": "ROLE",
-      "normalised": "Vogt",
-      "context": "nicht explizit im Text, aber typische mittelalterliche Rolle",
-      "controlled_vocab": "vogt",
+      "text": "Versorgung",
+      "type": "CARE_ACTION",
+      "normalised": "versorgung",
+      "context": "Versorgung",
+      "controlled_vocab": "versorgung",
       "hub_confidence": "medium",
       "link_method": "controlled_vocab"
     },
     {
-      "text": "Schultheiss",
+      "text": "Schultheiß",
       "type": "ROLE",
-      "normalised": "Schultheiss",
+      "normalised": "schultheiss",
       "context": "schulten schafusen",
       "controlled_vocab": "schultheiss",
       "hub_confidence": "medium",
       "link_method": "controlled_vocab"
     },
     {
-      "text": "Kingfuden",
-      "type": "PLACE",
-      "normalised": "Kingfuden",
-      "context": "Kingsfueden adher",
+      "text": "Vogt",
+      "type": "ROLE",
+      "normalised": "vogt",
+      "context": "Vogt",
+      "controlled_vocab": "vogt",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    },
+    {
+      "text": "Rats zu Bern",
+      "type": "ORG",
+      "normalised": "rats zu bern",
+      "context": "Rats zu Bern"
+    },
+    {
+      "text": "Spital",
+      "type": "ORG",
+      "normalised": "spital",
+      "context": "Spital"
+    },
+    {
+      "text": "Capitel",
+      "type": "ORG",
+      "normalised": "capitel",
+      "context": "Capitel"
+    },
+    {
+      "text": "Sigilla",
+      "type": "ORG",
+      "normalised": "sigilla",
+      "context": "sigilla"
+    },
+    {
+      "text": "Ahl",
+      "type": "PERSON",
+      "normalised": "ahl",
+      "context": "Ahl",
+      "hub_id": "",
+      "gnd": "",
+      "hls": "",
+      "wikidata": "",
+      "hub_confidence": "high",
+      "link_method": "mcp_federation",
+      "mcp_sources": [
+        "eos"
+      ]
+    },
+    {
+      "text": "Pierre de Turck",
+      "type": "PERSON",
+      "normalised": "pierre de turck",
+      "context": "Pierre de Turck",
       "hub_confidence": "unverified",
       "link_method": "none"
+    },
+    {
+      "text": "Anno dm. 6.",
+      "type": "DATE",
+      "normalised": "anno dm 6",
+      "context": "Anno dm. 6. cc xxxdao"
+    },
+    {
+      "text": "die zehenden",
+      "type": "DATE",
+      "normalised": "die zehenden",
+      "context": "die zehenden"
+    },
+    {
+      "text": "10. Tag",
+      "type": "DATE",
+      "normalised": "10. tag",
+      "context": "10. Tag"
+    },
+    {
+      "text": "6. cc xxxdao",
+      "type": "DATE",
+      "normalised": "6. cc xxxdao",
+      "context": "Anno dm. 6. cc xxxdao"
+    },
+    {
+      "text": "Buef von Sekingen",
+      "type": "PLACE",
+      "normalised": "buef von sekingen",
+      "context": "Buef von Sekingen",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Trutman Burger",
+      "type": "PERSON",
+      "normalised": "trutman burger",
+      "context": "Trutman Burger",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Königsfueden",
+      "type": "ORG",
+      "normalised": "konigsfueden",
+      "context": "Kingsfueden"
+    },
+    {
+      "text": "Capitel gememlich",
+      "type": "ORG",
+      "normalised": "capitel gememlich",
+      "context": "Capitel gememlich"
+    },
+    {
+      "text": "Edel und hoch geborn fursten",
+      "type": "SOCIAL_GROUP",
+      "normalised": "edel und hoch geborn fursten",
+      "context": "Edel und hoch geborn fursten"
+    },
+    {
+      "text": "Procurator",
+      "type": "ROLE",
+      "normalised": "procurator",
+      "context": "procurator"
+    },
+    {
+      "text": "Praeceptor",
+      "type": "ROLE",
+      "normalised": "praeceptor",
+      "context": "praeceptor"
+    },
+    {
+      "text": "Auerhahn",
+      "type": "PLACE",
+      "normalised": "auerhahn",
+      "context": "Auerhahn",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Höfe",
+      "type": "PLACE",
+      "normalised": "hoefe",
+      "context": "Höfe",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Domschlüssel",
+      "type": "ORG",
+      "normalised": "domschlüssel",
+      "context": "Domschlüssel"
+    },
+    {
+      "text": "Kleiner Rat",
+      "type": "ORG",
+      "normalised": "kleiner rat",
+      "context": "Kleiner Rat"
+    },
+    {
+      "text": "Grossrat",
+      "type": "ORG",
+      "normalised": "grossrat",
+      "context": "Grossrat"
+    },
+    {
+      "text": "Stadtrat",
+      "type": "ORG",
+      "normalised": "stadtrat",
+      "context": "Stadtrat"
+    },
+    {
+      "text": "Bischof",
+      "type": "ROLE",
+      "normalised": "bischof",
+      "context": "Bischof"
+    },
+    {
+      "text": "Abt",
+      "type": "ROLE",
+      "normalised": "abt",
+      "context": "Abt"
+    },
+    {
+      "text": "Mönch",
+      "type": "ROLE",
+      "normalised": "monch",
+      "context": "Mönch"
+    },
+    {
+      "text": "Elder",
+      "type": "ROLE",
+      "normalised": "elder",
+      "context": "Elder"
+    },
+    {
+      "text": "Freiherr",
+      "type": "TITLE",
+      "normalised": "freiherr",
+      "context": "Freiherr"
+    },
+    {
+      "text": "Lehnsherr",
+      "type": "TITLE",
+      "normalised": "lehnsherr",
+      "context": "Lehnsherr"
+    },
+    {
+      "text": "Jüdische Gemeinde",
+      "type": "ORG",
+      "normalised": "judische gemeinde",
+      "context": "Jüdische Gemeinde"
+    },
+    {
+      "text": "Kloster",
+      "type": "ORG",
+      "normalised": "kloster",
+      "context": "Kloster"
+    },
+    {
+      "text": "Burg",
+      "type": "PLACE",
+      "normalised": "burg",
+      "context": "Burg",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Hof",
+      "type": "PLACE",
+      "normalised": "hof",
+      "context": "Hof",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Gottes Geburtsfest",
+      "type": "CARE_ACTION",
+      "normalised": "gottes geburtsfest",
+      "context": "gottes geburt"
+    },
+    {
+      "text": "Allegemeine Versorgung",
+      "type": "CARE_ACTION",
+      "normalised": "allegemeine versorgung",
+      "context": "Allegemeine Versorgung",
+      "controlled_vocab": "versorgung",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
     }
   ]
 }

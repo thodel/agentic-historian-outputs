@@ -1,0 +1,143 @@
+{
+  "entities": [
+    {
+      "text": "Ar Lenpolt",
+      "type": "PERSON",
+      "normalised": "Ar Lenpolt",
+      "context": "Ar Lenpolt ucon goes guadii Hc̃oq re Osteir̃ ze Steyr de Rerudñ und re beam Grasi ze Tyrel",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Steyr",
+      "type": "PLACE",
+      "normalised": "Steyr",
+      "context": "... ze Steyr de Rerudñ ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Rerudn",
+      "type": "ORG",
+      "normalised": "Rerudn",
+      "context": "... Steyr de Rerudñ ..."
+    },
+    {
+      "text": "Tyrel",
+      "type": "PLACE",
+      "normalised": "Tyrol",
+      "context": "... Grasi ze Tyrel ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Bender",
+      "type": "PERSON",
+      "normalised": "Bender",
+      "context": "... Bender und uꝑen ...",
+      "hub_id": "",
+      "gnd": "",
+      "hls": "",
+      "wikidata": "",
+      "hub_confidence": "high",
+      "link_method": "mcp_federation",
+      "mcp_sources": [
+        "eos"
+      ]
+    },
+    {
+      "text": "Horhgeborni",
+      "type": "PERSON",
+      "normalised": "Horhgeborni",
+      "context": "... der Horhgeborni Iursce ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Botshaus",
+      "type": "ORG",
+      "normalised": "Botshaus",
+      "context": "... dassebb Botshaus uor aller Sceror ..."
+    },
+    {
+      "text": "Rungsueld",
+      "type": "ORG",
+      "normalised": "Rungsueld",
+      "context": "... re beam Grasi ze Tyrel ... Rungsueld ..."
+    },
+    {
+      "text": "Rotsdieust",
+      "type": "PLACE",
+      "normalised": "Rotsdieust",
+      "context": "... Rotsdieust aber die erbñ ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Conuent",
+      "type": "ORG",
+      "normalised": "Convent",
+      "context": "... die Rlbctissin und der Conuent ..."
+    },
+    {
+      "text": "Osterẽ",
+      "type": "PLACE",
+      "normalised": "Oster",
+      "context": "... hgog ze Osterẽ ie ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Burgmnaiscn",
+      "type": "ORG",
+      "normalised": "Burgmnaiscn",
+      "context": "... Burgmnaiscn Schulcheissen Burgn ..."
+    },
+    {
+      "text": "Schulcheissen",
+      "type": "ORG",
+      "normalised": "Schulcheissen",
+      "context": "... Burgmnaiscn Schulcheissen Burgn ..."
+    },
+    {
+      "text": "Burgn",
+      "type": "PLACE",
+      "normalised": "Burgn",
+      "context": "... Schulcheissen Burgn und ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Schilling",
+      "type": "CARE_ACTION",
+      "normalised": "Schilling",
+      "context": "... schilling dechs habler ..."
+    },
+    {
+      "text": "Gardianuud",
+      "type": "ROLE",
+      "normalised": "Guardian",
+      "context": "... Gardianuud Conuont ..."
+    },
+    {
+      "text": "Conuont",
+      "type": "ORG",
+      "normalised": "Conuont",
+      "context": "... Gardianuud Conuont ..."
+    },
+    {
+      "text": "Bardian",
+      "type": "PERSON",
+      "normalised": "Bardian",
+      "context": "... Bardiañ und conuont ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Schulaig",
+      "type": "ORG",
+      "normalised": "Schulaig",
+      "context": "... schulaig ⁊rorden ..."
+    }
+  ]
+}
