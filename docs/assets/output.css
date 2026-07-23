@@ -168,6 +168,43 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 .btn-rec-compare-swap { align-self: center; padding: .4rem .6rem; border-radius: 50%; }
 .btn-rec-compare-sync { margin-left: .5rem; }
 
+/* Share URL row */
+.rec-compare-share {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: .4rem;
+  margin-bottom: .25rem;
+}
+.rec-compare-share-input {
+  flex: 1;
+  padding: .3rem .5rem;
+  border: 1px solid var(--output-border);
+  border-radius: .35rem;
+  background: var(--output-surface-raised);
+  color: var(--output-ink);
+  font-size: .8rem;
+  min-width: 0;
+}
+.rec-compare-share-input:focus-visible {
+  outline: 3px solid var(--output-accent);
+  outline-offset: 2px;
+}
+.btn-rec-compare-share-copy {
+  white-space: nowrap;
+  font-size: .82rem;
+}
+
+/* Heading */
+.rec-compare-heading {
+  grid-column: 1 / -1;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--output-accent);
+  padding-bottom: .2rem;
+  border-bottom: 1px solid var(--output-border);
+  margin-bottom: .1rem;
+}
+
 @media (prefers-contrast: more) { .notice, .transcription, .rec-text, .rec-panel, .page-section, .evidence-viewer, .evidence-toolbar button, .source-page-nav button { border-width: 2px; } }
 @media (max-width: 55rem) {
   .evidence-workspace { display: block; }
