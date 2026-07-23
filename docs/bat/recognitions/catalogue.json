@@ -1,0 +1,142 @@
+{
+  "artifacts": [
+    {
+      "characters": 2466,
+      "engine": "fusion",
+      "error": null,
+      "error_path": null,
+      "id": "selected",
+      "model_id": null,
+      "page": null,
+      "path": "recognitions/fused.txt",
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 2327,
+      "engine": "vlm",
+      "error": null,
+      "error_path": null,
+      "id": "vlm-internvl3-8b-instruct",
+      "model_id": "internvl3-8b-instruct",
+      "page": null,
+      "path": "recognitions/vlm-internvl3-8b-instruct.txt",
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 2315,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-catmus-medieval",
+      "model_id": "kraken-catmus_medieval",
+      "page": null,
+      "path": "recognitions/kraken-kraken-catmus_medieval.txt",
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
+      "id": "trocr-trocr-medieval-escriptmask",
+      "model_id": "trocr-medieval-escriptmask",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 2299,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-mccatmus",
+      "model_id": "kraken-mccatmus",
+      "page": null,
+      "path": "recognitions/kraken-kraken-mccatmus.txt",
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
+      "id": "trocr-trocr-kurrent-xvi-xvii",
+      "model_id": "trocr-kurrent-xvi-xvii",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/kraken-kraken-medieval_charters.error.txt",
+      "id": "kraken-kraken-medieval-charters",
+      "model_id": "kraken-medieval_charters",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-essoins-middle-latin.error.txt",
+      "id": "trocr-trocr-essoins-middle-latin",
+      "model_id": "trocr-essoins-middle-latin",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 2438,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-early-modern-german",
+      "model_id": "kraken-early_modern_german",
+      "page": null,
+      "path": "recognitions/kraken-kraken-early_modern_german.txt",
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 2083,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-early-modern-german-16",
+      "model_id": "kraken-early_modern_german_16",
+      "page": null,
+      "path": "recognitions/kraken-kraken-early_modern_german_16.txt",
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 381,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-bohemian-19th",
+      "model_id": "kraken-bohemian_19th",
+      "page": null,
+      "path": "recognitions/kraken-kraken-bohemian_19th.txt",
+      "status": "success",
+      "status_code": "success"
+    }
+  ],
+  "doc_id": "bat",
+  "run_counts": {
+    "degenerate": 3,
+    "empty": 0,
+    "failed": 1,
+    "successful": 7,
+    "total": 11
+  },
+  "run_quality": "partial_failure",
+  "version": "1.0"
+}

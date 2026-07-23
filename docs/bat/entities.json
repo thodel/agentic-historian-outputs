@@ -1,18 +1,62 @@
 {
   "entities": [
     {
-      "text": "Wulffin",
+      "text": "Aimien",
       "type": "PERSON",
-      "normalised": "Wulffin",
-      "context": "Amen vndertwegen Wulffin.",
+      "normalised": "Aimien",
+      "context": "Aimien undectetngen willegen ...",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "D. Dunkt",
-      "type": "PERSON",
-      "normalised": "D. Dunkt",
-      "context": "D. Dunkt mir ein enbillet von klagen...",
+      "text": "Enaben",
+      "type": "PLACE",
+      "normalised": "Enaben",
+      "context": "do warit muir roidet rnton Ica selt qi den enaben ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Thun",
+      "type": "PLACE",
+      "normalised": "Thun",
+      "context": "cai thun in schillinas ...",
+      "hub_id": "hub_loc_example",
+      "wikidata": "",
+      "gnd": "",
+      "hls": "",
+      "hub_confidence": "high",
+      "link_method": "hub_exact"
+    },
+    {
+      "text": "Schillinas",
+      "type": "PLACE",
+      "normalised": "Schillinas",
+      "context": "cai thun in schillinas ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Rnaben",
+      "type": "PLACE",
+      "normalised": "Raben",
+      "context": "warit reden uon des Rnabeñ noegen ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Baden",
+      "type": "PLACE",
+      "normalised": "Baden",
+      "context": "glerri in den baden ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Ruaben",
+      "type": "PLACE",
+      "normalised": "Ruaben",
+      "context": "den ruaben Ini ...",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
@@ -20,32 +64,34 @@
       "text": "Juden",
       "type": "SOCIAL_GROUP",
       "normalised": "Juden",
-      "context": "...ein Juden herfegen D. Dunkt...",
+      "context": "Iuden uersegen ...",
       "controlled_vocab": "Juden",
       "hub_confidence": "medium",
       "link_method": "controlled_vocab"
     },
     {
-      "text": "Annuwurt",
-      "type": "PLACE",
-      "normalised": "Annuwurt",
-      "context": "...Annuwurt. Gerni welt uf den knaben...",
-      "hub_confidence": "unverified",
-      "link_method": "none"
+      "text": "Rat",
+      "type": "ORG",
+      "normalised": "Rat",
+      "context": "ꝓrats er er welt ..."
     },
     {
-      "text": "Warrag",
-      "type": "PLACE",
-      "normalised": "Warrag",
-      "context": "...Warrag frist hiegen es ist imme...",
-      "hub_confidence": "unverified",
-      "link_method": "none"
+      "text": "Datũ",
+      "type": "DATE",
+      "normalised": "Datum",
+      "context": "Datũ onno din ..."
     },
     {
-      "text": "Abel",
+      "text": "52",
+      "type": "DATE",
+      "normalised": "52",
+      "context": "... die ne in allem riten 52"
+    },
+    {
+      "text": "Rnecht",
       "type": "PERSON",
-      "normalised": "Abel",
-      "context": "...Des 103 er Abel stent Durg ruck...",
+      "normalised": "Rnecht",
+      "context": "ehi et ich mine Rnecht aii ...",
       "hub_id": "",
       "gnd": "",
       "hls": "",
@@ -55,50 +101,6 @@
       "mcp_sources": [
         "eos"
       ]
-    },
-    {
-      "text": "Emmit",
-      "type": "PERSON",
-      "normalised": "Emmit",
-      "context": "...Emmit wird irg im fulte aben 82...",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "103",
-      "type": "DATE",
-      "normalised": "103",
-      "context": "...do Warrag frist hiegen es ist imme glemi..."
-    },
-    {
-      "text": "104",
-      "type": "DATE",
-      "normalised": "104",
-      "context": "...vn 103 104 irg da versprichen..."
-    },
-    {
-      "text": "83 jr",
-      "type": "DATE",
-      "normalised": "83",
-      "context": "...gsm 83 jr nu stier ein par..."
-    },
-    {
-      "text": "82",
-      "type": "DATE",
-      "normalised": "82",
-      "context": "...fulte aben 82. Wnt irg im fern..."
-    },
-    {
-      "text": "armestwalt",
-      "type": "SOCIAL_GROUP",
-      "normalised": "armestwalt",
-      "context": "...im v turkym nemem an einem von armestwalt..."
-    },
-    {
-      "text": "knaben",
-      "type": "ROLE",
-      "normalised": "knaben",
-      "context": "...knaben camm thun in schidung..."
     }
   ]
 }

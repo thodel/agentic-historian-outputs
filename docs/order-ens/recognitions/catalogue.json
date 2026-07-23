@@ -1,0 +1,38 @@
+{
+  "artifacts": [
+    {
+      "characters": 62,
+      "engine": "fusion",
+      "error": null,
+      "error_path": null,
+      "id": "selected",
+      "model_id": null,
+      "page": null,
+      "path": "recognitions/fused.txt",
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 15,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-k0",
+      "model_id": "k0",
+      "page": null,
+      "path": "recognitions/kraken-k0.txt",
+      "status": "success",
+      "status_code": "success"
+    }
+  ],
+  "doc_id": "order-ens",
+  "run_counts": {
+    "degenerate": 0,
+    "empty": 0,
+    "failed": 0,
+    "successful": 2,
+    "total": 2
+  },
+  "run_quality": "clean",
+  "version": "1.0"
+}
