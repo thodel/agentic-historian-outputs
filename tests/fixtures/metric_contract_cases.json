@@ -1,0 +1,270 @@
+[
+  {
+    "name": "engine_confidence_full",
+    "desc": "Current pipeline engine_confidence with all fields",
+    "payload": {
+      "metric_type": "engine_confidence",
+      "value": 0.87,
+      "engine": "kraken",
+      "model": "catmus-medieval",
+      "page": "p1",
+      "scope": "candidate"
+    },
+    "expected": {
+      "metric_type": "engine_confidence",
+      "unit": "probability",
+      "scope": "candidate",
+      "engine": "kraken",
+      "model": "catmus-medieval",
+      "is_comparable": false,
+      "explanation_key": "engine_confidence"
+    }
+  },
+  {
+    "name": "engine_confidence_no_engine",
+    "desc": "engine_confidence without engine degrades to missing",
+    "payload": {
+      "metric_type": "engine_confidence",
+      "value": 0.72
+    },
+    "expected": {
+      "metric_type": "missing",
+      "explanation_key": "missing"
+    }
+  },
+  {
+    "name": "engine_confidence_bad_scope",
+    "desc": "engine_confidence with corpus scope is normalised to candidate",
+    "payload": {
+      "metric_type": "engine_confidence",
+      "value": 0.60,
+      "engine": "trocr",
+      "scope": "corpus"
+    },
+    "expected": {
+      "metric_type": "engine_confidence",
+      "scope": "candidate"
+    }
+  },
+  {
+    "name": "agreement_full",
+    "desc": "Current pipeline agreement value",
+    "payload": {
+      "metric_type": "agreement",
+      "value": 0.75,
+      "scope": "candidate"
+    },
+    "expected": {
+      "metric_type": "agreement",
+      "unit": "ratio",
+      "scope": "candidate",
+      "is_comparable": false,
+      "explanation_key": "agreement"
+    }
+  },
+  {
+    "name": "reference_evaluation_cer_full",
+    "desc": "Reference evaluation with CER and full provenance",
+    "payload": {
+      "metric_type": "reference_evaluation",
+      "cer": 0.04,
+      "wer": 0.09,
+      "reference_name": "Königsfelden Ground Truth",
+      "reference_version": "v1.2",
+      "normalisation": "standardized whitespace",
+      "dataset": "kf-gt-2024",
+      "scope": "page"
+    },
+    "expected": {
+      "metric_type": "reference_evaluation",
+      "unit": "CER",
+      "scope": "page",
+      "reference_name": "Königsfelden Ground Truth",
+      "reference_version": "v1.2",
+      "is_comparable": false,
+      "explanation_key": "reference_evaluation"
+    }
+  },
+  {
+    "name": "reference_evaluation_wer_only",
+    "desc": "Reference evaluation with WER only (no CER)",
+    "payload": {
+      "metric_type": "reference_evaluation",
+      "wer": 0.12,
+      "reference_name": "Test Corpus",
+      "scope": "document"
+    },
+    "expected": {
+      "metric_type": "reference_evaluation",
+      "unit": "WER",
+      "scope": "document"
+    }
+  },
+  {
+    "name": "reference_evaluation_no_reference",
+    "desc": "reference_evaluation without reference_name degrades to missing",
+    "payload": {
+      "metric_type": "reference_evaluation",
+      "cer": 0.05
+    },
+    "expected": {
+      "metric_type": "missing",
+      "explanation_key": "missing"
+    }
+  },
+  {
+    "name": "reference_evaluation_cer_over_one",
+    "desc": "CER value > 1 (raw percentage stored incorrectly) emits None value",
+    "payload": {
+      "metric_type": "reference_evaluation",
+      "cer": 4.5,
+      "reference_name": "Some Reference",
+      "scope": "document"
+    },
+    "expected": {
+      "metric_type": "reference_evaluation",
+      "value": null
+    }
+  },
+  {
+    "name": "failed_with_error",
+    "desc": "Candidate with error field maps to failed",
+    "payload": {
+      "error": "timeout",
+      "engine": "vlm",
+      "model": "vision"
+    },
+    "expected": {
+      "metric_type": "failed",
+      "explanation_key": "failed",
+      "is_comparable": false
+    }
+  },
+  {
+    "name": "failed_explicit",
+    "desc": "Explicit failed: true flag",
+    "payload": {
+      "failed": true
+    },
+    "expected": {
+      "metric_type": "failed",
+      "is_comparable": false
+    }
+  },
+  {
+    "name": "degenerate_explicit",
+    "desc": "Explicit degenerate flag",
+    "payload": {
+      "degenerate": true
+    },
+    "expected": {
+      "metric_type": "degenerate",
+      "is_comparable": false
+    }
+  },
+  {
+    "name": "legacy_qa_score",
+    "desc": "Legacy a_meta.qa_score float normalizes to legacy_qa",
+    "payload": {
+      "qa_score": 0.75
+    },
+    "expected": {
+      "metric_type": "legacy_qa",
+      "unit": "n/a",
+      "is_comparable": false,
+      "explanation_key": "legacy_qa"
+    }
+  },
+  {
+    "name": "legacy_qa_score_zero",
+    "desc": "Legacy qa_score of 0 is a valid value (not null)",
+    "payload": {
+      "qa_score": 0.0
+    },
+    "expected": {
+      "metric_type": "legacy_qa"
+    }
+  },
+  {
+    "name": "legacy_confidence_with_engine",
+    "desc": "Legacy candidate dict with confidence + engine normalizes to engine_confidence",
+    "payload": {
+      "confidence": 0.85,
+      "engine": "kraken",
+      "model_id": "catmus",
+      "page": "p2"
+    },
+    "expected": {
+      "metric_type": "engine_confidence",
+      "unit": "probability",
+      "engine": "kraken",
+      "is_comparable": false
+    }
+  },
+  {
+    "name": "legacy_confidence_no_engine",
+    "desc": "Legacy confidence without engine degrades to missing",
+    "payload": {
+      "confidence": 0.70
+    },
+    "expected": {
+      "metric_type": "missing"
+    }
+  },
+  {
+    "name": "missing_empty",
+    "desc": "Empty payload normalizes to missing",
+    "payload": {},
+    "expected": {
+      "metric_type": "missing",
+      "explanation_key": "missing"
+    }
+  },
+  {
+    "name": "missing_unknown_keys",
+    "desc": "Payload with unrecognized keys normalizes to missing",
+    "payload": {
+      "some_future_field": 1.0,
+      "another_field": "value"
+    },
+    "expected": {
+      "metric_type": "missing"
+    }
+  },
+  {
+    "name": "missing_null_input",
+    "desc": "None input returns missing",
+    "payload": null,
+    "expected": {
+      "metric_type": "missing"
+    }
+  },
+  {
+    "name": "reference_evaluation_corpus_scope",
+    "desc": "Corpus-level evaluation retains corpus scope (not silently document-level)",
+    "payload": {
+      "metric_type": "reference_evaluation",
+      "cer": 0.06,
+      "reference_name": "BnF Corpus 2024",
+      "scope": "corpus"
+    },
+    "expected": {
+      "metric_type": "reference_evaluation",
+      "scope": "corpus"
+    }
+  },
+  {
+    "name": "engine_confidence_page_scope",
+    "desc": "engine_confidence at page scope (aggregated over candidates)",
+    "payload": {
+      "metric_type": "engine_confidence",
+      "value": 0.79,
+      "engine": "trocr",
+      "scope": "page"
+    },
+    "expected": {
+      "metric_type": "engine_confidence",
+      "scope": "page"
+    }
+  }
+]

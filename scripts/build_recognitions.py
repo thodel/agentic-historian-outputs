@@ -53,7 +53,7 @@ except ImportError:
     def explanation_block(key): return ""
 
 try:
-    from recognition_status import public_error_message
+    from recognition_status import public_error_message, normalize
 except ImportError:
     # Fallback when recognition_status is not yet available (e.g., during initial bootstrap)
     def public_error_message(error):
@@ -116,8 +116,8 @@ def _error_path(candidate: dict) -> str:
 
 
 def write_error_record(directory: Path, candidate: dict) -> Path | None:
-    error = _public_error(candidate.get("error"))
-    if not error:
+    provenance = _failure_provenance(candidate)
+    if provenance["status_code"] == "success":
         return None
     path = directory / _error_path(candidate)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -125,7 +125,7 @@ def write_error_record(directory: Path, candidate: dict) -> Path | None:
         "engine": str(candidate.get("engine") or ""),
         "model_id": str(candidate.get("model_id") or ""),
         "page": str(candidate.get("page") or ""),
-        "error": error,
+        **provenance,
     }, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return path
 
@@ -138,17 +138,63 @@ def compute_checksum(path: Path) -> str:
     return digest.hexdigest()
 
 
+def _failure_provenance(candidate: dict) -> dict:
+    """Return the safe, typed public record for one failed attempt."""
+    status = normalize(candidate)
+    return {
+        "status_code": status.code,
+        "retryable": status.retryable,
+        "complete": status.complete,
+        "diagnostic_code": status.error_code or status.code,
+        "error": status.public_msg,
+        "engine": status.engine,
+        "model_id": status.model or None,
+        "page": status.page or None,
+        "timing_ms": status.timing_ms,
+        "run_id": status.run_id or None,
+        "retry_count": status.retry_count,
+        "attempt": status.attempt,
+        "fusion_decision": candidate.get("fusion_decision") or "excluded",
+        "text_artifact": None,
+        "reuse_notice": "Incomplete recognition attempt; cite the failure record with the run provenance.",
+    }
+
+
 def _catalogue_data(doc_id: str, candidates: list[dict]) -> dict:
+    # Issue #52: compute aggregate counts for catalogue-level filtering
+    total = len(candidates)
+    failed = sum(1 for c in candidates if c["error"] and not c.get("is_degenerate"))
+    degenerate = sum(1 for c in candidates if c.get("is_degenerate"))
+    successful = sum(1 for c in candidates if not c["error"] and not c.get("is_degenerate"))
+    empty = sum(1 for c in candidates
+                 if not c["error"] and not c.get("is_degenerate") and not c["text"])
+    if failed + degenerate == total:
+        run_quality = "total_failure"
+    elif failed + degenerate > 0:
+        run_quality = "partial_failure"
+    elif empty > 0:
+        run_quality = "empty"
+    else:
+        run_quality = "clean"
     return {
         "doc_id": doc_id,
         "version": "1.0",
+        "run_quality": run_quality,
+        "run_counts": {
+            "total": total,
+            "successful": successful,
+            "failed": failed,
+            "degenerate": degenerate,
+            "empty": empty,
+        },
         "artifacts": [{
             "id": candidate["id"],
             "engine": candidate["engine"],
             "model_id": candidate["model_id"] or None,
             "page": candidate["page"] or None,
             "status": "error" if candidate["error"] else "success",
-            "error": candidate["error"] or None,
+            **({"status_code": normalize(candidate).code} if not candidate["error"] else {}),
+            "error": _public_error(candidate.get("error")) or None,
             "path": candidate["path"] if candidate["path"] and not candidate["error"] else None,
             "error_path": _error_path(candidate) if candidate["error"] else None,
             "characters": len(candidate["text"]) if not candidate["error"] else None,
@@ -183,10 +229,9 @@ def write_package(directory: Path, doc_id: str, recognitions: list,
                 _safe_slug(candidate["id"]),
             ))
             name = f"candidates/{stem}.error.txt"
-            payload = json.dumps({
-                "engine": candidate["engine"], "model_id": candidate["model_id"],
-                "page": candidate["page"], "error": candidate["error"],
-            }, ensure_ascii=False, sort_keys=True).encode("utf-8")
+            failure = _failure_provenance(candidate)
+            payload = json.dumps(failure, ensure_ascii=False,
+                                 sort_keys=True).encode("utf-8")
             kind = "error"
         else:
             stem = "/".join((
@@ -197,12 +242,16 @@ def write_package(directory: Path, doc_id: str, recognitions: list,
             payload = candidate["text"].encode("utf-8")
             kind = "candidate"
         entries.append((name, payload))
-        artifacts.append({
+        artifact = {
             "file": name, "type": kind, "engine": candidate["engine"],
             "model_id": candidate["model_id"] or None,
             "page": candidate["page"] or None,
             "checksum": hashlib.sha256(payload).hexdigest(),
-        })
+        }
+        if kind == "error":
+            artifact.update(_failure_provenance(candidate))
+            artifact["reason_no_text"] = "recognition_attempt_failed"
+        artifacts.append(artifact)
     catalogue = json.dumps(_catalogue_data(doc_id, candidates), ensure_ascii=False,
                            indent=2, sort_keys=True).encode("utf-8")
     entries.append(("catalogue.json", catalogue))
@@ -263,7 +312,10 @@ def _candidates(recognitions, transcript: str) -> list[dict]:
             error = "Der Erkennungsversuch lieferte keinen Text."
         # Degeneration check (#29): detect mechanically degenerate output
         # even when no technical error was reported.
-        is_degenerate, deg_reason = detect_degeneration(text, confidence)
+        is_degenerate, deg_reason = (
+            detect_degeneration(text, confidence) if not error and text.strip()
+            else (False, "")
+        )
         if is_degenerate and not error:
             error = f"Degenerierte Erkennung: {deg_reason}"
         result.append({
@@ -276,6 +328,14 @@ def _candidates(recognitions, transcript: str) -> list[dict]:
             "error": error,
             "selected": False,
             "is_degenerate": is_degenerate,
+            # Preserve safe machine-readable attempt context for exports.
+            "status_code": raw.get("status_code"),
+            "error_code": raw.get("error_code"),
+            "timing_ms": raw.get("timing_ms"),
+            "run_id": raw.get("run_id"),
+            "retry_count": raw.get("retry_count", 0),
+            "attempt": raw.get("attempt", 1),
+            "fusion_decision": raw.get("fusion_decision") or "excluded",
             # Historical multi-page records without page attribution collide at
             # one publisher path. Never link a candidate to an ambiguous file.
             "path": (_recognition_path(raw)
@@ -298,28 +358,38 @@ def _engine_confidence_dl(candidate: dict) -> str:
     scope = confidence_scope_label(engine, model, page)
 
     explain_btn = explanation_button("engine_confidence")
-    explain_block = explanation_block("engine_confidence")
+    # No inline block: the global explanation_blocks section at the bottom of
+    # build_recognition_section() carries the matching block with the same
+    # suffix-free id (quality-explanation-engine_confidence).  Issue #112.
     raw = (
         f'<details class="rec-confidence-raw">'
         f"<summary>Rohtext</summary>"
         f"<p>Engine: {html.escape(engine)}</p>"
         f'<p>Modell: {html.escape(model) or "—"}</p>'
         f'<p>Seite: {html.escape(page) or "Nicht zugeordnet"}</p>'
-        f"<p>Konfidenz (raw): {confidence}</p>"
+        f"<p>Konfidenz: {html.escape(str(confidence)) if confidence is not None else 'Nicht angegeben'}</p>"
         f"</details>"
     )
 
     if confidence is None:
         conf_html = "Nicht angegeben"
+        aria_label = (
+            f'aria-label="Engine-Konfidenz: Nicht angegeben, '
+            f'Geltungsbereich: {html.escape(scope)}"'
+        )
     else:
         conf_html = (
             f'<span class="rec-confidence-value">{format_confidence(confidence)}</span> '
             f'<span class="rec-confidence-scope">— {html.escape(scope)}</span>'
         )
+        aria_label = (
+            f'aria-label="Engine-Konfidenz: {format_confidence(confidence)}, '
+            f'Einheit: Wahrscheinlichkeit, Geltungsbereich: {html.escape(scope)}"'
+        )
 
     return (
-        f'<div><dt>Engine-Konfidenz</dt><dd>{conf_html} {explain_btn}'
-        f'</dd></div>{explain_block}{raw}'
+        f'<div><dt>Engine-Konfidenz</dt><dd {aria_label}>{conf_html} {explain_btn}'
+        f'</dd></div>{raw}'
     )
 
 
@@ -340,7 +410,8 @@ def _build_ref_eval_html(candidate: dict) -> str:
     norm = ref_eval.get("normalisation", "unspezifiziert")
     scope = ref_eval.get("scope", "document")
     explain_btn = explanation_button("reference_evaluation")
-    explain_block = explanation_block("reference_evaluation")
+    # No inline block: the global explanation_blocks section carries the
+    # matching block with id quality-explanation-reference_evaluation.  #112.
 
     cer_html = ""
     if cer is not None:
@@ -359,7 +430,7 @@ def _build_ref_eval_html(candidate: dict) -> str:
         f"<div><dt>Normalisierung</dt><dd>{html.escape(norm)}</dd></div>"
         f"<div><dt>Scope</dt><dd>{html.escape(scope)}</dd></div>"
         f"{cer_html}{wer_html}"
-        f"</dl>{explain_btn}{explain_block}"
+        f"</dl>{explain_btn}"
         f"</details>"
     )
 
@@ -386,10 +457,50 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
     all_explanation_keys = (
         "engine_confidence", "agreement", "degenerate",
         "failed", "reference_evaluation", "incomparable_confidence",
+        "selection_score",
     )
     explanation_blocks = "".join(
-        explanation_block(k) for k in all_explanation_keys if k in EXPLANATIONS
+        explanation_block(k, page_depth=1) for k in all_explanation_keys if k in EXPLANATIONS
     )
+
+    # Issue #52: compute aggregate counts for document-level failure summary
+    total = len(candidates)
+    failed = sum(1 for c in candidates if c["error"] and not c.get("is_degenerate"))
+    degenerate = sum(1 for c in candidates if c.get("is_degenerate"))
+    successful = sum(1 for c in candidates if not c["error"] and not c.get("is_degenerate"))
+    empty = sum(1 for c in candidates if not c["error"] and not c.get("is_degenerate") and not c["text"])
+
+    # Derive run-quality label for document-level warning
+    if failed + degenerate == total:
+        run_quality = "total_failure"
+        run_label = "Keine uneingeschränkt nutzbare Erkennung"
+    elif failed + degenerate > 0:
+        run_quality = "partial_failure"
+        run_label = f"{failed} technisch fehlgeschlagen; {degenerate} degeneriert (von {total})"
+    elif empty > 0:
+        run_quality = "empty"
+        run_label = f"{empty} von {total} ohne Ausgabe"
+    else:
+        run_quality = "clean"
+        run_label = None
+
+    summary_html = ""
+    if run_label:
+        css_class = {
+            "total_failure": "notice--error",
+            "partial_failure": "notice--warning",
+            "empty": "notice--info",
+        }.get(run_quality, "notice--info")
+        chips_html = (
+            '<span class="rec-chip rec-chip--ok">' + str(successful) + ' erfolgreich</span>'
+            '<span class="rec-chip rec-chip--failed">' + str(failed) + ' fehlgeschlagen</span>'
+            '<span class="rec-chip rec-chip--degenerate">' + str(degenerate) + ' degeneriert</span>'
+        )
+        summary_html = (
+            '<div class="notice ' + css_class + ' rec-run-summary">'
+            '<strong>Erkennungslauf:</strong> ' + run_label +
+            ' <span class="rec-run-chips">' + chips_html + '</span></div>'
+        )
 
     links, panels = [], []
     for candidate in candidates:
@@ -424,6 +535,8 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
                 candidate["engine"], candidate["model_id"], candidate["page"]
             ),
         )
+        # Issue #30: selected/fused candidate gets a selection_score explanation button
+        selection_btn = explanation_button("selection_score") if candidate["selected"] else ""
 
         links.append(
             f'<li><a href="#recognition-{cid}" data-recognition-select="{cid}" '
@@ -443,11 +556,27 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
         )
 
         if is_failed:
-            # Issue #29: failed candidates show error notice, NEVER a zero-confidence success state
+            # Issue #29/#51: failed candidates show explanatory panel with sanitized public_msg
+            status_input = dict(candidate)
+            if is_degenerate:
+                status_input["status_code"] = "degenerate"
+            status = normalize(status_input)
+            timing_info = f' <span class="rec-timing">({status.timing_ms} ms)</span>' if status.timing_ms else ""
+            methodology_note = (
+                ' <a href="/methodology/#recognition-failures" class="rec-methodology-link">Erklärung der Fehlerkategorien</a>'
+                if status.code not in ("success", "empty") else ""
+            )
+            retry_info = (
+                f' <span class="rec-retry-hint">— Wiederholung {["moeglich","nicht sinnvoll"][int(status.retryable is False)]}</span>'
+                if status.code not in ("success", "empty") else ""
+            )
             content = (
                 f'<div class="notice notice--warning rec-error">'
-                f'<strong>Erkennung fehlgeschlagen.</strong> '
-                f'{html.escape(candidate["error"])}</div>'
+                f'<strong>Erkennung fehlgeschlagen.{timing_info}</strong><br>'
+                f'{html.escape(status.public_msg)}'
+                f'{methodology_note}'
+                f'{retry_info}'
+                f'</div>'
             )
             confidence_dl = ""
         else:
@@ -461,7 +590,7 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
         ref_eval_html = _build_ref_eval_html(candidate) if candidate.get("reference_eval") else ""
 
         panels.append(f'''<details class="rec-panel" id="recognition-{cid}" data-recognition-panel="{cid}" data-page="{html.escape(candidate["page"], quote=True)}" data-engine="{html.escape(candidate["engine"], quote=True)}" data-model="{html.escape(candidate["model_id"], quote=True)}"{' open' if candidate["selected"] else ''}>
-<summary>{html.escape(label)}{' — ausgewählt' if candidate["selected"] else ''}</summary>
+<summary>{html.escape(label)}{' — ausgewählt' if candidate["selected"] else ''}{selection_btn}</summary>
 <dl class="rec-meta">
 <div><dt>Engine</dt><dd>{html.escape(candidate["engine"])}</dd></div>
 <div><dt>Modell</dt><dd>{html.escape(candidate["model_id"]) or '—'}</dd></div>
@@ -501,11 +630,11 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
 <div class="rec-compare-pane" data-rec-compare-pane="left" data-rec-compare-selected="{html.escape(left, quote=True)}">
 <div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-left">Version links</label></div>
 <select class="rec-compare-select" id="rec-compare-select-left" data-rec-compare-select="left">{options}</select>
-<div class="rec-compare-body" data-rec-compare-body="left" tabindex="-1"></div></div>
+<div class="rec-compare-body" data-rec-compare-body="left" tabindex="-1" aria-live="polite"></div></div>
 <div class="rec-compare-pane" data-rec-compare-pane="right" data-rec-compare-selected="{html.escape(right, quote=True)}">
 <div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-right">Version rechts</label></div>
 <select class="rec-compare-select" id="rec-compare-select-right" data-rec-compare-select="right">{options}</select>
-<div class="rec-compare-body" data-rec-compare-body="right" tabindex="-1"></div>
+<div class="rec-compare-body" data-rec-compare-body="right" tabindex="-1" aria-live="polite"></div>
 <div class="rec-compare-diff" data-rec-compare-diff hidden role="region" aria-label="Unterschiede"></div></div>
 <button class="btn-rec-compare-close" type="button" data-rec-compare-close aria-label="Vergleich schliessen">&#215;</button>
 </div></div>'''
@@ -551,6 +680,7 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 <div class="rec-viewer" data-recognition-viewer data-doc-id="{html.escape(doc_id, quote=True)}">
 {primary}
 {inventory}
+{summary_html}
 {compare_section}
 <nav class="rec-selector" aria-label="Erkennungsversionen"><ul>{''.join(links)}</ul></nav>
 <div class="rec-panels">{''.join(panels)}</div>

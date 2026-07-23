@@ -9,7 +9,8 @@
       "model_id": null,
       "page": null,
       "path": "recognitions/fused.txt",
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": 2327,
@@ -20,7 +21,8 @@
       "model_id": "internvl3-8b-instruct",
       "page": null,
       "path": "recognitions/vlm-internvl3-8b-instruct.txt",
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": 2315,
@@ -31,12 +33,13 @@
       "model_id": "kraken-catmus_medieval",
       "page": null,
       "path": "recognitions/kraken-kraken-catmus_medieval.txt",
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Degenerierte Erkennung: sehr niedrige Engine-Konfidenz",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
       "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
       "id": "trocr-trocr-medieval-escriptmask",
       "model_id": "trocr-medieval-escriptmask",
@@ -53,12 +56,13 @@
       "model_id": "kraken-mccatmus",
       "page": null,
       "path": "recognitions/kraken-kraken-mccatmus.txt",
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Degenerierte Erkennung: sehr niedrige Engine-Konfidenz",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
       "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
       "id": "trocr-trocr-kurrent-xvi-xvii",
       "model_id": "trocr-kurrent-xvi-xvii",
@@ -69,7 +73,7 @@
     {
       "characters": null,
       "engine": "kraken",
-      "error": "Der Erkennungsdienst antwortierte mit einem Fehler.",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
       "error_path": "recognitions/kraken-kraken-medieval_charters.error.txt",
       "id": "kraken-kraken-medieval-charters",
       "model_id": "kraken-medieval_charters",
@@ -80,7 +84,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Degenerierte Erkennung: sehr niedrige Engine-Konfidenz",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
       "error_path": "recognitions/trocr-trocr-essoins-middle-latin.error.txt",
       "id": "trocr-trocr-essoins-middle-latin",
       "model_id": "trocr-essoins-middle-latin",
@@ -97,7 +101,8 @@
       "model_id": "kraken-early_modern_german",
       "page": null,
       "path": "recognitions/kraken-kraken-early_modern_german.txt",
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": 2083,
@@ -108,7 +113,8 @@
       "model_id": "kraken-early_modern_german_16",
       "page": null,
       "path": "recognitions/kraken-kraken-early_modern_german_16.txt",
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": 381,
@@ -119,9 +125,18 @@
       "model_id": "kraken-bohemian_19th",
       "page": null,
       "path": "recognitions/kraken-kraken-bohemian_19th.txt",
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     }
   ],
   "doc_id": "bat",
+  "run_counts": {
+    "degenerate": 3,
+    "empty": 0,
+    "failed": 1,
+    "successful": 7,
+    "total": 11
+  },
+  "run_quality": "partial_failure",
   "version": "1.0"
 }

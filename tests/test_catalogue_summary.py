@@ -5,7 +5,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from build_index import Record, RecognitionSummary, _card, recognition_summary
+from build_index import (
+    CATALOGUE_PERFORMANCE_BUDGETS, Record, RecognitionSummary, _card,
+    recognition_summary,
+)
 from datetime import datetime, timezone
 
 
@@ -76,6 +79,26 @@ class CatalogueSummaryTests(unittest.TestCase):
         self.assertEqual(json.dumps(short.as_dict()), json.dumps(long.as_dict()))
         self.assertLess(len(json.dumps(long.as_dict())), 600)
 
+    def test_compact_payload_and_card_stay_within_budgets(self):
+        summary = recognition_summary({"recognitions": [
+            rec("kraken", "a"), rec("trocr", "b", error="timeout"),
+        ]})
+        payload = json.dumps(summary.as_dict(), ensure_ascii=False,
+                             separators=(",", ":"))
+        card = self.card(summary)
+        self.assertLessEqual(len(payload.encode()),
+                             CATALOGUE_PERFORMANCE_BUDGETS["summary_bytes_per_record"])
+        self.assertLessEqual(len(card.encode()),
+                             CATALOGUE_PERFORMANCE_BUDGETS["card_bytes_per_record"])
+        self.assertNotIn("recognitions", payload)
+        self.assertNotIn("candidate text", payload)
+
+    def test_no_javascript_primary_link_is_always_present(self):
+        summary = recognition_summary({"recognitions": [rec()]})
+        card = self.card(summary)
+        self.assertIn('<h2><a href="very-long-document-identifier/">', card)
+        self.assertIn('class="catalogue-actions"', card)
+
     def test_card_exposes_accessible_engine_chips_and_candidate_counts(self):
         summary = recognition_summary({"recognitions": [rec("kraken", "a"), rec("trocr", "b")]})
         card = self.card(summary)
@@ -86,7 +109,7 @@ class CatalogueSummaryTests(unittest.TestCase):
     def test_card_surfaces_failures_missing_source_and_legacy_provenance(self):
         current = recognition_summary({"recognitions": [rec(), rec("vlm", "v", error="timeout")]})
         card = self.card(current)
-        self.assertIn("1 fehlgeschlagene Erkennungsversuche", card)
+        self.assertIn("1 fehlgeschlagener Erkennungsversuch", card)
         self.assertIn("Keine digitale Quelle", card)
         legacy = RecognitionSummary("legacy", None, None, None, None, None, (), 0, None,
                                     False, "missing", "machine-generated", False)

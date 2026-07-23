@@ -7,6 +7,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 import json
+import zipfile
 from build_recognitions import (
     _candidates,
     _confidence,
@@ -389,6 +390,78 @@ class RecognitionContractTests(unittest.TestCase):
                 self.assertNotIn("secret", err_data["error"].lower())
                 self.assertNotIn("my-secret", err_data["error"])
 
+    def test_failure_provenance_is_preserved_in_package_and_manifest(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_package(root, "doc-53", [{
+                "engine": "trocr", "model_id": "large", "page": "p2",
+                "text": "", "error": "timeout at http://10.0.0.8/token=x",
+                "error_code": "ETIMEDOUT", "timing_ms": 1234,
+                "run_id": "run-7", "retry_count": 2, "attempt": 3,
+                "fusion_decision": "excluded_timeout",
+            }], "fused")
+            with zipfile.ZipFile(next(root.glob("*.zip"))) as zf:
+                error_name = next(n for n in zf.namelist()
+                                  if n.endswith(".error.txt"))
+                record = json.loads(zf.read(error_name))
+                manifest = json.loads(zf.read("manifest.json"))
+            entry = next(a for a in manifest["artifacts"]
+                         if a["type"] == "error")
+            for obj in (record, entry):
+                self.assertEqual(obj["status_code"], "timeout")
+                self.assertTrue(obj["retryable"])
+                self.assertEqual(obj["timing_ms"], 1234)
+                self.assertEqual(obj["run_id"], "run-7")
+                self.assertEqual(obj["retry_count"], 2)
+                self.assertEqual(obj["attempt"], 3)
+                self.assertEqual(obj["fusion_decision"], "excluded_timeout")
+                self.assertIsNone(obj["text_artifact"])
+                self.assertNotIn("10.0.0.8", json.dumps(obj))
+            self.assertEqual(entry["reason_no_text"],
+                             "recognition_attempt_failed")
+
+    def test_standalone_error_record_has_typed_provenance(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = write_error_record(Path(tmp), {
+                "engine": "kraken", "model_id": "m", "page": "p1",
+                "text": "", "error": "connection refused",
+                "timing_ms": 77, "run_id": "run-1",
+            })
+            record = json.loads(path.read_text())
+            self.assertEqual(record["status_code"], "unavailable")
+            self.assertEqual(record["diagnostic_code"], "unavailable")
+            self.assertEqual(record["timing_ms"], 77)
+            self.assertEqual(record["run_id"], "run-1")
+            self.assertIsNone(record["text_artifact"])
+
+    def test_degenerate_viewer_is_not_marked_retryable(self):
+        markup = build_recognition_section([{
+            "engine": "vlm", "model_id": "m", "page": "p1",
+            "text": "a" * 40, "confidence": 0.9,
+        }], "doc-54", "selected")
+        self.assertIn("Degeneriert", markup)
+        self.assertIn("Wiederholung nicht sinnvoll", markup)
+
+    def test_failure_methodology_link_resolves(self):
+        markup = build_recognition_section([{
+            "engine": "kraken", "model_id": "m", "page": "p1",
+            "text": "", "error": "timeout",
+        }], "doc-54", "selected")
+        self.assertIn('href="/methodology/#recognition-failures"', markup)
+        methodology = Path("docs/methodology.md").read_text(encoding="utf-8")
+        self.assertIn('id="recognition-failures"', methodology)
+
+    def test_partial_summary_separates_failure_and_degeneration(self):
+        markup = build_recognition_section([
+            {"engine": "kraken", "model_id": "ok", "text": "usable"},
+            {"engine": "trocr", "model_id": "timeout", "text": "",
+             "error": "timeout"},
+            {"engine": "vlm", "model_id": "deg", "text": "z" * 40,
+             "confidence": 0.9},
+        ], "doc-54", "selected")
+        self.assertIn("1 technisch fehlgeschlagen; 1 degeneriert (von 4)", markup)
+        self.assertNotIn("2 von 4 fehlgeschlagen", markup)
+
 
 
     # ---- #12 Harden & Verify: comparison edge cases ----
@@ -415,17 +488,18 @@ class RecognitionContractTests(unittest.TestCase):
             self.assertEqual(len(values), len(set(values)))
 
     def test_compare_url_param_functions_present_in_js(self):
-        js = Path("scripts/rec_viewer.js").read_text()
+        # Load from docs/assets/ — the file the site actually serves.
+        js = (Path(__file__).parent.parent / "docs" / "assets" / "rec-viewer.js").read_text()
         self.assertIn("pushcmp(", js)
         self.assertIn("readcmp(", js)
 
     def test_compare_swap_button_click_handler_in_js(self):
-        js = Path("scripts/rec_viewer.js").read_text()
+        js = (Path(__file__).parent.parent / "docs" / "assets" / "rec-viewer.js").read_text()
         self.assertIn("leftSel.value", js)
         self.assertIn("rightSel.value", js)
 
     def test_compare_close_overlay_focus_restoration_in_js(self):
-        js = Path("scripts/rec_viewer.js").read_text()
+        js = (Path(__file__).parent.parent / "docs" / "assets" / "rec-viewer.js").read_text()
         self.assertIn("openBtn?.focus()", js)
         self.assertIn("closeOverlay(", js)
 

@@ -3,9 +3,22 @@ const CATALOGUE_DEFAULTS = {
   readiness: "all", failure: "all", source: "all", sort: "created-desc",
 };
 
+const CATALOGUE_FIXED_VALUES = {
+  kind: ["all", "output", "test"],
+  readiness: ["all", "comparison", "candidates", "legacy"],
+  failure: ["all", "clean", "issues"],
+  source: ["all", "available", "missing", "iiif_manifest", "image", "landing_page"],
+  sort: ["created-desc", "created-asc", "title-asc", "title-desc", "pages-desc", "pages-asc",
+    "candidates-desc", "candidates-asc", "failures-desc", "failures-asc"],
+};
+
 function catalogueStateFromParams(params) {
   const state = { ...CATALOGUE_DEFAULTS };
-  for (const key of Object.keys(state)) state[key] = params.get(key) || state[key];
+  for (const key of Object.keys(state)) {
+    const value = params.get(key);
+    if (!value) continue;
+    if (!CATALOGUE_FIXED_VALUES[key] || CATALOGUE_FIXED_VALUES[key].includes(value)) state[key] = value;
+  }
   return state;
 }
 
@@ -64,6 +77,12 @@ function catalogueCompare(left, right, sort) {
   return idCompare;
 }
 
+function catalogueStatusText(visible, filters, sortLabel) {
+  if (visible) return `${visible} ${visible === 1 ? "Eintrag" : "Einträge"} sichtbar; Sortierung: ${sortLabel}.`;
+  const values = filters.map(([, value]) => value).join(", ") || "keine";
+  return `Keine Einträge entsprechen den aktiven Filtern (${values}).`;
+}
+
 function initCatalogue() {
   const ids = ["search", "filter", "language", "script", "engine", "readiness", "failure", "source", "sort"];
   const controls = Object.fromEntries(ids.map(id => [id, document.querySelector(`#catalogue-${id}`)]));
@@ -71,8 +90,10 @@ function initCatalogue() {
   const cards = [...document.querySelectorAll(".catalogue-card")];
   const status = document.querySelector("#catalogue-status");
   const active = document.querySelector("#catalogue-active-filters");
+  const empty = document.querySelector("#catalogue-empty");
   const list = document.querySelector("#catalogue-list");
-  if (Object.values(controls).some(control => !control) || !clear || !status || !active || !list) return;
+  if (Object.values(controls).some(control => !control) || !clear || !status || !active || !empty || !list) return;
+  list.dataset.enhanced = "true";
 
   const addOptions = (select, values) => {
     [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b, "de")).forEach(value => {
@@ -92,9 +113,12 @@ function initCatalogue() {
   });
   const writeState = state => {
     controls.search.value = state.q;
-    controls.filter.value = state.kind;
-    for (const key of ["language", "script", "engine", "readiness", "failure", "source", "sort"])
-      controls[key].value = state[key];
+    for (const key of ["filter", "language", "script", "engine", "readiness", "failure", "source", "sort"]) {
+      const stateKey = key === "filter" ? "kind" : key;
+      const requested = state[stateKey];
+      controls[key].value = [...controls[key].options].some(option => option.value === requested)
+        ? requested : CATALOGUE_DEFAULTS[stateKey];
+    }
   };
   const update = ({ push = true } = {}) => {
     const state = readState();
@@ -108,9 +132,8 @@ function initCatalogue() {
     const filters = Object.entries(state).filter(([key, value]) => key !== "sort" && value && value !== CATALOGUE_DEFAULTS[key]);
     const sortLabel = controls.sort.options[controls.sort.selectedIndex].textContent;
     active.textContent = filters.length ? `Aktive Filter: ${filters.map(([, value]) => value).join(", ")}.` : "Keine Filter aktiv.";
-    status.textContent = visible
-      ? `${visible} ${visible === 1 ? "Eintrag" : "Einträge"} sichtbar; Sortierung: ${sortLabel}.`
-      : `Keine Einträge entsprechen den aktiven Filtern (${filters.map(([, value]) => value).join(", ") || "keine"}).`;
+    status.textContent = catalogueStatusText(visible, filters, sortLabel);
+    empty.hidden = visible !== 0;
     if (push) {
       const url = new URL(window.location.href); url.search = catalogueParams(state).toString();
       history.pushState(state, "", url);
@@ -132,4 +155,5 @@ function initCatalogue() {
 if (typeof document !== "undefined") initCatalogue();
 if (typeof module !== "undefined") module.exports = {
   CATALOGUE_DEFAULTS, catalogueCompare, catalogueMatches, catalogueParams, catalogueStateFromParams,
+  catalogueStatusText, initCatalogue,
 };

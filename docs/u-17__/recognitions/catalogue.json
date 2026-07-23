@@ -9,7 +9,8 @@
       "model_id": null,
       "page": null,
       "path": "recognitions/fused.txt",
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": 2907,
@@ -20,7 +21,8 @@
       "model_id": "internvl3-8b-instruct",
       "page": null,
       "path": null,
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": 3169,
@@ -31,7 +33,8 @@
       "model_id": "kraken-catmus_medieval",
       "page": null,
       "path": null,
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": null,
@@ -53,7 +56,8 @@
       "model_id": "kraken-mccatmus",
       "page": null,
       "path": null,
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": null,
@@ -75,7 +79,8 @@
       "model_id": "internvl3-8b-instruct",
       "page": null,
       "path": null,
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": 3230,
@@ -86,7 +91,8 @@
       "model_id": "kraken-catmus_medieval",
       "page": null,
       "path": null,
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": 2863,
@@ -97,7 +103,8 @@
       "model_id": "kraken-mccatmus",
       "page": null,
       "path": null,
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": 2643,
@@ -108,7 +115,8 @@
       "model_id": "internvl3-8b-instruct",
       "page": null,
       "path": null,
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": 2783,
@@ -119,7 +127,8 @@
       "model_id": "kraken-catmus_medieval",
       "page": null,
       "path": null,
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": 2571,
@@ -130,7 +139,8 @@
       "model_id": "kraken-mccatmus",
       "page": null,
       "path": null,
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": 2822,
@@ -141,7 +151,8 @@
       "model_id": "internvl3-8b-instruct",
       "page": null,
       "path": null,
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     },
     {
       "characters": 2767,
@@ -152,9 +163,18 @@
       "model_id": "kraken-catmus_medieval",
       "page": null,
       "path": null,
-      "status": "success"
+      "status": "success",
+      "status_code": "success"
     }
   ],
   "doc_id": "u-17__",
+  "run_counts": {
+    "degenerate": 0,
+    "empty": 0,
+    "failed": 2,
+    "successful": 12,
+    "total": 14
+  },
+  "run_quality": "partial_failure",
   "version": "1.0"
 }
