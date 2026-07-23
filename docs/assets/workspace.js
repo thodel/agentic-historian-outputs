@@ -52,3 +52,36 @@
     });
   }
 })();
+
+// ─── Copy transcription to clipboard (#130) ──────────────────────
+(() => {
+  if (typeof document === "undefined") return;
+
+  // Get plain text from the line-numbered transcription structure
+  function getTranscriptText(wrap) {
+    return [...wrap.querySelectorAll(".line-text")]
+      .map(span => span.textContent || "")
+      .join("
+");
+  }
+
+  for (const btn of document.querySelectorAll("[data-copy-transcript]")) {
+    btn.addEventListener("click", async () => {
+      const wrap = btn.closest(".transcription-wrap") || document.querySelector(".transcription-wrap");
+      if (!wrap) return;
+      const text = getTranscriptText(wrap);
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.classList.add("copy-btn--copied");
+        const original = btn.innerHTML;
+        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Kopiert!`;
+        setTimeout(() => {
+          btn.classList.remove("copy-btn--copied");
+          btn.innerHTML = original;
+        }, 2000);
+      } catch (_) {
+        // Clipboard unavailable — silently skip; no fallback needed
+      }
+    });
+  }
+})();
