@@ -627,6 +627,11 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
     compare_section = f'''<div class="rec-compare" data-recognition-compare>
 <div class="rec-compare-toolbar"><button class="btn-rec-compare" type="button" data-rec-compare-open aria-expanded="false">&#128269; Vergleichen</button></div>
 <div class="rec-compare-panes" data-rec-compare-panes hidden>
+<div class="rec-compare-heading" data-rec-compare-heading><span>Modellvergleich</span></div>
+<div class="rec-compare-share" data-rec-compare-share>
+<input class="rec-compare-share-input" type="text" data-rec-compare-share-input readonly placeholder="Vergleichs-URL" aria-label="Vergleichs-URL zum Teilen">
+<button class="btn-rec-compare btn-rec-compare-share-copy" type="button" data-rec-compare-share-copy>Kopieren</button>
+</div>
 <div class="rec-compare-pane" data-rec-compare-pane="left" data-rec-compare-selected="{html.escape(left, quote=True)}">
 <div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-left">Version links</label></div>
 <select class="rec-compare-select" id="rec-compare-select-left" data-rec-compare-select="left">{options}</select>
