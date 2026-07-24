@@ -2,21 +2,8 @@
 .output-header { margin-bottom: 2rem; }
 .output-kicker { margin: 0; color: #245b78; font-size: .78rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
 .output-header h1 { margin: .15rem 0 .75rem; overflow-wrap: anywhere; }
-/* #21 redesigned status bar — replaces .output-status */
 .output-status { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
 .output-status span, .entity-type { padding: .2rem .5rem; border-radius: 999px; background: #e9f3f7; color: #245b78; font-size: .78rem; font-weight: 700; }
-.output-status-bar { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin-bottom: .75rem; }
-.output-status-badge { display: inline-flex; align-items: center; gap: .3rem; padding: .2rem .55rem; border-radius: 999px; font-size: .78rem; font-weight: 700; }
-.output-status-badge--machine-generated { background: #e9f3f7; color: #245b78; }
-.output-status-badge--human-reviewed    { background: #fff5dc; color: #7a4f00; }
-.output-status-badge--human-verified    { background: #d4edda; color: #1a5c2e; border: 1px solid #9fd6b2; }
-.output-status-badge--pages             { background: #f0f3f5; color: #5c6875; }
-.output-status-badge--warning           { background: #fff5dc; color: #7a4f00; border: 1px solid #e5c96a; }
-.output-status-badge--legacy            { background: #f0f3f5; color: #5c6875; font-style: italic; }
-.output-status-badge .quality-explain-btn { padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; text-decoration: underline dotted; }
-.output-status-badge .quality-explain-btn:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; border-radius: 2px; }
-.notice--ok { border-left-color: #1a5c2e; background: #d4edda; }
-@media (prefers-contrast: more) { .output-status-badge { border-width: 2px; font-weight: 800; } }
 .notice { padding: .8rem 1rem; border-left: .25rem solid #245b78; background: #eef6f9; }
 .notice--warning { border-left-color: #8a5a00; background: #fff5dc; }
 .muted { color: #5c6875; }
@@ -26,82 +13,7 @@
 .transcription, .rec-text { max-height: 42rem; overflow: auto; padding: 1rem; border: 1px solid #d7dee5; border-radius: .5rem; background: #f7f9fa; white-space: pre-wrap; overflow-wrap: anywhere; }
 .source-image { display: block; max-width: 100%; max-height: 70vh; margin: 1rem auto; object-fit: contain; }
 .source-frame { width: 100%; min-height: 70vh; border: 1px solid #d7dee5; }
-.evidence-viewer { border: 1px solid #aab8c2; border-radius: .5rem; overflow: hidden; background: #f7f9fa; }
-.evidence-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; padding: .55rem; border-bottom: 1px solid #d7dee5; background: white; }
-.evidence-toolbar button { min-height: 2.5rem; padding: .35rem .65rem; border: 1px solid #8aa5b4; border-radius: .35rem; background: white; color: #183b50; font: inherit; cursor: pointer; }
-.evidence-toolbar button:focus-visible, .evidence-stage:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
-.evidence-toolbar output { min-width: 3.5rem; text-align: center; font-variant-numeric: tabular-nums; }
-.evidence-stage { max-width: 100%; height: min(62vh, 42rem); overflow: auto; background: #20272c; }
-.evidence-stage img { display: block; max-width: none; height: auto; margin: 0 auto; }
-.evidence-stage img[hidden] { display: none; }
-.evidence-status { margin: 0; padding: .55rem .75rem; color: #4f5d67; background: white; }
-.source-page-nav { display: flex; flex-wrap: wrap; gap: .4rem; padding: .55rem; background: white; }
-.source-page-nav button { min-height: 2.5rem; border: 1px solid #8aa5b4; border-radius: .35rem; background: white; font: inherit; }
-.source-page-nav button[aria-current="page"] { color: white; background: #245b78; }
-.page-sync-warning { grid-column: 1 / -1; margin: 0; }
-/* #22 in-page section navigation ----------------------------------------- */
-.page-section-nav {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: #fff;
-  border-bottom: 1px solid #d7dee5;
-  padding: .35rem .5rem;
-  margin-bottom: 1.25rem;
-}
-.page-section-nav-list {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: .15rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;           /* Firefox */
-}
-.page-section-nav-list::-webkit-scrollbar { display: none; }
-.page-section-nav-list a {
-  display: inline-block;
-  padding: .25rem .55rem;
-  border-radius: .3rem;
-  color: #245b78;
-  font-size: .78rem;
-  font-weight: 600;
-  white-space: nowrap;
-  text-decoration: none;
-}
-.page-section-nav-list a:hover { background: #eef6f9; }
-.page-section-nav-list a:focus-visible {
-  outline: 3px solid #f5b942;
-  outline-offset: 2px;
-  border-radius: .3rem;
-}
-.page-section-nav-list a[aria-current="true"] {
-  background: #245b78;
-  color: #fff;
-}
-/* Space section headings clear of the sticky nav (~2.2rem height + 0.5rem gap) */
-section { scroll-margin-top: 3rem; }
-@media (prefers-contrast: more) {
-  .page-section-nav { border-bottom-width: 2px; }
-  .page-section-nav-list a { text-decoration: underline; }
-}
-/* Smooth-scroll only when the user has not requested reduced motion */
-@media (prefers-reduced-motion: no-preference) {
-  html { scroll-behavior: smooth; }
-}
-/* ---- end #22 ---- */
-.page-section { padding-block: .35rem; }
-.page-section--evidence { border-inline-start: .25rem solid #245b78; padding-inline-start: 1rem; }
-.page-section--interpretation { border-inline-start: .25rem solid #8a6b20; padding-inline-start: 1rem; }
-.page-section--administrative { border-inline-start: .25rem solid #77838d; padding-inline-start: 1rem; }
-.evidence-workspace { display: grid; grid-template-columns: minmax(0, var(--source-pane-ratio, 50%)) .8rem minmax(0, 1fr); align-items: stretch; gap: .5rem; margin-block: 1.5rem; }
-.evidence-pane { min-width: 0; max-height: 80vh; overflow: auto; }
-.evidence-pane .page-section { margin-top: 0; }
-.workspace-divider { display: flex; align-items: center; justify-content: center; min-height: 8rem; border-radius: .4rem; background: #d7e3e9; color: #245b78; cursor: col-resize; touch-action: none; user-select: none; }
-.workspace-divider:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
-.evidence-pane--transcription .rec-selector { position: sticky; top: 0; z-index: 2; }
+section { scroll-margin-top: 1rem; }
 a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
 
 
@@ -153,197 +65,45 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 .rec-meta dd { margin: .1rem 0 0; overflow-wrap: anywhere; }
 .rec-error { margin-top: 1rem; }
 .rec-viewer--enhanced .rec-panel[hidden] { display: none; }
+
+@media (prefers-contrast: more) { .notice, .transcription, .rec-text, .rec-panel { border-width: 2px; } }
+
+/* ---- #8 side-by-side comparison shell ---- */
 .rec-compare { margin-bottom: 1rem; }
-.btn-rec-compare { padding: .35rem .7rem; border: 1px solid #8aa5b4; border-radius: .35rem; background: white; cursor: pointer; font: inherit; }
+.btn-rec-compare {
+  padding: .35rem .7rem; border: 1px solid #8aa5b4; border-radius: .35rem;
+  background: white; cursor: pointer; font-size: .9rem;
+}
 .btn-rec-compare:hover { background: #f0f4f7; }
-.btn-rec-compare:focus-visible, .btn-rec-compare-swap:focus-visible, .rec-compare-select:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
-.btn-rec-compare-close { position: absolute; top: .5rem; right: .5rem; border: 0; background: none; color: #5c6875; font-size: 1.5rem; cursor: pointer; }
-.rec-compare-panes { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: .75rem; padding: 1rem; border: 1px solid #d7dee5; border-radius: .5rem; background: #f7f9fa; }
-.rec-compare-pane { display: flex; min-width: 0; flex-direction: column; gap: .5rem; }
-.rec-compare-header { color: #245b78; font-size: .85rem; font-weight: 700; }
-.rec-compare-select { width: 100%; padding: .3rem .4rem; border: 1px solid #8aa5b4; border-radius: .35rem; background: white; }
-.rec-compare-body { min-height: 3rem; max-height: 28rem; overflow: auto; }
-.rec-compare-body .rec-meta { font-size: .82rem; }
-.rec-compare-body .rec-text { max-height: 20rem; font-size: .85rem; }
-.btn-rec-compare-swap { align-self: center; padding: .4rem .6rem; border-radius: 50%; }
-.btn-rec-compare-sync { margin-left: .5rem; }
-
-@media (prefers-contrast: more) { .notice, .transcription, .rec-text, .rec-panel, .page-section, .evidence-viewer, .evidence-toolbar button, .source-page-nav button { border-width: 2px; } }
-@media (max-width: 55rem) {
-  .evidence-workspace { display: block; }
-  .evidence-pane { max-height: none; overflow: visible; }
-  .workspace-divider { display: none; }
-  .evidence-pane--transcription .rec-selector { position: static; }
-  .rec-compare-panes { grid-template-columns: 1fr; }
+.btn-rec-compare-close {
+  position: absolute; top: .5rem; right: .5rem;
+  background: none; border: none; font-size: 1.5rem; cursor: pointer;
+  line-height: 1; color: #5c6875;
 }
-
-/* #11 diff highlighting */
-.rec-compare-diff {
-  grid-column: 1 / -1;
-  padding: .75rem 1rem;
-  border: 1px solid #d7dee5;
-  border-radius: .4rem;
-  background: #f7f9fa;
-  font-size: .9rem;
-  line-height: 1.6;
-  max-height: 20rem;
-  overflow: auto;
-}
-.rec-compare-diff[hidden] { display: none; }
-.rec-compare-diff .notice { margin: 0; }
-
-.rec-compare-diff .diff-insert,
-.rec-compare-diff .diff-delete,
-.rec-compare-diff .diff-change {
-  display: inline;
-}
-.rec-compare-diff .diff-insert {
-  background: #d4edda;
-  border-bottom: 2px solid #28a745;
-  padding: 0 1px;
+.btn-rec-compare-close:hover { color: #9b2c2c; }
+.rec-compare-panes {
   position: relative;
+  display: grid; grid-template-columns: 1fr 1fr; gap: .75rem;
+  margin-top: .75rem; padding: 1rem;
+  border: 1px solid #d7dee5; border-radius: .5rem;
+  background: #f7f9fa;
 }
-.rec-compare-diff .diff-delete {
-  background: #f8d7da;
-  text-decoration: line-through;
-  color: #721c24;
-  padding: 0 1px;
+.rec-compare-pane { display: flex; flex-direction: column; gap: .5rem; }
+.rec-compare-header { font-weight: 700; font-size: .85rem; color: #245b78; }
+.rec-compare-select {
+  width: 100%; padding: .3rem .4rem;
+  border: 1px solid #8aa5b4; border-radius: .35rem; background: white;
 }
-.rec-compare-diff .diff-change {
-  background: #fff3cd;
-  border-bottom: 2px solid #f5b942;
-  padding: 0 1px;
+.rec-compare-body { min-height: 3rem; }
+.rec-compare-body .rec-meta { font-size: .82rem; }
+.rec-compare-body .rec-text { font-size: .85rem; max-height: 20rem; }
+.btn-rec-compare-swap {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  padding: .4rem .6rem; border: 1px solid #8aa5b4; border-radius: 50%;
+  background: white; cursor: pointer; font-size: 1.1rem; line-height: 1;
+  z-index: 1;
 }
-.rec-compare-diff .diff-insert::before { content: "+\a0"; color: #28a745; font-weight: 700; }
-.rec-compare-diff .diff-delete::before { content: "-\a0"; color: #721c24; font-weight: 700; }
-.rec-compare-diff .diff-change::before { content: "~\a0"; color: #856404; font-weight: 700; }
-/* Icons via pseudo-elements on the mark (copy-safe — pseudo-content not in clipboard) */
-
-/* Toggle button for diff */
-.btn-rec-compare-diff { margin-left: .25rem; font-weight: 700; }
-.btn-rec-compare-diff[aria-pressed="true"] { color: #245b78; }
-.btn-rec-compare-diff[aria-pressed="false"] { color: #8aa5b4; }
-
-/* ---- Progressive disclosure (issue #23) ---------------------------------- */
-.page-section-disclosure {
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-.page-section-summary {
-  list-style: none;
-  cursor: pointer;
-  display: flex;
-  align-items: baseline;
-  gap: .5rem;
-  padding: .45rem 0;
-  border-top: 1px solid #d4c9b8;
-  color: #5a4e3c;
-  font-size: .9rem;
-  user-select: none;
-}
-.page-section-summary::-webkit-details-marker { display: none; }
-.page-section-summary::before {
-  content: "\25B6";   /* ▶ */
-  font-size: .65rem;
-  transition: transform .15s;
-  flex-shrink: 0;
-  margin-right: .2rem;
-}
-.page-section-disclosure[open] > .page-section-summary::before {
-  transform: rotate(90deg);
-}
-.summary-title {
-  font-weight: 600;
-  color: #3a2e1e;
-}
-.summary-detail {
-  color: #7a6e5c;
-  font-size: .85em;
-}
-.page-section-summary:hover {
-  color: #3a2e1e;
-  background: #f5efe6;
-}
-.page-section-summary:focus-visible {
-  outline: 2px solid #8b6914;
-  outline-offset: 2px;
-  border-radius: 2px;
-}
-/* Print: force all disclosures fully open */
-/* ---- Print layout (issue #24) ---- */
-@media print {
-  /* 1. Progressive disclosures and rec-panels: always expanded */
-  .page-section-disclosure > summary { display: none; }
-  .page-section-disclosure > *:not(summary) { display: block !important; }
-  .rec-panel > summary { display: none; }
-  .rec-panel { border: none; }
-  .rec-panel[open] > summary { display: none; }
-  .rec-panel > *:not(summary) { display: block !important; }
-  .rec-inventory > summary { display: none; }
-  .rec-inventory > *:not(summary) { display: block !important; }
-
-  /* 2. Remove sticky and interactive navigation chrome */
-  .page-section-nav { display: none; }
-  .evidence-toolbar { display: none; }
-  .workspace-divider { display: none; }
-  .source-page-nav { display: none; }
-
-  /* 3. Remove comparison UI (not meaningful in print) */
-  .btn-rec-compare,
-  .btn-rec-compare-close,
-  .btn-rec-compare-swap,
-  .btn-rec-compare-diff,
-  .rec-compare { display: none; }
-
-  /* 4. Hide explanation toggle buttons */
-  .quality-explain-btn { display: none; }
-
-  /* 5. Replace interactive IIIF/image viewer with source link only */
-  .evidence-viewer { display: none; }
-
-  /* 6. Collapse evidence workspace to single column */
-  .evidence-workspace { display: block; }
-  .evidence-pane { max-height: none; overflow: visible; }
-
-  /* 7. Remove max-height from scrollable text regions so no line is clipped */
-  .transcription,
-  .rec-text {
-    max-height: none;
-    overflow: visible;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
-
-  /* 8. Ensure table containers do not clip columns */
-  .table-scroll { overflow: visible; max-width: 100%; }
-
-  /* 9. Page-break control: keep semantic units together */
-  .output-header { page-break-inside: avoid; break-inside: avoid; }
-  .output-status-bar { page-break-inside: avoid; break-inside: avoid; }
-  .notice { page-break-inside: avoid; break-inside: avoid; }
-  h2 { page-break-after: avoid; break-after: avoid; }
-  h3 { page-break-after: avoid; break-after: avoid; }
-  .rec-meta { page-break-inside: avoid; break-inside: avoid; }
-
-  /* 10. Print the canonical URL after every link in the citation section */
-  #citation a[href]::after {
-    content: " (" attr(href) ")";
-    font-size: .82em;
-    color: #444;
-    word-break: break-all;
-  }
-
-  /* 11. Show the rec-selector label text but hide the switcher buttons */
-  .rec-selector ul { display: none; }
-
-  /* 12. Body overflow: no clipping */
-  body { overflow: visible; }
-}
-/* ---- end #24 ---- */
-/* High-contrast */
-@media (forced-colors: active) {
-  .page-section-summary { border-top-color: ButtonText; }
-  .page-section-summary::before { color: ButtonText; }
-}
-/* ---- end #23 ---- */
+.btn-rec-compare-swap:hover { background: #e8f0f4; }
+.btn-rec-compare-swap:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
+/* Ensure the panes grid holds the swap button in the center */
+.rec-compare-panes { position: relative; }
