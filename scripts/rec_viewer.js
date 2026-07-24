@@ -5,17 +5,19 @@
 
   const requested = () => new URL(window.location.href).searchParams.get("rec") || "selected";
 
-  function syncPrimaryDownload(viewer, target) {
-    const button = viewer.querySelector("[data-rec-primary-download]");
-    const download = target.querySelector(".rec-download");
-    if (!button) return;
-    if (download) {
-      button.hidden = false;
-      button.href = download.href;
-      button.setAttribute("download", download.getAttribute("download") || "");
-    } else {
-      button.hidden = true;
-    }
+  // Sync primary download button when active candidate changes (#35)
+  function syncPrimaryDownload(viewer, targetPanelId) {
+    const btn = viewer.querySelector("[data-rec-primary-download]");
+    if (!btn) return;
+    const panels = [...viewer.querySelectorAll("[data-recognition-panel]")];
+    const panel = panels.find(p => p.dataset.recognitionPanel === targetPanelId) ||
+      panels.find(p => p.dataset.recognitionPanel === "selected");
+    if (!panel) return;
+    const dl = panel.querySelector(".rec-download");
+    const newHref = dl ? dl.getAttribute("href") : "";
+    const filename = newHref.split("/").pop() || "transcription.txt";
+    btn.setAttribute("href", newHref);
+    btn.setAttribute("download", filename);
   }
 
   function select(viewer, id, { push = false, focus = false } = {}) {
@@ -45,13 +47,7 @@
       history.pushState({ rec: target.dataset.recognitionPanel }, "", url);
     }
     if (focus) target.querySelector("summary")?.focus();
-    syncPrimaryDownload(viewer, target);
-    viewer.dispatchEvent(new CustomEvent("recognitionchange", { bubbles: true, detail: {
-      id: target.dataset.recognitionPanel,
-      page: target.dataset.page || "",
-      engine: target.dataset.engine || "",
-      model: target.dataset.model || "",
-    }}));
+    syncPrimaryDownload(viewer, target.dataset.recognitionPanel);
   }
 
   for (const viewer of viewers) {
@@ -232,7 +228,6 @@
       updatePane(rightPane, allPanels, rightSel);
       restrictSelects(leftSel, rightSel);
       pushcmp(leftSel.value, rightSel.value);
-      updateDiff(leftSel.value, rightSel.value);
     });
 
     // ── Select changes ──────────────────────────────────────────
@@ -240,7 +235,6 @@
       updatePane(pane, allPanels, sel);
       restrictSelects(leftSel, rightSel);
       pushcmp(leftSel.value, rightSel.value);
-      updateDiff(leftSel.value, rightSel.value);
     }
 
     leftSel .addEventListener("change", () => onSelectChange(leftSel,  leftPane));
@@ -252,201 +246,6 @@
     });
 
     // ── Back/forward: restore comparison state ───────────────────
-
-  // ── #11 diff highlighting ──────────────────────────────────────
-  const DIFF_DISABLED_ATTR = "data-rec-compare-diff-disabled";
-  const MAX_DIFF_CHARS = 50_000;
-  const MAX_DIFF_CELLS = 2_000_000;
-
-  function escapeHTML(s) {
-    return String(s)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
-  }
-
-  // Word-level diff: returns array of {type, left, right}
-  // type in "equal", "insert", "delete", "change"
-  function wordLevelDiff(left, right) {
-    const lWords = left.split(/(\s+)/);
-    const rWords = right.split(/(\s+)/);
-    const m = lWords.length, n = rWords.length;
-    // Build DP table for LCS of words
-    const dp = Array.from({length: m + 1}, () => new Array(n + 1).fill(0));
-    for (let i = 1; i <= m; i++) {
-      for (let j = 1; j <= n; j++) {
-        if (lWords[i-1] === rWords[j-1]) dp[i][j] = dp[i-1][j-1] + 1;
-        else dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
-      }
-    }
-    // Backtrack
-    const pairs = [];
-    let i = m, j = n;
-    while (i > 0 || j > 0) {
-      if (i > 0 && j > 0 && lWords[i-1] === rWords[j-1]) {
-        pairs.unshift({type: "equal", left: lWords[i-1], right: rWords[j-1]});
-        i--; j--;
-      } else if (j > 0 && (i === 0 || dp[i][j-1] >= dp[i-1][j])) {
-        pairs.unshift({type: "insert", left: "", right: rWords[j-1]});
-        j--;
-      } else {
-        pairs.unshift({type: "delete", left: lWords[i-1], right: ""});
-        i--;
-      }
-    }
-    // Merge consecutive runs of the same type
-    const merged = [];
-    for (const p of pairs) {
-      if (merged.length && merged[merged.length-1].type === p.type) {
-        merged[merged.length-1].left  += p.left;
-        merged[merged.length-1].right += p.right;
-      } else {
-        merged.push({...p});
-      }
-    }
-    return merged;
-  }
-
-  function diffMarkType(type) {
-    switch (type) {
-      case "insert":  return "diff-insert";
-      case "delete":  return "diff-delete";
-      case "change":  return "diff-change";
-      default:        return null;
-    }
-  }
-
-  function diffLabel(type) {
-    switch (type) {
-      case "insert":  return "eingefügt";
-      case "delete":  return "gelöscht";
-      case "change":  return "geändert";
-      default:        return null;
-    }
-  }
-
-  function renderDiffHTML(pairs) {
-    return pairs.map(p => {
-      const cls = diffMarkType(p.type);
-      if (!cls) return `<span>${escapeHTML(p.left)}</span>`;
-      const label = diffLabel(p.type);
-      return `<span class="${cls}" aria-label="${label}">` +
-             `<span>${escapeHTML(p.left)}</span>` +
-             (p.type !== "delete" ? `<span>${escapeHTML(p.right)}</span>` : "") +
-             `</span>`;
-    }).join("");
-  }
-
-  // Find plain text from candidate panel
-  function extractText(candidates, id) {
-    const c = candidates.find(x => x.dataset.recognitionPanel === id) ||
-              candidates.find(x => x.dataset.recognitionPanel === "selected");
-    if (!c) return null;
-    const pre = c.querySelector(".rec-text");
-    return pre ? pre.textContent : null;
-  }
-
-  function diffContent(leftText, rightText) {
-    if (leftText === null || rightText === null) {
-      return `<p class="notice notice--warning">Version nicht verfügbar.</p>`;
-    }
-    const max = Math.max(leftText.length, rightText.length);
-    if (max > MAX_DIFF_CHARS) {
-      return `<p class="notice">Diff für sehr lange Texte (${max} Zeichen) nicht verfügbar. ` +
-             `Zum Vergleichen bitte kürzere Versionen wählen.</p>`;
-    }
-    const cells = leftText.split(/\s+/).length * rightText.split(/\s+/).length;
-    if (cells > MAX_DIFF_CELLS) {
-      return `<p class="notice">Diff für diese langen Texte ist zu aufwendig. ` +
-             `Zum Vergleichen bitte kürzere Versionen wählen.</p>`;
-    }
-    if (leftText.trim() === rightText.trim()) {
-      return `<p class="notice">Die beiden Versionen sind identisch.</p>`;
-    }
-    const pairs = wordLevelDiff(leftText, rightText);
-    // Detect change: equal words on one side, insert+delete on other = "change"
-    const simplified = pairs.map(p => {
-      // If left and right are both non-empty and different, mark as "change"
-      if (p.type !== "equal" && p.left && p.right) {
-        return {type: "change", left: p.left, right: p.right};
-      }
-      return p;
-    });
-    return renderDiffHTML(simplified);
-  }
-
-  // ── Inject diff toggle button ──────────────────────────────────
-  // Find or create the diff toggle button in the pane toolbar
-  function ensureDiffToggle(pane) {
-    if (pane.querySelector("[data-rec-compare-diff-toggle]")) return;
-    const btn = document.createElement("button");
-    btn.setAttribute("class", "btn-rec-compare btn-rec-compare-diff");
-    btn.setAttribute("type", "button");
-    btn.setAttribute("data-rec-compare-diff-toggle", "");
-    btn.setAttribute("aria-pressed", "false");
-    btn.setAttribute("aria-label", "Unterschiede hervorheben");
-    btn.textContent = "\u2194"; // horizontal arrow ↔
-    // Insert after the sync toggle if present, else append
-    const syncToggle = pane.querySelector("[data-rec-compare-sync-toggle]");
-    if (syncToggle) syncToggle.insertAdjacentElement("afterend", btn);
-    else pane.appendChild(btn);
-  }
-
-  // Create diff region between the two panes
-  function ensureDiffRegion() {
-    if (wrap.querySelector("[data-rec-compare-diff]")) return wrap.querySelector("[data-rec-compare-diff]");
-    const el = document.createElement("div");
-    el.setAttribute("class", "rec-compare-diff");
-    el.setAttribute("data-rec-compare-diff", "");
-    el.setAttribute("role", "region");
-    el.setAttribute("aria-label", "Unterschiede");
-    el.hidden = true;
-    // Insert after the panes, before the close button toolbar
-    const toolbar = wrap.querySelector(".rec-compare-toolbar");
-    if (toolbar) toolbar.insertAdjacentElement("afterend", el);
-    else panesEl.insertBefore(el, panesEl.querySelector("[data-rec-compare-pane='right']")?.nextSibling);
-    return el;
-  }
-
-  function updateDiff(leftSelVal, rightSelVal) {
-    const diffEl  = wrap.querySelector("[data-rec-compare-diff]");
-    const toggle  = wrap.querySelector("[data-rec-compare-diff-toggle]");
-    if (!diffEl) return;
-    const disabled = diffEl.hasAttribute(DIFF_DISABLED_ATTR);
-    if (disabled) { diffEl.hidden = true; return; }
-    const leftText  = extractText(allPanels, leftSelVal);
-    const rightText = extractText(allPanels, rightSelVal);
-    diffEl.innerHTML = diffContent(leftText, rightText);
-    diffEl.hidden = false;
-  }
-
-  // Inject toggle into each pane header
-  ensureDiffToggle(leftPane);
-  ensureDiffToggle(rightPane);
-  const diffEl = ensureDiffRegion();
-  diffEl.setAttribute(DIFF_DISABLED_ATTR, "");
-  diffEl.hidden = true;
-
-  // Diff toggle button
-  for (const btn of wrap.querySelectorAll("[data-rec-compare-diff-toggle]")) {
-    btn.addEventListener("click", () => {
-      const diffRegion = wrap.querySelector("[data-rec-compare-diff]");
-      if (!diffRegion) return;
-      const isDisabled = diffRegion.hasAttribute(DIFF_DISABLED_ATTR);
-      if (isDisabled) {
-        diffRegion.removeAttribute(DIFF_DISABLED_ATTR);
-        btn.setAttribute("aria-pressed", "true");
-        btn.setAttribute("aria-label", "Unterschiede hervorheben");
-        updateDiff(leftSel.value, rightSel.value);
-      } else {
-        diffRegion.setAttribute(DIFF_DISABLED_ATTR, "");
-        diffRegion.hidden = true;
-        btn.setAttribute("aria-pressed", "false");
-        btn.setAttribute("aria-label", "Unterschiede anzeigen");
-      }
-    });
-  }
-
     addEventListener("popstate", () => {
       const { left, right } = readcmp();
       if (!left && !right) { closeOverlay(wrap); return; }
@@ -458,70 +257,5 @@
       updatePane(rightPane, allPanels, rightSel);
       openOverlay(wrap);
     });
-    // ── Scroll synchronisation (#10) ────────────────────────────
-    const leftBody  = leftPane .querySelector("[data-rec-compare-body]");
-    const rightBody = rightPane.querySelector("[data-rec-compare-body]");
-    if (leftBody && rightBody) {
-      let syncEnabled = true;
-      let isScrolling = false;  // guard against recursive events
-
-      // Inject the sync toggle button beside the close button
-      const syncToggle = document.createElement("button");
-      syncToggle.setAttribute("class", "btn-rec-compare btn-rec-compare-sync");
-      syncToggle.setAttribute("type", "button");
-      syncToggle.setAttribute("data-rec-compare-sync-toggle", "");
-      syncToggle.setAttribute("aria-pressed", "true");
-      syncToggle.setAttribute("aria-label", "Scroll-Synchronisation deaktivieren");
-      syncToggle.textContent = "\u21c4\uFE0e"; // sync icon with variation selector
-      panesEl.appendChild(syncToggle);
-
-      function applyProportionalScroll(source, target) {
-        if (!syncEnabled) return;
-        const sourceEl  = source;
-        const targetEl  = target;
-        const sourceMax = sourceEl.scrollHeight - sourceEl.clientHeight;
-        const targetMax = targetEl.scrollHeight - targetEl.clientHeight;
-        if (sourceMax <= 0 || targetMax <= 0) return;
-        const ratio  = sourceEl.scrollTop / sourceMax;
-        targetEl.scrollTop = Math.round(ratio * targetMax);
-      }
-
-      leftBody.addEventListener("scroll", () => {
-        if (isScrolling) return;
-        isScrolling = true;
-        requestAnimationFrame(() => {
-          applyProportionalScroll(leftBody, rightBody);
-          isScrolling = false;
-        });
-      });
-
-      rightBody.addEventListener("scroll", () => {
-        if (isScrolling) return;
-        isScrolling = true;
-        requestAnimationFrame(() => {
-          applyProportionalScroll(rightBody, leftBody);
-          isScrolling = false;
-        });
-      });
-
-      syncToggle.addEventListener("click", () => {
-        syncEnabled = !syncEnabled;
-        syncToggle.setAttribute("aria-pressed", String(syncEnabled));
-        syncToggle.setAttribute("aria-label",
-          syncEnabled
-            ? "Scroll-Synchronisation deaktivieren"
-            : "Scroll-Synchronisation aktivieren");
-        syncToggle.style.opacity = syncEnabled ? "1" : "0.45";
-      });
-
-      // Respect prefers-reduced-motion: disable sync by default
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        syncEnabled = false;
-        syncToggle.style.opacity = "0.45";
-        syncToggle.setAttribute("aria-pressed", "false");
-        syncToggle.setAttribute("aria-label", "Scroll-Synchronisation aktivieren");
-      }
-    }
-
   }
 })();
