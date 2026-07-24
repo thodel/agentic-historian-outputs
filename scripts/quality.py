@@ -949,6 +949,114 @@ def normalize_candidate_metrics(candidate: dict) -> "Provenance":
 
 
 # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# Entity noise scoring (issue #127)
+# ---------------------------------------------------------------------------
+
+# Vowels (including German ü/ö/ä) and consonants for pattern analysis.
+_VOWELS = frozenset("aeiouäöüàâáèéêëïîôùûú")
+_CONSONANTS = frozenset("bcdfghjklmnpqrstvwxyzß")
+
+
+def noise_score(label: str, occurrences: int = 1, confidence: str = "",
+                *, is_degenerate: bool = False) -> float:
+    """Return a heuristic noise score in [0.0, 1.0] for an entity candidate.
+
+    Higher scores mean more likely to be an OCR recognition artifact.
+    Scores are deterministic — no randomness whatsoever.
+
+    Scoring dimensions
+    ------------------
+    - Token length: single characters score 0.30; very short (2–3 chars) score 0.15
+    - Digit-only token: score 0.35
+    - Gibberish pattern: improbable vowel/consonant sequences (e.g. "fiisdz",
+      "gerrmreuon") score up to 0.30.  Specifically, runs of 4+ consecutive
+      consonants (uncommon in natural language) add 0.20; very few vowels
+      (≤1 vowel per 5 chars) add 0.10
+    - Single occurrence: score 0.10 (entities that appear only once are more
+      likely to be noise)
+    - Unverified / low confidence: score 0.05
+    - Source candidate was degenerate: score 0.30 (strong signal)
+
+    Scores are summed across dimensions and capped at 1.0.
+
+    Parameters
+    ----------
+    label:
+        The entity surface text (used for token/vowel/consonant analysis).
+    occurrences:
+        Number of times the entity appears across all documents.
+    confidence:
+        hub_confidence value from the source candidate (e.g. "high",
+        "unverified", "medium").
+    is_degenerate:
+        True when the source recognition candidate was flagged as degenerate
+        (e.g. repeated-character output, empty string).
+    """
+    if not label:
+        return 1.0
+
+    score = 0.0
+    text = label.strip()
+
+    # 1. Token length
+    if len(text) == 1:
+        score += 0.30
+    elif len(text) <= 3:
+        score += 0.15
+
+    # 2. Digit-only token
+    if text.isdigit():
+        score += 0.35
+
+    # 3. Gibberish vowel/consonant pattern analysis (only meaningful for alphabetic tokens)
+    if text.isalpha():
+        lower = text.lower()
+
+        # Check for improbable consonant runs (4+ consecutive consonants)
+        consonant_run = 0
+        max_run = 0
+        for ch in lower:
+            if ch in _CONSONANTS:
+                consonant_run += 1
+                max_run = max(max_run, consonant_run)
+            else:
+                consonant_run = 0
+        if max_run >= 4:
+            score += 0.20
+
+        # Check vowel density: very few vowels → suspicious
+        vowel_count = sum(1 for ch in lower if ch in _VOWELS)
+        if len(text) >= 5 and vowel_count <= 1:
+            score += 0.10
+        elif len(text) >= 5 and vowel_count == 2 and len(text) >= 8:
+            score += 0.05
+
+    # 4. Single occurrence
+    if occurrences == 1:
+        score += 0.10
+
+    # 5. Unverified / low confidence
+    if confidence.lower() in ("unverified", "", "none"):
+        score += 0.05
+
+    # 6. Degenerate source
+    if is_degenerate:
+        score += 0.30
+
+    return min(score, 1.0)
+
+
+def is_noisy(label: str, occurrences: int = 1, confidence: str = "",
+             *, is_degenerate: bool = False) -> bool:
+    """Return True when ``noise_score`` exceeds the uncertain threshold (≥ 0.40).
+
+    This is the convenience flag used throughout the build pipeline to decide
+    whether an entity should be grouped into "Unsichere Erkennungen".
+    """
+    return noise_score(label, occurrences, confidence, is_degenerate=is_degenerate) >= 0.40
+
+
 # German pluralization helper (issue #121)
 # ---------------------------------------------------------------------------
 

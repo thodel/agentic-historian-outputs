@@ -1,12 +1,13 @@
 const CATALOGUE_DEFAULTS = {
   q: "", kind: "all", language: "all", script: "all", engine: "all",
-  readiness: "all", failure: "all", source: "all", sort: "created-desc",
+  readiness: "all", failure: "all", source: "all", status: "all", sort: "created-desc",
 };
 
 const CATALOGUE_FIXED_VALUES = {
   kind: ["all", "output", "test"],
   readiness: ["all", "comparison", "candidates", "legacy"],
   failure: ["all", "clean", "issues"],
+  status: ["all", "current", "superseded"],
   source: ["all", "available", "missing", "iiif_manifest", "image", "landing_page"],
   sort: ["created-desc", "created-asc", "title-asc", "title-desc", "pages-desc", "pages-asc",
     "candidates-desc", "candidates-asc", "failures-desc", "failures-asc"],
@@ -38,12 +39,15 @@ function catalogueMatches(data, state) {
     (state.source === "available" && data.sourceAvailable === "true") ||
     (state.source === "missing" && data.sourceAvailable !== "true") ||
     data.sourceType === state.source;
+  const matchesStatus = state.status === "all" ||
+    (state.status === "current" && !data.supersededBy) ||
+    (state.status === "superseded" && !!data.supersededBy);
   return (!state.q || (data.search || "").includes(state.q.toLocaleLowerCase("de"))) &&
     (state.kind === "all" || data.kind === state.kind) &&
     (state.language === "all" || data.language === state.language) &&
     (state.script === "all" || data.script === state.script) &&
     (state.engine === "all" || engines.includes(state.engine)) &&
-    matchesReadiness && matchesFailure && matchesSource;
+    matchesReadiness && matchesFailure && matchesSource && matchesStatus;
 }
 
 function catalogueParams(state) {
@@ -84,7 +88,7 @@ function catalogueStatusText(visible, filters, sortLabel) {
 }
 
 function initCatalogue() {
-  const ids = ["search", "filter", "language", "script", "engine", "readiness", "failure", "source", "sort"];
+  const ids = ["search", "filter", "language", "script", "engine", "readiness", "failure", "source", "status", "sort"];
   const controls = Object.fromEntries(ids.map(id => [id, document.querySelector(`#catalogue-${id}`)]));
   const clear = document.querySelector("#catalogue-clear");
   const cards = [...document.querySelectorAll(".catalogue-card")];

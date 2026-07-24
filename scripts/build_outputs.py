@@ -320,25 +320,87 @@ license: "LicenseRef-Not-Specified"
 
 
 def build_entity_pages(index: dict) -> None:
-    root = DOCS / "entities"
+    from quality import is_noisy, noise_score  # imported here to avoid circular imports
+
+    root = DOCS / 'entities'
     root.mkdir(exist_ok=True)
-    summary = []
+
+    # Separate credible (not noisy) from uncertain (noisy) entities.
+    credible = []
+    uncertain = []
     for (kind, label), occurrences in sorted(index.items(), key=lambda x: (x[0][0], x[0][1].casefold())):
+        # Prefer 'high' confidence as signal of legitimacy; fall back to first available.
+        confidence = next(
+            (item['confidence'] for item in occurrences
+             if item.get('confidence') not in ('', 'unverified', 'none', None)),
+            '',
+        )
+        n = len(occurrences)
+        noisy = is_noisy(label, n, confidence)
+        score = noise_score(label, n, confidence)
+
         target = slug(label, kind)
         directory = root / target
         directory.mkdir(exist_ok=True)
-        rows = "".join(
-            f'<tr><td><a href="../../{html.escape(item["doc_id"])}/">{html.escape(item["doc_id"])}</a></td><td>{html.escape(item["surface"])}</td><td>{html.escape(item["context"]) or "—"}</td><td>{html.escape(item["confidence"]) or "Nicht angegeben"}</td></tr>'
+
+        rows = ''.join(
+            f'<tr><td><a href="../../{html.escape(item["doc_id"])}/">{html.escape(item["doc_id"])}</a></td>'
+            f'<td>{html.escape(item["surface"])}</td>'
+            f'<td>{html.escape(item["context"]) or chr(0x2014)}</td>'
+            f'<td>{html.escape(item["confidence"]) or "Nicht angegeben"}</td></tr>'
             for item in occurrences
         )
-        external = next((item["uri"] for item in occurrences if valid_public_url(item["uri"])), "")
-        external_html = f'<p>Normdatensatz: <a href="{html.escape(external, quote=True)}">{html.escape(external)}</a></p>' if external else '<p class="notice notice--warning">Nicht mit einem externen Normdatensatz verknüpft.</p>'
-        page = frontmatter(label) + f'''<nav class="breadcrumbs"><a href="../">Entitäten</a> / {html.escape(label)}</nav><h1>{html.escape(label)}</h1><p><span class="entity-type">{html.escape(kind)}</span> · {len(occurrences)} Vorkommen</p>{external_html}<div class="table-scroll"><table><thead><tr><th>Ausgabe</th><th>Form</th><th>Kontext</th><th>Konfidenz</th></tr></thead><tbody>{rows}</tbody></table></div>'''
-        (directory / "index.md").write_text(page, encoding="utf-8")
-        summary.append(f'<tr><td><a href="{target}/">{html.escape(label)}</a></td><td>{html.escape(kind)}</td><td>{len(occurrences)}</td></tr>')
-    page = frontmatter("Entitäten") + f'''<nav class="breadcrumbs"><a href="../">Alle Ausgaben</a> / Entitäten</nav><h1>Entitäten</h1><p>Automatisch erkannte Personen, Orte, Organisationen und weitere Entitätstypen. Schreibvarianten können getrennte Einträge bilden; fehlende Normdatenlinks bedeuten, dass die Identifikation nicht verifiziert wurde.</p><div class="table-scroll"><table><thead><tr><th>Entität</th><th>Typ</th><th>Vorkommen</th></tr></thead><tbody>{''.join(summary)}</tbody></table></div>'''
-    (root / "index.md").write_text(page, encoding="utf-8")
+        external = next((item['uri'] for item in occurrences if valid_public_url(item['uri'])), '')
+        external_html = (
+            f'<p>Normdatensatz: <a href="{html.escape(external, quote=True)}">{html.escape(external)}</a></p>'
+            if external
+            else '<p class="notice notice--warning">Nicht mit einem externen Normdatensatz verkn'+chr(0x00fc)+'pft.</p>'
+        )
+        noise_badge = (
+            f'<span class="entity-noise-badge" aria-label="Unsichere Erkennung">'+chr(0x26A0)+'</span>'
+            if noisy else ''
+        )
+        page = (
+            frontmatter(label)
+            + '<nav class="breadcrumbs"><a href="../">Entit'+chr(0x00e4)+'ten</a> / ' + html.escape(label) + '</nav>'
+            + '<h1>' + html.escape(label) + noise_badge + '</h1>'
+            + '<p><span class="entity-type">' + html.escape(kind) + '</span> ' + chr(0x00b7) + ' ' + str(n) + ' Vorkommen</p>'
+            + external_html
+            + '<div class="table-scroll"><table><thead><tr><th>Ausgabe</th><th>Form</th><th>Kontext</th><th>Konfidenz</th></tr></thead><tbody>' + rows + '</tbody></table></div>'
+        )
+        (directory / 'index.md').write_text(page, encoding='utf-8')
 
+        entry = (target, label, kind, n, noisy, score)
+        if noisy:
+            uncertain.append(entry)
+        else:
+            credible.append(entry)
+
+    # Build index page with collapsible uncertain section.
+    credible_rows = ''.join(
+        f'<tr><td><a href="{t}/">{html.escape(l)}</a></td><td>{html.escape(k)}</td><td>{n}</td></tr>'
+        for t, l, k, n, _noisy, _score in credible
+    )
+    uncertain_rows = ''.join(
+        f'<tr><td><a href="{t}/">{html.escape(l)}</a></td><td>{html.escape(k)}</td><td>{n}</td></tr>'
+        for t, l, k, n, _noisy, _score in uncertain
+    )
+    uncertain_section = (
+        '<details class="entity-uncertain-section">'
+        + '<summary>Unsichere Erkennungen (' + str(len(uncertain)) + ' Eintrg'+chr(0x00e4)+'ge)</summary>'
+        + '<div class="table-scroll"><table><thead><tr><th>Entit'+chr(0x00e4)+'t</th><th>Typ</th><th>Vorkommen</th></tr></thead><tbody>' + uncertain_rows + '</tbody></table></div>'
+        + '</details>'
+        if uncertain else ''
+    )
+    page = (
+        frontmatter('Entit'+chr(0x00e4)+'ten')
+        + '<nav class="breadcrumbs"><a href="../">Alle Ausgaben</a> / Entit'+chr(0x00e4)+'ten</nav>'
+        + '<h1>Entit'+chr(0x00e4)+'ten</h1>'
+        + '<p>Automatisch erkannte Personen, Orte, Organisationen und weitere Entit'+chr(0x00e4)+'tstypen. Schreibvarianten k'+chr(0x00f6)+'nnen getrennte Eintr'+chr(0x00e4)+'ge bilden; fehlende Normdatenlinks bedeuten, dass die Identifikation nicht verifiziert wurde.</p>'
+        + '<div class="table-scroll"><table><thead><tr><th>Entit'+chr(0x00e4)+'t</th><th>Typ</th><th>Vorkommen</th></tr></thead><tbody>' + credible_rows + '</tbody></table></div>'
+        + uncertain_section
+    )
+    (root / 'index.md').write_text(page, encoding='utf-8')
 
 def build() -> None:
     # Publish the progressive-enhancement asset from its single source.

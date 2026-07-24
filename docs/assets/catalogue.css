@@ -75,3 +75,21 @@
 @media (prefers-reduced-data: reduce) {
   .catalogue-preview { display: none; }
 }
+
+/* #125: supersedes relation banner */
+.catalogue-superseded-banner {
+  background: var(--notice-bg, #fff3cd);
+  border: 1px solid var(--notice-border, #ffc107);
+  border-radius: .25rem;
+  color: #856404;
+  font-size: .875rem;
+  margin-block-end: .75rem;
+  padding: .5rem .75rem;
+}
+.catalogue-superseded-banner a { color: #533f03; }
+.catalogue-superseded-banner--inverse {
+  background: var(--notice-bg, #e8f0fe);
+  border-color: var(--notice-border, #a8c8ff);
+  color: #1a3a6e;
+}
+.catalogue-superseded-banner--inverse a { color: #0d2b6b; }

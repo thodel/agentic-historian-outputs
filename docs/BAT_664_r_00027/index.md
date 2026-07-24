@@ -8,13 +8,9 @@ title: "BAT_664_r_00027"
 <nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> BAT_664_r_00027</nav>
 <header class="output-header page-section page-section--identity" data-page-section="identity">
   <p class="output-kicker">Forschungsausgabe</p><h1>BAT_664_r_00027</h1>
-  <div class="output-status-bar" role="group" aria-label="Verifikationsstatus und Qualität"><span class="output-status-badge output-status-badge--machine-generated" data-review-status="machine-generated">⚙ Maschinell erzeugt<button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-verification_needed-hdr"><span aria-hidden="true">ⓘ</span> Menschliche Überprüfung empfohlen</button></span><span class="output-status-badge output-status-badge--warning" role="img" aria-label="Warnung: 2 Erkennungsprobleme">⚠ 2 Erkennungsprobleme<button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-failed-hdr"><span aria-hidden="true">ⓘ</span> Fehlgeschlagene Erkennung</button></span><span class="output-status-badge output-status-badge--legacy">Legacy-QA 10%<button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-legacy_qa-hdr"><span aria-hidden="true">ⓘ</span> Legacy-QA-Wert (unspezifiziert)</button></span></div>
-  <div class="quality-explanation" id="quality-explanation-verification_needed-hdr" role="region" aria-label="Menschliche Überprüfung empfohlen" hidden><p><strong>Menschliche Überprüfung empfohlen:</strong> Diese Transkription ist maschinell erzeugt.  Sie sollte anhand des Originaldokuments überprüft werden, bevor sie in einer wissenschaftlichen Arbeit zitiert wird. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-verification">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-legacy_qa-hdr" role="region" aria-label="Legacy-QA-Wert (unspezifiziert)" hidden><p><strong>Legacy-QA-Wert (unspezifiziert):</strong> Dieser QA-Wert stammt aus einem älteren Verarbeitungsschritt und hat keine definierte Bedeutung oder Einheit.  Er gibt keinen Aufschluss darüber, wie korrekt die Transkription ist.  Verlässlichere Qualitätshinweise sind Erkennungskonfidenz, Erkennungsfehler oder — wenn vorhanden — CER/WER gegen eine Referenztranskription. <a class="quality-explanation-link" href="../methodology.html#quality-metrics">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-failed-hdr" role="region" aria-label="Fehlgeschlagene Erkennung" hidden><p><strong>Fehlgeschlagene Erkennung:</strong> Die Erkennung ist fehlgeschlagen (Timeout, Dienst nicht erreichbar oder anderer Fehler).  Es liegt keine verwertbare Transkription vor. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-failure">Methodik <span aria-hidden="true">→</span></a></p></div>
-  <p class="notice"><strong>Maschinell erzeugt:</strong> Dieser Output wurde automatisch erzeugt und nicht menschlich überprüft. Nicht als Edition oder verifizierte Transkription zitieren.</p>
+  <div class="output-status"><span>machine-generated</span><span>QA 10%</span><span>Nicht angegeben Seiten</span></div>
+  <p class="notice"><strong>Interpretationsstatus:</strong> Dieser Output wurde automatisch erzeugt. Nicht als Edition oder verifizierte Transkription zitieren, sofern der Status nicht ausdrücklich „human-verified“ lautet.</p>
 </header>
-<nav class="page-section-nav" aria-label="Seitennavigation" data-page-nav>
-<ol class="page-section-nav-list"><li><a href="#source">Quelle</a></li><li><a href="#transcription">Transkription</a></li><li><a href="#recognitions">Erkennungen</a></li><li><a href="#orientation">Orientierung</a></li><li><a href="#claims">Metadaten</a></li><li><a href="#entities">Entitäten</a></li><li><a href="#downloads">Downloads</a></li><li><a href="#citation">Zitation</a></li><li><a href="#history">Versionsgeschichte</a></li></ol>
-</nav>
 
 <section id="source" class="page-section page-section--evidence" data-page-section="source" aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
 <div class="notice notice--warning"><strong>Kein öffentliches Digitalisat verknüpft.</strong> Ein lokaler Verarbeitungspfad ist kein zitierbarer Quellenbeleg. Ergänzen Sie <code>source_url</code> oder <code>iiif_manifest</code> in der Pipeline-Ausgabe.</div></section>
@@ -109,90 +105,26 @@ fiisdz</code></pre>
 </details></div>
 </div></section>
 
-<details class="page-section-disclosure" data-disclosure="orientation" open>
-<summary class="page-section-summary"><span class="summary-title">Inhaltliche Orientierung</span> <span class="summary-detail">Automatisch zusammengestellt</span></summary>
 <section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
 <p>Transkription unlesbar oder degeneriert (Wiederholungskollaps) — keine belastbare Quellenbeschreibung möglich.</p>
 <p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt; keine unabhängige historische Interpretation. <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p></section>
-</details>
 
-<details class="page-section-disclosure" data-disclosure="claims" open>
-<summary class="page-section-summary"><span class="summary-title">Metadaten, Provenienz und Unsicherheit</span> <span class="summary-detail">Keine Beschreibungsfelder</span></summary>
 <section id="claims" class="page-section page-section--interpretation" data-page-section="claims" aria-labelledby="claims-heading"><h2 id="claims-heading">Metadaten, Provenienz und Unsicherheit</h2><div class="table-scroll"><table><thead><tr><th>Feld</th><th>Wert</th><th>Sicherheit</th><th>Begründung</th><th>Nachweis</th></tr></thead><tbody><tr><td colspan="5">Keine strukturierten Beschreibungsfelder verfügbar.</td></tr></tbody></table></div></section>
-</details>
 
-<details class="page-section-disclosure" data-disclosure="entities">
-<summary class="page-section-summary"><span class="summary-title">Erkannte Entitäten</span> <span class="summary-detail">11 Entitäten</span></summary>
 <section id="entities" class="page-section page-section--interpretation" data-page-section="entities" aria-labelledby="entities-heading"><h2 id="entities-heading">Erkannte Entitäten</h2>
 <h3>ORG</h3><ul><li><a href="../entities/ropse-0ae8ab46/">ropse</a> <span class="muted">— scosse ropse di fuitsriousthont</span></li><li><a href="../entities/furipians-7ec5a148/">furipians</a> <span class="muted">— uil furipians hat</span></li></ul><h3>PERSON</h3><ul><li><a href="../entities/gerrmreuon-43a713f1/">gerrmreuon</a> <span class="muted">— vor liebe gerrmreuon de scosse</span></li><li><a href="../entities/marhit-a1bdc5a9/">marhit</a> <span class="muted">— esgerraih marhit iy</span></li><li><a href="../entities/angeley-bc6a9f68/">angeley</a> <span class="muted">— heit angeley stnun</span></li><li><a href="../entities/sarin-d772c9f3/">sarin</a> <span class="muted">— die sarin ustrchit</span></li><li><a href="../entities/daimil-ea8260a0/">daimil</a> <span class="muted">— und daimil se ist</span></li><li><a href="../entities/ehultz-b39a72d2/">ehultz</a> <span class="muted">— ehultz vd</span></li><li><a href="../entities/fiisdz-9e51ef88/">fiisdz</a> <span class="muted">— fiisdz</span></li></ul><h3>PLACE</h3><ul><li><a href="../entities/scosse-bb874ced/">scosse</a> <span class="muted">— gerrmreuon de scosse ropse</span></li><li><a href="../entities/cabu-9bea1410/">cabu</a> <span class="muted">— iy cabu dai</span></li></ul>
 <p><a href="entities.csv">Entitäten als CSV herunterladen</a> · <a href="../entities/">Alle Entitäten durchsuchen</a></p></section>
-</details>
 
-<details class="page-section-disclosure" data-disclosure="downloads">
-<summary class="page-section-summary"><span class="summary-title">Downloads und Nachnutzung</span> <span class="summary-detail">5 Dateien</span></summary>
 <section id="downloads" class="page-section page-section--administrative" data-page-section="downloads" aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
 <ul><li><a href="bat-664-r-00027-recognition-package.zip">Vollständiges Erkennungspaket (ZIP)</a></li><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
-<p><strong>Rechtehinweis:</strong> Diese Forschungsdaten stehen unter <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Namensnennung erforderlich: Agentic Historian. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Bitte prüfen Sie die Quellenrechte vor der Nachnutzung.</p></section>
-</details>
+<p><strong>Rechtehinweis:</strong> Für diese Forschungsdaten ist derzeit keine Nachnutzungslizenz angegeben. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Vor einer Weiterverwendung Rechte klären.</p></section>
 
-<details class="page-section-disclosure" data-disclosure="citation">
-<summary class="page-section-summary"><span class="summary-title">Zitation und stabile Adresse</span> <span class="summary-detail">Stabile Adresse verfügbar</span></summary>
 <section id="citation" class="page-section page-section--administrative" data-page-section="citation" aria-labelledby="citation-heading"><h2 id="citation-heading">Zitation und stabile Adresse</h2>
 <p><code>Agentic Historian. (2026). Agentic Historian output: BAT_664_r_00027 [Machine-generated dataset]. https://thodel.github.io/agentic-historian-outputs/BAT_664_r_00027/</code></p>
 <p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/BAT_664_r_00027/">https://thodel.github.io/agentic-historian-outputs/BAT_664_r_00027/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/BAT_664_r_00027/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
-</details>
 
-<details class="page-section-disclosure" data-disclosure="history">
-<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">2 Commits</span></summary>
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/e0026d0"><code>e0026d0</code></a> · <time datetime="2026-07-17T21:04:46+02:00">2026-07-17</time> · Publish BAT_664_r_00027</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/4589e1c"><code>4589e1c</code></a> · <time datetime="2026-07-07T15:25:18+02:00">2026-07-07</time> · Publish BAT_664_r_00027</li></ol></section>
-</details>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/e0026d0"><code>e0026d0</code></a> · <time datetime="2026-07-17T21:04:46+02:00">2026-07-17</time> · Publish BAT_664_r_00027</li></ol></section>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/page-sync.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/page-disclosure.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/quality-explain.js' | relative_url }}" defer></script>
-<script type="application/ld+json">{
-  "@context": "https://schema.org/",
-  "@type": "Dataset",
-  "name": "Agentic Historian output: BAT_664_r_00027",
-  "url": "https://thodel.github.io/agentic-historian-outputs/BAT_664_r_00027/",
-  "creator": {
-    "@type": "SoftwareApplication",
-    "name": "Agentic Historian"
-  },
-  "publisher": {
-    "@type": "SoftwareApplication",
-    "name": "Agentic Historian"
-  },
-  "license": "https://creativecommons.org/licenses/by/4.0/",
-  "dateCreated": "2026-07-07T15:25:18+02:00",
-  "dateModified": "2026-07-17T21:04:46+02:00",
-  "distribution": [
-    {
-      "@type": "DataDownload",
-      "name": "Pipeline JSON",
-      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/BAT_664_r_00027/pipeline.json",
-      "encodingFormat": "application/json"
-    },
-    {
-      "@type": "DataDownload",
-      "name": "TEI-XML Transkription",
-      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/BAT_664_r_00027/transcription.tei.xml",
-      "encodingFormat": "application/tei+xml"
-    },
-    {
-      "@type": "DataDownload",
-      "name": "Entitäten (CSV)",
-      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/BAT_664_r_00027/entities.csv",
-      "encodingFormat": "text/csv"
-    },
-    {
-      "@type": "DataDownload",
-      "name": "CITATION.cff",
-      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/BAT_664_r_00027/CITATION.cff",
-      "encodingFormat": "text/x-yaml"
-    }
-  ],
-  "description": "Transkription unlesbar oder degeneriert (Wiederholungskollaps) — keine belastbare Quellenbeschreibung möglich."
-}</script>

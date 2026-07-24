@@ -20,7 +20,7 @@ title: Katalog
     </dl>
   </details>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
-  <p class="catalogue-summary"><strong>14</strong> Einträge · 8 Ausgaben · 6 Testläufe</p>
+  <p class="catalogue-summary"><strong>15</strong> Einträge · 7 aktuelle Ausgaben · 2 superseded · 6 Testläufe</p>
 </div>
 
 <form class="catalogue-tools" role="search" aria-label="Ausgaben durchsuchen" onsubmit="return false">
@@ -34,6 +34,14 @@ title: Katalog
       <option value="all">Alle Einträge</option>
       <option value="output">Nur Ausgaben</option>
       <option value="test">Nur Testläufe</option>
+    </select>
+  </div>
+  <div>
+    <label for="catalogue-status">Ersetzte Ausgaben</label>
+    <select id="catalogue-status">
+      <option value="all">Alle Einträge</option>
+      <option value="current">Nur aktuelle</option>
+      <option value="superseded">Nur superseded</option>
     </select>
   </div>
   <div>
@@ -95,11 +103,31 @@ title: Katalog
 </form>
 
 <p id="catalogue-active-filters" class="catalogue-active-filters">Keine Filter aktiv.</p>
-<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">14 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
+<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">15 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
 <p id="catalogue-empty" class="catalogue-empty" role="status" hidden>Keine Einträge entsprechen den aktiven Filtern. Ändern Sie die Filter oder setzen Sie sie zurück.</p>
 
 <div id="catalogue-list" class="catalogue-list" data-enhanced="false">
+<article class="catalogue-card" data-document-id="könige" data-created="2026-07-18T22:58:42+02:00" data-kind="output" data-language="mittelhochdeutsch (oder frühneuhochdeutsch), dialekt: alemannisch oder ostschweizerisch" data-script="gothische kurrentschrift, braune tinte, schriftgrosse ca. 6 mm, abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, rasuren und korrekturen im text, keine farbige rubrizierung oder initialen" data-search="könige 1518 mittelhochdeutsch (oder frühneuhochdeutsch), dialekt: alemannisch oder ostschweizerisch gothische kurrentschrift, braune tinte, schriftgroße ca. 6 mm, abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, rasuren und korrekturen im text, keine farbige rubrizierung oder initialen  u-17_0057_r.jpg pmioe prnpma mm sim petirv s t diaridhy orea e qoicenouie qu. re us h sparer stmir mmer ene igres d e sape z crios o tre e llm rso eeieng emis onsdsem i son li e" data-recognition-provenance="current" data-recognition-total="33" data-recognition-successful="24" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="9" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="3" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+  
+  <div class="catalogue-card__heading">
+    <div>
+      <p class="catalogue-created">Erstellt <time datetime="2026-07-18T22:58:42+02:00">18.07.2026, 22:58</time></p>
+      <h2><a href="könige/">könige</a></h2>
+    </div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-failed">9 Erkennungsfehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 0%</span></div>
+  </div>
+  <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>1518</dd></div><div><dt>Sprache</dt><dd>Mittelhochdeutsch (oder Frühneuhochdeutsch), Dialekt: alemannisch oder ostschweizerisch</dd></div><div><dt>Schrift</dt><dd>Gothische Kurrentschrift, braune Tinte, Schriftgroße ca. 6 mm, Abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, Rasuren und Korrekturen im Text, keine farbige Rubrizierung oder Initialen</dd></div><div><dt>Entitäten</dt><dd>19</dd></div><div><dt>Seiten</dt><dd>3</dd></div><div><dt>Kandidaten</dt><dd>24 erfolgreich / 33 insgesamt</dd></div></dl>
+  <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
+    <p class="catalogue-provenance__label">Engines</p>
+    <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
+    <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 9 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+  </div>
+  <p class="catalogue-preview">U-17_0057_r.jpg PMIoe PrNPMA MM SIM PETIRV s t diaridhy orea e qoicenouie qu. re us h sparer stmir mmer ene igres d e sape z crios o tre e llm rso eeieng emis onsdsem i son li e…</p>
+  <p class="catalogue-actions"><a href="k%C3%B6nige/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: könige">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>
+  
+</article>
 <article class="catalogue-card" data-document-id="bat" data-created="2026-07-15T21:19:05+02:00" data-kind="output" data-language="deutsch (mittelhochdeutsche und mitteldeutsche konstruktionen, alemannischer dialektraum)" data-script="gotische kurrentschrift, schwarz, zeilenhöhe ca. 4,5 mm" data-search="bat 15. jahrhundert (unsicher) deutsch (mittelhochdeutsche und mitteldeutsche konstruktionen, alemannischer dialektraum) gotische kurrentschrift, schwarz, zeilenhöhe ca. 4,5 mm  bat_663_r_00050.jpg aimien undectetngen willegen dicust be uor lieden gnediuen hacrẽ si ucq al zut uon nat be- rent uñ ouch deñ urern lieben quedien herren ich blahen eeusthlicq" data-recognition-provenance="current" data-recognition-total="10" data-recognition-successful="6" data-recognition-failed="1" data-recognition-empty="0" data-recognition-degenerate="3" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true">
+  
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T21:19:05+02:00">15.07.2026, 21:19</time></p>
@@ -118,6 +146,7 @@ title: Katalog
   
 </article>
 <article class="catalogue-card" data-document-id="order-ens" data-created="2026-07-15T19:17:36+02:00" data-kind="output" data-language="" data-script="" data-search="order-ens     p1.jpg gut lesbar hier p2.jpg gut lesbar hier" data-recognition-provenance="current" data-recognition-total="1" data-recognition-successful="1" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken" data-recognition-models="1" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+  
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T19:17:36+02:00">15.07.2026, 19:17</time></p>
@@ -135,7 +164,8 @@ title: Katalog
   <p class="catalogue-actions"><a href="order-ens/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: order-ens">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>
   
 </article>
-<article class="catalogue-card" data-document-id="u-17__" data-created="2026-07-15T16:49:41+02:00" data-kind="output" data-language="" data-script="" data-search="u-17__     e-codices_saa-0428_015v_large.jpg seite 1 modios reina cum prato sive uysta ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. alhile er conu" data-recognition-provenance="current" data-recognition-total="13" data-recognition-successful="11" data-recognition-failed="2" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="5" data-recognition-pages="4" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+<article class="catalogue-card" data-document-id="u-17__" data-created="2026-07-15T16:49:41+02:00" data-kind="output" data-language="" data-script="" data-search="u-17__     e-codices_saa-0428_015v_large.jpg seite 1 modios reina cum prato sive uysta ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. alhile er conu" data-supersedes="u-17" data-recognition-provenance="current" data-recognition-total="13" data-recognition-successful="11" data-recognition-failed="2" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="5" data-recognition-pages="4" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+  <p class="catalogue-superseded-banner"><span aria-hidden="true">⚡</span> Diese Ausgabe wurde durch <a href="u-17/"><strong>u-17</strong></a> ersetzt. <span class="muted">(Neueste Fassung vom 15.07.2026)</span></p>
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T16:49:41+02:00">15.07.2026, 16:49</time></p>
@@ -153,7 +183,8 @@ title: Katalog
   <p class="catalogue-actions"><a href="u-17__/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: u-17__">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>
   
 </article>
-<article class="catalogue-card" data-document-id="u-17" data-created="2026-07-08T17:18:20+02:00" data-kind="output" data-language="" data-script="" data-search="u-17     e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu " data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="4" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+<article class="catalogue-card" data-document-id="u-17" data-created="2026-07-08T17:18:20+02:00" data-kind="output" data-language="" data-script="" data-search="u-17     e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu " data-superseded-by="u-17__" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="4" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+  <p class="catalogue-superseded-banner catalogue-superseded-banner--inverse"><span aria-hidden="true">📌</span> Eine neuere Ausgabe ist verfügbar: <a href="u-17__/"><strong>u-17__</strong></a>. Diese Ausgabe bleibt aus Wartungsgründen erreichbar, wird aber nicht mehr aktualisiert.</p>
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T17:18:20+02:00">08.07.2026, 17:18</time></p>
@@ -172,6 +203,7 @@ title: Katalog
   
 </article>
 <article class="catalogue-card" data-document-id="order-001-group" data-created="2026-07-08T09:03:38+02:00" data-kind="output" data-language="de" data-script="kurrent" data-search="order-001-group 15. jahrhundert de kurrent gerichtsbrief page_1.jpg page page_1.jpg page_2.jpg page page_2.jpg" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="2" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false">
+  
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:38+02:00">08.07.2026, 09:03</time></p>
@@ -190,6 +222,7 @@ title: Katalog
   
 </article>
 <article class="catalogue-card" data-document-id="saa-0005-test" data-created="2026-07-08T09:03:31+02:00" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0005-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false">
+  
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:31+02:00">08.07.2026, 09:03</time></p>
@@ -208,6 +241,7 @@ title: Katalog
   
 </article>
 <article class="catalogue-card" data-document-id="saa-0004-test" data-created="2026-07-08T09:03:31+02:00" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0004-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+  
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:31+02:00">08.07.2026, 09:03</time></p>
@@ -226,6 +260,7 @@ title: Katalog
   
 </article>
 <article class="catalogue-card" data-document-id="saa-0006-test" data-created="2026-07-08T09:03:23+02:00" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0006-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+  
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:23+02:00">08.07.2026, 09:03</time></p>
@@ -244,6 +279,7 @@ title: Katalog
   
 </article>
 <article class="catalogue-card" data-document-id="saa-0003-test" data-created="2026-07-08T09:03:23+02:00" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0003-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+  
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:23+02:00">08.07.2026, 09:03</time></p>
@@ -262,6 +298,7 @@ title: Katalog
   
 </article>
 <article class="catalogue-card" data-document-id="saa-0002-test" data-created="2026-07-08T09:03:23+02:00" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0002-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+  
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:23+02:00">08.07.2026, 09:03</time></p>
@@ -280,6 +317,7 @@ title: Katalog
   
 </article>
 <article class="catalogue-card" data-document-id="saa-0001-test" data-created="2026-07-08T09:03:23+02:00" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0001-test 15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+  
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:23+02:00">08.07.2026, 09:03</time></p>
@@ -297,7 +335,8 @@ title: Katalog
   <p class="catalogue-actions"><a href="saa-0001-test/" aria-label="Ausgabe öffnen: saa-0001-test">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
   
 </article>
-<article class="catalogue-card" data-document-id="kf-" data-created="2026-07-07T15:47:14+02:00" data-kind="output" data-language="" data-script="" data-search="kf-     0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu" data-recognition-provenance="legacy" data-recognition-total="" data-recognition-successful="" data-recognition-failed="" data-recognition-empty="" data-recognition-degenerate="" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+<article class="catalogue-card" data-document-id="kf-" data-created="2026-07-07T15:47:14+02:00" data-kind="output" data-language="" data-script="" data-search="kf-     0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu" data-supersedes="kf" data-recognition-provenance="legacy" data-recognition-total="" data-recognition-successful="" data-recognition-failed="" data-recognition-empty="" data-recognition-degenerate="" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+  <p class="catalogue-superseded-banner"><span aria-hidden="true">⚡</span> Diese Ausgabe wurde durch <a href="kf/"><strong>kf</strong></a> ersetzt. <span class="muted">(Neueste Fassung vom 07.07.2026)</span></p>
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:47:14+02:00">07.07.2026, 15:47</time></p>
@@ -315,7 +354,8 @@ title: Katalog
   <p class="catalogue-actions"><a href="kf-/" aria-label="Ausgabe öffnen: kf-">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
   
 </article>
-<article class="catalogue-card" data-document-id="kf" data-created="2026-07-07T15:29:12+02:00" data-kind="output" data-language="" data-script="" data-search="kf     0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu" data-recognition-provenance="legacy" data-recognition-total="" data-recognition-successful="" data-recognition-failed="" data-recognition-empty="" data-recognition-degenerate="" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+<article class="catalogue-card" data-document-id="kf" data-created="2026-07-07T15:29:12+02:00" data-kind="output" data-language="" data-script="" data-search="kf     0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu" data-superseded-by="kf-" data-recognition-provenance="legacy" data-recognition-total="" data-recognition-successful="" data-recognition-failed="" data-recognition-empty="" data-recognition-degenerate="" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+  <p class="catalogue-superseded-banner catalogue-superseded-banner--inverse"><span aria-hidden="true">📌</span> Eine neuere Ausgabe ist verfügbar: <a href="kf-/"><strong>kf-</strong></a>. Diese Ausgabe bleibt aus Wartungsgründen erreichbar, wird aber nicht mehr aktualisiert.</p>
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:29:12+02:00">07.07.2026, 15:29</time></p>
@@ -334,6 +374,7 @@ title: Katalog
   
 </article>
 <article class="catalogue-card" data-document-id="bat_664_r_00027" data-created="2026-07-07T15:25:18+02:00" data-kind="output" data-language="" data-script="" data-search="bat_664_r_00027     duser feunilite grus vor liebe gerrmreuon de scosse roepse di fuitsriousthont homn vast uud emraro oigon darmus ue bee selbe vast i digl cond uil furipians hat aodonoid inz esgerra" data-recognition-provenance="current" data-recognition-total="2" data-recognition-successful="0" data-recognition-failed="1" data-recognition-empty="0" data-recognition-degenerate="1" data-recognition-engines="kraken,party" data-recognition-models="2" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+  
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:25:18+02:00">07.07.2026, 15:25</time></p>

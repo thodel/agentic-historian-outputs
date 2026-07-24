@@ -3,10 +3,10 @@
   <teiHeader>
     <fileDesc>
       <titleStmt><title>Machine transcription: saa-0005-test</title></titleStmt>
-      <publicationStmt><p>Agentic Historian output. License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).</p></publicationStmt>
+      <publicationStmt><p>Agentic Historian output; reuse rights not specified.</p></publicationStmt>
       <sourceDesc><p><ref target="https://my.override.com/page/42">Digital source</ref></p></sourceDesc>
     </fileDesc>
-    <revisionDesc><change when="2026-07-08">Generated from pipeline.json.</change></revisionDesc>
+    <revisionDesc><change when="2026-07-24">Generated from pipeline.json.</change></revisionDesc>
   </teiHeader>
   <text><body><div type="transcription"><p>Hans von Bern tuend kund…</p></div></body></text>
 </TEI>

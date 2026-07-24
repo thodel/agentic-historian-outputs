@@ -141,6 +141,8 @@ class Record:
     is_test: bool
     preview: str
     review_status: str
+    supersedes: str = ""       # doc_id this run supersedes, if any
+    superseded_by: str = ""  # doc_id that supersedes this run, if any (inverse)
     # Epic 5 quality fields (#27, #28)
     recognition_errors: int = 0       # candidates that failed or are degenerate
     recognition_avg_confidence: float | None = None  # mean engine confidence
@@ -336,6 +338,7 @@ def _record(path: Path) -> Record:
         is_test="test" in doc_id.lower() or "example.com" in source_url,
         preview=compact_preview,
         review_status=_val(data.get("review_status") or meta.get("review_status") or "machine-generated"),
+        supersedes=_val(data.get("supersedes") or meta.get("supersedes") or ""),
         # Epic 5 quality fields
         recognition_errors=rec_errors,
         recognition_avg_confidence=rec_avg_conf,
@@ -480,7 +483,16 @@ def _card(record: Record) -> str:
         f'data-review-status="{html.escape(summary.review_status, quote=True)}" '
         f'data-comparison-ready="{str(summary.comparison_ready).lower()}"'
     )
-    return f'''<article class="catalogue-card" data-document-id="{html.escape(record.doc_id.casefold(), quote=True)}" data-created="{created_iso}" data-kind="{kind}" data-language="{html.escape(record.language.casefold(), quote=True)}" data-script="{html.escape(record.script.casefold(), quote=True)}" data-search="{html.escape(search, quote=True)}" {summary_attrs}>
+    supersedes_attr = f' data-supersedes="{html.escape(record.supersedes, quote=True)}"' if record.supersedes else ""
+    superseded_by_attr = f' data-superseded-by="{html.escape(record.superseded_by, quote=True)}"' if record.superseded_by else ""
+    superseded_banner = ""
+    if record.supersedes:
+        current_date = record.created.strftime("%d.%m.%Y")
+        superseded_banner = f'<p class="catalogue-superseded-banner"><span aria-hidden="true">⚡</span> Diese Ausgabe wurde durch <a href="{html.escape(record.supersedes)}/"><strong>{html.escape(record.supersedes)}</strong></a> ersetzt. <span class="muted">(Neueste Fassung vom {current_date})</span></p>'
+    elif record.superseded_by:
+        superseded_banner = f'<p class="catalogue-superseded-banner catalogue-superseded-banner--inverse"><span aria-hidden="true">📌</span> Eine neuere Ausgabe ist verfügbar: <a href="{html.escape(record.superseded_by)}/"><strong>{html.escape(record.superseded_by)}</strong></a>. Diese Ausgabe bleibt aus Wartungsgründen erreichbar, wird aber nicht mehr aktualisiert.</p>'
+    return f'''<article class="catalogue-card" data-document-id="{html.escape(record.doc_id.casefold(), quote=True)}" data-created="{created_iso}" data-kind="{kind}" data-language="{html.escape(record.language.casefold(), quote=True)}" data-script="{html.escape(record.script.casefold(), quote=True)}" data-search="{html.escape(search, quote=True)}"{supersedes_attr}{superseded_by_attr} {summary_attrs}>
+  {superseded_banner}
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="{created_iso}">{created_label}</time></p>
@@ -593,9 +605,25 @@ def build_atom_feed(records: list) -> None:
 
 def build() -> int:
     records = [_record(path) for path in DOCS.glob("*/pipeline.json")]
+
+    # Compute superseded_by (inverse of supersedes) for each record
+    superseded_by_map: dict[str, str] = {}
+    for record in records:
+        if record.supersedes:
+            superseded_by_map[record.supersedes] = record.doc_id
+
+    # Build a fresh list of records with superseded_by set
+    fresh_records: list[Record] = []
+    for record in records:
+        record.superseded_by = superseded_by_map.get(record.doc_id, "")
+        fresh_records.append(record)
+    records = fresh_records
+
     records.sort(key=lambda item: (item.created, item.doc_id.lower()), reverse=True)
-    output_count = sum(not record.is_test for record in records)
-    test_count = len(records) - output_count
+    output_records = [r for r in records if not r.is_test]
+    current_output_count = sum(1 for r in output_records if not r.superseded_by)
+    superseded_output_count = sum(1 for r in output_records if r.superseded_by)
+    test_count = sum(1 for r in records if r.is_test)
     summary_payload = {
         record.doc_id: record.recognition_summary.as_dict()
         for record in records if record.recognition_summary is not None
@@ -629,7 +657,7 @@ title: Katalog
     </dl>
   </details>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
-  <p class="catalogue-summary"><strong>{len(records)}</strong> Einträge · {output_count} Ausgaben · {test_count} Testläufe</p>
+  <p class="catalogue-summary"><strong>{len(records)}</strong> Einträge · {current_output_count} aktuelle Ausgaben{"" if superseded_output_count == 0 else f" · {superseded_output_count} superseded"} · {test_count} Testläufe</p>
 </div>
 
 <form class="catalogue-tools" role="search" aria-label="Ausgaben durchsuchen" onsubmit="return false">
@@ -643,6 +671,14 @@ title: Katalog
       <option value="all">Alle Einträge</option>
       <option value="output">Nur Ausgaben</option>
       <option value="test">Nur Testläufe</option>
+    </select>
+  </div>
+  <div>
+    <label for="catalogue-status">Ersetzte Ausgaben</label>
+    <select id="catalogue-status">
+      <option value="all">Alle Einträge</option>
+      <option value="current">Nur aktuelle</option>
+      <option value="superseded">Nur superseded</option>
     </select>
   </div>
   <div>

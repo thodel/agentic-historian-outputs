@@ -347,3 +347,50 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
   .page-section-summary::before { color: ButtonText; }
 }
 /* ---- end #23 ---- */
+
+
+/* ---- issue #127: entity noise triage ---- */
+.entity-noise-badge {
+  display: inline-block;
+  font-size: 0.85em;
+  margin-left: 0.4em;
+  color: #8a5a00;
+  cursor: help;
+}
+
+.entity-uncertain-section {
+  margin-top: 2rem;
+  border: 1px solid #d7dee5;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #fff8e6;
+}
+
+.entity-uncertain-section > summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #7a4f00;
+  user-select: none;
+}
+
+.entity-uncertain-section[open] {
+  border-color: #e5c96a;
+}
+
+.entity-uncertain-section > summary:hover {
+  color: #5c3800;
+}
+
+/* Print: always expand the uncertain section */
+@media print {
+  .entity-uncertain-section { border: none; background: none; }
+  .entity-uncertain-section > summary { cursor: default; }
+}
+
+/* High-contrast */
+@media (forced-colors: active) {
+  .entity-noise-badge { color: WindowText; }
+  .entity-uncertain-section { border: 2px solid ButtonText; }
+}
+
+/* ---- end #127 ---- */
