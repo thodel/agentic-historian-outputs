@@ -538,5 +538,36 @@ class RecognitionContractTests(unittest.TestCase):
         self.assertIn(":focus-visible", css[idx:idx + 500])
 
 
+    # ---- #10 scroll synchronisation across comparison panes ----
+
+    def test_compare_scroll_sync_toggle_injected_by_js(self):
+        """Sync toggle button is injected at runtime, not present in static HTML."""
+        html = build_recognition_section(
+            [{"engine": "kraken", "model_id": "mccatmus", "page": "p1",
+              "text": "Hello", "confidence": 0.95},
+             {"engine": "trocr", "model_id": "large", "page": "p1",
+              "text": "World", "confidence": 0.88}],
+            "doc-1", "Hello world")
+        # data-rec-compare-sync-toggle must NOT appear in static HTML
+        self.assertNotIn("data-rec-compare-sync-toggle", html)
+
+    def test_compare_css_narrow_screen_stacking(self):
+        """CSS includes a stacked-layout rule for narrow screens."""
+        css = open("docs/assets/output.css").read()
+        self.assertIn("max-width: 640px", css)
+        self.assertIn("flex-direction: column", css)
+
+    def test_compare_css_sync_toggle_button(self):
+        """CSS includes .btn-rec-compare-sync styles."""
+        css = open("docs/assets/output.css").read()
+        self.assertIn("btn-rec-compare-sync", css)
+        self.assertIn("transition", css)
+
+    def test_compare_prefers_reduced_motion_handled_in_js(self):
+        """JS checks prefers-reduced-motion before enabling scroll sync."""
+        js = open("scripts/rec_viewer.js").read()
+        self.assertIn("prefers-reduced-motion", js)
+
+
 if __name__ == "__main__":
     unittest.main()
