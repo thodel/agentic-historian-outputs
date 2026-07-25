@@ -32,3 +32,9 @@ jobs:
       - run: node --check docs/assets/workspace.js
       - run: node --check docs/assets/evidence-viewer.js
       - run: node --check docs/assets/page-sync.js
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+      - name: Generate HTML fixtures
+        run: node generate-fixtures.mjs
+      - name: Run behavioral tests
+        run: node --test tests/behavioural/*.mjs
