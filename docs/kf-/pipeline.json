@@ -102,5 +102,6 @@
     "pages": 3,
     "qa_score": 0.8,
     "source": "grouped"
-  }
+  },
+  "supersedes": "kf"
 }

@@ -1,6 +1,7 @@
 const CATALOGUE_DEFAULTS = {
   q: "", kind: "all", language: "all", script: "all", engine: "all",
   readiness: "all", failure: "all", source: "all", sort: "created-desc",
+  superseded: "hide",
 };
 
 const CATALOGUE_FIXED_VALUES = {
@@ -10,6 +11,7 @@ const CATALOGUE_FIXED_VALUES = {
   source: ["all", "available", "missing", "iiif_manifest", "image", "landing_page"],
   sort: ["created-desc", "created-asc", "title-asc", "title-desc", "pages-desc", "pages-asc",
     "candidates-desc", "candidates-asc", "failures-desc", "failures-asc"],
+  superseded: ["hide", "show"],
 };
 
 function catalogueStateFromParams(params) {
@@ -38,8 +40,11 @@ function catalogueMatches(data, state) {
     (state.source === "available" && data.sourceAvailable === "true") ||
     (state.source === "missing" && data.sourceAvailable !== "true") ||
     data.sourceType === state.source;
+  const matchesSuperseded = state.superseded === "show" ||
+    (state.superseded === "hide" && data.superseded !== "true");
   return (!state.q || (data.search || "").includes(state.q.toLocaleLowerCase("de"))) &&
     (state.kind === "all" || data.kind === state.kind) &&
+    matchesSuperseded &&
     (state.language === "all" || data.language === state.language) &&
     (state.script === "all" || data.script === state.script) &&
     (state.engine === "all" || engines.includes(state.engine)) &&
@@ -84,7 +89,7 @@ function catalogueStatusText(visible, filters, sortLabel) {
 }
 
 function initCatalogue() {
-  const ids = ["search", "filter", "language", "script", "engine", "readiness", "failure", "source", "sort"];
+  const ids = ["search", "filter", "language", "script", "engine", "readiness", "failure", "source", "sort", "superseded"];
   const controls = Object.fromEntries(ids.map(id => [id, document.querySelector(`#catalogue-${id}`)]));
   const clear = document.querySelector("#catalogue-clear");
   const cards = [...document.querySelectorAll(".catalogue-card")];
@@ -110,10 +115,11 @@ function initCatalogue() {
     language: controls.language.value, script: controls.script.value,
     engine: controls.engine.value, readiness: controls.readiness.value,
     failure: controls.failure.value, source: controls.source.value, sort: controls.sort.value,
+    superseded: controls.superseded.value,
   });
   const writeState = state => {
     controls.search.value = state.q;
-    for (const key of ["filter", "language", "script", "engine", "readiness", "failure", "source", "sort"]) {
+    for (const key of ["filter", "language", "script", "engine", "readiness", "failure", "source", "sort", "superseded"]) {
       const stateKey = key === "filter" ? "kind" : key;
       const requested = state[stateKey];
       controls[key].value = [...controls[key].options].some(option => option.value === requested)
