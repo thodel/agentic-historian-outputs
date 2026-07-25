@@ -20,7 +20,7 @@ title: Katalog
     </dl>
   </details>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
-  <p class="catalogue-summary"><strong>14</strong> Einträge · 8 Ausgaben · 6 Testläufe</p>
+  <p class="catalogue-summary"><strong>15</strong> Einträge · 9 Ausgaben · 6 Testläufe</p>
 </div>
 
 <form class="catalogue-tools" role="search" aria-label="Ausgaben durchsuchen" onsubmit="return false">
@@ -95,10 +95,28 @@ title: Katalog
 </form>
 
 <p id="catalogue-active-filters" class="catalogue-active-filters">Keine Filter aktiv.</p>
-<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">14 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
+<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">15 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
 <p id="catalogue-empty" class="catalogue-empty" role="status" hidden>Keine Einträge entsprechen den aktiven Filtern. Ändern Sie die Filter oder setzen Sie sie zurück.</p>
 
 <div id="catalogue-list" class="catalogue-list" data-enhanced="false">
+<article class="catalogue-card" data-document-id="koenige" data-created="2026-07-18T22:58:42+02:00" data-kind="output" data-language="mittelhochdeutsch (oder frühneuhochdeutsch), dialekt: alemannisch oder ostschweizerisch" data-script="gothische kurrentschrift, braune tinte, schriftgrosse ca. 6 mm, abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, rasuren und korrekturen im text, keine farbige rubrizierung oder initialen" data-search="koenige 1518 mittelhochdeutsch (oder frühneuhochdeutsch), dialekt: alemannisch oder ostschweizerisch gothische kurrentschrift, braune tinte, schriftgroße ca. 6 mm, abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, rasuren und korrekturen im text, keine farbige rubrizierung oder initialen  u-17_0057_r.jpg pmioe prnpma mm sim petirv s t diaridhy orea e qoicenouie qu. re us h sparer stmir mmer ene igres d e sape z crios o tre e llm rso eeieng emis onsdsem i son li e" data-recognition-provenance="current" data-recognition-total="33" data-recognition-successful="24" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="9" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="3" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false">
+  <div class="catalogue-card__heading">
+    <div>
+      <p class="catalogue-created">Erstellt <time datetime="2026-07-18T22:58:42+02:00">18.07.2026, 22:58</time></p>
+      <h2><a href="koenige/">koenige</a></h2>
+    </div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-failed">9 Erkennungsfehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 0%</span></div>
+  </div>
+  <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>1518</dd></div><div><dt>Sprache</dt><dd>Mittelhochdeutsch (oder Frühneuhochdeutsch), Dialekt: alemannisch oder ostschweizerisch</dd></div><div><dt>Schrift</dt><dd>Gothische Kurrentschrift, braune Tinte, Schriftgroße ca. 6 mm, Abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, Rasuren und Korrekturen im Text, keine farbige Rubrizierung oder Initialen</dd></div><div><dt>Entitäten</dt><dd>19</dd></div><div><dt>Seiten</dt><dd>3</dd></div><div><dt>Kandidaten</dt><dd>24 erfolgreich / 33 insgesamt</dd></div></dl>
+  <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
+    <p class="catalogue-provenance__label">Engines</p>
+    <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
+    <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 9 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+  </div>
+  <p class="catalogue-preview">U-17_0057_r.jpg PMIoe PrNPMA MM SIM PETIRV s t diaridhy orea e qoicenouie qu. re us h sparer stmir mmer ene igres d e sape z crios o tre e llm rso eeieng emis onsdsem i son li e…</p>
+  <p class="catalogue-actions"><a href="koenige/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: koenige">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>
+  
+</article>
 <article class="catalogue-card" data-document-id="bat" data-created="2026-07-15T21:19:05+02:00" data-kind="output" data-language="deutsch (mittelhochdeutsche und mitteldeutsche konstruktionen, alemannischer dialektraum)" data-script="gotische kurrentschrift, schwarz, zeilenhöhe ca. 4,5 mm" data-search="bat 15. jahrhundert (unsicher) deutsch (mittelhochdeutsche und mitteldeutsche konstruktionen, alemannischer dialektraum) gotische kurrentschrift, schwarz, zeilenhöhe ca. 4,5 mm  bat_663_r_00050.jpg aimien undectetngen willegen dicust be uor lieden gnediuen hacrẽ si ucq al zut uon nat be- rent uñ ouch deñ urern lieben quedien herren ich blahen eeusthlicq" data-recognition-provenance="current" data-recognition-total="10" data-recognition-successful="6" data-recognition-failed="1" data-recognition-empty="0" data-recognition-degenerate="3" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true">
   <div class="catalogue-card__heading">
     <div>
