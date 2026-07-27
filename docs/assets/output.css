@@ -347,3 +347,167 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
   .page-section-summary::before { color: ButtonText; }
 }
 /* ---- end #23 ---- */
+
+/* ---- Dark mode (issue #133) ---- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    background: #12161c;
+    color: #dde3e8;
+  }
+
+  /* Text colours */
+  .breadcrumbs { color: #8a9aaa; }
+  .output-kicker { color: #7bb8d4; }
+  .muted { color: #8a9aaa; }
+
+  /* Status badges */
+  .output-status span, .entity-type {
+    background: #1e2d3a;
+    color: #7bb8d4;
+  }
+  .output-status-badge--machine-generated { background: #1e2d3a; color: #7bb8d4; }
+  .output-status-badge--human-reviewed    { background: #3a2e0a; color: #f0c060; }
+  .output-status-badge--human-verified    { background: #0e2a1a; color: #6fcf97; border-color: #2d6b45; }
+  .output-status-badge--pages             { background: #1e2d3a; color: #8a9aaa; }
+  .output-status-badge--warning           { background: #3a2e0a; color: #f0c060; border-color: #6b5520; }
+  .output-status-badge--legacy            { background: #1e2d3a; color: #8a9aaa; }
+
+  /* Notices */
+  .notice { background: #1e2d3a; border-left-color: #3d8ab0; }
+  .notice--ok { background: #0e2a1a; border-left-color: #28a745; }
+  .notice--warning { background: #3a2e0a; border-left-color: #e0a030; }
+
+  /* Transcription / recognition text blocks */
+  .transcription, .rec-text {
+    background: #1a1f26;
+    border-color: #2e3c4a;
+    color: #dde3e8;
+  }
+
+  /* Source / evidence viewer */
+  .source-frame { border-color: #2e3c4a; }
+  .evidence-viewer {
+    background: #1a1f26;
+    border-color: #2e3c4a;
+  }
+  .evidence-toolbar {
+    background: #1e2d3a;
+    border-bottom-color: #2e3c4a;
+  }
+  .evidence-toolbar button {
+    background: #263040;
+    border-color: #3d5266;
+    color: #c8d4dc;
+  }
+  .evidence-toolbar button:hover { background: #2e3c4a; }
+  .evidence-status {
+    background: #1e2d3a;
+    color: #8a9aaa;
+  }
+  .evidence-stage { background: #0f1318; }
+
+  /* Source page nav */
+  .source-page-nav { background: #1e2d3a; }
+  .source-page-nav button {
+    background: #263040;
+    border-color: #3d5266;
+    color: #c8d4dc;
+  }
+  .source-page-nav button:hover { background: #2e3c4a; }
+
+  /* Sticky section nav */
+  .page-section-nav {
+    background: #12161c;
+    border-bottom-color: #2e3c4a;
+  }
+  .page-section-nav-list a { color: #7bb8d4; }
+  .page-section-nav-list a:hover { background: #1e2d3a; }
+  .page-section-nav-list a[aria-current="true"] {
+    background: #3d8ab0;
+    color: #fff;
+  }
+
+  /* Workspace divider */
+  .workspace-divider { background: #1e2d3a; color: #5c7a8a; }
+
+  /* Recognition selector */
+  .rec-selector {
+    background: #1a1f26;
+    border-color: #2e3c4a;
+  }
+  .rec-selector a {
+    background: #263040;
+    border-color: #3d5266;
+    color: #c8d4dc;
+  }
+  .rec-selector a[aria-current="true"] {
+    background: #3d8ab0;
+    border-color: #3d8ab0;
+    color: #fff;
+  }
+
+  /* Download / inventory */
+  .rec-inv-table th { border-bottom-color: #2e3c4a; color: #8a9aaa; }
+  .rec-inv-table td { border-bottom-color: #232c36; }
+  .rec-inv-page-header td, .rec-inv-page-header th {
+    background: #1a1f26;
+    border-bottom-color: #2e3c4a;
+  }
+  .rec-inv-error td { color: #6a7a8a; }
+  .rec-inv-dl a {
+    background: #263040;
+    border-color: #3d8ab0;
+    color: #7bb8d4;
+  }
+  .rec-inv-dl a:hover { background: #3d8ab0; color: #fff; }
+  .rec-intro { color: #8a9aaa; }
+
+  /* Compare pane */
+  .rec-compare-panes {
+    background: #1a1f26;
+    border-color: #2e3c4a;
+  }
+  .btn-rec-compare {
+    background: #263040;
+    border-color: #3d5266;
+    color: #c8d4dc;
+  }
+  .btn-rec-compare:hover { background: #2e3c4a; }
+  .rec-compare-header { color: #7bb8d4; }
+  .rec-compare-select {
+    background: #263040;
+    border-color: #3d5266;
+    color: #c8d4dc;
+  }
+  .btn-rec-compare-swap {
+    background: #263040;
+    border-color: #3d5266;
+    color: #c8d4dc;
+  }
+
+  /* Diff highlighting — keep legible in dark bg */
+  .rec-compare-diff {
+    background: #151a21;
+    border-color: #2e3c4a;
+  }
+  .rec-compare-diff .diff-insert  { background: #0e2a1a; border-bottom-color: #28a745; }
+  .rec-compare-diff .diff-delete  { background: #3a1015; text-decoration: line-through; color: #f07080; }
+  .rec-compare-diff .diff-change  { background: #3a2e0a; border-bottom-color: #e0a030; }
+
+  /* Progressive disclosure */
+  .page-section-summary { border-top-color: #2e3c4a; color: #b0bac4; }
+  .page-section-summary:hover { background: #1a1f26; color: #dde3e8; }
+  .summary-title { color: #c8d4dc; }
+  .summary-detail { color: #6a7a8a; }
+
+  /* Print: keep print dark-mode-independent */
+}
+@media print {
+  /* Override prefers-color-scheme for print */
+  body, .notice, .transcription, .rec-text, .evidence-viewer { background: #fff; color: #000; }
+}
+/* ---- end #133 ---- */
