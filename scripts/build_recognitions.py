@@ -654,21 +654,32 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
         page = candidate["page"] or "Nicht zugeordnet"
         if page != current_page:
             inventory_rows.append(
-                f'<tr class="rec-inv-page-header"><th colspan="6">{html.escape(page)}</th></tr>')
+                f'<tr class="rec-inv-page-header"><th colspan="7">{html.escape(page)}</th></tr>')
             current_page = page
         status = "Fehlgeschlagen" if candidate["error"] else "Erfolgreich"
         download = ("—" if candidate["error"] or not candidate["path"] else
                     f'<a href="{quote(candidate["path"], safe="/._-")}" download>{html.escape(Path(candidate["path"]).name)}</a>')
-        row_class = ' class="rec-inv-error"' if candidate["error"] else ""
+        is_err = bool(candidate["error"])
+        row_class = ' class="rec-inv-error"' if is_err else ""
         dl_class = ' class="rec-inv-dl"' if download != "—" else ""
+        # Type badge: roh (raw) for candidates with text, Fehler for failures
+        if is_err:
+            type_badge = '<span class="badge badge--error">Fehler</span>'
+        elif candidate["page"] is not None:
+            type_badge = f'<span class="badge badge--raw">roh · S. {candidate["page"]}</span>'
+        else:
+            type_badge = '<span class="badge badge--raw">roh</span>'
+        page_str = f"Seite {candidate['page']}" if candidate.get("page") is not None else "—"
         inventory_rows.append(
             f'<tr{row_class}><td>{html.escape(candidate["engine"])}</td>'
-            f'<td>{html.escape(candidate["model_id"]) or "—"}</td>'
-            f'<td>{len(candidate["text"]) if not candidate["error"] else "—"}</td>'
+            f'<td class="inv-model"><code>{html.escape(candidate["model_id"]) or "—"}</code></td>'
+            f'<td>{type_badge}</td>'
+            f'<td class="inv-right">{page_str}</td>'
+            f'<td class="inv-right">{len(candidate["text"]) if not is_err else "—"}</td>'
             f'<td>{status}</td><td>{html.escape(candidate["error"] or _confidence(candidate["confidence"]))}</td>'
             f'<td{dl_class}>{download}</td></tr>')
     inventory = f'''<details class="rec-inventory"><summary>Alle Erkennungsversionen herunterladen <span class="rec-inv-count">({len(candidates)} Versionen)</span></summary>
-<div class="table-scroll"><table class="rec-inv-table"><thead><tr><th>Engine</th><th>Modell</th><th>Zeichen</th><th>Status</th><th>Konfidenz/Fehler</th><th>Download</th></tr></thead><tbody>{''.join(inventory_rows)}</tbody></table></div></details>'''
+<div class="table-scroll"><table class="rec-inv-table"><thead><tr><th>Engine</th><th>Modell</th><th>Typ</th><th>Seite</th><th>Zeichen</th><th>Status</th><th>Konfidenz/Fehler</th><th>Download</th></tr></thead><tbody>{''.join(inventory_rows)}</tbody></table></div></details>'''
 
     return f'''<section id="recognitions" class="page-section page-section--evidence" data-page-section="recognitions" aria-labelledby="recognitions-heading">
 <h2 id="recognitions-heading">Erkennungsversionen</h2>
