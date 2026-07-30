@@ -20,11 +20,8 @@ title: "order-ens"
 <div class="notice notice--warning"><strong>Kein öffentliches Digitalisat verknüpft.</strong> Ein lokaler Verarbeitungspfad ist kein zitierbarer Quellenbeleg. Ergänzen Sie <code>source_url</code> oder <code>iiif_manifest</code> in der Pipeline-Ausgabe.</div></section>
 
 <section id="transcription" class="page-section page-section--evidence" data-page-section="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
-<pre class="transcription" tabindex="0"><code>--- p1.jpg ---
-gut lesbar hier
-
---- p2.jpg ---
-gut lesbar hier</code></pre></section>
+<div class="transcription-toolbar"><button type="button" class="copy-btn" data-copy-transcript aria-label="Transkription in die Zwischenablage kopieren"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>Transkription kopieren</button></div><div class="transcription-wrap" role="table" aria-label="Transkription mit Zeilennummern"><span class="line" data-line="1" role="row"><span class="line-number" aria-hidden="true">1</span><span class="line-text">--- p1.jpg ---</span></span><span class="line" data-line="2" role="row"><span class="line-number" aria-hidden="true">2</span><span class="line-text">gut lesbar hier</span></span><span class="line" data-line="3" role="row"><span class="line-number" aria-hidden="true">3</span><span class="line-text"> </span></span><span class="line" data-line="4" role="row"><span class="line-number" aria-hidden="true">4</span><span class="line-text">--- p2.jpg ---</span></span><span class="line" data-line="5" role="row"><span class="line-number" aria-hidden="true">5</span><span class="line-text">gut lesbar hier</span></span></div>
+</section>
 
 <section id="recognitions" class="page-section page-section--evidence" data-page-section="recognitions" aria-labelledby="recognitions-heading">
 <h2 id="recognitions-heading">Erkennungsversionen</h2>
