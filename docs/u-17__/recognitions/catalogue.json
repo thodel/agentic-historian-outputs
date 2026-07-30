@@ -1,180 +1,160 @@
 {
+  "doc_id": "u-17__",
+  "version": "1.0",
   "artifacts": [
     {
-      "characters": 11811,
-      "engine": "fusion",
-      "error": null,
-      "error_path": null,
       "id": "selected",
+      "engine": "fusion",
       "model_id": null,
       "page": null,
-      "path": "recognitions/fused.txt",
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": "recognitions/fused.txt",
+      "error_path": null,
+      "characters": 11811
     },
     {
-      "characters": 2907,
-      "engine": "vlm",
-      "error": null,
-      "error_path": null,
       "id": "vlm-internvl3-8b-instruct",
+      "engine": "vlm",
       "model_id": "internvl3-8b-instruct",
       "page": null,
-      "path": null,
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": null,
+      "error_path": null,
+      "characters": 2907
     },
     {
-      "characters": 3169,
-      "engine": "kraken",
-      "error": null,
-      "error_path": null,
       "id": "kraken-kraken-catmus-medieval",
+      "engine": "kraken",
       "model_id": "kraken-catmus_medieval",
       "page": null,
-      "path": null,
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": null,
+      "error_path": null,
+      "characters": 3169
     },
     {
-      "characters": null,
-      "engine": "trocr",
-      "error": "Der Erkennungsdienst hat das Zeitlimit überschritten.",
-      "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
       "id": "trocr-trocr-medieval-escriptmask",
+      "engine": "trocr",
       "model_id": "trocr-medieval-escriptmask",
       "page": null,
+      "status": "error",
+      "error": "Der Erkennungsdienst hat das Zeitlimit überschritten.",
       "path": null,
-      "status": "error"
+      "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
+      "characters": null
     },
     {
-      "characters": 2816,
-      "engine": "kraken",
-      "error": null,
-      "error_path": null,
       "id": "kraken-kraken-mccatmus",
+      "engine": "kraken",
       "model_id": "kraken-mccatmus",
       "page": null,
-      "path": null,
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": null,
+      "error_path": null,
+      "characters": 2816
     },
     {
-      "characters": null,
-      "engine": "trocr",
-      "error": "Der Erkennungsdienst hat das Zeitlimit überschritten.",
-      "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
       "id": "trocr-trocr-kurrent-xvi-xvii",
+      "engine": "trocr",
       "model_id": "trocr-kurrent-xvi-xvii",
       "page": null,
+      "status": "error",
+      "error": "Der Erkennungsdienst hat das Zeitlimit überschritten.",
       "path": null,
-      "status": "error"
+      "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
+      "characters": null
     },
     {
-      "characters": 2936,
-      "engine": "vlm",
-      "error": null,
-      "error_path": null,
       "id": "vlm-internvl3-8b-instruct-2",
+      "engine": "vlm",
       "model_id": "internvl3-8b-instruct",
       "page": null,
-      "path": null,
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": null,
+      "error_path": null,
+      "characters": 2936
     },
     {
-      "characters": 3230,
-      "engine": "kraken",
-      "error": null,
-      "error_path": null,
       "id": "kraken-kraken-catmus-medieval-2",
+      "engine": "kraken",
       "model_id": "kraken-catmus_medieval",
       "page": null,
-      "path": null,
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": null,
+      "error_path": null,
+      "characters": 3230
     },
     {
-      "characters": 2863,
-      "engine": "kraken",
-      "error": null,
-      "error_path": null,
       "id": "kraken-kraken-mccatmus-2",
+      "engine": "kraken",
       "model_id": "kraken-mccatmus",
       "page": null,
-      "path": null,
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": null,
+      "error_path": null,
+      "characters": 2863
     },
     {
-      "characters": 2643,
-      "engine": "vlm",
-      "error": null,
-      "error_path": null,
       "id": "vlm-internvl3-8b-instruct-3",
+      "engine": "vlm",
       "model_id": "internvl3-8b-instruct",
       "page": null,
-      "path": null,
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": null,
+      "error_path": null,
+      "characters": 2643
     },
     {
-      "characters": 2783,
-      "engine": "kraken",
-      "error": null,
-      "error_path": null,
       "id": "kraken-kraken-catmus-medieval-3",
+      "engine": "kraken",
       "model_id": "kraken-catmus_medieval",
       "page": null,
-      "path": null,
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": null,
+      "error_path": null,
+      "characters": 2783
     },
     {
-      "characters": 2571,
-      "engine": "kraken",
-      "error": null,
-      "error_path": null,
       "id": "kraken-kraken-mccatmus-3",
+      "engine": "kraken",
       "model_id": "kraken-mccatmus",
       "page": null,
-      "path": null,
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": null,
+      "error_path": null,
+      "characters": 2571
     },
     {
-      "characters": 2822,
-      "engine": "vlm",
-      "error": null,
-      "error_path": null,
       "id": "vlm-internvl3-8b-instruct-4",
+      "engine": "vlm",
       "model_id": "internvl3-8b-instruct",
       "page": null,
-      "path": null,
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": null,
+      "error_path": null,
+      "characters": 2822
     },
     {
-      "characters": 2767,
-      "engine": "kraken",
-      "error": null,
-      "error_path": null,
       "id": "kraken-kraken-catmus-medieval-4",
+      "engine": "kraken",
       "model_id": "kraken-catmus_medieval",
       "page": null,
-      "path": null,
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": null,
+      "error_path": null,
+      "characters": 2767
     }
-  ],
-  "doc_id": "u-17__",
-  "run_counts": {
-    "degenerate": 0,
-    "empty": 0,
-    "failed": 2,
-    "successful": 12,
-    "total": 14
-  },
-  "run_quality": "partial_failure",
-  "version": "1.0"
+  ]
 }

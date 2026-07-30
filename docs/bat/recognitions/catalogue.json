@@ -1,142 +1,127 @@
 {
+  "doc_id": "bat",
+  "version": "1.0",
   "artifacts": [
     {
-      "characters": 2466,
-      "engine": "fusion",
-      "error": null,
-      "error_path": null,
       "id": "selected",
+      "engine": "fusion",
       "model_id": null,
       "page": null,
-      "path": "recognitions/fused.txt",
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": "recognitions/fused.txt",
+      "error_path": null,
+      "characters": 2466
     },
     {
-      "characters": 2327,
-      "engine": "vlm",
-      "error": null,
-      "error_path": null,
       "id": "vlm-internvl3-8b-instruct",
+      "engine": "vlm",
       "model_id": "internvl3-8b-instruct",
       "page": null,
-      "path": "recognitions/vlm-internvl3-8b-instruct.txt",
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": "recognitions/vlm-internvl3-8b-instruct.txt",
+      "error_path": null,
+      "characters": 2327
     },
     {
-      "characters": 2315,
-      "engine": "kraken",
-      "error": null,
-      "error_path": null,
       "id": "kraken-kraken-catmus-medieval",
+      "engine": "kraken",
       "model_id": "kraken-catmus_medieval",
       "page": null,
-      "path": "recognitions/kraken-kraken-catmus_medieval.txt",
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": "recognitions/kraken-kraken-catmus_medieval.txt",
+      "error_path": null,
+      "characters": 2315
     },
     {
-      "characters": null,
-      "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
-      "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
       "id": "trocr-trocr-medieval-escriptmask",
+      "engine": "trocr",
       "model_id": "trocr-medieval-escriptmask",
       "page": null,
-      "path": null,
-      "status": "error"
+      "status": "success",
+      "error": null,
+      "path": "recognitions/trocr-trocr-medieval-escriptmask.txt",
+      "error_path": null,
+      "characters": 2433
     },
     {
-      "characters": 2299,
-      "engine": "kraken",
-      "error": null,
-      "error_path": null,
       "id": "kraken-kraken-mccatmus",
+      "engine": "kraken",
       "model_id": "kraken-mccatmus",
       "page": null,
-      "path": "recognitions/kraken-kraken-mccatmus.txt",
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": "recognitions/kraken-kraken-mccatmus.txt",
+      "error_path": null,
+      "characters": 2299
     },
     {
-      "characters": null,
-      "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
-      "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
       "id": "trocr-trocr-kurrent-xvi-xvii",
+      "engine": "trocr",
       "model_id": "trocr-kurrent-xvi-xvii",
       "page": null,
-      "path": null,
-      "status": "error"
+      "status": "success",
+      "error": null,
+      "path": "recognitions/trocr-trocr-kurrent-xvi-xvii.txt",
+      "error_path": null,
+      "characters": 2453
     },
     {
-      "characters": null,
-      "engine": "kraken",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
-      "error_path": "recognitions/kraken-kraken-medieval_charters.error.txt",
       "id": "kraken-kraken-medieval-charters",
+      "engine": "kraken",
       "model_id": "kraken-medieval_charters",
       "page": null,
+      "status": "error",
+      "error": "Der Erkennungsversuch ist fehlgeschlagen.",
       "path": null,
-      "status": "error"
+      "error_path": "recognitions/kraken-kraken-medieval_charters.error.txt",
+      "characters": null
     },
     {
-      "characters": null,
-      "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
-      "error_path": "recognitions/trocr-trocr-essoins-middle-latin.error.txt",
       "id": "trocr-trocr-essoins-middle-latin",
+      "engine": "trocr",
       "model_id": "trocr-essoins-middle-latin",
       "page": null,
-      "path": null,
-      "status": "error"
+      "status": "success",
+      "error": null,
+      "path": "recognitions/trocr-trocr-essoins-middle-latin.txt",
+      "error_path": null,
+      "characters": 2856
     },
     {
-      "characters": 2438,
-      "engine": "kraken",
-      "error": null,
-      "error_path": null,
       "id": "kraken-kraken-early-modern-german",
+      "engine": "kraken",
       "model_id": "kraken-early_modern_german",
       "page": null,
-      "path": "recognitions/kraken-kraken-early_modern_german.txt",
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": "recognitions/kraken-kraken-early_modern_german.txt",
+      "error_path": null,
+      "characters": 2438
     },
     {
-      "characters": 2083,
-      "engine": "kraken",
-      "error": null,
-      "error_path": null,
       "id": "kraken-kraken-early-modern-german-16",
+      "engine": "kraken",
       "model_id": "kraken-early_modern_german_16",
       "page": null,
-      "path": "recognitions/kraken-kraken-early_modern_german_16.txt",
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": "recognitions/kraken-kraken-early_modern_german_16.txt",
+      "error_path": null,
+      "characters": 2083
     },
     {
-      "characters": 381,
-      "engine": "kraken",
-      "error": null,
-      "error_path": null,
       "id": "kraken-kraken-bohemian-19th",
+      "engine": "kraken",
       "model_id": "kraken-bohemian_19th",
       "page": null,
-      "path": "recognitions/kraken-kraken-bohemian_19th.txt",
       "status": "success",
-      "status_code": "success"
+      "error": null,
+      "path": "recognitions/kraken-kraken-bohemian_19th.txt",
+      "error_path": null,
+      "characters": 381
     }
-  ],
-  "doc_id": "bat",
-  "run_counts": {
-    "degenerate": 3,
-    "empty": 0,
-    "failed": 1,
-    "successful": 7,
-    "total": 11
-  },
-  "run_quality": "partial_failure",
-  "version": "1.0"
+  ]
 }
