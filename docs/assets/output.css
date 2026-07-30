@@ -5,6 +5,9 @@
 /* #21 redesigned status bar — replaces .output-status */
 .output-status { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
 .output-status span, .entity-type { padding: .2rem .5rem; border-radius: 999px; background: #e9f3f7; color: #245b78; font-size: .78rem; font-weight: 700; }
+.entity-noise-flag { display: inline-block; margin-inline-start: .35rem; padding: .12rem .4rem; border-radius: .25rem; background: #fff3cd; color: #694d00; font-size: .75rem; font-weight: 700; }
+.entity-noise-group { margin-block-start: 1.5rem; padding: .75rem; border: 1px solid #d7b45a; border-radius: .35rem; background: #fffbef; }
+.entity-noise-group > summary { cursor: pointer; font-weight: 700; }
 .output-status-bar { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin-bottom: .75rem; }
 .output-status-badge { display: inline-flex; align-items: center; gap: .3rem; padding: .2rem .55rem; border-radius: 999px; font-size: .78rem; font-weight: 700; }
 .output-status-badge--machine-generated { background: #e9f3f7; color: #245b78; }

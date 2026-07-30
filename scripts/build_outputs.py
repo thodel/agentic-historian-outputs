@@ -10,6 +10,7 @@ import io
 import json
 import re
 import subprocess
+import unicodedata
 from collections import defaultdict
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -180,8 +181,49 @@ def entities(data: dict) -> list[dict[str, str]]:
                 "context": value(item.get("context")),
                 "confidence": value(item.get("hub_confidence") or item.get("confidence")),
                 "uri": value(item.get("uri") or item.get("url") or item.get("id")),
+                "source_degenerate": bool(
+                    item.get("source_candidate_degenerate")
+                    or item.get("degenerate")
+                    or value(item.get("recognition_quality")).casefold() == "degenerate"
+                ),
             })
     return result
+
+
+def entity_noise_score(item: dict[str, str], occurrence_count: int = 1) -> tuple[int, tuple[str, ...]]:
+    """Return a deterministic, explainable OCR-noise triage score."""
+    label = unicodedata.normalize("NFKD", item["label"])
+    folded = "".join(char for char in label.casefold() if not unicodedata.combining(char))
+    letters = "".join(char for char in folded if char.isalpha())
+    compact = "".join(char for char in folded if char.isalnum())
+    reasons: list[str] = []
+    score = 0
+    if compact and compact.isdigit():
+        score += 5
+        reasons.append("nur Ziffern")
+    if len(compact) <= 2:
+        score += 2
+        reasons.append("sehr kurz")
+    if len(letters) >= 4:
+        vowels = sum(char in "aeiouy" for char in letters)
+        ratio = vowels / len(letters)
+        if ratio <= 0.20 or ratio > 0.75:
+            score += 2
+            reasons.append("auffälliges Vokal-/Konsonantenmuster")
+        if re.search(r"[^aeiouy]{3,}", letters):
+            score += 1
+            reasons.append("lange Konsonantenfolge")
+    if occurrence_count <= 1:
+        score += 1
+        reasons.append("nur einmal erkannt")
+    if item.get("source_degenerate"):
+        score += 3
+        reasons.append("degenerierter Quellkandidat")
+    return score, tuple(reasons)
+
+
+def entity_is_uncertain(item: dict[str, str], occurrence_count: int = 1) -> bool:
+    return entity_noise_score(item, occurrence_count)[0] >= 2
 
 
 def slug(label: str, kind: str) -> str:
@@ -197,7 +239,11 @@ def frontmatter(title: str) -> str:
 
 def write_csv(path: Path, items: list[dict[str, str]]) -> None:
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=["label", "surface", "type", "context", "confidence", "uri"])
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=["label", "surface", "type", "context", "confidence", "uri"],
+            extrasaction="ignore",
+        )
         writer.writeheader()
         writer.writerows(items)
 
@@ -610,7 +656,7 @@ def build_status_header(
         '</header>'
     )
 
-def build_document(path: Path, entity_index: dict) -> bool:
+def build_document(path: Path, entity_index: dict, collect_entities: bool = True) -> bool:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
@@ -626,9 +672,10 @@ def build_document(path: Path, entity_index: dict) -> bool:
     is_test = "test" in doc_id.lower() or "example.com" in source_url
     review = value(data.get("review_status") or meta.get("review_status") or "machine-generated")
 
-    for item in items:
-        key = (item["type"], item["label"])
-        entity_index[key].append({"doc_id": doc_id, **item})
+    if collect_entities:
+        for item in items:
+            key = (item["type"], item["label"])
+            entity_index[key].append({"doc_id": doc_id, **item})
 
     doc_date = pipeline_date(path)
     write_csv(path.parent / "entities.csv", items)
@@ -672,7 +719,14 @@ license: "CC-BY-4.0"
         links = []
         for item in grouped[kind]:
             target = slug(item["label"], kind)
-            links.append(f'<li><a href="../entities/{target}/">{html.escape(item["label"])}</a>' + (f' <span class="muted">— {html.escape(item["context"])}</span>' if item["context"] else "") + '</li>')
+            occurrences = len(entity_index.get((kind, item["label"]), ())) or 1
+            score, reasons = entity_noise_score(item, occurrences)
+            flag = (
+                f' <span class="entity-noise-flag" title="{html.escape("; ".join(reasons), quote=True)}">'
+                f'Unsichere Erkennung · Score {score}</span>'
+                if score >= 2 else ""
+            )
+            links.append(f'<li><a href="../entities/{target}/">{html.escape(item["label"])}</a>{flag}' + (f' <span class="muted">— {html.escape(item["context"])}</span>' if item["context"] else "") + '</li>')
         entity_html.append(f'<h3>{html.escape(kind)}</h3><ul>{"".join(links)}</ul>')
 
     source_description = value(description.get("source_description"))
@@ -895,7 +949,8 @@ def _jsonld_dataset(doc_id: str, canonical: str, source_url: str,
 def build_entity_pages(index: dict) -> None:
     root = DOCS / "entities"
     root.mkdir(exist_ok=True)
-    summary = []
+    credible_summary = []
+    uncertain_summary = []
     for (kind, label), occurrences in sorted(index.items(), key=lambda x: (x[0][0], x[0][1].casefold())):
         target = slug(label, kind)
         directory = root / target
@@ -906,10 +961,19 @@ def build_entity_pages(index: dict) -> None:
         )
         external = next((item["uri"] for item in occurrences if valid_public_url(item["uri"])), "")
         external_html = f'<p>Normdatensatz: <a href="{html.escape(external, quote=True)}">{html.escape(external)}</a></p>' if external else '<p class="notice notice--warning">Nicht mit einem externen Normdatensatz verknüpft.</p>'
-        page = frontmatter(label) + f'''<nav class="breadcrumbs"><a href="../">Entitäten</a> / {html.escape(label)}</nav><h1>{html.escape(label)}</h1><p><span class="entity-type">{html.escape(kind)}</span> · {len(occurrences)} Vorkommen</p>{external_html}<div class="table-scroll"><table><thead><tr><th>Ausgabe</th><th>Form</th><th>Kontext</th><th>Konfidenz</th></tr></thead><tbody>{rows}</tbody></table></div>'''
+        score, reasons = entity_noise_score(occurrences[0], len(occurrences))
+        triage = (
+            f'<div class="notice notice--warning entity-noise-notice"><strong>Unsichere Erkennung.</strong> '
+            f'Heuristischer Score {score}: {html.escape(", ".join(reasons))}. '
+            'Dieser Eintrag bleibt zur Nachvollziehbarkeit vollständig erhalten.</div>'
+            if score >= 2 else ""
+        )
+        page = frontmatter(label) + f'''<nav class="breadcrumbs"><a href="../">Entitäten</a> / {html.escape(label)}</nav><h1>{html.escape(label)}</h1><p><span class="entity-type">{html.escape(kind)}</span> · {len(occurrences)} Vorkommen</p>{triage}{external_html}<div class="table-scroll"><table><thead><tr><th>Ausgabe</th><th>Form</th><th>Kontext</th><th>Konfidenz</th></tr></thead><tbody>{rows}</tbody></table></div>'''
         (directory / "index.md").write_text(page, encoding="utf-8")
-        summary.append(f'<tr><td><a href="{target}/">{html.escape(label)}</a></td><td>{html.escape(kind)}</td><td>{len(occurrences)}</td></tr>')
-    page = frontmatter("Entitäten") + f'''<nav class="breadcrumbs"><a href="../">Alle Ausgaben</a> / Entitäten</nav><h1>Entitäten</h1><p>Automatisch erkannte Personen, Orte, Organisationen und weitere Entitätstypen. Schreibvarianten können getrennte Einträge bilden; fehlende Normdatenlinks bedeuten, dass die Identifikation nicht verifiziert wurde.</p><div class="table-scroll"><table><thead><tr><th>Entität</th><th>Typ</th><th>Vorkommen</th></tr></thead><tbody>{''.join(summary)}</tbody></table></div>'''
+        row = f'<tr><td><a href="{target}/">{html.escape(label)}</a></td><td>{html.escape(kind)}</td><td>{len(occurrences)}</td></tr>'
+        (uncertain_summary if score >= 2 else credible_summary).append(row)
+    table_head = '<div class="table-scroll"><table><thead><tr><th>Entität</th><th>Typ</th><th>Vorkommen</th></tr></thead><tbody>'
+    page = frontmatter("Entitäten") + f'''<nav class="breadcrumbs"><a href="../">Alle Ausgaben</a> / Entitäten</nav><h1>Entitäten</h1><p>Automatisch erkannte Personen, Orte, Organisationen und weitere Entitätstypen. Die heuristische Einteilung löscht keine Daten und ist keine wissenschaftliche Verifikation.</p><h2>Glaubwürdige Erkennungen</h2>{table_head}{''.join(credible_summary)}</tbody></table></div><details class="entity-noise-group"><summary>Unsichere Erkennungen ({len(uncertain_summary)})</summary><p>Diese Einträge weisen formale OCR-Risikomerkmale auf und werden zur Prüfung sichtbar aufbewahrt.</p>{table_head}{''.join(uncertain_summary)}</tbody></table></div></details>'''
     (root / "index.md").write_text(page, encoding="utf-8")
 
 
@@ -937,7 +1001,16 @@ def build() -> None:
     doc_paths = sorted(DOCS.glob("*/pipeline.json"))
     validate_slugs([path.parent.name for path in doc_paths])
     for path in doc_paths:
-        if build_document(path, entity_index):
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            data = {}
+        for item in entities(data):
+            entity_index[(item["type"], item["label"])].append(
+                {"doc_id": path.parent.name, **item}
+            )
+    for path in doc_paths:
+        if build_document(path, entity_index, collect_entities=False):
             tests.append(path.parent.name)
     build_entity_pages(entity_index)
     test_root = DOCS / "tests"
