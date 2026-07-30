@@ -549,7 +549,8 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
         path = candidate["path"]
         artifact_exists = bool(path) and (directory is None or (directory / path).exists())
         download = (
-            f'<a class="rec-download" href="{quote(path, safe="/._-")}" download>'
+            f'<a class="rec-download" href="{quote(path, safe="/._-")}" download '
+            f'data-cand="{html.escape(cid, quote=True)}">'
             "Diese Transkription herunterladen</a>"
             if not is_failed and artifact_exists else
             '<span class="rec-download-unavailable">Kein Textdownload verfügbar</span>'
@@ -641,11 +642,45 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
 
     selected = candidates[0]
     selected_exists = bool(selected["path"]) and (directory is None or (directory / selected["path"]).exists())
+    usable_candidates = [c for c in candidates if not c.get("error")]
+    default_rec = usable_candidates[0] if usable_candidates else candidates[0]
+    default_href = quote(default_rec["path"], safe="/._-") if default_rec.get("path") else ""
+    # Candidate switcher: dropdown to pick which version is the primary download target
+    switcher_options = []
+    for c in candidates:
+        opt_label = f'{_engine_label(c["engine"])}'
+        if c["model_id"]:
+            opt_label += f' · {c["model_id"]}'
+        if c["page"]:
+            opt_label += f' ({c["page"]})'
+        disabled = " disabled" if c.get("error") else ""
+        switcher_options.append(
+            f'<option value="{html.escape(c["id"], quote=True)}"'
+            f' data-href="{quote(c["path"], safe="/._-") if c.get("path") else ""}"'
+            f'{disabled}>{html.escape(opt_label)}</option>'
+        )
+    switcher_html = (
+        '<div class="dl-switcher">'
+        '<label for="dl-cand-select-' + html.escape(doc_id, quote=True) + '">'
+        'Andere Version wählen:</label> '
+        '<select id="dl-cand-select-' + html.escape(doc_id, quote=True) + '" '
+        'class="dl-cand-select" '
+        'data-doc-id="' + html.escape(doc_id, quote=True) + '">'
+        + "\n".join(switcher_options) +
+        '</select></div>'
+        if len(candidates) > 1 else ''
+    )
+    primary_btn_attrs = (
+        f'href="{quote(selected["path"], safe="/._-")}" '
+        f'data-doc-id="{html.escape(doc_id, quote=True)}" '
+        f'data-default-href="{default_href}" download data-rec-primary-download'
+        if selected_exists else ''
+    )
     primary = (f'<div class="rec-primary-download"><a class="btn-rec-download" '
-               f'href="{quote(selected["path"], safe="/._-")}" download '
-               f'data-rec-primary-download>Aktuelle Transkription herunterladen '
+               f'{primary_btn_attrs}>Aktuelle Transkription herunterladen '
                f'<span class="rec-download-format">TXT</span></a>'
                f'<span class="rec-download-provenance">{html.escape(selected["engine"])} · Seite {html.escape(selected["page"] or "nicht zugeordnet")}</span></div>'
+               f'{switcher_html}'
                if selected_exists else
                '<div class="rec-primary-download rec-primary-download--unavailable"><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></div>')
     inventory_rows = []
@@ -688,7 +723,7 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-incomparable_confidence">ⓘ Nicht vergleichbare Konfidenz</button>
 </p>
 {explanation_blocks}
-<div class="rec-viewer" data-recognition-viewer data-doc-id="{html.escape(doc_id, quote=True)}">
+<div class="rec-viewer" data-recognition-viewer data-doc-id="{html.escape(doc_id, quote=True)}" data-recognition-download-switcher>
 {primary}
 {inventory}
 {summary_html}
