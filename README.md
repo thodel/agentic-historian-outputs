@@ -119,8 +119,8 @@ Work is organized as epic meta-issues with per-task issues:
 - [#110](https://github.com/thodel/agentic-historian-outputs/issues/110) — reader experience and behavioral testing
 
 Earlier epics (page architecture, recognition transparency, quality indicators,
-reproducible/citable builds) are recorded in the closed issues and in
-`docs/epic5-quality-principles/`.
+side-by-side recognition comparison (#7–#12), reproducible/citable builds) are
+recorded in the closed issues and in `docs/epic5-quality-principles/`.
 
 ## Reuse and citation
 

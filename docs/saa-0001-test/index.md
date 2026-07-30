@@ -58,8 +58,8 @@ title: "saa-0001-test"
 </details>
 
 <details class="page-section-disclosure" data-disclosure="history">
-<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">4 Commits</span></summary>
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/ca41777"><code>ca41777</code></a> · <time datetime="2026-07-08T12:44:34+02:00">2026-07-08</time> · Publish saa-0001-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/ef2e2f9"><code>ef2e2f9</code></a> · <time datetime="2026-07-08T09:05:27+02:00">2026-07-08</time> · Publish saa-0001-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/12fc8ed"><code>12fc8ed</code></a> · <time datetime="2026-07-08T09:04:12+02:00">2026-07-08</time> · Publish saa-0001-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/506cc85"><code>506cc85</code></a> · <time datetime="2026-07-08T09:03:23+02:00">2026-07-08</time> · Publish saa-0001-test</li></ol></section>
+<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">1 Commits</span></summary>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/ca41777"><code>ca41777</code></a> · <time datetime="2026-07-08T12:44:34+02:00">2026-07-08</time> · Publish saa-0001-test</li></ol></section>
 </details>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
@@ -81,7 +81,7 @@ title: "saa-0001-test"
     "name": "Agentic Historian"
   },
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "dateCreated": "2026-07-08T09:03:23+02:00",
+  "dateCreated": "2026-07-08T12:44:34+02:00",
   "dateModified": "2026-07-08T12:44:34+02:00",
   "distribution": [
     {
