@@ -227,6 +227,9 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 /* ---- Progressive disclosure (issue #23) ---------------------------------- */
 .page-section-disclosure {
   border: none;
+  padding: 0;
+  margin: 0;
+}
 
 /* ─── Transcription Reading Aids (#130) ─────────────────────────── */
 
@@ -308,33 +311,13 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
   .entity-unpecified { background: #2e2820; color: #c8b890; }
 }
 
-/* Print: no copy button, keep entity highlights readable */
-@media print {
-  .copy-btn { display: none; }
-  .transcription-wrap {
-    max-height: none;
-    overflow: visible;
-    background: #fff;
-    color: #000;
-    border-color: #999;
-  }
-  .line-number { color: #666; }
-  .entity-person  { background: #e8f5e9; color: #1a3a1f; }
-  .entity-place   { background: #e8edf5; color: #1a2a50; }
-  .entity-org     { background: #f5ede3; color: #4a2a0a; }
-  .entity-unknown,
-  .entity-unpecified { background: #f0ede3; color: #3a3020; }
-}
-
 /* High-contrast mode */
+@media (prefers-contrast: more) {
 @media (prefers-contrast: more) {
   .entity-person  { background: #b2dfb2; outline: 1px solid #1a3a1f; }
   .entity-place   { background: #bbc3df; outline: 1px solid #1a2a50; }
   .entity-org     { background: #dfc9a8; outline: 1px solid #4a2a0a; }
   .line { border-bottom: 1px solid #ccc; }
-}
-  padding: 0;
-  margin: 0;
 }
 .page-section-summary {
   list-style: none;

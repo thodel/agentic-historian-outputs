@@ -51,8 +51,6 @@
       divider.addEventListener("pointercancel", finish);
     });
   }
-})();
-
 // ─── Copy transcription to clipboard (#130) ──────────────────────
 (() => {
   if (typeof document === "undefined") return;
@@ -61,8 +59,7 @@
   function getTranscriptText(wrap) {
     return [...wrap.querySelectorAll(".line-text")]
       .map(span => span.textContent || "")
-      .join("
-");
+      .join("\n");
   }
 
   for (const btn of document.querySelectorAll("[data-copy-transcript]")) {
@@ -84,4 +81,5 @@
       }
     });
   }
+})();
 })();
