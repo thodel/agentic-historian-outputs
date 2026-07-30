@@ -527,12 +527,6 @@ def build_document(path: Path, entity_index: dict) -> bool:
     meta = data.get("a_meta") if isinstance(data.get("a_meta"), dict) else {}
     transcript = value(data.get("transcription") or meta.get("transcription"))
     source_url = normalize_source_reference(data)["url"]
-
-    # Issue #125: read supersedes relation from pipeline.json
-    supersedes = data.get("supersedes")
-    if supersedes and not isinstance(supersedes, str):
-        supersedes = None
-
     items = entities(data)
     is_test = "test" in doc_id.lower() or "example.com" in source_url
     review = value(data.get("review_status") or meta.get("review_status") or "machine-generated")
@@ -726,31 +720,12 @@ license: "CC-BY-4.0"
         modified_iso=modified_iso,
     )
 
-    # Issue #125: supersedes banner — shown on the superseded (older) page
-    supersedes_banner = ""
-    if supersedes:
-        superseded_date = ""
-        superseded_date_path = path.parent.parent / supersedes / "pipeline.json"
-        if superseded_date_path.exists():
-            try:
-                superseded_date = pipeline_date(superseded_date_path).strftime("%d.%m.%Y")
-            except Exception:
-                pass
-        date_part = f", neueste Fassung vom {superseded_date}" if superseded_date else ""
-        supersedes_banner = (
-            f'<div class="notice notice--superseded" role="note">'
-            f'<strong>Achtung:</strong> Diese Seite wurde ersetzt durch '
-            f'<a href="../{html.escape(supersedes)}/">{html.escape(supersedes)}</a>'
-            f'{date_part}.</div>\n    '
-        )
-
     page = (
         frontmatter(doc_id)
         + f'<nav class="breadcrumbs" aria-label="Brotkrumen">'
           f'<a href="../">Alle Ausgaben</a>'
           f' <span aria-hidden="true">/</span> {html.escape(doc_id)}</nav>\n'
         + _header + '\n'
-        + supersedes_banner
         + _nav + '\n\n'
         + evidence + '\n\n'
         + _orientation + '\n\n'

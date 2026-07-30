@@ -19,7 +19,6 @@
 @media (prefers-contrast: more) { .output-status-badge { border-width: 2px; font-weight: 800; } }
 .notice { padding: .8rem 1rem; border-left: .25rem solid #245b78; background: #eef6f9; }
 .notice--warning { border-left-color: #8a5a00; background: #fff5dc; }
-.notice--superseded { border-left-color: #6a5acd; background: #f0eeff; }
 .muted { color: #5c6875; }
 .table-scroll { max-width: 100%; overflow-x: auto; }
 .table-scroll table { min-width: 42rem; }

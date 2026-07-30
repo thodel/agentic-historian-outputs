@@ -15,7 +15,7 @@ import json
 import re
 import shutil
 import subprocess
-from dataclasses import dataclass, replace
+from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
@@ -147,8 +147,6 @@ class Record:
     reference_cer: float | None = None  # reference-based CER if available
     reference_wer: float | None = None
     recognition_summary: "RecognitionSummary | None" = None
-    # Issue #125: supersedes relation
-    superseded: bool = False          # True when this doc is superseded by another (newer) run
 
 
 @dataclass(frozen=True)
@@ -344,7 +342,6 @@ def _record(path: Path) -> Record:
         reference_cer=ref_cer,
         reference_wer=ref_wer,
         recognition_summary=summary,
-        superseded=False,  # patched later in build() once supersedes relations are known
     )
 
 
@@ -483,7 +480,7 @@ def _card(record: Record) -> str:
         f'data-review-status="{html.escape(summary.review_status, quote=True)}" '
         f'data-comparison-ready="{str(summary.comparison_ready).lower()}"'
     )
-    return f'''<article class="catalogue-card" data-document-id="{html.escape(record.doc_id.casefold(), quote=True)}" data-created="{created_iso}" data-kind="{kind}" data-language="{html.escape(record.language.casefold(), quote=True)}" data-script="{html.escape(record.script.casefold(), quote=True)}" data-search="{html.escape(search, quote=True)}" data-superseded="{str(record.superseded).lower()}" {summary_attrs}>
+    return f'''<article class="catalogue-card" data-document-id="{html.escape(record.doc_id.casefold(), quote=True)}" data-created="{created_iso}" data-kind="{kind}" data-language="{html.escape(record.language.casefold(), quote=True)}" data-script="{html.escape(record.script.casefold(), quote=True)}" data-search="{html.escape(search, quote=True)}" {summary_attrs}>
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="{created_iso}">{created_label}</time></p>
@@ -597,29 +594,8 @@ def build_atom_feed(records: list) -> None:
 def build() -> int:
     records = [_record(path) for path in DOCS.glob("*/pipeline.json")]
     records.sort(key=lambda item: (item.created, item.doc_id.lower()), reverse=True)
-
-    # Issue #125: compute superseded relations
-    superseders = set()  # doc_ids that are superseded by another (newer) run
-    for record in records:
-        pipeline_path = DOCS / record.doc_id / "pipeline.json"
-        if pipeline_path.exists():
-            try:
-                data = json.loads(pipeline_path.read_text(encoding="utf-8"))
-                superseded_by = data.get("supersedes")
-                if superseded_by and isinstance(superseded_by, str):
-                    superseders.add(record.doc_id)
-            except (OSError, json.JSONDecodeError):
-                pass
-
-    # Replace records with updated superseded flag
-    records = [
-        replace(r, superseded=r.doc_id in superseders)
-        for r in records
-    ]
-
-    output_count = sum(not record.is_test and not record.superseded for record in records)
-    test_count = sum(record.is_test for record in records)
-    superseded_count = sum(record.superseded for record in records)
+    output_count = sum(not record.is_test for record in records)
+    test_count = len(records) - output_count
     summary_payload = {
         record.doc_id: record.recognition_summary.as_dict()
         for record in records if record.recognition_summary is not None
@@ -653,7 +629,7 @@ title: Katalog
     </dl>
   </details>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
-  <p class="catalogue-summary" id="catalogue-count"><strong>{output_count}</strong> Ausgaben · <span class="superseded-count">{superseded_count} ersetzt</span> · {test_count} Testläufe</p>
+  <p class="catalogue-summary"><strong>{len(records)}</strong> Einträge · {output_count} Ausgaben · {test_count} Testläufe</p>
 </div>
 
 <form class="catalogue-tools" role="search" aria-label="Ausgaben durchsuchen" onsubmit="return false">
@@ -696,13 +672,6 @@ title: Katalog
       <option value="all">Alle Status</option>
       <option value="clean">Ohne bekannte Probleme</option>
       <option value="issues">Fehler, leer oder degeneriert</option>
-    </select>
-  </div>
-  <div>
-    <label for="catalogue-superseded">Ersetzte Einträge</label>
-    <select id="catalogue-superseded">
-      <option value="hide">Verbergen</option>
-      <option value="show">Anzeigen</option>
     </select>
   </div>
   <div>
