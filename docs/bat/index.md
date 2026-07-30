@@ -60,8 +60,18 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-incomparable_confidence">ⓘ Nicht vergleichbare Konfidenz</button>
 </p>
 <div class="quality-explanation" id="quality-explanation-engine_confidence" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-engine-confidence">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-agreement" role="region" aria-label="Engine-Übereinstimmung" hidden><p><strong>Engine-Übereinstimmung:</strong> Die Übereinstimmung zeigt, wie viele Engines dieselbe Lesart erzeugt haben.  Übereinstimmung bedeutet nicht, dass die Lesart korrekt ist — alle Engines können gemeinsam fehlgehen.  Übereinstimmungswerte sind nicht dasselbe wie Genauigkeitswerte. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-agreement">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-degenerate" role="region" aria-label="Degenerierte Ausgabe" hidden><p><strong>Degenerierte Ausgabe:</strong> Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-degeneration">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-failed" role="region" aria-label="Fehlgeschlagene Erkennung" hidden><p><strong>Fehlgeschlagene Erkennung:</strong> Die Erkennung ist fehlgeschlagen (Timeout, Dienst nicht erreichbar oder anderer Fehler).  Es liegt keine verwertbare Transkription vor. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-failure">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-reference_evaluation" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-reference-evaluation">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-incomparable_confidence" role="region" aria-label="Nicht vergleichbare Konfidenzwerte" hidden><p><strong>Nicht vergleichbare Konfidenzwerte:</strong> Konfidenzwerte verschiedener Engines stammen aus unterschiedlichen Modellen mit unterschiedlichen Skalen und Bedeutungen.  Ein höherer Wert einer Engine bedeutet nicht, dass deren Transkription genauer ist als die einer anderen Engine. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-engine-confidence">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-selection_score" role="region" aria-label="Ausgewählte Transkription / Fusion" hidden><p><strong>Ausgewählte Transkription / Fusion:</strong> Die ausgewählte Transkription ist das Ergebnis, das die Pipeline als Haupttranskription ausgewählt oder aus mehreren Engine-Ausgaben fusioniert hat.  Sie stellt den besten maschinellen Versuch dar, nicht zwingend die historisch korrekte Lesart.  Konfidenzwerte verschiedener Engines werden dabei nicht direkt summiert oder gemittelt.  Das Ergebnis sollte stets am Original überprüft werden. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-selection-score">Methodik <span aria-hidden="true">→</span></a></p></div>
-<div class="rec-viewer" data-recognition-viewer data-doc-id="bat">
-<div class="rec-primary-download"><a class="btn-rec-download" href="recognitions/fused.txt" download data-rec-primary-download>Aktuelle Transkription herunterladen <span class="rec-download-format">TXT</span></a><span class="rec-download-provenance">fusion · Seite nicht zugeordnet</span></div>
+<div class="rec-viewer" data-recognition-viewer data-doc-id="bat" data-recognition-download-switcher>
+<div class="rec-primary-download"><a class="btn-rec-download" href="recognitions/fused.txt" data-doc-id="bat" data-default-href="recognitions/fused.txt" download data-rec-primary-download>Aktuelle Transkription herunterladen <span class="rec-download-format">TXT</span></a><span class="rec-download-provenance">fusion · Seite nicht zugeordnet</span></div><div class="dl-switcher"><label for="dl-cand-select-bat">Andere Version wählen:</label> <select id="dl-cand-select-bat" class="dl-cand-select" data-doc-id="bat"><option value="selected" data-href="recognitions/fused.txt">Ausgewählt / Fusion</option>
+<option value="vlm-internvl3-8b-instruct" data-href="recognitions/vlm-internvl3-8b-instruct.txt">VLM · internvl3-8b-instruct</option>
+<option value="kraken-kraken-catmus-medieval" data-href="recognitions/kraken-kraken-catmus_medieval.txt">Kraken OCR · kraken-catmus_medieval</option>
+<option value="trocr-trocr-medieval-escriptmask" data-href="recognitions/trocr-trocr-medieval-escriptmask.txt" disabled>TrOCR · trocr-medieval-escriptmask</option>
+<option value="kraken-kraken-mccatmus" data-href="recognitions/kraken-kraken-mccatmus.txt">Kraken OCR · kraken-mccatmus</option>
+<option value="trocr-trocr-kurrent-xvi-xvii" data-href="recognitions/trocr-trocr-kurrent-xvi-xvii.txt" disabled>TrOCR · trocr-kurrent-xvi-xvii</option>
+<option value="kraken-kraken-medieval-charters" data-href="recognitions/kraken-kraken-medieval_charters.txt" disabled>Kraken OCR · kraken-medieval_charters</option>
+<option value="trocr-trocr-essoins-middle-latin" data-href="recognitions/trocr-trocr-essoins-middle-latin.txt" disabled>TrOCR · trocr-essoins-middle-latin</option>
+<option value="kraken-kraken-early-modern-german" data-href="recognitions/kraken-kraken-early_modern_german.txt">Kraken OCR · kraken-early_modern_german</option>
+<option value="kraken-kraken-early-modern-german-16" data-href="recognitions/kraken-kraken-early_modern_german_16.txt">Kraken OCR · kraken-early_modern_german_16</option>
+<option value="kraken-kraken-bohemian-19th" data-href="recognitions/kraken-kraken-bohemian_19th.txt">Kraken OCR · kraken-bohemian_19th</option></select></div>
 <details class="rec-inventory"><summary>Alle Erkennungsversionen herunterladen <span class="rec-inv-count">(11 Versionen)</span></summary>
 <div class="table-scroll"><table class="rec-inv-table"><thead><tr><th>Engine</th><th>Modell</th><th>Zeichen</th><th>Status</th><th>Konfidenz/Fehler</th><th>Download</th></tr></thead><tbody><tr class="rec-inv-page-header"><th colspan="6">Nicht zugeordnet</th></tr><tr><td>fusion</td><td>—</td><td>2466</td><td>Erfolgreich</td><td>Nicht angegeben</td><td class="rec-inv-dl"><a href="recognitions/fused.txt" download>fused.txt</a></td></tr><tr><td>vlm</td><td>internvl3-8b-instruct</td><td>2327</td><td>Erfolgreich</td><td>80%</td><td class="rec-inv-dl"><a href="recognitions/vlm-internvl3-8b-instruct.txt" download>vlm-internvl3-8b-instruct.txt</a></td></tr><tr><td>kraken</td><td>kraken-catmus_medieval</td><td>2315</td><td>Erfolgreich</td><td>82%</td><td class="rec-inv-dl"><a href="recognitions/kraken-kraken-catmus_medieval.txt" download>kraken-kraken-catmus_medieval.txt</a></td></tr><tr class="rec-inv-error"><td>trocr</td><td>trocr-medieval-escriptmask</td><td>—</td><td>Fehlgeschlagen</td><td>Degenerierte Erkennung: sehr niedrige Engine-Konfidenz</td><td>—</td></tr><tr><td>kraken</td><td>kraken-mccatmus</td><td>2299</td><td>Erfolgreich</td><td>76%</td><td class="rec-inv-dl"><a href="recognitions/kraken-kraken-mccatmus.txt" download>kraken-kraken-mccatmus.txt</a></td></tr><tr class="rec-inv-error"><td>trocr</td><td>trocr-kurrent-xvi-xvii</td><td>—</td><td>Fehlgeschlagen</td><td>Degenerierte Erkennung: sehr niedrige Engine-Konfidenz</td><td>—</td></tr><tr class="rec-inv-error"><td>kraken</td><td>kraken-medieval_charters</td><td>—</td><td>Fehlgeschlagen</td><td>Der Erkennungsdienst antwortete mit einem Fehler.</td><td>—</td></tr><tr class="rec-inv-error"><td>trocr</td><td>trocr-essoins-middle-latin</td><td>—</td><td>Fehlgeschlagen</td><td>Degenerierte Erkennung: sehr niedrige Engine-Konfidenz</td><td>—</td></tr><tr><td>kraken</td><td>kraken-early_modern_german</td><td>2438</td><td>Erfolgreich</td><td>90%</td><td class="rec-inv-dl"><a href="recognitions/kraken-kraken-early_modern_german.txt" download>kraken-kraken-early_modern_german.txt</a></td></tr><tr><td>kraken</td><td>kraken-early_modern_german_16</td><td>2083</td><td>Erfolgreich</td><td>83%</td><td class="rec-inv-dl"><a href="recognitions/kraken-kraken-early_modern_german_16.txt" download>kraken-kraken-early_modern_german_16.txt</a></td></tr><tr><td>kraken</td><td>kraken-bohemian_19th</td><td>381</td><td>Erfolgreich</td><td>54%</td><td class="rec-inv-dl"><a href="recognitions/kraken-kraken-bohemian_19th.txt" download>kraken-kraken-bohemian_19th.txt</a></td></tr></tbody></table></div></details>
 <div class="notice notice--warning rec-run-summary"><strong>Erkennungslauf:</strong> 1 technisch fehlgeschlagen; 3 degeneriert (von 11) <span class="rec-run-chips"><span class="rec-chip rec-chip--ok">7 erfolgreich</span><span class="rec-chip rec-chip--failed">1 fehlgeschlagen</span><span class="rec-chip rec-chip--degenerate">3 degeneriert</span></span></div>
@@ -123,7 +133,7 @@ Uon mir iost schmd u rõe trũro c
 die ne in allem riten
 52</code></pre>
 
-<p><a class="rec-download" href="recognitions/fused.txt" download>Diese Transkription herunterladen</a></p>
+<p><a class="rec-download" href="recognitions/fused.txt" download data-cand="selected">Diese Transkription herunterladen</a></p>
 </details><details class="rec-panel" id="recognition-vlm-internvl3-8b-instruct" data-recognition-panel="vlm-internvl3-8b-instruct" data-page="" data-engine="vlm" data-model="internvl3-8b-instruct">
 <summary>VLM · internvl3-8b-instruct</summary>
 <dl class="rec-meta">
@@ -167,7 +177,7 @@ wol moffen Datir amm em vn af
 Don mir solt schind unde nueri
 sene zd alten zetten</code></pre>
 
-<p><a class="rec-download" href="recognitions/vlm-internvl3-8b-instruct.txt" download>Diese Transkription herunterladen</a></p>
+<p><a class="rec-download" href="recognitions/vlm-internvl3-8b-instruct.txt" download data-cand="vlm-internvl3-8b-instruct">Diese Transkription herunterladen</a></p>
 </details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval" data-recognition-panel="kraken-kraken-catmus-medieval" data-page="" data-engine="kraken" data-model="kraken-catmus_medieval">
 <summary>Kraken OCR · kraken-catmus_medieval</summary>
 <dl class="rec-meta">
@@ -210,7 +220,7 @@ un miy jost ahmis u men tru res
 du ne il l escln iuten
 </code></pre>
 
-<p><a class="rec-download" href="recognitions/kraken-kraken-catmus_medieval.txt" download>Diese Transkription herunterladen</a></p>
+<p><a class="rec-download" href="recognitions/kraken-kraken-catmus_medieval.txt" download data-cand="kraken-kraken-catmus-medieval">Diese Transkription herunterladen</a></p>
 </details><details class="rec-panel" id="recognition-trocr-trocr-medieval-escriptmask" data-recognition-panel="trocr-trocr-medieval-escriptmask" data-page="" data-engine="trocr" data-model="trocr-medieval-escriptmask">
 <summary>TrOCR · trocr-medieval-escriptmask</summary>
 <dl class="rec-meta">
@@ -266,7 +276,7 @@ Don mx 70f Agrm8 à nor nnese
 duene 5d olehs gettien
 5</code></pre>
 
-<p><a class="rec-download" href="recognitions/kraken-kraken-mccatmus.txt" download>Diese Transkription herunterladen</a></p>
+<p><a class="rec-download" href="recognitions/kraken-kraken-mccatmus.txt" download data-cand="kraken-kraken-mccatmus">Diese Transkription herunterladen</a></p>
 </details><details class="rec-panel" id="recognition-trocr-trocr-kurrent-xvi-xvii" data-recognition-panel="trocr-trocr-kurrent-xvi-xvii" data-page="" data-engine="trocr" data-model="trocr-kurrent-xvi-xvii">
 <summary>TrOCR · trocr-kurrent-xvi-xvii</summary>
 <dl class="rec-meta">
@@ -348,7 +358,7 @@ Uon mir iost schmd u rõe trũro c
 die ne in allem riten
 52</code></pre>
 
-<p><a class="rec-download" href="recognitions/kraken-kraken-early_modern_german.txt" download>Diese Transkription herunterladen</a></p>
+<p><a class="rec-download" href="recognitions/kraken-kraken-early_modern_german.txt" download data-cand="kraken-kraken-early-modern-german">Diese Transkription herunterladen</a></p>
 </details><details class="rec-panel" id="recognition-kraken-kraken-early-modern-german-16" data-recognition-panel="kraken-kraken-early-modern-german-16" data-page="" data-engine="kraken" data-model="kraken-early_modern_german_16">
 <summary>Kraken OCR · kraken-early_modern_german_16</summary>
 <dl class="rec-meta">
@@ -391,7 +401,7 @@ Nanime uost sisimus u mo ii
 ie ino ud li feun di utcn
 s</code></pre>
 
-<p><a class="rec-download" href="recognitions/kraken-kraken-early_modern_german_16.txt" download>Diese Transkription herunterladen</a></p>
+<p><a class="rec-download" href="recognitions/kraken-kraken-early_modern_german_16.txt" download data-cand="kraken-kraken-early-modern-german-16">Diese Transkription herunterladen</a></p>
 </details><details class="rec-panel" id="recognition-kraken-kraken-bohemian-19th" data-recognition-panel="kraken-kraken-bohemian-19th" data-page="" data-engine="kraken" data-model="kraken-bohemian_19th">
 <summary>Kraken OCR · kraken-bohemian_19th</summary>
 <dl class="rec-meta">
@@ -434,7 +444,7 @@ u
 iiu
 </code></pre>
 
-<p><a class="rec-download" href="recognitions/kraken-kraken-bohemian_19th.txt" download>Diese Transkription herunterladen</a></p>
+<p><a class="rec-download" href="recognitions/kraken-kraken-bohemian_19th.txt" download data-cand="kraken-kraken-bohemian-19th">Diese Transkription herunterladen</a></p>
 </details></div>
 </div></section>
 
