@@ -1,0 +1,17 @@
+{
+  "doc_id": "saa-0006-test",
+  "version": "1.0",
+  "artifacts": [
+    {
+      "id": "selected",
+      "engine": "fusion",
+      "model_id": null,
+      "page": null,
+      "status": "success",
+      "error": null,
+      "path": "recognitions/fused.txt",
+      "error_path": null,
+      "characters": 25
+    }
+  ]
+}

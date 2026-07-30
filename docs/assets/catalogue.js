@@ -1,6 +1,8 @@
 const CATALOGUE_DEFAULTS = {
   q: "", kind: "all", language: "all", script: "all", engine: "all",
-  readiness: "all", failure: "all", source: "all", sort: "created-desc",
+  readiness: "all", failure: "all", source: "all",
+  "entity-type": "all", completeness: "all",
+  sort: "created-desc",
   superseded: "hide",
 };
 
@@ -42,13 +44,18 @@ function catalogueMatches(data, state) {
     data.sourceType === state.source;
   const matchesSuperseded = state.superseded === "show" ||
     (state.superseded === "hide" && data.superseded !== "true");
+  const matchesEntityType = (!state["entity-type"] || state["entity-type"] === "all") ||
+    (data.entityTypes || "").split(",").filter(Boolean).includes(state["entity-type"]);
+  const matchesCompleteness = (!state.completeness || state.completeness === "all") ||
+    data.completeness === state.completeness;
   return (!state.q || (data.search || "").includes(state.q.toLocaleLowerCase("de"))) &&
     (state.kind === "all" || data.kind === state.kind) &&
     matchesSuperseded &&
     (state.language === "all" || data.language === state.language) &&
     (state.script === "all" || data.script === state.script) &&
     (state.engine === "all" || engines.includes(state.engine)) &&
-    matchesReadiness && matchesFailure && matchesSource;
+    matchesReadiness && matchesFailure && matchesSource &&
+    matchesEntityType && matchesCompleteness;
 }
 
 function catalogueParams(state) {
@@ -89,7 +96,7 @@ function catalogueStatusText(visible, filters, sortLabel) {
 }
 
 function initCatalogue() {
-  const ids = ["search", "filter", "language", "script", "engine", "readiness", "failure", "source", "sort", "superseded"];
+  const ids = ["search", "filter", "language", "script", "engine", "readiness", "failure", "source", "entity-type", "completeness", "sort", "superseded"];
   const controls = Object.fromEntries(ids.map(id => [id, document.querySelector(`#catalogue-${id}`)]));
   const clear = document.querySelector("#catalogue-clear");
   const cards = [...document.querySelectorAll(".catalogue-card")];
@@ -114,12 +121,13 @@ function initCatalogue() {
     q: controls.search.value.trim(), kind: controls.filter.value,
     language: controls.language.value, script: controls.script.value,
     engine: controls.engine.value, readiness: controls.readiness.value,
-    failure: controls.failure.value, source: controls.source.value, sort: controls.sort.value,
+    failure: controls.failure.value, source: controls.source.value,
+    "entity-type": controls["entity-type"].value, completeness: controls.completeness.value, sort: controls.sort.value,
     superseded: controls.superseded.value,
   });
   const writeState = state => {
     controls.search.value = state.q;
-    for (const key of ["filter", "language", "script", "engine", "readiness", "failure", "source", "sort", "superseded"]) {
+    for (const key of ["filter", "language", "script", "engine", "readiness", "failure", "source", "entity-type", "completeness", "sort", "superseded"]) {
       const stateKey = key === "filter" ? "kind" : key;
       const requested = state[stateKey];
       controls[key].value = [...controls[key].options].some(option => option.value === requested)

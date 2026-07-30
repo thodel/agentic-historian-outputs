@@ -14,7 +14,7 @@ const card = {
   comparisonReady: "true", sourceAvailable: "true", sourceType: "iiif_manifest",
 };
 const all = { q: "", kind: "all", language: "all", script: "all", engine: "all",
-  readiness: "all", failure: "all", source: "all", sort: "created-desc" };
+  readiness: "all", failure: "all", source: "all", "entity-type": "all", completeness: "all", sort: "created-desc" };
 
 test("provenance filters combine with AND semantics", () => {
   assert.equal(catalogueMatches(card, { ...all, engine: "kraken", readiness: "comparison", failure: "issues", source: "iiif_manifest" }), true);
@@ -100,6 +100,8 @@ test("history restoration reapplies filters, card visibility, and empty state", 
     readiness: makeControl("all", ["all", "comparison", "candidates", "legacy"]),
     failure: makeControl("all", ["all", "clean", "issues"]),
     source: makeControl("all", ["all", "available", "missing", "iiif_manifest", "image", "landing_page"]),
+    "entity-type": makeControl("all", ["all"]),
+    completeness: makeControl("all", ["all"]),
     sort: makeControl("created-desc", ["created-desc", "created-asc", "title-asc", "title-desc",
       "pages-desc", "pages-asc", "candidates-desc", "candidates-asc", "failures-desc", "failures-asc"]),
   };

@@ -20,6 +20,8 @@
 .catalogue-tools input, .catalogue-tools select { box-sizing: border-box; width: 100%; min-height: 2.75rem; padding: .55rem .7rem; border: 1px solid #9ca9b5; border-radius: .4rem; color: var(--catalogue-ink); background: var(--catalogue-surface); font: inherit; }
 .catalogue-clear { align-self: end; }
 .catalogue-clear button { min-height: 2.75rem; padding: .55rem .8rem; border: 1px solid var(--catalogue-accent); border-radius: .4rem; color: var(--catalogue-accent); background: var(--catalogue-surface); font: inherit; font-weight: 700; }
+.catalogue-empty-clear { margin-left: .5rem; padding: .3rem .7rem; border: 1px solid var(--catalogue-accent); border-radius: .4rem; color: var(--catalogue-accent); background: var(--catalogue-surface); font: inherit; font-weight: 700; cursor: pointer; }
+.catalogue-empty-clear:hover { background: var(--catalogue-accent); color: var(--catalogue-surface); }
 .catalogue-active-filters { margin: 1rem 0 .25rem; color: var(--catalogue-muted); font-size: .9rem; }
 .catalogue-tools input:focus, .catalogue-tools select:focus, .catalogue-card a:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
 .catalogue-status { margin: 1rem 0; color: var(--catalogue-muted); font-size: .9rem; }
@@ -84,3 +86,101 @@
 @media (prefers-reduced-data: reduce) {
   .catalogue-preview { display: none; }
 }
+
+/* ---- Dark mode (issue #133) ---- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --catalogue-ink: #dde3e8;
+    --catalogue-muted: #8a9aaa;
+    --catalogue-border: #2e3c4a;
+    --catalogue-surface: #1a1f26;
+    --catalogue-accent: #7bb8d4;
+    --catalogue-accent-soft: #1e2d3a;
+    --catalogue-warning: #f0c060;
+    --catalogue-warning-soft: #3a2e0a;
+    --catalogue-error: #f07080;
+  }
+
+  body { background: #12161c; color: #dde3e8; }
+
+  .catalogue-intro { color: #dde3e8; }
+  .catalogue-summary { color: #8a9aaa; }
+
+  .catalogue-tools {
+    background: #1a1f26;
+    border-color: #2e3c4a;
+  }
+  .catalogue-tools input,
+  .catalogue-tools select {
+    background: #263040;
+    border-color: #3d5266;
+    color: #dde3e8;
+  }
+  .catalogue-tools input::placeholder { color: #5c6e7e; }
+
+  .catalogue-clear button {
+    border-color: #7bb8d4;
+    color: #7bb8d4;
+    background: #1a1f26;
+  }
+  .catalogue-clear button:hover { background: #1e2d3a; }
+
+  .catalogue-active-filters { color: #8a9aaa; }
+  .catalogue-status { color: #8a9aaa; }
+  .catalogue-empty {
+    background: #1a1f26;
+    border-color: #2e3c4a;
+    color: #8a9aaa;
+  }
+
+  .catalogue-card {
+    background: #1a1f26;
+    border-color: #2e3c4a;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+  }
+  .catalogue-card:hover {
+    border-color: #3d5266;
+    box-shadow: 0 5px 18px rgb(0 0 0 / 30%);
+  }
+  .catalogue-card h2 { color: #dde3e8; }
+  .catalogue-created { color: #8a9aaa; }
+
+  /* Badges */
+  .catalogue-badge { background: #263040; color: #b0bac4; }
+  .catalogue-badge--test      { background: #3a2e0a; color: #f0c060; }
+  .catalogue-badge--ok        { background: #0e2a1a; color: #6fcf97; }
+  .catalogue-badge--error     { background: #3a1015; color: #f07080; }
+  .catalogue-badge--review-machine { background: #3a2e0a; color: #f0c060; }
+  .catalogue-badge--review-human   { background: #0e2a1a; color: #6fcf97; }
+  .catalogue-badge--review-unknown { background: #263040; color: #b0bac4; }
+
+  .catalogue-facts dt { color: #8a9aaa; }
+  .catalogue-facts dd { color: #dde3e8; }
+  .catalogue-preview { color: #b0bac4; }
+  .catalogue-engine {
+    background: #1e2d3a;
+    border-color: #3d5266;
+    color: #7bb8d4;
+  }
+  .catalogue-warning { color: #f0c060; }
+  .catalogue-muted { color: #8a9aaa; }
+
+  /* Catalogue search input focus ring stays visible */
+  .catalogue-tools input:focus,
+  .catalogue-tools select:focus {
+    border-color: #7bb8d4;
+  }
+
+  /* Reduced-motion transition still works in dark */
+  @media (prefers-reduced-motion: no-preference) {
+    .catalogue-card { transition: border-color .15s ease, box-shadow .15s ease; }
+  }
+}
+/* Print: override prefers-color-scheme */
+@media print {
+  :root { --catalogue-surface: #fff; --catalogue-ink: #000; }
+  body { background: #fff; color: #000; }
+  .catalogue-card, .catalogue-tools { background: #fff; border-color: #ccc; }
+  .catalogue-badge { background: #eee; color: #333; }
+}
+/* ---- end #133 ---- */
