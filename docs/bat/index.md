@@ -472,8 +472,8 @@ iiu
 </details>
 
 <details class="page-section-disclosure" data-disclosure="history">
-<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">5 Commits</span></summary>
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/275c91e"><code>275c91e</code></a> · <time datetime="2026-07-17T19:34:40+00:00">2026-07-17</time> · fix(ah-53): complete failure provenance exports</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/1d5803a"><code>1d5803a</code></a> · <time datetime="2026-07-17T20:57:52+02:00">2026-07-17</time> · fix(ah-53): preserve failed-attempt provenance in pipeline.json and packages</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/b0e5e13"><code>b0e5e13</code></a> · <time datetime="2026-07-17T17:28:16+02:00">2026-07-17</time> · Publish bat</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/8028864"><code>8028864</code></a> · <time datetime="2026-07-16T17:13:23+02:00">2026-07-16</time> · Publish bat</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/796ad08"><code>796ad08</code></a> · <time datetime="2026-07-15T21:19:05+02:00">2026-07-15</time> · Publish bat</li></ol></section>
+<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">1 Commits</span></summary>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/275c91e"><code>275c91e</code></a> · <time datetime="2026-07-17T19:34:40+00:00">2026-07-17</time> · fix(ah-53): complete failure provenance exports</li></ol></section>
 </details>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
@@ -495,7 +495,7 @@ iiu
     "name": "Agentic Historian"
   },
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "dateCreated": "2026-07-15T21:19:05+02:00",
+  "dateCreated": "2026-07-17T19:34:40+00:00",
   "dateModified": "2026-07-17T19:34:40+00:00",
   "distribution": [
     {
