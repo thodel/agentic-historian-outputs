@@ -20,63 +20,8 @@ title: "kf"
 <div class="notice notice--warning"><strong>Kein öffentliches Digitalisat verknüpft.</strong> Ein lokaler Verarbeitungspfad ist kein zitierbarer Quellenbeleg. Ergänzen Sie <code>source_url</code> oder <code>iiif_manifest</code> in der Pipeline-Ausgabe.</div></section>
 
 <section id="transcription" class="page-section page-section--evidence" data-page-section="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
-<pre class="transcription" tabindex="0"><code>--- 0000004_478964_0001_19804829.jpg.png ---
-uuiuu
-uuuuuuuuuuuuuuuuuuuu
-uuuuuuuuuuu
-uuuuuuuuuuuuuuuuuu
-iuuuuuuuuuuuuuu
-uuuuuuiuuuu
-uuuuuuuuuuuuuuuuuuu
-uuuuuuuu
-uuuuuuuuuu
-uuuuuuuu
-uuuuuuuuuuuuuu
-uuuuuuuuuuuuuuuuu
-uuuuuuuuuuuuuuuuu
-uuuuuu
-uuuuiuuuuuuuu
-uuuuuuuu
-u
-u
-i
-
-u
-
---- 0000007_024634_0002_663320.jpg.png ---
-iuu
-u
-uuuu
-i
-u
-
-uuu
-uuu
-uu
-uuu
-u
-
-iuuu
-uuu
-uu
-u
-
-
-
-
-u
-
---- 0000015_034634_0001_1169403.png ---
-iuu
-uuiuuuuuuuuuuuuuuuuu
-uuuuuuuuuu
-uuiuuu
-uuuuuiuuuuuuuuuuuuu
-uuuuuuuuuuuuuuu
-uuuuuiiuuuuuuuuuuu
-uuuuuuuuuuu
-uiiiiiuuu
-u</code></pre></section>
+<div class="transcription-toolbar"><button type="button" class="copy-btn" data-copy-transcript aria-label="Transkription in die Zwischenablage kopieren"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>Transkription kopieren</button></div><div class="transcription-wrap" role="table" aria-label="Transkription mit Zeilennummern"><span class="line" data-line="1" role="row"><span class="line-number" aria-hidden="true">1</span><span class="line-text">--- 0000004_478964_0001_19804829.jpg.png ---</span></span><span class="line" data-line="2" role="row"><span class="line-number" aria-hidden="true">2</span><span class="line-text">uuiuu</span></span><span class="line" data-line="3" role="row"><span class="line-number" aria-hidden="true">3</span><span class="line-text">uuuuuuuuuuuuuuuuuuuu</span></span><span class="line" data-line="4" role="row"><span class="line-number" aria-hidden="true">4</span><span class="line-text">uuuuuuuuuuu</span></span><span class="line" data-line="5" role="row"><span class="line-number" aria-hidden="true">5</span><span class="line-text">uuuuuuuuuuuuuuuuuu</span></span><span class="line" data-line="6" role="row"><span class="line-number" aria-hidden="true">6</span><span class="line-text">iuuuuuuuuuuuuuu</span></span><span class="line" data-line="7" role="row"><span class="line-number" aria-hidden="true">7</span><span class="line-text">uuuuuuiuuuu</span></span><span class="line" data-line="8" role="row"><span class="line-number" aria-hidden="true">8</span><span class="line-text">uuuuuuuuuuuuuuuuuuu</span></span><span class="line" data-line="9" role="row"><span class="line-number" aria-hidden="true">9</span><span class="line-text">uuuuuuuu</span></span><span class="line" data-line="10" role="row"><span class="line-number" aria-hidden="true">10</span><span class="line-text">uuuuuuuuuu</span></span><span class="line" data-line="11" role="row"><span class="line-number" aria-hidden="true">11</span><span class="line-text">uuuuuuuu</span></span><span class="line" data-line="12" role="row"><span class="line-number" aria-hidden="true">12</span><span class="line-text">uuuuuuuuuuuuuu</span></span><span class="line" data-line="13" role="row"><span class="line-number" aria-hidden="true">13</span><span class="line-text">uuuuuuuuuuuuuuuuu</span></span><span class="line" data-line="14" role="row"><span class="line-number" aria-hidden="true">14</span><span class="line-text">uuuuuuuuuuuuuuuuu</span></span><span class="line" data-line="15" role="row"><span class="line-number" aria-hidden="true">15</span><span class="line-text">uuuuuu</span></span><span class="line" data-line="16" role="row"><span class="line-number" aria-hidden="true">16</span><span class="line-text">uuuuiuuuuuuuu</span></span><span class="line" data-line="17" role="row"><span class="line-number" aria-hidden="true">17</span><span class="line-text">uuuuuuuu</span></span><span class="line" data-line="18" role="row"><span class="line-number" aria-hidden="true">18</span><span class="line-text">u</span></span><span class="line" data-line="19" role="row"><span class="line-number" aria-hidden="true">19</span><span class="line-text">u</span></span><span class="line" data-line="20" role="row"><span class="line-number" aria-hidden="true">20</span><span class="line-text">i</span></span><span class="line" data-line="21" role="row"><span class="line-number" aria-hidden="true">21</span><span class="line-text"> </span></span><span class="line" data-line="22" role="row"><span class="line-number" aria-hidden="true">22</span><span class="line-text">u</span></span><span class="line" data-line="23" role="row"><span class="line-number" aria-hidden="true">23</span><span class="line-text"> </span></span><span class="line" data-line="24" role="row"><span class="line-number" aria-hidden="true">24</span><span class="line-text">--- 0000007_024634_0002_663320.jpg.png ---</span></span><span class="line" data-line="25" role="row"><span class="line-number" aria-hidden="true">25</span><span class="line-text">iuu</span></span><span class="line" data-line="26" role="row"><span class="line-number" aria-hidden="true">26</span><span class="line-text">u</span></span><span class="line" data-line="27" role="row"><span class="line-number" aria-hidden="true">27</span><span class="line-text">uuuu</span></span><span class="line" data-line="28" role="row"><span class="line-number" aria-hidden="true">28</span><span class="line-text">i</span></span><span class="line" data-line="29" role="row"><span class="line-number" aria-hidden="true">29</span><span class="line-text">u</span></span><span class="line" data-line="30" role="row"><span class="line-number" aria-hidden="true">30</span><span class="line-text"> </span></span><span class="line" data-line="31" role="row"><span class="line-number" aria-hidden="true">31</span><span class="line-text">uuu</span></span><span class="line" data-line="32" role="row"><span class="line-number" aria-hidden="true">32</span><span class="line-text">uuu</span></span><span class="line" data-line="33" role="row"><span class="line-number" aria-hidden="true">33</span><span class="line-text">uu</span></span><span class="line" data-line="34" role="row"><span class="line-number" aria-hidden="true">34</span><span class="line-text">uuu</span></span><span class="line" data-line="35" role="row"><span class="line-number" aria-hidden="true">35</span><span class="line-text">u</span></span><span class="line" data-line="36" role="row"><span class="line-number" aria-hidden="true">36</span><span class="line-text"> </span></span><span class="line" data-line="37" role="row"><span class="line-number" aria-hidden="true">37</span><span class="line-text">iuuu</span></span><span class="line" data-line="38" role="row"><span class="line-number" aria-hidden="true">38</span><span class="line-text">uuu</span></span><span class="line" data-line="39" role="row"><span class="line-number" aria-hidden="true">39</span><span class="line-text">uu</span></span><span class="line" data-line="40" role="row"><span class="line-number" aria-hidden="true">40</span><span class="line-text">u</span></span><span class="line" data-line="41" role="row"><span class="line-number" aria-hidden="true">41</span><span class="line-text"> </span></span><span class="line" data-line="42" role="row"><span class="line-number" aria-hidden="true">42</span><span class="line-text"> </span></span><span class="line" data-line="43" role="row"><span class="line-number" aria-hidden="true">43</span><span class="line-text"> </span></span><span class="line" data-line="44" role="row"><span class="line-number" aria-hidden="true">44</span><span class="line-text"> </span></span><span class="line" data-line="45" role="row"><span class="line-number" aria-hidden="true">45</span><span class="line-text">u</span></span><span class="line" data-line="46" role="row"><span class="line-number" aria-hidden="true">46</span><span class="line-text"> </span></span><span class="line" data-line="47" role="row"><span class="line-number" aria-hidden="true">47</span><span class="line-text">--- 0000015_034634_0001_1169403.png ---</span></span><span class="line" data-line="48" role="row"><span class="line-number" aria-hidden="true">48</span><span class="line-text">iuu</span></span><span class="line" data-line="49" role="row"><span class="line-number" aria-hidden="true">49</span><span class="line-text">uuiuuuuuuuuuuuuuuuuu</span></span><span class="line" data-line="50" role="row"><span class="line-number" aria-hidden="true">50</span><span class="line-text">uuuuuuuuuu</span></span><span class="line" data-line="51" role="row"><span class="line-number" aria-hidden="true">51</span><span class="line-text">uuiuuu</span></span><span class="line" data-line="52" role="row"><span class="line-number" aria-hidden="true">52</span><span class="line-text">uuuuuiuuuuuuuuuuuuu</span></span><span class="line" data-line="53" role="row"><span class="line-number" aria-hidden="true">53</span><span class="line-text">uuuuuuuuuuuuuuu</span></span><span class="line" data-line="54" role="row"><span class="line-number" aria-hidden="true">54</span><span class="line-text">uuuuuiiuuuuuuuuuuu</span></span><span class="line" data-line="55" role="row"><span class="line-number" aria-hidden="true">55</span><span class="line-text">uuuuuuuuuuu</span></span><span class="line" data-line="56" role="row"><span class="line-number" aria-hidden="true">56</span><span class="line-text">uiiiiiuuu</span></span><span class="line" data-line="57" role="row"><span class="line-number" aria-hidden="true">57</span><span class="line-text">u</span></span></div>
+</section>
 
 
 
