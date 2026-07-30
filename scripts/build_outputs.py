@@ -36,6 +36,8 @@ from xml.sax.saxutils import escape as xml_escape
 DOCS = Path("docs")
 SITE = "https://thodel.github.io/agentic-historian-outputs"
 REPO = "https://github.com/thodel/agentic-historian-outputs"
+RECONCILIATION_DATA = Path("data/entity-reconciliation.json")
+RECONCILIATION_REVIEW = Path("data/entity-reconciliation-review.json")
 
 # Issue #126 — document slug policy.
 #
@@ -254,6 +256,28 @@ def entity_display_label(occurrences: list[dict[str, str]]) -> str:
             label,
         ),
     )
+
+
+def load_reconciliation() -> tuple[dict, set[str]]:
+    """Load committed candidates and suppressions without network access."""
+    try:
+        payload = json.loads(RECONCILIATION_DATA.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        payload = {}
+    try:
+        review = json.loads(RECONCILIATION_REVIEW.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        review = {}
+    candidates = payload.get("candidates", {}) if isinstance(payload, dict) else {}
+    suppressed = review.get("suppress", []) if isinstance(review, dict) else []
+    return (
+        candidates if isinstance(candidates, dict) else {},
+        {str(key) for key in suppressed if isinstance(key, str)},
+    )
+
+
+def reconciliation_key(kind: str, label: str) -> str:
+    return f"{kind}:{folded_entity_label(label)}"
 
 
 def slug(label: str, kind: str) -> str:
@@ -989,6 +1013,7 @@ def build_entity_pages(index: dict) -> None:
     credible_summary = []
     uncertain_summary = []
     obsolete_variant_targets = set()
+    reconciliation, suppressed = load_reconciliation()
     for (kind, _folded_label), occurrences in sorted(
         index.items(), key=lambda x: (x[0][0], x[0][1])
     ):
@@ -1006,8 +1031,35 @@ def build_entity_pages(index: dict) -> None:
             for item in occurrences
         )
         external = next((item["uri"] for item in occurrences if valid_public_url(item["uri"])), "")
-        external_html = f'<p>Normdatensatz: <a href="{html.escape(external, quote=True)}">{html.escape(external)}</a></p>' if external else '<p class="notice notice--warning">Nicht mit einem externen Normdatensatz verknüpft.</p>'
         score, reasons = entity_noise_score(occurrences[0], len(occurrences))
+        candidate_key = reconciliation_key(kind, label)
+        candidate = reconciliation.get(candidate_key)
+        if candidate_key in suppressed or not isinstance(candidate, dict) or score >= 2:
+            candidate = None
+        if external:
+            external_html = f'<p>Normdatensatz: <a href="{html.escape(external, quote=True)}">{html.escape(external)}</a></p>'
+        elif candidate:
+            qid = str(candidate.get("qid", ""))
+            gnd = str(candidate.get("gnd", ""))
+            links = []
+            if re.fullmatch(r"Q[1-9][0-9]*", qid):
+                links.append(
+                    f'<a href="https://www.wikidata.org/entity/{qid}">Wikidata {qid}</a>'
+                )
+            if re.fullmatch(r"[0-9Xx-]+", gnd):
+                links.append(
+                    f'<a href="https://d-nb.info/gnd/{html.escape(gnd, quote=True)}">GND {html.escape(gnd)}</a>'
+                )
+            description = html.escape(str(candidate.get("description", "")))
+            external_html = (
+                '<div class="notice notice--warning normdata-candidate">'
+                '<strong>Unverifiziert — automatisch vorgeschlagen.</strong> '
+                + " · ".join(links)
+                + (f"<br>{description}" if description else "")
+                + "</div>"
+            ) if links else '<p class="notice notice--warning">Nicht mit einem externen Normdatensatz verknüpft.</p>'
+        else:
+            external_html = '<p class="notice notice--warning">Nicht mit einem externen Normdatensatz verknüpft.</p>'
         triage = (
             f'<div class="notice notice--warning entity-noise-notice"><strong>Unsichere Erkennung.</strong> '
             f'Heuristischer Score {score}: {html.escape(", ".join(reasons))}. '
