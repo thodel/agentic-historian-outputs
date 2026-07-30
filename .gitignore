@@ -216,6 +216,3 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-tests/behavioural/fixtures/
-node_modules/
-package-lock.json
