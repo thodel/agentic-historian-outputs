@@ -348,6 +348,16 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 }
 /* ---- end #23 ---- */
 
+/* Issue #36: type badge classes for inventory rows */
+.badge { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.75rem; font-weight: 600; }
+.badge--raw { background: #e8f4f8; color: #245b78; }
+.badge--error { background: #fde8e8; color: #c0392b; }
+.badge--fused { background: #e8f8ee; color: #27ae60; }
+
+/* Issue #36: enhanced inventory column styles */
+.rec-inv-table .inv-model code { font-size: 0.8rem; word-break: break-all; }
+.rec-inv-table .inv-right { text-align: right; }
+.rec-inv-table tr:hover td { background: var(--bg-hover, #f8f8f8); }
 /* ---- Dark mode (issue #133) ---- */
 @media (prefers-color-scheme: dark) {
   :root {
