@@ -60,8 +60,8 @@ title: "saa-0005-test"
 </details>
 
 <details class="page-section-disclosure" data-disclosure="history">
-<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">5 Commits</span></summary>
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/2fecb94"><code>2fecb94</code></a> · <time datetime="2026-07-08T12:44:44+02:00">2026-07-08</time> · Publish saa-0005-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/70fb3fa"><code>70fb3fa</code></a> · <time datetime="2026-07-08T09:05:37+02:00">2026-07-08</time> · Publish saa-0005-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/56a5d65"><code>56a5d65</code></a> · <time datetime="2026-07-08T09:04:21+02:00">2026-07-08</time> · Publish saa-0005-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/5bb781c"><code>5bb781c</code></a> · <time datetime="2026-07-08T09:03:33+02:00">2026-07-08</time> · Publish saa-0005-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/578f6a7"><code>578f6a7</code></a> · <time datetime="2026-07-08T09:03:31+02:00">2026-07-08</time> · Publish saa-0004-test</li></ol></section>
+<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">1 Commits</span></summary>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/2fecb94"><code>2fecb94</code></a> · <time datetime="2026-07-08T12:44:44+02:00">2026-07-08</time> · Publish saa-0005-test</li></ol></section>
 </details>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
@@ -83,7 +83,7 @@ title: "saa-0005-test"
     "name": "Agentic Historian"
   },
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "dateCreated": "2026-07-08T09:03:31+02:00",
+  "dateCreated": "2026-07-08T12:44:44+02:00",
   "dateModified": "2026-07-08T12:44:44+02:00",
   "distribution": [
     {

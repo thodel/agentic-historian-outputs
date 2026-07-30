@@ -119,3 +119,42 @@ class DownloadHardeningTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class GitHistoryHardeningTests(unittest.TestCase):
+    """Hardening for git_history (fixes #50/#51, referenced by #39)."""
+
+    def test_git_history_returns_at_most_one_entry(self):
+        """--max-count=1 prevents phantom entries when doc has no prior commits."""
+        import tempfile, subprocess
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp) / "repo"
+            repo.mkdir()
+            (repo / "doc.md").write_text("first")
+            subprocess.run(["git", "init"], cwd=repo, check=True, capture_output=True)
+            subprocess.run(["git", "config", "user.email", "test@test.ch"], cwd=repo, check=True, capture_output=True)
+            subprocess.run(["git", "config", "user.name", "Test"], cwd=repo, check=True, capture_output=True)
+            subprocess.run(["git", "add", "."], cwd=repo, check=True, capture_output=True)
+            subprocess.run(["git", "commit", "-m", "initial"], cwd=repo, check=True, capture_output=True)
+            sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+            # Force reload
+            import importlib
+            import build_outputs
+            importlib.reload(build_outputs)
+            from build_outputs import git_history
+            result = git_history(repo / "doc.md")
+            self.assertLessEqual(len(result), 1)
+
+    def test_git_history_empty_for_new_doc_with_no_history(self):
+        """A doc with no git history returns empty list, not a phantom."""
+        import tempfile, subprocess
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp) / "repo2"
+            repo.mkdir()
+            subprocess.run(["git", "init"], cwd=repo, check=True, capture_output=True)
+            subprocess.run(["git", "config", "user.email", "test@test.ch"], cwd=repo, check=True, capture_output=True)
+            subprocess.run(["git", "config", "user.name", "Test"], cwd=repo, check=True, capture_output=True)
+            # Empty repo - no commits yet
+            import build_outputs
+            result = build_outputs.git_history(repo / "new.md")
+            self.assertEqual(result, [])
