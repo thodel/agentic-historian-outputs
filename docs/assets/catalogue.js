@@ -40,9 +40,9 @@ function catalogueMatches(data, state) {
     (state.source === "available" && data.sourceAvailable === "true") ||
     (state.source === "missing" && data.sourceAvailable !== "true") ||
     data.sourceType === state.source;
-  const matchesEntityType = state["entity-type"] === "all" ||
+  const matchesEntityType = (!state["entity-type"] || state["entity-type"] === "all") ||
     (data.entityTypes || "").split(",").filter(Boolean).includes(state["entity-type"]);
-  const matchesCompleteness = state.completeness === "all" ||
+  const matchesCompleteness = (!state.completeness || state.completeness === "all") ||
     data.completeness === state.completeness;
   return (!state.q || (data.search || "").includes(state.q.toLocaleLowerCase("de"))) &&
     (state.kind === "all" || data.kind === state.kind) &&
@@ -116,11 +116,12 @@ function initCatalogue() {
     q: controls.search.value.trim(), kind: controls.filter.value,
     language: controls.language.value, script: controls.script.value,
     engine: controls.engine.value, readiness: controls.readiness.value,
-    failure: controls.failure.value, source: controls.source.value, sort: controls.sort.value,
+    failure: controls.failure.value, source: controls.source.value,
+    "entity-type": controls["entity-type"].value, completeness: controls.completeness.value, sort: controls.sort.value,
   });
   const writeState = state => {
     controls.search.value = state.q;
-    for (const key of ["filter", "language", "script", "engine", "readiness", "failure", "source", "sort"]) {
+    for (const key of ["filter", "language", "script", "engine", "readiness", "failure", "source", "entity-type", "completeness", "sort"]) {
       const stateKey = key === "filter" ? "kind" : key;
       const requested = state[stateKey];
       controls[key].value = [...controls[key].options].some(option => option.value === requested)
