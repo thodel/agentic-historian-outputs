@@ -48,6 +48,11 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 <div class="rec-compare" data-recognition-compare>
 <div class="rec-compare-toolbar"><button class="btn-rec-compare" type="button" data-rec-compare-open aria-expanded="false">&#128269; Vergleichen</button></div>
 <div class="rec-compare-panes" data-rec-compare-panes hidden>
+<div class="rec-compare-heading" data-rec-compare-heading><span>Modellvergleich</span></div>
+<div class="rec-compare-share" data-rec-compare-share>
+<input class="rec-compare-share-input" type="text" data-rec-compare-share-input readonly placeholder="Vergleichs-URL" aria-label="Vergleichs-URL zum Teilen">
+<button class="btn-rec-compare btn-rec-compare-share-copy" type="button" data-rec-compare-share-copy>Kopieren</button>
+</div>
 <div class="rec-compare-pane" data-rec-compare-pane="left" data-rec-compare-selected="selected">
 <div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-left">Version links</label></div>
 <select class="rec-compare-select" id="rec-compare-select-left" data-rec-compare-select="left"><option value="selected" data-page="">Ausgewählt / Fusion</option><option value="vlm-internvl3-8b-instruct" data-page="">VLM · internvl3-8b-instruct</option><option value="kraken-kraken-catmus-medieval" data-page="">Kraken OCR · kraken-catmus_medieval</option><option value="trocr-trocr-medieval-escriptmask" data-page="" disabled>TrOCR · trocr-medieval-escriptmask</option><option value="kraken-kraken-mccatmus" data-page="">Kraken OCR · kraken-mccatmus</option><option value="trocr-trocr-kurrent-xvi-xvii" data-page="" disabled>TrOCR · trocr-kurrent-xvi-xvii</option><option value="kraken-kraken-medieval-charters" data-page="" disabled>Kraken OCR · kraken-medieval_charters</option><option value="trocr-trocr-essoins-middle-latin" data-page="" disabled>TrOCR · trocr-essoins-middle-latin</option><option value="kraken-kraken-early-modern-german" data-page="">Kraken OCR · kraken-early_modern_german</option><option value="kraken-kraken-early-modern-german-16" data-page="">Kraken OCR · kraken-early_modern_german_16</option><option value="kraken-kraken-bohemian-19th" data-page="">Kraken OCR · kraken-bohemian_19th</option></select>
