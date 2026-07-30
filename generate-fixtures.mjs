@@ -12,7 +12,6 @@
  *   node --test tests/behavioural/*.mjs
  */
 
-import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -24,17 +23,19 @@ const ASSETS    = join(DOCS, "assets");
 const ASSETS_REL = "assets";
 
 // ---------------------------------------------------------------------------
-// Markdown → HTML (via external Python script)
+// Generated pages are YAML frontmatter followed by HTML. Preserve that HTML
+// directly so the behavioral suite has no undeclared Python/Jekyll dependency.
 // ---------------------------------------------------------------------------
 
-function mdToHtml(markdown) {
-  const result = spawnSync("python3", [join(__dirname, "_md_to_html.py")], {
-    input: markdown,
-    encoding: "utf8",
-    maxBuffer: 10 * 1024 * 1024,
-  });
-  if (result.status !== 0) throw new Error("markdown conversion failed: " + result.stderr);
-  return result.stdout;
+function mdToHtml(source) {
+  const content = source
+    .replace(/^---\n[\s\S]*?\n---\n/, "")
+    .replace(/\{\{\{?\s*'\/assets\/([^']+)'\s*\|\s*relative_url\s*\}\}\}?/g, "/assets/$1");
+  return `<!DOCTYPE html>
+<html lang="de">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Test Fixture</title></head>
+<body>${content}</body>
+</html>`;
 }
 
 // ---------------------------------------------------------------------------

@@ -20,11 +20,8 @@ const __dirname = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const FIXTURE = "file://" + resolve(__dirname, "tests", "behavioural", "fixtures", "index.html");
 
 async function launchBrowser() {
-  return chromium.launch({
-    headless: true,
-    executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH ||
-      "/home/dh/.cache/ms-playwright/chromium-1228/chrome-linux64/chrome",
-  });
+  const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH;
+  return chromium.launch({ headless: true, ...(executablePath ? { executablePath } : {}) });
 }
 
 let browser;
