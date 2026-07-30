@@ -1152,7 +1152,7 @@ xus</code></pre>
 
 <details class="page-section-disclosure" data-disclosure="history">
 <summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">1 Commits</span></summary>
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/275c91e"><code>275c91e</code></a> · <time datetime="2026-07-17T19:34:40+00:00">2026-07-17</time> · fix(ah-53): complete failure provenance exports</li></ol></section>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/7677487"><code>7677487</code></a> · <time datetime="2026-07-30T21:38:26+02:00">2026-07-30</time> · feat: add supersedes relation between document runs (#125) (#164)</li></ol></section>
 </details>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
@@ -1174,8 +1174,8 @@ xus</code></pre>
     "name": "Agentic Historian"
   },
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "dateCreated": "2026-07-17T19:34:40+00:00",
-  "dateModified": "2026-07-17T19:34:40+00:00",
+  "dateCreated": "2026-07-30T21:38:26+02:00",
+  "dateModified": "2026-07-30T21:38:26+02:00",
   "distribution": [
     {
       "@type": "DataDownload",
