@@ -14,7 +14,8 @@ const card = {
   comparisonReady: "true", sourceAvailable: "true", sourceType: "iiif_manifest",
 };
 const all = { q: "", kind: "all", language: "all", script: "all", engine: "all",
-  readiness: "all", failure: "all", source: "all", "entity-type": "all", completeness: "all", sort: "created-desc" };
+  readiness: "all", failure: "all", source: "all", "entity-type": "all",
+  completeness: "all", sort: "created-desc", superseded: "hide" };
 
 test("provenance filters combine with AND semantics", () => {
   assert.equal(catalogueMatches(card, { ...all, engine: "kraken", readiness: "comparison", failure: "issues", source: "iiif_manifest" }), true);
@@ -38,6 +39,18 @@ test("invalid fixed URL values degrade to documented defaults", () => {
 
 test("legacy records are not silently classified as clean", () => {
   assert.equal(catalogueMatches({ ...card, recognitionProvenance: "legacy", recognitionFailed: "0" }, { ...all, failure: "clean" }), false);
+});
+
+test("superseded records are hidden by default and can be shown explicitly", () => {
+  assert.equal(catalogueMatches({ ...card, superseded: "true" }, all), false);
+  assert.equal(
+    catalogueMatches(
+      { ...card, superseded: "true" },
+      { ...all, superseded: "show" },
+    ),
+    true,
+  );
+  assert.equal(catalogueMatches({ ...card, superseded: "false" }, all), true);
 });
 
 test("sorts numeric fields with missing values last and stable document ID ties", () => {
@@ -102,6 +115,7 @@ test("history restoration reapplies filters, card visibility, and empty state", 
     source: makeControl("all", ["all", "available", "missing", "iiif_manifest", "image", "landing_page"]),
     "entity-type": makeControl("all", ["all"]),
     completeness: makeControl("all", ["all"]),
+    superseded: makeControl("hide", ["hide", "show"]),
     sort: makeControl("created-desc", ["created-desc", "created-asc", "title-asc", "title-desc",
       "pages-desc", "pages-asc", "candidates-desc", "candidates-asc", "failures-desc", "failures-asc"]),
   };

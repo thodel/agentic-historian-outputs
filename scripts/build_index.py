@@ -15,7 +15,7 @@ import json
 import re
 import shutil
 import subprocess
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
@@ -181,6 +181,8 @@ class Record:
     reference_wer: float | None = None
     entity_types: list = field(default_factory=list)  # Issue #132
     recognition_summary: "RecognitionSummary | None" = None
+    # Issue #125: supersedes relation
+    superseded: bool = False          # True when this doc is superseded by another (newer) run
 
 
 @dataclass(frozen=True)
@@ -377,6 +379,7 @@ def _record(path: Path) -> Record:
         reference_wer=ref_wer,
         entity_types=_entity_types(data.get("entities")),
         recognition_summary=summary,
+        superseded=False,  # patched later in build() once supersedes relations are known
     )
 
 
@@ -519,7 +522,7 @@ def _card(record: Record) -> str:
         f'data-entity-types="{html.escape(entity_types_str, quote=True)}" '
         f'data-completeness="{completeness}"'
     )
-    return f'''<article class="catalogue-card" data-document-id="{html.escape(record.doc_id.casefold(), quote=True)}" data-created="{created_iso}" data-kind="{kind}" data-language="{html.escape(record.language.casefold(), quote=True)}" data-script="{html.escape(record.script.casefold(), quote=True)}" data-search="{html.escape(search, quote=True)}" {summary_attrs}>
+    return f'''<article class="catalogue-card" data-document-id="{html.escape(record.doc_id.casefold(), quote=True)}" data-created="{created_iso}" data-kind="{kind}" data-language="{html.escape(record.language.casefold(), quote=True)}" data-script="{html.escape(record.script.casefold(), quote=True)}" data-search="{html.escape(search, quote=True)}" data-superseded="{str(record.superseded).lower()}" {summary_attrs}>
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="{created_iso}">{created_label}</time></p>
@@ -630,11 +633,39 @@ def build_atom_feed(records: list) -> None:
     print(f"Wrote docs/feed.xml with {len(entries_xml)} entries")
 
 
+def _superseded_document_ids(records: list[Record]) -> set[str]:
+    """Return existing document ids referenced by a newer run's supersedes field."""
+    known_ids = {record.doc_id for record in records}
+    superseded_ids: set[str] = set()
+    for record in records:
+        pipeline_path = DOCS / record.doc_id / "pipeline.json"
+        try:
+            data = json.loads(pipeline_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        predecessor = data.get("supersedes")
+        if (
+            isinstance(predecessor, str)
+            and predecessor in known_ids
+            and predecessor != record.doc_id
+        ):
+            superseded_ids.add(predecessor)
+    return superseded_ids
+
+
 def build() -> int:
     records = [_record(path) for path in DOCS.glob("*/pipeline.json")]
     records.sort(key=lambda item: (item.created, item.doc_id.lower()), reverse=True)
-    output_count = sum(not record.is_test for record in records)
-    test_count = len(records) - output_count
+
+    superseded_ids = _superseded_document_ids(records)
+    records = [
+        replace(record, superseded=record.doc_id in superseded_ids)
+        for record in records
+    ]
+
+    output_count = sum(not record.is_test and not record.superseded for record in records)
+    test_count = sum(record.is_test for record in records)
+    superseded_count = sum(record.superseded for record in records)
     summary_payload = {
         record.doc_id: record.recognition_summary.as_dict()
         for record in records if record.recognition_summary is not None
@@ -668,7 +699,7 @@ title: Katalog
     </dl>
   </details>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
-  <p class="catalogue-summary"><strong>{len(records)}</strong> Einträge · {output_count} Ausgaben · {test_count} Testläufe</p>
+  <p class="catalogue-summary" id="catalogue-count"><strong>{output_count}</strong> Ausgaben · <span class="superseded-count">{superseded_count} ersetzt</span> · {test_count} Testläufe</p>
 </div>
 
 <form class="catalogue-tools" role="search" aria-label="Ausgaben durchsuchen" onsubmit="return false">
@@ -711,6 +742,13 @@ title: Katalog
       <option value="all">Alle Status</option>
       <option value="clean">Ohne bekannte Probleme</option>
       <option value="issues">Fehler, leer oder degeneriert</option>
+    </select>
+  </div>
+  <div>
+    <label for="catalogue-superseded">Ersetzte Einträge</label>
+    <select id="catalogue-superseded">
+      <option value="hide">Verbergen</option>
+      <option value="show">Anzeigen</option>
     </select>
   </div>
   <div>

@@ -97,6 +97,29 @@ def valid_public_url(url: str) -> bool:
     return bool(public_url(url))
 
 
+def _superseding_run(
+    doc_id: str,
+    docs_root: Path,
+) -> tuple[str, date] | None:
+    """Find the newest run that declares it supersedes *doc_id*."""
+    candidates: list[tuple[date, str]] = []
+    for pipeline_path in docs_root.glob("*/pipeline.json"):
+        try:
+            data = json.loads(pipeline_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if data.get("supersedes") != doc_id:
+            continue
+        newer_id = pipeline_path.parent.name
+        if newer_id == doc_id:
+            continue
+        candidates.append((pipeline_date(pipeline_path), newer_id))
+    if not candidates:
+        return None
+    newer_date, newer_id = max(candidates)
+    return newer_id, newer_date
+
+
 def git_history(path: Path) -> list[tuple[str, str, str]]:
     try:
         # Generated pages must not embed the current PR commit: doing so makes
@@ -598,6 +621,7 @@ def build_document(path: Path, entity_index: dict) -> bool:
     meta = data.get("a_meta") if isinstance(data.get("a_meta"), dict) else {}
     transcript = value(data.get("transcription") or meta.get("transcription"))
     source_url = normalize_source_reference(data)["url"]
+
     items = entities(data)
     is_test = "test" in doc_id.lower() or "example.com" in source_url
     review = value(data.get("review_status") or meta.get("review_status") or "machine-generated")
@@ -791,12 +815,27 @@ license: "CC-BY-4.0"
         modified_iso=modified_iso,
     )
 
+    # Issue #125: show the pointer on the older page, not on the newer run
+    # whose pipeline declares the relation.
+    supersedes_banner = ""
+    superseding = _superseding_run(doc_id, path.parent.parent)
+    if superseding:
+        newer_id, newer_date = superseding
+        supersedes_banner = (
+            f'<div class="notice notice--superseded" role="note">'
+            f'<strong>Achtung:</strong> Diese Seite wurde ersetzt durch '
+            f'<a href="../{html.escape(newer_id, quote=True)}/">'
+            f'{html.escape(newer_id)}</a>, neueste Fassung vom '
+            f'{newer_date.strftime("%d.%m.%Y")}.</div>\n    '
+        )
+
     page = (
         frontmatter(doc_id)
         + f'<nav class="breadcrumbs" aria-label="Brotkrumen">'
           f'<a href="../">Alle Ausgaben</a>'
           f' <span aria-hidden="true">/</span> {html.escape(doc_id)}</nav>\n'
         + _header + '\n'
+        + supersedes_banner
         + _nav + '\n\n'
         + evidence + '\n\n'
         + _orientation + '\n\n'
