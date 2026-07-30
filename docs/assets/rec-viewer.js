@@ -68,6 +68,46 @@
     for (const viewer of viewers) select(viewer, requested());
   });
 })();
+// ── Issue #35: candidate switcher updates primary download target ─────────────
+document.querySelectorAll('.dl-cand-select').forEach(function(select) {
+  var docId = select.dataset.docId || '';
+  var dlBtn = document.querySelector('.btn-rec-download[data-doc-id="' + docId + '"]');
+
+  select.addEventListener('change', function() {
+    var selectedOpt = select.options[select.selectedIndex];
+    var href = selectedOpt ? selectedOpt.dataset.href : '';
+    var cand = select.value;
+    if (dlBtn && href) {
+      dlBtn.href = href;
+      dlBtn.setAttribute('data-cand', cand);
+    }
+    // Sync: activate the corresponding tab in the viewer
+    var tabInput = document.querySelector('.rec-tab-input[value="' + cand + '"]');
+    if (tabInput) { tabInput.checked = true; }
+    // Update URL search param
+    if (cand) {
+      var url = new URL(window.location.href);
+      url.searchParams.set('rec', cand);
+      history.replaceState({}, '', url.toString());
+    }
+  });
+});
+
+// ── Issue #35: when viewer tab changes, update download select (bidirectional) ─
+document.querySelectorAll('.rec-viewer').forEach(function(viewer) {
+  var inputs = Array.from(viewer.querySelectorAll('.rec-tab-input'));
+  var dlSelect = viewer.querySelector('.dl-cand-select');
+  if (!dlSelect) return;
+  inputs.forEach(function(inp) {
+    inp.addEventListener('change', function() {
+      if (inp.checked) {
+        dlSelect.value = inp.value;
+      }
+    });
+  });
+});
+
+
 
 
 // ---- #8/#9 side-by-side comparison shell ----

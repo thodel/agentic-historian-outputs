@@ -511,3 +511,39 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
   body, .notice, .transcription, .rec-text, .evidence-viewer { background: #fff; color: #000; }
 }
 /* ---- end #133 ---- */
+/* Issue #35: candidate switcher for active download section */
+.dl-section { margin: 1.5rem 0; }
+.dl-meta { color: var(--text-muted, #666); font-size: 0.875rem; margin: 0.25rem 0 0.75rem; }
+.dl-primary { margin: 0.5rem 0; }
+.dl-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #245b78;
+  color: white;
+  border-radius: 0.35rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.dl-btn:hover, .dl-btn:focus-visible { background: #1d4a63; }
+.dl-btn:focus-visible { outline: 3px solid #f5b942; outline-offset: 2px; }
+.dl-btn::before { content: "⬇ "; }
+.dl-switcher {
+  margin: 0.75rem 0;
+  padding: 0.5rem 0;
+  border-top: 1px solid #e8edf0;
+}
+.dl-switcher label { color: var(--text-muted, #666); font-size: 0.85rem; margin-right: 0.5rem; }
+.dl-cand-select {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #8aa5b4;
+  border-radius: 0.35rem;
+  background: white;
+  color: #2a3f4f;
+  font-size: 0.85rem;
+  min-width: 12rem;
+}
+.dl-link { margin: 0 0.25rem; }
+.dl-link--txt { font-size: 0.85rem; color: #245b78; }
+.dl-link--xml { font-size: 0.85rem; color: #1a6b3a; }
+.dl-link--json { font-size: 0.85rem; color: #7b4f9e; }
+.dl-error-note { font-size: 0.85rem; color: var(--text-muted, #666); margin-top: 0.25rem; }
