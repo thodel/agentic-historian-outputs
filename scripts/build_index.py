@@ -633,27 +633,34 @@ def build_atom_feed(records: list) -> None:
     print(f"Wrote docs/feed.xml with {len(entries_xml)} entries")
 
 
+def _superseded_document_ids(records: list[Record]) -> set[str]:
+    """Return existing document ids referenced by a newer run's supersedes field."""
+    known_ids = {record.doc_id for record in records}
+    superseded_ids: set[str] = set()
+    for record in records:
+        pipeline_path = DOCS / record.doc_id / "pipeline.json"
+        try:
+            data = json.loads(pipeline_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        predecessor = data.get("supersedes")
+        if (
+            isinstance(predecessor, str)
+            and predecessor in known_ids
+            and predecessor != record.doc_id
+        ):
+            superseded_ids.add(predecessor)
+    return superseded_ids
+
+
 def build() -> int:
     records = [_record(path) for path in DOCS.glob("*/pipeline.json")]
     records.sort(key=lambda item: (item.created, item.doc_id.lower()), reverse=True)
 
-    # Issue #125: compute superseded relations
-    superseders = set()  # doc_ids that are superseded by another (newer) run
-    for record in records:
-        pipeline_path = DOCS / record.doc_id / "pipeline.json"
-        if pipeline_path.exists():
-            try:
-                data = json.loads(pipeline_path.read_text(encoding="utf-8"))
-                superseded_by = data.get("supersedes")
-                if superseded_by and isinstance(superseded_by, str):
-                    superseders.add(record.doc_id)
-            except (OSError, json.JSONDecodeError):
-                pass
-
-    # Replace records with updated superseded flag
+    superseded_ids = _superseded_document_ids(records)
     records = [
-        replace(r, superseded=r.doc_id in superseders)
-        for r in records
+        replace(record, superseded=record.doc_id in superseded_ids)
+        for record in records
     ]
 
     output_count = sum(not record.is_test and not record.superseded for record in records)
