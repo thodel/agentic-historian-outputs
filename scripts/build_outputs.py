@@ -108,7 +108,7 @@ def git_history(path: Path) -> list[tuple[str, str, str]]:
             check=True, capture_output=True, text=True,
         ).stdout.strip() or "HEAD"
         out = subprocess.run(
-            ["git", "log", revision, "--follow",
+            ["git", "log", "--max-count=1", revision, "--follow",
              "--format=%h%x09%aI%x09%s", "--", str(path)],
             check=True, capture_output=True, text=True,
         ).stdout
@@ -191,7 +191,7 @@ def pipeline_date(path: Path) -> date:
             check=True, capture_output=True, text=True,
         ).stdout.strip() or "HEAD"
         out = subprocess.run(
-            ["git", "log", revision, "--follow", "--format=%aI", "-1", "--", str(path)],
+            ["git", "log", "--max-count=1", revision, "--follow", "--format=%aI", "-1", "--", str(path)],
             check=True, capture_output=True, text=True,
         ).stdout.strip()
         if out:
