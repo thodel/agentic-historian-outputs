@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-30",
+  "generator": "scripts/reconcile_entities.py",
+  "candidates": {
+    "PLACE:thun": {
+      "qid": "Q68978",
+      "label": "Thun",
+      "description": "Stadt und politische Gemeinde im Kanton Bern, Schweiz",
+      "query": "Thun",
+      "status": "unverified-automatic-suggestion"
+    }
+  }
+}

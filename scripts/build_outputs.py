@@ -9,6 +9,7 @@ import html
 import io
 import json
 import re
+import shutil
 import subprocess
 import unicodedata
 from collections import defaultdict
@@ -35,6 +36,8 @@ from xml.sax.saxutils import escape as xml_escape
 DOCS = Path("docs")
 SITE = "https://thodel.github.io/agentic-historian-outputs"
 REPO = "https://github.com/thodel/agentic-historian-outputs"
+RECONCILIATION_DATA = Path("data/entity-reconciliation.json")
+RECONCILIATION_REVIEW = Path("data/entity-reconciliation-review.json")
 
 # Issue #126 — document slug policy.
 #
@@ -224,6 +227,57 @@ def entity_noise_score(item: dict[str, str], occurrence_count: int = 1) -> tuple
 
 def entity_is_uncertain(item: dict[str, str], occurrence_count: int = 1) -> bool:
     return entity_noise_score(item, occurrence_count)[0] >= 2
+
+
+def folded_entity_label(label: str) -> str:
+    """Canonical build key for case, diacritic, umlaut, and long-s variants."""
+    decomposed = unicodedata.normalize("NFKD", label).casefold()
+    ascii_like = "".join(
+        char for char in decomposed if not unicodedata.combining(char)
+    ).replace("ſ", "s")
+    return " ".join(ascii_like.split())
+
+
+def entity_key(kind: str, label: str) -> tuple[str, str]:
+    return kind, folded_entity_label(label)
+
+
+def entity_display_label(occurrences: list[dict[str, str]]) -> str:
+    """Choose a stable display form while retaining every observed surface."""
+    counts: dict[str, int] = defaultdict(int)
+    for item in occurrences:
+        counts[item["label"]] += 1
+    return min(
+        counts,
+        key=lambda label: (
+            -counts[label],
+            0 if label[:1].isupper() else 1,
+            label.casefold(),
+            label,
+        ),
+    )
+
+
+def load_reconciliation() -> tuple[dict, set[str]]:
+    """Load committed candidates and suppressions without network access."""
+    try:
+        payload = json.loads(RECONCILIATION_DATA.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        payload = {}
+    try:
+        review = json.loads(RECONCILIATION_REVIEW.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        review = {}
+    candidates = payload.get("candidates", {}) if isinstance(payload, dict) else {}
+    suppressed = review.get("suppress", []) if isinstance(review, dict) else []
+    return (
+        candidates if isinstance(candidates, dict) else {},
+        {str(key) for key in suppressed if isinstance(key, str)},
+    )
+
+
+def reconciliation_key(kind: str, label: str) -> str:
+    return f"{kind}:{folded_entity_label(label)}"
 
 
 def slug(label: str, kind: str) -> str:
@@ -674,7 +728,7 @@ def build_document(path: Path, entity_index: dict, collect_entities: bool = True
 
     if collect_entities:
         for item in items:
-            key = (item["type"], item["label"])
+            key = entity_key(item["type"], item["label"])
             entity_index[key].append({"doc_id": doc_id, **item})
 
     doc_date = pipeline_date(path)
@@ -717,9 +771,16 @@ license: "CC-BY-4.0"
     entity_html = []
     for kind in sorted(grouped):
         links = []
+        seen_keys = set()
         for item in grouped[kind]:
-            target = slug(item["label"], kind)
-            occurrences = len(entity_index.get((kind, item["label"]), ())) or 1
+            canonical_key = entity_key(kind, item["label"])
+            if canonical_key in seen_keys:
+                continue
+            seen_keys.add(canonical_key)
+            grouped_occurrences = entity_index.get(canonical_key, ())
+            display_label = entity_display_label(grouped_occurrences) if grouped_occurrences else item["label"]
+            target = slug(display_label, kind)
+            occurrences = len(grouped_occurrences) or 1
             score, reasons = entity_noise_score(item, occurrences)
             flag = (
                 f' <span class="entity-noise-flag" title="{html.escape("; ".join(reasons), quote=True)}">'
@@ -951,8 +1012,18 @@ def build_entity_pages(index: dict) -> None:
     root.mkdir(exist_ok=True)
     credible_summary = []
     uncertain_summary = []
-    for (kind, label), occurrences in sorted(index.items(), key=lambda x: (x[0][0], x[0][1].casefold())):
+    obsolete_variant_targets = set()
+    reconciliation, suppressed = load_reconciliation()
+    for (kind, _folded_label), occurrences in sorted(
+        index.items(), key=lambda x: (x[0][0], x[0][1])
+    ):
+        label = entity_display_label(occurrences)
         target = slug(label, kind)
+        obsolete_variant_targets.update(
+            slug(item["label"], kind)
+            for item in occurrences
+            if slug(item["label"], kind) != target
+        )
         directory = root / target
         directory.mkdir(exist_ok=True)
         rows = "".join(
@@ -960,18 +1031,63 @@ def build_entity_pages(index: dict) -> None:
             for item in occurrences
         )
         external = next((item["uri"] for item in occurrences if valid_public_url(item["uri"])), "")
-        external_html = f'<p>Normdatensatz: <a href="{html.escape(external, quote=True)}">{html.escape(external)}</a></p>' if external else '<p class="notice notice--warning">Nicht mit einem externen Normdatensatz verknüpft.</p>'
         score, reasons = entity_noise_score(occurrences[0], len(occurrences))
+        candidate_key = reconciliation_key(kind, label)
+        candidate = reconciliation.get(candidate_key)
+        if candidate_key in suppressed or not isinstance(candidate, dict) or score >= 2:
+            candidate = None
+        if external:
+            external_html = f'<p>Normdatensatz: <a href="{html.escape(external, quote=True)}">{html.escape(external)}</a></p>'
+        elif candidate:
+            qid = str(candidate.get("qid", ""))
+            gnd = str(candidate.get("gnd", ""))
+            links = []
+            if re.fullmatch(r"Q[1-9][0-9]*", qid):
+                links.append(
+                    f'<a href="https://www.wikidata.org/entity/{qid}">Wikidata {qid}</a>'
+                )
+            if re.fullmatch(r"[0-9Xx-]+", gnd):
+                links.append(
+                    f'<a href="https://d-nb.info/gnd/{html.escape(gnd, quote=True)}">GND {html.escape(gnd)}</a>'
+                )
+            description = html.escape(str(candidate.get("description", "")))
+            external_html = (
+                '<div class="notice notice--warning normdata-candidate">'
+                '<strong>Unverifiziert — automatisch vorgeschlagen.</strong> '
+                + " · ".join(links)
+                + (f"<br>{description}" if description else "")
+                + "</div>"
+            ) if links else '<p class="notice notice--warning">Nicht mit einem externen Normdatensatz verknüpft.</p>'
+        else:
+            external_html = '<p class="notice notice--warning">Nicht mit einem externen Normdatensatz verknüpft.</p>'
         triage = (
             f'<div class="notice notice--warning entity-noise-notice"><strong>Unsichere Erkennung.</strong> '
             f'Heuristischer Score {score}: {html.escape(", ".join(reasons))}. '
             'Dieser Eintrag bleibt zur Nachvollziehbarkeit vollständig erhalten.</div>'
             if score >= 2 else ""
         )
-        page = frontmatter(label) + f'''<nav class="breadcrumbs"><a href="../">Entitäten</a> / {html.escape(label)}</nav><h1>{html.escape(label)}</h1><p><span class="entity-type">{html.escape(kind)}</span> · {len(occurrences)} Vorkommen</p>{triage}{external_html}<div class="table-scroll"><table><thead><tr><th>Ausgabe</th><th>Form</th><th>Kontext</th><th>Konfidenz</th></tr></thead><tbody>{rows}</tbody></table></div>'''
+        variants = sorted(
+            {
+                form
+                for item in occurrences
+                for form in (item["label"], item["surface"])
+                if form
+            },
+            key=lambda form: (form.casefold(), form),
+        )
+        variants_html = (
+            '<p><strong>Belegte Schreibvarianten:</strong> '
+            + ", ".join(f"<code>{html.escape(form)}</code>" for form in variants)
+            + "</p>"
+        )
+        page = frontmatter(label) + f'''<nav class="breadcrumbs"><a href="../">Entitäten</a> / {html.escape(label)}</nav><h1>{html.escape(label)}</h1><p><span class="entity-type">{html.escape(kind)}</span> · {len(occurrences)} Vorkommen</p>{variants_html}{triage}{external_html}<div class="table-scroll"><table><thead><tr><th>Ausgabe</th><th>Form</th><th>Kontext</th><th>Konfidenz</th></tr></thead><tbody>{rows}</tbody></table></div>'''
         (directory / "index.md").write_text(page, encoding="utf-8")
         row = f'<tr><td><a href="{target}/">{html.escape(label)}</a></td><td>{html.escape(kind)}</td><td>{len(occurrences)}</td></tr>'
         (uncertain_summary if score >= 2 else credible_summary).append(row)
+    for obsolete_target in obsolete_variant_targets:
+        directory = root / obsolete_target
+        if directory.is_dir() and (directory / "index.md").exists():
+            shutil.rmtree(directory)
     table_head = '<div class="table-scroll"><table><thead><tr><th>Entität</th><th>Typ</th><th>Vorkommen</th></tr></thead><tbody>'
     page = frontmatter("Entitäten") + f'''<nav class="breadcrumbs"><a href="../">Alle Ausgaben</a> / Entitäten</nav><h1>Entitäten</h1><p>Automatisch erkannte Personen, Orte, Organisationen und weitere Entitätstypen. Die heuristische Einteilung löscht keine Daten und ist keine wissenschaftliche Verifikation.</p><h2>Glaubwürdige Erkennungen</h2>{table_head}{''.join(credible_summary)}</tbody></table></div><details class="entity-noise-group"><summary>Unsichere Erkennungen ({len(uncertain_summary)})</summary><p>Diese Einträge weisen formale OCR-Risikomerkmale auf und werden zur Prüfung sichtbar aufbewahrt.</p>{table_head}{''.join(uncertain_summary)}</tbody></table></div></details>'''
     (root / "index.md").write_text(page, encoding="utf-8")
@@ -1006,7 +1122,7 @@ def build() -> None:
         except (OSError, json.JSONDecodeError):
             data = {}
         for item in entities(data):
-            entity_index[(item["type"], item["label"])].append(
+            entity_index[entity_key(item["type"], item["label"])].append(
                 {"doc_id": path.parent.name, **item}
             )
     for path in doc_paths:
