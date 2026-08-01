@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt><title>Machine transcription: epic2-test-doc</title></titleStmt>
+      <publicationStmt><p>Agentic Historian output. License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).</p></publicationStmt>
+      <sourceDesc><p>Source image not published</p></sourceDesc>
+    </fileDesc>
+    <revisionDesc><change when="2026-08-01">Generated from pipeline.json.</change></revisionDesc>
+  </teiHeader>
+  <text><body><div type="transcription"><p>--- page_1.jpg ---
+page page_1.jpg
+
+--- page_2.jpg ---
+page page_2.jpg</p></div></body></text>
+</TEI>
