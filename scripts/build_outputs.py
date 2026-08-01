@@ -126,16 +126,16 @@ def _superseding_run(
 
 def git_history(path: Path) -> list[tuple[str, str, str]]:
     try:
-        # Generated pages must not embed the current PR commit: doing so makes
-        # every rebuild one SHA behind its own commit.  Review builds therefore
-        # use the merge base with main; after merge that base is HEAD and the
-        # published history naturally advances when pipeline.json changes.
-        revision = subprocess.run(
-            ["git", "merge-base", "HEAD", "origin/main"],
+        # Generated pages must not embed the current commit: doing so makes
+        # the page dirty itself on the next rebuild (the new commit would
+        # appear in the history, changing the page).  Use the parent of HEAD
+        # so the history is stable under its own commit.
+        head = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
             check=True, capture_output=True, text=True,
-        ).stdout.strip() or "HEAD"
+        ).stdout.strip()
         out = subprocess.run(
-            ["git", "log", "--max-count=1", revision, "--follow",
+            ["git", "log", "--max-count=20", f"{head}^", "--follow",
              "--format=%h%x09%aI%x09%s", "--", str(path)],
             check=True, capture_output=True, text=True,
         ).stdout
