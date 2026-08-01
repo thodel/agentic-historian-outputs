@@ -59,8 +59,8 @@ title: "saa-0006-test"
 </details>
 
 <details class="page-section-disclosure" data-disclosure="history">
-<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">1 Commits</span></summary>
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/7a1fb5f"><code>7a1fb5f</code></a> · <time datetime="2026-07-08T12:44:46+02:00">2026-07-08</time> · Publish saa-0006-test</li></ol></section>
+<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">6 Commits</span></summary>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/7a1fb5f"><code>7a1fb5f</code></a> · <time datetime="2026-07-08T12:44:46+02:00">2026-07-08</time> · Publish saa-0006-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/9671eb8"><code>9671eb8</code></a> · <time datetime="2026-07-08T09:05:39+02:00">2026-07-08</time> · Publish saa-0006-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/313e7bd"><code>313e7bd</code></a> · <time datetime="2026-07-08T09:04:23+02:00">2026-07-08</time> · Publish saa-0006-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/e271582"><code>e271582</code></a> · <time datetime="2026-07-08T09:03:36+02:00">2026-07-08</time> · Publish saa-0006-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/fb4d459"><code>fb4d459</code></a> · <time datetime="2026-07-08T09:03:26+02:00">2026-07-08</time> · Publish saa-0002-test</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/506cc85"><code>506cc85</code></a> · <time datetime="2026-07-08T09:03:23+02:00">2026-07-08</time> · Publish saa-0001-test</li></ol></section>
 </details>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
@@ -82,7 +82,7 @@ title: "saa-0006-test"
     "name": "Agentic Historian"
   },
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "dateCreated": "2026-07-08T12:44:46+02:00",
+  "dateCreated": "2026-07-08T09:03:23+02:00",
   "dateModified": "2026-07-08T12:44:46+02:00",
   "distribution": [
     {

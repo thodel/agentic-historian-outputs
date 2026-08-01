@@ -1282,8 +1282,8 @@ OEIE</code></pre>
 </details>
 
 <details class="page-section-disclosure" data-disclosure="history">
-<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">1 Commits</span></summary>
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/1b42469"><code>1b42469</code></a> · <time datetime="2026-07-25T21:53:21+02:00">2026-07-25</time> · fix: rename document id &#x27;könige&#x27; to &#x27;koenige&#x27; to unblock main (#165)</li></ol></section>
+<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">2 Commits</span></summary>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/1b42469"><code>1b42469</code></a> · <time datetime="2026-07-25T21:53:21+02:00">2026-07-25</time> · fix: rename document id &#x27;könige&#x27; to &#x27;koenige&#x27; to unblock main (#165)</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/2b8f840"><code>2b8f840</code></a> · <time datetime="2026-07-18T22:58:42+02:00">2026-07-18</time> · Publish könige</li></ol></section>
 </details>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
@@ -1305,7 +1305,7 @@ OEIE</code></pre>
     "name": "Agentic Historian"
   },
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "dateCreated": "2026-07-25T21:53:21+02:00",
+  "dateCreated": "2026-07-18T22:58:42+02:00",
   "dateModified": "2026-07-25T21:53:21+02:00",
   "distribution": [
     {

@@ -2,6 +2,7 @@ name: Test generators
 
 on:
   pull_request:
+  workflow_dispatch:
   push:
     branches: [main]
   # Lets the suite be re-run against the current tip on demand (issue #200).
