@@ -154,6 +154,17 @@ def provenance_revision() -> str:
         ["git", "rev-parse", "--verify", "--quiet", f"{head}^"],
         capture_output=True, text=True,
     ).stdout.strip()
+    subject = subprocess.run(
+        ["git", "show", "-s", "--format=%s", head],
+        capture_output=True, text=True,
+    ).stdout.strip()
+    if subject == "build: refresh catalogue index" and parent:
+        grandparent = subprocess.run(
+            ["git", "rev-parse", "--verify", "--quiet", f"{parent}^"],
+            capture_output=True, text=True,
+        ).stdout.strip()
+        if grandparent:
+            return grandparent
     # A repository with a single commit has no parent.  Nothing can have been
     # superseded yet, so reading at HEAD is both safe and correct there.
     return parent or head or "HEAD"
