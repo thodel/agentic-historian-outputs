@@ -1,0 +1,44 @@
+{
+  "saa-0001-test": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-08-01",
+    "reason": "Engineering fixture published unintentionally; not a research output.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/196",
+    "replacement": null
+  },
+  "saa-0002-test": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-08-01",
+    "reason": "Engineering fixture published unintentionally; not a research output.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/196",
+    "replacement": null
+  },
+  "saa-0003-test": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-08-01",
+    "reason": "Engineering fixture published unintentionally; not a research output.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/196",
+    "replacement": null
+  },
+  "saa-0004-test": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-08-01",
+    "reason": "Engineering fixture published unintentionally; not a research output.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/196",
+    "replacement": null
+  },
+  "saa-0005-test": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-08-01",
+    "reason": "Engineering fixture published unintentionally; not a research output.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/196",
+    "replacement": null
+  },
+  "saa-0006-test": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-08-01",
+    "reason": "Engineering fixture published unintentionally; not a research output.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/196",
+    "replacement": null
+  }
+}

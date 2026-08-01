@@ -17,6 +17,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from build_recognitions import build_recognition_section, write_package
 from source_references import normalize_source_reference, public_url
+from withdrawals import build_tombstones, load_withdrawals
 
 # Epic 3 quality vocabulary (issue #21 status header)
 try:
@@ -1152,6 +1153,8 @@ def build() -> None:
     page_disclosure_source = Path(__file__).with_name("page_disclosure.js")
     (DOCS / "assets" / "page-disclosure.js").write_text(
         page_disclosure_source.read_text(encoding="utf-8"), encoding="utf-8")
+    withdrawals = load_withdrawals()
+    build_tombstones(DOCS, withdrawals)
     entity_index = defaultdict(list)
     tests = []
     doc_paths = sorted(DOCS.glob("*/pipeline.json"))
