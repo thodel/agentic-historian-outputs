@@ -4,6 +4,11 @@ on:
   pull_request:
   push:
     branches: [main]
+  # Lets the suite be re-run against the current tip on demand (issue #200).
+  # Pushes made with GITHUB_TOKEN never trigger workflows, so the catalogue
+  # index job cannot validate its own commit by pushing — it dispatches this
+  # workflow instead (issue #199).
+  workflow_dispatch:
 
 permissions:
   contents: read
