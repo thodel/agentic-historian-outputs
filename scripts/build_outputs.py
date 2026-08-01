@@ -124,18 +124,45 @@ def _superseding_run(
     return newer_id, newer_date
 
 
-def git_history(path: Path) -> list[tuple[str, str, str]]:
+def provenance_revision() -> str:
+    """Return the revision that git-derived page content must be read from.
+
+    Generated pages record facts about the commits that touched a document —
+    its version history and its dates.  Reading those at HEAD makes a page
+    describe the very commit that creates it, which cannot be committed
+    correctly: the page is stale the moment it lands, and ``git diff
+    --exit-code`` then fails on every push that touches a document (#198).
+
+    Reading one commit back keeps the answer identical before and after the
+    publishing commit, so generated output stays a pure function of the
+    committed tree.
+
+    Do not restore ``git merge-base HEAD origin/main`` here.  On a push to
+    main that merge base *is* HEAD, which is precisely the broken case, and a
+    pull_request build cannot reveal it because there the merge base is
+    already the PR's base commit — which is why this bug survived several
+    green PR checks.
+    """
     try:
-        # Generated pages must not embed the current commit: doing so makes
-        # the page dirty itself on the next rebuild (the new commit would
-        # appear in the history, changing the page).  Use the parent of HEAD
-        # so the history is stable under its own commit.
         head = subprocess.run(
             ["git", "rev-parse", "HEAD"],
             check=True, capture_output=True, text=True,
         ).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return "HEAD"
+    parent = subprocess.run(
+        ["git", "rev-parse", "--verify", "--quiet", f"{head}^"],
+        capture_output=True, text=True,
+    ).stdout.strip()
+    # A repository with a single commit has no parent.  Nothing can have been
+    # superseded yet, so reading at HEAD is both safe and correct there.
+    return parent or head or "HEAD"
+
+
+def git_history(path: Path) -> list[tuple[str, str, str]]:
+    try:
         out = subprocess.run(
-            ["git", "log", "--max-count=20", f"{head}^", "--follow",
+            ["git", "log", "--max-count=20", provenance_revision(), "--follow",
              "--format=%h%x09%aI%x09%s", "--", str(path)],
             check=True, capture_output=True, text=True,
         ).stdout
@@ -307,14 +334,16 @@ def pipeline_date(path: Path) -> date:
 
     Falls back to the file's mtime if git is unavailable, ensuring the date
     never changes unless the underlying pipeline.json actually changes.
+
+    Read at :func:`provenance_revision`, not at HEAD: this date reaches
+    ``date-released`` in CITATION.cff and ``<change when=>`` in the TEI, so
+    resolving it at the publishing commit would dirty those files on every
+    document push (#198).
     """
     try:
-        revision = subprocess.run(
-            ["git", "merge-base", "HEAD", "origin/main"],
-            check=True, capture_output=True, text=True,
-        ).stdout.strip() or "HEAD"
         out = subprocess.run(
-            ["git", "log", "--max-count=1", revision, "--follow", "--format=%aI", "-1", "--", str(path)],
+            ["git", "log", "--max-count=1", provenance_revision(), "--follow",
+             "--format=%aI", "-1", "--", str(path)],
             check=True, capture_output=True, text=True,
         ).stdout.strip()
         if out:

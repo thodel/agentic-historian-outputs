@@ -40,13 +40,15 @@ class TestPipelineDateDerivation(unittest.TestCase):
 
     def test_pipeline_date_returns_date_object(self):
         """pipeline_date() must return a datetime.date instance."""
-        with patch("build_outputs.subprocess.run") as mock_run:
-            # Simulate git returning 2024-03-15T10:00:00+00:00
-            mb = MagicMock()
-            mb.stdout = "abc1234"
+        # Patch the revision resolution rather than the raw subprocess calls:
+        # which git commands establish the revision is an implementation
+        # detail, and pinning it here made these tests fail when the two
+        # rev-parse calls of provenance_revision() were introduced for #198.
+        with patch("build_outputs.provenance_revision", return_value="abc1234"), \
+                patch("build_outputs.subprocess.run") as mock_run:
             log = MagicMock()
             log.stdout = "2024-03-15T10:00:00+00:00"
-            mock_run.side_effect = [mb, log]
+            mock_run.return_value = log
             result = build_outputs.pipeline_date(Path("/fake/pipeline.json"))
         self.assertEqual(result, date(2024, 3, 15))
         self.assertIsInstance(result, date)
@@ -55,12 +57,11 @@ class TestPipelineDateDerivation(unittest.TestCase):
         """Returned date must equal git date, not today."""
         today = date.today()
         fixed_past = "2023-01-01T00:00:00+00:00"
-        with patch("build_outputs.subprocess.run") as mock_run:
-            mb = MagicMock()
-            mb.stdout = "abc1234"
+        with patch("build_outputs.provenance_revision", return_value="abc1234"), \
+                patch("build_outputs.subprocess.run") as mock_run:
             log = MagicMock()
             log.stdout = fixed_past
-            mock_run.side_effect = [mb, log]
+            mock_run.return_value = log
             result = build_outputs.pipeline_date(Path("/fake/pipeline.json"))
         self.assertEqual(result.year, 2023)
         if today.year >= 2023:
