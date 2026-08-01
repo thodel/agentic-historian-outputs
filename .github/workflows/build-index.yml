@@ -12,6 +12,8 @@ on:
 
 permissions:
   contents: write
+  # Needed to dispatch "Test generators" against the refreshed tip (issue #199).
+  actions: write
 
 jobs:
   build-index:
@@ -28,9 +30,25 @@ jobs:
           python-version: "3.12"
       - run: python scripts/build_index.py
       - name: Commit refreshed index
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs
-          git diff --cached --quiet || git commit -m "build: refresh catalogue index [skip ci]"
-          git push
+          if git diff --cached --quiet; then
+            echo "refreshed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "build: refresh catalogue index"
+            git push
+            echo "refreshed=true" >> "$GITHUB_OUTPUT"
+          fi
+      # A push authenticated with GITHUB_TOKEN never triggers a workflow, so the
+      # commit above used to leave main's last recorded status as whatever the
+      # publishing push failed with — main displayed red for seven days in July
+      # 2026 while its tip was actually green. Dispatch the suite explicitly so
+      # the final commit carries a real verdict (issue #199).
+      - name: Validate the refreshed tip
+        if: steps.commit.outputs.refreshed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run test.yml --ref main
