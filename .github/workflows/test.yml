@@ -2,13 +2,17 @@ name: Test generators
 
 on:
   pull_request:
-  workflow_dispatch:
   push:
     branches: [main]
   # Lets the suite be re-run against the current tip on demand (issue #200).
   # Pushes made with GITHUB_TOKEN never trigger workflows, so the catalogue
   # index job cannot validate its own commit by pushing — it dispatches this
   # workflow instead (issue #199).
+  #
+  # Keep exactly one workflow_dispatch key here: GitHub rejects a workflow with
+  # duplicate keys and the run fails at startup in 0s, before any job appears.
+  # A duplicate reached main once, when two branches each added the trigger at
+  # a different position and git merged both without a conflict.
   workflow_dispatch:
 
 permissions:
