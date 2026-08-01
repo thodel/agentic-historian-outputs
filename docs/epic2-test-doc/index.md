@@ -123,8 +123,8 @@ page page_2.jpg</code></pre>
 </details>
 
 <details class="page-section-disclosure" data-disclosure="history">
-<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">Keine Git-Historie</span></summary>
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li>Noch keine Git-Historie verfügbar.</li></ol></section>
+<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">1 Commits</span></summary>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/d20ddc9"><code>d20ddc9</code></a> · <time datetime="2026-08-01T22:09:36+02:00">2026-08-01</time> · test(#201): publish document through full output path (#205)</li></ol></section>
 </details>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
@@ -146,8 +146,8 @@ page page_2.jpg</code></pre>
     "name": "Agentic Historian"
   },
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "dateCreated": "2026-08-01",
-  "dateModified": "2026-08-01",
+  "dateCreated": "2026-08-01T22:09:36+02:00",
+  "dateModified": "2026-08-01T22:09:36+02:00",
   "distribution": [
     {
       "@type": "DataDownload",

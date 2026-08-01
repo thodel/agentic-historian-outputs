@@ -104,6 +104,20 @@ class ProvenanceRevisionTests(unittest.TestCase):
             "generated pages will dirty themselves on the next build (#198)",
         )
 
+    def test_first_publication_stays_history_free_after_refresh_commit(self):
+        """A new document must not learn its own hash one commit later (#201)."""
+        self._commit("unrelated site baseline", "x = 1\n", name="tool.py")
+        self._commit("publish new document", '{"doc_id": "new"}')
+        at_publish = self._history_of("pipeline.json")
+        self._commit("build: refresh catalogue index", "generated\n", name="index.md")
+        after_refresh = self._history_of("pipeline.json")
+        self.assertEqual([], at_publish)
+        self.assertEqual(
+            at_publish, after_refresh,
+            "the refresh commit made a new page embed its own publishing "
+            "commit; the final main build will be dirty (#201)",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
