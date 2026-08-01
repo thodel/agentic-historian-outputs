@@ -1,4 +1,11 @@
 {
+  "epic2-test-doc": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-08-01",
+    "reason": "End-to-end publishing verification fixture; not a research output.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/197",
+    "replacement": null
+  },
   "saa-0001-test": {
     "status": "withdrawn",
     "withdrawal_date": "2026-08-01",

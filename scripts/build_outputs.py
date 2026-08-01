@@ -17,7 +17,9 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from build_recognitions import build_recognition_section, write_package
 from source_references import normalize_source_reference, public_url
-from withdrawals import build_tombstones, load_withdrawals
+from withdrawals import (
+    build_tombstones, load_withdrawals, remove_withdrawn_entity_pages,
+)
 
 # Epic 3 quality vocabulary (issue #21 status header)
 try:
@@ -67,6 +69,23 @@ def slug_violation(doc_id: str) -> str:
     if doc_id and (doc_id[0] in "._-" or doc_id[-1] in "._-"):
         return "must start and end with a letter or digit (no leading/trailing '.', '_' or '-')"
     return "may only contain letters, digits, '.', '_' and '-'"
+
+
+def is_test_id(doc_id: str) -> bool:
+    """Return whether an id contains a delimited ``test`` component."""
+    return bool(re.search(r"(^|[._-])test([._-]|$)", doc_id.casefold()))
+
+
+def validate_no_test_ids(doc_ids: "list[str]") -> None:
+    """Prevent engineering fixtures from entering the published docs tree."""
+    offenders = sorted(doc_id for doc_id in doc_ids if is_test_id(doc_id))
+    if offenders:
+        raise SystemExit(
+            "Test document id(s) cannot be published under docs/:\n  - "
+            + "\n  - ".join(offenders)
+            + "\nKeep fixtures under tests/, or create a documented withdrawal "
+            "record if an id was already published."
+        )
 
 
 def validate_slugs(doc_ids: "list[str]") -> None:
@@ -1158,6 +1177,7 @@ def build() -> None:
     entity_index = defaultdict(list)
     tests = []
     doc_paths = sorted(DOCS.glob("*/pipeline.json"))
+    validate_no_test_ids([path.parent.name for path in doc_paths])
     validate_slugs([path.parent.name for path in doc_paths])
     for path in doc_paths:
         try:
@@ -1172,6 +1192,7 @@ def build() -> None:
         if build_document(path, entity_index, collect_entities=False):
             tests.append(path.parent.name)
     build_entity_pages(entity_index)
+    remove_withdrawn_entity_pages(DOCS / "entities", set(withdrawals))
     test_root = DOCS / "tests"
     test_root.mkdir(exist_ok=True)
     links = "".join(f'<li><a href="../{html.escape(doc_id)}/">{html.escape(doc_id)}</a></li>' for doc_id in tests)

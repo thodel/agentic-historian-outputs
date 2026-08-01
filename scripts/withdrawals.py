@@ -80,3 +80,16 @@ def build_tombstones(docs: Path, withdrawals: dict[str, dict]) -> None:
         (directory / "index.md").write_text(
             tombstone_page(doc_id, record), encoding="utf-8"
         )
+
+
+def remove_withdrawn_entity_pages(root: Path, withdrawn_ids: set[str]) -> None:
+    """Remove orphan entity pages whose only source was a withdrawn output."""
+    if not root.exists():
+        return
+    for directory in root.iterdir():
+        page = directory / "index.md"
+        if not directory.is_dir() or not page.exists():
+            continue
+        content = page.read_text(encoding="utf-8")
+        if any(f'../../{doc_id}/' in content for doc_id in withdrawn_ids):
+            shutil.rmtree(directory)

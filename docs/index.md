@@ -20,7 +20,7 @@ title: Katalog
     </dl>
   </details>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
-  <p class="catalogue-summary" id="catalogue-count"><strong>7</strong> Ausgaben · <span class="superseded-count">2 ersetzt</span> · 1 Testläufe</p>
+  <p class="catalogue-summary" id="catalogue-count"><strong>7</strong> Ausgaben · <span class="superseded-count">2 ersetzt</span> · 0 Testläufe</p>
 </div>
 
 <form class="catalogue-tools" role="search" aria-label="Ausgaben durchsuchen" onsubmit="return false">
@@ -125,28 +125,10 @@ title: Katalog
 </form>
 
 <p id="catalogue-active-filters" class="catalogue-active-filters">Keine Filter aktiv.</p>
-<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">10 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
+<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">9 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
 <p id="catalogue-empty" class="catalogue-empty" role="status" hidden>Keine Einträge entsprechen den aktiven Filtern. Ändern Sie die Filter oder setzen Sie sie zurück.</p>
 
 <div id="catalogue-list" class="catalogue-list" data-enhanced="false">
-<article class="catalogue-card" data-document-id="epic2-test-doc" data-created="2026-08-01T22:09:36+02:00" data-kind="test" data-language="de" data-script="kurrent" data-search="epic2-test-doc 15. jahrhundert de kurrent test page_1.jpg page page_1.jpg page_2.jpg page page_2.jpg" data-superseded="false" data-recognition-provenance="current" data-recognition-total="1" data-recognition-successful="1" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken" data-recognition-models="1" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="PERSON" data-completeness="teilweise">
-  <div class="catalogue-card__heading">
-    <div>
-      <p class="catalogue-created">Erstellt <time datetime="2026-08-01T22:09:36+02:00">01.08.2026, 22:09</time></p>
-      <h2><a href="epic2-test-doc/">epic2-test-doc</a></h2>
-    </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-confidence">Ø Konfidenz 90%</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 90%</span></div>
-  </div>
-  <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Dokumenttyp</dt><dd>Test</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Entitäten</dt><dd>1</dd></div><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Kandidaten</dt><dd>1 erfolgreich / 1 insgesamt</dd></div></dl>
-  <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
-    <p class="catalogue-provenance__label">Engines</p>
-    <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li></ul>
-    <p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
-  </div>
-  <p class="catalogue-preview">page_1.jpg page page_1.jpg page_2.jpg page page_2.jpg…</p>
-  <p class="catalogue-actions"><a href="epic2-test-doc/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: epic2-test-doc">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>
-  
-</article>
 <article class="catalogue-card" data-document-id="koenige" data-created="2026-07-18T22:58:42+02:00" data-kind="output" data-language="mittelhochdeutsch (oder frühneuhochdeutsch), dialekt: alemannisch oder ostschweizerisch" data-script="gothische kurrentschrift, braune tinte, schriftgrosse ca. 6 mm, abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, rasuren und korrekturen im text, keine farbige rubrizierung oder initialen" data-search="koenige 1518 mittelhochdeutsch (oder frühneuhochdeutsch), dialekt: alemannisch oder ostschweizerisch gothische kurrentschrift, braune tinte, schriftgroße ca. 6 mm, abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, rasuren und korrekturen im text, keine farbige rubrizierung oder initialen  u-17_0057_r.jpg pmioe prnpma mm sim petirv s t diaridhy orea e qoicenouie qu. re us h sparer stmir mmer ene igres d e sape z crios o tre e llm rso eeieng emis onsdsem i son li e" data-superseded="false" data-recognition-provenance="current" data-recognition-total="33" data-recognition-successful="24" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="9" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="3" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="CARE_ACTION,ORG,PERSON,PLACE,ROLE" data-completeness="teilweise">
   <div class="catalogue-card__heading">
     <div>
