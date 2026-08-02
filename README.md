@@ -106,8 +106,15 @@ must be stable and meaningful rather than collision-avoidance artifacts:
 The build (`scripts/build_outputs.py` → `validate_slugs`) fails with an actionable
 message if a document violates this. When a source is re-processed, relate the new
 run to its predecessor with a `supersedes` field (see the roadmap) instead of
-mangling the id. Two ids that predate the policy (`kf-`, `u-17__`) are grandfathered
-to keep existing links working.
+mangling the id. Legacy invalid ids may remain only as lineage predecessors of a
+valid canonical record, which keeps old links working without treating the malformed
+id as the current output.
+
+Published ids are not deleted or silently redirected. If an output must be withdrawn,
+its URL remains available as an explicit tombstone while the record is removed from
+catalogues and other discovery surfaces. The grounds, required metadata, and the
+distinction between withdrawal and supersession are defined in the
+[withdrawal policy](docs/withdrawal-policy.md).
 
 Published ids are not deleted or silently redirected. If an output must be withdrawn,
 its URL remains available as an explicit tombstone while the record is removed from
