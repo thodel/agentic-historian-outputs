@@ -17,6 +17,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from build_recognitions import build_recognition_section, write_package
 from source_references import normalize_source_reference, public_url
+from editorial_reviews import apply_review, load_reviews
 from withdrawals import (
     build_tombstones, load_withdrawals, remove_withdrawn_entity_pages,
 )
@@ -769,12 +770,14 @@ def build_status_header(
         '</header>'
     )
 
-def build_document(path: Path, entity_index: dict, collect_entities: bool = True) -> bool:
+def build_document(path: Path, entity_index: dict, collect_entities: bool = True,
+                   reviews: dict[str, dict] | None = None) -> bool:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         data = {}
     doc_id = path.parent.name
+    data, editorial_review = apply_review(data, doc_id, reviews)
     description = data.get("description") if isinstance(data.get("description"), dict) else {}
     fields = description.get("source_json") if isinstance(description.get("source_json"), dict) else {}
     meta = data.get("a_meta") if isinstance(data.get("a_meta"), dict) else {}
@@ -796,13 +799,17 @@ def build_document(path: Path, entity_index: dict, collect_entities: bool = True
               doc_date=doc_date)
 
     canonical = f"{SITE}/{doc_id}/"
+    reviewer_cff = ""
+    if editorial_review:
+        safe_reviewer = value(editorial_review.get("reviewer")).replace('"', '\\"')
+        reviewer_cff = f'  - name: "{safe_reviewer}"\n    contribution: "Editorial review"\n'
     citation = f'''cff-version: 1.2.0
 message: "If you use this output, cite it using these metadata."
 title: "Agentic Historian output: {doc_id}"
 type: dataset
 authors:
   - name: "Agentic Historian"
-repository-code: "{REPO}"
+{reviewer_cff}repository-code: "{REPO}"
 url: "{canonical}"
 date-released: "{doc_date.isoformat()}"
 license: "CC-BY-4.0"
@@ -888,6 +895,15 @@ license: "CC-BY-4.0"
         recognitions=data.get("recognitions", []) or [],
     )
     _nav = build_page_nav(has_recognitions=bool(data.get("recognitions")))
+    review_notice = ""
+    if editorial_review:
+        reviewer = html.escape(value(editorial_review.get("reviewer")))
+        reviewed_at = html.escape(value(editorial_review.get("reviewed_at")), quote=True)
+        review_notice = (
+            '<div class="notice notice--review" role="note"><strong>Redaktionell geprüft.</strong> '
+            f'{reviewer} · <time datetime="{reviewed_at}">{reviewed_at}</time>. '
+            'Die ursprüngliche maschinelle Lesung bleibt in <a href="pipeline.json">pipeline.json</a> erhalten.</div>\n'
+        )
 
     # --- Issue #23: progressive disclosure for secondary sections ---
     n_entities = len(items)
@@ -987,6 +1003,7 @@ license: "CC-BY-4.0"
         description_text=interpretive,
         created_iso=created_iso,
         modified_iso=modified_iso,
+        editorial_review=editorial_review,
     )
 
     # Issue #125: show the pointer on the older page, not on the newer run
@@ -1009,6 +1026,7 @@ license: "CC-BY-4.0"
           f'<a href="../">Alle Ausgaben</a>'
           f' <span aria-hidden="true">/</span> {html.escape(doc_id)}</nav>\n'
         + _header + '\n'
+        + review_notice
         + supersedes_banner
         + _nav + '\n\n'
         + evidence + '\n\n'
@@ -1032,7 +1050,7 @@ license: "CC-BY-4.0"
 
 def _jsonld_dataset(doc_id: str, canonical: str, source_url: str,
                     description_text: str, created_iso: str,
-                    modified_iso: str) -> str:
+                    modified_iso: str, editorial_review: dict | None = None) -> str:
     """Return a schema.org/Dataset JSON-LD script block for a document page."""
     CC_BY = "https://creativecommons.org/licenses/by/4.0/"
     distributions = [
@@ -1062,6 +1080,9 @@ def _jsonld_dataset(doc_id: str, canonical: str, source_url: str,
         ld["description"] = description_text[:500]
     if valid_public_url(source_url):
         ld["isBasedOn"] = source_url
+    if editorial_review:
+        ld["contributor"] = {"@type": "Person", "name": value(editorial_review.get("reviewer"))}
+        ld["dateModified"] = value(editorial_review.get("reviewed_at"))
     payload = json.dumps(ld, ensure_ascii=False, indent=2)
     return f'<script type="application/ld+json">{payload}</script>'
 
@@ -1176,6 +1197,7 @@ def build() -> None:
     entity_index = defaultdict(list)
     tests = []
     doc_paths = sorted(DOCS.glob("*/pipeline.json"))
+    reviews = load_reviews()
     pipeline_data = {}
     for path in doc_paths:
         try:
@@ -1204,7 +1226,7 @@ def build() -> None:
                 {"doc_id": path.parent.name, **item}
             )
     for path in doc_paths:
-        if build_document(path, entity_index, collect_entities=False):
+        if build_document(path, entity_index, collect_entities=False, reviews=reviews):
             tests.append(path.parent.name)
     build_entity_pages(entity_index)
     remove_withdrawn_entity_pages(DOCS / "entities", set(withdrawals))
