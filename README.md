@@ -123,6 +123,32 @@ public facsimile is linked.
 Do not guess a source URL during a backfill. Add a reference only when the
 repository, shelfmark, and page mapping can be verified against the holding
 institution.
+## Editorial review workflow
+
+Human review records live in `data/editorial-reviews.json`, not in generated
+document pages or `pipeline.json`. This preserves the original machine reading
+and makes review survive regeneration. A record names the reviewer and ISO
+review date, and may replace the published transcription:
+
+```json
+{
+  "version": 1,
+  "documents": {
+    "document-id": {
+      "status": "human-verified",
+      "reviewer": "Reviewer Name",
+      "reviewed_at": "2026-08-02",
+      "correction": {"transcription": "Corrected full transcription"}
+    }
+  }
+}
+```
+
+Use `in-review` while work is ongoing and `human-verified` only after the
+complete published reading has been checked. The build rejects unattributed,
+undated, or unknown review states. Reviewed pages display attribution and date;
+the catalogue and Atom feed expose the review state, while `pipeline.json`
+continues to provide the machine original.
 
 ## Document id policy
 

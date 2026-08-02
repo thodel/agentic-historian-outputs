@@ -20,6 +20,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
 from source_references import normalize_source_reference
+from editorial_reviews import apply_review, load_reviews
 
 # ---------------------------------------------------------------------------
 # Browser-script single source of truth (issue #117)
@@ -286,12 +287,13 @@ def recognition_summary(data: dict) -> RecognitionSummary:
     )
 
 
-def _record(path: Path) -> Record:
+def _record(path: Path, reviews: dict[str, dict] | None = None) -> Record:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         data = {}
 
+    data, _ = apply_review(data, path.parent.name, reviews)
     description = data.get("description") if isinstance(data.get("description"), dict) else {}
     source = description.get("source_json") if isinstance(description.get("source_json"), dict) else {}
     meta = data.get("a_meta") if isinstance(data.get("a_meta"), dict) else {}
@@ -605,6 +607,7 @@ def build_atom_feed(records: list) -> None:
             summary_parts.append(record.language)
         if record.preview:
             summary_parts.append(record.preview[:120])
+        summary_parts.append("Redaktionell geprüft" if record.review_status == "human-verified" else "Maschinell erzeugt")
         summary = xml_escape(" \u00b7 ".join(summary_parts) or "Agentic Historian dataset")
         entries_xml.append(
             f"  <entry>\n"
@@ -654,7 +657,8 @@ def _superseded_document_ids(records: list[Record]) -> set[str]:
 
 
 def build() -> int:
-    records = [_record(path) for path in DOCS.glob("*/pipeline.json")]
+    reviews = load_reviews()
+    records = [_record(path, reviews) for path in DOCS.glob("*/pipeline.json")]
     records.sort(key=lambda item: (item.created, item.doc_id.lower()), reverse=True)
 
     superseded_ids = _superseded_document_ids(records)
@@ -760,6 +764,15 @@ title: Katalog
       <option value="iiif_manifest">IIIF</option>
       <option value="image">Direktbild</option>
       <option value="landing_page">Archivseite</option>
+    </select>
+  </div>
+  <div>
+    <label for="catalogue-review">Redaktionsstatus</label>
+    <select id="catalogue-review">
+      <option value="all">Alle Redaktionsstände</option>
+      <option value="human-verified">Menschlich geprüft</option>
+      <option value="machine-generated">Maschinell erzeugt</option>
+      <option value="in-review">In Prüfung</option>
     </select>
   </div>
   <div>

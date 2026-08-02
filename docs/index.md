@@ -84,6 +84,15 @@ title: Katalog
     </select>
   </div>
   <div>
+    <label for="catalogue-review">Redaktionsstatus</label>
+    <select id="catalogue-review">
+      <option value="all">Alle Redaktionsstände</option>
+      <option value="human-verified">Menschlich geprüft</option>
+      <option value="machine-generated">Maschinell erzeugt</option>
+      <option value="in-review">In Prüfung</option>
+    </select>
+  </div>
+  <div>
     <label for="catalogue-entity-type">Entitätstyp</label>
     <select id="catalogue-entity-type">
       <option value="all">Alle Entitätstypen</option>

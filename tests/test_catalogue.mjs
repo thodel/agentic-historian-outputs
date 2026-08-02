@@ -14,7 +14,7 @@ const card = {
   comparisonReady: "true", sourceAvailable: "true", sourceType: "iiif_manifest",
 };
 const all = { q: "", kind: "all", language: "all", script: "all", engine: "all",
-  readiness: "all", failure: "all", source: "all", "entity-type": "all",
+  readiness: "all", failure: "all", source: "all", review: "all", "entity-type": "all",
   completeness: "all", sort: "created-desc", superseded: "hide" };
 
 test("provenance filters combine with AND semantics", () => {
@@ -113,6 +113,7 @@ test("history restoration reapplies filters, card visibility, and empty state", 
     readiness: makeControl("all", ["all", "comparison", "candidates", "legacy"]),
     failure: makeControl("all", ["all", "clean", "issues"]),
     source: makeControl("all", ["all", "available", "missing", "iiif_manifest", "image", "landing_page"]),
+    review: makeControl("all", ["all", "human-verified", "machine-generated", "in-review"]),
     "entity-type": makeControl("all", ["all"]),
     completeness: makeControl("all", ["all"]),
     superseded: makeControl("hide", ["hide", "show"]),
