@@ -93,6 +93,37 @@ budgets in [`docs/catalogue-performance.md`](docs/catalogue-performance.md).
 | `tests/` | Python (`unittest`) and Node (`node --test`) suites with fixtures |
 | `.github/workflows/` | Test gate and catalogue auto-rebuild |
 
+## Source-reference contract
+
+Every publishable `pipeline.json` should identify the source a recognition was
+made from. Use `source_url` for the public catalogue record or direct image,
+and `iiif_manifest` when a IIIF Presentation manifest is available. For
+multi-page inputs, add `source_pages` in recognition-page order:
+
+```json
+{
+  "source_url": "https://archive.example/item/42",
+  "source_pages": [
+    {
+      "page": "scan_001.jpg",
+      "canvas_url": "https://archive.example/item/42/canvas/1",
+      "image_url": "https://archive.example/item/42/full/1200,/0/default.jpg"
+    }
+  ]
+}
+```
+
+`page` must match the page identifier carried by recognition candidates.
+Public HTTP(S) URLs only are emitted; local paths, private hosts, credentials,
+and placeholders are rejected. A direct image or IIIF source is shown beside
+the transcription. A landing page remains a verifiable outbound reference.
+If neither exists, both the document and catalogue explicitly report that no
+public facsimile is linked.
+
+Do not guess a source URL during a backfill. Add a reference only when the
+repository, shelfmark, and page mapping can be verified against the holding
+institution.
+
 ## Document id policy
 
 Each document's folder name (`docs/<id>/`) becomes a permanent public URL, so ids
@@ -106,15 +137,8 @@ must be stable and meaningful rather than collision-avoidance artifacts:
 The build (`scripts/build_outputs.py` → `validate_slugs`) fails with an actionable
 message if a document violates this. When a source is re-processed, relate the new
 run to its predecessor with a `supersedes` field (see the roadmap) instead of
-mangling the id. Legacy invalid ids may remain only as lineage predecessors of a
-valid canonical record, which keeps old links working without treating the malformed
-id as the current output.
-
-Published ids are not deleted or silently redirected. If an output must be withdrawn,
-its URL remains available as an explicit tombstone while the record is removed from
-catalogues and other discovery surfaces. The grounds, required metadata, and the
-distinction between withdrawal and supersession are defined in the
-[withdrawal policy](docs/withdrawal-policy.md).
+mangling the id. Two ids that predate the policy (`kf-`, `u-17__`) are grandfathered
+to keep existing links working.
 
 ## Roadmap
 
