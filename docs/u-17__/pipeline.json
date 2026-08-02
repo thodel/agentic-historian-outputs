@@ -789,5 +789,31 @@
       "timing_ms": 0,
       "segmented_by": null
     }
+  ],
+  "source_url": "https://www.e-codices.unifr.ch/en/saa/0428",
+  "source_label": "e-codices: Staatsarchiv Aargau, SAA 428",
+  "source_attribution": "Staatsarchiv Aargau / e-codices",
+  "source_rights": "See the rights statement on e-codices",
+  "source_pages": [
+    {
+      "page": "e-codices_saa-0428_015v_large.jpg",
+      "canvas_url": "https://www.e-codices.unifr.ch/en/saa/0428/15v",
+      "image_url": "https://www.e-codices.unifr.ch/loris/saa/saa-0428/saa-0428_015v.jp2/full/1200,/0/default.jpg"
+    },
+    {
+      "page": "e-codices_saa-0428_016r_large.jpg",
+      "canvas_url": "https://www.e-codices.unifr.ch/en/saa/0428/16r",
+      "image_url": "https://www.e-codices.unifr.ch/loris/saa/saa-0428/saa-0428_016r.jp2/full/1200,/0/default.jpg"
+    },
+    {
+      "page": "e-codices_saa-0428_016v_large.jpg",
+      "canvas_url": "https://www.e-codices.unifr.ch/en/saa/0428/16v",
+      "image_url": "https://www.e-codices.unifr.ch/loris/saa/saa-0428/saa-0428_016v.jp2/full/1200,/0/default.jpg"
+    },
+    {
+      "page": "e-codices_saa-0428_017r_large.jpg",
+      "canvas_url": "https://www.e-codices.unifr.ch/en/saa/0428/17r",
+      "image_url": "https://www.e-codices.unifr.ch/loris/saa/saa-0428/saa-0428_017r.jp2/full/1200,/0/default.jpg"
+    }
   ]
 }

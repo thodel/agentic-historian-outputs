@@ -183,7 +183,7 @@ title: Katalog
   <p class="catalogue-actions"><a href="order-ens/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: order-ens">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>
   
 </article>
-<article class="catalogue-card" data-document-id="u-17__" data-created="2026-07-15T16:49:41+02:00" data-kind="output" data-language="" data-script="" data-search="u-17__     e-codices_saa-0428_015v_large.jpg seite 1 modios reina cum prato sive uysta ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. alhile er conu" data-superseded="true" data-recognition-provenance="current" data-recognition-total="13" data-recognition-successful="11" data-recognition-failed="2" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="5" data-recognition-pages="4" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="CARE_ACTION,DATE,ORG,PERSON,PLACE,ROLE,SOCIAL_GROUP,TITLE" data-completeness="teilweise">
+<article class="catalogue-card" data-document-id="u-17__" data-created="2026-07-15T16:49:41+02:00" data-kind="output" data-language="" data-script="" data-search="u-17__     e-codices_saa-0428_015v_large.jpg seite 1 modios reina cum prato sive uysta ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. alhile er conu" data-superseded="true" data-recognition-provenance="current" data-recognition-total="13" data-recognition-successful="11" data-recognition-failed="2" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="5" data-recognition-pages="4" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="CARE_ACTION,DATE,ORG,PERSON,PLACE,ROLE,SOCIAL_GROUP,TITLE" data-completeness="vollstaendig">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T16:49:41+02:00">15.07.2026, 16:49</time></p>
@@ -195,13 +195,13 @@ title: Katalog
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
     <p class="catalogue-provenance__label">Engines</p>
     <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
-    <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 2 fehlgeschlagene Erkennungsversuche</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+    <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 2 fehlgeschlagene Erkennungsversuche</p>
   </div>
   <p class="catalogue-preview">e-codices_saa-0428_015v_large.jpg SEITE 1 modios reina cum prato sive uysta Ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. Alhile er conu…</p>
   <p class="catalogue-actions"><a href="u-17__/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: u-17__">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>
   
 </article>
-<article class="catalogue-card" data-document-id="u-17" data-created="2026-07-08T17:18:20+02:00" data-kind="output" data-language="" data-script="" data-search="u-17     e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu " data-superseded="false" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="4" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="" data-completeness="minimal">
+<article class="catalogue-card" data-document-id="u-17" data-created="2026-07-08T17:18:20+02:00" data-kind="output" data-language="" data-script="" data-search="u-17     e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu " data-superseded="false" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="4" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="" data-completeness="minimal">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T17:18:20+02:00">08.07.2026, 17:18</time></p>
@@ -213,7 +213,7 @@ title: Katalog
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
     <p class="catalogue-provenance__label">Engines</p>
     <p class="catalogue-muted">Nicht dokumentiert</p>
-    <p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+    <span class="visually-hidden">Keine Warnungen</span>
   </div>
   <p class="catalogue-preview">e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu …</p>
   <p class="catalogue-actions"><a href="u-17/" aria-label="Ausgabe öffnen: u-17">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
