@@ -609,6 +609,14 @@ def build_atom_feed(records: list) -> None:
             summary_parts.append(record.preview[:120])
         summary_parts.append("Redaktionell geprüft" if record.review_status == "human-verified" else "Maschinell erzeugt")
         summary = xml_escape(" \u00b7 ".join(summary_parts) or "Agentic Historian dataset")
+        # Issue #193: the summary already names the review state in German, but
+        # only as prose. A subscriber wanting to act on "this edition has been
+        # reviewed" would have to string-match it. Atom <category> carries the
+        # same fact machine-readably, with the enum as term and the rendered
+        # German as label, matching data-review-status in the catalogue.
+        review_label, _ = _REVIEW_STATUS_LABELS.get(
+            record.review_status, (record.review_status, "")
+        )
         entries_xml.append(
             f"  <entry>\n"
             f"    <id>{xml_escape(entry_id)}</id>\n"
@@ -616,6 +624,9 @@ def build_atom_feed(records: list) -> None:
             f"    <link rel=\"alternate\" type=\"text/html\" href=\"{xml_escape(entry_id)}\"/>\n"
             f"    <published>{published}</published>\n"
             f"    <updated>{published}</updated>\n"
+            f"    <category scheme=\"{SITE}/methodology.html#review-status\""
+            f" term=\"{xml_escape(record.review_status)}\""
+            f" label=\"{xml_escape(review_label)}\"/>\n"
             f"    <summary type=\"text\">{summary}</summary>\n"
             f"    <rights>CC BY 4.0 https://creativecommons.org/licenses/by/4.0/</rights>\n"
             f"  </entry>"
