@@ -53,12 +53,6 @@ RECONCILIATION_REVIEW = Path("data/entity-reconciliation-review.json")
 # ``BAT_664_r_00027`` remain valid.
 SLUG_PATTERN = re.compile(r"^[A-Za-z0-9]([A-Za-z0-9._-]*[A-Za-z0-9])?$")
 
-# Ids that predate the policy and are already published at stable URLs.  They
-# are grandfathered so existing links keep working; the supersedes relation
-# (#125) de-emphasizes them in the catalogue.  No new id may join this set.
-GRANDFATHERED_SLUGS = frozenset({"kf-", "u-17__"})
-
-
 def slug_violation(doc_id: str) -> str:
     """Return a human-readable reason if *doc_id* breaks the slug policy, else ""."""
     if SLUG_PATTERN.match(doc_id):
@@ -68,18 +62,23 @@ def slug_violation(doc_id: str) -> str:
     return "may only contain letters, digits, '.', '_' and '-'"
 
 
-def validate_slugs(doc_ids: "list[str]") -> None:
-    """Fail the build if any non-grandfathered document id breaks the policy.
+def validate_slugs(
+    doc_ids: "list[str]",
+    superseded_ids: "set[str] | None" = None,
+) -> None:
+    """Fail if an invalid id is not retained solely as a lineage predecessor.
 
     Raising here (rather than silently normalizing) keeps ids stable: a
     normalized id could collide with an existing document and silently move a
-    published URL.  The publisher must choose a valid id or declare a
-    supersedes relation instead.
+    published URL. A legacy invalid id may remain only when a valid canonical
+    record explicitly supersedes it, keeping the old URL without treating it
+    as the current output.
     """
+    lineage_predecessors = superseded_ids or set()
     offenders = [
         f"  - {doc_id!r}: {reason}"
         for doc_id in sorted(doc_ids)
-        if (reason := slug_violation(doc_id)) and doc_id not in GRANDFATHERED_SLUGS
+        if (reason := slug_violation(doc_id)) and doc_id not in lineage_predecessors
     ]
     if offenders:
         raise SystemExit(
@@ -1155,7 +1154,23 @@ def build() -> None:
     entity_index = defaultdict(list)
     tests = []
     doc_paths = sorted(DOCS.glob("*/pipeline.json"))
-    validate_slugs([path.parent.name for path in doc_paths])
+    pipeline_data = {}
+    for path in doc_paths:
+        try:
+            pipeline_data[path.parent.name] = json.loads(
+                path.read_text(encoding="utf-8")
+            )
+        except (OSError, json.JSONDecodeError):
+            pipeline_data[path.parent.name] = {}
+    valid_ids = {doc_id for doc_id in pipeline_data if not slug_violation(doc_id)}
+    superseded_ids = {
+        str(data.get("supersedes"))
+        for doc_id, data in pipeline_data.items()
+        if doc_id in valid_ids
+        and isinstance(data, dict)
+        and data.get("supersedes") in pipeline_data
+    }
+    validate_slugs(list(pipeline_data), superseded_ids)
     for path in doc_paths:
         try:
             data = json.loads(path.read_text(encoding="utf-8"))

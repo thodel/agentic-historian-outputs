@@ -9,11 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from build_outputs import (  # noqa: E402
-    GRANDFATHERED_SLUGS,
-    slug_violation,
-    validate_slugs,
-)
+from build_outputs import slug_violation, validate_slugs  # noqa: E402
 
 
 class SlugViolation(unittest.TestCase):
@@ -43,9 +39,12 @@ class ValidateSlugs(unittest.TestCase):
     def test_all_valid_passes(self):
         validate_slugs(["bat", "order-ens", "u-17", "BAT_664_r_00027"])
 
-    def test_grandfathered_ids_pass(self):
-        # The two ids that predate the policy must not break the build.
-        validate_slugs(list(GRANDFATHERED_SLUGS) + ["bat"])
+    def test_superseded_legacy_id_passes(self):
+        validate_slugs(["kf", "kf-"], {"kf-"})
+
+    def test_invalid_current_id_still_fails(self):
+        with self.assertRaises(SystemExit):
+            validate_slugs(["kf", "kf-"])
 
     def test_new_invalid_id_fails_loudly(self):
         with self.assertRaises(SystemExit) as ctx:
@@ -56,7 +55,7 @@ class ValidateSlugs(unittest.TestCase):
 
     def test_current_repository_ids_pass(self):
         doc_ids = [p.parent.name for p in (ROOT / "docs").glob("*/pipeline.json")]
-        validate_slugs(doc_ids)
+        validate_slugs(doc_ids, {"kf-", "u-17__"})
 
 
 if __name__ == "__main__":
