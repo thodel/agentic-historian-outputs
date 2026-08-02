@@ -12,7 +12,7 @@ title: "kf-"
   <div class="quality-explanation" id="quality-explanation-verification_needed-hdr" role="region" aria-label="Menschliche Überprüfung empfohlen" hidden><p><strong>Menschliche Überprüfung empfohlen:</strong> Diese Transkription ist maschinell erzeugt.  Sie sollte anhand des Originaldokuments überprüft werden, bevor sie in einer wissenschaftlichen Arbeit zitiert wird. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-verification">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-legacy_qa-hdr" role="region" aria-label="Legacy-QA-Wert (unspezifiziert)" hidden><p><strong>Legacy-QA-Wert (unspezifiziert):</strong> Dieser QA-Wert stammt aus einem älteren Verarbeitungsschritt und hat keine definierte Bedeutung oder Einheit.  Er gibt keinen Aufschluss darüber, wie korrekt die Transkription ist.  Verlässlichere Qualitätshinweise sind Erkennungskonfidenz, Erkennungsfehler oder — wenn vorhanden — CER/WER gegen eine Referenztranskription. <a class="quality-explanation-link" href="../methodology.html#quality-metrics">Methodik <span aria-hidden="true">→</span></a></p></div>
   <p class="notice"><strong>Maschinell erzeugt:</strong> Dieser Output wurde automatisch erzeugt und nicht menschlich überprüft. Nicht als Edition oder verifizierte Transkription zitieren.</p>
 </header>
-<div class="notice notice--superseded" role="note"><strong>Achtung:</strong> Diese Seite wurde ersetzt durch <a href="../kf/">kf</a>, neueste Fassung vom 07.07.2026.</div>
+<div class="notice notice--superseded" role="note"><strong>Achtung:</strong> Diese Seite wurde ersetzt durch <a href="../kf/">kf</a>, neueste Fassung vom 02.08.2026.</div>
     <nav class="page-section-nav" aria-label="Seitennavigation" data-page-nav>
 <ol class="page-section-nav-list"><li><a href="#source">Quelle</a></li><li><a href="#transcription">Transkription</a></li><li><a href="#orientation">Orientierung</a></li><li><a href="#claims">Metadaten</a></li><li><a href="#entities">Entitäten</a></li><li><a href="#downloads">Downloads</a></li><li><a href="#citation">Zitation</a></li><li><a href="#history">Versionsgeschichte</a></li></ol>
 </nav>
@@ -60,8 +60,8 @@ title: "kf-"
 </details>
 
 <details class="page-section-disclosure" data-disclosure="history">
-<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">2 Commits</span></summary>
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/7677487"><code>7677487</code></a> · <time datetime="2026-07-30T21:38:26+02:00">2026-07-30</time> · feat: add supersedes relation between document runs (#125) (#164)</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/9d630fb"><code>9d630fb</code></a> · <time datetime="2026-07-07T15:47:14+02:00">2026-07-07</time> · Publish kf-</li></ol></section>
+<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">3 Commits</span></summary>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/0cf46c4"><code>0cf46c4</code></a> · <time datetime="2026-08-02T14:49:39+02:00">2026-08-02</time> · fix(#195): retire malformed ids through lineage (#210)</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/7677487"><code>7677487</code></a> · <time datetime="2026-07-30T21:38:26+02:00">2026-07-30</time> · feat: add supersedes relation between document runs (#125) (#164)</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/9d630fb"><code>9d630fb</code></a> · <time datetime="2026-07-07T15:47:14+02:00">2026-07-07</time> · Publish kf-</li></ol></section>
 </details>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
@@ -84,7 +84,7 @@ title: "kf-"
   },
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "dateCreated": "2026-07-07T15:47:14+02:00",
-  "dateModified": "2026-07-30T21:38:26+02:00",
+  "dateModified": "2026-08-02T14:49:39+02:00",
   "distribution": [
     {
       "@type": "DataDownload",
