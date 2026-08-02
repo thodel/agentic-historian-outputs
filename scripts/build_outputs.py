@@ -404,6 +404,39 @@ def write_tei(path: Path, doc_id: str, transcript: str, source_url: str,
     path.write_text(tei, encoding="utf-8")
 
 
+def source_page_links(pages: "list[dict[str, str]]") -> str:
+    """List the per-page source references a document declares (issue #186).
+
+    ``normalize_source_reference`` has always resolved ``source_pages`` into
+    ``page``/``canvas_url``/``image_url`` triples, but the only consumer was the
+    evidence viewer — which is gated on the *document-level* source being an
+    image or a IIIF manifest.  A document whose ``source_url`` is a landing page
+    therefore carried a complete page mapping that no reader could reach: it
+    existed only inside the embedded JSON payload.  ``u-17`` is exactly that
+    case, with four e-codices canvases.
+
+    Links only, deliberately.  Displaying a holding institution's images beside
+    the transcription is issue #187 and raises a rights question that linking
+    does not.
+    """
+    items = []
+    for page in pages:
+        target = page.get("canvas_url") or page.get("image_url")
+        label = page.get("page")
+        if not (target and label):
+            continue
+        items.append(
+            f'<li><a href="{html.escape(target, quote=True)}">{html.escape(label)}</a></li>'
+        )
+    if not items:
+        return ""
+    return (
+        '<details class="source-pages" data-source-pages>'
+        f'<summary>{de_plural(len(items), "seitengenauer Quellenverweis", "seitengenaue Quellenverweise")}</summary>'
+        f'<ol>{"".join(items)}</ol></details>'
+    )
+
+
 def source_panel(data: dict) -> str:
     source = normalize_source_reference(data)
     url = source["url"]
@@ -437,7 +470,7 @@ def source_panel(data: dict) -> str:
         )
         metadata = f'<dl class="source-meta">{metadata}</dl>' if metadata else ""
         return f'''<section id="source" class="page-section page-section--evidence" data-page-section="source" aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
-<p><a href="{escaped}">{html.escape(source["label"] or "Veröffentlichte Quelle öffnen")}</a></p>{metadata}{viewer}
+<p><a href="{escaped}">{html.escape(source["label"] or "Veröffentlichte Quelle öffnen")}</a></p>{metadata}{source_page_links(source["pages"])}{viewer}
 <script type="application/json" data-source-reference>{payload}</script></section>'''
     return '''<section id="source" class="page-section page-section--evidence" data-page-section="source" aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
 <div class="notice notice--warning"><strong>Kein öffentliches Digitalisat verknüpft.</strong> Ein lokaler Verarbeitungspfad ist kein zitierbarer Quellenbeleg. Ergänzen Sie <code>source_url</code> oder <code>iiif_manifest</code> in der Pipeline-Ausgabe.</div></section>'''
