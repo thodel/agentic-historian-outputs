@@ -41,7 +41,7 @@ title: "order-001-group"
 <details class="page-section-disclosure" data-disclosure="entities">
 <summary class="page-section-summary"><span class="summary-title">Erkannte Entitäten</span> <span class="summary-detail">1 Entitäten</span></summary>
 <section id="entities" class="page-section page-section--interpretation" data-page-section="entities" aria-labelledby="entities-heading"><h2 id="entities-heading">Erkannte Entitäten</h2>
-<h3>PERSON</h3><ul><li><a href="../entities/hans-von-bern-cee70931/">Hans von Bern</a></li></ul>
+<h3>PERSON</h3><ul><li><a href="../entities/hans-von-bern-cee70931/">Hans von Bern</a> <span class="entity-noise-flag" title="lange Konsonantenfolge; nur einmal erkannt">Unsichere Erkennung · Score 2</span></li></ul>
 <p><a href="entities.csv">Entitäten als CSV herunterladen</a> · <a href="../entities/">Alle Entitäten durchsuchen</a></p></section>
 </details>
 
