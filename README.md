@@ -115,14 +115,23 @@ multi-page inputs, add `source_pages` in recognition-page order:
 
 `page` must match the page identifier carried by recognition candidates.
 Public HTTP(S) URLs only are emitted; local paths, private hosts, credentials,
-and placeholders are rejected. A direct image or IIIF source is shown beside
-the transcription. A landing page remains a verifiable outbound reference.
-If neither exists, both the document and catalogue explicitly report that no
-public facsimile is linked.
+and placeholders are rejected.
+
+What the site does with a reference today: it is linked as a verifiable
+outbound reference from the document page, whether it is a landing page, a
+direct image, or a IIIF canvas. Where no reference exists, both the document
+page and the catalogue card say so — "Kein öffentliches Digitalisat verknüpft"
+and "Keine digitale Quelle verknüpft" respectively.
+
+Facsimiles are **not** yet displayed beside the transcription; that is
+[#187](https://github.com/thodel/agentic-historian-outputs/issues/187), and it
+carries a rights question rather than only a technical one, since embedding a
+holding institution's images is not the same as linking to them.
 
 Do not guess a source URL during a backfill. Add a reference only when the
 repository, shelfmark, and page mapping can be verified against the holding
 institution.
+
 ## Editorial review workflow
 
 Human review records live in `data/editorial-reviews.json`, not in generated
