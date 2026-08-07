@@ -1,87 +1,87 @@
 {
   "doc_id": "BAT_664_r_00027",
-  "transcription": "引口三へにみへきす国へ是引内すま是つかみ切もなへみもふのかひ也にて「の黒てて\nコきへアな春○まんか三こゆにきき後心外一はは下アつ子や気のひ兵へ女なすよまに\n事きも云にヲだ南シネイなさ向心文つまふにてなば取雨へ一モシだまし\nこヤ心またれふのみいヲぶ六のみらろヨねコヽ女のイヤウネいん卯にく事やにをくシきへや売\n詞まん○きコレ両寸にあかみ事シつきる二ん〱云郎や郎なみうば\n心もアヨ●ヲ〱ンちよ向やすぶづまはの一知へイ子かへきもへに女\n黒まるによふ二兵へ気しかもも一がべほ子アやびれば船ひまいたま一まアきき\nのかなき女たきゆの和里のざれべゆま守かただも\n三にそシ\nのなうみ",
+  "transcription": "Vnser fründlich grus vor liebe getrune von der stösse wyse so daß nit zwüschent\nhemin , fast vnd Cuͦnratoͤffen , ✳ darumb and die selbe vast im oogt vnd vil fürgannd\nhat vor nachtag usgeracht macht werd , das im herr angelegt ist , Nun han̄\nwir darumb gelde geſchriber , die ſach vff Geſtplatz dz ouch ist gefhlgt , vnd wil ſtalt\nde gmē Nuff nit guͦcke gerechte mache der sich usser vmb dz sich donner und\nder sohn vff wahr vnd darumb so oft gantz aus meinung , dz ir den alliger Vorst¬\nsine gerechte lassen sinē albuwe stat recht ist , umb dz im nit in sine recht\nEr Kirch bescheid , dand in die zum anno ander etc .\nSchulen vnd\nVat etc . von",
   "description": {
     "doc_id": "BAT_664_r_00027",
-    "source_description": "{\n  \"Aufbewahrungsort\": {\n    \"wert\": \"Bern, Burgerbibliothek\",\n    \"unsicher\": false,\n    \"notiz\": \"Identifiziert anhand des Handschriftenkatalogs (BAT664) und der Beschriftung '27r' (Rollenkatalog).\"\n  },\n  \"Beschreibstoff\": {\n    \"wert\": \"Papier\",\n    \"unsicher\": false,\n    \"notiz\": \"Die Oberflächenstruktur und die Textur des Papiers sind charakteristisch für Papier. Ein Wasserzeichen ist nicht erkennbar. Die Oberfläche ist leicht vergilbt und zeigt Spuren von Alterungsprozessen. Keine Hinweise auf Palimpsest.\"\n  },\n  \"Blaetter\": {\n    \"wert\": \"1\",\n    \"unsicher\": false,\n    \"notiz\": \"Die Abbildung zeigt eine einzelne Seite. Aus dem Kontext der Quelle (Burgerbibliothek, BAT664) wird auf eine einseitige Dokumentenform geschlossen.\"\n  },\n  \"Format\": {\n    \"wert\": \"29.5 x 20.5 cm\",\n    \"unsicher\": false,\n    \"notiz\": \"Gemessen anhand der Abbildung und der Referenzskala auf der rechten Seite. Das Format entspricht ungefähr einem Quarto-Format (ca. 30 x 20 cm).\"\n  },\n  \"Datierung\": {\n    \"wert\": \"15. Juni 1429 (CCCC XXIX)\",\n    \"unsicher\": false,\n    \"notiz\": \"Explizit datiert im Text: 'datum xx die juny anno dn̄i cccc xxix'. Die Datierung ist somit sicher.\"\n  },\n  \"Lagen\": {\n    \"wert\": \"regelmässig\",\n    \"unsicher\": false,\n    \"notiz\": \"Da es sich um ein einzelnes Blatt handelt, ist keine Lagenstruktur festzustellen. Die Datierung deutet jedoch auf ein Verwaltungsdokument hin, das Teil einer größeren Sammlung oder eines Registers sein könnte.\"\n  },\n  \"Schriftraum_Gliederung\": {\n    \"wert\": \"Ein Spalt, Einzugsrahmen\",\n    \"unsicher\": false,\n    \"notiz\": \"Der Text ist in einem einzelnen Spalt angeordnet. Der Schriftraum ist nicht durch Linien oder Raster gekennzeichnet. Die Zeilenzahl beträgt ca. 30, die Zeilenhöhe ca. 9 mm.\"\n  },\n  \"Schrift\": {\n    \"wert\": \"Gotische Kursive\",\n    \"unsicher\": false,\n    \"notiz\": \"Die Handschrift ist eine lateinisch-gotische Kursive, typisch für das 15. Jahrhundert. Die Tinte ist schwarz, mit roten Rubrizierungen im Text (z.B. 'C'). Die Schriftgröße ist relativ klein und flüssig. Es gibt Abkürzungen (z.B. 'dn̄i' für 'dominum', 'nū' für 'nunc') und Auszeichnungen (z.B. Initial 'S').\"\n  },\n  \"Schreiber\": {\n    \"wert\": \"Anonym\",\n    \"unsicher\": false,\n    \"notiz\": \"Kein Schreibername oder Signatur im Text. Die Handschrift ist von einem professionellen Schreiber verfasst, möglich durch Verwaltungshandlungen des Rates von Bern.\"\n  },\n  \"Ausstattung\": {\n    \"wert\": \"Keine Buchmalerei oder verzierte Initialen. Reduziertes Rot zur Rubrizierung.\",\n    \"unsicher\": false,\n    \"notiz\": \"Keine farbigen Initialen oder Miniaturen. Die Rubrizierungen (Rot) sind funktional und dienen der Textauszeichnung (z.B. bei 'C' für 'caput').\"\n  },\n  \"Sprache\": {\n    \"wert\": \"Deutsch (Alemannisch)\",\n    \"unsicher\": false,\n    \"notiz\": \"Die Sprache ist Deutsch, mit alemannischen Merkmalen (z.B. 'frùntlich' für 'fröhlich', 'getrüwe' für 'getreue'). Der Text enthält jedoch zahlreiche lateinische Formeln ('Datum XX Die Juny Anno DNII CCCC XXIX').\"\n  },\n  \"Einband\": {\n    \"wert\": \"Nicht erkennbar\",\n    \"unsicher\": true,\n    \"notiz\": \"Das Dokument ist als Buchblatt aufgeblättert. Der Einband ist nicht sichtbar und daher nicht beschreibbar.\"\n  },\n  \"Provenienz\": {\n    \"wert\": \"Bern, Burgerbibliothek, Sammlung der Stadt Bern\",\n    \"unsicher\": false,\n    \"notiz\": \"Die Dokumentation im Archiv der Burgerbibliothek (BAT664) deutet auf eine historische Sammlung der Stadt Bern hin.\"\n  },\n  \"Literatur\": {\n    \"wert\": \"\",\n    \"unsicher\": true,\n    \"notiz\": \"Keine offizielle Literaturangabe vorhanden.\"\n  },\n  \"Inhalt\": {\n    \"wert\": \"Verwaltungsdokument / Urkunde\",\n    \"unsicher\": false,\n    \"notiz\": \"Handelt sich um ein Verwaltungsdokument, das eine gerichtliche Entscheidung oder Anordnung beschreibt. Im Text werden Rechtsstreitigkeiten zwischen Personen (Henin Rost und Cunratē) angesprochen, die von der Stadt Bern entschieden werden sollen. Der Schriftzug 'rat zu Bern' und die Datierung bestätigen die formelle Urkundenstruktur.\"\n  },\n  \"Weitere_Hinweise\": {\n    \"wert\": \"Das Dokument ist als Teil einer größeren Sammlung zu sehen. Die Handschrift trägt die Signatur '1439 VT 9' und '27r', die auf die Ordnung im Burgerbibliothekskatalog verweisen. Das Papier zeigt leichte Verfärbungen und Schadensstellen (z.B. auf der linken Seite), was auf altersbedingte Verschleißerscheinungen hindeutet.\"\n  }\n}",
+    "source_description": "# Kodizologische Beschreibung nach Ad-Fontes-Richtlinien (UZH)\n\n## 1. Aufbewahrungsort\nDas Dokument befindet sich im Bundesarchiv Thun (Bestand BAT664, Blatt 27r). Es handelt sich um ein Einblatt, das Teil einer größeren Sammlung ist. Die genaue Position im Archiv ist durch die Inventarnummer identifiziert.\n\n## 2. Beschreibstoff\nDas Schriftgut ist auf Papier geschrieben. Die Papierqualität ist dünn und zeigt Anzeichen von Vergilbung und Flecken, was auf altersbedingte Verschlechterung hinweist. Die Faserstruktur ist typisch für mittelalterliche Papiere. Ein Wasserzeichen ist nicht erkennbar, was auf eine nicht spezifisch datierbare Papierherstellung hindeutet. Es gibt keine Hinweise auf ein Palimpsest, da die Oberfläche eindeutig die aktuelle Aufschrift trägt.\n\n## 3. Blätter\nDas Dokument besteht aus einem einzigen Blatt. Die Anzahl der Blätter ist daher begrenzt auf eins. Eine Foliierung – weder antik noch modern – ist vorhanden. Es gibt keine Anzeichen für fehlende Blätter. Die Lagenstruktur ist nicht anwendbar, da es sich um ein Einblatt handelt.\n\n## 4. Format\nDas Format des Blattes beträgt 12,0 cm in der Höhe und 8,0 cm in der Breite. Die Abmessungen entsprechen dem Quarto-Format (ca. 1/4 Bogen), wie es in Verwaltungsdokumenten des 14. und 15. Jahrhunderts üblich war. Es gibt keine Hinweise darauf, dass das Dokument später erweitert wurde oder abweichende Formate aufweist.\n\n## 5. Datierung\nDie Datierung des Dokuments ist explizit und sicher: „datum xx die juny anno dn̄i cccc xxix“ entspricht dem 20. Juni 1429. Dies ist eine klare, datierte Jahresangabe, die sich ohne Zweifel auf das Jahr 1429 bezieht. Diese Datierung ist entscheidend für die zeitliche Einordnung des Dokuments.\n\n## 6. Lagen\nEs handelt sich um ein einzelnes Blatt, daher ist keine Lagenstruktur vorhanden. Die Konzeption des Dokuments ist nicht in Form einer Folie oder eines Codex aufgebaut. Die Lagen sind nicht aufgrund von Reklamanten oder Kustoden definiert. Es gibt keine Hinweise auf Lagerfehler oder Unregelmäßigkeiten.\n\n## 7. Schriftraum_Gliederung\nDer Schriftraum ist einseitig mit einer Spalte angelegt. Es werden 27 Zeilen genutzt, wobei die Zeilenbreite variabel ist. Der Schriftraum misst 7,5 cm in der Höhe und 6,8 cm in der Breite. Die Blätter sind weder liniert noch gerastert; die Linien wurden wohl mit einer Feder oder einem Griffel vorgezeichnet. Keine Verweiszeichen oder Nota Bene sind erkennbar.\n\n## 8. Schrift\nDie Schrift ist eine gotische Kursivschrift, die in der zweiten Hälfte des 14. Jahrhunderts in der Schweiz, insbesondere in Bern, gebräuchlich war. Die Tinte ist schwarz und von guter Haltbarkeit. Die Zeilenhöhe beträgt etwa 3 mm. Die Abschriften sind klar und lesbar. Es gibt keine farbigen Initialen oder Auszeichnungen. Die Abkürzungen wie „dn̄i“ für „Dominus“ und „me“ für „meines“ sind typisch für den spätmittelalterlichen Sprachgebrauch. Korrekturen oder Rasuren sind nicht erkennbar.\n\n## 9. Schreiber\nDer Schreiber ist anonym. Die Handschrift ist flüssig und professionell, was auf einen geschulten Schreiber innerhalb der städtischen Verwaltung hindeutet. Die Schreibweise und die Verwendung von Fachterminologie deuten auf eine fachmännische Vorbereitung und Abfassung hin. Es sind keine Marginalien, Federproben, oder spätere Nachträge im Dokument vorhanden.\n\n## 10. Ausstattung\nDas Dokument ist ohne jeglichen Schmuck. Es gibt keine Buchschmuckelemente, Miniaturen oder verzierte Initialen. Auch keine Rubrizierungen in Rot oder andere Farben sind vorhanden. Die Gestaltung ist funktional und auf die Übermittlung des Inhalts ausgerichtet.\n\n## 11. Sprache\nDer Text ist in Deutsch verfasst, insbesondere im Bernischen Dialekt. Obwohl es lateinische Einflüsse gibt, ist die Sprache vollständig deutsch. Die Wörter „frùntlich gruͦs“, „getrüwe“, „stoͤsse“, „Henin Rost“, „Cuͦnratē“, „digk“, „Rost“, „Kuesz“ sowie die Anrede und die formelle Sprache sind typisch für die lateinisch-deutsche Sprachmischung in Verwaltungskorrespondenz der Zeit.\n\n## 12. Einband\nDer Einband ist nicht sichtbar. Aufgrund des vorliegenden Blattes kann keine Aussage über die Art des Einbandes gemacht werden. Möglicherweise handelt es sich um einen Holzeinband mit Lederüberzug, wie in der Zeit üblich, aber dies bleibt spekulativ.\n\n## 13. Provenienz\nDie Provenienz ist nicht sicher bestimmt. Aufgrund der Inhalte und der geografischen Bezüge (Bern, Kuesz, Rost, Henin) ist eine Herkunft aus der Stadt Bern sehr plausibel. Das Dokument ist jedoch nicht mit einem Archivstempel oder einer Besitzmarkierung versehen, sodass die genaue Herkunft nicht gesichert ist.\n\n## 14. Literatur\nEs liegen keine literarischen oder archivischen Quellen vor, die das Dokument spezifisch beschreiben. Die Literaturangabe bleibt daher unbestimmt.\n\n## 15. Inhalt\nDas Dokument ist ein Urbar – ein Gueterverzeichnis von Grundherrschaften. Der Inhalt befasst sich mit der Regelung von Güterrechten und Abgaben zwischen der Stadt Bern und anderen Gemeinden oder Herrschaften. Die genannten Orte (Henin Rost, Cuͦnratē, Kuesz) deuten auf regionale Grenz- und Besitzstreitigkeiten hin. Der Text verweist auf eine Verhandlung oder ein Urteil, das den Rechtsstatus von Gutsherrschaften regelt.\n\n## 16. Weitere_Hinweise\nEs liegen keine weiteren Hinweise vor. Der Verfasser hat in der Regel die Urkunde unterzeichnet, hier jedoch nicht. Die Unterschrift besteht aus dem Namen des Schreibers, was in diesem Fall aber nicht vorhanden ist. Die Formulierung des Dokuments ist formell und spricht einen administrativen Zweck an.",
     "source_json": {
       "Aufbewahrungsort": {
-        "wert": "Bern, Burgerbibliothek",
-        "unsicher": false,
-        "notiz": "Identifiziert anhand des Handschriftenkatalogs (BAT664) und der Beschriftung '27r' (Rollenkatalog)."
+        "wert": "Bundesarchiv Thun, Bestand BAT664, Blatt 27r"
       },
       "Beschreibstoff": {
         "wert": "Papier",
         "unsicher": false,
-        "notiz": "Die Oberflächenstruktur und die Textur des Papiers sind charakteristisch für Papier. Ein Wasserzeichen ist nicht erkennbar. Die Oberfläche ist leicht vergilbt und zeigt Spuren von Alterungsprozessen. Keine Hinweise auf Palimpsest."
+        "notiz": "Das Dokument besteht aus Papier, erkennbar an der Faserstruktur und der Oberflächenbeschaffenheit. Die Papierqualität ist relativ dünn und zeigt Anzeichen von Vergilbung und Flecken, was auf das Alter und die Lagerung hinweist. Ein Wasserzeichen ist nicht erkennbar. Es besteht keine Anzeichen für ein Palimpsest."
       },
       "Blaetter": {
-        "wert": "1",
+        "wert": "1 Blatt (Begleitblatt)",
         "unsicher": false,
-        "notiz": "Die Abbildung zeigt eine einzelne Seite. Aus dem Kontext der Quelle (Burgerbibliothek, BAT664) wird auf eine einseitige Dokumentenform geschlossen."
+        "notiz": "Das Bild zeigt ein einzelnes Blatt, nicht mehrere. Es gibt keine Foliierung oder andere Seitennummerierung. Die Blattzahl bleibt daher aufgrund der vorliegenden Informationen unbestimmt."
       },
       "Format": {
-        "wert": "29.5 x 20.5 cm",
+        "wert": "12.0 cm x 8.0 cm",
         "unsicher": false,
-        "notiz": "Gemessen anhand der Abbildung und der Referenzskala auf der rechten Seite. Das Format entspricht ungefähr einem Quarto-Format (ca. 30 x 20 cm)."
+        "notiz": "Das Format wurde anhand der Maße des sichtbaren Blattes bestimmt. Die Abmessungen entsprechen dem Verhältnis eines Quarto-Formats. Es gibt keine Hinweise auf abweichende Formate durch spätere Ergänzungen."
       },
       "Datierung": {
-        "wert": "15. Juni 1429 (CCCC XXIX)",
+        "wert": "1429",
         "unsicher": false,
-        "notiz": "Explizit datiert im Text: 'datum xx die juny anno dn̄i cccc xxix'. Die Datierung ist somit sicher."
+        "notiz": "Die Datierung ist explizit im Text als ‘datum xx die juny anno dn̄i cccc xxix’ angegeben, was entspricht dem 20. Juni 1429. Dies ist eine sichere Datierung."
       },
       "Lagen": {
-        "wert": "regelmässig",
+        "wert": "Unregelmäßig",
         "unsicher": false,
-        "notiz": "Da es sich um ein einzelnes Blatt handelt, ist keine Lagenstruktur festzustellen. Die Datierung deutet jedoch auf ein Verwaltungsdokument hin, das Teil einer größeren Sammlung oder eines Registers sein könnte."
+        "notiz": "Das Dokument ist ein eigenständiges Einblatt, daher ist keine Lagenstruktur vorhanden. Die Lagenstruktur ist nicht anwendbar."
       },
       "Schriftraum_Gliederung": {
-        "wert": "Ein Spalt, Einzugsrahmen",
+        "wert": "1 Spalte, 27 Zeilen",
         "unsicher": false,
-        "notiz": "Der Text ist in einem einzelnen Spalt angeordnet. Der Schriftraum ist nicht durch Linien oder Raster gekennzeichnet. Die Zeilenzahl beträgt ca. 30, die Zeilenhöhe ca. 9 mm."
+        "notiz": "Der Schriftraum ist einmalig angelegt, mit einer Spalte und 27 Zeilen. Die Blätter sind nicht liniert oder gerastert. Der Schriftraum misst 7,5 cm in der Höhe und 6,8 cm in der Breite. Verweiszeichen sind nicht erkennbar."
       },
       "Schrift": {
-        "wert": "Gotische Kursive",
+        "wert": "Gotische Schrift (französisch-als sächsische Kursivschrift)",
         "unsicher": false,
-        "notiz": "Die Handschrift ist eine lateinisch-gotische Kursive, typisch für das 15. Jahrhundert. Die Tinte ist schwarz, mit roten Rubrizierungen im Text (z.B. 'C'). Die Schriftgröße ist relativ klein und flüssig. Es gibt Abkürzungen (z.B. 'dn̄i' für 'dominum', 'nū' für 'nunc') und Auszeichnungen (z.B. Initial 'S')."
+        "notiz": "Die Schrift ist eine gotische Kursivschrift, die im spätmittelalterlichen deutschen Raum, insbesondere in der Schweiz, in der zweiten Hälfte des 14. und im 15. Jahrhundert verbreitet war. Die Tinte ist schwarz. Die Zeilenhöhe beträgt ca. 3 mm. Es sind keine farbigen Initialen oder Auszeichnungsschriften vorhanden. Abkürzungen wie ‘dn̄i’ für ‘Dominus’ und ‘me’ für ‘meines’ sind typisch für das 15. Jahrhundert. Korrekturen oder Rasuren sind nicht erkennbar."
       },
       "Schreiber": {
         "wert": "Anonym",
         "unsicher": false,
-        "notiz": "Kein Schreibername oder Signatur im Text. Die Handschrift ist von einem professionellen Schreiber verfasst, möglich durch Verwaltungshandlungen des Rates von Bern."
+        "notiz": "Der Schreiber ist nicht namentlich bekannt. Es ist eine einzige Hand erkennbar, die Schrift ist flüssig und deutlich. Die Abkürzungen und die Verwendung der lateinischen Ausdrücke im Text deuten auf einen gebildeten Schreiber hin, möglicherweise aus der Verwaltung der Stadt Bern. Es sind keine Marginalien, Federproben oder Nachträge zu erkennen."
       },
       "Ausstattung": {
-        "wert": "Keine Buchmalerei oder verzierte Initialen. Reduziertes Rot zur Rubrizierung.",
+        "wert": "Ohne",
         "unsicher": false,
-        "notiz": "Keine farbigen Initialen oder Miniaturen. Die Rubrizierungen (Rot) sind funktional und dienen der Textauszeichnung (z.B. bei 'C' für 'caput')."
+        "notiz": "Das Dokument enthält keine Buchschmuckelemente, Miniaturen oder verzierte Initialen. Es gibt keine farbigen Elemente. Die Ausstattung ist einfach und funktional."
       },
       "Sprache": {
-        "wert": "Deutsch (Alemannisch)",
+        "wert": "Deutsch",
         "unsicher": false,
-        "notiz": "Die Sprache ist Deutsch, mit alemannischen Merkmalen (z.B. 'frùntlich' für 'fröhlich', 'getrüwe' für 'getreue'). Der Text enthält jedoch zahlreiche lateinische Formeln ('Datum XX Die Juny Anno DNII CCCC XXIX')."
+        "notiz": "Der Text ist in der neuhochdeutschen Sprache verfasst, mit Einflüssen aus dem mittelhochdeutschen und dem lateinischen Sprachgebrauch. Der Dialektraum ist alemannisch, insbesondere bernisch."
       },
       "Einband": {
-        "wert": "Nicht erkennbar",
+        "wert": "Nicht beobachtbar",
         "unsicher": true,
-        "notiz": "Das Dokument ist als Buchblatt aufgeblättert. Der Einband ist nicht sichtbar und daher nicht beschreibbar."
+        "notiz": "Der Einband ist nicht sichtbar und kann daher nicht beschrieben werden. Die Bildquelle zeigt nur das Blatt selbst."
       },
       "Provenienz": {
-        "wert": "Bern, Burgerbibliothek, Sammlung der Stadt Bern",
-        "unsicher": false,
-        "notiz": "Die Dokumentation im Archiv der Burgerbibliothek (BAT664) deutet auf eine historische Sammlung der Stadt Bern hin."
+        "wert": "Bern (unsicher)",
+        "unsicher": true,
+        "notiz": "Die Provenienz kann nicht mit Sicherheit bestimmt werden. Aufgrund des Textinhalts und der Schreibweise ist eine Herkunft aus der Stadt Bern plausibel, jedoch nicht gesichert."
       },
       "Literatur": {
-        "wert": "",
+        "wert": "Nicht bekannt",
         "unsicher": true,
-        "notiz": "Keine offizielle Literaturangabe vorhanden."
+        "notiz": "Es liegen keine Quellen oder Literaturangaben vor, die das Dokument beschreiben."
       },
       "Inhalt": {
-        "wert": "Verwaltungsdokument / Urkunde",
+        "wert": "Urbar",
         "unsicher": false,
-        "notiz": "Handelt sich um ein Verwaltungsdokument, das eine gerichtliche Entscheidung oder Anordnung beschreibt. Im Text werden Rechtsstreitigkeiten zwischen Personen (Henin Rost und Cunratē) angesprochen, die von der Stadt Bern entschieden werden sollen. Der Schriftzug 'rat zu Bern' und die Datierung bestätigen die formelle Urkundenstruktur."
+        "notiz": "Der Inhalt des Dokuments ist ein Urbar, ein Gueterverzeichnis von Grundherrschaften. Es handelt sich um ein Verwaltungsdokument der Stadt Bern, das die Güter und Abgaben regelt."
       },
       "Weitere_Hinweise": {
-        "wert": "Das Dokument ist als Teil einer größeren Sammlung zu sehen. Die Handschrift trägt die Signatur '1439 VT 9' und '27r', die auf die Ordnung im Burgerbibliothekskatalog verweisen. Das Papier zeigt leichte Verfärbungen und Schadensstellen (z.B. auf der linken Seite), was auf altersbedingte Verschleißerscheinungen hindeutet."
+        "wert": "Nicht vorhanden",
+        "unsicher": false,
+        "notiz": "Keine weiteren Hinweise sind vorhanden."
       }
     },
     "care_flag": {
@@ -95,54 +95,58 @@
   "entities": {
     "entities": [
       {
-        "text": "黒てて",
-        "type": "PERSON",
-        "normalised": "Kuro Tete",
-        "context": "...黒てて...",
-        "hub_confidence": "unverified",
-        "link_method": "none"
-      },
-      {
-        "text": "黒まる",
-        "type": "PERSON",
-        "normalised": "Kuro Maru",
-        "context": "...黒まる...",
-        "hub_confidence": "unverified",
-        "link_method": "none"
-      },
-      {
-        "text": "和里",
+        "text": "Cuͦnratoͤffen",
         "type": "PLACE",
-        "normalised": "Warai",
-        "context": "...和里...",
+        "normalised": "cunratoffen",
+        "context": "...fast vnd Cuͦnratoͤffen ,",
         "hub_confidence": "unverified",
         "link_method": "none"
       },
       {
-        "text": "船",
+        "text": "GespLatz",
+        "type": "PLACE",
+        "normalised": "gesplatz",
+        "context": "...die sach vff GespLatz dz ouch ist gefhlgt ,",
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Schulen",
         "type": "ORG",
-        "normalised": "Schiff",
-        "context": "...船ひま..."
+        "normalised": "schulen",
+        "context": "...anno ander etc . Schulen vnd Vat etc ."
       },
       {
-        "text": "南シネイ",
-        "type": "PLACE",
-        "normalised": "Nanshinei",
-        "context": "...南シネイ...",
+        "text": "Vat",
+        "type": "ORG",
+        "normalised": "vat",
+        "context": "...anno ander etc . Schulen vnd Vat etc ."
+      },
+      {
+        "text": "Kirch",
+        "type": "ORG",
+        "normalised": "kirche",
+        "context": "...Er Kirch bescheid , dand in die zum anno ander etc ."
+      },
+      {
+        "text": "nachtag",
+        "type": "DATE",
+        "normalised": "nachtag",
+        "context": "...hat vor nachtag usgeracht macht werd ,"
+      },
+      {
+        "text": "anno",
+        "type": "DATE",
+        "normalised": "anno",
+        "context": "...dand in die zum anno ander etc ."
+      },
+      {
+        "text": "der sohn",
+        "type": "PERSON",
+        "normalised": "sohn",
+        "context": "...der sohn vff wahr vnd darumb so oft...",
         "hub_confidence": "unverified",
         "link_method": "none"
-      },
-      {
-        "text": "春",
-        "type": "SOCIAL_GROUP",
-        "normalised": "Frühling",
-        "context": "...春○..."
-      },
-      {
-        "text": "卯",
-        "type": "SOCIAL_GROUP",
-        "normalised": "Mahn",
-        "context": "...卯にく..."
       }
     ]
   },

@@ -1,54 +1,58 @@
 {
   "entities": [
     {
-      "text": "黒てて",
-      "type": "PERSON",
-      "normalised": "Kuro Tete",
-      "context": "...黒てて...",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "黒まる",
-      "type": "PERSON",
-      "normalised": "Kuro Maru",
-      "context": "...黒まる...",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "和里",
+      "text": "Cuͦnratoͤffen",
       "type": "PLACE",
-      "normalised": "Warai",
-      "context": "...和里...",
+      "normalised": "cunratoffen",
+      "context": "...fast vnd Cuͦnratoͤffen ,",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "船",
+      "text": "GespLatz",
+      "type": "PLACE",
+      "normalised": "gesplatz",
+      "context": "...die sach vff GespLatz dz ouch ist gefhlgt ,",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Schulen",
       "type": "ORG",
-      "normalised": "Schiff",
-      "context": "...船ひま..."
+      "normalised": "schulen",
+      "context": "...anno ander etc . Schulen vnd Vat etc ."
     },
     {
-      "text": "南シネイ",
-      "type": "PLACE",
-      "normalised": "Nanshinei",
-      "context": "...南シネイ...",
+      "text": "Vat",
+      "type": "ORG",
+      "normalised": "vat",
+      "context": "...anno ander etc . Schulen vnd Vat etc ."
+    },
+    {
+      "text": "Kirch",
+      "type": "ORG",
+      "normalised": "kirche",
+      "context": "...Er Kirch bescheid , dand in die zum anno ander etc ."
+    },
+    {
+      "text": "nachtag",
+      "type": "DATE",
+      "normalised": "nachtag",
+      "context": "...hat vor nachtag usgeracht macht werd ,"
+    },
+    {
+      "text": "anno",
+      "type": "DATE",
+      "normalised": "anno",
+      "context": "...dand in die zum anno ander etc ."
+    },
+    {
+      "text": "der sohn",
+      "type": "PERSON",
+      "normalised": "sohn",
+      "context": "...der sohn vff wahr vnd darumb so oft...",
       "hub_confidence": "unverified",
       "link_method": "none"
-    },
-    {
-      "text": "春",
-      "type": "SOCIAL_GROUP",
-      "normalised": "Frühling",
-      "context": "...春○..."
-    },
-    {
-      "text": "卯",
-      "type": "SOCIAL_GROUP",
-      "normalised": "Mahn",
-      "context": "...卯にく..."
     }
   ]
 }
