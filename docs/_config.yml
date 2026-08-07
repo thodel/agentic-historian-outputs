@@ -9,6 +9,7 @@ theme: minima
 # catalogue itself provides access to individual outputs.
 header_pages:
   - index.md
+  - training/index.md
   - entities/index.md
   - methodology.md
   - about.md

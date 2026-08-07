@@ -32,6 +32,7 @@ Schema summary (fully defined in docs/training/TRAINING_SCHEMA.md):
 from __future__ import annotations
 
 import json
+import math
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -51,6 +52,7 @@ MODEL_ID_RE = re.compile(r"^[a-z0-9][a-z0-9._-]*$")
 RUN_ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{2,127}$")
 # owner/name, as on the hub
 HF_REPO_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*/[A-Za-z0-9][A-Za-z0-9._-]*$")
+REVISION_RE = re.compile(r"^[A-Za-z0-9._-]{7,128}$")
 
 
 class ContractError(ValueError):
@@ -80,8 +82,12 @@ class CurveEpoch:
             ("val_accuracy", val_accuracy),
             ("lr", lr),
         ]:
-            if val is not None and not isinstance(val, (int, float)):
-                raise ContractError(f"{name} must be numeric, got {val!r}")
+            if val is not None and (
+                not isinstance(val, (int, float))
+                or isinstance(val, bool)
+                or not math.isfinite(float(val))
+            ):
+                raise ContractError(f"{name} must be a finite number, got {val!r}")
         self.epoch = epoch
         self.train_loss = float(train_loss) if train_loss is not None else None
         self.val_loss = float(val_loss) if val_loss is not None else None
@@ -197,6 +203,15 @@ class TrainingContract:
             errors.append(
                 f"epochs_trained ({et}) > epochs ({epochs}) — more epochs than requested"
             )
+
+        params = data.get("params")
+        if params is not None and not isinstance(params, dict):
+            errors.append("params: must be a dict when present")
+
+        for field in ("base_model", "log"):
+            value = data.get(field)
+            if value is not None and not isinstance(value, str):
+                errors.append(f"{field}: must be a string or null")
         # NOTE: epochs_trained < epochs is NOT an error. `quit: early` stops when
         # the validation metric stops improving, which is the recommended setting
         # for fine-tuning; requiring the full count would reject every early-stopped
@@ -225,6 +240,22 @@ class TrainingContract:
                     val = ds.get(key)
                     if val is not None and not isinstance(val, list):
                         errors.append(f"datasets[{i}].{key}: must be a list when present")
+                    elif isinstance(val, list) and any(
+                        not isinstance(item, str) or not item.strip() for item in val
+                    ):
+                        errors.append(
+                            f"datasets[{i}].{key}: entries must be non-empty strings"
+                        )
+                revision = ds.get("revision")
+                if revision is not None and (
+                    not isinstance(revision, str) or not REVISION_RE.fullmatch(revision)
+                ):
+                    errors.append(
+                        f"datasets[{i}].revision: expected a safe revision id"
+                    )
+                split = ds.get("split")
+                if split is not None and (not isinstance(split, str) or not split.strip()):
+                    errors.append(f"datasets[{i}].split: must be a non-empty string")
                 for key in ("pages", "lines", "chars", "pages_skipped"):
                     val = ds.get(key)
                     if val is not None and (not isinstance(val, int) or val < 0):
@@ -247,6 +278,27 @@ class TrainingContract:
                             errors.append(
                                 f"metrics.{key}: must be 0-1 (error rate), got {val}"
                             )
+                for key in ("char_accuracy", "char_accuracy_ci", "word_accuracy"):
+                    val = metrics.get(key)
+                    if val is not None and (
+                        not isinstance(val, (int, float))
+                        or isinstance(val, bool)
+                        or not math.isfinite(float(val))
+                        or val < 0 or val > 100
+                    ):
+                        errors.append(f"metrics.{key}: must be a finite percentage 0-100")
+                for key in ("chars", "errors"):
+                    val = metrics.get(key)
+                    if val is not None and (
+                        not isinstance(val, int) or isinstance(val, bool) or val < 0
+                    ):
+                        errors.append(f"metrics.{key}: must be a non-negative int")
+                if (
+                    isinstance(metrics.get("chars"), int)
+                    and isinstance(metrics.get("errors"), int)
+                    and metrics["errors"] > metrics["chars"]
+                ):
+                    errors.append("metrics.errors cannot exceed metrics.chars")
 
         # ── curves ─────────────────────────────────────────────────────────
         curves = data.get("curves")
@@ -270,6 +322,16 @@ class TrainingContract:
                             "curves must be sorted by epoch starting at 0"
                         )
                     seen.add(ep_num)
+                    for key in ("train_loss", "val_loss", "val_accuracy", "lr"):
+                        val = ep.get(key)
+                        if val is not None and (
+                            not isinstance(val, (int, float))
+                            or isinstance(val, bool)
+                            or not math.isfinite(float(val))
+                        ):
+                            errors.append(
+                                f"curves[{i}].{key}: must be a finite number"
+                            )
 
         if errors:
             raise ContractError(
