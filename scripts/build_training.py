@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """Build ``docs/training/index.md`` — the training run catalogue.
 
-Each document may have a ``docs/<id>/training.json`` (produced by
+Each run has a ``docs/training/<run_id>/training.json`` (produced by
 serving-atr-inference after a training run completes).  This builder
 aggregates all of them into a single browsable index.
+
+A run belongs to its **datasets**, not to a document: it consumes 1..n
+HuggingFace datasets and produces a model. The index therefore names the
+datasets a run was trained on, and is keyed by ``run_id``.
 
 Called by ``build_index.py`` after ``build_outputs()``.
 """
@@ -18,6 +22,7 @@ from pathlib import Path
 from training_contract import (
     ContractError,
     TrainingContract,
+    training_json_paths,
     validate_all_training_jsons,
 )
 
@@ -49,22 +54,40 @@ def _status_label(status: str) -> tuple[str, str]:
 
 
 def _engine_label(engine: str) -> str:
-    return {"kraken": "Kraken", "trocr": "TrOCR", "vlm": "VLM", "party": "Party"}.get(
-        engine, engine
-    )
+    return {"kraken": "Kraken", "trocr": "TrOCR", "vllm": "VLM"}.get(engine, engine)
+
+
+def _dataset_cell(datasets: list[dict]) -> str:
+    """Render the datasets a run consumed, linked to the hub.
+
+    Always a list: one dataset is the common case, several is a first-class one —
+    a model trained on two corpora is a different model, and a cell that named
+    only the first would misdescribe it.
+    """
+    if not datasets:
+        return "—"
+    parts = []
+    for ds in datasets:
+        repo = ds.get("hf_repo", "?")
+        projects = ds.get("train_projects") or []
+        suffix = f" ({len(projects)} Projekte)" if len(projects) > 1 else ""
+        parts.append(
+            f'<a href="https://huggingface.co/datasets/{repo}">{repo}</a>{suffix}'
+        )
+    return "<br>".join(parts)
 
 
 def _build_rows(training_jsons: list[Path]) -> list[dict]:
     """Parse training.json files and return sorted row dicts for rendering."""
     rows: list[dict] = []
     for tpath in sorted(training_jsons):
-        doc_id = tpath.parent.name
+        run_dir = tpath.parent.name
         try:
             data = json.loads(tpath.read_text(encoding="utf-8"))
             contract = TrainingContract(data)
         except (OSError, json.JSONDecodeError, ContractError) as exc:
             rows.append({
-                "doc_id": doc_id, "status": "parse-error",
+                "run_id": run_dir, "datasets_cell": "—", "status": "parse-error",
                 "status_label": "Fehler", "status_mod": "error",
                 "engine": "—", "model_id": "—",
                 "epochs": "—", "epochs_trained": "—",
@@ -78,7 +101,7 @@ def _build_rows(training_jsons: list[Path]) -> list[dict]:
         cer = metrics.get("cer")
         wer = metrics.get("wer")
         rows.append({
-            "doc_id": doc_id,
+            "datasets_cell": _dataset_cell(contract.datasets),
             "status": contract.status,
             "status_label": label,
             "status_mod": mod,
@@ -106,7 +129,7 @@ def _render_table(rows: list[dict]) -> str:
         <table class="training-table">
           <thead>
             <tr>
-              <th scope="col">Dokument</th>
+              <th scope="col">Datensätze</th>
               <th scope="col">Status</th>
               <th scope="col">Engine</th>
               <th scope="col">Modell</th>
@@ -123,7 +146,7 @@ def _render_table(rows: list[dict]) -> str:
         if r["status"] == "parse-error":
             body_parts.append(
                 '<tr class="training-table__row training-table__row--error">'
-                f'<td><a href="../{r["doc_id"]}/pipeline.json">{r["doc_id"]}</a></td>'
+                f'<td>{r["datasets_cell"]}</td>'
                 '<td><span class="catalogue-badge catalogue-badge--error">Fehler</span></td>'
                 f'<td colspan="5"><code>{r["error"]}</code></td>'
                 '</tr>'
@@ -134,7 +157,7 @@ def _render_table(rows: list[dict]) -> str:
         epoch_display = f'{r["epochs_trained"]}/{r["epochs"]}'
         body_parts.append(
             '<tr class="training-table__row training-table__row--' + r["status"] + '">'
-            f'<td><a href="../{r["doc_id"]}/pipeline.json">{r["doc_id"]}</a></td>'
+            f'<td>{r["datasets_cell"]}</td>'
             f'<td><span class="catalogue-badge catalogue-badge--{r["status_mod"]}">{r["status_label"]}</span></td>'
             f'<td>{r["engine"]}</td>'
             f'<td><code>{r["model_id"]}</code></td>'
@@ -183,7 +206,7 @@ def build_training() -> int:
 
     Returns the number of training runs found (including errors).
     """
-    training_jsons = sorted(DOCS.glob("*/training.json"))
+    training_jsons = training_json_paths(DOCS)
     if not training_jsons:
         TRAINING_INDEX.parent.mkdir(parents=True, exist_ok=True)
         TRAINING_INDEX.write_text(

@@ -1,8 +1,7 @@
 [
   {
     "name": "valid completed kraken run",
-    "doc_id": "bat_664_r_00027",
-    "run_id": "tr-kf-kraken-20240615-093041",
+    "run_id": "20260807T161137Z-kf-kraken-20240615",
     "model_id": "kf-kraken-20240615",
     "engine": "kraken",
     "status": "completed",
@@ -73,21 +72,29 @@
       }
     ],
     "base_model": "digitised medieval print model v3",
-    "dataset": {
-      "hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
-      "split": "train",
-      "train_projects": [
-        "BAT_664"
-      ],
-      "pages": 1240,
-      "partition": 0.9
-    },
-    "log": "training_logs/run-20240615"
+    "log": "training_logs/run-20240615",
+    "schema_version": 1,
+    "datasets": [
+      {
+        "hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
+        "revision": "729e9b2721ba2a31901f776368d8aacf0a5e9406",
+        "split": "train",
+        "train_projects": [
+          "GT_Thun-Training_(TEST-DEMO)"
+        ],
+        "eval_projects": [
+          "GT_Thun-Test_(DEMO_TEST)"
+        ],
+        "pages": 127,
+        "lines": 1898,
+        "chars": 122096,
+        "pages_skipped": 111
+      }
+    ]
   },
   {
     "name": "completed run without curves",
-    "doc_id": "u-17-test",
-    "run_id": "tr-other-20240501-120000",
+    "run_id": "20260807T161137Z-other-model",
     "model_id": "other-model",
     "engine": "kraken",
     "status": "completed",
@@ -106,19 +113,29 @@
     },
     "curves": null,
     "base_model": null,
-    "dataset": {
-      "hf_repo": "some/repo",
-      "split": "train",
-      "train_projects": [
-        "proj1"
-      ]
-    },
-    "log": "training_logs/run-20240501"
+    "log": "training_logs/run-20240501",
+    "schema_version": 1,
+    "datasets": [
+      {
+        "hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
+        "revision": "729e9b2721ba2a31901f776368d8aacf0a5e9406",
+        "split": "train",
+        "train_projects": [
+          "GT_Thun-Training_(TEST-DEMO)"
+        ],
+        "eval_projects": [
+          "GT_Thun-Test_(DEMO_TEST)"
+        ],
+        "pages": 127,
+        "lines": 1898,
+        "chars": 122096,
+        "pages_skipped": 111
+      }
+    ]
   },
   {
     "name": "failed run during training",
-    "doc_id": "bat_664_r_00028",
-    "run_id": "tr-kf-kraken-20240620-080000",
+    "run_id": "20260807T161137Z-kf-kraken-20240620",
     "model_id": "kf-kraken-20240620",
     "engine": "kraken",
     "status": "failed",
@@ -134,19 +151,29 @@
     "metrics": null,
     "curves": null,
     "base_model": "kf-kraken-20240615",
-    "dataset": {
-      "hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
-      "split": "train",
-      "train_projects": [
-        "BAT_664"
-      ]
-    },
-    "log": "training_logs/run-20240620"
+    "log": "training_logs/run-20240620",
+    "schema_version": 1,
+    "datasets": [
+      {
+        "hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
+        "revision": "729e9b2721ba2a31901f776368d8aacf0a5e9406",
+        "split": "train",
+        "train_projects": [
+          "GT_Thun-Training_(TEST-DEMO)"
+        ],
+        "eval_projects": [
+          "GT_Thun-Test_(DEMO_TEST)"
+        ],
+        "pages": 127,
+        "lines": 1898,
+        "chars": 122096,
+        "pages_skipped": 111
+      }
+    ]
   },
   {
     "name": "cancelled before starting",
-    "doc_id": "bat_664_r_00029",
-    "run_id": "tr-kf-kraken-20240621-060000",
+    "run_id": "20260807T161137Z-kf-kraken-20240621",
     "model_id": "kf-kraken-20240621",
     "engine": "kraken",
     "status": "cancelled",
@@ -160,21 +187,31 @@
     "metrics": null,
     "curves": null,
     "base_model": null,
-    "dataset": {
-      "hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
-      "split": "train",
-      "train_projects": [
-        "BAT_664"
-      ]
-    },
-    "log": null
+    "log": null,
+    "schema_version": 1,
+    "datasets": [
+      {
+        "hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
+        "revision": "729e9b2721ba2a31901f776368d8aacf0a5e9406",
+        "split": "train",
+        "train_projects": [
+          "GT_Thun-Training_(TEST-DEMO)"
+        ],
+        "eval_projects": [
+          "GT_Thun-Test_(DEMO_TEST)"
+        ],
+        "pages": 127,
+        "lines": 1898,
+        "chars": 122096,
+        "pages_skipped": 111
+      }
+    ]
   },
   {
-    "name": "valid completed trocr run",
-    "doc_id": "u-19-test",
-    "run_id": "tr-kf-trocr-20240701-100000",
+    "name": "valid completed vllm run",
+    "run_id": "20260807T161137Z-kf-trocr-20240701",
     "model_id": "kf-trocr-20240701",
-    "engine": "trocr",
+    "engine": "vllm",
     "status": "completed",
     "created_at": "2024-07-01T10:00:00+00:00",
     "finished_at": "2024-07-01T12:30:00+00:00",
@@ -213,19 +250,29 @@
       }
     ],
     "base_model": "microsoft/trocr-base-handwritten",
-    "dataset": {
-      "hf_repo": "some/repo",
-      "split": "train",
-      "train_projects": [
-        "proj1"
-      ]
-    },
-    "log": "training_logs/run-20240701"
+    "log": "training_logs/run-20240701",
+    "schema_version": 1,
+    "datasets": [
+      {
+        "hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
+        "revision": "729e9b2721ba2a31901f776368d8aacf0a5e9406",
+        "split": "train",
+        "train_projects": [
+          "GT_Thun-Training_(TEST-DEMO)"
+        ],
+        "eval_projects": [
+          "GT_Thun-Test_(DEMO_TEST)"
+        ],
+        "pages": 127,
+        "lines": 1898,
+        "chars": 122096,
+        "pages_skipped": 111
+      }
+    ]
   },
   {
-    "name": "invalid: bad run_id pattern",
-    "doc_id": "BAT_664_r_00027",
-    "run_id": "bad-run-id-no-timestamp",
+    "name": "invalid: run_id is not a safe directory slug",
+    "run_id": "../escape/../etc",
     "model_id": "kf-kraken-20240615",
     "engine": "kraken",
     "status": "completed",
@@ -240,14 +287,30 @@
     },
     "curves": null,
     "base_model": null,
-    "dataset": {},
     "log": null,
-    "_expect_error": true
+    "_expect_error": true,
+    "schema_version": 1,
+    "datasets": [
+      {
+        "hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
+        "revision": "729e9b2721ba2a31901f776368d8aacf0a5e9406",
+        "split": "train",
+        "train_projects": [
+          "GT_Thun-Training_(TEST-DEMO)"
+        ],
+        "eval_projects": [
+          "GT_Thun-Test_(DEMO_TEST)"
+        ],
+        "pages": 127,
+        "lines": 1898,
+        "chars": 122096,
+        "pages_skipped": 111
+      }
+    ]
   },
   {
     "name": "invalid: cer out of range",
-    "doc_id": "BAT_664_r_00027",
-    "run_id": "tr-kf-kraken-20240622-080000",
+    "run_id": "20260807T161137Z-kf-kraken-20240622",
     "model_id": "kf-kraken-20240622",
     "engine": "kraken",
     "status": "completed",
@@ -262,14 +325,30 @@
     },
     "curves": null,
     "base_model": null,
-    "dataset": {},
     "log": null,
-    "_expect_error": true
+    "_expect_error": true,
+    "schema_version": 1,
+    "datasets": [
+      {
+        "hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
+        "revision": "729e9b2721ba2a31901f776368d8aacf0a5e9406",
+        "split": "train",
+        "train_projects": [
+          "GT_Thun-Training_(TEST-DEMO)"
+        ],
+        "eval_projects": [
+          "GT_Thun-Test_(DEMO_TEST)"
+        ],
+        "pages": 127,
+        "lines": 1898,
+        "chars": 122096,
+        "pages_skipped": 111
+      }
+    ]
   },
   {
     "name": "invalid: curves not sorted by epoch",
-    "doc_id": "BAT_664_r_00027",
-    "run_id": "tr-kf-kraken-20240623-080000",
+    "run_id": "20260807T161137Z-kf-kraken-20240623",
     "model_id": "kf-kraken-20240623",
     "engine": "kraken",
     "status": "completed",
@@ -303,8 +382,450 @@
       }
     ],
     "base_model": null,
-    "dataset": {},
     "log": null,
+    "_expect_error": true,
+    "schema_version": 1,
+    "datasets": [
+      {
+        "hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
+        "revision": "729e9b2721ba2a31901f776368d8aacf0a5e9406",
+        "split": "train",
+        "train_projects": [
+          "GT_Thun-Training_(TEST-DEMO)"
+        ],
+        "eval_projects": [
+          "GT_Thun-Test_(DEMO_TEST)"
+        ],
+        "pages": 127,
+        "lines": 1898,
+        "chars": 122096,
+        "pages_skipped": 111
+      }
+    ]
+  },
+  {
+    "name": "valid run over two datasets",
+    "run_id": "20260807T201321Z-kraken-medieval-scripts-v1",
+    "model_id": "kraken-medieval-scripts-v1",
+    "engine": "kraken",
+    "status": "completed",
+    "created_at": "2024-06-15T09:30:41+00:00",
+    "finished_at": "2024-06-15T11:47:22+00:00",
+    "epochs": 50,
+    "epochs_trained": 50,
+    "params": {
+      "spec": "[256,64,0,1 Cr4,2,8,4,2 Cr4,2,32,1,1 Mp4,2,4,2]",
+      "batch_size": 256,
+      "lrate": 0.0001,
+      "schedule": "1cycle",
+      "epochs": 50,
+      "augment": true,
+      "normalization": "NFD"
+    },
+    "metrics": {
+      "chars": 14820,
+      "errors": 892,
+      "char_accuracy": 93.98,
+      "char_accuracy_ci": 93.71,
+      "word_accuracy": 81.24,
+      "cer": 0.0602,
+      "wer": 0.1876
+    },
+    "curves": [
+      {
+        "epoch": 0,
+        "train_loss": 2.341,
+        "val_loss": 1.892,
+        "val_accuracy": 41.3,
+        "lr": 1e-06
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.873,
+        "val_loss": 0.621,
+        "val_accuracy": 78.9,
+        "lr": 5e-05
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.412,
+        "val_loss": 0.387,
+        "val_accuracy": 87.2,
+        "lr": 0.0001
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.287,
+        "val_loss": 0.298,
+        "val_accuracy": 91.4,
+        "lr": 3e-05
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.219,
+        "val_loss": 0.251,
+        "val_accuracy": 93.1,
+        "lr": 1e-05
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.187,
+        "val_loss": 0.239,
+        "val_accuracy": 93.98,
+        "lr": 1e-06
+      }
+    ],
+    "base_model": "digitised medieval print model v3",
+    "log": "training_logs/run-20240615",
+    "schema_version": 1,
+    "datasets": [
+      {
+        "hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
+        "revision": "729e9b2721ba2a31901f776368d8aacf0a5e9406",
+        "split": "train",
+        "train_projects": [
+          "GT_Thun-Training_(TEST-DEMO)"
+        ],
+        "eval_projects": [
+          "GT_Thun-Test_(DEMO_TEST)"
+        ],
+        "pages": 127,
+        "lines": 1898,
+        "chars": 122096,
+        "pages_skipped": 111
+      },
+      {
+        "hf_repo": "dh-unibe/image-text_kurrent-xix",
+        "split": "train",
+        "train_projects": [
+          "default"
+        ],
+        "pages": 4200,
+        "lines": 158000,
+        "chars": 3900000,
+        "pages_skipped": 0
+      }
+    ]
+  },
+  {
+    "name": "invalid: no datasets listed",
+    "run_id": "20260807T161137Z-kf-kraken-20240615",
+    "model_id": "kf-kraken-20240615",
+    "engine": "kraken",
+    "status": "completed",
+    "created_at": "2024-06-15T09:30:41+00:00",
+    "finished_at": "2024-06-15T11:47:22+00:00",
+    "epochs": 50,
+    "epochs_trained": 50,
+    "params": {
+      "spec": "[256,64,0,1 Cr4,2,8,4,2 Cr4,2,32,1,1 Mp4,2,4,2]",
+      "batch_size": 256,
+      "lrate": 0.0001,
+      "schedule": "1cycle",
+      "epochs": 50,
+      "augment": true,
+      "normalization": "NFD"
+    },
+    "metrics": {
+      "chars": 14820,
+      "errors": 892,
+      "char_accuracy": 93.98,
+      "char_accuracy_ci": 93.71,
+      "word_accuracy": 81.24,
+      "cer": 0.0602,
+      "wer": 0.1876
+    },
+    "curves": [
+      {
+        "epoch": 0,
+        "train_loss": 2.341,
+        "val_loss": 1.892,
+        "val_accuracy": 41.3,
+        "lr": 1e-06
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.873,
+        "val_loss": 0.621,
+        "val_accuracy": 78.9,
+        "lr": 5e-05
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.412,
+        "val_loss": 0.387,
+        "val_accuracy": 87.2,
+        "lr": 0.0001
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.287,
+        "val_loss": 0.298,
+        "val_accuracy": 91.4,
+        "lr": 3e-05
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.219,
+        "val_loss": 0.251,
+        "val_accuracy": 93.1,
+        "lr": 1e-05
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.187,
+        "val_loss": 0.239,
+        "val_accuracy": 93.98,
+        "lr": 1e-06
+      }
+    ],
+    "base_model": "digitised medieval print model v3",
+    "log": "training_logs/run-20240615",
+    "schema_version": 1,
+    "datasets": [],
     "_expect_error": true
+  },
+  {
+    "name": "invalid: dataset without an hf_repo",
+    "run_id": "20260807T161137Z-kf-kraken-20240615",
+    "model_id": "kf-kraken-20240615",
+    "engine": "kraken",
+    "status": "completed",
+    "created_at": "2024-06-15T09:30:41+00:00",
+    "finished_at": "2024-06-15T11:47:22+00:00",
+    "epochs": 50,
+    "epochs_trained": 50,
+    "params": {
+      "spec": "[256,64,0,1 Cr4,2,8,4,2 Cr4,2,32,1,1 Mp4,2,4,2]",
+      "batch_size": 256,
+      "lrate": 0.0001,
+      "schedule": "1cycle",
+      "epochs": 50,
+      "augment": true,
+      "normalization": "NFD"
+    },
+    "metrics": {
+      "chars": 14820,
+      "errors": 892,
+      "char_accuracy": 93.98,
+      "char_accuracy_ci": 93.71,
+      "word_accuracy": 81.24,
+      "cer": 0.0602,
+      "wer": 0.1876
+    },
+    "curves": [
+      {
+        "epoch": 0,
+        "train_loss": 2.341,
+        "val_loss": 1.892,
+        "val_accuracy": 41.3,
+        "lr": 1e-06
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.873,
+        "val_loss": 0.621,
+        "val_accuracy": 78.9,
+        "lr": 5e-05
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.412,
+        "val_loss": 0.387,
+        "val_accuracy": 87.2,
+        "lr": 0.0001
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.287,
+        "val_loss": 0.298,
+        "val_accuracy": 91.4,
+        "lr": 3e-05
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.219,
+        "val_loss": 0.251,
+        "val_accuracy": 93.1,
+        "lr": 1e-05
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.187,
+        "val_loss": 0.239,
+        "val_accuracy": 93.98,
+        "lr": 1e-06
+      }
+    ],
+    "base_model": "digitised medieval print model v3",
+    "log": "training_logs/run-20240615",
+    "schema_version": 1,
+    "datasets": [
+      {
+        "train_projects": [
+          "x"
+        ]
+      }
+    ],
+    "_expect_error": true
+  },
+  {
+    "name": "invalid: schema_version newer than the site",
+    "run_id": "20260807T161137Z-kf-kraken-20240615",
+    "model_id": "kf-kraken-20240615",
+    "engine": "kraken",
+    "status": "completed",
+    "created_at": "2024-06-15T09:30:41+00:00",
+    "finished_at": "2024-06-15T11:47:22+00:00",
+    "epochs": 50,
+    "epochs_trained": 50,
+    "params": {
+      "spec": "[256,64,0,1 Cr4,2,8,4,2 Cr4,2,32,1,1 Mp4,2,4,2]",
+      "batch_size": 256,
+      "lrate": 0.0001,
+      "schedule": "1cycle",
+      "epochs": 50,
+      "augment": true,
+      "normalization": "NFD"
+    },
+    "metrics": {
+      "chars": 14820,
+      "errors": 892,
+      "char_accuracy": 93.98,
+      "char_accuracy_ci": 93.71,
+      "word_accuracy": 81.24,
+      "cer": 0.0602,
+      "wer": 0.1876
+    },
+    "curves": [
+      {
+        "epoch": 0,
+        "train_loss": 2.341,
+        "val_loss": 1.892,
+        "val_accuracy": 41.3,
+        "lr": 1e-06
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.873,
+        "val_loss": 0.621,
+        "val_accuracy": 78.9,
+        "lr": 5e-05
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.412,
+        "val_loss": 0.387,
+        "val_accuracy": 87.2,
+        "lr": 0.0001
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.287,
+        "val_loss": 0.298,
+        "val_accuracy": 91.4,
+        "lr": 3e-05
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.219,
+        "val_loss": 0.251,
+        "val_accuracy": 93.1,
+        "lr": 1e-05
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.187,
+        "val_loss": 0.239,
+        "val_accuracy": 93.98,
+        "lr": 1e-06
+      }
+    ],
+    "base_model": "digitised medieval print model v3",
+    "log": "training_logs/run-20240615",
+    "schema_version": 99,
+    "datasets": [
+      {
+        "hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
+        "revision": "729e9b2721ba2a31901f776368d8aacf0a5e9406",
+        "split": "train",
+        "train_projects": [
+          "GT_Thun-Training_(TEST-DEMO)"
+        ],
+        "eval_projects": [
+          "GT_Thun-Test_(DEMO_TEST)"
+        ],
+        "pages": 127,
+        "lines": 1898,
+        "chars": 122096,
+        "pages_skipped": 111
+      }
+    ],
+    "_expect_error": true
+  },
+  {
+    "name": "valid early-stopped run (fewer epochs than requested)",
+    "run_id": "20260807T090000Z-kraken-early-stop",
+    "model_id": "kraken-early-stop",
+    "engine": "kraken",
+    "status": "completed",
+    "created_at": "2024-06-15T09:30:41+00:00",
+    "finished_at": "2024-06-15T11:47:22+00:00",
+    "epochs": 50,
+    "epochs_trained": 12,
+    "params": {
+      "spec": "[256,64,0,1 Cr4,2,8,4,2 Cr4,2,32,1,1 Mp4,2,4,2]",
+      "batch_size": 256,
+      "lrate": 0.0001,
+      "schedule": "1cycle",
+      "epochs": 50,
+      "augment": true,
+      "normalization": "NFD"
+    },
+    "metrics": {
+      "chars": 14820,
+      "errors": 892,
+      "char_accuracy": 93.98,
+      "char_accuracy_ci": 93.71,
+      "word_accuracy": 81.24,
+      "cer": 0.0602,
+      "wer": 0.1876
+    },
+    "curves": [
+      {
+        "epoch": 0,
+        "train_loss": 2.341,
+        "val_loss": 1.892,
+        "val_accuracy": 41.3,
+        "lr": 1e-06
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.873,
+        "val_loss": 0.621,
+        "val_accuracy": 78.9,
+        "lr": 5e-05
+      }
+    ],
+    "base_model": "digitised medieval print model v3",
+    "log": "training_logs/run-20240615",
+    "schema_version": 1,
+    "datasets": [
+      {
+        "hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
+        "revision": "729e9b2721ba2a31901f776368d8aacf0a5e9406",
+        "split": "train",
+        "train_projects": [
+          "GT_Thun-Training_(TEST-DEMO)"
+        ],
+        "eval_projects": [
+          "GT_Thun-Test_(DEMO_TEST)"
+        ],
+        "pages": 127,
+        "lines": 1898,
+        "chars": 122096,
+        "pages_skipped": 111
+      }
+    ]
   }
 ]
