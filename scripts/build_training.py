@@ -27,6 +27,14 @@ TRAINING_INDEX = DOCS / "training" / "index.md"
 _HF_REVISION = re.compile(r"^[A-Za-z0-9._-]{7,128}$")
 _HF_MODEL = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*/[A-Za-z0-9][A-Za-z0-9._-]*$")
 
+TRAINING_PERFORMANCE_BUDGETS = {
+    "svg_points_per_series": 250,
+    "report_bytes_per_run": 128_000,
+    "page_bytes": 2_000_000,
+    "synthetic_table_runs": 500,
+    "synthetic_table_ms": 1_000,
+}
+
 
 def _esc(value: object, *, attr: bool = False) -> str:
     return html.escape(str(value), quote=attr)
@@ -177,6 +185,20 @@ def _metric_points(curves: list[CurveEpoch], field: str) -> list[tuple[int, floa
     return [(curve.epoch, float(getattr(curve, field))) for curve in curves if getattr(curve, field) is not None]
 
 
+def _sample_points(points: list[tuple[int, float]]) -> list[tuple[int, float]]:
+    """Bound SVG geometry while the exact HTML table keeps every epoch.
+
+    Uniform sampling is deterministic and always retains both endpoints.  This
+    keeps the inline graphic responsive for unusually long runs without
+    silently discarding the underlying values.
+    """
+    limit = TRAINING_PERFORMANCE_BUDGETS["svg_points_per_series"]
+    if len(points) <= limit:
+        return points
+    indexes = {round(index * (len(points) - 1) / (limit - 1)) for index in range(limit)}
+    return [points[index] for index in sorted(indexes)]
+
+
 def _polyline(points: list[tuple[int, float]], x_min: float, x_max: float,
               y_min: float, y_max: float) -> str:
     left, top, width, height = 62.0, 24.0, 620.0, 210.0
@@ -198,7 +220,10 @@ def _render_svg_chart(curves: list[CurveEpoch], run_id: str, chart: str) -> str:
         series = [("Validierungsgenauigkeit", "val_accuracy", "training-chart__accuracy")]
         title = "Validierungsgenauigkeit nach Epoche"
         y_label = "Genauigkeit (%)"
-    available = [(label, css, _metric_points(curves, field)) for label, field, css in series]
+    available = [
+        (label, css, _sample_points(_metric_points(curves, field)))
+        for label, field, css in series
+    ]
     available = [item for item in available if item[2]]
     if not available:
         return ""
@@ -458,7 +483,7 @@ _STYLES = """
 .training-run__header h3, .training-run__kicker { margin: 0; }
 .training-run__kicker { color: #5c6875; font-size: .8rem; }
 .training-run > details { border-top: 1px solid var(--catalogue-border, #ccd3da); }
-.training-run > details > summary { padding: .75rem 1rem; cursor: pointer; color: #245b78; font-weight: 700; }
+.training-run > details > summary { box-sizing: border-box; min-height: 2.75rem; padding: .75rem 1rem; cursor: pointer; color: #245b78; font-weight: 700; }
 .training-run > details > summary:focus-visible { outline: 3px solid #f5b942; outline-offset: -3px; }
 .training-panel { padding: 0 1rem 1rem; }
 .training-charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr)); gap: 1rem; }
@@ -481,6 +506,17 @@ _STYLES = """
 .training-metric dd span { display: block; color: #5c6875; font-size: .78rem; }
 .training-dataset + .training-dataset { margin-top: 1rem; border-top: 1px solid #d7dee5; }
 .training-empty, .training-metric-note { color: #5c6875; }
+@media (max-width: 38rem) {
+  .training-run__header { display: block; }
+  .training-run__header .catalogue-badge { margin-top: .5rem; }
+  .training-facts, .training-metrics { grid-template-columns: 1fr; }
+  .training-panel { padding-inline: .75rem; }
+}
+@media (forced-colors: active) {
+  .training-chart__line { stroke: CanvasText; }
+  .training-chart__validation { stroke-dasharray: 8 5; }
+  .training-run, .training-chart svg { border: 1px solid CanvasText; }
+}
 @media (prefers-color-scheme: dark) {
   .training-table th, .training-run__header, .training-facts div, .training-metric { background: #202833; }
   .training-chart svg { background: #1a1f26; border-color: #2e3c4a; }
@@ -504,7 +540,19 @@ def build_training() -> int:
         return 0
 
     rows = _build_rows(training_jsons)
-    reports = "".join(_render_run_report(row) for row in rows if row.get("contract"))
+    report_parts = []
+    for row in rows:
+        if not row.get("contract"):
+            continue
+        report = _render_run_report(row)
+        report_size = len(report.encode("utf-8"))
+        if report_size > TRAINING_PERFORMANCE_BUDGETS["report_bytes_per_run"]:
+            raise RuntimeError(
+                f'training report {row["run_id"]!r} is {report_size} bytes; '
+                f'budget is {TRAINING_PERFORMANCE_BUDGETS["report_bytes_per_run"]}'
+            )
+        report_parts.append(report)
+    reports = "".join(report_parts)
     page = f"""---
 title: Training
 ---
@@ -529,6 +577,12 @@ Training runs produced by [serving-atr-inference](https://github.com/thodel/serv
 
 {reports}
 {_STYLES}"""
+    page_size = len(page.encode("utf-8"))
+    if page_size > TRAINING_PERFORMANCE_BUDGETS["page_bytes"]:
+        raise RuntimeError(
+            f"training page is {page_size} bytes; "
+            f'budget is {TRAINING_PERFORMANCE_BUDGETS["page_bytes"]}'
+        )
     TRAINING_INDEX.write_text(page, encoding="utf-8")
     print(f"build_training: wrote {len(rows)} training run(s) to {TRAINING_INDEX}")
     return len(rows)
