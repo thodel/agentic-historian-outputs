@@ -18,8 +18,10 @@ from build_training import (  # noqa: E402
     _render_curves,
     _render_dataset_panel,
     _render_metrics,
+    _render_recognition_usages,
     _render_reproducibility,
     _render_run_report,
+    _recognition_usages,
 )
 from training_contract import ContractError, TrainingContract  # noqa: E402
 
@@ -127,6 +129,38 @@ class IntegratedReportTests(unittest.TestCase):
         self.assertIn("Datensatzprovenienz", markup)
         self.assertIn("Reproduzierbarkeit und Modellkarte", markup)
         self.assertIn("Validierungsmetriken", markup)
+        self.assertIn("Verwendungen in Erkennungen", markup)
+
+    def test_model_links_to_exact_recognition_candidates(self):
+        case = valid_case()
+        with tempfile.TemporaryDirectory() as temp:
+            docs = Path(temp) / "docs"
+            run = docs / "training" / case["run_id"]
+            run.mkdir(parents=True)
+            (run / "training.json").write_text(json.dumps(case), encoding="utf-8")
+            doc = docs / "sample-document"
+            doc.mkdir()
+            (doc / "pipeline.json").write_text(json.dumps({
+                "transcription": "selected text",
+                "recognitions": [{
+                    "engine": "kraken", "model_id": case["model_id"],
+                    "page": "folio 1r", "text": "candidate text",
+                }],
+            }), encoding="utf-8")
+            usages = _recognition_usages(docs)
+            rows = _build_rows([run / "training.json"], usages)
+        self.assertEqual(len(usages[case["model_id"]]), 1)
+        usage = usages[case["model_id"]][0]
+        self.assertEqual(usage["candidate_id"], "folio-1r-kraken-kf-kraken-20240615")
+        markup = _render_run_report(rows[0])
+        self.assertIn("?rec=folio-1r-kraken-kf-kraken-20240615", markup)
+        self.assertIn("#recognition-folio-1r-kraken-kf-kraken-20240615", markup)
+        self.assertIn("sample-document", markup)
+
+    def test_unmatched_model_has_an_explicit_empty_state(self):
+        markup = _render_recognition_usages("unused-model", [])
+        self.assertIn("noch keine Erkennungsversuche", markup)
+        self.assertNotIn("<a ", markup)
 
     def test_full_builder_writes_a_self_contained_report(self):
         with tempfile.TemporaryDirectory() as temp:

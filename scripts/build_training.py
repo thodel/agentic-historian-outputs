@@ -19,6 +19,7 @@ from datetime import datetime
 from pathlib import Path
 from urllib.parse import quote
 
+from build_recognitions import _candidates
 from quality import Provenance, render_reference_evaluation
 from training_contract import ContractError, CurveEpoch, TrainingContract, training_json_paths
 
@@ -77,7 +78,47 @@ def _dataset_cell(datasets: list[dict]) -> str:
     return "<br>".join(parts) or "—"
 
 
-def _build_rows(training_jsons: list[Path]) -> list[dict]:
+def _recognition_usages(docs_root: Path) -> dict[str, list[dict]]:
+    """Index recognition candidates by their exact model identifier.
+
+    The candidate renderer is the source of truth for candidate IDs, so links
+    produced here remain aligned with document-page fragments even when two
+    candidates share an engine/model pair.
+    """
+    usages: dict[str, list[dict]] = {}
+    for pipeline in sorted(docs_root.glob("*/pipeline.json")):
+        doc_id = pipeline.parent.name
+        try:
+            data = json.loads(pipeline.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        recognitions = data.get("recognitions")
+        if not isinstance(recognitions, list):
+            continue
+        meta = data.get("a_meta") if isinstance(data.get("a_meta"), dict) else {}
+        transcript = str(data.get("transcription") or meta.get("transcription") or "")
+        for candidate in _candidates(recognitions, transcript)[1:]:
+            model_id = str(candidate.get("model_id") or "").strip()
+            if not model_id:
+                continue
+            usages.setdefault(model_id, []).append({
+                "doc_id": doc_id,
+                "candidate_id": candidate["id"],
+                "engine": candidate["engine"],
+                "page": candidate["page"],
+                "failed": bool(candidate["error"]),
+            })
+    for model_usages in usages.values():
+        model_usages.sort(key=lambda item: (
+            item["doc_id"].casefold(), item["page"].casefold(), item["candidate_id"]
+        ))
+    return usages
+
+
+def _build_rows(
+    training_jsons: list[Path],
+    recognition_usages: dict[str, list[dict]] | None = None,
+) -> list[dict]:
     rows: list[dict] = []
     for tpath in sorted(training_jsons):
         run_dir = tpath.parent.name
@@ -121,6 +162,7 @@ def _build_rows(training_jsons: list[Path]) -> list[dict]:
             "created_at": contract.created_at,
             "error": None,
             "contract": contract,
+            "recognition_usages": list((recognition_usages or {}).get(contract.model_id, [])),
         })
     status_order = {"completed": 0, "failed": 1, "cancelled": 2, "parse-error": 3}
     rows.sort(
@@ -335,6 +377,35 @@ def _render_reproducibility(contract: TrainingContract) -> str:
     )
 
 
+def _render_recognition_usages(model_id: str, usages: list[dict]) -> str:
+    if not usages:
+        return (
+            '<p class="training-empty">Für dieses Modell sind in den veröffentlichten '
+            'Ausgaben noch keine Erkennungsversuche dokumentiert.</p>'
+        )
+    items = []
+    for usage in usages:
+        doc_id = str(usage["doc_id"])
+        candidate_id = str(usage["candidate_id"])
+        href = (
+            f'../{quote(doc_id, safe="")}/?rec={quote(candidate_id, safe="")}'
+            f'#recognition-{quote(candidate_id, safe="")}'
+        )
+        context = [str(usage.get("engine") or "Unbekannte Engine")]
+        if usage.get("page"):
+            context.append(f'Seite {usage["page"]}')
+        context.append("fehlgeschlagen" if usage.get("failed") else "Ergebnis vorhanden")
+        items.append(
+            f'<li><a href="{_esc(href, attr=True)}"><code>{_esc(doc_id)}</code></a>'
+            f'<span>{_esc(" · ".join(context))}</span></li>'
+        )
+    return (
+        f'<p>{len(usages)} dokumentierte {"Verwendung" if len(usages) == 1 else "Verwendungen"} '
+        f'von <code>{_esc(model_id)}</code>.</p>'
+        f'<ul class="training-model-usages">{"".join(items)}</ul>'
+    )
+
+
 def _evaluation_scope(contract: TrainingContract) -> str:
     scopes = []
     for dataset in contract.datasets:
@@ -424,6 +495,8 @@ def _render_run_report(row: dict) -> str:
         f'<div class="training-panel">{_render_dataset_panel(contract)}</div></details>'
         '<details><summary>Reproduzierbarkeit und Modellkarte</summary>'
         f'<div class="training-panel">{_render_reproducibility(contract)}</div></details>'
+        '<details><summary>Verwendungen in Erkennungen</summary>'
+        f'<div class="training-panel">{_render_recognition_usages(contract.model_id, row.get("recognition_usages", []))}</div></details>'
         '<details><summary>Validierungsmetriken</summary>'
         f'<div class="training-panel">{_render_metrics(contract)}</div></details></article>'
     )
@@ -481,6 +554,9 @@ _STYLES = """
 .training-metric dd span { display: block; color: #5c6875; font-size: .78rem; }
 .training-dataset + .training-dataset { margin-top: 1rem; border-top: 1px solid #d7dee5; }
 .training-empty, .training-metric-note { color: #5c6875; }
+.training-model-usages { margin: 0; padding-left: 1.25rem; }
+.training-model-usages li + li { margin-top: .45rem; }
+.training-model-usages span { display: block; color: #5c6875; font-size: .82rem; }
 @media (prefers-color-scheme: dark) {
   .training-table th, .training-run__header, .training-facts div, .training-metric { background: #202833; }
   .training-chart svg { background: #1a1f26; border-color: #2e3c4a; }
@@ -503,7 +579,7 @@ def build_training() -> int:
         print("build_training: no training.json files found, wrote empty index")
         return 0
 
-    rows = _build_rows(training_jsons)
+    rows = _build_rows(training_jsons, _recognition_usages(DOCS))
     reports = "".join(_render_run_report(row) for row in rows if row.get("contract"))
     page = f"""---
 title: Training
