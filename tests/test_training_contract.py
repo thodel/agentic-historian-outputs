@@ -82,78 +82,125 @@ class TestSchemaConstraints(unittest.TestCase):
     def test_valid_engines_accepted(self):
         for engine in VALID_ENGINES:
             TrainingContract({
-                "doc_id": "test-doc", "run_id": "tr-test-20240601-120000",
+                "run_id": "20260601T120000Z-test-model",
                 "model_id": "test-model", "engine": engine,
                 "status": "completed", "created_at": "2024-06-01T12:00:00+00:00",
                 "finished_at": "2024-06-01T14:00:00+00:00",
                 "epochs": 10, "epochs_trained": 10,
                 "params": {}, "metrics": None, "curves": None,
-                "base_model": None, "dataset": {}, "log": None,
+                "base_model": None, "log": None,
+                "datasets": [{"hf_repo": "dh-unibe/image-text_kurrent-xix"}],
             })
 
     def test_unknown_engine_rejected(self):
         with self.assertRaises(ContractError) as ctx:
             TrainingContract({
-                "doc_id": "test-doc", "run_id": "tr-test-20240601-120000",
+                "run_id": "20260601T120000Z-test-model",
                 "model_id": "test-model", "engine": "unknown_engine",
                 "status": "completed", "created_at": "2024-06-01T12:00:00+00:00",
                 "finished_at": "2024-06-01T14:00:00+00:00",
                 "epochs": 10, "epochs_trained": 10,
                 "params": {}, "metrics": None, "curves": None,
-                "base_model": None, "dataset": {}, "log": None,
+                "base_model": None, "log": None,
+                "datasets": [{"hf_repo": "dh-unibe/image-text_kurrent-xix"}],
             })
         self.assertIn("engine must be one of", str(ctx.exception))
 
     def test_unknown_status_rejected(self):
         with self.assertRaises(ContractError) as ctx:
             TrainingContract({
-                "doc_id": "test-doc", "run_id": "tr-test-20240601-120000",
+                "run_id": "20260601T120000Z-test-model",
                 "model_id": "test-model", "engine": "kraken",
                 "status": "running",
                 "created_at": "2024-06-01T12:00:00+00:00",
                 "finished_at": "2024-06-01T14:00:00+00:00",
                 "epochs": 10, "epochs_trained": 0,
                 "params": {}, "metrics": None, "curves": None,
-                "base_model": None, "dataset": {}, "log": None,
+                "base_model": None, "log": None,
+                "datasets": [{"hf_repo": "dh-unibe/image-text_kurrent-xix"}],
             })
         self.assertIn("status must be one of", str(ctx.exception))
 
-    def test_completed_requires_full_epochs_trained(self):
+    def _completed(self, **overrides):
+        base = {
+            "run_id": "20260601T120000Z-test-model",
+            "model_id": "test-model", "engine": "kraken",
+            "status": "completed", "created_at": "2024-06-01T12:00:00+00:00",
+            "finished_at": "2024-06-01T14:00:00+00:00",
+            "epochs": 50, "epochs_trained": 50,
+            "params": {}, "metrics": None, "curves": None,
+            "base_model": None, "log": None,
+            "datasets": [{"hf_repo": "dh-unibe/image-text_kurrent-xix"}],
+        }
+        return {**base, **overrides}
+
+    def test_completed_run_may_stop_early(self):
+        """`quit: early` stops when validation stops improving — the recommended
+        setting for fine-tuning. Requiring the full epoch count would reject
+        every early-stopped run as malformed."""
+        TrainingContract(self._completed(epochs=50, epochs_trained=12))  # must not raise
+
+    def test_completed_run_must_train_something(self):
         with self.assertRaises(ContractError) as ctx:
-            TrainingContract({
-                "doc_id": "test-doc", "run_id": "tr-test-20240601-120000",
-                "model_id": "test-model", "engine": "kraken",
-                "status": "completed", "created_at": "2024-06-01T12:00:00+00:00",
-                "finished_at": "2024-06-01T14:00:00+00:00",
-                "epochs": 50, "epochs_trained": 7,
-                "params": {}, "metrics": None, "curves": None,
-                "base_model": None, "dataset": {}, "log": None,
-            })
-        self.assertIn("epochs_trained", str(ctx.exception))
+            TrainingContract(self._completed(epochs_trained=0))
+        self.assertIn("at least one epoch", str(ctx.exception))
+
+    def test_more_epochs_than_requested_rejected(self):
+        with self.assertRaises(ContractError) as ctx:
+            TrainingContract(self._completed(epochs=10, epochs_trained=11))
+        self.assertIn("more epochs than requested", str(ctx.exception))
+
+    def test_several_datasets_accepted(self):
+        """1..n: a model trained on two corpora is a different model, and the
+        record has to be able to say so."""
+        c = TrainingContract(self._completed(datasets=[
+            {"hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
+             "train_projects": ["GT_Thun-Training_(TEST-DEMO)"], "pages": 127},
+            {"hf_repo": "dh-unibe/image-text_kurrent-xix", "pages": 4200},
+        ]))
+        self.assertEqual(len(c.datasets), 2)
+        self.assertEqual(c.datasets[1]["hf_repo"], "dh-unibe/image-text_kurrent-xix")
+
+    def test_datasets_required(self):
+        for bad in ([], None):
+            with self.assertRaises(ContractError) as ctx:
+                TrainingContract(self._completed(datasets=bad))
+            self.assertIn("at least one dataset", str(ctx.exception))
+
+    def test_dataset_needs_a_hub_repo(self):
+        with self.assertRaises(ContractError) as ctx:
+            TrainingContract(self._completed(datasets=[{"train_projects": ["x"]}]))
+        self.assertIn("hf_repo", str(ctx.exception))
+
+    def test_dataset_repo_must_look_like_owner_name(self):
+        with self.assertRaises(ContractError):
+            TrainingContract(self._completed(datasets=[{"hf_repo": "not-a-repo"}]))
 
     def test_cer_out_of_range_rejected(self):
         with self.assertRaises(ContractError) as ctx:
             TrainingContract({
-                "doc_id": "test-doc", "run_id": "tr-test-20240601-120000",
+                "run_id": "20260601T120000Z-test-model",
                 "model_id": "test-model", "engine": "kraken",
                 "status": "completed", "created_at": "2024-06-01T12:00:00+00:00",
                 "finished_at": "2024-06-01T14:00:00+00:00",
                 "epochs": 10, "epochs_trained": 10,
                 "params": {}, "metrics": {"cer": 1.42, "wer": 0.19}, "curves": None,
-                "base_model": None, "dataset": {}, "log": None,
+                "base_model": None, "log": None,
+                "datasets": [{"hf_repo": "dh-unibe/image-text_kurrent-xix"}],
             })
         self.assertIn("cer", str(ctx.exception))
 
     def test_wer_out_of_range_rejected(self):
         with self.assertRaises(ContractError) as ctx:
             TrainingContract({
-                "doc_id": "test-doc", "run_id": "tr-test-20240601-120000",
+                "run_id": "20260601T120000Z-test-model",
                 "model_id": "test-model", "engine": "kraken",
                 "status": "completed", "created_at": "2024-06-01T12:00:00+00:00",
                 "finished_at": "2024-06-01T14:00:00+00:00",
                 "epochs": 10, "epochs_trained": 10,
                 "params": {}, "metrics": {"cer": 0.06, "wer": 2.1}, "curves": None,
-                "base_model": None, "dataset": {}, "log": None,
+                "base_model": None, "log": None,
+                "datasets": [{"hf_repo": "dh-unibe/image-text_kurrent-xix"}],
             })
         self.assertIn("wer", str(ctx.exception))
 
@@ -163,13 +210,20 @@ class TestSchemaConstraints(unittest.TestCase):
 class TestRegexPatterns(unittest.TestCase):
 
     def test_run_id_valid(self):
+        # the real producer format, plus older hand-made ids
+        self.assertTrue(RUN_ID_RE.match("20260807T201321Z-kraken-medieval-scripts-v1"))
         self.assertTrue(RUN_ID_RE.match("tr-kf-kraken-20240615-093041"))
         self.assertTrue(RUN_ID_RE.match("tr-model_v2-20240101-000000"))
 
     def test_run_id_invalid(self):
-        self.assertFalse(RUN_ID_RE.match("bad-run-id"))
-        self.assertFalse(RUN_ID_RE.match("tr-model-2024061-093041"))
-        self.assertFalse(RUN_ID_RE.match("tr-model-20240615-09304"))
+        # a run id only has to be a safe directory slug — the FORMAT belongs to
+        # the producer (serving-atr-inference emits "<utc>-<model_id>")
+        self.assertTrue(RUN_ID_RE.match("20260807T161137Z-kraken-thun-missiven-v1"))
+        self.assertFalse(RUN_ID_RE.match("../escape"))
+        self.assertFalse(RUN_ID_RE.match("has spaces"))
+        self.assertFalse(RUN_ID_RE.match("ab"))  # too short to be meaningful
+        self.assertFalse(RUN_ID_RE.match(""))
+        self.assertFalse(RUN_ID_RE.match("-leading-dash"))
 
     def test_slug_valid(self):
         self.assertTrue(SLUG_RE.match("BAT_664_r_00027"))
@@ -234,7 +288,7 @@ class TestToDict(unittest.TestCase):
                 continue
             c = TrainingContract(case)
             d = c.to_dict()
-            for key in ("doc_id", "run_id", "model_id", "engine", "status",
+            for key in ("run_id", "model_id", "engine", "status",
                         "created_at", "epochs", "epochs_trained"):
                 self.assertEqual(d[key], case[key], f"{key} in {case['name']}")
 
