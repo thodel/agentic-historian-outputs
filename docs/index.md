@@ -282,7 +282,7 @@ title: Katalog
   <p class="catalogue-actions"><a href="kf/" aria-label="Ausgabe öffnen: kf">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
   
 </article>
-<article class="catalogue-card" data-document-id="bat_664_r_00027" data-created="2026-07-07T15:25:18+02:00" data-kind="output" data-language="" data-script="" data-search="bat_664_r_00027     iuser femitlich geñs uõe liebẽ getemrẽ uan de scosse io eg̃ soda luit reu̾schent hemm rast und cuuratẽ nefen darimis ñ der selbe rast iun digł uuduil fucgnanẽ hat abet noca " data-superseded="false" data-recognition-provenance="current" data-recognition-total="11" data-recognition-successful="8" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="3" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="DATE,ORG,PERSON,PLACE,ROLE" data-completeness="teilweise">
+<article class="catalogue-card" data-document-id="bat_664_r_00027" data-created="2026-07-07T15:25:18+02:00" data-kind="output" data-language="deutsch (alemannisch)" data-script="gotische kursive" data-search="bat_664_r_00027 15. juni 1429 (cccc xxix) deutsch (alemannisch) gotische kursive  引口三へにみへきす国へ是引内すま是つかみ切もなへみもふのかひ也にて「の黒てて コきへアな春○まんか三こゆにきき後心外一はは下アつ子や気のひ兵へ女なすよまに 事きも云にヲだ南シネイなさ向心文つまふにてなば取雨へ一モシだまし こヤ心またれふのみいヲぶ六のみらろヨねコヽ女のイヤウネいん卯にく事やにをくシきへや売 詞まん○きコレ両寸にあかみ事シつきる二ん〱云郎や郎な" data-superseded="false" data-recognition-provenance="current" data-recognition-total="10" data-recognition-successful="7" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="3" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="ORG,PERSON,PLACE,SOCIAL_GROUP" data-completeness="teilweise">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:25:18+02:00">07.07.2026, 15:25</time></p>
@@ -290,13 +290,13 @@ title: Katalog
     </div>
     <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-failed">3 Erkennungsfehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 0%</span></div>
   </div>
-  <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>13</dd></div><div><dt>Kandidaten</dt><dd>8 erfolgreich / 11 insgesamt</dd></div></dl>
+  <dl class="catalogue-facts"><div><dt>Datierung</dt><dd>15. Juni 1429 (CCCC XXIX)</dd></div><div><dt>Sprache</dt><dd>Deutsch (Alemannisch)</dd></div><div><dt>Schrift</dt><dd>Gotische Kursive</dd></div><div><dt>Entitäten</dt><dd>7</dd></div><div><dt>Kandidaten</dt><dd>7 erfolgreich / 10 insgesamt</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
     <p class="catalogue-provenance__label">Engines</p>
     <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
     <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 3 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
   </div>
-  <p class="catalogue-preview">Iuser femitlich geñs uõe liebẽ getemrẽ Uan de scosse io eg̃ soda luit reu̾schent hemm Rast und Cuuratẽ nefen darimis ñ der selbe Rast Iun digł uuduil fucgnanẽ hat abet noca …</p>
+  <p class="catalogue-preview">引口三へにみへきす国へ是引内すま是つかみ切もなへみもふのかひ也にて「の黒てて コきへアな春○まんか三こゆにきき後心外一はは下アつ子や気のひ兵へ女なすよまに 事きも云にヲだ南シネイなさ向心文つまふにてなば取雨へ一モシだまし こヤ心またれふのみいヲぶ六のみらろヨねコヽ女のイヤウネいん卯にく事やにをくシきへや売 詞まん○きコレ両寸にあかみ事シつきる二ん〱云郎や郎な…</p>
   <p class="catalogue-actions"><a href="BAT_664_r_00027/?cmp=bat-664-r-00027-jpg-vlm-internvl3-8b-instruct:bat-664-r-00027-jpg-kraken-kraken-catmus-medieval&amp;page=BAT_664_r_00027.jpg#recognitions" aria-label="Modelle vergleichen: BAT_664_r_00027">Modelle vergleichen <span aria-hidden="true">→</span></a></p>
   
 </article>
