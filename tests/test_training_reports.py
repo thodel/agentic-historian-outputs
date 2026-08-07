@@ -22,6 +22,7 @@ from build_training import (  # noqa: E402
     _render_run_report,
 )
 from training_contract import ContractError, TrainingContract  # noqa: E402
+from quality import training_reference_evaluations  # noqa: E402
 
 
 def valid_case() -> dict:
@@ -94,6 +95,31 @@ class ReproducibilityTests(unittest.TestCase):
 
 
 class ScopedMetricsTests(unittest.TestCase):
+    def test_shared_vocabulary_owns_training_reference_semantics(self):
+        contract = TrainingContract(valid_case())
+        records = training_reference_evaluations(
+            contract.metrics, contract.datasets, contract.params,
+            contract.engine, contract.model_id,
+        )
+        self.assertEqual([record.unit for record in records], ["CER", "WER"])
+        for record in records:
+            self.assertEqual(record.metric_type, "reference_evaluation")
+            self.assertEqual(record.scope, "corpus")
+            self.assertFalse(record.is_comparable)
+            self.assertEqual(record.normalisation, "NFD")
+            self.assertIn("729e9b", record.reference_version)
+            self.assertEqual(record.raw["source"], "training.json")
+
+    def test_shared_vocabulary_keeps_absent_metrics_absent(self):
+        contract = TrainingContract(valid_case())
+        self.assertEqual(
+            training_reference_evaluations(
+                None, contract.datasets, contract.params,
+                contract.engine, contract.model_id,
+            ),
+            [],
+        )
+
     def test_metrics_state_unit_scope_direction_and_comparability_limit(self):
         markup = _render_metrics(TrainingContract(valid_case()))
         self.assertIn('class="quality-reference-eval"', markup)

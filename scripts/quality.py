@@ -452,6 +452,67 @@ def render_evaluation_unavailable(suffix: str = "") -> str:
     )
 
 
+def training_reference_evaluations(
+    metrics: dict | None,
+    datasets: list[dict],
+    params: dict | None,
+    engine: str,
+    model: str,
+) -> list["Provenance"]:
+    """Normalize training CER/WER into the shared quality vocabulary.
+
+    Training reports previously assembled reference provenance in their HTML
+    renderer.  Keeping the semantic mapping here prevents the same CER/WER
+    fields from acquiring a second meaning outside the canonical vocabulary.
+    The returned records are corpus-scoped and deliberately non-comparable;
+    callers may only compare runs after checking dataset, revision,
+    evaluation-project, and normalization equality.
+    """
+    metrics = metrics or {}
+    params = params or {}
+    dataset_names = ",".join(
+        str(dataset.get("hf_repo") or "") for dataset in datasets
+        if dataset.get("hf_repo")
+    ) or None
+    revisions = ",".join(
+        str(dataset.get("revision") or "") for dataset in datasets
+        if dataset.get("revision")
+    ) or None
+    evaluation_projects = [
+        f'{dataset.get("hf_repo")}: {project}'
+        for dataset in datasets
+        for project in (dataset.get("eval_projects") or [])
+    ]
+    reference_name = (
+        "; ".join(evaluation_projects)
+        or "Evaluationssplit nicht genauer dokumentiert"
+    )
+    normalisation = str(
+        params.get("normalization") or params.get("normalisation") or ""
+    ) or None
+
+    records: list[Provenance] = []
+    for key, unit in (("cer", "CER"), ("wer", "WER")):
+        if metrics.get(key) is None:
+            continue
+        records.append(Provenance(
+            metric_type="reference_evaluation",
+            value=float(metrics[key]),
+            unit=unit,
+            scope="corpus",
+            reference_name=reference_name,
+            reference_version=revisions,
+            normalisation=normalisation,
+            dataset=dataset_names,
+            engine=engine,
+            model=model,
+            is_comparable=False,
+            explanation_key="reference_evaluation",
+            raw={"source": "training.json", "field": key},
+        ))
+    return records
+
+
 def render_reference_evaluation(
     prov: "Provenance",
     suffix: str = "",

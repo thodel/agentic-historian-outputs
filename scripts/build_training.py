@@ -19,7 +19,7 @@ from datetime import datetime
 from pathlib import Path
 from urllib.parse import quote
 
-from quality import Provenance, render_reference_evaluation
+from quality import render_reference_evaluation, training_reference_evaluations
 from training_contract import ContractError, CurveEpoch, TrainingContract, training_json_paths
 
 DOCS = Path("docs")
@@ -355,28 +355,11 @@ def _render_metrics(contract: TrainingContract) -> str:
     )
     scope = _evaluation_scope(contract)
     datasets = ",".join(dataset["hf_repo"] for dataset in contract.datasets)
-    revisions = ",".join(
-        str(dataset.get("revision")) for dataset in contract.datasets if dataset.get("revision")
-    ) or None
-    normalisation = str(contract.params.get("normalization") or "") or None
     reference_blocks = []
-    for key, unit in (("cer", "CER"), ("wer", "WER")):
-        if metrics.get(key) is None:
-            continue
-        provenance = Provenance(
-            metric_type="reference_evaluation",
-            value=float(metrics[key]),
-            unit=unit,
-            scope="corpus",
-            reference_name=scope,
-            reference_version=revisions,
-            normalisation=normalisation,
-            dataset=datasets,
-            engine=contract.engine,
-            model=contract.model_id,
-            is_comparable=False,
-            explanation_key="reference_evaluation",
-        )
+    for provenance in training_reference_evaluations(
+        metrics, contract.datasets, contract.params, contract.engine, contract.model_id
+    ):
+        key = provenance.unit.casefold()
         reference_blocks.append(
             render_reference_evaluation(
                 provenance,
