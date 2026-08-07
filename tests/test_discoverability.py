@@ -200,6 +200,9 @@ class AtomFeedTests(unittest.TestCase):
     def test_feed_has_title(self):
         self.assertIn("<title>", self._feed())
 
+    def test_feed_uses_human_readable_entry_titles_when_available(self):
+        self.assertIn("<title>Urbar · 1429 — BAT_664_r_00027</title>", self._feed())
+
     def test_feed_has_updated(self):
         self.assertIn("<updated>", self._feed())
 

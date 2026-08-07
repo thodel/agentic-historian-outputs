@@ -11,12 +11,11 @@ title: Katalog
   <p>Transkriptionen, Quellenbeschreibungen und erkannte Entitäten. Die neuesten Ausgaben stehen zuerst. Automatisch erzeugte Angaben sind Forschungsangebote und müssen am Original überprüft werden.</p>
   <details class="quality-explanation" id="catalogue-quality-explainer">
     <summary>Qualitätsmetriken in diesem Katalog</summary>
-    <p>Jede Ausgabe zeigt bis zu vier Qualitätsmetriken:</p>
+    <p>Je nach Datenlage zeigt eine Ausgabe bis zu drei Qualitätsmetriken:</p>
     <dl>
       <div><dt>Ø Konfidenz</dt><dd>Durchschnittliche Engine-Konfidenz aller Erkennungskandidaten (niedrig = unsicherer). Nicht zwischen Engines vergleichbar.</dd></div>
       <div><dt>CER / WER</dt><dd>Character/Word Error Rate gegen eine bekannte Referenz (niedrig = weniger Fehler). Nur vorhanden wenn Referenz verfügbar.</dd></div>
-      <div><dt>Erkennungsfehler</dt><dd>Anzahl der Kandidaten, die fehlgeschlagen oder degeneriert sind.</dd></div>
-      <div><dt>Legacy-QA</dt><dd>Wert aus älterem Verarbeitungsschritt ohne definierte Bedeutung oder Einheit — gibt keinen Aufschluss über die Transkriptionsqualität. Für belastbare Qualitätshinweise bitte Erkennungskonfidenz oder CER/WER heranziehen.</dd></div>
+      <div><dt>Problematische Kandidaten</dt><dd>Anzahl der Kandidaten, die fehlgeschlagen, leer oder degeneriert sind.</dd></div>
     </dl>
   </details>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
@@ -118,21 +117,26 @@ title: Katalog
 <p id="catalogue-empty" class="catalogue-empty" role="status" hidden>Keine Einträge entsprechen den aktiven Filtern. Ändern Sie die Filter oder setzen Sie sie zurück.</p>
 
 <div id="catalogue-list" class="catalogue-list" data-enhanced="false">
-<article class="catalogue-card" data-document-id="koenige" data-created="2026-07-18T22:58:42+02:00" data-kind="output" data-language="mittelhochdeutsch (oder frühneuhochdeutsch), dialekt: alemannisch oder ostschweizerisch" data-script="gothische kurrentschrift, braune tinte, schriftgrosse ca. 6 mm, abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, rasuren und korrekturen im text, keine farbige rubrizierung oder initialen" data-search="koenige 1518 mittelhochdeutsch (oder frühneuhochdeutsch), dialekt: alemannisch oder ostschweizerisch gothische kurrentschrift, braune tinte, schriftgroße ca. 6 mm, abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, rasuren und korrekturen im text, keine farbige rubrizierung oder initialen  u-17_0057_r.jpg pmioe prnpma mm sim petirv s t diaridhy orea e qoicenouie qu. re us h sparer stmir mmer ene igres d e sape z crios o tre e llm rso eeieng emis onsdsem i son li e" data-superseded="false" data-recognition-provenance="current" data-recognition-total="33" data-recognition-successful="24" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="9" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="3" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="CARE_ACTION,ORG,PERSON,PLACE,ROLE" data-completeness="teilweise">
+<article class="catalogue-card" data-document-id="koenige" data-created="2026-07-18T22:58:42+02:00" data-kind="output" data-language="mittelhochdeutsch (oder frühneuhochdeutsch), dialekt: alemannisch oder ostschweizerisch" data-script="gothische kurrentschrift, braune tinte, schriftgrosse ca. 6 mm, abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, rasuren und korrekturen im text, keine farbige rubrizierung oder initialen" data-search="koenige drei urkunden · 1518  1518 mittelhochdeutsch (oder frühneuhochdeutsch), dialekt: alemannisch oder ostschweizerisch gothische kurrentschrift, braune tinte, schriftgroße ca. 6 mm, abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, rasuren und korrekturen im text, keine farbige rubrizierung oder initialen drei urkunden u-17_0057_r.jpg pmioe prnpma mm sim petirv s t diaridhy orea e qoicenouie qu. re us h sparer stmir mmer ene igres d e sape z crios o tre e llm rso eeieng emis onsdsem i son li e" data-superseded="false" data-recognition-provenance="current" data-recognition-total="33" data-recognition-successful="24" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="9" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="3" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="CARE_ACTION,ORG,PERSON,PLACE,ROLE" data-completeness="teilweise">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-18T22:58:42+02:00">18.07.2026, 22:58</time></p>
-      <h2><a href="koenige/">koenige</a></h2>
+      <h2><a href="koenige/">Drei Urkunden · 1518</a></h2>
+      <p class="catalogue-id">Dokument-ID <code>koenige</code></p>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">9 Erkennungsfehler</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">9 problematische Kandidaten</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>1518</dd></div><div><dt>Seiten</dt><dd>3</dd></div><div><dt>Entitäten</dt><dd>19</dd></div></dl>
-  <p class="catalogue-actions"><a href="koenige/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: koenige">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a href="koenige/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: Drei Urkunden · 1518">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
-      <dl class="catalogue-facts"><div><dt>Sprache</dt><dd>Mittelhochdeutsch (oder Frühneuhochdeutsch), Dialekt: alemannisch oder ostschweizerisch</dd></div><div><dt>Schrift</dt><dd>Gothische Kurrentschrift, braune Tinte, Schriftgroße ca. 6 mm, Abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, Rasuren und Korrekturen im Text, keine farbige Rubrizierung oder Initialen</dd></div><div><dt>Kandidaten</dt><dd>24 erfolgreich / 33 insgesamt</dd></div></dl>
-      <div class="catalogue-detail-badges" aria-label="Verarbeitungs- und Qualitätsmetriken"><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 0%</span></div>
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Drei Urkunden</dd></div><div><dt>Sprache</dt><dd>Mittelhochdeutsch (oder Frühneuhochdeutsch), Dialekt: alemannisch oder ostschweizerisch</dd></div><div><dt>Schrift</dt><dd>Gothische Kurrentschrift, braune Tinte, Schriftgroße ca. 6 mm, Abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, Rasuren und Korrekturen im Text, keine farbige Rubrizierung oder Initialen</dd></div><div><dt>Kandidaten</dt><dd>24 erfolgreich / 33 insgesamt</dd></div></dl>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">9 von 33 Kandidaten problematisch</p></div>
+      </div>
+
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
         <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
@@ -142,21 +146,26 @@ title: Katalog
     </div>
   </details>
 </article>
-<article class="catalogue-card" data-document-id="bat" data-created="2026-07-15T21:19:05+02:00" data-kind="output" data-language="deutsch (mittelhochdeutsche und mitteldeutsche konstruktionen, alemannischer dialektraum)" data-script="gotische kurrentschrift, schwarz, zeilenhöhe ca. 4,5 mm" data-search="bat 15. jahrhundert (unsicher) deutsch (mittelhochdeutsche und mitteldeutsche konstruktionen, alemannischer dialektraum) gotische kurrentschrift, schwarz, zeilenhöhe ca. 4,5 mm  bat_663_r_00050.jpg aimien undectetngen willegen dicust be uor lieden gnediuen hacrẽ si ucq al zut uon nat be- rent uñ ouch deñ urern lieben quedien herren ich blahen eeusthlicq" data-superseded="false" data-recognition-provenance="current" data-recognition-total="10" data-recognition-successful="6" data-recognition-failed="1" data-recognition-empty="0" data-recognition-degenerate="3" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="DATE,ORG,PERSON,PLACE,SOCIAL_GROUP" data-completeness="teilweise">
+<article class="catalogue-card" data-document-id="bat" data-created="2026-07-15T21:19:05+02:00" data-kind="output" data-language="deutsch (mittelhochdeutsche und mitteldeutsche konstruktionen, alemannischer dialektraum)" data-script="gotische kurrentschrift, schwarz, zeilenhöhe ca. 4,5 mm" data-search="bat verwaltungsdokument · 15. jahrhundert (unsicher)  15. jahrhundert (unsicher) deutsch (mittelhochdeutsche und mitteldeutsche konstruktionen, alemannischer dialektraum) gotische kurrentschrift, schwarz, zeilenhöhe ca. 4,5 mm verwaltungsdokument bat_663_r_00050.jpg aimien undectetngen willegen dicust be uor lieden gnediuen hacrẽ si ucq al zut uon nat be- rent uñ ouch deñ urern lieben quedien herren ich blahen eeusthlicq" data-superseded="false" data-recognition-provenance="current" data-recognition-total="10" data-recognition-successful="6" data-recognition-failed="1" data-recognition-empty="0" data-recognition-degenerate="3" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="DATE,ORG,PERSON,PLACE,SOCIAL_GROUP" data-completeness="teilweise">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T21:19:05+02:00">15.07.2026, 21:19</time></p>
-      <h2><a href="bat/">bat</a></h2>
+      <h2><a href="bat/">Verwaltungsdokument · 15. Jahrhundert (unsicher)</a></h2>
+      <p class="catalogue-id">Dokument-ID <code>bat</code></p>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">4 Erkennungsfehler</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">4 problematische Kandidaten</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert (unsicher)</dd></div><div><dt>Seiten</dt><dd>1</dd></div><div><dt>Entitäten</dt><dd>12</dd></div></dl>
-  <p class="catalogue-actions"><a href="bat/?cmp=vlm-internvl3-8b-instruct:kraken-kraken-catmus-medieval#recognitions" aria-label="Modelle vergleichen: bat">Modelle vergleichen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a href="bat/?cmp=vlm-internvl3-8b-instruct:kraken-kraken-catmus-medieval#recognitions" aria-label="Modelle vergleichen: Verwaltungsdokument · 15. Jahrhundert (unsicher)">Modelle vergleichen <span aria-hidden="true">→</span></a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
-      <dl class="catalogue-facts"><div><dt>Sprache</dt><dd>Deutsch (mittelhochdeutsche und mitteldeutsche Konstruktionen, alemannischer Dialektraum)</dd></div><div><dt>Schrift</dt><dd>Gotische Kurrentschrift, schwarz, Zeilenhöhe ca. 4,5 mm</dd></div><div><dt>Kandidaten</dt><dd>6 erfolgreich / 10 insgesamt</dd></div></dl>
-      <div class="catalogue-detail-badges" aria-label="Verarbeitungs- und Qualitätsmetriken"><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 0%</span></div>
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Verwaltungsdokument</dd></div><div><dt>Sprache</dt><dd>Deutsch (mittelhochdeutsche und mitteldeutsche Konstruktionen, alemannischer Dialektraum)</dd></div><div><dt>Schrift</dt><dd>Gotische Kurrentschrift, schwarz, Zeilenhöhe ca. 4,5 mm</dd></div><div><dt>Kandidaten</dt><dd>6 erfolgreich / 10 insgesamt</dd></div></dl>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">4 von 10 Kandidaten problematisch</p></div>
+      </div>
+
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
         <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
@@ -166,7 +175,7 @@ title: Katalog
     </div>
   </details>
 </article>
-<article class="catalogue-card" data-document-id="order-ens" data-created="2026-07-15T19:17:36+02:00" data-kind="output" data-language="" data-script="" data-search="order-ens     p1.jpg gut lesbar hier p2.jpg gut lesbar hier" data-superseded="false" data-recognition-provenance="current" data-recognition-total="1" data-recognition-successful="1" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken" data-recognition-models="1" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="" data-completeness="minimal">
+<article class="catalogue-card" data-document-id="order-ens" data-created="2026-07-15T19:17:36+02:00" data-kind="output" data-language="" data-script="" data-search="order-ens order-ens      p1.jpg gut lesbar hier p2.jpg gut lesbar hier" data-superseded="false" data-recognition-provenance="current" data-recognition-total="1" data-recognition-successful="1" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken" data-recognition-models="1" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="" data-completeness="minimal">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T19:17:36+02:00">15.07.2026, 19:17</time></p>
@@ -180,7 +189,12 @@ title: Katalog
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
       <dl class="catalogue-facts"><div><dt>Kandidaten</dt><dd>1 erfolgreich / 1 insgesamt</dd></div></dl>
-      <div class="catalogue-detail-badges" aria-label="Verarbeitungs- und Qualitätsmetriken"><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span><span class="catalogue-badge catalogue-badge--quality-confidence">Ø Konfidenz 80%</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 90%</span></div>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">Keine bekannten Erkennungsprobleme</p></div>
+      </div>
+
+      <div class="catalogue-detail-badges" aria-label="Qualitätsmetriken"><span class="catalogue-badge catalogue-badge--quality-confidence">Ø Konfidenz 80%</span></div>
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
         <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li></ul>
@@ -190,21 +204,26 @@ title: Katalog
     </div>
   </details>
 </article>
-<article class="catalogue-card" data-document-id="u-17__" data-created="2026-07-15T16:49:41+02:00" data-kind="output" data-language="" data-script="" data-search="u-17__     e-codices_saa-0428_015v_large.jpg seite 1 modios reina cum prato sive uysta ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. alhile er conu" data-superseded="true" data-recognition-provenance="current" data-recognition-total="13" data-recognition-successful="11" data-recognition-failed="2" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="5" data-recognition-pages="4" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="CARE_ACTION,DATE,ORG,PERSON,PLACE,ROLE,SOCIAL_GROUP,TITLE" data-completeness="vollstaendig">
+<article class="catalogue-card" data-document-id="u-17__" data-created="2026-07-15T16:49:41+02:00" data-kind="output" data-language="" data-script="" data-search="u-17__ staatsarchiv aargau, saa 428 e-codices: staatsarchiv aargau, saa 428     e-codices_saa-0428_015v_large.jpg seite 1 modios reina cum prato sive uysta ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. alhile er conu" data-superseded="true" data-recognition-provenance="current" data-recognition-total="13" data-recognition-successful="11" data-recognition-failed="2" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="5" data-recognition-pages="4" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="CARE_ACTION,DATE,ORG,PERSON,PLACE,ROLE,SOCIAL_GROUP,TITLE" data-completeness="vollstaendig">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T16:49:41+02:00">15.07.2026, 16:49</time></p>
-      <h2><a href="u-17__/">u-17__</a></h2>
+      <h2><a href="u-17__/">Staatsarchiv Aargau, SAA 428</a></h2>
+      <p class="catalogue-id">Dokument-ID <code>u-17__</code></p>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">2 Erkennungsfehler</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">2 problematische Kandidaten</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Seiten</dt><dd>4</dd></div><div><dt>Entitäten</dt><dd>82</dd></div></dl>
-  <p class="catalogue-actions"><a href="u-17__/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: u-17__">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a href="u-17__/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: Staatsarchiv Aargau, SAA 428">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
       <dl class="catalogue-facts"><div><dt>Kandidaten</dt><dd>11 erfolgreich / 13 insgesamt</dd></div></dl>
-      <div class="catalogue-detail-badges" aria-label="Verarbeitungs- und Qualitätsmetriken"><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 48%</span></div>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">2 von 13 Kandidaten problematisch</p></div>
+      </div>
+
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
         <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
@@ -214,21 +233,26 @@ title: Katalog
     </div>
   </details>
 </article>
-<article class="catalogue-card" data-document-id="u-17" data-created="2026-07-08T17:18:20+02:00" data-kind="output" data-language="" data-script="" data-search="u-17     e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu " data-superseded="false" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="4" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="" data-completeness="minimal">
+<article class="catalogue-card" data-document-id="u-17" data-created="2026-07-08T17:18:20+02:00" data-kind="output" data-language="" data-script="" data-search="u-17 staatsarchiv aargau, saa 428 e-codices: staatsarchiv aargau, saa 428     e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu " data-superseded="false" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="4" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="" data-completeness="minimal">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T17:18:20+02:00">08.07.2026, 17:18</time></p>
-      <h2><a href="u-17/">u-17</a></h2>
+      <h2><a href="u-17/">Staatsarchiv Aargau, SAA 428</a></h2>
+      <p class="catalogue-id">Dokument-ID <code>u-17</code></p>
     </div>
     <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Seiten</dt><dd>4</dd></div><div><dt>Entitäten</dt><dd>0</dd></div></dl>
-  <p class="catalogue-actions"><a href="u-17/" aria-label="Ausgabe öffnen: u-17">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a href="u-17/" aria-label="Ausgabe öffnen: Staatsarchiv Aargau, SAA 428">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
       <dl class="catalogue-facts"><div><dt>Kandidaten</dt><dd>0 erfolgreich / 0 insgesamt</dd></div></dl>
-      <div class="catalogue-detail-badges" aria-label="Verarbeitungs- und Qualitätsmetriken"><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 80%</span></div>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">Keine Erkennungskandidaten dokumentiert</p></div>
+      </div>
+
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
         <p class="catalogue-muted">Nicht dokumentiert</p>
@@ -238,21 +262,26 @@ title: Katalog
     </div>
   </details>
 </article>
-<article class="catalogue-card" data-document-id="order-001-group" data-created="2026-07-08T09:03:38+02:00" data-kind="output" data-language="de" data-script="kurrent" data-search="order-001-group 15. jahrhundert de kurrent gerichtsbrief page_1.jpg page page_1.jpg page_2.jpg page page_2.jpg" data-superseded="false" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="2" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="PERSON" data-completeness="teilweise">
+<article class="catalogue-card" data-document-id="order-001-group" data-created="2026-07-08T09:03:38+02:00" data-kind="output" data-language="de" data-script="kurrent" data-search="order-001-group gerichtsbrief · 15. jahrhundert  15. jahrhundert de kurrent gerichtsbrief page_1.jpg page page_1.jpg page_2.jpg page page_2.jpg" data-superseded="false" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="2" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="PERSON" data-completeness="teilweise">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:38+02:00">08.07.2026, 09:03</time></p>
-      <h2><a href="order-001-group/">order-001-group</a></h2>
+      <h2><a href="order-001-group/">Gerichtsbrief · 15. Jahrhundert</a></h2>
+      <p class="catalogue-id">Dokument-ID <code>order-001-group</code></p>
     </div>
     <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Entitäten</dt><dd>1</dd></div></dl>
-  <p class="catalogue-actions"><a href="order-001-group/" aria-label="Ausgabe öffnen: order-001-group">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a href="order-001-group/" aria-label="Ausgabe öffnen: Gerichtsbrief · 15. Jahrhundert">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
       <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 0 insgesamt</dd></div></dl>
-      <div class="catalogue-detail-badges" aria-label="Verarbeitungs- und Qualitätsmetriken"><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 90%</span></div>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">Keine Erkennungskandidaten dokumentiert</p></div>
+      </div>
+
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
         <p class="catalogue-muted">Nicht dokumentiert</p>
@@ -262,7 +291,7 @@ title: Katalog
     </div>
   </details>
 </article>
-<article class="catalogue-card" data-document-id="kf-" data-created="2026-07-07T15:47:14+02:00" data-kind="output" data-language="" data-script="" data-search="kf-     0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu" data-superseded="true" data-recognition-provenance="legacy" data-recognition-total="" data-recognition-successful="" data-recognition-failed="" data-recognition-empty="" data-recognition-degenerate="" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="" data-completeness="minimal">
+<article class="catalogue-card" data-document-id="kf-" data-created="2026-07-07T15:47:14+02:00" data-kind="output" data-language="" data-script="" data-search="kf- kf-      0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu" data-superseded="true" data-recognition-provenance="legacy" data-recognition-total="" data-recognition-successful="" data-recognition-failed="" data-recognition-empty="" data-recognition-degenerate="" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="" data-completeness="minimal">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:47:14+02:00">07.07.2026, 15:47</time></p>
@@ -275,7 +304,11 @@ title: Katalog
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
-      <div class="catalogue-detail-badges" aria-label="Verarbeitungs- und Qualitätsmetriken"><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 80%</span></div>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">Keine vollständigen Erkennungsdaten</p></div>
+      </div>
+
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
         <p class="catalogue-muted">Nicht dokumentiert</p>
@@ -285,7 +318,7 @@ title: Katalog
     </div>
   </details>
 </article>
-<article class="catalogue-card" data-document-id="kf" data-created="2026-07-07T15:29:12+02:00" data-kind="output" data-language="" data-script="" data-search="kf     0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu" data-superseded="false" data-recognition-provenance="legacy" data-recognition-total="" data-recognition-successful="" data-recognition-failed="" data-recognition-empty="" data-recognition-degenerate="" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="" data-completeness="minimal">
+<article class="catalogue-card" data-document-id="kf" data-created="2026-07-07T15:29:12+02:00" data-kind="output" data-language="" data-script="" data-search="kf kf      0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu" data-superseded="false" data-recognition-provenance="legacy" data-recognition-total="" data-recognition-successful="" data-recognition-failed="" data-recognition-empty="" data-recognition-degenerate="" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="" data-completeness="minimal">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:29:12+02:00">07.07.2026, 15:29</time></p>
@@ -298,7 +331,11 @@ title: Katalog
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
-      <div class="catalogue-detail-badges" aria-label="Verarbeitungs- und Qualitätsmetriken"><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 80%</span></div>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">Keine vollständigen Erkennungsdaten</p></div>
+      </div>
+
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
         <p class="catalogue-muted">Nicht dokumentiert</p>
@@ -308,21 +345,26 @@ title: Katalog
     </div>
   </details>
 </article>
-<article class="catalogue-card" data-document-id="bat_664_r_00027" data-created="2026-07-07T15:25:18+02:00" data-kind="output" data-language="deutsch" data-script="gotische schrift (französisch-als sächsische kursivschrift)" data-search="bat_664_r_00027 1429 deutsch gotische schrift (französisch-als sächsische kursivschrift)  vnser fründlich grus vor liebe getrune von der stösse wyse so daß nit zwüschent hemin , fast vnd cuͦnratoͤffen , ✳ darumb and die selbe vast im oogt vnd vil fürgannd hat vor nachta" data-superseded="false" data-recognition-provenance="current" data-recognition-total="10" data-recognition-successful="7" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="3" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="DATE,ORG,PERSON,PLACE" data-completeness="teilweise">
+<article class="catalogue-card" data-document-id="bat_664_r_00027" data-created="2026-07-07T15:25:18+02:00" data-kind="output" data-language="deutsch" data-script="gotische schrift (französisch-als sächsische kursivschrift)" data-search="bat_664_r_00027 urbar · 1429  1429 deutsch gotische schrift (französisch-als sächsische kursivschrift) urbar vnser fründlich grus vor liebe getrune von der stösse wyse so daß nit zwüschent hemin , fast vnd cuͦnratoͤffen , ✳ darumb and die selbe vast im oogt vnd vil fürgannd hat vor nachta" data-superseded="false" data-recognition-provenance="current" data-recognition-total="10" data-recognition-successful="7" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="3" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="DATE,ORG,PERSON,PLACE" data-completeness="teilweise">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:25:18+02:00">07.07.2026, 15:25</time></p>
-      <h2><a href="BAT_664_r_00027/">BAT_664_r_00027</a></h2>
+      <h2><a href="BAT_664_r_00027/">Urbar · 1429</a></h2>
+      <p class="catalogue-id">Dokument-ID <code>BAT_664_r_00027</code></p>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">3 Erkennungsfehler</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">3 problematische Kandidaten</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>1429</dd></div><div><dt>Entitäten</dt><dd>8</dd></div></dl>
-  <p class="catalogue-actions"><a href="BAT_664_r_00027/?cmp=bat-664-r-00027-jpg-vlm-internvl3-8b-instruct:bat-664-r-00027-jpg-kraken-kraken-catmus-medieval&amp;page=BAT_664_r_00027.jpg#recognitions" aria-label="Modelle vergleichen: BAT_664_r_00027">Modelle vergleichen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a href="BAT_664_r_00027/?cmp=bat-664-r-00027-jpg-vlm-internvl3-8b-instruct:bat-664-r-00027-jpg-kraken-kraken-catmus-medieval&amp;page=BAT_664_r_00027.jpg#recognitions" aria-label="Modelle vergleichen: Urbar · 1429">Modelle vergleichen <span aria-hidden="true">→</span></a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
-      <dl class="catalogue-facts"><div><dt>Sprache</dt><dd>Deutsch</dd></div><div><dt>Schrift</dt><dd>Gotische Schrift (französisch-als sächsische Kursivschrift)</dd></div><div><dt>Kandidaten</dt><dd>7 erfolgreich / 10 insgesamt</dd></div></dl>
-      <div class="catalogue-detail-badges" aria-label="Verarbeitungs- und Qualitätsmetriken"><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 0%</span></div>
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Urbar</dd></div><div><dt>Sprache</dt><dd>Deutsch</dd></div><div><dt>Schrift</dt><dd>Gotische Schrift (französisch-als sächsische Kursivschrift)</dd></div><div><dt>Kandidaten</dt><dd>7 erfolgreich / 10 insgesamt</dd></div></dl>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">3 von 10 Kandidaten problematisch</p></div>
+      </div>
+
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
         <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>

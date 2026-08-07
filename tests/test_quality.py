@@ -164,7 +164,7 @@ def test_typed_quality_badges_in_card():
     print("test_typed_quality_badges_in_card: PASS")
 
 
-def test_legacy_qa_badge_has_distinct_style():
+def test_legacy_qa_is_not_exposed_in_catalogue_card():
     import sys
     from pathlib import Path
     sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
@@ -191,11 +191,11 @@ def test_legacy_qa_badge_has_distinct_style():
         reference_wer=None,
     )
     card = _card(record)
-    assert "Legacy-QA" in card
+    assert "Legacy-QA" not in card
     # Without CER/WER, no explanation button or block should appear (issue #114)
     assert "aria-controls" not in card
     assert "quality-explain-btn" not in card
-    print("test_legacy_qa_badge_has_distinct_style: PASS")
+    print("test_legacy_qa_is_not_exposed_in_catalogue_card: PASS")
 
 
 def test_recognition_section_wired_in_outputs():

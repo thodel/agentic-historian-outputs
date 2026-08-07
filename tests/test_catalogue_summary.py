@@ -99,6 +99,20 @@ class CatalogueSummaryTests(unittest.TestCase):
         self.assertIn('<h2><a href="very-long-document-identifier/">', card)
         self.assertIn('class="catalogue-actions"', card)
 
+    def test_human_title_is_primary_and_identifier_is_secondary(self):
+        summary = recognition_summary({"recognitions": [rec()]})
+        record = Record(
+            "bat-664", datetime.now(timezone.utc), "1429", "de", "Kurrent",
+            "Urbar", 0, 1, 0.75, 0, False, "preview", "machine-generated",
+            recognition_summary=summary,
+            display_title="Urbar · 1429",
+            shelfmark="BAT 664, Blatt 27r",
+        )
+        card = _card(record)
+        self.assertIn('<h2><a href="bat-664/">Urbar · 1429</a></h2>', card)
+        self.assertIn('Dokument-ID <code>bat-664</code>', card)
+        self.assertNotIn("Legacy-QA", card)
+
     def test_card_exposes_accessible_engine_chips_and_candidate_counts(self):
         summary = recognition_summary({"recognitions": [rec("kraken", "a"), rec("trocr", "b")]})
         card = self.card(summary)

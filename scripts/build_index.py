@@ -184,6 +184,8 @@ class Record:
     recognition_summary: "RecognitionSummary | None" = None
     # Issue #125: supersedes relation
     superseded: bool = False          # True when this doc is superseded by another (newer) run
+    display_title: str = ""
+    shelfmark: str = ""
 
 
 @dataclass(frozen=True)
@@ -318,6 +320,33 @@ def _record(path: Path, reviews: dict[str, dict] | None = None) -> Record:
     errors = data.get("errors") if isinstance(data.get("errors"), list) else []
     doc_id = path.parent.name
     source_url = _val(data.get("source_url"))
+    document_type = _first(source, "Dokumenttyp", "document_type", "type")
+    if not document_type:
+        content = _first(source, "Inhalt", "inhalt")
+        candidate = re.split(r"[(:,;]", content, maxsplit=1)[0].strip()
+        if 2 < len(candidate) <= 60 and candidate.casefold() not in {
+            "nicht bekannt", "nicht bestimmbar", "keine gesicherten angaben möglich",
+        }:
+            document_type = candidate
+
+    explicit_title = _first(data, "title", "label") or _first(description, "title", "label")
+    shelfmark = (
+        _first(data, "signature", "shelfmark")
+        or _first(description, "signature", "shelfmark")
+        or _val(data.get("source_label"))
+    )
+    if explicit_title:
+        display_title = explicit_title
+    elif document_type:
+        display_title = f"{document_type} · {date_label}" if date_label else document_type
+    elif shelfmark:
+        display_title = shelfmark.split(":", 1)[-1].strip()
+    else:
+        bat_match = re.fullmatch(r"BAT_(\d+)_r_(\d+)", doc_id, re.IGNORECASE)
+        display_title = (
+            f"BAT {int(bat_match.group(1))}, Blatt {int(bat_match.group(2))}r"
+            if bat_match else doc_id
+        )
 
     pages = meta.get("pages")
     try:
@@ -366,7 +395,7 @@ def _record(path: Path, reviews: dict[str, dict] | None = None) -> Record:
         date_label=date_label,
         language=_first(source, "Sprache", "sprache", "lang", "language"),
         script=_first(source, "Schrift", "schrift", "script"),
-        document_type=_first(source, "Dokumenttyp", "document_type", "type"),
+        document_type=document_type,
         entities=_entity_count(data.get("entities")),
         pages=pages,
         qa_score=qa,
@@ -382,6 +411,8 @@ def _record(path: Path, reviews: dict[str, dict] | None = None) -> Record:
         entity_types=_entity_types(data.get("entities")),
         recognition_summary=summary,
         superseded=False,  # patched later in build() once supersedes relations are known
+        display_title=display_title,
+        shelfmark=shelfmark,
     )
 
 
@@ -415,11 +446,18 @@ def _card(record: Record) -> str:
     created_label = record.created.strftime("%d.%m.%Y, %H:%M")
     badges = []
     detail_badges = []
+    summary = record.recognition_summary or RecognitionSummary(
+        "legacy", None, None, None, None, None, (), 0, None, False,
+        "missing", record.review_status, False)
+    issue_count = (
+        sum(value or 0 for value in (summary.failed, summary.empty, summary.degenerate))
+        if record.recognition_summary is not None else record.recognition_errors
+    )
     if record.is_test:
         badges.append(_badge("Testlauf", "test"))
     badges.append(_review_badge(record.review_status))
     pipeline_label = "Verarbeitung abgeschlossen" if not record.errors else f"Verarbeitung: {record.errors} Fehler"
-    detail_badges.append(_badge(pipeline_label, "ok" if not record.errors else "error"))
+    technical_status = _badge(pipeline_label, "ok" if not record.errors else "error")
     # Epic 5 #28: Typed quality badges — replace ambiguous QA label
     # Button and region must share one deterministic id.  Calling the quality
     # helpers without an explicit suffix advances their independent counter
@@ -436,14 +474,10 @@ def _card(record: Record) -> str:
     if record.reference_wer is not None:
         wer_pct = max(0.0, min(1.0, float(record.reference_wer))) * 100
         detail_badges.append(_badge(f"WER {wer_pct:.1f}%", "quality-confidence"))
-    if record.recognition_errors > 0:
-        badges.append(_badge(f"{record.recognition_errors} Erkennungsfehler", "quality-failed"))
-    if record.recognition_avg_confidence is not None and record.recognition_errors == 0:
+    if issue_count > 0:
+        badges.append(_badge(f"{issue_count} problematische Kandidaten", "quality-failed"))
+    if record.recognition_avg_confidence is not None and issue_count == 0:
         detail_badges.append(_badge(f"Ø Konfidenz {record.recognition_avg_confidence:.0%}", "quality-confidence"))
-
-    # Legacy qa_score — show with distinct style to signal it needs replacement
-    if record.qa_score is not None:
-        detail_badges.append(_badge(f"Legacy-QA {record.qa_score:.0%}", "legacy"))
 
     summary_facts = []
     if record.date_label:
@@ -463,11 +497,13 @@ def _card(record: Record) -> str:
         f'<p class="catalogue-preview">{html.escape(record.preview)}…</p>'
         if record.preview else '<p class="catalogue-preview catalogue-muted">Keine Vorschau verfügbar.</p>'
     )
-    search = " ".join((record.doc_id, record.date_label, record.language, record.script, record.document_type, record.preview)).lower()
+    display_title = record.display_title or record.doc_id
+    identifier_html = (
+        f'\n      <p class="catalogue-id">Dokument-ID <code>{html.escape(record.doc_id)}</code></p>'
+        if display_title != record.doc_id else ""
+    )
+    search = " ".join((record.doc_id, display_title, record.shelfmark, record.date_label, record.language, record.script, record.document_type, record.preview)).lower()
     kind = "test" if record.is_test else "output"
-    summary = record.recognition_summary or RecognitionSummary(
-        "legacy", None, None, None, None, None, (), 0, None, False,
-        "missing", record.review_status, False)
     engine_chips = "".join(
         f'<li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>{html.escape(engine)}</li>'
         for engine in summary.engines
@@ -486,6 +522,14 @@ def _card(record: Record) -> str:
     if not summary.source_available:
         recognition_status.append('<p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>')
     status_html = "".join(recognition_status)
+    if summary.provenance == "legacy":
+        recognition_quality = "Keine vollständigen Erkennungsdaten"
+    elif issue_count:
+        recognition_quality = f"{issue_count} von {summary.total or 0} Kandidaten problematisch"
+    elif summary.total:
+        recognition_quality = "Keine bekannten Erkennungsprobleme"
+    else:
+        recognition_quality = "Keine Erkennungskandidaten dokumentiert"
     fact_html = "".join(
         f'<div><dt>{html.escape(label)}</dt><dd>{html.escape(value)}</dd></div>'
         for label, value in facts
@@ -529,20 +573,28 @@ def _card(record: Record) -> str:
         f'data-entity-types="{html.escape(entity_types_str, quote=True)}" '
         f'data-completeness="{completeness}"'
     )
+    metrics_html = (
+        f'\n      <div class="catalogue-detail-badges" aria-label="Qualitätsmetriken">{"".join(detail_badges)}</div>'
+        if detail_badges else ""
+    )
     return f'''<article class="catalogue-card" data-document-id="{html.escape(record.doc_id.casefold(), quote=True)}" data-created="{created_iso}" data-kind="{kind}" data-language="{html.escape(record.language.casefold(), quote=True)}" data-script="{html.escape(record.script.casefold(), quote=True)}" data-search="{html.escape(search, quote=True)}" data-superseded="{str(record.superseded).lower()}" {summary_attrs}>
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="{created_iso}">{created_label}</time></p>
-      <h2><a href="{html.escape(record.doc_id)}/">{html.escape(record.doc_id)}</a></h2>
+      <h2><a href="{html.escape(record.doc_id)}/">{html.escape(display_title)}</a></h2>{identifier_html}
     </div>
     <div class="catalogue-badges">{"".join(badges)}</div>
   </div>
   <dl class="catalogue-summary-facts">{summary_fact_html}</dl>
-  <p class="catalogue-actions"><a href="{html.escape(action_href, quote=True)}" aria-label="{html.escape(action_label)}: {html.escape(record.doc_id)}">{action_label} <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a href="{html.escape(action_href, quote=True)}" aria-label="{html.escape(action_label)}: {html.escape(display_title)}">{action_label} <span aria-hidden="true">→</span></a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">{facts_html}
-      <div class="catalogue-detail-badges" aria-label="Verarbeitungs- und Qualitätsmetriken">{"".join(detail_badges)}</div>{explanation_html}
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p>{technical_status}</div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">{html.escape(recognition_quality)}</p></div>
+      </div>
+{metrics_html}{explanation_html}
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
         {f'<ul class="catalogue-engines">{engine_chips}</ul>' if engine_chips else '<p class="catalogue-muted">Nicht dokumentiert</p>'}
@@ -607,7 +659,11 @@ def build_atom_feed(records: list) -> None:
     for record in feed_records:
         entry_id = f"{SITE}/{record.doc_id}/"
         published = record.created.strftime(_RFC3339_FMT)
-        title = f"Agentic Historian output: {record.doc_id}"
+        display_title = record.display_title or record.doc_id
+        title = (
+            f"{display_title} — {record.doc_id}"
+            if display_title != record.doc_id else display_title
+        )
         summary_parts = []
         if record.document_type:
             summary_parts.append(record.document_type)
@@ -715,12 +771,11 @@ title: Katalog
   <p>Transkriptionen, Quellenbeschreibungen und erkannte Entitäten. Die neuesten Ausgaben stehen zuerst. Automatisch erzeugte Angaben sind Forschungsangebote und müssen am Original überprüft werden.</p>
   <details class="quality-explanation" id="catalogue-quality-explainer">
     <summary>Qualitätsmetriken in diesem Katalog</summary>
-    <p>Jede Ausgabe zeigt bis zu vier Qualitätsmetriken:</p>
+    <p>Je nach Datenlage zeigt eine Ausgabe bis zu drei Qualitätsmetriken:</p>
     <dl>
       <div><dt>Ø Konfidenz</dt><dd>Durchschnittliche Engine-Konfidenz aller Erkennungskandidaten (niedrig = unsicherer). Nicht zwischen Engines vergleichbar.</dd></div>
       <div><dt>CER / WER</dt><dd>Character/Word Error Rate gegen eine bekannte Referenz (niedrig = weniger Fehler). Nur vorhanden wenn Referenz verfügbar.</dd></div>
-      <div><dt>Erkennungsfehler</dt><dd>Anzahl der Kandidaten, die fehlgeschlagen oder degeneriert sind.</dd></div>
-      <div><dt>Legacy-QA</dt><dd>Wert aus älterem Verarbeitungsschritt ohne definierte Bedeutung oder Einheit — gibt keinen Aufschluss über die Transkriptionsqualität. Für belastbare Qualitätshinweise bitte Erkennungskonfidenz oder CER/WER heranziehen.</dd></div>
+      <div><dt>Problematische Kandidaten</dt><dd>Anzahl der Kandidaten, die fehlgeschlagen, leer oder degeneriert sind.</dd></div>
     </dl>
   </details>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>

@@ -86,6 +86,14 @@ class CatalogueHardeningTests(unittest.TestCase):
                     else:
                         self.assertNotIn("?", href)
 
+    def test_display_titles_use_metadata_and_keep_safe_fallbacks(self):
+        bat = _record(ROOT / "docs" / "BAT_664_r_00027" / "pipeline.json")
+        source_label = _record(ROOT / "docs" / "u-17" / "pipeline.json")
+        fallback = _record(ROOT / "docs" / "kf" / "pipeline.json")
+        self.assertEqual(bat.display_title, "Urbar · 1429")
+        self.assertEqual(source_label.display_title, "Staatsarchiv Aargau, SAA 428")
+        self.assertEqual(fallback.display_title, "kf")
+
     def test_every_generated_card_action_resolves_to_a_document_state(self):
         catalogue = (ROOT / "docs/index.md").read_text(encoding="utf-8")
         articles = re.findall(r'<article class="catalogue-card".*?</article>', catalogue, re.S)
@@ -137,10 +145,13 @@ class CatalogueHardeningTests(unittest.TestCase):
             record = _record(target)
             markup = _card(record)
             self.assertIn("Verarbeitung abgeschlossen", markup)
-            self.assertIn("Erkennungsfehler", markup,
-                          "Recognition errors must remain visible in the summary")
+            self.assertIn("problematische Kandidaten", markup,
+                          "Recognition problems must remain visible in the summary")
             details = markup.split('<details class="catalogue-details">', 1)[1]
             self.assertIn("Verarbeitung abgeschlossen", details)
+            self.assertIn("Technischer Status", details)
+            self.assertIn("Erkennungsqualität", details)
+            self.assertNotIn("Legacy-QA", markup)
 
 
 if __name__ == "__main__":
