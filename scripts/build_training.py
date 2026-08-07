@@ -215,7 +215,7 @@ def _render_table(rows: list[dict]) -> str:
             f'<td>{row["datasets_cell"]}</td>'
             f'<td><span class="catalogue-badge catalogue-badge--{row["status_mod"]}">{row["status_label"]}</span></td>'
             f'<td>{_esc(row["engine"])}</td>'
-            f'<td><a href="#run-{run_id}"><code>{_esc(row["model_id"])}</code></a></td>'
+            f'<td><a href="{run_id}/"><code>{_esc(row["model_id"])}</code></a></td>'
             f'<td class="num">{row["epochs_trained"]}/{row["epochs"]}</td>'
             f'<td class="num">{row["duration"]}</td><td class="num">{row["cer"]}</td>'
             f'<td class="num">{row["wer"]}</td></tr>'
@@ -272,8 +272,24 @@ def _render_svg_chart(curves: list[CurveEpoch], run_id: str, chart: str) -> str:
     all_points = [point for _, _, points in available for point in points]
     x_min, x_max = min(x for x, _ in all_points), max(x for x, _ in all_points)
     y_values = [y for _, y in all_points]
-    y_min = 0.0 if min(y_values) >= 0 else min(y_values)
-    y_max = max(y_values) or 1.0
+    # Loss and accuracy want OPPOSITE axis treatment (#232).
+    #
+    # Accuracy is a percentage and must include the origin: a run whose
+    # validation accuracy never leaves 0 is exactly the finding, and rescaling
+    # to its own range would draw a flat line at mid-height as if something had
+    # happened. Loss is unbounded and often huge — a zero-based axis renders a
+    # CTC loss that moved 55,210 -> 52,980 as a flat line pinned to the top,
+    # indistinguishable from a converged model that has plateaued. The first
+    # real run looked exactly like that while having learned nothing at all.
+    if chart == "loss":
+        lo, hi = min(y_values), max(y_values)
+        pad = (hi - lo) * 0.08 or (abs(hi) * 0.01 or 1.0)
+        y_min, y_max = lo - pad, hi + pad
+        axis_note = "auf den Wertebereich der Daten skaliert (nicht bei null beginnend)"
+    else:
+        y_min = 0.0 if min(y_values) >= 0 else min(y_values)
+        y_max = max(y_values) or 1.0
+        axis_note = "Achse beginnt bei null"
     chart_id = re.sub(r"[^a-zA-Z0-9_-]", "-", f"{run_id}-{chart}")
     lines = []
     legend = []
@@ -290,7 +306,7 @@ def _render_svg_chart(curves: list[CurveEpoch], run_id: str, chart: str) -> str:
         '<figure class="training-chart">'
         f'<svg viewBox="0 0 720 280" role="img" aria-labelledby="{chart_id}-title {chart_id}-desc">'
         f'<title id="{chart_id}-title">{title}</title>'
-        f'<desc id="{chart_id}-desc">Epochen {x_min} bis {x_max}; Wertebereich {y_min:.3g} bis {y_max:.3g}. Die exakten Werte folgen als Tabelle.</desc>'
+        f'<desc id="{chart_id}-desc">Epochen {x_min} bis {x_max}; Wertebereich {y_min:.3g} bis {y_max:.3g} ({axis_note}). Die exakten Werte folgen als Tabelle.</desc>'
         f'{grid}<line class="training-chart__axis" x1="62" y1="234" x2="682" y2="234" />'
         '<line class="training-chart__axis" x1="62" y1="24" x2="62" y2="234" />'
         f'<text class="training-chart__label" x="372" y="270" text-anchor="middle">Epoche</text>'
@@ -299,7 +315,8 @@ def _render_svg_chart(curves: list[CurveEpoch], run_id: str, chart: str) -> str:
         f'<text class="training-chart__tick" x="682" y="251" text-anchor="middle">{x_max:g}</text>'
         f'<text class="training-chart__tick" x="54" y="238" text-anchor="end">{y_min:.3g}</text>'
         f'<text class="training-chart__tick" x="54" y="29" text-anchor="end">{y_max:.3g}</text>'
-        f'{"".join(lines)}</svg><figcaption>{title}</figcaption>'
+        f'{"".join(lines)}</svg>'
+        f'<figcaption>{title} — Achse {y_min:.3g} bis {y_max:.3g}, {axis_note}.</figcaption>'
         f'<ul class="training-chart__legend">{"".join(legend)}</ul></figure>'
     )
 
@@ -461,7 +478,10 @@ def _render_metrics(contract: TrainingContract) -> str:
                 provenance,
                 suffix=f"training-{contract.run_id}-{key}",
                 doc_id=contract.run_id,
-                page_depth=1,
+                subject_key="run_id",
+                schema="agentic-historian/training-evaluation/v1",
+                # run pages live at docs/training/<run_id>/, two levels below docs/
+                page_depth=2,
             )
         )
     for key, label, unit, direction, formatter in supplementary_specs:
@@ -587,6 +607,31 @@ _STYLES = """
 """
 
 
+def _run_page(row: dict) -> str:
+    """One run's own page: charts, epoch table, provenance, model card, metrics."""
+    report = _render_run_report(row)
+    report_size = len(report.encode("utf-8"))
+    if report_size > TRAINING_PERFORMANCE_BUDGETS["report_bytes_per_run"]:
+        raise RuntimeError(
+            f'training report {row["run_id"]!r} is {report_size} bytes; '
+            f'budget is {TRAINING_PERFORMANCE_BUDGETS["report_bytes_per_run"]}'
+        )
+    return f"""---
+title: "Training: {_esc(row["model_id"])}"
+---
+
+<link rel="stylesheet" href="{{{{ '/assets/catalogue.css' | relative_url }}}}">
+<link rel="stylesheet" href="{{{{ '/assets/output.css' | relative_url }}}}">
+<script src="{{{{ '/assets/quality-explain.js' | relative_url }}}}" defer></script>
+
+# Trainingslauf <code>{_esc(row["model_id"])}</code>
+
+[← Alle Trainingsläufe](../)
+
+{report}
+{_STYLES}"""
+
+
 def build_training() -> int:
     training_jsons = training_json_paths(DOCS)
     TRAINING_INDEX.parent.mkdir(parents=True, exist_ok=True)
@@ -599,26 +644,23 @@ def build_training() -> int:
         return 0
 
     rows = _build_rows(training_jsons, _recognition_usages(DOCS))
-    report_parts = []
+
+    # Each run gets its own page (#231). Rendering every run into the index put
+    # 26 KB, two SVGs and fifty table rows on one page for a SINGLE run; ten runs
+    # would be a quarter-megabyte download for a reader who wants to look at one.
     for row in rows:
         if not row.get("contract"):
             continue
-        report = _render_run_report(row)
-        report_size = len(report.encode("utf-8"))
-        if report_size > TRAINING_PERFORMANCE_BUDGETS["report_bytes_per_run"]:
-            raise RuntimeError(
-                f'training report {row["run_id"]!r} is {report_size} bytes; '
-                f'budget is {TRAINING_PERFORMANCE_BUDGETS["report_bytes_per_run"]}'
-            )
-        report_parts.append(report)
-    reports = "".join(report_parts)
-    page = f"""---
+        page_path = TRAINING_INDEX.parent / row["run_id"] / "index.md"
+        page_path.parent.mkdir(parents=True, exist_ok=True)
+        page_path.write_text(_run_page(row), encoding="utf-8")
+
+    index = f"""---
 title: Training
 ---
 
 <link rel="stylesheet" href="{{{{ '/assets/catalogue.css' | relative_url }}}}">
 <link rel="stylesheet" href="{{{{ '/assets/output.css' | relative_url }}}}">
-<script src="{{{{ '/assets/quality-explain.js' | relative_url }}}}" defer></script>
 
 # Training
 
@@ -631,21 +673,13 @@ Training runs produced by [serving-atr-inference](https://github.com/thodel/serv
 ## Training runs
 
 {_render_table(rows)}
-
-## Laufberichte
-
-{reports}
 {_STYLES}"""
-    page_size = len(page.encode("utf-8"))
-    if page_size > TRAINING_PERFORMANCE_BUDGETS["page_bytes"]:
+    index_size = len(index.encode("utf-8"))
+    if index_size > TRAINING_PERFORMANCE_BUDGETS["page_bytes"]:
         raise RuntimeError(
-            f"training page is {page_size} bytes; "
+            f"training index is {index_size} bytes; "
             f'budget is {TRAINING_PERFORMANCE_BUDGETS["page_bytes"]}'
         )
-    TRAINING_INDEX.write_text(page, encoding="utf-8")
-    print(f"build_training: wrote {len(rows)} training run(s) to {TRAINING_INDEX}")
+    TRAINING_INDEX.write_text(index, encoding="utf-8")
+    print(f"build_training: wrote {len(rows)} training run page(s) + index")
     return len(rows)
-
-
-if __name__ == "__main__":
-    build_training()

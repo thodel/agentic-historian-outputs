@@ -518,6 +518,8 @@ def render_reference_evaluation(
     suffix: str = "",
     doc_id: str = "",
     page_depth: int = 0,
+    subject_key: str = "doc_id",
+    schema: str = "agentic-historian/reference-evaluation/v1",
 ) -> str:
     """Return fully provenance-annotated HTML for a reference evaluation metric.
 
@@ -590,9 +592,13 @@ def render_reference_evaluation(
     machine_data = html.escape(_json.dumps(prov.to_dict(), ensure_ascii=False))
 
     # Full JSON export shown in <details>
+    # ``subject_key`` names what the id IS. A training run is identified by its
+    # run_id, not a doc_id: emitting a run id under "doc_id" would make a
+    # consumer joining training metrics to documents match nothing, or collide
+    # with a document whose slug happened to look the same (#233).
     export_payload = {
-        "schema": "agentic-historian/reference-evaluation/v1",
-        "doc_id": doc_id,
+        "schema": schema,
+        subject_key: doc_id,
         "metric_type": prov.metric_type,
         "unit": prov.unit,
         "value": prov.value,
