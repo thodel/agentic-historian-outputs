@@ -927,7 +927,9 @@ title: Katalog
 '''
     (DOCS / "index.md").write_text(page, encoding="utf-8")
     from build_outputs import build as build_outputs
+    from build_training import build_training
     build_outputs()
+    build_training()
     copied = sync_browser_scripts()
     build_sitemap(records)
     build_atom_feed(records)
