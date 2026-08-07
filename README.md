@@ -65,9 +65,10 @@ primary action stays reachable with JavaScript disabled.
 - **`.github/workflows/build-index.yml`** — regenerates the catalogue whenever a new
   `docs/**/pipeline.json` lands on `main`, commits the refreshed index when needed,
   then validates the final tip.
-- **`.github/workflows/test.yml`** — on pull requests and final-tip dispatches:
-  reports Python, Node, generated-output, and browser checks independently.
-  Failed browser checks retain screenshots and Playwright traces for 14 days.
+- **`.github/workflows/test.yml`** — on pull requests, non-publishing pushes, and
+  final-tip dispatches: reports Python, Node, generated-output, and browser checks
+  independently. Failed browser checks retain screenshots and Playwright traces
+  for 14 days.
 
 ## Local development
 

@@ -2,9 +2,10 @@ name: Test generators
 
 on:
   pull_request:
-  # Main is validated explicitly by build-index.yml after any generated
-  # catalogue refresh. Running here on the intermediate publishing commit
-  # creates a predictable red build before the refreshed tip exists.
+  push:
+    branches: [main]
+  # Conventional `Publish ...` pushes are skipped by the jobs below and
+  # validated explicitly by build-index.yml after the generated refresh.
   workflow_dispatch:
 
 permissions:
@@ -17,6 +18,7 @@ concurrency:
 jobs:
   python-unit:
     name: Python unit tests
+    if: github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'Publish ')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,6 +31,7 @@ jobs:
 
   node-unit:
     name: Node unit and syntax tests
+    if: github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'Publish ')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -48,6 +51,7 @@ jobs:
 
   generated-output:
     name: Generated output is current
+    if: github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'Publish ')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -62,6 +66,7 @@ jobs:
 
   browser-behaviour:
     name: Browser behaviour
+    if: github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'Publish ')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
