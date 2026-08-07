@@ -106,7 +106,8 @@ function initCatalogue() {
   const active = document.querySelector("#catalogue-active-filters");
   const empty = document.querySelector("#catalogue-empty");
   const list = document.querySelector("#catalogue-list");
-  if (Object.values(controls).some(control => !control) || !clear || !status || !active || !empty || !list) return;
+  const advanced = document.querySelector(".catalogue-advanced");
+  if (Object.values(controls).some(control => !control) || !clear || !status || !active || !empty || !list || !advanced) return;
   list.dataset.enhanced = "true";
 
   const addOptions = (select, values) => {
@@ -135,6 +136,8 @@ function initCatalogue() {
       controls[key].value = [...controls[key].options].some(option => option.value === requested)
         ? requested : CATALOGUE_DEFAULTS[stateKey];
     }
+    const advancedKeys = ["kind", "language", "script", "engine", "readiness", "superseded", "entity-type", "completeness"];
+    advanced.open = advancedKeys.some(key => state[key] !== CATALOGUE_DEFAULTS[key]);
   };
   const update = ({ push = true } = {}) => {
     const state = readState();

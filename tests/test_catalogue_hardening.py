@@ -121,12 +121,13 @@ class CatalogueHardeningTests(unittest.TestCase):
         self.assertIn("@media (prefers-reduced-motion: no-preference)", css)
         self.assertIn(":focus-visible", css)
         self.assertIn("min-height: 2.75rem", css)
+        self.assertIn('<details class="catalogue-advanced">', catalogue)
+        self.assertIn('<details class="catalogue-details">', catalogue)
 
 
-    def test_pipeline_badge_is_scoped_when_recognition_errors_present(self):
-        """Issue #120: a card must not show an unscoped 'Ohne Fehler' badge
-        alongside a recognition-error badge — that would be contradictory.
-        The pipeline badge must carry the 'Pipeline:' scope prefix."""
+    def test_processing_and_recognition_statuses_are_visually_separated(self):
+        """Technical completion belongs in details while recognition errors
+        remain visible in the compact summary."""
         # Find the bat-like fixture: no pipeline errors but recognition failures
         case = next(c for c in self.cases if c["name"] == "pipeline-ok-recognition-errors")
         with tempfile.TemporaryDirectory() as temp:
@@ -135,15 +136,11 @@ class CatalogueHardeningTests(unittest.TestCase):
             target.write_text(json.dumps(case["data"]), encoding="utf-8")
             record = _record(target)
             markup = _card(record)
-            # Must show scoped pipeline badge
-            self.assertIn("Pipeline: Ohne Fehler", markup,
-                          "Pipeline-OK badge must carry 'Pipeline:' scope prefix")
-            # Must NOT show bare unscoped 'Ohne Fehler' badge
-            self.assertNotIn(">Ohne Fehler<", markup,
-                             "Bare unscoped 'Ohne Fehler' badge must not appear")
-            # Recognition errors badge must still be present
+            self.assertIn("Verarbeitung abgeschlossen", markup)
             self.assertIn("Erkennungsfehler", markup,
-                          "Recognition-error badge must appear alongside scoped pipeline badge")
+                          "Recognition errors must remain visible in the summary")
+            details = markup.split('<details class="catalogue-details">', 1)[1]
+            self.assertIn("Verarbeitung abgeschlossen", details)
 
 
 if __name__ == "__main__":

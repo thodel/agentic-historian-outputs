@@ -128,9 +128,11 @@ test("history restoration reapplies filters, card visibility, and empty state", 
     { dataset: { ...card, documentId: "clean", recognitionEngines: "vlm", recognitionFailed: "0" }, hidden: false },
   ];
   const list = { dataset: {}, children: [], appendChild(item) { this.children.push(item); } };
+  const advanced = { open: false };
   const nodes = Object.fromEntries(Object.entries(controls).map(([key, value]) => [`#catalogue-${key}`, value]));
   Object.assign(nodes, { "#catalogue-clear": clear, "#catalogue-status": status,
-    "#catalogue-active-filters": active, "#catalogue-empty": empty, "#catalogue-list": list });
+    "#catalogue-active-filters": active, "#catalogue-empty": empty, "#catalogue-list": list,
+    ".catalogue-advanced": advanced });
   const old = { document: global.document, window: global.window, history: global.history,
     addEventListener: global.addEventListener };
   try {
@@ -142,6 +144,7 @@ test("history restoration reapplies filters, card visibility, and empty state", 
     global.history = { pushState(_state, _title, url) { global.window.location = new URL(url); } };
     global.addEventListener = (event, handler) => { listeners[event] = handler; };
     initCatalogue();
+    assert.equal(advanced.open, true);
     assert.deepEqual(cards.map(item => item.hidden), [false, true]);
     assert.equal(empty.hidden, true);
 

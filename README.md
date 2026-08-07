@@ -63,11 +63,11 @@ primary action stays reachable with JavaScript disabled.
 ### Automation
 
 - **`.github/workflows/build-index.yml`** — regenerates the catalogue whenever a new
-  `docs/**/pipeline.json` lands on `main` and commits the refreshed index.
-- **`.github/workflows/test.yml`** — on every push/PR: runs the Python and Node test
-  suites, regenerates the whole site, and requires a clean `git diff`
-  (generated output must match committed output), plus syntax checks on all
-  browser scripts.
+  `docs/**/pipeline.json` lands on `main`, commits the refreshed index when needed,
+  then validates the final tip.
+- **`.github/workflows/test.yml`** — on pull requests and final-tip dispatches:
+  reports Python, Node, generated-output, and browser checks independently.
+  Failed browser checks retain screenshots and Playwright traces for 14 days.
 
 ## Local development
 

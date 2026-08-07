@@ -105,6 +105,8 @@ class CatalogueSummaryTests(unittest.TestCase):
         self.assertIn('aria-label="Erkennungsprovenienz"', card)
         self.assertIn('Erkennungsengine: </span>kraken', card)
         self.assertIn('2 erfolgreich / 2 insgesamt', card)
+        self.assertIn('<details class="catalogue-details">', card)
+        self.assertIn('<dl class="catalogue-summary-facts">', card)
 
     def test_card_surfaces_failures_missing_source_and_legacy_provenance(self):
         current = recognition_summary({"recognitions": [rec(), rec("vlm", "v", error="timeout")]})

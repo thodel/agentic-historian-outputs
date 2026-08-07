@@ -319,8 +319,8 @@ Bat du den</code></pre>
 </details>
 
 <details class="page-section-disclosure" data-disclosure="history">
-<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">4 Commits</span></summary>
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/894ee0a"><code>894ee0a</code></a> · <time datetime="2026-08-07T10:20:57+02:00">2026-08-07</time> · Publish BAT_664_r_00027</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/b36911a"><code>b36911a</code></a> · <time datetime="2026-08-07T10:10:08+02:00">2026-08-07</time> · Publish BAT_664_r_00027</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/e0026d0"><code>e0026d0</code></a> · <time datetime="2026-07-17T21:04:46+02:00">2026-07-17</time> · Publish BAT_664_r_00027</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/4589e1c"><code>4589e1c</code></a> · <time datetime="2026-07-07T15:25:18+02:00">2026-07-07</time> · Publish BAT_664_r_00027</li></ol></section>
+<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">5 Commits</span></summary>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/6df2be2"><code>6df2be2</code></a> · <time datetime="2026-08-07T17:21:04+02:00">2026-08-07</time> · Publish BAT_664_r_00027</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/894ee0a"><code>894ee0a</code></a> · <time datetime="2026-08-07T10:20:57+02:00">2026-08-07</time> · Publish BAT_664_r_00027</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/b36911a"><code>b36911a</code></a> · <time datetime="2026-08-07T10:10:08+02:00">2026-08-07</time> · Publish BAT_664_r_00027</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/e0026d0"><code>e0026d0</code></a> · <time datetime="2026-07-17T21:04:46+02:00">2026-07-17</time> · Publish BAT_664_r_00027</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/4589e1c"><code>4589e1c</code></a> · <time datetime="2026-07-07T15:25:18+02:00">2026-07-07</time> · Publish BAT_664_r_00027</li></ol></section>
 </details>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
@@ -343,7 +343,7 @@ Bat du den</code></pre>
   },
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "dateCreated": "2026-07-07T15:25:18+02:00",
-  "dateModified": "2026-08-07T10:20:57+02:00",
+  "dateModified": "2026-08-07T17:21:04+02:00",
   "distribution": [
     {
       "@type": "DataDownload",

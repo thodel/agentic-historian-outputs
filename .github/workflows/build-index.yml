@@ -42,13 +42,10 @@ jobs:
             git push
             echo "refreshed=true" >> "$GITHUB_OUTPUT"
           fi
-      # A push authenticated with GITHUB_TOKEN never triggers a workflow, so the
-      # commit above used to leave main's last recorded status as whatever the
-      # publishing push failed with — main displayed red for seven days in July
-      # 2026 while its tip was actually green. Dispatch the suite explicitly so
-      # the final commit carries a real verdict (issue #199).
-      - name: Validate the refreshed tip
-        if: steps.commit.outputs.refreshed == 'true'
+      # Validate exactly the final tip. If the index changed this is the bot's
+      # refresh commit; otherwise it is the original, already-current publish.
+      # test.yml intentionally does not run on the transient push itself.
+      - name: Validate the final tip
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run test.yml --ref main

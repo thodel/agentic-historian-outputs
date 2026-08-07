@@ -414,10 +414,12 @@ def _card(record: Record) -> str:
     created_iso = record.created.isoformat()
     created_label = record.created.strftime("%d.%m.%Y, %H:%M")
     badges = []
+    detail_badges = []
     if record.is_test:
         badges.append(_badge("Testlauf", "test"))
     badges.append(_review_badge(record.review_status))
-    badges.append(_badge("Pipeline: Ohne Fehler" if not record.errors else f"Pipeline: {record.errors} Fehler", "ok" if not record.errors else "error"))
+    pipeline_label = "Verarbeitung abgeschlossen" if not record.errors else f"Verarbeitung: {record.errors} Fehler"
+    detail_badges.append(_badge(pipeline_label, "ok" if not record.errors else "error"))
     # Epic 5 #28: Typed quality badges — replace ambiguous QA label
     # Button and region must share one deterministic id.  Calling the quality
     # helpers without an explicit suffix advances their independent counter
@@ -426,39 +428,37 @@ def _card(record: Record) -> str:
     has_cer_wer = record.reference_cer is not None or record.reference_wer is not None
     explain_btn = explanation_button("reference_evaluation", explanation_suffix) if has_cer_wer else ""
     explain_blk = explanation_block("reference_evaluation", explanation_suffix) if has_cer_wer else ""
+    explanation_html = f"\n      {explain_btn}{explain_blk}" if has_cer_wer else ""
 
     if record.reference_cer is not None:
         cer_pct = max(0.0, min(1.0, float(record.reference_cer))) * 100
-        badges.append(_badge(f"CER {cer_pct:.1f}%", "quality-confidence"))
+        detail_badges.append(_badge(f"CER {cer_pct:.1f}%", "quality-confidence"))
     if record.reference_wer is not None:
         wer_pct = max(0.0, min(1.0, float(record.reference_wer))) * 100
-        badges.append(_badge(f"WER {wer_pct:.1f}%", "quality-confidence"))
+        detail_badges.append(_badge(f"WER {wer_pct:.1f}%", "quality-confidence"))
     if record.recognition_errors > 0:
         badges.append(_badge(f"{record.recognition_errors} Erkennungsfehler", "quality-failed"))
     if record.recognition_avg_confidence is not None and record.recognition_errors == 0:
-        badges.append(_badge(f"Ø Konfidenz {record.recognition_avg_confidence:.0%}", "quality-confidence"))
+        detail_badges.append(_badge(f"Ø Konfidenz {record.recognition_avg_confidence:.0%}", "quality-confidence"))
 
     # Legacy qa_score — show with distinct style to signal it needs replacement
     if record.qa_score is not None:
-        badges.append(_badge(f"Legacy-QA {record.qa_score:.0%}", "legacy"))
+        detail_badges.append(_badge(f"Legacy-QA {record.qa_score:.0%}", "legacy"))
+
+    summary_facts = []
+    if record.date_label:
+        summary_facts.append(("Datierung", record.date_label))
+    if record.pages is not None:
+        summary_facts.append(("Seiten", str(record.pages)))
+    summary_facts.append(("Entitäten", str(record.entities)))
 
     facts = []
-    if record.date_label:
-        facts.append(("Datierung", record.date_label))
     if record.document_type:
         facts.append(("Dokumenttyp", record.document_type))
     if record.language:
         facts.append(("Sprache", record.language))
     if record.script:
         facts.append(("Schrift", record.script))
-    facts.append(("Entitäten", str(record.entities)))
-    if record.pages is not None:
-        facts.append(("Seiten", str(record.pages)))
-
-    fact_html = "".join(
-        f'<div><dt>{html.escape(label)}</dt><dd>{html.escape(value)}</dd></div>'
-        for label, value in facts
-    )
     preview = (
         f'<p class="catalogue-preview">{html.escape(record.preview)}…</p>'
         if record.preview else '<p class="catalogue-preview catalogue-muted">Keine Vorschau verfügbar.</p>'
@@ -489,6 +489,11 @@ def _card(record: Record) -> str:
     fact_html = "".join(
         f'<div><dt>{html.escape(label)}</dt><dd>{html.escape(value)}</dd></div>'
         for label, value in facts
+    )
+    facts_html = f'\n      <dl class="catalogue-facts">{fact_html}</dl>' if fact_html else ""
+    summary_fact_html = "".join(
+        f'<div><dt>{html.escape(label)}</dt><dd>{html.escape(value)}</dd></div>'
+        for label, value in summary_facts
     )
     count = lambda value: "" if value is None else str(value)
     doc_href = f"{quote(record.doc_id, safe='')}/"
@@ -532,15 +537,20 @@ def _card(record: Record) -> str:
     </div>
     <div class="catalogue-badges">{"".join(badges)}</div>
   </div>
-  <dl class="catalogue-facts">{fact_html}</dl>
-  <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
-    <p class="catalogue-provenance__label">Engines</p>
-    {f'<ul class="catalogue-engines">{engine_chips}</ul>' if engine_chips else '<p class="catalogue-muted">Nicht dokumentiert</p>'}
-    {status_html if status_html else '<span class="visually-hidden">Keine Warnungen</span>'}
-  </div>
-  {preview}
+  <dl class="catalogue-summary-facts">{summary_fact_html}</dl>
   <p class="catalogue-actions"><a href="{html.escape(action_href, quote=True)}" aria-label="{html.escape(action_label)}: {html.escape(record.doc_id)}">{action_label} <span aria-hidden="true">→</span></a></p>
-  {explain_btn}{explain_blk}
+  <details class="catalogue-details">
+    <summary>Details und Vorschau</summary>
+    <div class="catalogue-details__body">{facts_html}
+      <div class="catalogue-detail-badges" aria-label="Verarbeitungs- und Qualitätsmetriken">{"".join(detail_badges)}</div>{explanation_html}
+      <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
+        <p class="catalogue-provenance__label">Engines</p>
+        {f'<ul class="catalogue-engines">{engine_chips}</ul>' if engine_chips else '<p class="catalogue-muted">Nicht dokumentiert</p>'}
+        {status_html if status_html else '<span class="visually-hidden">Keine Warnungen</span>'}
+      </div>
+      {preview}
+    </div>
+  </details>
 </article>'''
 
 
@@ -718,64 +728,9 @@ title: Katalog
 </div>
 
 <form class="catalogue-tools" role="search" aria-label="Ausgaben durchsuchen" onsubmit="return false">
-  <div>
+  <div class="catalogue-search">
     <label for="catalogue-search">Suchen</label>
     <input id="catalogue-search" type="search" placeholder="Signatur, Sprache, Schrift oder Text …" autocomplete="off">
-  </div>
-  <div>
-    <label for="catalogue-filter">Anzeigen</label>
-    <select id="catalogue-filter">
-      <option value="all">Alle Einträge</option>
-      <option value="output">Nur Ausgaben</option>
-      <option value="test">Nur Testläufe</option>
-    </select>
-  </div>
-  <div>
-    <label for="catalogue-language">Sprache</label>
-    <select id="catalogue-language"><option value="all">Alle Sprachen</option></select>
-  </div>
-  <div>
-    <label for="catalogue-script">Schrift</label>
-    <select id="catalogue-script"><option value="all">Alle Schriften</option></select>
-  </div>
-  <div>
-    <label for="catalogue-engine">Erkennungsengine</label>
-    <select id="catalogue-engine"><option value="all">Alle Engines</option></select>
-  </div>
-  <div>
-    <label for="catalogue-readiness">Erkennungsdaten</label>
-    <select id="catalogue-readiness">
-      <option value="all">Alle Bereitschaftsstufen</option>
-      <option value="comparison">Vergleich möglich</option>
-      <option value="candidates">Kandidaten vorhanden</option>
-      <option value="legacy">Begrenzte Legacy-Provenienz</option>
-    </select>
-  </div>
-  <div>
-    <label for="catalogue-failure">Erkennungsstatus</label>
-    <select id="catalogue-failure">
-      <option value="all">Alle Status</option>
-      <option value="clean">Ohne bekannte Probleme</option>
-      <option value="issues">Fehler, leer oder degeneriert</option>
-    </select>
-  </div>
-  <div>
-    <label for="catalogue-superseded">Ersetzte Einträge</label>
-    <select id="catalogue-superseded">
-      <option value="hide">Verbergen</option>
-      <option value="show">Anzeigen</option>
-    </select>
-  </div>
-  <div>
-    <label for="catalogue-source">Digitale Quelle</label>
-    <select id="catalogue-source">
-      <option value="all">Alle Quellenlagen</option>
-      <option value="available">Quelle vorhanden</option>
-      <option value="missing">Quelle fehlt</option>
-      <option value="iiif_manifest">IIIF</option>
-      <option value="image">Direktbild</option>
-      <option value="landing_page">Archivseite</option>
-    </select>
   </div>
   <div>
     <label for="catalogue-review">Redaktionsstatus</label>
@@ -787,26 +742,22 @@ title: Katalog
     </select>
   </div>
   <div>
-    <label for="catalogue-entity-type">Entitätstyp</label>
-    <select id="catalogue-entity-type">
-      <option value="all">Alle Entitätstypen</option>
-      <option value="PERSON">Personen</option>
-      <option value="PLACE">Orte</option>
-      <option value="ORG">Organisationen</option>
-      <option value="DATE">Datumsangaben</option>
-      <option value="EVENT">Ereignisse</option>
-      <option value="ROLE">Rollen</option>
-      <option value="TITLE">Titel</option>
-      <option value="SOCIAL_GROUP">Sozialgruppe</option>
+    <label for="catalogue-failure">Erkennungsstatus</label>
+    <select id="catalogue-failure">
+      <option value="all">Alle Status</option>
+      <option value="clean">Ohne bekannte Probleme</option>
+      <option value="issues">Fehler, leer oder degeneriert</option>
     </select>
   </div>
   <div>
-    <label for="catalogue-completeness">Vollständigkeit</label>
-    <select id="catalogue-completeness">
-      <option value="all">Alle Stufen</option>
-      <option value="vollstaendig">Vollständig</option>
-      <option value="teilweise">Teilweise</option>
-      <option value="minimal">Minimal</option>
+    <label for="catalogue-source">Digitale Quelle</label>
+    <select id="catalogue-source">
+      <option value="all">Alle Quellenlagen</option>
+      <option value="available">Quelle vorhanden</option>
+      <option value="missing">Quelle fehlt</option>
+      <option value="iiif_manifest">IIIF</option>
+      <option value="image">Direktbild</option>
+      <option value="landing_page">Archivseite</option>
     </select>
   </div>
   <div>
@@ -825,6 +776,45 @@ title: Katalog
     </select>
   </div>
   <div class="catalogue-clear"><button id="catalogue-clear" type="button">Alle Filter zurücksetzen</button></div>
+  <details class="catalogue-advanced">
+    <summary>Weitere Filter</summary>
+    <div class="catalogue-advanced__grid">
+      <div>
+        <label for="catalogue-filter">Anzeigen</label>
+        <select id="catalogue-filter">
+          <option value="all">Alle Einträge</option>
+          <option value="output">Nur Ausgaben</option>
+          <option value="test">Nur Testläufe</option>
+        </select>
+      </div>
+      <div><label for="catalogue-language">Sprache</label><select id="catalogue-language"><option value="all">Alle Sprachen</option></select></div>
+      <div><label for="catalogue-script">Schrift</label><select id="catalogue-script"><option value="all">Alle Schriften</option></select></div>
+      <div><label for="catalogue-engine">Erkennungsengine</label><select id="catalogue-engine"><option value="all">Alle Engines</option></select></div>
+      <div>
+        <label for="catalogue-readiness">Erkennungsdaten</label>
+        <select id="catalogue-readiness">
+          <option value="all">Alle Bereitschaftsstufen</option>
+          <option value="comparison">Vergleich möglich</option>
+          <option value="candidates">Kandidaten vorhanden</option>
+          <option value="legacy">Begrenzte Legacy-Provenienz</option>
+        </select>
+      </div>
+      <div>
+        <label for="catalogue-superseded">Ersetzte Einträge</label>
+        <select id="catalogue-superseded"><option value="hide">Verbergen</option><option value="show">Anzeigen</option></select>
+      </div>
+      <div>
+        <label for="catalogue-entity-type">Entitätstyp</label>
+        <select id="catalogue-entity-type">
+          <option value="all">Alle Entitätstypen</option><option value="PERSON">Personen</option><option value="PLACE">Orte</option><option value="ORG">Organisationen</option><option value="DATE">Datumsangaben</option><option value="EVENT">Ereignisse</option><option value="ROLE">Rollen</option><option value="TITLE">Titel</option><option value="SOCIAL_GROUP">Sozialgruppe</option>
+        </select>
+      </div>
+      <div>
+        <label for="catalogue-completeness">Vollständigkeit</label>
+        <select id="catalogue-completeness"><option value="all">Alle Stufen</option><option value="vollstaendig">Vollständig</option><option value="teilweise">Teilweise</option><option value="minimal">Minimal</option></select>
+      </div>
+    </div>
+  </details>
 </form>
 
 <p id="catalogue-active-filters" class="catalogue-active-filters">Keine Filter aktiv.</p>
