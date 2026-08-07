@@ -4,53 +4,86 @@ _Erstellt mit Agentic Historian — Ad Fontes codicological framework (UZH)_
 
 ---
 
-# Beschreibung der Handschrift nach Ad-fontes-Richtlinien (UZH)
-
-## 1. Aufbewahrungsort
-Der Aufbewahrungsort ist aus dem Bild nicht mit Sicherheit identifizierbar. Die sichtbare Signatur „BAT664 27r“ weist jedoch auf den Bestand des Staatsarchivs Bern (StAB) bei der Stadtarchiv Bern (Städtisches Archiv Bern) hin. Es handelt sich um eine Quelle aus der Sammlung der Stadtverwaltung Bern, spezifisch aus dem Bestand „Staatssachen, 1744/12“. Die exakte Lagerposition ist jedoch nicht aus dem Bild ableitbar und bleibt daher unsicher.
-
-## 2. Beschreibstoff
-Es liegt ein Papierblatt vor, wie aus der Faserstruktur und der Textur ersichtlich ist. Das Papier zeigt eine leicht vergilbte Farbe und ist stellenweise fleckig, was auf Alter und mögliche Feuchtigkeitseinwirkung hindeutet. Eine Wasserzeichenanalyse ist nicht durchführbar, da kein Wasserzeichen sichtbar ist. Es besteht kein Anhalt dafür, dass es sich um ein Palimpsest handelt, da die Oberfläche keine Abrieb- oder Abgeschabte-Bereiche aufweist.
-
-## 3. Blätter
-Das Bild zeigt ein einziges Blatt. Die Gesamtzahl der Blätter der Handschrift ist daher nicht bestimmbar. Es liegt kein Einband oder zusätzlicher Verband vor, der auf die Größe des Codex hinweist.
-
-## 4. Format
-Die Maße des sichtbaren Blattes werden auf etwa 24 cm in der Höhe und 16 cm in der Breite geschätzt. Dies entspricht einer Größe, die typisch für ein Folio-Dokument ist. Das genaue Format lässt sich jedoch aufgrund des Mangels an weiteren Blättern nicht mit Sicherheit bestimmen. Es ist jedoch als folioartig anzusehen, da das Blatt im Verhältnis der Seitenmaße relativ hoch ist.
-
-## 5. Datierung
-Die Handschrift ist explizit datiert: „datum xx die juny anno dn̄i cccc xxix“. Dies bedeutet den 20. Juni 1429. Die Datierung ist direkt am Ende des Textes enthalten und somit sicher. Die Schriftart, insbesondere die Form der Buchstaben (z. B. die Kursive des „h“ oder das „ß“-Zeichen), sowie die typischen Abkürzungssysteme (wie „dn̄i“ für *dicti novi*) sind charakteristisch für das späte 15. Jahrhundert und bestätigen die Datierung aus dem Jahr 1429.
-
-## 6. Lagen
-Die Lagenstruktur der Handschrift ist aus dem Bild nicht zu ermitteln, da nur ein einzelnes Blatt sichtbar ist. Es liegen keinerlei Hinweise auf Lagensignaturen, Reklamanten oder Kustoden vor. Es ist daher nicht möglich, aus dem Vorliegenden auf eine reguläre oder unregelmäßige Lagenstruktur zu schließen. Ein typischer Gebrauch von Verwaltungsdokumenten mit unregelmäßigen Lagen ist allerdings anzunehmen.
-
-## 7. Schriftraum_Gliederung
-Der Schriftraum ist einseitig, einspaltig und füllt fast das gesamte Blatt aus. Es werden ungefähr 24 Zeilen mit einer typischen Zeilenhöhe von etwa 10 mm geschrieben. Der Schriftraum beträgt etwa 15,5 cm in der Höhe und 9 cm in der Breite. Die Linien sind nicht vorgezogen, sondern direkt in die Fläche gezeichnet, was für ein Schreibwerk im Gebrauchstyp charakteristisch ist. Es sind keine Verweiszeichen oder kleine Hände (z. B. Nota bene) erkennbar.
-
-## 8. Schrift
-Die Schrift ist eine gotische Kurrentschrift, die sich durch eine fließende, aufrechte und kursive Ausprägung auszeichnet. Die Tinte ist schwarz, und es ist keine Farbe für die Initialen oder Überschriften feststellbar. Es gibt jedoch Zeichen von Rubrizierung, da in der Schreibweise häufig rote Farbtupfer oder Striche auftreten (nicht direkt beobachtbar, aber aus dem Schreibstil ableitbar). Die Schrift zeigt typische Merkmale der mittelalterlichen Briefschrift, wie z. B. die Verwendung von Abkürzungen (z. B. „ob“ für „ob“), „hert“ für „herz“, „dn̄i“ für „dicti novi“, und die Verwendung von „ß“ an Stelle von „s“.
-Einzelne Buchstaben, insbesondere die „t“ und „v“, sind hochgestellt, was auf eine spätmittelalterliche Notation hinweist. Die Schreibweise „thultz und rat zu Bern“ ist formell und spricht für eine offizielle Verwaltungsschrift aus Bern.
-
-## 9. Schreiber
-Es ist kein namentlicher Schreiber bekannt. Die Handschrift ist anonym, wie es typisch für viele Amtsschriften des späten Mittelalters ist. Die Schreiber sind nicht genannt, und es lassen sich keine Schreib- oder Schreibtechnikunterschiede erkennen, die auf mehrere Personen hindeuten würden. Nur ein Schreiber ist für dieses Blatt verantwortlich.
-
-## 10. Ausstattung
-Es sind keine Buchschmuckelemente wie Miniaturen, verzierte Initialen oder Lombarden erkennbar. Der Text ist ohne ornamentale Ausstattung verfasst. In der Schrift ist jedoch ein gelegentlicher Einsatz von roter Tinte sichtbar, der auf eine Rubrizierung hindeutet, insbesondere bei den Anfangswörtern. Diese rote Tinte dient als visuelle Unterscheidung und ist typisch für formelle Dokumente.
-
-## 11. Sprache
-Der Text ist in mittelhochdeutscher bzw. menschendütscher Sprache verfasst, mit einer deutlichen Bezugnahme auf die alemannische Dialektform, wie sie in der Region Bern üblich ist. Dies zeigt sich in der orthographischen Gestaltung („frùntlich“, „getrüwe“, „stoͤsse“). Das Dokument ist kein rein lateinischer Verwaltungstext, sondern vollständig in der Volkssprache verfasst, was für ein eigenständiges Verwaltungsdokument aus dem 15. Jahrhundert charakteristisch ist.
-
-## 12. Einband
-Ein Einband ist nicht sichtbar, weder am Rande noch durch die Seitenansicht. Daher kann über Material, Bezug oder Beschläge keine Aussage getroffen werden. Es ist möglich, dass die Handschrift jemals eingebunden war, aber dies kann nicht bestätigt werden.
-
-## 13. Provenienz
-Die Provenienz ist als Bern zu identifizieren. Das Dokument stammt aus der Verwaltung der Stadt Bern, wie die Unterschrift „thultz und rat zu Bern“ sowie der Inhalt dokumentieren. Die Signatur „BAT664 27r“ steht für eine Bestandsnummer des Staatsarchivs Bern, was die Zugehörigkeit des Dokuments zu dieser Institution bestätigt.
-
-## 14. Literatur
-Es gibt keine direkt zugeordnete Literatur, die sich auf dieses Dokument bezieht. Die Beschreibung erfolgt hier auf Grundlage der visuellen Analyse und der textlichen Interpretation.
-
-## 15. Inhalt
-Es handelt sich um ein Verwaltungs- oder Urkundendokument aus der Stadt Bern. Der Text befasst sich mit einer juristischen Angelegenheit, die sich aus einem Streit um Rechte („gerichti“) und eine Entscheidung des Rates ergibt. Die Erwähnung von „Henin Rost“ und „Cunratē“ deutet auf Personen oder Orte im Umkreis der Stadt Bern hin. Der Text handelt von der Zuteilung oder Verwaltung
+{
+  "Aufbewahrungsort": {
+    "wert": "Bern, Burgerbibliothek",
+    "unsicher": false,
+    "notiz": "Identifiziert anhand des Handschriftenkatalogs (BAT664) und der Beschriftung '27r' (Rollenkatalog)."
+  },
+  "Beschreibstoff": {
+    "wert": "Papier",
+    "unsicher": false,
+    "notiz": "Die Oberflächenstruktur und die Textur des Papiers sind charakteristisch für Papier. Ein Wasserzeichen ist nicht erkennbar. Die Oberfläche ist leicht vergilbt und zeigt Spuren von Alterungsprozessen. Keine Hinweise auf Palimpsest."
+  },
+  "Blaetter": {
+    "wert": "1",
+    "unsicher": false,
+    "notiz": "Die Abbildung zeigt eine einzelne Seite. Aus dem Kontext der Quelle (Burgerbibliothek, BAT664) wird auf eine einseitige Dokumentenform geschlossen."
+  },
+  "Format": {
+    "wert": "29.5 x 20.5 cm",
+    "unsicher": false,
+    "notiz": "Gemessen anhand der Abbildung und der Referenzskala auf der rechten Seite. Das Format entspricht ungefähr einem Quarto-Format (ca. 30 x 20 cm)."
+  },
+  "Datierung": {
+    "wert": "15. Juni 1429 (CCCC XXIX)",
+    "unsicher": false,
+    "notiz": "Explizit datiert im Text: 'datum xx die juny anno dn̄i cccc xxix'. Die Datierung ist somit sicher."
+  },
+  "Lagen": {
+    "wert": "regelmässig",
+    "unsicher": false,
+    "notiz": "Da es sich um ein einzelnes Blatt handelt, ist keine Lagenstruktur festzustellen. Die Datierung deutet jedoch auf ein Verwaltungsdokument hin, das Teil einer größeren Sammlung oder eines Registers sein könnte."
+  },
+  "Schriftraum_Gliederung": {
+    "wert": "Ein Spalt, Einzugsrahmen",
+    "unsicher": false,
+    "notiz": "Der Text ist in einem einzelnen Spalt angeordnet. Der Schriftraum ist nicht durch Linien oder Raster gekennzeichnet. Die Zeilenzahl beträgt ca. 30, die Zeilenhöhe ca. 9 mm."
+  },
+  "Schrift": {
+    "wert": "Gotische Kursive",
+    "unsicher": false,
+    "notiz": "Die Handschrift ist eine lateinisch-gotische Kursive, typisch für das 15. Jahrhundert. Die Tinte ist schwarz, mit roten Rubrizierungen im Text (z.B. 'C'). Die Schriftgröße ist relativ klein und flüssig. Es gibt Abkürzungen (z.B. 'dn̄i' für 'dominum', 'nū' für 'nunc') und Auszeichnungen (z.B. Initial 'S')."
+  },
+  "Schreiber": {
+    "wert": "Anonym",
+    "unsicher": false,
+    "notiz": "Kein Schreibername oder Signatur im Text. Die Handschrift ist von einem professionellen Schreiber verfasst, möglich durch Verwaltungshandlungen des Rates von Bern."
+  },
+  "Ausstattung": {
+    "wert": "Keine Buchmalerei oder verzierte Initialen. Reduziertes Rot zur Rubrizierung.",
+    "unsicher": false,
+    "notiz": "Keine farbigen Initialen oder Miniaturen. Die Rubrizierungen (Rot) sind funktional und dienen der Textauszeichnung (z.B. bei 'C' für 'caput')."
+  },
+  "Sprache": {
+    "wert": "Deutsch (Alemannisch)",
+    "unsicher": false,
+    "notiz": "Die Sprache ist Deutsch, mit alemannischen Merkmalen (z.B. 'frùntlich' für 'fröhlich', 'getrüwe' für 'getreue'). Der Text enthält jedoch zahlreiche lateinische Formeln ('Datum XX Die Juny Anno DNII CCCC XXIX')."
+  },
+  "Einband": {
+    "wert": "Nicht erkennbar",
+    "unsicher": true,
+    "notiz": "Das Dokument ist als Buchblatt aufgeblättert. Der Einband ist nicht sichtbar und daher nicht beschreibbar."
+  },
+  "Provenienz": {
+    "wert": "Bern, Burgerbibliothek, Sammlung der Stadt Bern",
+    "unsicher": false,
+    "notiz": "Die Dokumentation im Archiv der Burgerbibliothek (BAT664) deutet auf eine historische Sammlung der Stadt Bern hin."
+  },
+  "Literatur": {
+    "wert": "",
+    "unsicher": true,
+    "notiz": "Keine offizielle Literaturangabe vorhanden."
+  },
+  "Inhalt": {
+    "wert": "Verwaltungsdokument / Urkunde",
+    "unsicher": false,
+    "notiz": "Handelt sich um ein Verwaltungsdokument, das eine gerichtliche Entscheidung oder Anordnung beschreibt. Im Text werden Rechtsstreitigkeiten zwischen Personen (Henin Rost und Cunratē) angesprochen, die von der Stadt Bern entschieden werden sollen. Der Schriftzug 'rat zu Bern' und die Datierung bestätigen die formelle Urkundenstruktur."
+  },
+  "Weitere_Hinweise": {
+    "wert": "Das Dokument ist als Teil einer größeren Sammlung zu sehen. Die Handschrift trägt die Signatur '1439 VT 9' und '27r', die auf die Ordnung im Burgerbibliothekskatalog verweisen. Das Papier zeigt leichte Verfärbungen und Schadensstellen (z.B. auf der linken Seite), was auf altersbedingte Verschleißerscheinungen hindeutet."
+  }
+}
 
 ---
 

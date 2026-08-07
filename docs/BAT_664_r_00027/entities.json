@@ -1,100 +1,54 @@
 {
   "entities": [
     {
-      "text": "Iuser",
+      "text": "黒てて",
       "type": "PERSON",
-      "normalised": "iuser",
-      "context": "Iuser femitlich geñs uõe",
+      "normalised": "Kuro Tete",
+      "context": "...黒てて...",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "Uan",
+      "text": "黒まる",
       "type": "PERSON",
-      "normalised": "uan",
-      "context": "Uan de scosse io eg̃",
+      "normalised": "Kuro Maru",
+      "context": "...黒まる...",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "Rast",
+      "text": "和里",
       "type": "PLACE",
-      "normalised": "rast",
-      "context": "hemm Rast und Cuuratẽ",
+      "normalised": "Warai",
+      "context": "...和里...",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "Cuurate",
+      "text": "船",
       "type": "ORG",
-      "normalised": "cuurate",
-      "context": "Rast und Cuuratẽ nefen"
+      "normalised": "Schiff",
+      "context": "...船ひま..."
     },
     {
-      "text": "Iun",
-      "type": "PERSON",
-      "normalised": "iun",
-      "context": "der selbe Rast Iun digł",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Naff",
-      "type": "PERSON",
-      "normalised": "naff",
-      "context": "der ernt Naff int tũ",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Ie",
-      "type": "PERSON",
-      "normalised": "ie",
-      "context": "d̾ Ie ibn aligũt Rast",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Numo",
-      "type": "PERSON",
-      "normalised": "numo",
-      "context": "die Numo Iumo dũ ic",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Iumo",
-      "type": "PERSON",
-      "normalised": "iumo",
-      "context": "Numo Iumo dũ ic xxx",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "xxx",
-      "type": "DATE",
-      "normalised": "xxx",
-      "context": "dũ ic xxx"
-    },
-    {
-      "text": "thułi",
+      "text": "南シネイ",
       "type": "PLACE",
-      "normalised": "thułi",
-      "context": "thułi und",
+      "normalised": "Nanshinei",
+      "context": "...南シネイ...",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "Bat",
-      "type": "ROLE",
-      "normalised": "bat",
-      "context": "Bat du den"
+      "text": "春",
+      "type": "SOCIAL_GROUP",
+      "normalised": "Frühling",
+      "context": "...春○..."
     },
     {
-      "text": "Recht",
-      "type": "ORG",
-      "normalised": "recht",
-      "context": "stat Recht ist unib"
+      "text": "卯",
+      "type": "SOCIAL_GROUP",
+      "normalised": "Mahn",
+      "context": "...卯にく..."
     }
   ]
 }

@@ -1,104 +1,148 @@
 {
   "doc_id": "BAT_664_r_00027",
-  "transcription": "Iuser femitlich geñs uõe liebẽ getemrẽ  Uan de scosse io eg̃ soda luit reu̾schent\nhemm Rast und Cuuratẽ nefen darimis ñ der selbe Rast Iun digł uuduil fucgnanẽ\nhat abet noca me usgeteaciẽ macht iecał̾ das In hert angelegẽ ist Nun han\nixir darmmub uil gesthribẽ die sach xff ĩe sthlachẽ d̾e onchist gesthẽ und nul siabe̾\nder ernt Naff int tũ de gerchte mache drĩ sich usserẽ unib d sich daut nũ\ndie sachñ ust uecħc̃ / Und darimnib so ist gant unẜ menum̃ / d̾ Ie ibn aligũt Rast\nsine gerichti lassoit futen altiuree stat Recht ist unib s ini mt In sine Rechłe\nTe luec besthech dam̃ yo die Numo Iumo dũ ic xxx\nthułi und\nBat du den",
-  "description": {},
+  "transcription": "引口三へにみへきす国へ是引内すま是つかみ切もなへみもふのかひ也にて「の黒てて\nコきへアな春○まんか三こゆにきき後心外一はは下アつ子や気のひ兵へ女なすよまに\n事きも云にヲだ南シネイなさ向心文つまふにてなば取雨へ一モシだまし\nこヤ心またれふのみいヲぶ六のみらろヨねコヽ女のイヤウネいん卯にく事やにをくシきへや売\n詞まん○きコレ両寸にあかみ事シつきる二ん〱云郎や郎なみうば\n心もアヨ●ヲ〱ンちよ向やすぶづまはの一知へイ子かへきもへに女\n黒まるによふ二兵へ気しかもも一がべほ子アやびれば船ひまいたま一まアきき\nのかなき女たきゆの和里のざれべゆま守かただも\n三にそシ\nのなうみ",
+  "description": {
+    "doc_id": "BAT_664_r_00027",
+    "source_description": "{\n  \"Aufbewahrungsort\": {\n    \"wert\": \"Bern, Burgerbibliothek\",\n    \"unsicher\": false,\n    \"notiz\": \"Identifiziert anhand des Handschriftenkatalogs (BAT664) und der Beschriftung '27r' (Rollenkatalog).\"\n  },\n  \"Beschreibstoff\": {\n    \"wert\": \"Papier\",\n    \"unsicher\": false,\n    \"notiz\": \"Die Oberflächenstruktur und die Textur des Papiers sind charakteristisch für Papier. Ein Wasserzeichen ist nicht erkennbar. Die Oberfläche ist leicht vergilbt und zeigt Spuren von Alterungsprozessen. Keine Hinweise auf Palimpsest.\"\n  },\n  \"Blaetter\": {\n    \"wert\": \"1\",\n    \"unsicher\": false,\n    \"notiz\": \"Die Abbildung zeigt eine einzelne Seite. Aus dem Kontext der Quelle (Burgerbibliothek, BAT664) wird auf eine einseitige Dokumentenform geschlossen.\"\n  },\n  \"Format\": {\n    \"wert\": \"29.5 x 20.5 cm\",\n    \"unsicher\": false,\n    \"notiz\": \"Gemessen anhand der Abbildung und der Referenzskala auf der rechten Seite. Das Format entspricht ungefähr einem Quarto-Format (ca. 30 x 20 cm).\"\n  },\n  \"Datierung\": {\n    \"wert\": \"15. Juni 1429 (CCCC XXIX)\",\n    \"unsicher\": false,\n    \"notiz\": \"Explizit datiert im Text: 'datum xx die juny anno dn̄i cccc xxix'. Die Datierung ist somit sicher.\"\n  },\n  \"Lagen\": {\n    \"wert\": \"regelmässig\",\n    \"unsicher\": false,\n    \"notiz\": \"Da es sich um ein einzelnes Blatt handelt, ist keine Lagenstruktur festzustellen. Die Datierung deutet jedoch auf ein Verwaltungsdokument hin, das Teil einer größeren Sammlung oder eines Registers sein könnte.\"\n  },\n  \"Schriftraum_Gliederung\": {\n    \"wert\": \"Ein Spalt, Einzugsrahmen\",\n    \"unsicher\": false,\n    \"notiz\": \"Der Text ist in einem einzelnen Spalt angeordnet. Der Schriftraum ist nicht durch Linien oder Raster gekennzeichnet. Die Zeilenzahl beträgt ca. 30, die Zeilenhöhe ca. 9 mm.\"\n  },\n  \"Schrift\": {\n    \"wert\": \"Gotische Kursive\",\n    \"unsicher\": false,\n    \"notiz\": \"Die Handschrift ist eine lateinisch-gotische Kursive, typisch für das 15. Jahrhundert. Die Tinte ist schwarz, mit roten Rubrizierungen im Text (z.B. 'C'). Die Schriftgröße ist relativ klein und flüssig. Es gibt Abkürzungen (z.B. 'dn̄i' für 'dominum', 'nū' für 'nunc') und Auszeichnungen (z.B. Initial 'S').\"\n  },\n  \"Schreiber\": {\n    \"wert\": \"Anonym\",\n    \"unsicher\": false,\n    \"notiz\": \"Kein Schreibername oder Signatur im Text. Die Handschrift ist von einem professionellen Schreiber verfasst, möglich durch Verwaltungshandlungen des Rates von Bern.\"\n  },\n  \"Ausstattung\": {\n    \"wert\": \"Keine Buchmalerei oder verzierte Initialen. Reduziertes Rot zur Rubrizierung.\",\n    \"unsicher\": false,\n    \"notiz\": \"Keine farbigen Initialen oder Miniaturen. Die Rubrizierungen (Rot) sind funktional und dienen der Textauszeichnung (z.B. bei 'C' für 'caput').\"\n  },\n  \"Sprache\": {\n    \"wert\": \"Deutsch (Alemannisch)\",\n    \"unsicher\": false,\n    \"notiz\": \"Die Sprache ist Deutsch, mit alemannischen Merkmalen (z.B. 'frùntlich' für 'fröhlich', 'getrüwe' für 'getreue'). Der Text enthält jedoch zahlreiche lateinische Formeln ('Datum XX Die Juny Anno DNII CCCC XXIX').\"\n  },\n  \"Einband\": {\n    \"wert\": \"Nicht erkennbar\",\n    \"unsicher\": true,\n    \"notiz\": \"Das Dokument ist als Buchblatt aufgeblättert. Der Einband ist nicht sichtbar und daher nicht beschreibbar.\"\n  },\n  \"Provenienz\": {\n    \"wert\": \"Bern, Burgerbibliothek, Sammlung der Stadt Bern\",\n    \"unsicher\": false,\n    \"notiz\": \"Die Dokumentation im Archiv der Burgerbibliothek (BAT664) deutet auf eine historische Sammlung der Stadt Bern hin.\"\n  },\n  \"Literatur\": {\n    \"wert\": \"\",\n    \"unsicher\": true,\n    \"notiz\": \"Keine offizielle Literaturangabe vorhanden.\"\n  },\n  \"Inhalt\": {\n    \"wert\": \"Verwaltungsdokument / Urkunde\",\n    \"unsicher\": false,\n    \"notiz\": \"Handelt sich um ein Verwaltungsdokument, das eine gerichtliche Entscheidung oder Anordnung beschreibt. Im Text werden Rechtsstreitigkeiten zwischen Personen (Henin Rost und Cunratē) angesprochen, die von der Stadt Bern entschieden werden sollen. Der Schriftzug 'rat zu Bern' und die Datierung bestätigen die formelle Urkundenstruktur.\"\n  },\n  \"Weitere_Hinweise\": {\n    \"wert\": \"Das Dokument ist als Teil einer größeren Sammlung zu sehen. Die Handschrift trägt die Signatur '1439 VT 9' und '27r', die auf die Ordnung im Burgerbibliothekskatalog verweisen. Das Papier zeigt leichte Verfärbungen und Schadensstellen (z.B. auf der linken Seite), was auf altersbedingte Verschleißerscheinungen hindeutet.\"\n  }\n}",
+    "source_json": {
+      "Aufbewahrungsort": {
+        "wert": "Bern, Burgerbibliothek",
+        "unsicher": false,
+        "notiz": "Identifiziert anhand des Handschriftenkatalogs (BAT664) und der Beschriftung '27r' (Rollenkatalog)."
+      },
+      "Beschreibstoff": {
+        "wert": "Papier",
+        "unsicher": false,
+        "notiz": "Die Oberflächenstruktur und die Textur des Papiers sind charakteristisch für Papier. Ein Wasserzeichen ist nicht erkennbar. Die Oberfläche ist leicht vergilbt und zeigt Spuren von Alterungsprozessen. Keine Hinweise auf Palimpsest."
+      },
+      "Blaetter": {
+        "wert": "1",
+        "unsicher": false,
+        "notiz": "Die Abbildung zeigt eine einzelne Seite. Aus dem Kontext der Quelle (Burgerbibliothek, BAT664) wird auf eine einseitige Dokumentenform geschlossen."
+      },
+      "Format": {
+        "wert": "29.5 x 20.5 cm",
+        "unsicher": false,
+        "notiz": "Gemessen anhand der Abbildung und der Referenzskala auf der rechten Seite. Das Format entspricht ungefähr einem Quarto-Format (ca. 30 x 20 cm)."
+      },
+      "Datierung": {
+        "wert": "15. Juni 1429 (CCCC XXIX)",
+        "unsicher": false,
+        "notiz": "Explizit datiert im Text: 'datum xx die juny anno dn̄i cccc xxix'. Die Datierung ist somit sicher."
+      },
+      "Lagen": {
+        "wert": "regelmässig",
+        "unsicher": false,
+        "notiz": "Da es sich um ein einzelnes Blatt handelt, ist keine Lagenstruktur festzustellen. Die Datierung deutet jedoch auf ein Verwaltungsdokument hin, das Teil einer größeren Sammlung oder eines Registers sein könnte."
+      },
+      "Schriftraum_Gliederung": {
+        "wert": "Ein Spalt, Einzugsrahmen",
+        "unsicher": false,
+        "notiz": "Der Text ist in einem einzelnen Spalt angeordnet. Der Schriftraum ist nicht durch Linien oder Raster gekennzeichnet. Die Zeilenzahl beträgt ca. 30, die Zeilenhöhe ca. 9 mm."
+      },
+      "Schrift": {
+        "wert": "Gotische Kursive",
+        "unsicher": false,
+        "notiz": "Die Handschrift ist eine lateinisch-gotische Kursive, typisch für das 15. Jahrhundert. Die Tinte ist schwarz, mit roten Rubrizierungen im Text (z.B. 'C'). Die Schriftgröße ist relativ klein und flüssig. Es gibt Abkürzungen (z.B. 'dn̄i' für 'dominum', 'nū' für 'nunc') und Auszeichnungen (z.B. Initial 'S')."
+      },
+      "Schreiber": {
+        "wert": "Anonym",
+        "unsicher": false,
+        "notiz": "Kein Schreibername oder Signatur im Text. Die Handschrift ist von einem professionellen Schreiber verfasst, möglich durch Verwaltungshandlungen des Rates von Bern."
+      },
+      "Ausstattung": {
+        "wert": "Keine Buchmalerei oder verzierte Initialen. Reduziertes Rot zur Rubrizierung.",
+        "unsicher": false,
+        "notiz": "Keine farbigen Initialen oder Miniaturen. Die Rubrizierungen (Rot) sind funktional und dienen der Textauszeichnung (z.B. bei 'C' für 'caput')."
+      },
+      "Sprache": {
+        "wert": "Deutsch (Alemannisch)",
+        "unsicher": false,
+        "notiz": "Die Sprache ist Deutsch, mit alemannischen Merkmalen (z.B. 'frùntlich' für 'fröhlich', 'getrüwe' für 'getreue'). Der Text enthält jedoch zahlreiche lateinische Formeln ('Datum XX Die Juny Anno DNII CCCC XXIX')."
+      },
+      "Einband": {
+        "wert": "Nicht erkennbar",
+        "unsicher": true,
+        "notiz": "Das Dokument ist als Buchblatt aufgeblättert. Der Einband ist nicht sichtbar und daher nicht beschreibbar."
+      },
+      "Provenienz": {
+        "wert": "Bern, Burgerbibliothek, Sammlung der Stadt Bern",
+        "unsicher": false,
+        "notiz": "Die Dokumentation im Archiv der Burgerbibliothek (BAT664) deutet auf eine historische Sammlung der Stadt Bern hin."
+      },
+      "Literatur": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Keine offizielle Literaturangabe vorhanden."
+      },
+      "Inhalt": {
+        "wert": "Verwaltungsdokument / Urkunde",
+        "unsicher": false,
+        "notiz": "Handelt sich um ein Verwaltungsdokument, das eine gerichtliche Entscheidung oder Anordnung beschreibt. Im Text werden Rechtsstreitigkeiten zwischen Personen (Henin Rost und Cunratē) angesprochen, die von der Stadt Bern entschieden werden sollen. Der Schriftzug 'rat zu Bern' und die Datierung bestätigen die formelle Urkundenstruktur."
+      },
+      "Weitere_Hinweise": {
+        "wert": "Das Dokument ist als Teil einer größeren Sammlung zu sehen. Die Handschrift trägt die Signatur '1439 VT 9' und '27r', die auf die Ordnung im Burgerbibliothekskatalog verweisen. Das Papier zeigt leichte Verfärbungen und Schadensstellen (z.B. auf der linken Seite), was auf altersbedingte Verschleißerscheinungen hindeutet."
+      }
+    },
+    "care_flag": {
+      "is_care_related": false,
+      "care_context": "",
+      "care_types": [],
+      "beteiligte": []
+    },
+    "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/BAT_664_r_00027.jpg"
+  },
   "entities": {
     "entities": [
       {
-        "text": "Iuser",
+        "text": "黒てて",
         "type": "PERSON",
-        "normalised": "iuser",
-        "context": "Iuser femitlich geñs uõe",
+        "normalised": "Kuro Tete",
+        "context": "...黒てて...",
         "hub_confidence": "unverified",
         "link_method": "none"
       },
       {
-        "text": "Uan",
+        "text": "黒まる",
         "type": "PERSON",
-        "normalised": "uan",
-        "context": "Uan de scosse io eg̃",
+        "normalised": "Kuro Maru",
+        "context": "...黒まる...",
         "hub_confidence": "unverified",
         "link_method": "none"
       },
       {
-        "text": "Rast",
+        "text": "和里",
         "type": "PLACE",
-        "normalised": "rast",
-        "context": "hemm Rast und Cuuratẽ",
+        "normalised": "Warai",
+        "context": "...和里...",
         "hub_confidence": "unverified",
         "link_method": "none"
       },
       {
-        "text": "Cuurate",
+        "text": "船",
         "type": "ORG",
-        "normalised": "cuurate",
-        "context": "Rast und Cuuratẽ nefen"
+        "normalised": "Schiff",
+        "context": "...船ひま..."
       },
       {
-        "text": "Iun",
-        "type": "PERSON",
-        "normalised": "iun",
-        "context": "der selbe Rast Iun digł",
-        "hub_confidence": "unverified",
-        "link_method": "none"
-      },
-      {
-        "text": "Naff",
-        "type": "PERSON",
-        "normalised": "naff",
-        "context": "der ernt Naff int tũ",
-        "hub_confidence": "unverified",
-        "link_method": "none"
-      },
-      {
-        "text": "Ie",
-        "type": "PERSON",
-        "normalised": "ie",
-        "context": "d̾ Ie ibn aligũt Rast",
-        "hub_confidence": "unverified",
-        "link_method": "none"
-      },
-      {
-        "text": "Numo",
-        "type": "PERSON",
-        "normalised": "numo",
-        "context": "die Numo Iumo dũ ic",
-        "hub_confidence": "unverified",
-        "link_method": "none"
-      },
-      {
-        "text": "Iumo",
-        "type": "PERSON",
-        "normalised": "iumo",
-        "context": "Numo Iumo dũ ic xxx",
-        "hub_confidence": "unverified",
-        "link_method": "none"
-      },
-      {
-        "text": "xxx",
-        "type": "DATE",
-        "normalised": "xxx",
-        "context": "dũ ic xxx"
-      },
-      {
-        "text": "thułi",
+        "text": "南シネイ",
         "type": "PLACE",
-        "normalised": "thułi",
-        "context": "thułi und",
+        "normalised": "Nanshinei",
+        "context": "...南シネイ...",
         "hub_confidence": "unverified",
         "link_method": "none"
       },
       {
-        "text": "Bat",
-        "type": "ROLE",
-        "normalised": "bat",
-        "context": "Bat du den"
+        "text": "春",
+        "type": "SOCIAL_GROUP",
+        "normalised": "Frühling",
+        "context": "...春○..."
       },
       {
-        "text": "Recht",
-        "type": "ORG",
-        "normalised": "recht",
-        "context": "stat Recht ist unib"
+        "text": "卯",
+        "type": "SOCIAL_GROUP",
+        "normalised": "Mahn",
+        "context": "...卯にく..."
       }
     ]
   },
@@ -112,7 +156,7 @@
     {
       "engine": "vlm",
       "model_id": "internvl3-8b-instruct",
-      "text": "--- SEITE 1 ---\nInfer fremdlichs grüe vor liebe gerninre Von der koffe wer So da mit zwisstient\nhönn kraft und Eimrath neffon Darmmb und die sellic kraft im dasf und wil fergnom\nhat aber nacme ofgenach macht wael dab im hert angesleg ist Nm kam\nwie Darmmb an gesthiche die fuc officicilande & auch in grefte und mit falle\nJa spu Naff mit zu de gersch anarco Die sich in New Numb & fets dannn und\ndie paim off ewher Vnd darrmb p rignanz um memm / & hz den olque kast\nme gerschti luffent friden alomus stat Vierst ist Vomb & im mit On fine Verst\nce bres lefseret, Sand v die Qnni Tama die er tcer\n\nOrtalis und\nPat zu Den",
+      "text": "--- SEITE 1 ---\nInfer fremdlichs grüe vor liebe gerninre Von der koffe wer So da mit zwisstient\nhönn kraft und Eimrath neffon Darmmb und die sellic kraft im dasf und wil fergnomen\nhat aber was me (ge)wach macht wael dab im hert angeleg ist Nm kam\nwie Darmmb an gesthiche die füt off fechstlande & auch in grefth und mit falle\nJa spu Naff mit zu de gersch anarco Die sich in New Numb & fets dannn und\ndie paim off ewher Vnd darmmb p rignanz mit memm / & hz den olque kraft\nme gerechti luffent friden alomme stat Vierst ist Vomb & im mit On fine Veracht\nce bres leffert, Sand v die Qnni Tuma die er tcer\n\nOrtshals und\nPat zu Dey",
       "confidence": 0.8,
       "error": "",
       "timing_ms": 0,
@@ -180,10 +224,20 @@
       "page": "BAT_664_r_00027.jpg"
     },
     {
-      "engine": "vlm",
-      "model_id": "internvl3-8b-instruct",
-      "text": "--- SEITE 1 ---\nInfer fremdlichs grüe vor liebe gerninre Von der koffe wer So da mit zwisstient\nhönn kraft und Eimrath neffon Darmmb und die sellic kraft im dasf und wil fergnomen\nhat aber was me (ge)wach macht wael dab im hert angeleg ist Nm kam\nwie Darmmb an gesthiche die füt off fechstlande & auch in grefth und mit falle\nJa spu Naff mit zu de gersch anarco Die sich in New Numb & fets dannn und\ndie paim off ewher Vnd darmmb p rignanz mit memm / & hz den olque kraft\nme gerechti luffent friden alomme stat Vierst ist Vomb & im mit On fine Veracht\nce bres leffert, Sand v die Qnni Tuma die er tcer\n\nOrtshals und\nPat zu Dey",
-      "confidence": 0.8,
+      "engine": "kraken",
+      "model_id": "kraken-medieval_15_16",
+      "text": "引口三へにみへきす国へ是引内すま是つかみ切もなへみもふのかひ也にて「の黒てて\nコきへアな春○まんか三こゆにきき後心外一はは下アつ子や気のひ兵へ女なすよまに\n事きも云にヲだ南シネイなさ向心文つまふにてなば取雨へ一モシだまし\nこヤ心またれふのみいヲぶ六のみらろヨねコヽ女のイヤウネいん卯にく事やにをくシきへや売\n詞まん○きコレ両寸にあかみ事シつきる二ん〱云郎や郎なみうば\n心もアヨ●ヲ〱ンちよ向やすぶづまはの一知へイ子かへきもへに女\n黒まるによふ二兵へ気しかもも一がべほ子アやびれば船ひまいたま一まアきき\nのかなき女たきゆの和里のざれべゆま守かただも\n三にそシ\nのなうみ",
+      "confidence": 0.504996765172095,
+      "error": "",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "BAT_664_r_00027.jpg"
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-late_medieval_german",
+      "text": " ðiser Pr mimítt͛. qrí͛g bøn͛ locb.iꝼetrinr.. Evan dec scrsl.dor eẏ ꝼa Da þʀit sziristn en s\nhenm svastnð Smrát .i c Fø  Sarínii G̅ iuð de se̅dz sgst sƿir diɴl irð ni l͛. þni i ꝼian̅\nsꝼis  bær viorðs íng v stretr arið vn artít ar cada e͛ pm heit͛. ugescir ist  lim lꝼm\nvír darmn si. ꜷi sgrestɴízi kr. di sais vsv̅e stglaisr. ð ontɴ  sl gresshra nð m s. ꝼ. ir\ner Gƿir .s oníu͛ . Ei nriiís narorr dꝛa ꝼcsi  cni b. A ꝼr ditu. ꝼi z\ndic satyn  rl͛ sirií͛. ynd . La mn͛ s̅d i st iamʀ vn þ͛ ꝼri gímug ⁊ dlꝼ . E osꝛɴi ꝼꝼast\nsm͛ getiii kiɴsou ꝼnlzu ast niẏg scꝛr Pøtyt ist i unio. cþri mi On skrvttlí\n͛r Fren b͛sigrmi Aán ꝼ͛ dr Svm Gnaig eratt dtr.\ni syn li vnð\nAr G͛r a",
+      "confidence": 0.7249081943754421,
       "error": "",
       "timing_ms": 0,
       "segmented_by": null,
@@ -192,26 +246,6 @@
     {
       "engine": "kraken",
       "model_id": "kraken-early_modern_german",
-      "text": "Iuser femitlich geñs uõe liebẽ getemrẽ  Uan de scosse io eg̃ soda luit reu̾schent\nhemm Rast und Cuuratẽ nefen darimis ñ der selbe Rast Iun digł uuduil fucgnanẽ\nhat abet noca me usgeteaciẽ macht iecał̾ das In hert angelegẽ ist Nun han\nixir darmmub uil gesthribẽ die sach xff ĩe sthlachẽ d̾e onchist gesthẽ und nul siabe̾\nder ernt Naff int tũ de gerchte mache drĩ sich usserẽ unib d sich daut nũ\ndie sachñ ust uecħc̃ / Und darimnib so ist gant unẜ menum̃ / d̾ Ie ibn aligũt Rast\nsine gerichti lassoit futen altiuree stat Recht ist unib s ini mt In sine Rechłe\nTe luec besthech dam̃ yo die Numo Iumo dũ ic xxx\nthułi und\nBat du den",
-      "confidence": 0.8919727047383492,
-      "error": "",
-      "timing_ms": 0,
-      "segmented_by": null,
-      "page": "BAT_664_r_00027.jpg"
-    },
-    {
-      "engine": "kraken",
-      "model_id": "kraken-early_modern_german_16",
-      "text": "Nst fennessud iatcimo bot ss qcatvm NDe sd euus Es ait C iustset\nQuonius fast yius contmmenaos aiitos nGa trmie gua e scluc fase ubsoiotu gęnusiius Piepien\natuideni oMrOn gnstpexa ats MVe Dad siQecitus angesegręi Cim m\nVA OMtrms irsts. S IETPEoatt  eu s riou VęMEa\nSei es  e  I T MNNVOSRCuit pralcos\nDie ndm iIOCaTmn PIIM PMNNCONMMTP PA\nsru qeneti Ciseat fpirieo ale unic pserat rceut ist rmnis de qunu oirca e\nQe fico Ei sccesrpi estdreu rst ia uroimurc rumo turece\nP lils Cn\nNe ir",
-      "confidence": 0.7469407668472666,
-      "error": "",
-      "timing_ms": 0,
-      "segmented_by": null,
-      "page": "BAT_664_r_00027.jpg"
-    },
-    {
-      "engine": "kraken",
-      "model_id": "kraken-early-modern-german",
       "text": "Iuser femitlich geñs uõe liebẽ getemrẽ  Uan de scosse io eg̃ soda luit reu̾schent\nhemm Rast und Cuuratẽ nefen darimis ñ der selbe Rast Iun digł uuduil fucgnanẽ\nhat abet noca me usgeteaciẽ macht iecał̾ das In hert angelegẽ ist Nun han\nixir darmmub uil gesthribẽ die sach xff ĩe sthlachẽ d̾e onchist gesthẽ und nul siabe̾\nder ernt Naff int tũ de gerchte mache drĩ sich usserẽ unib d sich daut nũ\ndie sachñ ust uecħc̃ / Und darimnib so ist gant unẜ menum̃ / d̾ Ie ibn aligũt Rast\nsine gerichti lassoit futen altiuree stat Recht ist unib s ini mt In sine Rechłe\nTe luec besthech dam̃ yo die Numo Iumo dũ ic xxx\nthułi und\nBat du den",
       "confidence": 0.8919727047383492,
       "error": "",
