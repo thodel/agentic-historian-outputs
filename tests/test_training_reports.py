@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 import tempfile
 import unittest
@@ -23,7 +24,7 @@ from build_training import (  # noqa: E402
     _render_run_report,
     _recognition_usages,
 )
-from training_contract import ContractError, TrainingContract  # noqa: E402
+from training_contract import ContractError, CurveEpoch, TrainingContract  # noqa: E402
 from quality import training_reference_evaluations  # noqa: E402
 
 
@@ -197,12 +198,26 @@ class IntegratedReportTests(unittest.TestCase):
             target = docs / "training" / "index.md"
             with patch("build_training.DOCS", docs), patch("build_training.TRAINING_INDEX", target):
                 self.assertEqual(build_training(), 1)
-            page = target.read_text(encoding="utf-8")
-        self.assertIn("quality-explain.js", page)
-        self.assertIn("Laufberichte", page)
-        self.assertIn("<svg", page)
-        self.assertIn("Datensatzprovenienz", page)
-        self.assertIn("data-provenance=", page)
+            index = target.read_text(encoding="utf-8")
+            run_pages = sorted((docs / "training").glob("*/index.md"))
+            report = run_pages[0].read_text(encoding="utf-8")
+
+        # The index is an index: it links to runs and carries no charts (#231).
+        self.assertIn("Training runs", index)
+        self.assertIn('href="', index)
+        self.assertNotIn("<svg", index)
+        self.assertNotIn("Datensatzprovenienz", index)
+
+        # The run page carries the report.
+        self.assertEqual(len(run_pages), 1)
+        self.assertIn("quality-explain.js", report)
+        self.assertIn("<svg", report)
+        self.assertIn("Datensatzprovenienz", report)
+        self.assertIn("data-provenance=", report)
+        # …and identifies its subject as a run, not a document (#233)
+        self.assertIn("run_id", report)
+        self.assertIn("training-evaluation/v1", report)
+        self.assertNotIn("&quot;doc_id&quot;", report)
 
 
 class HardenedContractTests(unittest.TestCase):
@@ -221,3 +236,45 @@ class HardenedContractTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ChartAxisTests(unittest.TestCase):
+    """#232 — loss and accuracy need opposite axis treatment."""
+
+    def _chart(self, curves: list[dict], kind: str) -> str:
+        from build_training import _render_svg_chart
+        return _render_svg_chart([CurveEpoch(**c) for c in curves], "run-1", kind)
+
+    def test_flat_high_loss_is_not_drawn_as_a_flat_line_at_the_top(self):
+        """The first real run's loss moved 55210 -> 52980 over 50 epochs — a
+        non-convergence. On a zero-based axis that is a flat line pinned to the
+        top, indistinguishable from a converged model that has plateaued."""
+        curves = [{"epoch": e, "train_loss": 55210.0 - e * 45.0} for e in range(50)]
+        svg = self._chart(curves, "loss")
+        # y-axis ticks are the x="54" labels; the x-axis epoch-0 tick is not one
+        y_ticks = re.findall(r'x="54"[^>]*>([^<]+)</text>', svg)
+        self.assertNotIn("0", y_ticks)              # axis does not start at zero
+        self.assertIn("nicht bei null beginnend", svg)  # and says so
+        # the drawn line must actually span the plot, not hug one edge
+        ys = [float(p.split(",")[1]) for p in
+              svg.split('points="')[1].split('"')[0].split()]
+        self.assertGreater(max(ys) - min(ys), 100.0)
+
+    def test_accuracy_axis_keeps_the_origin(self):
+        """Validation accuracy pinned at 0 IS the finding; rescaling to its own
+        range would draw it mid-height as though something had happened."""
+        curves = [{"epoch": 0, "val_accuracy": 1.62}] + [
+            {"epoch": e, "val_accuracy": 0.0} for e in range(1, 20)
+        ]
+        svg = self._chart(curves, "accuracy")
+        self.assertIn("Achse beginnt bei null", svg)
+        ys = [float(p.split(",")[1]) for p in
+              svg.split('points="')[1].split('"')[0].split()]
+        self.assertAlmostEqual(max(ys), 234.0, delta=0.5)  # zero sits on the axis
+
+    def test_axis_range_is_stated_in_the_accessible_description(self):
+        curves = [{"epoch": e, "train_loss": 1000.0 + e} for e in range(5)]
+        svg = self._chart(curves, "loss")
+        self.assertIn("<desc", svg)
+        self.assertIn("Wertebereich", svg)
+        self.assertIn("<figcaption>", svg)
