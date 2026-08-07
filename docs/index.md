@@ -282,22 +282,22 @@ title: Katalog
   <p class="catalogue-actions"><a href="kf/" aria-label="Ausgabe öffnen: kf">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
   
 </article>
-<article class="catalogue-card" data-document-id="bat_664_r_00027" data-created="2026-07-07T15:25:18+02:00" data-kind="output" data-language="" data-script="" data-search="bat_664_r_00027     duser feunilite grus vor liebe gerrmreuon de scosse roepse di fuitsriousthont homn vast uud emraro oigon darmus ue bee selbe vast i digl cond uil furipians hat aodonoid inz esgerra" data-superseded="false" data-recognition-provenance="current" data-recognition-total="2" data-recognition-successful="0" data-recognition-failed="1" data-recognition-empty="0" data-recognition-degenerate="1" data-recognition-engines="kraken,party" data-recognition-models="2" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="ORG,PERSON,PLACE" data-completeness="teilweise">
+<article class="catalogue-card" data-document-id="bat_664_r_00027" data-created="2026-07-07T15:25:18+02:00" data-kind="output" data-language="" data-script="" data-search="bat_664_r_00027     iuser femitlich geñs uõe liebẽ getemrẽ uan de scosse io eg̃ soda luit reu̾schent hemm rast und cuuratẽ nefen darimis ñ der selbe rast iun digł uuduil fucgnanẽ hat abet noca " data-superseded="false" data-recognition-provenance="current" data-recognition-total="11" data-recognition-successful="8" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="3" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="DATE,ORG,PERSON,PLACE,ROLE" data-completeness="teilweise">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:25:18+02:00">07.07.2026, 15:25</time></p>
       <h2><a href="BAT_664_r_00027/">BAT_664_r_00027</a></h2>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-failed">2 Erkennungsfehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 10%</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--ok">Pipeline: Ohne Fehler</span><span class="catalogue-badge catalogue-badge--quality-failed">3 Erkennungsfehler</span><span class="catalogue-badge catalogue-badge--legacy">Legacy-QA 0%</span></div>
   </div>
-  <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>11</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 2 insgesamt</dd></div></dl>
+  <dl class="catalogue-facts"><div><dt>Entitäten</dt><dd>13</dd></div><div><dt>Kandidaten</dt><dd>8 erfolgreich / 11 insgesamt</dd></div></dl>
   <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
     <p class="catalogue-provenance__label">Engines</p>
-    <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>party</li></ul>
-    <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 1 fehlgeschlagener Erkennungsversuch</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> 1 degeneriertes Ergebnis</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+    <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
+    <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 3 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
   </div>
-  <p class="catalogue-preview">duser feunilite grus vor liebe gerrmreuon de scosse roepse di fuitsriousthont homn vast uud emraro oigon darmus ue bee selbe vast i digl cond uil furipians hat aodonoid inz esgerra…</p>
-  <p class="catalogue-actions"><a href="BAT_664_r_00027/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: BAT_664_r_00027">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-preview">Iuser femitlich geñs uõe liebẽ getemrẽ Uan de scosse io eg̃ soda luit reu̾schent hemm Rast und Cuuratẽ nefen darimis ñ der selbe Rast Iun digł uuduil fucgnanẽ hat abet noca …</p>
+  <p class="catalogue-actions"><a href="BAT_664_r_00027/?cmp=bat-664-r-00027-jpg-vlm-internvl3-8b-instruct:bat-664-r-00027-jpg-kraken-kraken-catmus-medieval&amp;page=BAT_664_r_00027.jpg#recognitions" aria-label="Modelle vergleichen: BAT_664_r_00027">Modelle vergleichen <span aria-hidden="true">→</span></a></p>
   
 </article>
 </div>

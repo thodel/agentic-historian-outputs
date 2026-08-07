@@ -52,6 +52,7 @@
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/auerhahn-cf396cd1/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/baden-eca68bb4/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/bardian-c1275776/</loc><priority>0.5</priority></url>
+  <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/bat-84f1baa9/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/bender-b7b2d1e6/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/bischof-f1e8b736/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/botshaus-4b3d44ef/</loc><priority>0.5</priority></url>
@@ -76,6 +77,7 @@
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/conuont-53f588a5/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/convent-fb5bce98/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/conventus-d0f0ce17/</loc><priority>0.5</priority></url>
+  <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/cuurate-548bc657/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/d-dunkt-baeedd0d/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/da-d968cc76/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/daimil-ea8260a0/</loc><priority>0.5</priority></url>
@@ -123,7 +125,11 @@
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/hoefe-eaa8acec/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/hof-87467870/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/horhgeborni-91d4a249/</loc><priority>0.5</priority></url>
+  <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/ie-ce9cb30c/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/iohannes-229cb963/</loc><priority>0.5</priority></url>
+  <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/iumo-689e3313/</loc><priority>0.5</priority></url>
+  <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/iun-5e006b3b/</loc><priority>0.5</priority></url>
+  <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/iuser-b7e68693/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/jacob-ff76b815/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/johannes-afba1db9/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/johannes-e058a3f5/</loc><priority>0.5</priority></url>
@@ -150,6 +156,8 @@
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/lymg-elsberch-von-pome-8d79eaaf/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/marhit-a1bdc5a9/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/monch-4344504f/</loc><priority>0.5</priority></url>
+  <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/naff-859c9710/</loc><priority>0.5</priority></url>
+  <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/numo-f95f3251/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/omes-279362da/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/orwillingen-c9b2ea95/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/orwillingen-f5a4abc5/</loc><priority>0.5</priority></url>
@@ -163,8 +171,10 @@
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/praeceptor-7e89ae32/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/procurator-500b28e6/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/raben-bb44b978/</loc><priority>0.5</priority></url>
+  <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/rast-e62c56ad/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/rat-277411f1/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/rats-zu-bern-ae4d4308/</loc><priority>0.5</priority></url>
+  <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/recht-d464afe5/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/rerudn-bbeb7278/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/rnecht-2fd1d1ff/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/ropse-0ae8ab46/</loc><priority>0.5</priority></url>
@@ -192,6 +202,7 @@
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/stadtrat-f39aff9a/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/steyr-e67457d6/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/svm-gnaig-18cd3e24/</loc><priority>0.5</priority></url>
+  <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/thu-i-1110a038/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/thun-364af121/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/tornichkon-73e6717f/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/tornichon-9f99b6dc/</loc><priority>0.5</priority></url>
@@ -200,6 +211,7 @@
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/trutman-burger-a897c401/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/trutmanz-brief-f3d6c70c/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/tyrol-571922eb/</loc><priority>0.5</priority></url>
+  <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/uan-a4d04961/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/ulrich-von-eych-995a4b15/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/ulrich-von-eych-d5a054e0/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/unio-28f741b7/</loc><priority>0.5</priority></url>
@@ -213,4 +225,5 @@
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/walthero-fafb9151/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/warrag-a6a47577/</loc><priority>0.5</priority></url>
   <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/wulffin-a705a3fe/</loc><priority>0.5</priority></url>
+  <url><loc>https://thodel.github.io/agentic-historian-outputs/entities/xxx-6abc5a1d/</loc><priority>0.5</priority></url>
 </urlset>
