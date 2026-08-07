@@ -1,13 +1,15 @@
 # Transkription: BAT_664_r_00027
-# QA-Score: 0.10
-# HTR-Source: kraken
+# QA-Score: 0.00
+# HTR-Source: grouped
 # Modell: qwen3-vl-30b-a3b-instruct
 
-iuuuuuie
-uuuuuuuuuuuuuuuu
-uuuuuuuuuuuuuuu
-uuuuuu
-uu
-uiuuuu
-uuuuuuuuuuuuuu
-uuiuiu
+Iuser femitlich geñs uõe liebẽ getemrẽ  Uan de scosse io eg̃ soda luit reu̾schent
+hemm Rast und Cuuratẽ nefen darimis ñ der selbe Rast Iun digł uuduil fucgnanẽ
+hat abet noca me usgeteaciẽ macht iecał̾ das In hert angelegẽ ist Nun han
+ixir darmmub uil gesthribẽ die sach xff ĩe sthlachẽ d̾e onchist gesthẽ und nul siabe̾
+der ernt Naff int tũ de gerchte mache drĩ sich usserẽ unib d sich daut nũ
+die sachñ ust uecħc̃ / Und darimnib so ist gant unẜ menum̃ / d̾ Ie ibn aligũt Rast
+sine gerichti lassoit futen altiuree stat Recht ist unib s ini mt In sine Rechłe
+Te luec besthech dam̃ yo die Numo Iumo dũ ic xxx
+thułi und
+Bat du den

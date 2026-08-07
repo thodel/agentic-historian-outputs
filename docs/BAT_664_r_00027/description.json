@@ -2,22 +2,86 @@
   "doc_id": "BAT_664_r_00027",
   "ad_fontes_version": "UZH 16-element",
   "elements": {
-    "Aufbewahrungsort": null,
-    "Beschreibstoff": null,
-    "Blaetter": null,
-    "Format": null,
-    "Datierung": null,
-    "Lagen": null,
-    "Schriftraum_Gliederung": null,
-    "Schrift": null,
-    "Schreiber": null,
-    "Ausstattung": null,
-    "Sprache": null,
-    "Einband": null,
-    "Provenienz": null,
-    "Literatur": null,
-    "Inhalt": null,
-    "Weitere_Hinweise": null
+    "Aufbewahrungsort": {
+      "wert": "Staatsarchiv Bern (unsicher)",
+      "unsicher": true,
+      "notiz": "Identifikation als BAT664 aus der Signatur 'BAT664 27r' weist auf den Bestand der Stadtarchiv Bern, StAB, Staatssachen, 1744/12, hin. Der genaue Standort ist jedoch aus dem Bild nicht sicher ableitbar."
+    },
+    "Beschreibstoff": {
+      "wert": "Papier",
+      "unsicher": false,
+      "notiz": "Das dokumentierte Blatt zeigt eine unmittelbare Textur, die auf Papier hindeutet. Die Faserstruktur und die Farbe (vergilbt, leicht fleckig) sind typisch für mittelalterliches Papier des 15. Jahrhunderts."
+    },
+    "Blaetter": {
+      "wert": "1 (unsicher)",
+      "unsicher": true,
+      "notiz": "Nur ein einzelnes Blatt ist im Bild sichtbar. Die Gesamtblattzahl der Handschrift kann daher nicht bestimmt werden."
+    },
+    "Format": {
+      "wert": "Folio (hohe x breite)",
+      "unsicher": true,
+      "notiz": "Die sichtbaren Maße eines einzelnen Blatts liegen nahe bei 24 x 16 cm (geschätzt). Das genaue Format (Folio, Quarto, Oktav) lässt sich aus einer einzigen Blattansicht nicht sicher bestimmen."
+    },
+    "Datierung": {
+      "wert": "xx die juny anno dn̄i cccc xxix (1429)",
+      "unsicher": false,
+      "notiz": "Die Datierung ist explizit im Text enthalten: 'datum xx die juny anno dn̄i cccc xxix'. Dies entspricht dem 20. Juni 1429."
+    },
+    "Lagen": {
+      "wert": "unregelmäßig (unsicher)",
+      "unsicher": true,
+      "notiz": "Einziges sichtbares Blatt. Die Lagenstruktur kann nicht beurteilt werden."
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "1 Spalte, ungefähr 24 Zeilen, Schriftraum ca. 15,5 x 9 cm",
+      "unsicher": false,
+      "notiz": "Der Schriftraum ist ein einseitiger, einspaltiger Textblock, der fast das gesamte Blatt einnimmt. Die Zeilenanzahl wurde geschätzt; die Größe des Schriftraums ist aus den sichtbaren Maßen abgeleitet."
+    },
+    "Schrift": {
+      "wert": "Gotische Kurrentschrift, schwarze Tinte, ca. 10 mm Zeilenhöhe, vermutliche Auszeichnungen durch Rot (Rubrizierung), Abkürzungen: 'dn̄i', 'ob', 'hert' etc.",
+      "unsicher": false,
+      "notiz": "Die Schriftart ist eine mittelalterliche gotische Kurrentschrift. Die Anwesenheit von Abkürzungen wie 'dn̄i' (d.n.i. = dicti novi, d.h. 'dieser') ist typisch für das Spätmittelalter. Die Farbe der Tinte ist schwarz. Die Abkürzungen und die Form der Buchstaben ('ß', 'ch', 's') sind charakteristisch für die 2. Hälfte des 15. Jahrhunderts."
+    },
+    "Schreiber": {
+      "wert": "Anonym (unbekannt)",
+      "unsicher": false,
+      "notiz": "Es handelt sich um eine Verwaltungsschrift aus Bern. Die Schreiber sind nicht namentlich vermerkt. Ein einziger Schreiber scheint für das Blatt verantwortlich zu sein."
+    },
+    "Ausstattung": {
+      "wert": "Keine Miniaturen oder verzierte Initialen. Verwendung von roter Tinte zur Rubrizierung möglich (nicht direkt sichtbar).",
+      "unsicher": true,
+      "notiz": "Es sind keine sichtbaren Buchschmuckelemente oder verzierten Initialen vorhanden. Die Verwendung von roter Tinte zur Rubrizierung (z.B. für Anfangswörter oder Überschriften) ist möglich, wird aber nicht direkt beobachtet."
+    },
+    "Sprache": {
+      "wert": "Deutsch (Mittelhochdeutsch/Menschendütsch, alemannisch?)",
+      "unsicher": false,
+      "notiz": "Der Text ist in Deutsch verfasst. Der Dialektraum ist aufgrund der Schreibweise und der lexikalischen Entscheidungen (z.B. 'vor liebe getrüwe' statt 'vor liebe getreue') als alemannisch (Bern) anzusprechen."
+    },
+    "Einband": {
+      "wert": "Keine sichere Beobachtung möglich",
+      "unsicher": true,
+      "notiz": "Es ist kein Einband sichtbar. Daher können weder Material noch Beschaffenheit bestimmt werden."
+    },
+    "Provenienz": {
+      "wert": "Bern",
+      "unsicher": false,
+      "notiz": "Die Unterschriften 'thultz und rat zu Bern' sowie der Inhalt deuten auf eine Quelle aus Bern. Die Signatur 'BAT664' weist ebenfalls auf eine schweizerische Institution (Staatsarchiv Bern) hin."
+    },
+    "Literatur": {
+      "wert": "Keine gesicherten Angaben möglich",
+      "unsicher": true,
+      "notiz": "Zu diesem spezifischen Blatt existiert keine zugängliche Literaturangabe."
+    },
+    "Inhalt": {
+      "wert": "Verwaltungsdokument (Roedel, Urkunde)",
+      "unsicher": false,
+      "notiz": "Es handelt sich um ein Verwaltungsdokument der Stadt Bern. Der Text bezieht sich auf eine juristische Auseinandersetzung ('gerichti') und verweist auf eine Entscheidung bezüglich der Zuteilung von Rechten. Die Formulierung und der Inhalt deuten auf eine Urkunde oder ein Roedel hin, das die Entscheidung des Rates festhält."
+    },
+    "Weitere_Hinweise": {
+      "wert": "Die Handschrift zeigt eine Signatur '1439 V 9' in der oberen linken Ecke. Dies ist vermutlich eine moderne, künstliche Signatur (nicht Teil des Originals).",
+      "unsicher": true,
+      "notiz": "Die Nummerierung '1439 V 9' ist nicht Teil der ursprünglichen Handschrift, sondern wurde später hinzugefügt, vermutlich durch Archivbestände. Sie dient der Einteilung des Materials."
+    }
   },
   "care_flag": {
     "is_care_related": false,
@@ -25,5 +89,5 @@
     "care_types": [],
     "beteiligte": []
   },
-  "image_path": "none"
+  "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/BAT_664_r_00027.jpg"
 }

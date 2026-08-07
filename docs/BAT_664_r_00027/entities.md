@@ -2,20 +2,28 @@
 
 ## PERSON
 
-- **marhit** (marhit) — esgerraih marhit iy _(conf=high, mcp_federation)_
-- **sarin** (sarin) — die sarin ustrchit _(conf=high, mcp_federation)_
-- **gerrmreuon** (gerrmreuon) — vor liebe gerrmreuon de scosse _(conf=unverified, none)_
-- **angeley** (angeley) — heit angeley stnun _(conf=unverified, none)_
-- **daimil** (daimil) — und daimil se ist _(conf=unverified, none)_
-- **ehultz** (ehultz) — ehultz vd _(conf=unverified, none)_
-- **fiisdz** (fiisdz) — fiisdz _(conf=unverified, none)_
+- **Iuser** (iuser) — Iuser femitlich geñs uõe _(conf=unverified, none)_
+- **Uan** (uan) — Uan de scosse io eg̃ _(conf=unverified, none)_
+- **Iun** (iun) — der selbe Rast Iun digł _(conf=unverified, none)_
+- **Naff** (naff) — der ernt Naff int tũ _(conf=unverified, none)_
+- **Ie** (ie) — d̾ Ie ibn aligũt Rast _(conf=unverified, none)_
+- **Numo** (numo) — die Numo Iumo dũ ic _(conf=unverified, none)_
+- **Iumo** (iumo) — Numo Iumo dũ ic xxx _(conf=unverified, none)_
 
 ## PLACE
 
-- **scosse** (scosse) — gerrmreuon de scosse ropse _(conf=unverified, none)_
-- **cabu** (cabu) — iy cabu dai _(conf=unverified, none)_
+- **Rast** (rast) — hemm Rast und Cuuratẽ _(conf=unverified, none)_
+- **thułi** (thułi) — thułi und _(conf=unverified, none)_
 
 ## ORG
 
-- **ropse** (ropse) — scosse ropse di fuitsriousthont _(conf=unverified, ?)_
-- **furipians** (furipians) — uil furipians hat _(conf=unverified, ?)_
+- **Cuurate** (cuurate) — Rast und Cuuratẽ nefen _(conf=unverified, ?)_
+- **Recht** (recht) — stat Recht ist unib _(conf=unverified, ?)_
+
+## DATE
+
+- **xxx** (xxx) — dũ ic xxx _(conf=unverified, ?)_
+
+## ROLE
+
+- **Bat** (bat) — Bat du den _(conf=unverified, ?)_
