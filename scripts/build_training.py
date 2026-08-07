@@ -49,7 +49,7 @@ def _status_label(status: str) -> tuple[str, str]:
 
 
 def _engine_label(engine: str) -> str:
-    return {"kraken": "Kraken", "trocr": "TrOCR", "vlm": "VLM", "party": "Paarty"}.get(
+    return {"kraken": "Kraken", "trocr": "TrOCR", "vlm": "VLM", "party": "Party"}.get(
         engine, engine
     )
 
