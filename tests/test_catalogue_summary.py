@@ -99,6 +99,20 @@ class CatalogueSummaryTests(unittest.TestCase):
         self.assertIn('<h2><a href="very-long-document-identifier/">', card)
         self.assertIn('class="catalogue-actions"', card)
 
+    def test_human_title_is_primary_and_identifier_is_secondary(self):
+        summary = recognition_summary({"recognitions": [rec()]})
+        record = Record(
+            "bat-664", datetime.now(timezone.utc), "1429", "de", "Kurrent",
+            "Urbar", 0, 1, 0.75, 0, False, "preview", "machine-generated",
+            recognition_summary=summary,
+            display_title="Urbar · 1429",
+            shelfmark="BAT 664, Blatt 27r",
+        )
+        card = _card(record)
+        self.assertIn('<h2><a href="bat-664/">Urbar · 1429</a></h2>', card)
+        self.assertIn('Dokument-ID <code>bat-664</code>', card)
+        self.assertNotIn("Legacy-QA", card)
+
     def test_card_exposes_accessible_engine_chips_and_candidate_counts(self):
         summary = recognition_summary({"recognitions": [rec("kraken", "a"), rec("trocr", "b")]})
         card = self.card(summary)
@@ -117,8 +131,12 @@ class CatalogueSummaryTests(unittest.TestCase):
                                     False, "missing", "machine-generated", False)
         self.assertIn("Begrenzte Provenienz", self.card(legacy))
 
-    def test_card_has_exactly_one_capability_aware_primary_action(self):
+    def test_document_is_always_primary_and_capabilities_are_secondary(self):
         compare = self.card(recognition_summary({"recognitions": [rec(model="a"), rec(model="b")]}))
+        self.assertIn('class="catalogue-action catalogue-action--primary"', compare)
+        self.assertIn('href="very-long-document-identifier/"', compare)
+        self.assertIn("Dokument öffnen", compare)
+        self.assertIn('class="catalogue-action catalogue-action--secondary"', compare)
         self.assertIn("Modelle vergleichen", compare)
         self.assertIn("?cmp=p1-kraken-a:p1-kraken-b&amp;page=p1#recognitions", compare)
         inspect = self.card(recognition_summary({"recognitions": [rec()]}))
@@ -127,8 +145,26 @@ class CatalogueSummaryTests(unittest.TestCase):
         legacy = RecognitionSummary("legacy", None, None, None, None, None, (), 0, None,
                                     False, "missing", "machine-generated", False)
         legacy_card = self.card(legacy)
-        self.assertIn("Ausgabe öffnen", legacy_card)
+        self.assertIn("Dokument öffnen", legacy_card)
+        self.assertNotIn("catalogue-action--secondary", legacy_card)
         self.assertEqual(legacy_card.count('class="catalogue-actions"'), 1)
+
+    def test_source_visual_uses_thumbnail_or_explicit_placeholder(self):
+        summary = recognition_summary({"recognitions": [rec()]})
+        record = Record(
+            "with-source", datetime.now(timezone.utc), "", "Latin", "Gothic",
+            "Letter", 0, 1, None, 0, False, "preview", summary.review_status,
+            recognition_summary=summary,
+            source_thumbnail_url="https://archive.org/folio.jpg",
+        )
+        card = _card(record)
+        self.assertIn('class="catalogue-source-visual catalogue-source-visual--image"', card)
+        self.assertIn('src="https://archive.org/folio.jpg"', card)
+        self.assertIn('loading="lazy"', card)
+
+        missing = self.card(summary)
+        self.assertIn('catalogue-source-visual--missing', missing)
+        self.assertIn("Quelle fehlt", missing)
 
 
 if __name__ == "__main__":

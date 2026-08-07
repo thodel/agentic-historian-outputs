@@ -75,16 +75,28 @@ class CatalogueHardeningTests(unittest.TestCase):
                         )
                     if controls:
                         self.assertTrue(set(controls).issubset(ids), (controls, ids))
-                    action = re.search(r'class="catalogue-actions"><a href="([^"]+)"', markup)
+                    action = re.search(
+                        r'class="catalogue-actions">.*?class="catalogue-action catalogue-action--primary" href="([^"]+)"',
+                        markup,
+                    )
                     self.assertIsNotNone(action)
                     href = html.unescape(action.group(1))
+                    self.assertNotIn("?", href)
+                    self.assertEqual(href, f"{record.doc_id}/")
                     if summary.comparison_ready:
-                        self.assertIn("?cmp=", href)
-                        self.assertTrue(href.endswith("#recognitions"))
+                        self.assertRegex(markup, r'catalogue-action--secondary[^>]+href="[^"]+\?cmp=')
                     elif summary.total:
-                        self.assertIn("?rec=selected#recognition-selected", href)
+                        self.assertIn("?rec=selected#recognition-selected", markup)
                     else:
-                        self.assertNotIn("?", href)
+                        self.assertNotIn("catalogue-action--secondary", markup)
+
+    def test_display_titles_use_metadata_and_keep_safe_fallbacks(self):
+        bat = _record(ROOT / "docs" / "BAT_664_r_00027" / "pipeline.json")
+        source_label = _record(ROOT / "docs" / "u-17" / "pipeline.json")
+        fallback = _record(ROOT / "docs" / "kf" / "pipeline.json")
+        self.assertEqual(bat.display_title, "Urbar · 1429")
+        self.assertEqual(source_label.display_title, "Staatsarchiv Aargau, SAA 428")
+        self.assertEqual(fallback.display_title, "kf")
 
     def test_every_generated_card_action_resolves_to_a_document_state(self):
         catalogue = (ROOT / "docs/index.md").read_text(encoding="utf-8")
@@ -92,22 +104,25 @@ class CatalogueHardeningTests(unittest.TestCase):
         self.assertTrue(articles)
         for article in articles:
             document_id = re.search(r'data-document-id="([^"]+)"', article).group(1)
-            action = re.search(r'class="catalogue-actions"><a href="([^"]+)"', article).group(1)
-            url = urlsplit(html.unescape(action))
-            target = ROOT / "docs" / url.path / "index.md"
-            with self.subTest(document=document_id, action=action):
-                self.assertTrue(target.is_file(), target)
-                page = target.read_text(encoding="utf-8")
-                if url.fragment:
-                    self.assertIn(f'id="{url.fragment}"', page)
-                query = parse_qs(url.query)
-                if "rec" in query:
-                    self.assertIn(f'data-recognition-panel="{query["rec"][0]}"', page)
-                if "cmp" in query:
-                    candidates = query["cmp"][0].split(":")
-                    self.assertEqual(len(candidates), 2)
-                    for candidate in candidates:
-                        self.assertIn(f'data-recognition-panel="{candidate}"', page)
+            actions = re.findall(r'class="catalogue-action [^"]+" href="([^"]+)"', article)
+            self.assertTrue(actions)
+            self.assertNotIn("?", html.unescape(actions[0]), "Primary action must open the document")
+            for action in actions:
+                url = urlsplit(html.unescape(action))
+                target = ROOT / "docs" / url.path / "index.md"
+                with self.subTest(document=document_id, action=action):
+                    self.assertTrue(target.is_file(), target)
+                    page = target.read_text(encoding="utf-8")
+                    if url.fragment:
+                        self.assertIn(f'id="{url.fragment}"', page)
+                    query = parse_qs(url.query)
+                    if "rec" in query:
+                        self.assertIn(f'data-recognition-panel="{query["rec"][0]}"', page)
+                    if "cmp" in query:
+                        candidates = query["cmp"][0].split(":")
+                        self.assertEqual(len(candidates), 2)
+                        for candidate in candidates:
+                            self.assertIn(f'data-recognition-panel="{candidate}"', page)
 
     def test_catalogue_markup_and_styles_cover_non_visual_and_responsive_states(self):
         catalogue = (ROOT / "docs/index.md").read_text(encoding="utf-8")
@@ -123,6 +138,8 @@ class CatalogueHardeningTests(unittest.TestCase):
         self.assertIn("min-height: 2.75rem", css)
         self.assertIn('<details class="catalogue-advanced">', catalogue)
         self.assertIn('<details class="catalogue-details">', catalogue)
+        self.assertIn('class="catalogue-source-visual', catalogue)
+        self.assertIn('catalogue-action--primary', catalogue)
 
 
     def test_processing_and_recognition_statuses_are_visually_separated(self):
@@ -137,10 +154,13 @@ class CatalogueHardeningTests(unittest.TestCase):
             record = _record(target)
             markup = _card(record)
             self.assertIn("Verarbeitung abgeschlossen", markup)
-            self.assertIn("Erkennungsfehler", markup,
-                          "Recognition errors must remain visible in the summary")
+            self.assertIn("problematische Kandidaten", markup,
+                          "Recognition problems must remain visible in the summary")
             details = markup.split('<details class="catalogue-details">', 1)[1]
             self.assertIn("Verarbeitung abgeschlossen", details)
+            self.assertIn("Technischer Status", details)
+            self.assertIn("Erkennungsqualität", details)
+            self.assertNotIn("Legacy-QA", markup)
 
 
 if __name__ == "__main__":
