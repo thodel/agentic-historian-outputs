@@ -186,6 +186,7 @@ class Record:
     superseded: bool = False          # True when this doc is superseded by another (newer) run
     display_title: str = ""
     shelfmark: str = ""
+    source_thumbnail_url: str = ""
 
 
 @dataclass(frozen=True)
@@ -389,6 +390,13 @@ def _record(path: Path, reviews: dict[str, dict] | None = None) -> Record:
     rec_avg_conf = sum(rec_confidences) / len(rec_confidences) if rec_confidences else None
 
     summary = recognition_summary(data)
+    source_ref = normalize_source_reference(data)
+    source_thumbnail_url = source_ref["image_url"]
+    if not source_thumbnail_url:
+        source_thumbnail_url = next(
+            (page["image_url"] for page in source_ref["pages"] if page.get("image_url")),
+            "",
+        )
     return Record(
         doc_id=doc_id,
         created=created,
@@ -413,6 +421,7 @@ def _record(path: Path, reviews: dict[str, dict] | None = None) -> Record:
         superseded=False,  # patched later in build() once supersedes relations are known
         display_title=display_title,
         shelfmark=shelfmark,
+        source_thumbnail_url=source_thumbnail_url,
     )
 
 
@@ -541,19 +550,46 @@ def _card(record: Record) -> str:
     )
     count = lambda value: "" if value is None else str(value)
     doc_href = f"{quote(record.doc_id, safe='')}/"
+    secondary_action = ""
     if summary.comparison_pair:
         left, right, page = summary.comparison_pair
         query = f"cmp={quote(left)}:{quote(right)}"
         if page:
             query += f"&page={quote(page)}"
-        action_href = f"{doc_href}?{query}#recognitions"
-        action_label = "Modelle vergleichen"
+        secondary_href = f"{doc_href}?{query}#recognitions"
+        secondary_label = "Modelle vergleichen"
     elif summary.total:
-        action_href = f"{doc_href}?rec=selected#recognition-selected"
-        action_label = "Erkennungen ansehen"
+        secondary_href = f"{doc_href}?rec=selected#recognition-selected"
+        secondary_label = "Erkennungen ansehen"
+    if summary.comparison_pair or summary.total:
+        secondary_action = (
+            f'<a class="catalogue-action catalogue-action--secondary" '
+            f'href="{html.escape(secondary_href, quote=True)}" '
+            f'aria-label="{html.escape(secondary_label)}: {html.escape(display_title)}">'
+            f'{secondary_label}</a>'
+        )
+    actions_html = (
+        f'<a class="catalogue-action catalogue-action--primary" href="{html.escape(doc_href, quote=True)}" '
+        f'aria-label="Dokument öffnen: {html.escape(display_title)}">Dokument öffnen '
+        f'<span aria-hidden="true">→</span></a>{secondary_action}'
+    )
+    if record.source_thumbnail_url:
+        source_visual = (
+            '<div class="catalogue-source-visual catalogue-source-visual--image">'
+            f'<img src="{html.escape(record.source_thumbnail_url, quote=True)}" alt="" '
+            'loading="lazy" decoding="async" referrerpolicy="no-referrer">'
+            '<span class="visually-hidden">Quellenvorschau vorhanden</span></div>'
+        )
+    elif summary.source_available:
+        source_visual = (
+            '<div class="catalogue-source-visual catalogue-source-visual--available" aria-label="Digitale Quelle vorhanden, keine Vorschau verfügbar">'
+            '<span aria-hidden="true">◇</span><span>Quelle vorhanden</span></div>'
+        )
     else:
-        action_href = doc_href
-        action_label = "Ausgabe öffnen"
+        source_visual = (
+            '<div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt">'
+            '<span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>'
+        )
     entity_types_str = ",".join(record.entity_types) if record.entity_types else ""
     completeness = _completeness(record)
     summary_attrs = (
@@ -578,6 +614,9 @@ def _card(record: Record) -> str:
         if detail_badges else ""
     )
     return f'''<article class="catalogue-card" data-document-id="{html.escape(record.doc_id.casefold(), quote=True)}" data-created="{created_iso}" data-kind="{kind}" data-language="{html.escape(record.language.casefold(), quote=True)}" data-script="{html.escape(record.script.casefold(), quote=True)}" data-search="{html.escape(search, quote=True)}" data-superseded="{str(record.superseded).lower()}" {summary_attrs}>
+  <div class="catalogue-card__layout">
+  {source_visual}
+  <div class="catalogue-card__content">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="{created_iso}">{created_label}</time></p>
@@ -586,7 +625,7 @@ def _card(record: Record) -> str:
     <div class="catalogue-badges">{"".join(badges)}</div>
   </div>
   <dl class="catalogue-summary-facts">{summary_fact_html}</dl>
-  <p class="catalogue-actions"><a href="{html.escape(action_href, quote=True)}" aria-label="{html.escape(action_label)}: {html.escape(display_title)}">{action_label} <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions">{actions_html}</p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">{facts_html}
@@ -603,6 +642,8 @@ def _card(record: Record) -> str:
       {preview}
     </div>
   </details>
+  </div>
+  </div>
 </article>'''
 
 

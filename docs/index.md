@@ -118,6 +118,9 @@ title: Katalog
 
 <div id="catalogue-list" class="catalogue-list" data-enhanced="false">
 <article class="catalogue-card" data-document-id="koenige" data-created="2026-07-18T22:58:42+02:00" data-kind="output" data-language="mittelhochdeutsch (oder frühneuhochdeutsch), dialekt: alemannisch oder ostschweizerisch" data-script="gothische kurrentschrift, braune tinte, schriftgrosse ca. 6 mm, abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, rasuren und korrekturen im text, keine farbige rubrizierung oder initialen" data-search="koenige drei urkunden · 1518  1518 mittelhochdeutsch (oder frühneuhochdeutsch), dialekt: alemannisch oder ostschweizerisch gothische kurrentschrift, braune tinte, schriftgroße ca. 6 mm, abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, rasuren und korrekturen im text, keine farbige rubrizierung oder initialen drei urkunden u-17_0057_r.jpg pmioe prnpma mm sim petirv s t diaridhy orea e qoicenouie qu. re us h sparer stmir mmer ene igres d e sape z crios o tre e llm rso eeieng emis onsdsem i son li e" data-superseded="false" data-recognition-provenance="current" data-recognition-total="33" data-recognition-successful="24" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="9" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="3" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="CARE_ACTION,ORG,PERSON,PLACE,ROLE" data-completeness="teilweise">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
+  <div class="catalogue-card__content">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-18T22:58:42+02:00">18.07.2026, 22:58</time></p>
@@ -127,7 +130,7 @@ title: Katalog
     <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">9 problematische Kandidaten</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>1518</dd></div><div><dt>Seiten</dt><dd>3</dd></div><div><dt>Entitäten</dt><dd>19</dd></div></dl>
-  <p class="catalogue-actions"><a href="koenige/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: Drei Urkunden · 1518">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="koenige/" aria-label="Dokument öffnen: Drei Urkunden · 1518">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="koenige/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: Drei Urkunden · 1518">Erkennungen ansehen</a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
@@ -145,8 +148,13 @@ title: Katalog
       <p class="catalogue-preview">U-17_0057_r.jpg PMIoe PrNPMA MM SIM PETIRV s t diaridhy orea e qoicenouie qu. re us h sparer stmir mmer ene igres d e sape z crios o tre e llm rso eeieng emis onsdsem i son li e…</p>
     </div>
   </details>
+  </div>
+  </div>
 </article>
 <article class="catalogue-card" data-document-id="bat" data-created="2026-07-15T21:19:05+02:00" data-kind="output" data-language="deutsch (mittelhochdeutsche und mitteldeutsche konstruktionen, alemannischer dialektraum)" data-script="gotische kurrentschrift, schwarz, zeilenhöhe ca. 4,5 mm" data-search="bat verwaltungsdokument · 15. jahrhundert (unsicher)  15. jahrhundert (unsicher) deutsch (mittelhochdeutsche und mitteldeutsche konstruktionen, alemannischer dialektraum) gotische kurrentschrift, schwarz, zeilenhöhe ca. 4,5 mm verwaltungsdokument bat_663_r_00050.jpg aimien undectetngen willegen dicust be uor lieden gnediuen hacrẽ si ucq al zut uon nat be- rent uñ ouch deñ urern lieben quedien herren ich blahen eeusthlicq" data-superseded="false" data-recognition-provenance="current" data-recognition-total="10" data-recognition-successful="6" data-recognition-failed="1" data-recognition-empty="0" data-recognition-degenerate="3" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="DATE,ORG,PERSON,PLACE,SOCIAL_GROUP" data-completeness="teilweise">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
+  <div class="catalogue-card__content">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T21:19:05+02:00">15.07.2026, 21:19</time></p>
@@ -156,7 +164,7 @@ title: Katalog
     <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">4 problematische Kandidaten</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert (unsicher)</dd></div><div><dt>Seiten</dt><dd>1</dd></div><div><dt>Entitäten</dt><dd>12</dd></div></dl>
-  <p class="catalogue-actions"><a href="bat/?cmp=vlm-internvl3-8b-instruct:kraken-kraken-catmus-medieval#recognitions" aria-label="Modelle vergleichen: Verwaltungsdokument · 15. Jahrhundert (unsicher)">Modelle vergleichen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="bat/" aria-label="Dokument öffnen: Verwaltungsdokument · 15. Jahrhundert (unsicher)">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="bat/?cmp=vlm-internvl3-8b-instruct:kraken-kraken-catmus-medieval#recognitions" aria-label="Modelle vergleichen: Verwaltungsdokument · 15. Jahrhundert (unsicher)">Modelle vergleichen</a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
@@ -174,8 +182,13 @@ title: Katalog
       <p class="catalogue-preview">BAT_663_r_00050.jpg Aimien undectetngen willegen dicust be uor lieden gnediuen hacrẽ si ucq al zut uon nat be- rent uñ ouch deñ urern lieben quedien herren ich blahen eeusthlicq…</p>
     </div>
   </details>
+  </div>
+  </div>
 </article>
 <article class="catalogue-card" data-document-id="order-ens" data-created="2026-07-15T19:17:36+02:00" data-kind="output" data-language="" data-script="" data-search="order-ens order-ens      p1.jpg gut lesbar hier p2.jpg gut lesbar hier" data-superseded="false" data-recognition-provenance="current" data-recognition-total="1" data-recognition-successful="1" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken" data-recognition-models="1" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="" data-completeness="minimal">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
+  <div class="catalogue-card__content">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T19:17:36+02:00">15.07.2026, 19:17</time></p>
@@ -184,7 +197,7 @@ title: Katalog
     <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Entitäten</dt><dd>0</dd></div></dl>
-  <p class="catalogue-actions"><a href="order-ens/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: order-ens">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="order-ens/" aria-label="Dokument öffnen: order-ens">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="order-ens/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: order-ens">Erkennungen ansehen</a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
@@ -203,8 +216,13 @@ title: Katalog
       <p class="catalogue-preview">p1.jpg gut lesbar hier p2.jpg gut lesbar hier…</p>
     </div>
   </details>
+  </div>
+  </div>
 </article>
 <article class="catalogue-card" data-document-id="u-17__" data-created="2026-07-15T16:49:41+02:00" data-kind="output" data-language="" data-script="" data-search="u-17__ staatsarchiv aargau, saa 428 e-codices: staatsarchiv aargau, saa 428     e-codices_saa-0428_015v_large.jpg seite 1 modios reina cum prato sive uysta ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. alhile er conu" data-superseded="true" data-recognition-provenance="current" data-recognition-total="13" data-recognition-successful="11" data-recognition-failed="2" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="5" data-recognition-pages="4" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="CARE_ACTION,DATE,ORG,PERSON,PLACE,ROLE,SOCIAL_GROUP,TITLE" data-completeness="vollstaendig">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--image"><img src="https://www.e-codices.unifr.ch/loris/saa/saa-0428/saa-0428_015v.jp2/full/1200,/0/default.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="visually-hidden">Quellenvorschau vorhanden</span></div>
+  <div class="catalogue-card__content">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T16:49:41+02:00">15.07.2026, 16:49</time></p>
@@ -214,7 +232,7 @@ title: Katalog
     <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">2 problematische Kandidaten</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Seiten</dt><dd>4</dd></div><div><dt>Entitäten</dt><dd>82</dd></div></dl>
-  <p class="catalogue-actions"><a href="u-17__/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: Staatsarchiv Aargau, SAA 428">Erkennungen ansehen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="u-17__/" aria-label="Dokument öffnen: Staatsarchiv Aargau, SAA 428">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="u-17__/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: Staatsarchiv Aargau, SAA 428">Erkennungen ansehen</a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
@@ -232,8 +250,13 @@ title: Katalog
       <p class="catalogue-preview">e-codices_saa-0428_015v_large.jpg SEITE 1 modios reina cum prato sive uysta Ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. Alhile er conu…</p>
     </div>
   </details>
+  </div>
+  </div>
 </article>
 <article class="catalogue-card" data-document-id="u-17" data-created="2026-07-08T17:18:20+02:00" data-kind="output" data-language="" data-script="" data-search="u-17 staatsarchiv aargau, saa 428 e-codices: staatsarchiv aargau, saa 428     e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu " data-superseded="false" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="4" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="" data-completeness="minimal">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--image"><img src="https://www.e-codices.unifr.ch/loris/saa/saa-0428/saa-0428_015v.jp2/full/1200,/0/default.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="visually-hidden">Quellenvorschau vorhanden</span></div>
+  <div class="catalogue-card__content">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T17:18:20+02:00">08.07.2026, 17:18</time></p>
@@ -243,7 +266,7 @@ title: Katalog
     <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Seiten</dt><dd>4</dd></div><div><dt>Entitäten</dt><dd>0</dd></div></dl>
-  <p class="catalogue-actions"><a href="u-17/" aria-label="Ausgabe öffnen: Staatsarchiv Aargau, SAA 428">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="u-17/" aria-label="Dokument öffnen: Staatsarchiv Aargau, SAA 428">Dokument öffnen <span aria-hidden="true">→</span></a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
@@ -261,8 +284,13 @@ title: Katalog
       <p class="catalogue-preview">e-codices_saa-0428_015v_large.jpg u uuu uu uu u uu uuu uuuu u uuuuuu uuu uu iuuuu u u uuu uu uuu iuu uuu u u uuu iu uu uu u uuuuu iiiu u uu u uu uu u u uuu i uu uuu uuuuuuu u g uu …</p>
     </div>
   </details>
+  </div>
+  </div>
 </article>
 <article class="catalogue-card" data-document-id="order-001-group" data-created="2026-07-08T09:03:38+02:00" data-kind="output" data-language="de" data-script="kurrent" data-search="order-001-group gerichtsbrief · 15. jahrhundert  15. jahrhundert de kurrent gerichtsbrief page_1.jpg page page_1.jpg page_2.jpg page page_2.jpg" data-superseded="false" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="2" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="PERSON" data-completeness="teilweise">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--available" aria-label="Digitale Quelle vorhanden, keine Vorschau verfügbar"><span aria-hidden="true">◇</span><span>Quelle vorhanden</span></div>
+  <div class="catalogue-card__content">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:38+02:00">08.07.2026, 09:03</time></p>
@@ -272,7 +300,7 @@ title: Katalog
     <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Entitäten</dt><dd>1</dd></div></dl>
-  <p class="catalogue-actions"><a href="order-001-group/" aria-label="Ausgabe öffnen: Gerichtsbrief · 15. Jahrhundert">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="order-001-group/" aria-label="Dokument öffnen: Gerichtsbrief · 15. Jahrhundert">Dokument öffnen <span aria-hidden="true">→</span></a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
@@ -290,8 +318,13 @@ title: Katalog
       <p class="catalogue-preview">page_1.jpg page page_1.jpg page_2.jpg page page_2.jpg…</p>
     </div>
   </details>
+  </div>
+  </div>
 </article>
 <article class="catalogue-card" data-document-id="kf-" data-created="2026-07-07T15:47:14+02:00" data-kind="output" data-language="" data-script="" data-search="kf- kf-      0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu" data-superseded="true" data-recognition-provenance="legacy" data-recognition-total="" data-recognition-successful="" data-recognition-failed="" data-recognition-empty="" data-recognition-degenerate="" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="" data-completeness="minimal">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
+  <div class="catalogue-card__content">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:47:14+02:00">07.07.2026, 15:47</time></p>
@@ -300,7 +333,7 @@ title: Katalog
     <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Seiten</dt><dd>3</dd></div><div><dt>Entitäten</dt><dd>0</dd></div></dl>
-  <p class="catalogue-actions"><a href="kf-/" aria-label="Ausgabe öffnen: kf-">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="kf-/" aria-label="Dokument öffnen: kf-">Dokument öffnen <span aria-hidden="true">→</span></a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
@@ -317,8 +350,13 @@ title: Katalog
       <p class="catalogue-preview">0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu…</p>
     </div>
   </details>
+  </div>
+  </div>
 </article>
 <article class="catalogue-card" data-document-id="kf" data-created="2026-07-07T15:29:12+02:00" data-kind="output" data-language="" data-script="" data-search="kf kf      0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu" data-superseded="false" data-recognition-provenance="legacy" data-recognition-total="" data-recognition-successful="" data-recognition-failed="" data-recognition-empty="" data-recognition-degenerate="" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="" data-completeness="minimal">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
+  <div class="catalogue-card__content">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:29:12+02:00">07.07.2026, 15:29</time></p>
@@ -327,7 +365,7 @@ title: Katalog
     <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Seiten</dt><dd>3</dd></div><div><dt>Entitäten</dt><dd>0</dd></div></dl>
-  <p class="catalogue-actions"><a href="kf/" aria-label="Ausgabe öffnen: kf">Ausgabe öffnen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="kf/" aria-label="Dokument öffnen: kf">Dokument öffnen <span aria-hidden="true">→</span></a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
@@ -344,8 +382,13 @@ title: Katalog
       <p class="catalogue-preview">0000004_478964_0001_19804829.jpg.png uuiuu uuuuuuuuuuuuuuuuuuuu uuuuuuuuuuu uuuuuuuuuuuuuuuuuu iuuuuuuuuuuuuuu uuuuuuiuuuu uuuuuuuuuuuuuuuuuuu uuuuuuuu uuuuuuuuuu uuuuuuuu uuuuuuuu…</p>
     </div>
   </details>
+  </div>
+  </div>
 </article>
 <article class="catalogue-card" data-document-id="bat_664_r_00027" data-created="2026-07-07T15:25:18+02:00" data-kind="output" data-language="deutsch" data-script="gotische schrift (französisch-als sächsische kursivschrift)" data-search="bat_664_r_00027 urbar · 1429  1429 deutsch gotische schrift (französisch-als sächsische kursivschrift) urbar vnser fründlich grus vor liebe getrune von der stösse wyse so daß nit zwüschent hemin , fast vnd cuͦnratoͤffen , ✳ darumb and die selbe vast im oogt vnd vil fürgannd hat vor nachta" data-superseded="false" data-recognition-provenance="current" data-recognition-total="10" data-recognition-successful="7" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="3" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="DATE,ORG,PERSON,PLACE" data-completeness="teilweise">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
+  <div class="catalogue-card__content">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:25:18+02:00">07.07.2026, 15:25</time></p>
@@ -355,7 +398,7 @@ title: Katalog
     <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">3 problematische Kandidaten</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>1429</dd></div><div><dt>Entitäten</dt><dd>8</dd></div></dl>
-  <p class="catalogue-actions"><a href="BAT_664_r_00027/?cmp=bat-664-r-00027-jpg-vlm-internvl3-8b-instruct:bat-664-r-00027-jpg-kraken-kraken-catmus-medieval&amp;page=BAT_664_r_00027.jpg#recognitions" aria-label="Modelle vergleichen: Urbar · 1429">Modelle vergleichen <span aria-hidden="true">→</span></a></p>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="BAT_664_r_00027/" aria-label="Dokument öffnen: Urbar · 1429">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="BAT_664_r_00027/?cmp=bat-664-r-00027-jpg-vlm-internvl3-8b-instruct:bat-664-r-00027-jpg-kraken-kraken-catmus-medieval&amp;page=BAT_664_r_00027.jpg#recognitions" aria-label="Modelle vergleichen: Urbar · 1429">Modelle vergleichen</a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
@@ -373,6 +416,8 @@ title: Katalog
       <p class="catalogue-preview">Vnser fründlich grus vor liebe getrune von der stösse wyse so daß nit zwüschent hemin , fast vnd Cuͦnratoͤffen , ✳ darumb and die selbe vast im oogt vnd vil fürgannd hat vor nachta…</p>
     </div>
   </details>
+  </div>
+  </div>
 </article>
 </div>
 
