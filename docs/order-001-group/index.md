@@ -18,7 +18,7 @@ title: "order-001-group"
 
 <section id="source" class="page-section page-section--evidence" data-page-section="source" aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
 <p><a href="https://base/test_runstate_grouped_pipeline0">Veröffentlichte Quelle öffnen</a></p>
-<script type="application/json" data-source-reference>{"type":"landing_page","label":"","attribution":"","rights":"","url":"https://base/test_runstate_grouped_pipeline0","manifest_url":"","image_url":"","pages":[]}</script></section>
+<script type="application/json" data-source-reference>{"type":"landing_page","label":"","attribution":"","rights":"","url":"https://base/test_runstate_grouped_pipeline0","manifest_url":"","image_url":"https://base/test_runstate_grouped_pipeline0","pages":[]}</script></section>
 
 <section id="transcription" class="page-section page-section--evidence" data-page-section="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
 <div class="transcription-toolbar"><button type="button" class="copy-btn" data-copy-transcript aria-label="Transkription in die Zwischenablage kopieren"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>Transkription kopieren</button></div><div class="transcription-wrap" role="table" aria-label="Transkription mit Zeilennummern"><span class="line" data-line="1" role="row"><span class="line-number" aria-hidden="true">1</span><span class="line-text">--- page_1.jpg ---</span></span><span class="line" data-line="2" role="row"><span class="line-number" aria-hidden="true">2</span><span class="line-text"> </span></span><span class="line" data-line="3" role="row"><span class="line-number" aria-hidden="true">3</span><span class="line-text"> </span></span><span class="line" data-line="4" role="row"><span class="line-number" aria-hidden="true">4</span><span class="line-text">--- page_2.jpg ---</span></span></div>
@@ -249,8 +249,8 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 </details>
 
 <details class="page-section-disclosure" data-disclosure="history">
-<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">2 Commits</span></summary>
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/2397cba"><code>2397cba</code></a> · <time datetime="2026-07-08T12:36:17+02:00">2026-07-08</time> · Publish order-001-group</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/202031b"><code>202031b</code></a> · <time datetime="2026-07-08T09:03:38+02:00">2026-07-08</time> · Publish order-001-group</li></ol></section>
+<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">3 Commits</span></summary>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/123b177"><code>123b177</code></a> · <time datetime="2026-08-08T10:57:26+02:00">2026-08-08</time> · Publish order-001-group</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/2397cba"><code>2397cba</code></a> · <time datetime="2026-07-08T12:36:17+02:00">2026-07-08</time> · Publish order-001-group</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/202031b"><code>202031b</code></a> · <time datetime="2026-07-08T09:03:38+02:00">2026-07-08</time> · Publish order-001-group</li></ol></section>
 </details>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
@@ -273,7 +273,7 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
   },
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "dateCreated": "2026-07-08T09:03:38+02:00",
-  "dateModified": "2026-07-08T12:36:17+02:00",
+  "dateModified": "2026-08-08T10:57:26+02:00",
   "distribution": [
     {
       "@type": "DataDownload",
