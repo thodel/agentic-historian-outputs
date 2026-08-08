@@ -1,17 +1,136 @@
 {
-  "doc_id": "order-001-group",
-  "version": "1.0",
   "artifacts": [
     {
-      "id": "selected",
+      "characters": 39,
       "engine": "fusion",
+      "error": null,
+      "error_path": null,
+      "id": "selected",
       "model_id": null,
       "page": null,
-      "status": "success",
-      "error": null,
       "path": "recognitions/fused.txt",
-      "error_path": null,
-      "characters": 70
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "vlm",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/vlm-internvl3-8b-instruct.error.txt",
+      "id": "vlm-internvl3-8b-instruct",
+      "model_id": "internvl3-8b-instruct",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/kraken-kraken-catmus_medieval.error.txt",
+      "id": "kraken-kraken-catmus-medieval",
+      "model_id": "kraken-catmus_medieval",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
+      "id": "trocr-trocr-medieval-escriptmask",
+      "model_id": "trocr-medieval-escriptmask",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "vlm",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/vlm-internvl3-8b-instruct.error.txt",
+      "id": "vlm-internvl3-8b-instruct-2",
+      "model_id": "internvl3-8b-instruct",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/kraken-kraken-catmus_medieval.error.txt",
+      "id": "kraken-kraken-catmus-medieval-2",
+      "model_id": "kraken-catmus_medieval",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
+      "id": "trocr-trocr-medieval-escriptmask-2",
+      "model_id": "trocr-medieval-escriptmask",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/kraken-kraken-early_modern_german.error.txt",
+      "id": "kraken-kraken-early-modern-german",
+      "model_id": "kraken-early_modern_german",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-essoins-middle-latin.error.txt",
+      "id": "trocr-trocr-essoins-middle-latin",
+      "model_id": "trocr-essoins-middle-latin",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/kraken-kraken-early_modern_german.error.txt",
+      "id": "kraken-kraken-early-modern-german-2",
+      "model_id": "kraken-early_modern_german",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-essoins-middle-latin.error.txt",
+      "id": "trocr-trocr-essoins-middle-latin-2",
+      "model_id": "trocr-essoins-middle-latin",
+      "page": null,
+      "path": null,
+      "status": "error"
     }
-  ]
+  ],
+  "doc_id": "order-001-group",
+  "run_counts": {
+    "degenerate": 0,
+    "empty": 0,
+    "failed": 10,
+    "successful": 1,
+    "total": 11
+  },
+  "run_quality": "partial_failure",
+  "version": "1.0"
 }
