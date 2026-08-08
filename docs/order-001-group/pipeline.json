@@ -1,6 +1,6 @@
 {
   "doc_id": "order-001-group",
-  "transcription": "--- page_1.jpg ---\npage page_1.jpg\n\n--- page_2.jpg ---\npage page_2.jpg",
+  "transcription": "--- page_1.jpg ---\n\n\n--- page_2.jpg ---",
   "description": {
     "source_description": "Gerichtsverhandlung, 15. Jh., Kurrent",
     "source_json": {
@@ -20,9 +20,101 @@
   "errors": [],
   "a_meta": {
     "pages": 2,
-    "qa_score": 0.9,
-    "source": "grouped"
+    "qa_score": 1.0,
+    "source": "grouped-ensemble-criteria",
+    "criteria_rerun": true
   },
   "source_url": "https://base/test_runstate_grouped_pipeline0",
-  "recognitions": []
+  "recognitions": [
+    {
+      "engine": "vlm",
+      "model_id": "internvl3-8b-instruct",
+      "text": "",
+      "confidence": 0.0,
+      "error": "",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-catmus_medieval",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine error 400 at http://127.0.0.1:8201/recognize: {\\\"detail\\\":\\\"unsupported image: cannot identify image file <_io.BytesIO object at 0x7f8ca0536700>\\\"}\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-medieval-escriptmask",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine error 400 at http://127.0.0.1:8201/segment: {\\\"detail\\\":\\\"unsupported image: cannot identify image file <_io.BytesIO object at 0x7f8ca83d62f0>\\\"}\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "vlm",
+      "model_id": "internvl3-8b-instruct",
+      "text": "",
+      "confidence": 0.0,
+      "error": "",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-catmus_medieval",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine error 400 at http://127.0.0.1:8201/recognize: {\\\"detail\\\":\\\"unsupported image: cannot identify image file <_io.BytesIO object at 0x7f8ca83d7060>\\\"}\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-medieval-escriptmask",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine error 400 at http://127.0.0.1:8201/segment: {\\\"detail\\\":\\\"unsupported image: cannot identify image file <_io.BytesIO object at 0x7f8ca83d6ca0>\\\"}\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-early_modern_german",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine error 400 at http://127.0.0.1:8201/recognize: {\\\"detail\\\":\\\"unsupported image: cannot identify image file <_io.BytesIO object at 0x7f8ca83d4720>\\\"}\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-essoins-middle-latin",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine error 400 at http://127.0.0.1:8201/segment: {\\\"detail\\\":\\\"unsupported image: cannot identify image file <_io.BytesIO object at 0x7f8ca83d62f0>\\\"}\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-early_modern_german",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine error 400 at http://127.0.0.1:8201/recognize: {\\\"detail\\\":\\\"unsupported image: cannot identify image file <_io.BytesIO object at 0x7f8ca83d7060>\\\"}\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-essoins-middle-latin",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine error 400 at http://127.0.0.1:8201/segment: {\\\"detail\\\":\\\"unsupported image: cannot identify image file <_io.BytesIO object at 0x7f8ca83d6ca0>\\\"}\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    }
+  ]
 }
