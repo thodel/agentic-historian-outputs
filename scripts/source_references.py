@@ -70,6 +70,16 @@ def normalize_source_reference(data: dict) -> dict:
     source = public_url(data.get("source_url"))
     primary = manifest or source
     kind = _kind(primary, explicit_manifest=bool(manifest)) if primary else "missing"
+    pages = _page_map(data)
+    # Issue #187: a landing page whose individual pages carry direct image URLs
+    # (e.g. e-codices with a Loris JP2 endpoint per canvas) is embeddable.
+    # Upgrade to "image" so evidence_workspace() creates the split layout and
+    # page navigation initialises the evidence viewer with the first page image.
+    # Keep the original landing-page URL for the source link; only promote kind
+    # and image_url so the viewer can embed the page scans.
+    first_page_image = pages[0]["image_url"] if pages else ""
+    if kind == "landing_page" and first_page_image:
+        kind = "image"
     return {
         "type": kind,
         "label": _text(data.get("source_label") or data.get("label")),
@@ -77,6 +87,6 @@ def normalize_source_reference(data: dict) -> dict:
         "rights": _text(data.get("source_rights") or data.get("rights")),
         "url": primary,
         "manifest_url": manifest,
-        "image_url": source if kind == "image" else "",
-        "pages": _page_map(data),
+        "image_url": first_page_image if kind == "image" else source,
+        "pages": pages,
     }
