@@ -19,7 +19,7 @@ title: Katalog
     </dl>
   </details>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
-  <p class="catalogue-summary" id="catalogue-count"><strong>7</strong> Ausgaben · <span class="superseded-count">2 ersetzt</span> · 0 Testläufe</p>
+  <p class="catalogue-summary" id="catalogue-count"><strong>7</strong> Ausgaben · <span class="superseded-count">2 ersetzt</span> · 5 Testläufe</p>
 </div>
 
 <form class="catalogue-tools" role="search" aria-label="Ausgaben durchsuchen" onsubmit="return false">
@@ -113,7 +113,7 @@ title: Katalog
 </form>
 
 <p id="catalogue-active-filters" class="catalogue-active-filters">Keine Filter aktiv.</p>
-<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">9 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
+<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">14 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
 <p id="catalogue-empty" class="catalogue-empty" role="status" hidden>Keine Einträge entsprechen den aktiven Filtern. Ändern Sie die Filter oder setzen Sie sie zurück.</p>
 
 <div id="catalogue-list" class="catalogue-list" data-enhanced="false">
@@ -316,6 +316,176 @@ title: Katalog
         <span class="visually-hidden">Keine Warnungen</span>
       </div>
       <p class="catalogue-preview">page_1.jpg page page_1.jpg page_2.jpg page page_2.jpg…</p>
+    </div>
+  </details>
+  </div>
+  </div>
+</article>
+<article class="catalogue-card" data-document-id="saa-0005-test" data-created="2026-07-08T09:03:31+02:00" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0005-test gerichtsbrief · 15. jahrhundert  15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-superseded="false" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="landing_page" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="PERSON" data-completeness="teilweise">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--available" aria-label="Digitale Quelle vorhanden, keine Vorschau verfügbar"><span aria-hidden="true">◇</span><span>Quelle vorhanden</span></div>
+  <div class="catalogue-card__content">
+  <div class="catalogue-card__heading">
+    <div>
+      <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:31+02:00">08.07.2026, 09:03</time></p>
+      <h2><a href="saa-0005-test/">Gerichtsbrief · 15. Jahrhundert</a></h2>
+      <p class="catalogue-id">Dokument-ID <code>saa-0005-test</code></p>
+    </div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span></div>
+  </div>
+  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Entitäten</dt><dd>1</dd></div></dl>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="saa-0005-test/" aria-label="Dokument öffnen: Gerichtsbrief · 15. Jahrhundert">Dokument öffnen <span aria-hidden="true">→</span></a></p>
+  <details class="catalogue-details">
+    <summary>Details und Vorschau</summary>
+    <div class="catalogue-details__body">
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 0 insgesamt</dd></div></dl>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">Keine Erkennungskandidaten dokumentiert</p></div>
+      </div>
+
+      <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
+        <p class="catalogue-provenance__label">Engines</p>
+        <p class="catalogue-muted">Nicht dokumentiert</p>
+        <span class="visually-hidden">Keine Warnungen</span>
+      </div>
+      <p class="catalogue-preview">Hans von Bern tuend kund……</p>
+    </div>
+  </details>
+  </div>
+  </div>
+</article>
+<article class="catalogue-card" data-document-id="saa-0004-test" data-created="2026-07-08T09:03:31+02:00" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0004-test gerichtsbrief · 15. jahrhundert  15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-superseded="false" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="PERSON" data-completeness="minimal">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
+  <div class="catalogue-card__content">
+  <div class="catalogue-card__heading">
+    <div>
+      <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:31+02:00">08.07.2026, 09:03</time></p>
+      <h2><a href="saa-0004-test/">Gerichtsbrief · 15. Jahrhundert</a></h2>
+      <p class="catalogue-id">Dokument-ID <code>saa-0004-test</code></p>
+    </div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span></div>
+  </div>
+  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Entitäten</dt><dd>1</dd></div></dl>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="saa-0004-test/" aria-label="Dokument öffnen: Gerichtsbrief · 15. Jahrhundert">Dokument öffnen <span aria-hidden="true">→</span></a></p>
+  <details class="catalogue-details">
+    <summary>Details und Vorschau</summary>
+    <div class="catalogue-details__body">
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 0 insgesamt</dd></div></dl>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">Keine Erkennungskandidaten dokumentiert</p></div>
+      </div>
+
+      <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
+        <p class="catalogue-provenance__label">Engines</p>
+        <p class="catalogue-muted">Nicht dokumentiert</p>
+        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+      </div>
+      <p class="catalogue-preview">Hans von Bern tuend kund……</p>
+    </div>
+  </details>
+  </div>
+  </div>
+</article>
+<article class="catalogue-card" data-document-id="saa-0003-test" data-created="2026-07-08T09:03:23+02:00" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0003-test gerichtsbrief · 15. jahrhundert  15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-superseded="false" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="PERSON" data-completeness="minimal">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
+  <div class="catalogue-card__content">
+  <div class="catalogue-card__heading">
+    <div>
+      <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:23+02:00">08.07.2026, 09:03</time></p>
+      <h2><a href="saa-0003-test/">Gerichtsbrief · 15. Jahrhundert</a></h2>
+      <p class="catalogue-id">Dokument-ID <code>saa-0003-test</code></p>
+    </div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span></div>
+  </div>
+  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Entitäten</dt><dd>1</dd></div></dl>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="saa-0003-test/" aria-label="Dokument öffnen: Gerichtsbrief · 15. Jahrhundert">Dokument öffnen <span aria-hidden="true">→</span></a></p>
+  <details class="catalogue-details">
+    <summary>Details und Vorschau</summary>
+    <div class="catalogue-details__body">
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 0 insgesamt</dd></div></dl>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">Keine Erkennungskandidaten dokumentiert</p></div>
+      </div>
+
+      <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
+        <p class="catalogue-provenance__label">Engines</p>
+        <p class="catalogue-muted">Nicht dokumentiert</p>
+        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+      </div>
+      <p class="catalogue-preview">Hans von Bern tuend kund……</p>
+    </div>
+  </details>
+  </div>
+  </div>
+</article>
+<article class="catalogue-card" data-document-id="saa-0002-test" data-created="2026-07-08T09:03:23+02:00" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0002-test gerichtsbrief · 15. jahrhundert  15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-superseded="false" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="PERSON" data-completeness="minimal">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
+  <div class="catalogue-card__content">
+  <div class="catalogue-card__heading">
+    <div>
+      <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:23+02:00">08.07.2026, 09:03</time></p>
+      <h2><a href="saa-0002-test/">Gerichtsbrief · 15. Jahrhundert</a></h2>
+      <p class="catalogue-id">Dokument-ID <code>saa-0002-test</code></p>
+    </div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span></div>
+  </div>
+  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Entitäten</dt><dd>1</dd></div></dl>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="saa-0002-test/" aria-label="Dokument öffnen: Gerichtsbrief · 15. Jahrhundert">Dokument öffnen <span aria-hidden="true">→</span></a></p>
+  <details class="catalogue-details">
+    <summary>Details und Vorschau</summary>
+    <div class="catalogue-details__body">
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 0 insgesamt</dd></div></dl>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">Keine Erkennungskandidaten dokumentiert</p></div>
+      </div>
+
+      <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
+        <p class="catalogue-provenance__label">Engines</p>
+        <p class="catalogue-muted">Nicht dokumentiert</p>
+        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+      </div>
+      <p class="catalogue-preview">Hans von Bern tuend kund……</p>
+    </div>
+  </details>
+  </div>
+  </div>
+</article>
+<article class="catalogue-card" data-document-id="saa-0001-test" data-created="2026-07-08T09:03:23+02:00" data-kind="test" data-language="de" data-script="kurrent" data-search="saa-0001-test gerichtsbrief · 15. jahrhundert  15. jahrhundert de kurrent gerichtsbrief hans von bern tuend kund…" data-superseded="false" data-recognition-provenance="current" data-recognition-total="0" data-recognition-successful="0" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="" data-recognition-models="0" data-recognition-pages="0" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="PERSON" data-completeness="minimal">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
+  <div class="catalogue-card__content">
+  <div class="catalogue-card__heading">
+    <div>
+      <p class="catalogue-created">Erstellt <time datetime="2026-07-08T09:03:23+02:00">08.07.2026, 09:03</time></p>
+      <h2><a href="saa-0001-test/">Gerichtsbrief · 15. Jahrhundert</a></h2>
+      <p class="catalogue-id">Dokument-ID <code>saa-0001-test</code></p>
+    </div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--test">Testlauf</span><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span></div>
+  </div>
+  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert</dd></div><div><dt>Entitäten</dt><dd>1</dd></div></dl>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="saa-0001-test/" aria-label="Dokument öffnen: Gerichtsbrief · 15. Jahrhundert">Dokument öffnen <span aria-hidden="true">→</span></a></p>
+  <details class="catalogue-details">
+    <summary>Details und Vorschau</summary>
+    <div class="catalogue-details__body">
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Gerichtsbrief</dd></div><div><dt>Sprache</dt><dd>de</dd></div><div><dt>Schrift</dt><dd>Kurrent</dd></div><div><dt>Kandidaten</dt><dd>0 erfolgreich / 0 insgesamt</dd></div></dl>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">Keine Erkennungskandidaten dokumentiert</p></div>
+      </div>
+
+      <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
+        <p class="catalogue-provenance__label">Engines</p>
+        <p class="catalogue-muted">Nicht dokumentiert</p>
+        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+      </div>
+      <p class="catalogue-preview">Hans von Bern tuend kund……</p>
     </div>
   </details>
   </div>
