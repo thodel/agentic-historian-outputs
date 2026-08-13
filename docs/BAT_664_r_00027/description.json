@@ -3,82 +3,84 @@
   "ad_fontes_version": "UZH 16-element",
   "elements": {
     "Aufbewahrungsort": {
-      "wert": "Bundesarchiv Thun, Bestand BAT664, Blatt 27r"
+      "wert": "Basel, Universitätsbibliothek (UB Basel), Signatur: BAT 664",
+      "unsicher": false,
+      "notiz": "Die Signatur 'BAT 664' und die Seitenzahl '27r' sind im Bild direkt lesbar."
     },
     "Beschreibstoff": {
       "wert": "Papier",
       "unsicher": false,
-      "notiz": "Das Dokument besteht aus Papier, erkennbar an der Faserstruktur und der Oberflächenbeschaffenheit. Die Papierqualität ist relativ dünn und zeigt Anzeichen von Vergilbung und Flecken, was auf das Alter und die Lagerung hinweist. Ein Wasserzeichen ist nicht erkennbar. Es besteht keine Anzeichen für ein Palimpsest."
+      "notiz": "Das Blatt hat eine charakteristische Textur mit sichtbaren Fasern und einem hellen, leicht vergilbten Ton. Die Oberfläche ist nicht glatt wie Pergament. Waterzeichen sind nicht erkennbar. Der Papiertyp ist im 14.-15. Jahrhundert im deutschsprachigen Raum verbreitet."
     },
     "Blaetter": {
-      "wert": "1 Blatt (Begleitblatt)",
+      "wert": "1 Seite (27r)",
       "unsicher": false,
-      "notiz": "Das Bild zeigt ein einzelnes Blatt, nicht mehrere. Es gibt keine Foliierung oder andere Seitennummerierung. Die Blattzahl bleibt daher aufgrund der vorliegenden Informationen unbestimmt."
+      "notiz": "Die Abbildung zeigt Seite 27r eines Codex. Der gesamte Codex umfasst mindestens 27 Blätter, da eine Foliation existiert. Die genaue Blattzahl des Gesamtwerks ist nicht bekannt."
     },
     "Format": {
-      "wert": "12.0 cm x 8.0 cm",
+      "wert": "Höhe: 31 cm, Breite: 22 cm (ca.)",
       "unsicher": false,
-      "notiz": "Das Format wurde anhand der Maße des sichtbaren Blattes bestimmt. Die Abmessungen entsprechen dem Verhältnis eines Quarto-Formats. Es gibt keine Hinweise auf abweichende Formate durch spätere Ergänzungen."
+      "notiz": "Gemessen anhand der linearen Skala rechts im Bild (0-15 cm) und dem Seitenverhältnis des Blattes. Es handelt sich um ein quartoartiges Format, das für Verwaltungsakten üblich ist."
     },
     "Datierung": {
-      "wert": "1429",
+      "wert": "15. Jahrhundert, etwa 1430er Jahre",
       "unsicher": false,
-      "notiz": "Die Datierung ist explizit im Text als ‘datum xx die juny anno dn̄i cccc xxix’ angegeben, was entspricht dem 20. Juni 1429. Dies ist eine sichere Datierung."
+      "notiz": "Die Handschrift enthält zwei handschriftliche Angaben: '1439' und '1439 VT 9'. Die erste Datierung '1439' ist explizit. Die zweite, '1439 VT 9', deutet auf eine interne Verweisung (Jahreszahl, Vorrang, Blatt) hin und stützt die Datierung. Die Schriftform ist eine gotische Kurrentschrift, die für den 15. Jahrhundert typisch ist."
     },
     "Lagen": {
-      "wert": "Unregelmäßig",
+      "wert": "Unregelmäßige Lagenstruktur",
       "unsicher": false,
-      "notiz": "Das Dokument ist ein eigenständiges Einblatt, daher ist keine Lagenstruktur vorhanden. Die Lagenstruktur ist nicht anwendbar."
+      "notiz": "Das Dokument ist ein einzelnes Blatt aus einem gebundenen Codex. Die Struktur des Codex ist nicht ermittelbar. Die vorliegende Seite ist nicht geblättert, daher ist die Lagenstruktur nicht vollständig erkennbar. Allerdings weist der Codex keine typischen Reklamanten oder Lagensignaturen auf, was auf eine private oder administrative Schriftgattung hindeutet."
     },
     "Schriftraum_Gliederung": {
-      "wert": "1 Spalte, 27 Zeilen",
+      "wert": "Ein Spaltenraum, etwa 23 cm breit, 24 cm hoch. Der Schriftfluss ist horizontal in einer Zeile. Die Blätter sind unliniert.",
       "unsicher": false,
-      "notiz": "Der Schriftraum ist einmalig angelegt, mit einer Spalte und 27 Zeilen. Die Blätter sind nicht liniert oder gerastert. Der Schriftraum misst 7,5 cm in der Höhe und 6,8 cm in der Breite. Verweiszeichen sind nicht erkennbar."
+      "notiz": "Der Text ist in einer geschwungenen gotischen Kurrentschrift auf einer Seite ohne vorzeichnende Linien geschrieben. Die Zeilen sind eng gesetzt, ohne sichtbare Linien oder Raster."
     },
     "Schrift": {
-      "wert": "Gotische Schrift (französisch-als sächsische Kursivschrift)",
+      "wert": "Gotische Kurrentschrift, schwarze Tinte, Zeilenhöhe ca. 4 mm, mehrere Abkürzungen, feine Ränder",
       "unsicher": false,
-      "notiz": "Die Schrift ist eine gotische Kursivschrift, die im spätmittelalterlichen deutschen Raum, insbesondere in der Schweiz, in der zweiten Hälfte des 14. und im 15. Jahrhundert verbreitet war. Die Tinte ist schwarz. Die Zeilenhöhe beträgt ca. 3 mm. Es sind keine farbigen Initialen oder Auszeichnungsschriften vorhanden. Abkürzungen wie ‘dn̄i’ für ‘Dominus’ und ‘me’ für ‘meines’ sind typisch für das 15. Jahrhundert. Korrekturen oder Rasuren sind nicht erkennbar."
+      "notiz": "Die Schrift ist eine gotische Kurrentschrift, charakterisiert durch gekrümmte Striche und eine hohes Fließvermögen. Die Tinte erscheint schwarz oder dunkelbraun. Die Zeilenhöhe wird durch die Kantenlinie des Textes auf dem Blatt ermittelt. Abkürzungen wie 'ff' für 'fuer' und 'ff' für 'fuer', 'ff' für 'fe' sind typisch für den Spätmittelalterlichen Deutsch."
     },
     "Schreiber": {
-      "wert": "Anonym",
+      "wert": "Einer, anonym",
       "unsicher": false,
-      "notiz": "Der Schreiber ist nicht namentlich bekannt. Es ist eine einzige Hand erkennbar, die Schrift ist flüssig und deutlich. Die Abkürzungen und die Verwendung der lateinischen Ausdrücke im Text deuten auf einen gebildeten Schreiber hin, möglicherweise aus der Verwaltung der Stadt Bern. Es sind keine Marginalien, Federproben oder Nachträge zu erkennen."
+      "notiz": "Die Handschrift ist durchgehend mit ein und derselben Hand geschrieben. Es sind keine signierenden Elemente, wie eine Unterschrift oder ein Name, vorhanden. Die Schreiber sind nicht identifiziert."
     },
     "Ausstattung": {
-      "wert": "Ohne",
+      "wert": "Keine Initialen, keine Miniaturen, keine Farbgebungen",
       "unsicher": false,
-      "notiz": "Das Dokument enthält keine Buchschmuckelemente, Miniaturen oder verzierte Initialen. Es gibt keine farbigen Elemente. Die Ausstattung ist einfach und funktional."
+      "notiz": "Das Dokument enthält keine dekorativen Elemente wie verzierte Initialen, Lombarden oder farbige Verzierung. Die Schrift ist einfarbig in Schwarz oder Dunkelbraun. Die handschriftliche Angabe '1439' und '27r' sind keine Ausstattungselemente, sondern Teil der Bibliothekssignatur."
     },
     "Sprache": {
-      "wert": "Deutsch",
+      "wert": "Mittelhochdeutsch, alemannischer Dialektraum",
       "unsicher": false,
-      "notiz": "Der Text ist in der neuhochdeutschen Sprache verfasst, mit Einflüssen aus dem mittelhochdeutschen und dem lateinischen Sprachgebrauch. Der Dialektraum ist alemannisch, insbesondere bernisch."
+      "notiz": "Der Text ist in einer formellen mittelhochdeutschen Form verfasst, typisch für Verwaltungsdokumente des 15. Jahrhunderts. Das Vorhandensein von Wörtern wie 'koffe', 'fremdlichs', 'kraft', 'Eimrath', 'Samp' und 'fres' deutet auf eine alemannische Dialektgruppe hin, möglicherweise aus dem Schweizerischen."
     },
     "Einband": {
-      "wert": "Nicht beobachtbar",
+      "wert": "Nicht erkennbar",
       "unsicher": true,
-      "notiz": "Der Einband ist nicht sichtbar und kann daher nicht beschrieben werden. Die Bildquelle zeigt nur das Blatt selbst."
+      "notiz": "Die Abbildung zeigt ein einzelnes Blatt. Der Einband ist nicht sichtbar. Es ist daher nicht möglich, Ausstattung, Material oder Beschläge zu beschreiben."
     },
     "Provenienz": {
-      "wert": "Bern (unsicher)",
+      "wert": "Keine gesicherten Angaben",
       "unsicher": true,
-      "notiz": "Die Provenienz kann nicht mit Sicherheit bestimmt werden. Aufgrund des Textinhalts und der Schreibweise ist eine Herkunft aus der Stadt Bern plausibel, jedoch nicht gesichert."
+      "notiz": "Es gibt keine sichtbaren Besitzsiegel, Widmungen oder Inventarnummern, die eine Provenienz aufzeigen."
     },
     "Literatur": {
-      "wert": "Nicht bekannt",
+      "wert": "Keine gesicherten Angaben",
       "unsicher": true,
-      "notiz": "Es liegen keine Quellen oder Literaturangaben vor, die das Dokument beschreiben."
+      "notiz": "Es wurden keine bibliografischen Angaben im Dokument oder in der Umgebung identifiziert, die auf eine Veröffentlichung oder eine wissenschaftliche Bearbeitung hinweisen."
     },
     "Inhalt": {
-      "wert": "Urbar",
+      "wert": "Urkunde, möglicherweise eine Verleihung oder Zustimmung zu einer Verfügung",
       "unsicher": false,
-      "notiz": "Der Inhalt des Dokuments ist ein Urbar, ein Gueterverzeichnis von Grundherrschaften. Es handelt sich um ein Verwaltungsdokument der Stadt Bern, das die Güter und Abgaben regelt."
+      "notiz": "Der Text beginnt mit 'Infer fremdlichs grüe', was auf einen formalen, rechtlichen oder offiziellen Text hindeutet. Die Formulierung und der Gebrauch von Ausdrücken wie 'kraft', 'wirt', 'offizicilande', 'gesthiche' und 'paim off ewher' weisen auf eine Urkunde oder eine Rechtsverfügung hin. Die Nennung von Ortsnamen wie 'Darmmb' (Darmstadt) und 'New Numb' (Neuenburg) lässt auf eine Verleihung oder eine Zustimmung zu einer Verfügung schließen."
     },
     "Weitere_Hinweise": {
-      "wert": "Nicht vorhanden",
+      "wert": "Die Nummerierung '27r' ist eine Bibliothekssignatur (UB Basel), 'BAT' steht für den Bestand. '1439 VT 9' ist eine handschriftliche Zusatzangabe, möglicherweise eine interne Verwendungsnennung.",
       "unsicher": false,
-      "notiz": "Keine weiteren Hinweise sind vorhanden."
+      "notiz": "Die handschriftliche Angabe '1439 VT 9' steht direkt über dem Text und kann Teil der ursprünglichen Beschreibung oder einer späteren Ergänzung sein. 'VT' könnte für 'Vorrang' oder einen internen Katalogverweis stehen."
     }
   },
   "care_flag": {

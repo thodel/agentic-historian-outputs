@@ -1,21 +1,24 @@
 # Entitäten: BAT_664_r_00027
 
+## PERSON
+
+- **Iuser** (Iuser) — Iuser femitlich geñs uõe liebẽ getemrẽ _(conf=unverified, none)_
+- **Uan** (Uan) — Uan de scosse io eg̃ soda luit _(conf=unverified, none)_
+- **Nun** (Nun) — ist Nun han ixir darmmub _(conf=unverified, none)_
+- **Bat** (Bat) — thułi und
+Bat du den _(conf=unverified, none)_
+- **Naff** (Naff) — der ernt Naff int tũ de gerchte _(conf=unverified, none)_
+- **Numo Iumo** (Numo Iumo) — die Numo Iumo dũ ic xxx _(conf=unverified, none)_
+- **Iun** (Iun) — Iun digł uuduil fucgnanẽ _(conf=unverified, none)_
+
 ## PLACE
 
-- **Cuͦnratoͤffen** (cunratoffen) — ...fast vnd Cuͦnratoͤffen , _(conf=unverified, none)_
-- **GespLatz** (gesplatz) — ...die sach vff GespLatz dz ouch ist gefhlgt , _(conf=unverified, none)_
+- **Rast** (Rast) — hemm Rast und Cuuratẽ nefen der selbe Rast _(conf=unverified, none)_
 
 ## ORG
 
-- **Schulen** (schulen) — ...anno ander etc . Schulen vnd Vat etc . _(conf=unverified, ?)_
-- **Vat** (vat) — ...anno ander etc . Schulen vnd Vat etc . _(conf=unverified, ?)_
-- **Kirch** (kirche) — ...Er Kirch bescheid , dand in die zum anno ander etc . _(conf=unverified, ?)_
+- **Cuuratẽ** (Cuurate) — hemm Rast und Cuuratẽ nefen _(conf=unverified, ?)_
 
 ## DATE
 
-- **nachtag** (nachtag) — ...hat vor nachtag usgeracht macht werd , _(conf=unverified, ?)_
-- **anno** (anno) — ...dand in die zum anno ander etc . _(conf=unverified, ?)_
-
-## PERSON
-
-- **der sohn** (sohn) — ...der sohn vff wahr vnd darumb so oft... _(conf=unverified, none)_
+- **xxx** (xxx) — die Numo Iumo dũ ic xxx _(conf=unverified, ?)_

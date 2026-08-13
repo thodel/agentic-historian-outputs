@@ -1,56 +1,78 @@
 {
   "entities": [
     {
-      "text": "Cuͦnratoͤffen",
-      "type": "PLACE",
-      "normalised": "cunratoffen",
-      "context": "...fast vnd Cuͦnratoͤffen ,",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "GespLatz",
-      "type": "PLACE",
-      "normalised": "gesplatz",
-      "context": "...die sach vff GespLatz dz ouch ist gefhlgt ,",
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Schulen",
-      "type": "ORG",
-      "normalised": "schulen",
-      "context": "...anno ander etc . Schulen vnd Vat etc ."
-    },
-    {
-      "text": "Vat",
-      "type": "ORG",
-      "normalised": "vat",
-      "context": "...anno ander etc . Schulen vnd Vat etc ."
-    },
-    {
-      "text": "Kirch",
-      "type": "ORG",
-      "normalised": "kirche",
-      "context": "...Er Kirch bescheid , dand in die zum anno ander etc ."
-    },
-    {
-      "text": "nachtag",
-      "type": "DATE",
-      "normalised": "nachtag",
-      "context": "...hat vor nachtag usgeracht macht werd ,"
-    },
-    {
-      "text": "anno",
-      "type": "DATE",
-      "normalised": "anno",
-      "context": "...dand in die zum anno ander etc ."
-    },
-    {
-      "text": "der sohn",
+      "text": "Iuser",
       "type": "PERSON",
-      "normalised": "sohn",
-      "context": "...der sohn vff wahr vnd darumb so oft...",
+      "normalised": "Iuser",
+      "context": "Iuser femitlich geñs uõe liebẽ getemrẽ",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Uan",
+      "type": "PERSON",
+      "normalised": "Uan",
+      "context": "Uan de scosse io eg̃ soda luit",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Rast",
+      "type": "PLACE",
+      "normalised": "Rast",
+      "context": "hemm Rast und Cuuratẽ nefen der selbe Rast",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Cuuratẽ",
+      "type": "ORG",
+      "normalised": "Cuurate",
+      "context": "hemm Rast und Cuuratẽ nefen"
+    },
+    {
+      "text": "Nun",
+      "type": "PERSON",
+      "normalised": "Nun",
+      "context": "ist Nun han ixir darmmub",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Bat",
+      "type": "PERSON",
+      "normalised": "Bat",
+      "context": "thułi und\nBat du den",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Naff",
+      "type": "PERSON",
+      "normalised": "Naff",
+      "context": "der ernt Naff int tũ de gerchte",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Numo Iumo",
+      "type": "PERSON",
+      "normalised": "Numo Iumo",
+      "context": "die Numo Iumo dũ ic xxx",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "xxx",
+      "type": "DATE",
+      "normalised": "xxx",
+      "context": "die Numo Iumo dũ ic xxx"
+    },
+    {
+      "text": "Iun",
+      "type": "PERSON",
+      "normalised": "Iun",
+      "context": "Iun digł uuduil fucgnanẽ",
       "hub_confidence": "unverified",
       "link_method": "none"
     }

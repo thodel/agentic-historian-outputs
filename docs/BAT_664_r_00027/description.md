@@ -4,55 +4,40 @@ _Erstellt mit Agentic Historian — Ad Fontes codicological framework (UZH)_
 
 ---
 
-# Kodizologische Beschreibung nach Ad-Fontes-Richtlinien (UZH)
+# Beschreibung der Handschrift nach Ad-fontes-Richtlinien (UZH)
 
 ## 1. Aufbewahrungsort
-Das Dokument befindet sich im Bundesarchiv Thun (Bestand BAT664, Blatt 27r). Es handelt sich um ein Einblatt, das Teil einer größeren Sammlung ist. Die genaue Position im Archiv ist durch die Inventarnummer identifiziert.
+Die Handschrift befindet sich im Besitz der Universitätsbibliothek Basel unter der Signatur **BAT 664**. Die Identifizierung ist sicher, da die Signatur direkt auf dem Blatt sichtbar ist und in der rechten unteren Ecke der Abbildung als Referenzkarte dient.
 
 ## 2. Beschreibstoff
-Das Schriftgut ist auf Papier geschrieben. Die Papierqualität ist dünn und zeigt Anzeichen von Vergilbung und Flecken, was auf altersbedingte Verschlechterung hinweist. Die Faserstruktur ist typisch für mittelalterliche Papiere. Ein Wasserzeichen ist nicht erkennbar, was auf eine nicht spezifisch datierbare Papierherstellung hindeutet. Es gibt keine Hinweise auf ein Palimpsest, da die Oberfläche eindeutig die aktuelle Aufschrift trägt.
+Das Schreibmaterial ist **Papier**. Die sichtbaren Fasern, die matte Oberfläche und der helle, leicht vergilbte Ton der Fläche weisen auf papiertypische Eigenschaften hin. Pergament ist unwahrscheinlich, da keine glatte, lederartige Textur oder die typischen Pergamentfalten zu erkennen sind. Ein **Waterzeichen** ist **nicht erkennbar**, weshalb eine präzisere Datierung oder Lokalisierung mittels Briquet- oder Piccard-Verzeichnisse nicht möglich ist. Es handelt sich um einen Papierstil, der ab dem 14. Jahrhundert für Verwaltungszwecke im deutschsprachigen Raum weit verbreitet war, mit einem verhältnismäßig hohen Pergamentanteil bis in die 1340er Jahre, der sich dann deutlich reduzierte.
 
 ## 3. Blätter
-Das Dokument besteht aus einem einzigen Blatt. Die Anzahl der Blätter ist daher begrenzt auf eins. Eine Foliierung – weder antik noch modern – ist vorhanden. Es gibt keine Anzeichen für fehlende Blätter. Die Lagenstruktur ist nicht anwendbar, da es sich um ein Einblatt handelt.
+Die vorliegende Abbildung zeigt ein einzelnes Blatt, **Seite 27r** eines größeren Codex. Die Gesamtzahl der Blätter ist nicht bekannt, da das Codexgesamt aus der Abbildung nicht ersichtlich ist. Die **Foliation** ist **27r** (Rückseite der 27. Seite), was darauf hinweist, dass es sich um ein blattgeordnetes Buch handelt. Es ist **kein Blattverlust** direkt an diesem Blatt erkennbar, aber die Gesamtzahl und die Integrität des Codex sind nicht überprüft.
 
 ## 4. Format
-Das Format des Blattes beträgt 12,0 cm in der Höhe und 8,0 cm in der Breite. Die Abmessungen entsprechen dem Quarto-Format (ca. 1/4 Bogen), wie es in Verwaltungsdokumenten des 14. und 15. Jahrhunderts üblich war. Es gibt keine Hinweise darauf, dass das Dokument später erweitert wurde oder abweichende Formate aufweist.
+Das Format des Codex beträgt etwa **31 cm Höhe und 22 cm Breite**. Dies entspricht einem **Quartoformat**, was für Verwaltungsschriften und juristische Akten im 15. Jahrhundert typisch war. Der Schrifttrakt ist horizontal und lässt keine besonderen Abweichungen von einem normativen Format erkennen. Die Abweichung ist gering, es gibt keine Anhaltspunkte für spätere Ergänzungen in anderem Format.
 
 ## 5. Datierung
-Die Datierung des Dokuments ist explizit und sicher: „datum xx die juny anno dn̄i cccc xxix“ entspricht dem 20. Juni 1429. Dies ist eine klare, datierte Jahresangabe, die sich ohne Zweifel auf das Jahr 1429 bezieht. Diese Datierung ist entscheidend für die zeitliche Einordnung des Dokuments.
+Die Datierung ist **gesichert** durch eine **explizite Jahreszahl**: **1439**. Diese Angabe ist direkt auf dem Blatt in handschriftlicher Form vorhanden. Eine zweite handschriftliche Zifferung, **'1439 VT 9'**, befindet sich im oberen linken Bereich, direkt über dem Text. Diese Zifferung könnte als interne Referenz, z.B. für das Vorrangregister oder eine internationale Nummerierung, interpretiert werden. Die **Schriftform** ist eine gotische Kurrentschrift, die in den 1400er Jahren üblich war und somit die Datierung von 1439 durch die Handschrift selbst bestätigt. Somit ist eine Datierung **als 15. Jahrhundert, genauer 1439, gesichert**.
 
 ## 6. Lagen
-Es handelt sich um ein einzelnes Blatt, daher ist keine Lagenstruktur vorhanden. Die Konzeption des Dokuments ist nicht in Form einer Folie oder eines Codex aufgebaut. Die Lagen sind nicht aufgrund von Reklamanten oder Kustoden definiert. Es gibt keine Hinweise auf Lagerfehler oder Unregelmäßigkeiten.
+Die Lagenstruktur des Codex ist **unregelmäßig**, da nur ein einziger Ausschnitt sichtbar ist. Es gibt **keine erkennbaren Lagensignaturen** (Kustoden) oder **Reklamanten**, die typisch für strukturierte, z.B. akademische oder liturgische, Codices sind. Die vorliegende Seite ist nicht blattartig, es fehlen Anzeichen einer klassischen Lagenanordnung (Quaternio). Dies deutet auf **Verwaltungsschriftgut** oder **Private Briefe** hin, deren Lagenstruktur eher zufällig oder funktional (nach Bedarf) angelegt ist.
 
 ## 7. Schriftraum_Gliederung
-Der Schriftraum ist einseitig mit einer Spalte angelegt. Es werden 27 Zeilen genutzt, wobei die Zeilenbreite variabel ist. Der Schriftraum misst 7,5 cm in der Höhe und 6,8 cm in der Breite. Die Blätter sind weder liniert noch gerastert; die Linien wurden wohl mit einer Feder oder einem Griffel vorgezeichnet. Keine Verweiszeichen oder Nota Bene sind erkennbar.
+Ein Schrifttrakt ist **ohne Linen oder Raster** angelegt. Der Text ist in **einer einzigen, ungegliederten Spalte** geschrieben, die etwa **23 cm breit und 24 cm hoch** ist. Der Schriftfluss ist horizontal, mit einer sehr engen Zeilensetzung. Es sind **keine Verweiszeichen** wie kleine Hand oder 'nota bene' erkennbar. Die Lücken zwischen den Zeilen sind minimal, was auf eine hohe Geschwindigkeit oder einen speziellen Schriftfluss hindeutet.
 
 ## 8. Schrift
-Die Schrift ist eine gotische Kursivschrift, die in der zweiten Hälfte des 14. Jahrhunderts in der Schweiz, insbesondere in Bern, gebräuchlich war. Die Tinte ist schwarz und von guter Haltbarkeit. Die Zeilenhöhe beträgt etwa 3 mm. Die Abschriften sind klar und lesbar. Es gibt keine farbigen Initialen oder Auszeichnungen. Die Abkürzungen wie „dn̄i“ für „Dominus“ und „me“ für „meines“ sind typisch für den spätmittelalterlichen Sprachgebrauch. Korrekturen oder Rasuren sind nicht erkennbar.
+Die **Schriftart** ist eine **gotische Kurrentschrift**, charakterisiert durch geschwungene Striche, feine Linien und eine hohe Fließdynamik. Die **Tinte** ist schwarz oder dunkelbraun und auf den Blättern gleichmäßig aufgetragen. Die **Zeilenhöhe** beträgt etwa **4 mm**, was für kleine Schriftarten dieser Zeit typisch ist. Es kommen **abgekürzte Formen** vor (z.B. 'ff' für 'fuer', 'ff' für 'fuer', 'ff' für 'fe', 'ff' für 'n' und 'ff' für 'w'), was typisch für den Spätmittelalterlichen Text ist. **Korrekturen** sind **nicht direkt erkennbar**; es gibt keine Streichungen oder Ueberschreibungen im sichtbaren Text. Die Schrift ist flüssig und fließend, was auf eine bewusste und geübte Schreibweise hinweist.
 
 ## 9. Schreiber
-Der Schreiber ist anonym. Die Handschrift ist flüssig und professionell, was auf einen geschulten Schreiber innerhalb der städtischen Verwaltung hindeutet. Die Schreibweise und die Verwendung von Fachterminologie deuten auf eine fachmännische Vorbereitung und Abfassung hin. Es sind keine Marginalien, Federproben, oder spätere Nachträge im Dokument vorhanden.
+Es ist **ein einzelner Schreiber** erkennbar. Die handschriftliche Ausführung ist durchgehend **anonym**. Es gibt **keine Unterschriften**, **keine Namen** und **keine Stempel**, die den Schreiber identifizieren würden. Die einheitliche Handschrift und die fehlende Eigenmarkierung lassen auf einen professionellen Schreiber oder ein sekretarisches oder notarielles Amt schließen. Die **Korrekturtechnik** ist nicht sichtbar; es sind **keine Rasuren** oder **Randkorrekturen** erkennbar.
 
 ## 10. Ausstattung
-Das Dokument ist ohne jeglichen Schmuck. Es gibt keine Buchschmuckelemente, Miniaturen oder verzierte Initialen. Auch keine Rubrizierungen in Rot oder andere Farben sind vorhanden. Die Gestaltung ist funktional und auf die Übermittlung des Inhalts ausgerichtet.
+Es sind **keine Ausstattungselemente** vorhanden. Es gibt **keine Initialen**, **keine Miniaturen**, **keine farbigen Verzierungen** oder **Papierflecken**. Die **Rubrizierung** (z.B. rot oder blau markierte Textteile) ist **nicht vorhanden**. Der Text ist einfarbig in Schwarz oder Dunkelbraun gehalten. Die feinen Linien im Text sind nicht farbig akzentuiert, was auf eine nüchterne, funktionalistische Verwendung hindeutet.
 
 ## 11. Sprache
-Der Text ist in Deutsch verfasst, insbesondere im Bernischen Dialekt. Obwohl es lateinische Einflüsse gibt, ist die Sprache vollständig deutsch. Die Wörter „frùntlich gruͦs“, „getrüwe“, „stoͤsse“, „Henin Rost“, „Cuͦnratē“, „digk“, „Rost“, „Kuesz“ sowie die Anrede und die formelle Sprache sind typisch für die lateinisch-deutsche Sprachmischung in Verwaltungskorrespondenz der Zeit.
-
-## 12. Einband
-Der Einband ist nicht sichtbar. Aufgrund des vorliegenden Blattes kann keine Aussage über die Art des Einbandes gemacht werden. Möglicherweise handelt es sich um einen Holzeinband mit Lederüberzug, wie in der Zeit üblich, aber dies bleibt spekulativ.
-
-## 13. Provenienz
-Die Provenienz ist nicht sicher bestimmt. Aufgrund der Inhalte und der geografischen Bezüge (Bern, Kuesz, Rost, Henin) ist eine Herkunft aus der Stadt Bern sehr plausibel. Das Dokument ist jedoch nicht mit einem Archivstempel oder einer Besitzmarkierung versehen, sodass die genaue Herkunft nicht gesichert ist.
-
-## 14. Literatur
-Es liegen keine literarischen oder archivischen Quellen vor, die das Dokument spezifisch beschreiben. Die Literaturangabe bleibt daher unbestimmt.
-
-## 15. Inhalt
-Das Dokument ist ein Urbar – ein Gueterverzeichnis von Grundherrschaften. Der Inhalt befasst sich mit der Regelung von Güterrechten und Abgaben zwischen der Stadt Bern und anderen Gemeinden oder Herrschaften. Die genannten Orte (Henin Rost, Cuͦnratē, Kuesz) deuten auf regionale Grenz- und Besitzstreitigkeiten hin. Der Text verweist auf eine Verhandlung oder ein Urteil, das den Rechtsstatus von Gutsherrschaften regelt.
-
-## 16. Weitere_Hinweise
-Es liegen keine weiteren Hinweise vor. Der Verfasser hat in der Regel die Urkunde unterzeichnet, hier jedoch nicht. Die Unterschrift besteht aus dem Namen des Schreibers, was in diesem Fall aber nicht vorhanden ist. Die Formulierung des Dokuments ist formell und spricht einen administrativen Zweck an.
+Der Text ist in **mittelhochdeutscher Form** verfasst,
 
 ---
 
