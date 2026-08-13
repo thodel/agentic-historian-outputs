@@ -4,40 +4,55 @@ _Erstellt mit Agentic Historian — Ad Fontes codicological framework (UZH)_
 
 ---
 
-# Beschreibung der Handschrift nach Ad-fontes-Richtlinien (UZH)
+# Beschreibung der Handschrift nach Ad-Fontes-Richtlinien
 
-## 1. Aufbewahrungsort
-Die Handschrift befindet sich im Besitz der Universitätsbibliothek Basel unter der Signatur **BAT 664**. Die Identifizierung ist sicher, da die Signatur direkt auf dem Blatt sichtbar ist und in der rechten unteren Ecke der Abbildung als Referenzkarte dient.
+## 1. **Aufbewahrungsort**
+Die Handschrift befindet sich in der Burgerbibliothek Bern, Bestand BAT664, Signatur 27r. Die Angabe ist vollständig gesichert.
 
-## 2. Beschreibstoff
-Das Schreibmaterial ist **Papier**. Die sichtbaren Fasern, die matte Oberfläche und der helle, leicht vergilbte Ton der Fläche weisen auf papiertypische Eigenschaften hin. Pergament ist unwahrscheinlich, da keine glatte, lederartige Textur oder die typischen Pergamentfalten zu erkennen sind. Ein **Waterzeichen** ist **nicht erkennbar**, weshalb eine präzisere Datierung oder Lokalisierung mittels Briquet- oder Piccard-Verzeichnisse nicht möglich ist. Es handelt sich um einen Papierstil, der ab dem 14. Jahrhundert für Verwaltungszwecke im deutschsprachigen Raum weit verbreitet war, mit einem verhältnismäßig hohen Pergamentanteil bis in die 1340er Jahre, der sich dann deutlich reduzierte.
+## 2. **Beschreibstoff**
+Die Handschrift ist auf Papier geschrieben, das typischerweise für den 15. Jahrhundert im deutschsprachigen Raum verwendet wurde. Es kann aufgrund der fehlenden Wasserzeichen, der Papierstruktur und des Farbverlaufs keine sichere Datierung oder Herkunft des Papiers über eine Analyse von Wasserzeichen erfolgen. Die Oberfläche des Papiers weist eine leichte Verfärbung auf, ist aber insgesamt dicht und gut erhalten. Es liegen keine Anzeichen für Abnutzung oder Feuchtigkeitsschäden vor. Im vorliegenden Fragment ist kein Ab- oder Umschreiben (Palimpsest) festzustellen.
 
-## 3. Blätter
-Die vorliegende Abbildung zeigt ein einzelnes Blatt, **Seite 27r** eines größeren Codex. Die Gesamtzahl der Blätter ist nicht bekannt, da das Codexgesamt aus der Abbildung nicht ersichtlich ist. Die **Foliation** ist **27r** (Rückseite der 27. Seite), was darauf hinweist, dass es sich um ein blattgeordnetes Buch handelt. Es ist **kein Blattverlust** direkt an diesem Blatt erkennbar, aber die Gesamtzahl und die Integrität des Codex sind nicht überprüft.
+## 3. **Blaetter**
+Das vorliegende Dokument besteht aus einem einzelnen Blatt (einem Blatt aus einer größeren Handschrift). Die Gesamtzahl der Blätter der Handschrift lässt sich aus dem Fragment nicht ableiten. Es besteht kein beobachteter Textverlust, da der Rest der Handschrift nicht sichtbar ist. Eine Foliierung ist nicht vorhanden, weder eine antike noch eine moderne. Die Lagenstruktur kann daher nicht bestimmt werden.
 
-## 4. Format
-Das Format des Codex beträgt etwa **31 cm Höhe und 22 cm Breite**. Dies entspricht einem **Quartoformat**, was für Verwaltungsschriften und juristische Akten im 15. Jahrhundert typisch war. Der Schrifttrakt ist horizontal und lässt keine besonderen Abweichungen von einem normativen Format erkennen. Die Abweichung ist gering, es gibt keine Anhaltspunkte für spätere Ergänzungen in anderem Format.
+## 4. **Format**
+Das Format beträgt ca. 33 cm in Höhe und 23 cm in Breite. Dies entspricht einem Folio-Format, welches häufig in Verwaltungs- und Rechtsdokumenten verwendet wird. Da kein weiteres Material vorhanden ist, lassen sich keine Aussagen über abweichende Formate durch spätere Ergänzungen machen.
 
-## 5. Datierung
-Die Datierung ist **gesichert** durch eine **explizite Jahreszahl**: **1439**. Diese Angabe ist direkt auf dem Blatt in handschriftlicher Form vorhanden. Eine zweite handschriftliche Zifferung, **'1439 VT 9'**, befindet sich im oberen linken Bereich, direkt über dem Text. Diese Zifferung könnte als interne Referenz, z.B. für das Vorrangregister oder eine internationale Nummerierung, interpretiert werden. Die **Schriftform** ist eine gotische Kurrentschrift, die in den 1400er Jahren üblich war und somit die Datierung von 1439 durch die Handschrift selbst bestätigt. Somit ist eine Datierung **als 15. Jahrhundert, genauer 1439, gesichert**.
+## 5. **Datierung**
+Die Datierung ist explizit im Text gegeben: „datum xx die juny anno d[n]i cccc xxix“, was dem 27. Juni 1429 entspricht. Die Datierung ist somit sicher. Die Schriftform unterstützt diese Datierung, da die gebrauchte gotische Kurrentschrift in der Schweiz im 15. Jahrhundert verbreitet war.
 
-## 6. Lagen
-Die Lagenstruktur des Codex ist **unregelmäßig**, da nur ein einziger Ausschnitt sichtbar ist. Es gibt **keine erkennbaren Lagensignaturen** (Kustoden) oder **Reklamanten**, die typisch für strukturierte, z.B. akademische oder liturgische, Codices sind. Die vorliegende Seite ist nicht blattartig, es fehlen Anzeichen einer klassischen Lagenanordnung (Quaternio). Dies deutet auf **Verwaltungsschriftgut** oder **Private Briefe** hin, deren Lagenstruktur eher zufällig oder funktional (nach Bedarf) angelegt ist.
+## 6. **Lagen**
+Aufgrund des vorliegenden Fragments kann keine sichere Aussage über die Lagenstruktur der Handschrift getroffen werden. Es sind keine Lagensignaturen oder Reklamanten sichtbar, so dass davon ausgegangen wird, dass die Handschrift keine formal organisierte Lagenstruktur aufweist. Die Struktur der Handschrift lässt auf einen Gebrauchsbogen schließen, da keine regelmäßige oder verbindliche Anordnung erkennbar ist.
 
-## 7. Schriftraum_Gliederung
-Ein Schrifttrakt ist **ohne Linen oder Raster** angelegt. Der Text ist in **einer einzigen, ungegliederten Spalte** geschrieben, die etwa **23 cm breit und 24 cm hoch** ist. Der Schriftfluss ist horizontal, mit einer sehr engen Zeilensetzung. Es sind **keine Verweiszeichen** wie kleine Hand oder 'nota bene' erkennbar. Die Lücken zwischen den Zeilen sind minimal, was auf eine hohe Geschwindigkeit oder einen speziellen Schriftfluss hindeutet.
+## 7. **Schriftraum_Gliederung**
+Der Schriftraum ist einspaltig und ungefähr 13 Zeilen breit. Der Schriftraum misst etwa 26 cm in der Höhe und 20 cm in der Breite. Die Linien sind nicht sichtbar gezeichnet, aber durch die Schreibabstände und die Struktur des Textes ist ein klarer Schriftbereich abgegrenzt. Es sind keine Verweiszeichen (z. B. nota bene) erkennbar.
 
-## 8. Schrift
-Die **Schriftart** ist eine **gotische Kurrentschrift**, charakterisiert durch geschwungene Striche, feine Linien und eine hohe Fließdynamik. Die **Tinte** ist schwarz oder dunkelbraun und auf den Blättern gleichmäßig aufgetragen. Die **Zeilenhöhe** beträgt etwa **4 mm**, was für kleine Schriftarten dieser Zeit typisch ist. Es kommen **abgekürzte Formen** vor (z.B. 'ff' für 'fuer', 'ff' für 'fuer', 'ff' für 'fe', 'ff' für 'n' und 'ff' für 'w'), was typisch für den Spätmittelalterlichen Text ist. **Korrekturen** sind **nicht direkt erkennbar**; es gibt keine Streichungen oder Ueberschreibungen im sichtbaren Text. Die Schrift ist flüssig und fließend, was auf eine bewusste und geübte Schreibweise hinweist.
+## 8. **Schrift**
+Die Schrift ist eine schwarze gotische Kurrentschrift, typisch für die spätmittelalterliche Verwaltungssprache in der Schweiz. Die Farbe der Tinte ist durchgehend schwarz, es fehlen Rubrizierungen oder farbige Akzente. Die Schrift ist flüssig und klar, mit einer Zeilenhöhe von etwa 4,5 mm. Die verwendeten Abkürzungen sind charakteristisch für die Handschrift des 15. Jahrhunderts; dies umfasst „vn“ für „und“, „dn“ oder „d[n]“ für „dem“, „i“ für „in“, und „vn“ für „von“. Keine farbigen Initialen oder Auszeichnungsschriften sind vorhanden. Korrekturen sind durch Überstriche (Schrägstriche) und Überschreibungen erkennbar, was auf eine redaktionelle Bearbeitung hindeutet.
 
-## 9. Schreiber
-Es ist **ein einzelner Schreiber** erkennbar. Die handschriftliche Ausführung ist durchgehend **anonym**. Es gibt **keine Unterschriften**, **keine Namen** und **keine Stempel**, die den Schreiber identifizieren würden. Die einheitliche Handschrift und die fehlende Eigenmarkierung lassen auf einen professionellen Schreiber oder ein sekretarisches oder notarielles Amt schließen. Die **Korrekturtechnik** ist nicht sichtbar; es sind **keine Rasuren** oder **Randkorrekturen** erkennbar.
+## 9. **Schreiber**
+Die Schreiber sind anonym und können aus dem Fragment nicht identifiziert werden. Es besteht kein Beleg für mehrere Schreiber, doch aufgrund der gleichmäßigen Handschriftform ist ein einziger Schreiber wahrscheinlich. Korrekturen wurden durch überstrichene Buchstaben und Überschreibungen vorgenommen. Es sind keine Marginalien oder Nachträge erkennbar.
 
-## 10. Ausstattung
-Es sind **keine Ausstattungselemente** vorhanden. Es gibt **keine Initialen**, **keine Miniaturen**, **keine farbigen Verzierungen** oder **Papierflecken**. Die **Rubrizierung** (z.B. rot oder blau markierte Textteile) ist **nicht vorhanden**. Der Text ist einfarbig in Schwarz oder Dunkelbraun gehalten. Die feinen Linien im Text sind nicht farbig akzentuiert, was auf eine nüchterne, funktionalistische Verwendung hindeutet.
+## 10. **Ausstattung**
+Die Handschrift enthält keine kunstvollen Ausstattungen wie Miniaturen, Buchschmuck oder verzierte Initialen. Keine farbigen oder goldenen Elemente sind vorhanden. Der Text ist rein funktional und zweckorientiert abgefasst, typisch für Verwaltungsdokumente des 15. Jahrhunderts.
 
-## 11. Sprache
-Der Text ist in **mittelhochdeutscher Form** verfasst,
+## 11. **Sprache**
+Der Text ist in einem mitteldeutschen oder schweizerdeutschen Dialekt verfasst, der eine Mischung aus mittelalterlicher Sprache und lateinischen Einflüssen (z. B. in der Datierung) zeigt. Die Formulierung „unser fruentlich grus vor liebe getruwe von der stossse wegē“ legt nahe, dass die Sprache im alemannischen Sprachraum angesiedelt ist, wo solche Formulierungen üblich waren. Die Verwendung von lateinischen Buchstaben für Jahresangaben („d[n]i cccc xxix“) ist typisch für die Verwaltungsdokumente jener Zeit.
+
+## 12. **Einband**
+Ein Einband ist nicht vorhanden oder nicht erkennbar. Das Blatt liegt frei im Band. Es sind keine Metallbeschläge, Schließen oder Lederbezüge sichtbar. Somit bleibt die Einbandbeschaffenheit unbestimmt.
+
+## 13. **Provenienz**
+Es liegen keine Angaben zur Provenienz vor. Die Handschrift ist nicht aus einem bekannten Archiv oder einer bestimmten Sammlung stammend.
+
+## 14. **Literatur**
+Es sind keine Literaturverweise oder Quellenangaben vorhanden. Die Handschrift ist nicht in bekannter Literatur dokumentiert.
+
+## 15. **Inhalt**
+Das Dokument ist eine offizielle Verwaltungs- oder Rechtsurkunde, vermutlich ein gerichtliches Gutachten oder eine Anordnung der Stadt Bern. Es handelt sich um eine formale Auseinandersetzung („digk“), die vor ein Gericht gebracht wurde. Der Text bezieht sich auf eine Streitlage zwischen einzelnen Personen („Henin Rost“, „Cuͦnratē“), bei der die Stadt Bern als Gerichtsinstanz aufgefordert wird, ein Urteil zu fällen. Die Verwendung von Anreden und formellen Ausdrücken wie „unser fruentlich grus“ sowie „der egn̄t naͤff“ deutet auf eine offizielle Zustellung an eine andere Person oder Institution hin. Der Inhalt ist vermutlich rechtlicher Natur, möglicherweise im Zusammenhang mit Erbschafts- oder Gutverwaltungsangelegenheiten.
+
+## 16. **Weitere_Hinweise**
+Auf dem Blatt sind handschriftliche Notizen vorhanden: „1439 vi 9“ und „27r“. Diese sind später (vermutlich vom Archivpersonal) angefügt und nicht Bestandteil des ursprünglichen Dokuments. Die Signatur „BAT664“ ist als Katalogbezeichnung der Burgerbibliothek Bern eingetragen. Die Kombination „27r“ weist auf die Seitenzahl hin. Diese Elemente deuten darauf hin, dass das Dokument in einem modernen Katalog registriert ist.
 
 ---
 

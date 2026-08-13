@@ -1,5 +1,5 @@
 # Transkription: BAT_664_r_00027
-# QA-Score: 0.48
+# QA-Score: 0.00
 # HTR-Source: grouped
 # Modell: qwen3-vl-30b-a3b-instruct
 

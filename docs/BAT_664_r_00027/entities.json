@@ -3,7 +3,7 @@
     {
       "text": "Iuser",
       "type": "PERSON",
-      "normalised": "Iuser",
+      "normalised": "iuser",
       "context": "Iuser femitlich geñs uõe liebẽ getemrẽ",
       "hub_confidence": "unverified",
       "link_method": "none"
@@ -11,70 +11,70 @@
     {
       "text": "Uan",
       "type": "PERSON",
-      "normalised": "Uan",
-      "context": "Uan de scosse io eg̃ soda luit",
+      "normalised": "uan",
+      "context": "Uan de scosse io",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
       "text": "Rast",
       "type": "PLACE",
-      "normalised": "Rast",
-      "context": "hemm Rast und Cuuratẽ nefen der selbe Rast",
+      "normalised": "rast",
+      "context": "hemm Rast und Cuuratẽ",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "Cuuratẽ",
+      "text": "Cuurate",
       "type": "ORG",
-      "normalised": "Cuurate",
-      "context": "hemm Rast und Cuuratẽ nefen"
+      "normalised": "cuurate",
+      "context": "Rast und Cuuratẽ nefen"
     },
     {
-      "text": "Nun",
+      "text": "Iun",
       "type": "PERSON",
-      "normalised": "Nun",
-      "context": "ist Nun han ixir darmmub",
+      "normalised": "iun",
+      "context": "der selbe Rast Iun digł",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "Bat",
+      "text": "ixir",
       "type": "PERSON",
-      "normalised": "Bat",
-      "context": "thułi und\nBat du den",
+      "normalised": "ixir",
+      "context": "Nun han ixir darmmub",
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
       "text": "Naff",
-      "type": "PERSON",
-      "normalised": "Naff",
-      "context": "der ernt Naff int tũ de gerchte",
-      "hub_confidence": "unverified",
-      "link_method": "none"
+      "type": "SOCIAL_GROUP",
+      "normalised": "naff",
+      "context": "der ernt Naff int de gerchte"
     },
     {
-      "text": "Numo Iumo",
-      "type": "PERSON",
-      "normalised": "Numo Iumo",
-      "context": "die Numo Iumo dũ ic xxx",
-      "hub_confidence": "unverified",
-      "link_method": "none"
+      "text": "Gerichte",
+      "type": "ORG",
+      "normalised": "gerichte",
+      "context": "de gerchte mache drĩ sich usserẽ"
+    },
+    {
+      "text": "Recht",
+      "type": "ORG",
+      "normalised": "recht",
+      "context": "stat Recht ist unib s"
+    },
+    {
+      "text": "Altiuree",
+      "type": "ORG",
+      "normalised": "altiuree",
+      "context": "futen altiuree stat"
     },
     {
       "text": "xxx",
       "type": "DATE",
       "normalised": "xxx",
-      "context": "die Numo Iumo dũ ic xxx"
-    },
-    {
-      "text": "Iun",
-      "type": "PERSON",
-      "normalised": "Iun",
-      "context": "Iun digł uuduil fucgnanẽ",
-      "hub_confidence": "unverified",
-      "link_method": "none"
+      "context": "dũ ic xxx"
     }
   ]
 }
