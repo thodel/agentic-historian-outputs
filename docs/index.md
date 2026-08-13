@@ -385,35 +385,35 @@ title: Katalog
   </div>
   </div>
 </article>
-<article class="catalogue-card" data-document-id="bat_664_r_00027" data-created="2026-07-07T15:25:18+02:00" data-kind="output" data-language="deutsch" data-script="gotische schrift (französisch-als sächsische kursivschrift)" data-search="bat_664_r_00027 urbar · 1429  1429 deutsch gotische schrift (französisch-als sächsische kursivschrift) urbar vnser fründlich grus vor liebe getrune von der stösse wyse so daß nit zwüschent hemin , fast vnd cuͦnratoͤffen , ✳ darumb and die selbe vast im oogt vnd vil fürgannd hat vor nachta" data-superseded="false" data-recognition-provenance="current" data-recognition-total="10" data-recognition-successful="7" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="3" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="DATE,ORG,PERSON,PLACE" data-completeness="teilweise">
+<article class="catalogue-card" data-document-id="bat_664_r_00027" data-created="2026-07-07T15:25:18+02:00" data-kind="output" data-language="mittelhochdeutsch, alemannischer dialektraum" data-script="gotische kurrentschrift, schwarze tinte, zeilenhöhe ca. 4 mm, mehrere abkürzungen, feine ränder" data-search="bat_664_r_00027 urkunde · 15. jahrhundert, etwa 1430er jahre  15. jahrhundert, etwa 1430er jahre mittelhochdeutsch, alemannischer dialektraum gotische kurrentschrift, schwarze tinte, zeilenhöhe ca. 4 mm, mehrere abkürzungen, feine ränder urkunde iuser femitlich geñs uõe liebẽ getemrẽ uan de scosse io eg̃ soda luit reu̾schent hemm rast und cuuratẽ nefen darimis ñ der selbe rast iun digł uuduil fucgnanẽ hat abet noca " data-superseded="false" data-recognition-provenance="current" data-recognition-total="9" data-recognition-successful="3" data-recognition-failed="5" data-recognition-empty="0" data-recognition-degenerate="1" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="8" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="DATE,ORG,PERSON,PLACE" data-completeness="teilweise">
   <div class="catalogue-card__layout">
   <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
   <div class="catalogue-card__content">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:25:18+02:00">07.07.2026, 15:25</time></p>
-      <h2><a href="BAT_664_r_00027/">Urbar · 1429</a></h2>
+      <h2><a href="BAT_664_r_00027/">Urkunde · 15. Jahrhundert, etwa 1430er Jahre</a></h2>
       <p class="catalogue-id">Dokument-ID <code>BAT_664_r_00027</code></p>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">3 problematische Kandidaten</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">6 problematische Kandidaten</span></div>
   </div>
-  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>1429</dd></div><div><dt>Entitäten</dt><dd>8</dd></div></dl>
-  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="BAT_664_r_00027/" aria-label="Dokument öffnen: Urbar · 1429">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="BAT_664_r_00027/?cmp=bat-664-r-00027-jpg-vlm-internvl3-8b-instruct:bat-664-r-00027-jpg-kraken-kraken-catmus-medieval&amp;page=BAT_664_r_00027.jpg#recognitions" aria-label="Modelle vergleichen: Urbar · 1429">Modelle vergleichen</a></p>
+  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert, etwa 1430er Jahre</dd></div><div><dt>Entitäten</dt><dd>10</dd></div></dl>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="BAT_664_r_00027/" aria-label="Dokument öffnen: Urkunde · 15. Jahrhundert, etwa 1430er Jahre">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="BAT_664_r_00027/?cmp=bat-664-r-00027-jpg-vlm-internvl3-8b-instruct:bat-664-r-00027-jpg-vlm-internvl3-8b-instruct-2&amp;page=BAT_664_r_00027.jpg#recognitions" aria-label="Modelle vergleichen: Urkunde · 15. Jahrhundert, etwa 1430er Jahre">Modelle vergleichen</a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
-      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Urbar</dd></div><div><dt>Sprache</dt><dd>Deutsch</dd></div><div><dt>Schrift</dt><dd>Gotische Schrift (französisch-als sächsische Kursivschrift)</dd></div><div><dt>Kandidaten</dt><dd>7 erfolgreich / 10 insgesamt</dd></div></dl>
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Urkunde</dd></div><div><dt>Sprache</dt><dd>Mittelhochdeutsch, alemannischer Dialektraum</dd></div><div><dt>Schrift</dt><dd>Gotische Kurrentschrift, schwarze Tinte, Zeilenhöhe ca. 4 mm, mehrere Abkürzungen, feine Ränder</dd></div><div><dt>Kandidaten</dt><dd>3 erfolgreich / 9 insgesamt</dd></div></dl>
       <div class="catalogue-status-groups">
         <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
-        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">3 von 10 Kandidaten problematisch</p></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">6 von 9 Kandidaten problematisch</p></div>
       </div>
 
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
         <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
-        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 3 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 5 fehlgeschlagene Erkennungsversuche</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> 1 degeneriertes Ergebnis</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
       </div>
-      <p class="catalogue-preview">Vnser fründlich grus vor liebe getrune von der stösse wyse so daß nit zwüschent hemin , fast vnd Cuͦnratoͤffen , ✳ darumb and die selbe vast im oogt vnd vil fürgannd hat vor nachta…</p>
+      <p class="catalogue-preview">Iuser femitlich geñs uõe liebẽ getemrẽ Uan de scosse io eg̃ soda luit reu̾schent hemm Rast und Cuuratẽ nefen darimis ñ der selbe Rast Iun digł uuduil fucgnanẽ hat abet noca …</p>
     </div>
   </details>
   </div>

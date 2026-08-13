@@ -1,7 +1,7 @@
 {
   "artifacts": [
     {
-      "characters": 645,
+      "characters": 651,
       "engine": "fusion",
       "error": null,
       "error_path": null,
@@ -13,28 +13,27 @@
       "status_code": "success"
     },
     {
-      "characters": 626,
+      "characters": 618,
       "engine": "vlm",
       "error": null,
       "error_path": null,
       "id": "bat-664-r-00027-jpg-vlm-internvl3-8b-instruct",
       "model_id": "internvl3-8b-instruct",
       "page": "BAT_664_r_00027.jpg",
-      "path": "recognitions/BAT_664_r_00027/vlm-internvl3-8b-instruct.txt",
+      "path": null,
       "status": "success",
       "status_code": "success"
     },
     {
-      "characters": 570,
+      "characters": null,
       "engine": "kraken",
-      "error": null,
-      "error_path": null,
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/BAT_664_r_00027/kraken-kraken-catmus_medieval.error.txt",
       "id": "bat-664-r-00027-jpg-kraken-kraken-catmus-medieval",
       "model_id": "kraken-catmus_medieval",
       "page": "BAT_664_r_00027.jpg",
-      "path": "recognitions/BAT_664_r_00027/kraken-kraken-catmus_medieval.txt",
-      "status": "success",
-      "status_code": "success"
+      "path": null,
+      "status": "error"
     },
     {
       "characters": null,
@@ -48,14 +47,26 @@
       "status": "error"
     },
     {
-      "characters": 344,
+      "characters": 626,
+      "engine": "vlm",
+      "error": null,
+      "error_path": null,
+      "id": "bat-664-r-00027-jpg-vlm-internvl3-8b-instruct-2",
+      "model_id": "internvl3-8b-instruct",
+      "page": "BAT_664_r_00027.jpg",
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 651,
       "engine": "kraken",
       "error": null,
       "error_path": null,
-      "id": "bat-664-r-00027-jpg-kraken-kraken-catmus-caroline",
-      "model_id": "kraken-catmus_caroline",
+      "id": "bat-664-r-00027-jpg-kraken-kraken-early-modern-german",
+      "model_id": "kraken-early_modern_german",
       "page": "BAT_664_r_00027.jpg",
-      "path": "recognitions/BAT_664_r_00027/kraken-kraken-catmus_caroline.txt",
+      "path": "recognitions/BAT_664_r_00027/kraken-kraken-early_modern_german.txt",
       "status": "success",
       "status_code": "success"
     },
@@ -71,16 +82,26 @@
       "status": "error"
     },
     {
-      "characters": 586,
+      "characters": null,
       "engine": "kraken",
-      "error": null,
-      "error_path": null,
-      "id": "bat-664-r-00027-jpg-kraken-kraken-mccatmus",
-      "model_id": "kraken-mccatmus",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/BAT_664_r_00027/kraken-kraken-early_modern_german_16.error.txt",
+      "id": "bat-664-r-00027-jpg-kraken-kraken-early-modern-german-16",
+      "model_id": "kraken-early_modern_german_16",
       "page": "BAT_664_r_00027.jpg",
-      "path": "recognitions/BAT_664_r_00027/kraken-kraken-mccatmus.txt",
-      "status": "success",
-      "status_code": "success"
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/BAT_664_r_00027/kraken-kraken-early-modern-german.error.txt",
+      "id": "bat-664-r-00027-jpg-kraken-kraken-early-modern-german-2",
+      "model_id": "kraken-early-modern-german",
+      "page": "BAT_664_r_00027.jpg",
+      "path": null,
+      "status": "error"
     },
     {
       "characters": null,
@@ -92,51 +113,15 @@
       "page": "BAT_664_r_00027.jpg",
       "path": null,
       "status": "error"
-    },
-    {
-      "characters": 283,
-      "engine": "kraken",
-      "error": null,
-      "error_path": null,
-      "id": "bat-664-r-00027-jpg-kraken-kraken-medieval-15-16",
-      "model_id": "kraken-medieval_15_16",
-      "page": "BAT_664_r_00027.jpg",
-      "path": "recognitions/BAT_664_r_00027/kraken-kraken-medieval_15_16.txt",
-      "status": "success",
-      "status_code": "success"
-    },
-    {
-      "characters": 661,
-      "engine": "kraken",
-      "error": null,
-      "error_path": null,
-      "id": "bat-664-r-00027-jpg-kraken-kraken-late-medieval-german",
-      "model_id": "kraken-late_medieval_german",
-      "page": "BAT_664_r_00027.jpg",
-      "path": "recognitions/BAT_664_r_00027/kraken-kraken-late_medieval_german.txt",
-      "status": "success",
-      "status_code": "success"
-    },
-    {
-      "characters": 651,
-      "engine": "kraken",
-      "error": null,
-      "error_path": null,
-      "id": "bat-664-r-00027-jpg-kraken-kraken-early-modern-german",
-      "model_id": "kraken-early_modern_german",
-      "page": "BAT_664_r_00027.jpg",
-      "path": "recognitions/BAT_664_r_00027/kraken-kraken-early_modern_german.txt",
-      "status": "success",
-      "status_code": "success"
     }
   ],
   "doc_id": "BAT_664_r_00027",
   "run_counts": {
-    "degenerate": 3,
+    "degenerate": 1,
     "empty": 0,
-    "failed": 0,
-    "successful": 8,
-    "total": 11
+    "failed": 5,
+    "successful": 4,
+    "total": 10
   },
   "run_quality": "partial_failure",
   "version": "1.0"
