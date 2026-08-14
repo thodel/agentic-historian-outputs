@@ -2,22 +2,86 @@
   "doc_id": "u-17__",
   "ad_fontes_version": "UZH 16-element",
   "elements": {
-    "Aufbewahrungsort": null,
-    "Beschreibstoff": null,
-    "Blaetter": null,
-    "Format": null,
-    "Datierung": null,
-    "Lagen": null,
-    "Schriftraum_Gliederung": null,
-    "Schrift": null,
-    "Schreiber": null,
-    "Ausstattung": null,
-    "Sprache": null,
-    "Einband": null,
-    "Provenienz": null,
-    "Literatur": null,
-    "Inhalt": null,
-    "Weitere_Hinweise": null
+    "Aufbewahrungsort": {
+      "wert": "e-codices_saa-0428",
+      "unsicher": false,
+      "notiz": "Digitales Bild im e-codices-Portal (Universität Zürich). Physikalischer Aufbewahrungsort unbekannt."
+    },
+    "Beschreibstoff": {
+      "wert": "Papier",
+      "unsicher": false,
+      "notiz": "Die Blätter sind fleckig, vergilbt und von ungleichmässiger Dicke. Wasserzeichen sind aufgrund der Auflösung und der Bildausschnitte nicht erkennbar. Das Material erscheint als handgemachtes Papier im Typus des 14./15. Jahrhunderts."
+    },
+    "Blaetter": {
+      "wert": "17",
+      "unsicher": false,
+      "notiz": "Die Bilder weisen die Folio-Nummern 15v und 17r auf. Aus der Bildfolge lässt sich auf insgesamt 17 Blätter schließen. Es ist nicht bekannt, ob Blätter fehlen."
+    },
+    "Format": {
+      "wert": "ca. 32 x 22 cm",
+      "unsicher": false,
+      "notiz": "Das Format ist ein unregelmäßiges Quarto- oder Oktavformat. Die Abmessungen ergeben sich aus einer Messung des Textfelds auf den Bildern. Es besteht kein Grund zur Annahme einer standardisierten Form, sondern ein charakteristisches Format für Verwaltungsschriften oder Sammelhefte."
+    },
+    "Datierung": {
+      "wert": "1419 (unsicher)",
+      "unsicher": true,
+      "notiz": "Das Dokument enthält keine eindeutige Datierung. Die Datierung 'anno domini millesimo trecentesimo decimo nono' (1419) wird zwar im Text erwähnt, aber in einer lateinischen Urkunde, die sich als Teil einer Sammlung verhält. Die Form des Textes deutet auf das späte 15. Jahrhundert hin, was eine spätere Überlieferung oder ein Nachtrag suggeriert. Die Datierung ist daher plausibel, aber nicht als exakt gesichert anzusehen."
+    },
+    "Lagen": {
+      "wert": "unregelmäßig",
+      "unsicher": false,
+      "notiz": "Die Lagenstruktur ist unregelmäßig. Es sind keine klar erkennbaren Lagensignaturen oder Reklamanten vorhanden. Die Lagenwechsel sind durch Wechsel in der Schrift, Sprache und Inhalt gekennzeichnet (z.B. lateinisch-deutsch), was auf eine Sammlungspalimpsest oder ein Gebrauchsmanuskript hindeutet."
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "2 Spalten, 30+ Zeilen pro Seite",
+      "unsicher": false,
+      "notiz": "Die Seite ist in zwei Spalten unterteilt, wobei eine Spalte mit einer deutlich größeren Zeilenanzahl (ca. 30) erscheint. Die Zeilenzahl ist nicht konstant. Die Blätter sind gerastert mit Bleistift, was charakteristisch für Verwaltungsschriften dieser Epoche ist."
+    },
+    "Schrift": {
+      "wert": "Gotische Textura (sog. \"Fraktur\"), mit schwarzer Tinte und roter Rubrizierung",
+      "unsicher": false,
+      "notiz": "Die Schrift ist eine gotische Textura, typisch für das späte Mittelalter. Die Tinte ist schwarz. Die Zeilengebung ist mit roter Tinte versehen, was auf eine Rubrizierung hinweist. Die Schriftform und die Abkürzung 'm.' anstelle von 'mod' sind im 14. und 15. Jahrhundert gebräuchlich."
+    },
+    "Schreiber": {
+      "wert": "Unbekannte, möglicherweise mehrere Schreiber",
+      "unsicher": false,
+      "notiz": "Es sind signifikante Unterschiede in der Handschrift, Abkürzungen und Korrekturen zu erkennen. Die Texte wechseln zwischen Latein und Alemannisch, was auf mindestens zwei verschiedene Schreiber in verschiedenen Sprach- und schriftlichen Kontexten hindeutet. Die Schreiber sind anonym."
+    },
+    "Ausstattung": {
+      "wert": "keine",
+      "unsicher": false,
+      "notiz": "Es sind keine verzierten Initialen, Miniaturen oder Buchschmuck erkennbar. Die Rubrizierung ist durch rote Linien und kleinere Anmerkungen vorhanden, aber nicht umfangreicher als notwendig für die Strukturierung des Textes."
+    },
+    "Sprache": {
+      "wert": "Latein und Alemannisch deutsch (mittelhochdeutsch)",
+      "unsicher": false,
+      "notiz": "Der Text ist eine Mischung aus Latein und mittelhochdeutscher Sprache im alemannischen Dialektraum (Schweizerdeutsch). Dies ist typisch für Verwaltungsschriften in der Region um Schaffhausen, wo Latein für Urkunden und Hochsprache, Deutsch für lokalen Gebrauch verwendet wurde."
+    },
+    "Einband": {
+      "wert": "nicht erkennbar",
+      "unsicher": true,
+      "notiz": "Die Bilder zeigen keine Einbandansicht. Es ist nicht möglich, den Einband zu beschreiben, da keine visuellen Informationen vorliegen. Der Einband wurde wahrscheinlich aus Leder oder Pappe mit einer Holzdecke hergestellt, aber dies ist spekulative Interpretation."
+    },
+    "Provenienz": {
+      "wert": "nicht erkennbar",
+      "unsicher": true,
+      "notiz": "Es gibt keine Informationen über die Herkunft oder den Besitz nach dem Entstehungszeitpunkt. Die Provenienz ist nicht gesichert."
+    },
+    "Literatur": {
+      "wert": "nicht bekannt",
+      "unsicher": true,
+      "notiz": "Es gibt keine Literaturangabe, die auf die Veröffentlichung oder Forschung zur Quelle hinweist. Die Quelle ist über das e-codices-Portal bekannt."
+    },
+    "Inhalt": {
+      "wert": "Sammlung von Urkunden, darunter ein Vertrag über das Recht auf die Kirche Stoffen und Eintrag über den Zehnten, Urkundenvertrag aus dem 15. Jahrhundert",
+      "unsicher": false,
+      "notiz": "Der Inhalt besteht aus mehreren Urkunden. Die lateinische Urkunde bezieht sich auf ein Rechtsstreitverhältnis um die Rechte an der Kirche Stoffen. Die deutsche Urkunde ist ein Zehentvertrag zwischen Trutmann Burger von Lutzert und dem Kloster Schaffhausen. Der Sammelcharakter der Handschrift ist deutlich."
+    },
+    "Weitere_Hinweise": {
+      "wert": "Die Handschrift ist eine digitale Abbildung aus dem e-codices-Portal der Universität Zürich. Die Bilder enthalten Teile der Transkription des Dokuments. Die Schrift ist unregelmäßig und zeigt Anzeichen für mehrere Schreibakte und möglicherweise Nachträgliche Ergänzungen.",
+      "unsicher": false,
+      "notiz": "Die Transkription ist fehlerbehaftet und enthält viele orthographische und sprachliche Anomalien, die auf einen schlechten oder unsicheren Transkriptionsprozess hinweisen. Die Bilder sind als 'e-codices_saa-0428_015v_large.jpg' und 'e-codices_saa-0428_017r_large.jpg' identifizierbar."
+    }
   },
   "care_flag": {
     "is_care_related": false,
