@@ -1,7 +1,7 @@
 {
   "artifacts": [
     {
-      "characters": 11811,
+      "characters": 12655,
       "engine": "fusion",
       "error": null,
       "error_path": null,
@@ -13,7 +13,7 @@
       "status_code": "success"
     },
     {
-      "characters": 2907,
+      "characters": 2883,
       "engine": "vlm",
       "error": null,
       "error_path": null,
@@ -39,10 +39,33 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst hat das Zeitlimit überschritten.",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
       "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
       "id": "trocr-trocr-medieval-escriptmask",
       "model_id": "trocr-medieval-escriptmask",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 3343,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-catmus-caroline",
+      "model_id": "kraken-catmus_caroline",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
+      "id": "trocr-trocr-kurrent-xvi-xvii",
+      "model_id": "trocr-kurrent-xvi-xvii",
       "page": null,
       "path": null,
       "status": "error"
@@ -62,16 +85,16 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst hat das Zeitlimit überschritten.",
-      "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
-      "id": "trocr-trocr-kurrent-xvi-xvii",
-      "model_id": "trocr-kurrent-xvi-xvii",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-essoins-middle-latin.error.txt",
+      "id": "trocr-trocr-essoins-middle-latin",
+      "model_id": "trocr-essoins-middle-latin",
       "page": null,
       "path": null,
       "status": "error"
     },
     {
-      "characters": 2936,
+      "characters": 2952,
       "engine": "vlm",
       "error": null,
       "error_path": null,
@@ -95,6 +118,40 @@
       "status_code": "success"
     },
     {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
+      "id": "trocr-trocr-medieval-escriptmask-2",
+      "model_id": "trocr-medieval-escriptmask",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 3553,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-catmus-caroline-2",
+      "model_id": "kraken-catmus_caroline",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
+      "id": "trocr-trocr-kurrent-xvi-xvii-2",
+      "model_id": "trocr-kurrent-xvi-xvii",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
       "characters": 2863,
       "engine": "kraken",
       "error": null,
@@ -105,6 +162,17 @@
       "path": null,
       "status": "success",
       "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-essoins-middle-latin.error.txt",
+      "id": "trocr-trocr-essoins-middle-latin-2",
+      "model_id": "trocr-essoins-middle-latin",
+      "page": null,
+      "path": null,
+      "status": "error"
     },
     {
       "characters": 2643,
@@ -131,6 +199,40 @@
       "status_code": "success"
     },
     {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
+      "id": "trocr-trocr-medieval-escriptmask-3",
+      "model_id": "trocr-medieval-escriptmask",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 3282,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-catmus-caroline-3",
+      "model_id": "kraken-catmus_caroline",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
+      "id": "trocr-trocr-kurrent-xvi-xvii-3",
+      "model_id": "trocr-kurrent-xvi-xvii",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
       "characters": 2571,
       "engine": "kraken",
       "error": null,
@@ -143,7 +245,18 @@
       "status_code": "success"
     },
     {
-      "characters": 2822,
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-essoins-middle-latin.error.txt",
+      "id": "trocr-trocr-essoins-middle-latin-3",
+      "model_id": "trocr-essoins-middle-latin",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 2834,
       "engine": "vlm",
       "error": null,
       "error_path": null,
@@ -165,15 +278,204 @@
       "path": null,
       "status": "success",
       "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
+      "id": "trocr-trocr-medieval-escriptmask-4",
+      "model_id": "trocr-medieval-escriptmask",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 3201,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-late-medieval-german",
+      "model_id": "kraken-late_medieval_german",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 3201,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-late-medieval-german-2",
+      "model_id": "kraken-late-medieval-german",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 3062,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-late-medieval-latin",
+      "model_id": "kraken-late_medieval_latin",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 2950,
+      "engine": "vlm",
+      "error": null,
+      "error_path": null,
+      "id": "vlm-internvl3-8b-instruct-5",
+      "model_id": "internvl3-8b-instruct",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 3333,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-late-medieval-german-3",
+      "model_id": "kraken-late_medieval_german",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 3333,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-late-medieval-german-4",
+      "model_id": "kraken-late-medieval-german",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 3128,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-late-medieval-latin-2",
+      "model_id": "kraken-late_medieval_latin",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 2983,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-late-medieval-german-5",
+      "model_id": "kraken-late_medieval_german",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 2983,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-late-medieval-german-6",
+      "model_id": "kraken-late-medieval-german",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 2822,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-late-medieval-latin-3",
+      "model_id": "kraken-late_medieval_latin",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 2964,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-late-medieval-german-7",
+      "model_id": "kraken-late_medieval_german",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
+      "id": "trocr-trocr-kurrent-xvi-xvii-4",
+      "model_id": "trocr-kurrent-xvi-xvii",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 2964,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-late-medieval-german-8",
+      "model_id": "kraken-late-medieval-german",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 2884,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-late-medieval-latin-4",
+      "model_id": "kraken-late_medieval_latin",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/trocr-trocr-essoins-middle-latin.error.txt",
+      "id": "trocr-trocr-essoins-middle-latin-4",
+      "model_id": "trocr-essoins-middle-latin",
+      "page": null,
+      "path": null,
+      "status": "error"
     }
   ],
   "doc_id": "u-17__",
   "run_counts": {
-    "degenerate": 0,
+    "degenerate": 12,
     "empty": 0,
-    "failed": 2,
-    "successful": 12,
-    "total": 14
+    "failed": 0,
+    "successful": 28,
+    "total": 40
   },
   "run_quality": "partial_failure",
   "version": "1.0"

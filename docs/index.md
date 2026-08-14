@@ -219,35 +219,35 @@ title: Katalog
   </div>
   </div>
 </article>
-<article class="catalogue-card" data-document-id="u-17__" data-created="2026-07-15T16:49:41+02:00" data-kind="output" data-language="" data-script="" data-search="u-17__ staatsarchiv aargau, saa 428 e-codices: staatsarchiv aargau, saa 428     e-codices_saa-0428_015v_large.jpg seite 1 modios reina cum prato sive uysta ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. alhile er conu" data-superseded="true" data-recognition-provenance="current" data-recognition-total="13" data-recognition-successful="11" data-recognition-failed="2" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="5" data-recognition-pages="4" data-source-type="image" data-source-available="true" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="CARE_ACTION,DATE,ORG,PERSON,PLACE,ROLE,SOCIAL_GROUP,TITLE" data-completeness="vollstaendig">
+<article class="catalogue-card" data-document-id="u-17__" data-created="2026-07-15T16:49:41+02:00" data-kind="output" data-language="latein und alemannisch deutsch (mittelhochdeutsch)" data-script="gotische textura (sog. &quot;fraktur&quot;), mit schwarzer tinte und roter rubrizierung" data-search="u-17__ sammlung von urkunden · 1419 (unsicher)  1419 (unsicher) latein und alemannisch deutsch (mittelhochdeutsch) gotische textura (sog. &quot;fraktur&quot;), mit schwarzer tinte und roter rubrizierung sammlung von urkunden e-codices_saa-0428_015v_large.jpg as moðios tritici cnm þrato siro iuxti ottivissingtn degnbꝛ hr͛c debet sotium þ etuum. hornm endentrðm. sigilla no str͛ a. videliti.. olkisse et d" data-superseded="true" data-recognition-provenance="current" data-recognition-total="39" data-recognition-successful="27" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="12" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="4" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="CARE_ACTION,DATE,ORG,PERSON,PLACE,ROLE,SOCIAL_GROUP" data-completeness="teilweise">
   <div class="catalogue-card__layout">
-  <div class="catalogue-source-visual catalogue-source-visual--image"><img src="https://www.e-codices.unifr.ch/loris/saa/saa-0428/saa-0428_015v.jp2/full/1200,/0/default.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="visually-hidden">Quellenvorschau vorhanden</span></div>
+  <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
   <div class="catalogue-card__content">
   <div class="catalogue-card__heading">
     <div>
       <p class="catalogue-created">Erstellt <time datetime="2026-07-15T16:49:41+02:00">15.07.2026, 16:49</time></p>
-      <h2><a href="u-17__/">Staatsarchiv Aargau, SAA 428</a></h2>
+      <h2><a href="u-17__/">Sammlung von Urkunden · 1419 (unsicher)</a></h2>
       <p class="catalogue-id">Dokument-ID <code>u-17__</code></p>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">2 problematische Kandidaten</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">12 problematische Kandidaten</span></div>
   </div>
-  <dl class="catalogue-summary-facts"><div><dt>Seiten</dt><dd>4</dd></div><div><dt>Entitäten</dt><dd>82</dd></div></dl>
-  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="u-17__/" aria-label="Dokument öffnen: Staatsarchiv Aargau, SAA 428">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="u-17__/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: Staatsarchiv Aargau, SAA 428">Erkennungen ansehen</a></p>
+  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>1419 (unsicher)</dd></div><div><dt>Seiten</dt><dd>4</dd></div><div><dt>Entitäten</dt><dd>32</dd></div></dl>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="u-17__/" aria-label="Dokument öffnen: Sammlung von Urkunden · 1419 (unsicher)">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="u-17__/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: Sammlung von Urkunden · 1419 (unsicher)">Erkennungen ansehen</a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
-      <dl class="catalogue-facts"><div><dt>Kandidaten</dt><dd>11 erfolgreich / 13 insgesamt</dd></div></dl>
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Sammlung von Urkunden</dd></div><div><dt>Sprache</dt><dd>Latein und Alemannisch deutsch (mittelhochdeutsch)</dd></div><div><dt>Schrift</dt><dd>Gotische Textura (sog. &quot;Fraktur&quot;), mit schwarzer Tinte und roter Rubrizierung</dd></div><div><dt>Kandidaten</dt><dd>27 erfolgreich / 39 insgesamt</dd></div></dl>
       <div class="catalogue-status-groups">
         <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
-        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">2 von 13 Kandidaten problematisch</p></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">12 von 39 Kandidaten problematisch</p></div>
       </div>
 
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
         <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
-        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 2 fehlgeschlagene Erkennungsversuche</p>
+        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 12 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
       </div>
-      <p class="catalogue-preview">e-codices_saa-0428_015v_large.jpg SEITE 1 modios reina cum prato sive uysta Ottovillingen dequibz hre debet forum pccenum in horum emdenaam sigilla no lsta videlicz. Alhile er conu…</p>
+      <p class="catalogue-preview">e-codices_saa-0428_015v_large.jpg as moðios tritici cnm þrato siro iuxti ottivissingtn degnbꝛ hr͛c debet sotium þ etuum. hornm endentrðm. Sigilla no str͛ a. videliti.. Olkisse et d…</p>
     </div>
   </details>
   </div>
