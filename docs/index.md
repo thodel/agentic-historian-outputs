@@ -19,7 +19,7 @@ title: Katalog
     </dl>
   </details>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
-  <p class="catalogue-summary" id="catalogue-count"><strong>7</strong> Ausgaben · <span class="superseded-count">2 ersetzt</span> · 0 Testläufe</p>
+  <p class="catalogue-summary" id="catalogue-count"><strong>8</strong> Ausgaben · <span class="superseded-count">2 ersetzt</span> · 0 Testläufe</p>
 </div>
 
 <form class="catalogue-tools" role="search" aria-label="Ausgaben durchsuchen" onsubmit="return false">
@@ -113,10 +113,44 @@ title: Katalog
 </form>
 
 <p id="catalogue-active-filters" class="catalogue-active-filters">Keine Filter aktiv.</p>
-<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">9 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
+<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">10 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
 <p id="catalogue-empty" class="catalogue-empty" role="status" hidden>Keine Einträge entsprechen den aktiven Filtern. Ändern Sie die Filter oder setzen Sie sie zurück.</p>
 
 <div id="catalogue-list" class="catalogue-list" data-enhanced="false">
+<article class="catalogue-card" data-document-id="saa-0428" data-created="2026-08-25T20:55:24+02:00" data-kind="output" data-language="deutsch und latein, gemischt" data-script="kursivschrift (fraktur), schwarze tinte, gelegentlich rote rubrizierung (initialen, verweiszeichen)" data-search="saa-0428 urkunde mit guterverzeichnis und einkünften der kirchen · anfang 16. jahrhundert (ca. 1500-1520)  anfang 16. jahrhundert (ca. 1500-1520) deutsch und latein, gemischt kursivschrift (fraktur), schwarze tinte, gelegentlich rote rubrizierung (initialen, verweiszeichen) urkunde mit guterverzeichnis und einkünften der kirchen e-codices_saa-0428_001r_large.jpg seite 1 hut genennt die brief ¶ daz closter het zien gelich , die daß closter ze königl haben sol und die ab schrift dei brief sol man suchen nach" data-superseded="false" data-recognition-provenance="current" data-recognition-total="51" data-recognition-successful="33" data-recognition-failed="3" data-recognition-empty="0" data-recognition-degenerate="15" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="6" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="CARE_ACTION,DATE,ORG,PERSON,PLACE,ROLE,SOCIAL_GROUP" data-completeness="teilweise">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
+  <div class="catalogue-card__content">
+  <div class="catalogue-card__heading">
+    <div>
+      <p class="catalogue-created">Erstellt <time datetime="2026-08-25T20:55:24+02:00">25.08.2026, 20:55</time></p>
+      <h2><a href="saa-0428/">Urkunde mit Guterverzeichnis und Einkünften der Kirchen · Anfang 16. Jahrhundert (ca. 1500-1520)</a></h2>
+      <p class="catalogue-id">Dokument-ID <code>saa-0428</code></p>
+    </div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">18 problematische Kandidaten</span></div>
+  </div>
+  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>Anfang 16. Jahrhundert (ca. 1500-1520)</dd></div><div><dt>Seiten</dt><dd>6</dd></div><div><dt>Entitäten</dt><dd>70</dd></div></dl>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="saa-0428/" aria-label="Dokument öffnen: Urkunde mit Guterverzeichnis und Einkünften der Kirchen · Anfang 16. Jahrhundert (ca. 1500-1520)">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="saa-0428/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: Urkunde mit Guterverzeichnis und Einkünften der Kirchen · Anfang 16. Jahrhundert (ca. 1500-1520)">Erkennungen ansehen</a></p>
+  <details class="catalogue-details">
+    <summary>Details und Vorschau</summary>
+    <div class="catalogue-details__body">
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Urkunde mit Guterverzeichnis und Einkünften der Kirchen</dd></div><div><dt>Sprache</dt><dd>Deutsch und Latein, gemischt</dd></div><div><dt>Schrift</dt><dd>Kursivschrift (Fraktur), schwarze Tinte, gelegentlich rote Rubrizierung (Initialen, Verweiszeichen)</dd></div><div><dt>Kandidaten</dt><dd>33 erfolgreich / 51 insgesamt</dd></div></dl>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">18 von 51 Kandidaten problematisch</p></div>
+      </div>
+
+      <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
+        <p class="catalogue-provenance__label">Engines</p>
+        <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
+        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 3 fehlgeschlagene Erkennungsversuche</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> 15 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+      </div>
+      <p class="catalogue-preview">e-codices_saa-0428_001r_large.jpg SEITE 1 Hut genennt die brief ¶ Daz Closter het zien gelich , die daß Closter ze Königl haben sol und die ab schrift dei brief sol man suchen nach…</p>
+    </div>
+  </details>
+  </div>
+  </div>
+</article>
 <article class="catalogue-card" data-document-id="koenige" data-created="2026-07-18T22:58:42+02:00" data-kind="output" data-language="mittelhochdeutsch (oder frühneuhochdeutsch), dialekt: alemannisch oder ostschweizerisch" data-script="gothische kurrentschrift, braune tinte, schriftgrosse ca. 6 mm, abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, rasuren und korrekturen im text, keine farbige rubrizierung oder initialen" data-search="koenige drei urkunden · 1518  1518 mittelhochdeutsch (oder frühneuhochdeutsch), dialekt: alemannisch oder ostschweizerisch gothische kurrentschrift, braune tinte, schriftgroße ca. 6 mm, abkürzungen wie &#x27;de&#x27;, &#x27;zu&#x27;, &#x27;in&#x27;, &#x27;der&#x27;, &#x27;daz&#x27;, &#x27;v&#x27; statt &#x27;w&#x27;, rasuren und korrekturen im text, keine farbige rubrizierung oder initialen drei urkunden u-17_0057_r.jpg pmioe prnpma mm sim petirv s t diaridhy orea e qoicenouie qu. re us h sparer stmir mmer ene igres d e sape z crios o tre e llm rso eeieng emis onsdsem i son li e" data-superseded="false" data-recognition-provenance="current" data-recognition-total="33" data-recognition-successful="24" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="9" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="3" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="CARE_ACTION,ORG,PERSON,PLACE,ROLE" data-completeness="teilweise">
   <div class="catalogue-card__layout">
   <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
