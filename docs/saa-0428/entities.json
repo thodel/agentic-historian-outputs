@@ -1,0 +1,516 @@
+{
+  "entities": [
+    {
+      "text": "Fürstin Königin Elizabeth",
+      "type": "PERSON",
+      "normalised": "Elizabeth, Queen",
+      "context": "...der dù hochgeboen **Fürstin Königin Elizabeth** furstin Königin von Rome...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Königin von Rom",
+      "type": "PERSON",
+      "normalised": "Queen of Rome",
+      "context": "...furstin Königin von Rome das clost von erst hat angefangen...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Closter",
+      "type": "ORG",
+      "normalised": "Closter (Monastery)",
+      "context": "...Closter het zien gelich , die daß Closter ze Königl..."
+    },
+    {
+      "text": "Lüppuesterb von Brugge",
+      "type": "PLACE",
+      "normalised": "Lüppuesterb (Brugge)",
+      "context": "...Der brief über Acker des Closters mit dem Ingeeligel des **Lüppuesterb von Brugge**...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Rüdolffß des Stüllingers",
+      "type": "PERSON",
+      "normalised": "Rüdolffß von Stüllingen",
+      "context": "...Ingeeligel **Rüdolffß des Stüllingers** des vogtes von baden brief...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Vogt von Baden",
+      "type": "ROLE",
+      "normalised": "Vogt of Baden",
+      "context": "...des **vogtes von baden** brief her Nicolaus...",
+      "controlled_vocab": "vogt",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    },
+    {
+      "text": "Nicolaus von Urowenfelt",
+      "type": "PERSON",
+      "normalised": "Nicolaus von Urowenfelt",
+      "context": "...brief her **Nicolaus von urowenfelt** kilch herre zewindelsch...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Bischof von Kostenz",
+      "type": "ROLE",
+      "normalised": "Bischof of Kostenz",
+      "context": "...kilchen zu brief mit **Bischof von kostentz** über die brief..."
+    },
+    {
+      "text": "Capitel zu Costencz",
+      "type": "ORG",
+      "normalised": "Capitel of Costencz",
+      "context": "...brief von dem **capitel ze Costencz** die kilchen zu brief..."
+    },
+    {
+      "text": "Abt",
+      "type": "ROLE",
+      "normalised": "Abt (abbot)",
+      "context": "...**Der abtes** brief..."
+    },
+    {
+      "text": "Herzog von Österreich",
+      "type": "ROLE",
+      "normalised": "Herzog of Austria",
+      "context": "...Des **herzog von Osterich** en se chen ze botten..."
+    },
+    {
+      "text": "Trutmann",
+      "type": "PERSON",
+      "normalised": "Trutmann (title)",
+      "context": "...brief mit des **trutmans** Ingesigel u̾ber über den zehenden...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Seckungen",
+      "type": "PLACE",
+      "normalised": "Seckungen",
+      "context": "...**Eptistin** und des capiteles Ingeeligel von ſett in gen über des **Trutmans**...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Eptistin",
+      "type": "PERSON",
+      "normalised": "Eptistin",
+      "context": "...**Eptistin** und des capiteles Ingeeligel...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Schafhusen",
+      "type": "PLACE",
+      "normalised": "Schafhusen",
+      "context": "...brief von **Schaffhusen** vmbe die an sprache...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Johannes Milatône",
+      "type": "PERSON",
+      "normalised": "Johannes Milatône",
+      "context": "...Nos **Johannes Milatône** dina . Abbat Louß Sonnenus...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Abbat Louß Sonnenus",
+      "type": "PERSON",
+      "normalised": "Louß Sonnenus, Abbot",
+      "context": "...Abbat **Louß Sonnenus** von de Schahusa ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Constant",
+      "type": "PERSON",
+      "normalised": "Constant (possibly Constantinus)",
+      "context": "...ordinüb zuͤ Endē **Constant** docō ratione...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Gröffen Lentzburg",
+      "type": "PLACE",
+      "normalised": "Lentzburg (Gröffen)",
+      "context": "...cæs **in Gröffen spe Lentzburg** , die sonst...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Gyriæ",
+      "type": "PLACE",
+      "normalised": "Gyriæ",
+      "context": "...straff **püppes durch austrux et Gyriæ** connores...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Hermann von Frat",
+      "type": "PERSON",
+      "normalised": "Hermann von Frat",
+      "context": "...**Hermann von frat Prob̄** autob , fiat . 6 .",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Cantor Frat Örnestus",
+      "type": "PERSON",
+      "normalised": "Örnestus, Cantor of Frat",
+      "context": "**Cantor frat Örneſtus** danns Vogt-Camais fürer .",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Vogt-Camais",
+      "type": "ROLE",
+      "normalised": "Vogt Camais",
+      "context": "...**Vogt-Camais** fürer . Johes Kapellanus...",
+      "controlled_vocab": "vogt",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    },
+    {
+      "text": "Johes Kapellanus",
+      "type": "PERSON",
+      "normalised": "Johes Kapellanus",
+      "context": "...**Johes Kapellanus** et alii Monach , dann von Schafusen...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Dyessenhouen",
+      "type": "PLACE",
+      "normalised": "Dyessenhouen",
+      "context": "...Johannes darauff **de Dyessenhouen** senior frid ?",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Erbethaus",
+      "type": "PLACE",
+      "normalised": "Erbethaus",
+      "context": "...**Erbethaus** Schulten , Schulfußen , filiteb .",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Schulfußen",
+      "type": "ORG",
+      "normalised": "Schulfußen (school office)",
+      "context": "...Schulten , **Schulfußen** , filiteb . drüb Gelerat ..."
+    },
+    {
+      "text": "Gelerat",
+      "type": "PERSON",
+      "normalised": "Gelerat",
+      "context": "...drüb **Gelerat** .",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Bulperg",
+      "type": "PLACE",
+      "normalised": "Bulperg",
+      "context": "...tus de **bulperg** . Exempeb .",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Bernu",
+      "type": "PLACE",
+      "normalised": "Bernu (Bern)",
+      "context": "...testim̄ō er lobur **Bernu** , noch . Abbat...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Erzbech",
+      "type": "PLACE",
+      "normalised": "Erzbech",
+      "context": "...und **Erzbech** , von Rome vnser gnediquͦ stitim...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Küng",
+      "type": "PLACE",
+      "normalised": "Küng",
+      "context": "...und **Küng** . Erzbech , von Rome...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Aquila",
+      "type": "PERSON",
+      "normalised": "Aquila (possible scribe)",
+      "context": "...​",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Juden",
+      "type": "SOCIAL_GROUP",
+      "normalised": "Juden (Jews)",
+      "context": "... die armen **Juden** …",
+      "controlled_vocab": "Juden",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    },
+    {
+      "text": "arme lüten",
+      "type": "SOCIAL_GROUP",
+      "normalised": "Arme Lüten (poor people)",
+      "context": "...gemeinen **armen lüten** und drû unser lieben frowen...",
+      "controlled_vocab": "arme lüt",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    },
+    {
+      "text": "Almosen",
+      "type": "CARE_ACTION",
+      "normalised": "Almosen (charitable giving)",
+      "context": "...Almuͦsen teilen . nach der wise ...",
+      "controlled_vocab": "almosen",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    },
+    {
+      "text": "Spende",
+      "type": "CARE_ACTION",
+      "normalised": "Spende (donation)",
+      "context": "...die **Spende** …"
+    },
+    {
+      "text": "Anno",
+      "type": "DATE",
+      "normalised": "Anno (year unspecified)",
+      "context": "...Anno **dün̄** oder gnädigenn heria sodan̄..."
+    },
+    {
+      "text": "130",
+      "type": "DATE",
+      "normalised": "130 (page/folio number)",
+      "context": "--- e-codices_saa-0428_015v_large.jpg --- **130**"
+    },
+    {
+      "text": "Xii",
+      "type": "DATE",
+      "normalised": "12 (Roman numeral)",
+      "context": "**Xii .** Etliche gwuffen ..."
+    },
+    {
+      "text": "XVI",
+      "type": "DATE",
+      "normalised": "16 (Roman numeral)",
+      "context": "**XVI** oder dar nach Annum vierzehen tagen ..."
+    },
+    {
+      "text": "XV",
+      "type": "DATE",
+      "normalised": "15 (Roman numeral)",
+      "context": "...Am **XV** 6. noveb gnaden ."
+    },
+    {
+      "text": "Trecent",
+      "type": "DATE",
+      "normalised": "300 (Trecent)",
+      "context": "...Anno **diu Oſllimo . Trecent . Decano Nona ."
+    },
+    {
+      "text": "Decano Nona",
+      "type": "DATE",
+      "normalised": "Ninth Decade",
+      "context": "...Trecent . **Decano Nona** ."
+    },
+    {
+      "text": "Gottz Hus",
+      "type": "PLACE",
+      "normalised": "Gottz Hus (property)",
+      "context": "...von **Gottz Hus** Tunurowem...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Tunurowe",
+      "type": "PLACE",
+      "normalised": "Tunurowe",
+      "context": "...oder **Tunurowe** In der vorgenannten stat...",
+      "hub_id": "hub_loc_example",
+      "wikidata": "",
+      "gnd": "",
+      "hls": "",
+      "hub_confidence": "high",
+      "link_method": "hub_exact"
+    },
+    {
+      "text": "Convent",
+      "type": "ORG",
+      "normalised": "Convent (monastic community)",
+      "context": "...**Convent** von der convent ab legen..."
+    },
+    {
+      "text": "Capitels",
+      "type": "ORG",
+      "normalised": "Capitel (chapter)",
+      "context": "...unseres **Capitels** Insigel Dirre buef..."
+    },
+    {
+      "text": "Eptissin",
+      "type": "PERSON",
+      "normalised": "Eptissin (episcopal official)",
+      "context": "...**Eptissin** des selben tages...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Königl",
+      "type": "ORG",
+      "normalised": "Königliches (royal)",
+      "context": "...Closter ... die Closter ze **Königl** haben sol..."
+    },
+    {
+      "text": "Vogt",
+      "type": "ROLE",
+      "normalised": "Vogt (advocate)",
+      "context": "...des **vogtes von baden** brief...",
+      "controlled_vocab": "vogt",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    },
+    {
+      "text": "Abschlag",
+      "type": "CARE_ACTION",
+      "normalised": "Abschlag (grant)",
+      "context": "...**Almuͦsen** ..."
+    },
+    {
+      "text": "Trutman",
+      "type": "PERSON",
+      "normalised": "Trutman (official)",
+      "context": "...der **trutman** hat von dem von eethowe...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Königliche",
+      "type": "ORG",
+      "normalised": "Königliche (royal)",
+      "context": "...mit **Königliche** ..."
+    },
+    {
+      "text": "Bischof",
+      "type": "ROLE",
+      "normalised": "Bischof (bishop)",
+      "context": "...mit **Bischof von kostentz**..."
+    },
+    {
+      "text": "Herzog",
+      "type": "ROLE",
+      "normalised": "Herzog (duke)",
+      "context": "...und **Der Herzog von Osterich**..."
+    },
+    {
+      "text": "Rudolf",
+      "type": "PERSON",
+      "normalised": "Rudolf",
+      "context": "...mit dem Ingeeligel **Rüdolffß** des ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Lügen",
+      "type": "CARE_ACTION",
+      "normalised": "Lügen? (unlikely)",
+      "context": "..."
+    },
+    {
+      "text": "Bern",
+      "type": "PLACE",
+      "normalised": "Bern (city)",
+      "context": "...in **Bern** ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Gottesgeburt",
+      "type": "CARE_ACTION",
+      "normalised": "Gottesgeburt (birth of God)",
+      "context": "...von **Gottesgeburt** Drüzenhundert..."
+    },
+    {
+      "text": "Graffust",
+      "type": "PLACE",
+      "normalised": "Graffust",
+      "context": "...Datum in **Graffust** in die sinstanten...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Küngsucken",
+      "type": "PLACE",
+      "normalised": "Küngsucken",
+      "context": "...Küngsucken ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Stich",
+      "type": "CARE_ACTION",
+      "normalised": "Sticht (sharpen?)",
+      "context": "..."
+    },
+    {
+      "text": "Conventus",
+      "type": "ORG",
+      "normalised": "Conventus (a convent)",
+      "context": "...**Conventus** pflöpsa..."
+    },
+    {
+      "text": "Schafusen",
+      "type": "PLACE",
+      "normalised": "Schafusen (possibly a locality)",
+      "context": "...von **Schafusen** ...",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Lehen",
+      "type": "CARE_ACTION",
+      "normalised": "Lehen (feudal lease)",
+      "context": "... und **Lehen** ..."
+    },
+    {
+      "text": "Zängere",
+      "type": "SOCIAL_GROUP",
+      "normalised": "Zängere (unknown group)",
+      "context": "..."
+    },
+    {
+      "text": "Mönch",
+      "type": "ROLE",
+      "normalised": "Mönch (monk)",
+      "context": "...et alii **Monach** , dann von Schafusen ..."
+    },
+    {
+      "text": "Königstuer",
+      "type": "PLACE",
+      "normalised": "Königstuer",
+      "context": "......",
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Abt von ...",
+      "type": "ROLE",
+      "normalised": "Abt",
+      "context": "...der **abbtisch** ..."
+    }
+  ]
+}

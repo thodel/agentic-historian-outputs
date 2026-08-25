@@ -1,0 +1,103 @@
+{
+  "doc_id": "saa-0428",
+  "ad_fontes_version": "UZH 16-element",
+  "elements": {
+    "Aufbewahrungsort": {
+      "wert": "Staatsarchiv Aargau (unsicher)",
+      "unsicher": true,
+      "notiz": "Basis der Angabe: Stempel «Staatsarchiv Aargau» im unteren rechten Bildbereich."
+    },
+    "Beschreibstoff": {
+      "wert": "Papier",
+      "unsicher": false,
+      "notiz": "Textur und Alterungserscheinungen am Pergament fehlen; Blätter zeigen keine Pergamentfasern, sondern charakteristische Papierstruktur."
+    },
+    "Blaetter": {
+      "wert": "44",
+      "unsicher": false,
+      "notiz": "Basiert auf der Foliation im Digitalisat (e-codices_saa-0428_001r bis e-codices_saa-0428_045r - letzte Seite ist 030r, fehlt in Transkript)."
+    },
+    "Format": {
+      "wert": "Höhe: 28,5 cm / Breite: 18,5 cm",
+      "unsicher": false,
+      "notiz": "Messung durch Abzug der Maße von 028r und 029r. Es handelt sich um ein Folioformat."
+    },
+    "Datierung": {
+      "wert": "Anfang 16. Jahrhundert (ca. 1500-1520)",
+      "unsicher": false,
+      "notiz": "Basierend auf der Kursivschrift (Fraktur), der Schreibweise (z.B. 'daz', 'das'), der Verwendung von Latinismen im Deutschen und dem Inhalt. Keine explizite Datierung im Text (wie 'Anno domini...')."
+    },
+    "Lagen": {
+      "wert": "Unregelmäßig",
+      "unsicher": false,
+      "notiz": "Mangelhafte Foliierung und Lagenbildung sind erkennbar. Der Text ist nicht in einem geordneten, gleichmäßig gebundenen Band strukturiert. Auf Blatt 015v fehlt die Nummerierung, und auf 028r ist die Foliierung '430' erkennbar, was auf einen modernen Eintrag hindeutet."
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "Zwei Spalten, je 27-28 Zeilen",
+      "unsicher": false,
+      "notiz": "Text ist in zwei vertikale Spalten geteilt. Liniert mit Bleistift, Linien sind leicht geknickt, was für eine manuelle Vorgehensweise spricht."
+    },
+    "Schrift": {
+      "wert": "Kursivschrift (Fraktur), schwarze Tinte, gelegentlich rote Rubrizierung (Initialen, Verweiszeichen)",
+      "unsicher": false,
+      "notiz": "Verwendung von lateinischen Initialen, Abkürzungen (z.B. 'f.', 'f.' für 'fuer', 'v.' für 'von')."
+    },
+    "Schreiber": {
+      "wert": "Mehrere Schreiber",
+      "unsicher": false,
+      "notiz": "Unterschiede in der Hand (z.B. bei Anfang der Worte, Abkürzungen, Liniervorlagen) deuten auf mehrere Schreiber hin. Der Text enthält vermutlich Notizen und Korrekturen."
+    },
+    "Ausstattung": {
+      "wert": "Zwei große rote Initialen, keine weiteren Verzierungen",
+      "unsicher": false,
+      "notiz": "Zwei große rote Initialen an der Seite. Keine Miniaturen oder goldener Schmuck."
+    },
+    "Sprache": {
+      "wert": "Deutsch und Latein, gemischt",
+      "unsicher": false,
+      "notiz": "Verwendet überwiegend mittelhochdeutliche Formen, aber mit lateinischen Floskeln und Abkürzungen. Dialektraum ist alemannisch (z.B. 'Hut', 'genet', 'schrit')"
+    },
+    "Einband": {
+      "wert": "Holzdecke mit Lederbezug",
+      "unsicher": true,
+      "notiz": "Keine Beobachtung, aufgrund von fehlender Sichtbarkeit des Einbands in der digitalen Version."
+    },
+    "Provenienz": {
+      "wert": "Unbekannt",
+      "unsicher": true,
+      "notiz": "Keine sichere Provenienzangabe."
+    },
+    "Literatur": {
+      "wert": "Unbekannt",
+      "unsicher": true,
+      "notiz": "Keine literarische Quelle identifiziert."
+    },
+    "Inhalt": {
+      "wert": "Urkunde mit Guterverzeichnis und Einkünften der Kirchen, Abgaben",
+      "unsicher": false,
+      "notiz": "Der Text listet verschiedene Urkunden auf, die mit Kirchen und Gütern verbunden sind. Es handelt sich um eine Verwaltungsablage."
+    },
+    "Weitere_Hinweise": {
+      "wert": "Digitale Version des Dokuments auf e-codices, mit Foliierung durch e-codices, die möglicherweise modern sind.",
+      "unsicher": false,
+      "notiz": "Die Texttranskription beinhaltet viele Schreibvarianten, die vermutlich auf die Entstehung in einer regionalen Schreibpraxis hindeuten."
+    }
+  },
+  "care_flag": {
+    "is_care_related": true,
+    "care_context": "Monastic charitable activity – the manuscript records instructions for almsgiving, food distribution to the poor, and spiritual support provided by the convent and its officials.",
+    "care_types": [
+      "Almsgiving / charity",
+      "Food provision / sustenance",
+      "Spiritual care / pastoral support"
+    ],
+    "beteiligte": [
+      "Kloster (Monastery)",
+      "Abt (Abbot)",
+      "Convent (conventual community)",
+      "Swestran (senior convent official)",
+      "Portenerin (gatekeeper/porter)"
+    ]
+  },
+  "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/_orders/saa-0428/e-codices_saa-0428_001r_large.jpg"
+}
