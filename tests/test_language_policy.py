@@ -16,6 +16,7 @@ ROOT = Path(__file__).parent.parent
 _INTERNAL_PAGES = [
     "docs/catalogue-verification.md",
     "docs/catalogue-performance.md",
+    "docs/evaluation.md",
 ]
 
 _PUBLIC_NAV_PAGES = [
