@@ -28,20 +28,37 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python scripts/build_index.py
-      - name: Commit refreshed index
+      # Rebuild until the tree settles. The first rebuild can still leave a
+      # diff, because a page resolves its provenance relative to HEAD and the
+      # refresh commit does not exist while the build that writes the page is
+      # running. Building once and stopping commits that unstable state and
+      # leaves the clean-diff gate red until someone regenerates by hand — how
+      # docs/saa-0428/index.md stayed stale for a week (#241).
+      - name: Refresh generated output until it settles
         id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs
-          if git diff --cached --quiet; then
-            echo "refreshed=false" >> "$GITHUB_OUTPUT"
-          else
+          refreshed=false
+          for pass in 1 2 3; do
+            python scripts/build_index.py
+            git add docs
+            if git diff --cached --quiet; then
+              echo "settled after ${pass} build(s)"
+              break
+            fi
+            if [ "$pass" = 3 ]; then
+              echo "::error::generated output did not settle in 3 builds"
+              git --no-pager diff --cached --stat
+              exit 1
+            fi
             git commit -m "build: refresh catalogue index"
+            refreshed=true
+          done
+          if [ "$refreshed" = true ]; then
             git push
-            echo "refreshed=true" >> "$GITHUB_OUTPUT"
           fi
+          echo "refreshed=$refreshed" >> "$GITHUB_OUTPUT"
       # Validate exactly the final tip. If the index changed this is the bot's
       # refresh commit; otherwise it is the original, already-current publish.
       # test.yml intentionally does not run on the transient push itself.

@@ -3637,8 +3637,8 @@ danne uierzis w̾den sunt Und sich
 </details>
 
 <details class="page-section-disclosure" data-disclosure="history">
-<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">Keine Git-Historie</span></summary>
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li>Noch keine Git-Historie verfügbar.</li></ol></section>
+<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">1 Commits</span></summary>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/d5d228a"><code>d5d228a</code></a> · <time datetime="2026-08-25T20:55:24+02:00">2026-08-25</time> · Publish saa-0428</li></ol></section>
 </details>
 <script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
@@ -3660,8 +3660,8 @@ danne uierzis w̾den sunt Und sich
     "name": "Agentic Historian"
   },
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "dateCreated": "2026-08-25",
-  "dateModified": "2026-08-25",
+  "dateCreated": "2026-08-25T20:55:24+02:00",
+  "dateModified": "2026-08-25T20:55:24+02:00",
   "distribution": [
     {
       "@type": "DataDownload",
