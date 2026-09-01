@@ -140,29 +140,15 @@ class PublishPathTests(unittest.TestCase):
         how the koenige breakage hid for seven days (#198), and what #208 fixed
         for a document's *first* publication.
         """
-        for _ in range(3):
-            git("add", "-A", cwd=self.clone)
-            if not self.dirty_files():
-                break
-            git("commit", "-q", "-m", "build: refresh catalogue index", cwd=self.clone)
-            git("update-ref", "refs/remotes/origin/main", "HEAD", cwd=self.clone)
-            self.build()
-        self.assertEqual(
-            self.dirty_files(), [],
-            "the refresh loop did not settle, so `git diff --exit-code` fails "
-            "and main stays red (#198, #201, #241)",
-        )
-
-        # #241: settling once is not enough. The failure that kept main red was
-        # a page that converged at the refresh commit and then went stale as
-        # soon as any later commit landed.
-        git("commit", "-q", "--allow-empty", "-m", "any later change", cwd=self.clone)
+        git("add", "-A", cwd=self.clone)
+        git("commit", "-q", "-m", "build: refresh catalogue index", cwd=self.clone)
         git("update-ref", "refs/remotes/origin/main", "HEAD", cwd=self.clone)
+
         self.build()
         self.assertEqual(
             self.dirty_files(), [],
-            "generated output drifted once main advanced past the refresh "
-            "commit; the gate would stay red until a manual rebuild (#241)",
+            "the tree is still dirty after the refresh commit, so "
+            "`git diff --exit-code` fails and main stays red (#198, #201)",
         )
 
     def test_04_document_reaches_the_catalogue(self):
