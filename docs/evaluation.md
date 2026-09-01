@@ -60,6 +60,25 @@ Character Error Rate is reported corpus-wide (`errors / characters`) alongside t
 | kraken-mccatmus | 76.1 % | 13.5 % | 13.7 % | 8 |
 | trocr-medieval-escriptmask | 78.9 % | 9.0 % | 9.2 % | 80 |
 
+## Whole page or single line?
+
+Vision models are normally driven line by line, because that is how the rest of the pipeline works. Measured with `gemini-3.7-flash` on the same eight Inzigkofen pages and 291 lines, against the same reference, that turns out to be the worst way to use them:
+
+| Mode | CER | normalised | calls | seconds |
+|---|---|---|---|---|
+| **Whole page** | **20.4 %** | **14.8 %** | 8 | 171 |
+| Line by line | 57.3 % | 53.6 % | 291 | 1 211 |
+
+The page mode wins on all eight pages individually, 12.9–33.0 % against 35.1–65.5 %. It is 2.8 times more accurate and seven times faster.
+
+At 20.4 % a commercial model with no training on this material draws level with the best fine-tuned model in the field (20.0 %). Normalising ſ→s, cz→tz and the diacritics brings it to 14.8 %, ahead of every local model — a substantial part of its residual error is modernisation rather than misreading, which under many editorial conventions is not an error at all.
+
+The reason is visible in the outputs. Given a single line with no context, the model leaves the task and starts *analysing* letterforms — `shape: ascender loop up, descender down) Stroke 4: descend` where a transcription should be. The full page anchors it: language, hand, line sequence and the vocabulary of neighbouring lines all support each individual reading.
+
+This has an uncomfortable consequence for the pipeline as built. It cuts lines and asks line by line, which is precisely the mode in which vision models perform worst.
+
+Within the zero-shot class the gap between providers is not a nuance but a category. On the same page in the same mode, `gemini-3.7-flash` reaches 20.4 %; `internvl3-8b`, hosted locally, produces 6 832 characters for a 2 909-character page at **189.8 % CER**, the first two lines a faint echo and the rest `punc schmugelich` repeated a hundred times. Given a generic prompt it invents an essay instead. Whole-page context helps only a model that can read the script at all; it amplifies what is there, in both directions.
+
 ## Three findings that survive scrutiny
 
 ### A benchmark measures fit, not capability
@@ -172,7 +191,7 @@ The ground truth of the 19th-century test set names `German_Kurrent_XIX_comb-Hub
 
 The language model judge is **not reproducible at temperature 0**: three runs with identical prompts returned 0.273, 0.277 and 0.297. Differences below 0.02 are not interpretable, and comparisons of judge configurations need repetitions.
 
-A page-level comparison — does a vision model gain from seeing the whole page rather than isolated lines? — is prepared for both the Inzigkofen manuscripts and the Valais forms, with a validated structural score for the tabular case. It is waiting on a capable vision model.
+The page-versus-line comparison is answered for prose (above). The equivalent for the Valais forms, where the page mode additionally has to preserve the table structure, is running; the structural score is validated against five constructed perturbations.
 
 ## Reproduction
 
