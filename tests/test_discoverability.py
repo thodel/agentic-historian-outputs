@@ -201,7 +201,28 @@ class AtomFeedTests(unittest.TestCase):
         self.assertIn("<title>", self._feed())
 
     def test_feed_uses_human_readable_entry_titles_when_available(self):
-        self.assertIn("<title>Urbar · 1429 — BAT_664_r_00027</title>", self._feed())
+        """Entry titles carry a description, not just the document id (#243).
+
+        This asserted one document's exact title until #243. Titles are derived
+        from model output and change whenever a document is reprocessed, so the
+        assertion broke on a republication while the behaviour it covers — that
+        a described document gets a readable title — was intact. What matters
+        is the shape: at least one entry reads "<something> — <doc-id>".
+        """
+        feed = self._feed()
+        described = re.findall(r"<title>([^<]+?) — ([^<]+)</title>", feed)
+        self.assertTrue(
+            described,
+            "no feed entry carries a human-readable title; every entry fell "
+            "back to its bare document id",
+        )
+        for title, doc_id in described:
+            with self.subTest(doc_id=doc_id):
+                self.assertNotEqual(
+                    title.strip(), doc_id.strip(),
+                    "the readable part repeats the document id, so the "
+                    "description added nothing",
+                )
 
     def test_feed_has_updated(self):
         self.assertIn("<updated>", self._feed())
