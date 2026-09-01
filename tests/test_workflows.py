@@ -97,5 +97,46 @@ class WorkflowFileTests(unittest.TestCase):
         )
 
 
+class RefreshLoopTests(unittest.TestCase):
+    """The catalogue refresh must rebuild until the tree settles (#241).
+
+    Building once, committing, and stopping leaves whatever residual diff the
+    first rebuild would have produced. That is how docs/saa-0428/index.md
+    stayed stale from 2026-08-25 until it was found by hand: the workflow
+    committed a refresh that was itself not yet stable, and nothing looked
+    again.
+    """
+
+    def setUp(self):
+        self.workflow = (
+            Path(__file__).resolve().parent.parent
+            / ".github" / "workflows" / "build-index.yml"
+        ).read_text(encoding="utf-8")
+
+    def test_refresh_step_rebuilds_until_clean(self):
+        step = self.workflow.split("Refresh generated output until it settles", 1)
+        self.assertEqual(
+            len(step), 2,
+            "the refresh step no longer loops; a single build can commit an "
+            "unstable tree and leave the clean-diff gate red (#241)",
+        )
+        body = step[1]
+        self.assertIn(
+            "for pass in", body,
+            "the refresh step must rebuild in a loop until git reports no diff",
+        )
+        self.assertIn(
+            "build_index.py", body,
+            "the loop must rerun the generator, not just retry the commit",
+        )
+
+    def test_refresh_loop_is_bounded_and_fails_loudly(self):
+        """An unbounded loop would spin; a silent give-up would hide the bug."""
+        body = self.workflow.split("Refresh generated output until it settles", 1)[1]
+        self.assertIn("did not settle", body,
+                      "the loop must fail with a diagnosis when it cannot settle")
+        self.assertIn("exit 1", body,
+                      "failing to settle must fail the job, not pass quietly")
+
 if __name__ == "__main__":
     unittest.main()
