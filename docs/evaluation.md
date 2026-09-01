@@ -191,7 +191,11 @@ The ground truth of the 19th-century test set names `German_Kurrent_XIX_comb-Hub
 
 The language model judge is **not reproducible at temperature 0**: three runs with identical prompts returned 0.273, 0.277 and 0.297. Differences below 0.02 are not interpretable, and comparisons of judge configurations need repetitions.
 
-The page-versus-line comparison is answered for prose (above). The equivalent for the Valais forms, where the page mode additionally has to preserve the table structure, is running; the structural score is validated against five constructed perturbations.
+The page-versus-line result holds for the census forms as well. On the same 16 sheets and 1 075 cells, `gemini-3.7-flash` reaches 44.1 % CER, 43.0 % exact cells and 41.0 % row grouping in page mode, against 59.3 %, 32.9 % and 18.7 % cell by cell — better on all three measures, at twenty times fewer calls. Its 43.0 % exact cells also lead the best local model by a wide margin (28.6 %).
+
+That result required correcting the scoring. A first pass compared output row *i* with reference row *i* and reported the opposite conclusion, 105.7 % against 81.2 %. Gemini omits the six-row header block of the form and starts at the first data row, so almost every cell was measured against the wrong one. The content had been good throughout: `1 | Zurbriggen | Franz | Vater | 1 | 25 | März | 1830 | 1 | Grund | Wallis` against the reference `1 | Zurbriggen | Franz | Vater | 1 | 25 März 1830 | 1 | Grund | Wallis`. The prose corpus had been scored character-wise over the whole text, which tolerates an offset; the tabular corpus positionally, which does not.
+
+Two named causes account for much of the remaining gap, and neither is a misreading: the skipped header block, and a disagreement about column boundaries — Gemini splits dates into three cells where the reference keeps one.
 
 ## Reproduction
 
