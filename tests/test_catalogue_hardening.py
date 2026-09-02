@@ -91,12 +91,58 @@ class CatalogueHardeningTests(unittest.TestCase):
                         self.assertNotIn("catalogue-action--secondary", markup)
 
     def test_display_titles_use_metadata_and_keep_safe_fallbacks(self):
-        bat = _record(ROOT / "docs" / "BAT_664_r_00027" / "pipeline.json")
-        source_label = _record(ROOT / "docs" / "u-17" / "pipeline.json")
-        fallback = _record(ROOT / "docs" / "kf" / "pipeline.json")
-        self.assertEqual(bat.display_title, "Urbar · 1429")
-        self.assertEqual(source_label.display_title, "Staatsarchiv Aargau, SAA 428")
-        self.assertEqual(fallback.display_title, "kf")
+        """Each branch of the title derivation, on data the test owns.
+
+        This read three published documents until #243. Their descriptions are
+        model output and change whenever a document is reprocessed: on
+        2026-08-13 BAT_664_r_00027 was republished, its Inhalt went from
+        "Urbar" to "Verwaltungsdocument, moeglicherweise …" and its Datierung
+        from "1429" to "27. Juni 1429", and this test had asserted the earlier
+        pair. It then failed for three weeks while the derivation it covers was
+        working correctly.
+        """
+        cases = [
+            (
+                "doc-a", "document type and date",
+                {"doc_id": "d", "description": {"source_json": {
+                    "Inhalt": {"wert": "Urbar"},
+                    "Datierung": {"wert": "1429"},
+                }}},
+                "Urbar · 1429",
+            ),
+            (
+                "doc-b", "document type without a date",
+                {"doc_id": "d", "description": {"source_json": {
+                    "Inhalt": {"wert": "Urbar"},
+                }}},
+                "Urbar",
+            ),
+            (
+                "doc-c", "content trimmed at the first qualifier",
+                {"doc_id": "d", "description": {"source_json": {
+                    "Inhalt": {"wert": "Gerichtsbrief, vermutlich eine Abschrift"},
+                    "Datierung": {"wert": "1518"},
+                }}},
+                "Gerichtsbrief · 1518",
+            ),
+            (
+                "doc-d", "shelfmark when no document type is known",
+                {"doc_id": "d", "source_label": "Staatsarchiv Aargau, SAA 428"},
+                "Staatsarchiv Aargau, SAA 428",
+            ),
+            (
+                "kf", "document id as the last resort",
+                {"doc_id": "kf"},
+                "kf",
+            ),
+        ]
+        with tempfile.TemporaryDirectory() as temp:
+            for doc_id, name, data, expected in cases:
+                with self.subTest(case=name):
+                    target = Path(temp) / doc_id / "pipeline.json"
+                    target.parent.mkdir(parents=True)
+                    target.write_text(json.dumps(data), encoding="utf-8")
+                    self.assertEqual(_record(target).display_title, expected)
 
     def test_every_generated_card_action_resolves_to_a_document_state(self):
         catalogue = (ROOT / "docs/index.md").read_text(encoding="utf-8")
