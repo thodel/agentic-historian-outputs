@@ -9,6 +9,8 @@ title: "Recognition engine evaluation"
 
 How well do the recognition engines behind this pipeline actually read? This page records a controlled comparison across three corpora, the error taxonomy behind the headline numbers, and what happened when a language model was asked to pick the best reading.
 
+It records **what was measured**, and stops there. What the results argue for in the pipeline's own code is a separate document, kept separate on purpose: an experiment that also advocates for changes tends to be read as advocacy, and a pipeline that cites its own benchmark tends to stop questioning it. That agenda lives in `docs/PIPELINE_CONSEQUENCES.md` in the agentic_historian repository, and the instrument that produced these numbers in `docs/EVALUATION_HARNESS.md` beside it.
+
 All figures are reproducible from published datasets. Where a number contradicts something stated earlier in the project, the correction is noted rather than quietly applied.
 
 ## Corpora
@@ -75,7 +77,6 @@ At 20.4 % a commercial model with no training on this material draws level with 
 
 The reason is visible in the outputs. Given a single line with no context, the model leaves the task and starts *analysing* letterforms — `shape: ascender loop up, descender down) Stroke 4: descend` where a transcription should be. The full page anchors it: language, hand, line sequence and the vocabulary of neighbouring lines all support each individual reading.
 
-This has an uncomfortable consequence for the pipeline as built. It cuts lines and asks line by line, which is precisely the mode in which vision models perform worst.
 
 Within the zero-shot class the gap between providers is not a nuance but a category. On the same page in the same mode, `gemini-3.7-flash` reaches 20.4 %; `internvl3-8b`, hosted locally, produces 6 832 characters for a 2 909-character page at **189.8 % CER**, the first two lines a faint echo and the rest `punc schmugelich` repeated a hundred times. Given a generic prompt it invents an essay instead. Whole-page context helps only a model that can read the script at all; it amplifies what is there, in both directions.
 
@@ -107,7 +108,7 @@ Generative systems occasionally collapse into repetition. Such lines are rare an
 
 A CTC output is bounded by the width of the image; a generative model can write indefinitely, and every invented character counts. Five collapses move the kraken figure by a tenth of a point. One collapse moves the VLM figure by twenty-five.
 
-Two consequences for practice: report the median alongside the mean for generative recognisers, and run a degeneration detector before evaluation rather than after.
+The corpus figure is therefore fragile for generative recognisers in a way it is not for CTC: a handful of lines can carry it. The median moves hardly at all across the same pair of runs — 56.4 % against 56.7 % — which is what makes the two numbers worth reporting together.
 
 ## Error taxonomy
 
@@ -164,7 +165,7 @@ Twice in forty lines it chose a reading with no relation to the source: `März 1
 | Prompt alone | 0.214 | +0.044 | 40 of 40 |
 | The judge as first built | 0.273 | +0.103 | 40 of 40 |
 
-The effective intervention is asking the judge *less often*. A gate that escalates only when the two fine-tuned recognisers disagree by more than 0.30 CER consults it on 7 of 40 lines and beats the no-judge rule for the first time. On the other 33 the reliable systems agree, and there a choice can only do harm.
+What separates the two halves of that table is how often the judge was asked. The gate escalates only when the two fine-tuned recognisers disagree by more than 0.30 CER, which happens on 7 of 40 lines; on the other 33 the reliable systems already agree, and every configuration that consulted the judge there ended up behind the no-judge baseline.
 
 Giving the judge the facsimile does not help: 0.283 with the image against 0.273 without. The model used reaches 78.9 % CER on this material itself — it cannot read the line, so it cannot check it. Handing the page to a poor reader does not make a good referee. What the image *does* reveal is self-preference: with a naive prompt the vision judge picks its own reading 14 times out of 40, against a chance value of 10.
 
