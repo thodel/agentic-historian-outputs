@@ -35,6 +35,7 @@ Character Error Rate is reported corpus-wide (`errors / characters`) alongside t
 | Transkribus German Kurrent · HTR+ (2021) | 5.85 % | 4.48 % | 20.0 % | 64/25/11 |
 | RRB · HTR+ (2021) | 7.40 % | 5.56 % | 28.3 % | 63/26/10 |
 | German Kurrent M2 · PyLaia (2021) | 11.19 % | 6.00 % | **100.0 %** | 36/**60**/4 |
+| FoNDUE-GD_v2 \* | (11.30 %) | (10.00 %) | (33.3 %) | 66/23/10 |
 | trocr-kurrent-XIX | 13.90 % | 12.00 % | 42.1 % | 59/19/22 |
 | trocr-kurrent-XVI-XVII | 19.37 % | 15.56 % | 52.5 % | 63/16/21 |
 | kraken-bohemian_19th_v2 | 53.87 % | 57.63 % | 84.6 % | 72/19/10 |
@@ -46,6 +47,7 @@ Character Error Rate is reported corpus-wide (`errors / characters`) alongside t
 |---|---|---|---|---|
 | trocr-medieval-escriptmask | **20.0 %** | 20.0 % | 35.1 % | 0.36 |
 | kraken-catmus-medieval | 25.8 % | 25.3 % | 37.0 % | **0.05** |
+| FoNDUE-GD_v2 | 30.1 % | 30.6 % | 51.2 % | 0.11 |
 | trocr-kurrent-XVI-XVII | 30.5 % | 29.7 % | 52.8 % | 0.33 |
 | trocr-essoins-middle-latin | 44.5 % | 42.9 % | 73.1 % | 0.31 |
 | kraken-mccatmus | 46.4 % | 47.1 % | 64.5 % | 0.22 |
@@ -56,11 +58,18 @@ Character Error Rate is reported corpus-wide (`errors / characters`) alongside t
 
 | System | CER | exact cells | normalised | seconds |
 |---|---|---|---|---|
+| FoNDUE-GD_v2 \* | (34.7 %) | (35.4 %) | (35.8 %) | **7** |
 | trocr-kurrent-XIX | **49.5 %** | 19.5 % | 20.3 % | 83 |
 | kraken-bohemian_19th_v2 | 63.4 % | **28.6 %** | 28.6 % | **9** |
 | trocr-kurrent-XVI-XVII | 73.1 % | 18.9 % | 20.7 % | 85 |
 | kraken-mccatmus | 76.1 % | 13.5 % | 13.7 % | 8 |
 | trocr-medieval-escriptmask | 78.9 % | 9.0 % | 9.2 % | 80 |
+
+\* **Contaminated, and shown for that reason.** [FoNDUE-GD_v2](https://doi.org/10.5281/zenodo.21536798) is a multilingual kraken model aggregating 28 training datasets, two of which are corpora measured here: `zenodo.4746342`, the Federal Council minutes, and `PonteIneptique/valais-recensement`, the Valais census. Its figures on those two are memorisation, not recognition, and are given in parentheses so they are not read as a result.
+
+Inzigkofen is not in its training list, and there it places third at 30.1 % — behind two medieval models, and eight points behind the corpus leader. That gap between a contaminated 11.3 % and a clean 30.1 % is the useful part: for a model aggregating dozens of datasets, "has it seen this test set" cannot be judged from its name or its score, only from its dataset list. It was entered here as the field's best local model and stayed that way for a quarter of an hour, until the model card was read.
+
+One transferable observation survives: at 0.11 s/line and 1 075 form cells in seven seconds it is the fastest system measured, and it writes umlauts as a base letter plus a combining mark, so NFC normalisation improves its character error rate by 8 % relative without changing a single reading.
 
 ## Whole page or single line?
 
