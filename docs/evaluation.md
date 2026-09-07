@@ -49,6 +49,7 @@ Character Error Rate is reported corpus-wide (`errors / characters`) alongside t
 | kraken-catmus-medieval | 25.8 % | 25.3 % | 37.0 % | **0.05** |
 | FoNDUE-GD_v2 | 30.1 % | 30.6 % | 51.2 % | 0.11 |
 | trocr-kurrent-XVI-XVII | 30.5 % | 29.7 % | 52.8 % | 0.33 |
+| qwen3.8-27b, line by line | 38.9 % | 35.2 % | 100.0 % | 15.3 |
 | trocr-essoins-middle-latin | 44.5 % | 42.9 % | 73.1 % | 0.31 |
 | kraken-mccatmus | 46.4 % | 47.1 % | 64.5 % | 0.22 |
 | trocr-kurrent-XIX | **56.9 %** | 56.9 % | 80.0 % | 0.30 |
@@ -62,6 +63,7 @@ Character Error Rate is reported corpus-wide (`errors / characters`) alongside t
 | trocr-kurrent-XIX | **49.5 %** | 19.5 % | 20.3 % | 83 |
 | kraken-bohemian_19th_v2 | 63.4 % | **28.6 %** | 28.6 % | **9** |
 | trocr-kurrent-XVI-XVII | 73.1 % | 18.9 % | 20.7 % | 85 |
+| qwen3.8-27b, cell by cell | 74.2 % | 22.0 % | — | 573 |
 | kraken-mccatmus | 76.1 % | 13.5 % | 13.7 % | 8 |
 | trocr-medieval-escriptmask | 78.9 % | 9.0 % | 9.2 % | 80 |
 
@@ -86,6 +88,28 @@ At 20.4 % a commercial model with no training on this material draws level with 
 
 The reason is visible in the outputs. Given a single line with no context, the model leaves the task and starts *analysing* letterforms — `shape: ascender loop up, descender down) Stroke 4: descend` where a transcription should be. The full page anchors it: language, hand, line sequence and the vocabulary of neighbouring lines all support each individual reading.
 
+
+A second vision model, measured after the first version of this page, turns the rule into a
+gradient. `qwen3.8-27b` — served locally, and the replacement for a model that was configured
+but never deployed — reads the same eight pages at **27.7 %** and the same 291 lines at
+**38.0 %**. The page still wins, but by 1.4× rather than 2.8×.
+
+| Model and corpus | whole page | line or cell |
+|---|---|---|
+| gemini-3.7-flash, Inzigkofen | **20.4 %** | 57.3 % |
+| qwen3.8-27b, Inzigkofen | **27.7 %** | 38.0 % |
+| gemini-3.7-flash, Valais | **44.1 %** | 59.3 % |
+| qwen3.8-27b, Valais | 98.5 % | **74.2 %** |
+
+On the census forms the same model reverses it outright: 98.5 % for the whole sheet against
+74.2 % cell by cell. The size of the page advantage tracks how well the model reads the material,
+and where it cannot read it at all the added context makes things worse rather than better.
+
+A practical note on that page run: with a 4 096-token budget two of the eight pages returned
+*nothing* — the model exhausts the budget on reasoning before emitting content, and the client
+sees an empty completion rather than an error. At 16 384 tokens all eight pages returned text.
+A reasoning model used for recognition needs an output budget set for the reasoning, not for the
+transcription.
 
 Within the zero-shot class the gap between providers is not a nuance but a category. On the same page in the same mode, `gemini-3.7-flash` reaches 20.4 %; `internvl3-8b`, hosted locally, produces 6 832 characters for a 2 909-character page at **189.8 % CER**, the first two lines a faint echo and the rest `punc schmugelich` repeated a hundred times. Given a generic prompt it invents an essay instead. Whole-page context helps only a model that can read the script at all; it amplifies what is there, in both directions.
 
@@ -125,9 +149,9 @@ Errors were classified following [CERberus](https://github.com/WHaverals/CERberu
 
 Three signatures emerge, and the boundaries follow architecture rather than quality:
 
-- **Omitting.** PyLaia alone: 60 % deletions, 13.3 times as many as insertions, 168 empty lines across the full 2 741-line set. Its substitution count is *lower* than that of the two weaker HTR+ models. Where it reads, it reads about as well; it simply stops.
+- **Omitting.** PyLaia alone. Recomputed over all 2 741 lines of the archive: 73.1 % deletions against 4.4 % insertions, a ratio of 16.7 : 1, and 168 empty lines. Its substitution share, 22.5 %, is *lower* than that of the two weaker HTR+ models. Where it reads, it reads about as well; it simply stops. (An earlier version of this page gave 60 % and 13.3 : 1 for the same signature. Those values are not reproducible from the archive on either basis — all lines, or excluding the 168 empty hypotheses, which yields 63.7 % and 10.8 : 1 — and presumably came from the 150-line sample while the empty-line count was corpus-wide. The figures above are corpus-wide throughout.)
 - **Misreading.** All HTR+ and all kraken models: 63–76 % substitutions, deletion-to-insertion ratios between 1.6 and 2.5. One character out for every character in, sometimes the wrong one.
-- **Adding.** Zero-shot VLMs: 44 % and 54 % insertions, ratios of 0.2 and 0.1. Fine-tuned TrOCR models sit between at 0.8.
+- **Adding — or cutting.** Zero-shot VLMs on the 19th-century corpus: 44 % and 54 % insertions, ratios of 0.2 and 0.1. Fine-tuned TrOCR models sit between at 0.8. The signature does not generalise across corpora: on 15th-century bastarda the same architecture truncates instead. `gemini-3.7-flash` line mode reaches 72.0 % deletions at a length ratio of 0.585, `qwen3.8-27b` 41.6 % at 0.858. "Generative means over-generation" is a statement about a corpus, not about an architecture.
 
 For an edition the distinction matters more than the rate. An omission leaves a gap that proof-reading catches. A substitution leaves a wrong word in the right place. An insertion leaves text nobody ever wrote, and it does not read differently from the transmission.
 
@@ -137,6 +161,84 @@ Individual observations worth recording:
 - The most frequent error of `trocr-kurrent-XIX` is an inserted space at 15.0 %. An eighth of its CER is output convention: normalising whitespace and punctuation improves it by 13 %.
 - The same normalisation makes every kraken model *worse* by 8–12 %. The sign of that change is a diagnostic: where normalisation helps, errors are conventional; where it hurts, they are on the letter.
 - Line-break characters are the hardest of the corpus for all engines: `¬` at 29–61 %, `-` at 12–63 %. Diacritics are consistently two to five times harder than plain ASCII.
+
+## Where the errors sit
+
+CERberus gives more than a rate: every edit operation names the character it acted on. Grouping
+those by Unicode block, and normalising by how often each block occurs in the reference, localises
+the difficulty. Without that normalisation Basic Latin always wins, because it is most of the text.
+
+The Inzigkofen reference is 89.2 % Basic Latin, 4.2 % Latin Extended-A, 3.8 % Combining
+Diacritical Marks, 2.8 % Latin-1 Supplement and 0.03 % Latin Extended-D.
+
+`trocr-medieval-escriptmask`, the corpus leader at 20.0 % overall:
+
+| Unicode block | in reference | sub | del | error rate |
+|---|---|---|---|---|
+| Latin Extended-A | 653 | 616 | 37 | **100.0 %** |
+| Latin Extended-D | 5 | 5 | 0 | 100.0 % |
+| Latin-1 Supplement | 443 | 220 | 215 | 98.2 % |
+| Combining Diacritical Marks | 596 | 187 | 203 | 65.4 % |
+| Basic Latin | 14 049 | 963 | 464 | **10.2 %** |
+
+It reads the letters at 10 % error and is scored at 100 % on the block that holds the long s. One
+confusion explains almost all of that block: `ſ → s`, 599 times in 291 lines. The manuscript's own
+punctuation goes the same way — the middle dot is dropped 211 times here, and read as a comma 76
+times by the next model down. On the 19th-century corpus the equivalent is `¬`, the edition's
+line-break mark: lost or written as `-`, and 4.0 % of all edit operations of the best model there.
+
+Small blocks are fragile. Latin Extended-D holds five characters; its 100 % is true and carries
+nothing.
+
+### How much of the error is convention
+
+Folding one convention at a time and re-scoring the same output — nothing is recognised again:
+
+| Step | CER | Δ |
+|---|---|---|
+| raw | 20.02 % | |
+| + whitespace | 20.02 % | +0.00 |
+| + lower case | 19.36 % | −0.66 |
+| + long ſ → s | 15.34 % | **−4.03** |
+| + ligatures | 15.34 % | +0.00 |
+| + punctuation | 14.64 % | −0.69 |
+| + diacritics folded | 11.59 % | **−3.05** |
+
+Two fifths of this model's measured error is orthographic convention rather than misreading.
+Applied to every system whose raw output was retained:
+
+| System | raw | corrected | convention share | rank |
+|---|---|---|---|---|
+| trocr-medieval-escriptmask | 20.0 % | **11.6 %** | 42 % | 1 → 1 |
+| gemini-3.7-flash, whole page | 20.4 % | 12.8 % | 37 % | 2 → 2 |
+| qwen3.8-27b, whole page | 27.7 % | 20.5 % | 26 % | 3 → 3 |
+| trocr-kurrent-XVI-XVII | 30.5 % | 23.0 % | 24 % | 4 → 4 |
+| qwen3.8-27b, line by line | 38.9 % | 33.7 % | 13 % | 5 → 5 |
+| trocr-essoins-middle-latin | 44.5 % | 37.2 % | 16 % | 6 → 6 |
+| trocr-kurrent-XIX | 56.9 % | 51.9 % | 9 % | 7 → 7 |
+| gemini-3.7-flash, line by line | 59.4 % | 54.9 % | 8 % | 8 → 8 |
+
+Every number falls. **Not one position changes.** The raw rate orders the systems correctly and
+quantifies them badly — which is the useful conclusion for anyone choosing a model from a
+leaderboard, and the uncomfortable one for anyone quoting a rate.
+
+The spread carries the information: 42 % for the domain-trained model against 8 % for a general
+one driven line by line. A model that knows the conventions is charged less for them, so the raw
+figure compresses the distance between specialist and generalist. Corrected, that distance widens
+from 3.0× to 4.7×.
+
+The 19th-century corpus behaves the other way, and the reason is compositional: 1.9 % of its
+reference lies outside Basic Latin, and the same ladder buys only 4–9 %. Convention noise scales
+with how much of the material sits outside plain ASCII.
+
+Normalisation of this kind is a **diagnostic, not a deliverable**. An edition without long s and
+diacritics is worthless. What it separates is "cannot read the hand" from "does not follow our
+conventions", and the second is addressable with a mapping table rather than a better model — the
+confusion pairs above are the table.
+
+Two systems are missing from the corrected column: the raw outputs of `kraken-catmus-medieval` and
+`kraken-bohemian_19th_v2` were not retained, and without the text there is no alignment to correct.
+The claim that no position changes therefore holds for the eight systems listed, not for the field.
 
 ## Verifying the published 2021 results
 
@@ -178,6 +280,36 @@ What separates the two halves of that table is how often the judge was asked. Th
 
 Giving the judge the facsimile does not help: 0.283 with the image against 0.273 without. The model used reaches 78.9 % CER on this material itself — it cannot read the line, so it cannot check it. Handing the page to a poor reader does not make a good referee. What the image *does* reveal is self-preference: with a naive prompt the vision judge picks its own reading 14 times out of 40, against a chance value of 10.
 
+### A second judge, and the finding reverses
+
+The result above is a statement about one judge on one corpus. Repeating the experiment on
+Inzigkofen — 40 lines, five candidates (four fine-tuned TrOCR models and `gemini-3.7-flash` line
+mode), labels reshuffled per line, identical prompt for both judges:
+
+| Strategy | CER | calls | vs. no judge |
+|---|---|---|---|
+| Oracle: the best reading per line | 0.205 | 0 | −0.013 |
+| **Judge: `qwen3.8-27b`** | **0.209** | 40 | **−0.009** |
+| Gate + `qwen3.8-27b` | 0.213 | 16 | −0.004 |
+| No judge, strongest engine alone | 0.218 | 0 | 0 |
+| Judge: `gpt-oss-120b` | 0.277 | 40 | +0.059 |
+| Character-level vote | 0.304 | 0 | +0.086 |
+| Random among the five | 0.424 | 0 | +0.206 |
+
+Same lines, same candidates, same prompt. One judge lands 0.004 above the oracle; the other sits
+0.059 behind asking nobody. The task is not unsuited to a judge — the first judge was unsuited to
+the task. A judge result is a statement about that judge, in the same way a benchmark number is a
+statement about that corpus.
+
+The gate keeps two thirds of the gain at 40 % of the calls, which is the configuration worth
+building. What the better judge costs is real: 24 seconds per decision against 1.2 for
+`gpt-oss-120b`, because it spends a 3 000-token budget reasoning before answering with one letter.
+`/no_think` is not honoured through the OpenAI-compatible interface.
+
+Note also that the character-level vote, which helps on the 19th-century corpus, *hurts* here —
+0.304 against 0.218. Where one model dominates a field of weaker ones, the vote drags the leader
+down. It is free, but it is not unconditionally safe.
+
 ### Voting instead of selecting
 
 Character-level voting across the candidates, aligned to the strongest reading, costs no model calls at all and is deterministic:
@@ -207,8 +339,16 @@ That result required correcting the scoring. A first pass compared output row *i
 
 Two named causes account for much of the remaining gap, and neither is a misreading: the skipped header block, and a disagreement about column boundaries — Gemini splits dates into three cells where the reference keeps one.
 
+The vision model named in the pipeline configuration, `qwen3-vl-30b-a3b-instruct`, was not served
+by GPUStack for the whole period of these measurements; every call returned HTTP 404 with no
+startup check and no degraded-mode signal. It has been replaced throughout by `qwen3.8-27b`, which
+is what the figures on this page record. The substitution is a finding as much as a fix: a model id
+in a configuration file is a claim that can quietly stop being true.
+
 ## Reproduction
 
 - Error taxonomy: [CERberus](https://github.com/WHaverals/CERberus) (Wouter Haverals)
 - Reference: Hodel, T., Schoch, D., Schneider, C., & Purcell, J. (2021). *General Models for Handwritten Text Recognition: Feasibility and State-of-the Art. German Kurrent as an Example.* Journal of Open Humanities Data 7: 13, Table 3. [DOI 10.5334/johd.46](https://doi.org/10.5334/johd.46)
 - Unless stated otherwise, no normalisation of case, whitespace or punctuation was applied.
+- Unicode-block localisation and the normalisation ladder: `blocks.py`, alongside the harness described in `docs/EVALUATION_HARNESS.md`.
+- Two aggregations appear on this page. Per-line sums (each line scored against its own reference) and joined-page sums (all lines of a page against the page reference) differ by about one point; tables are internally consistent, and the page-versus-line section uses the joined basis throughout.
