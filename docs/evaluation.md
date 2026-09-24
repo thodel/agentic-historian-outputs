@@ -13,6 +13,8 @@ It records **what was measured**, and stops there. What the results argue for in
 
 All figures are reproducible from published datasets. Where a number contradicts something stated earlier in the project, the correction is noted rather than quietly applied.
 
+It covers engines this project did not build. The models fine-tuned for it — fifteen runs on Swiss and German material — are analysed separately in [Fine-tuning vision models](vlm-finetuning.html), together with the three corpus and evaluation defects those runs uncovered.
+
 ## Corpora
 
 | Corpus | Period | Material | Extent | Source |
