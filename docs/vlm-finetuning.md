@@ -111,15 +111,6 @@ The block model's penalty on lines is uniform rather than an artefact of a few p
 
 **"Pages are too long for the token budget."** Also wrong, and also cheap to check: the longest page in the corpus needs about 1 800 tokens against a budget of 4 096, at roughly three characters per token. Both hypotheses were about the model; the answer was again about the data — the model had simply never seen a page.
 
-## 6. What this costs in practice
-
-Operational lessons, recorded because each cost time or someone else's service:
-
-- **Never evaluate against the production gateway.** One measurement run competed with a live caller for the single card the serving box has; the caller got three 502s and a 503 within a minute. Evaluation now runs on the training machine with its own server, bound to localhost.
-- **Serving a new architecture is not a pip install.** Qwen3.5 needs a vLLM the serving box's driver could not run — until it turned out that only the *default* build was out of reach and the CUDA 12.9 build runs fine. The conclusion "a driver upgrade is required" had been derived from a version table rather than tested.
-- **A measurement environment is 20–30 GB and three machines.** Building it by hand four times produced two self-inflicted outages and one forgotten 260 GB of leftovers. It is being automated.
-- **Say what a job will take.** A scheduler that caps CPU-minutes reserves against the *declared* limit, so a 20-hour limit on a 7-hour job blocks a colleague's run for the difference.
-
 ## Open questions
 
 - **Over-generation on sparse pages** is the page model's remaining weakness and the same failure the medieval page model shows. Neither a larger nor a smaller pixel budget addresses it.
@@ -128,4 +119,4 @@ Operational lessons, recorded because each cost time or someone else's service:
 
 ## Provenance
 
-Every figure here comes from a stored evaluation report of a named run, on a named set of pages, and the corrections are recorded in the issue trackers of `thodel/serving-atr-inference` and `thodel/training-atr-models` rather than only in this summary. The measuring instrument for the granularity table is `scripts/eval_granularity.py` in the serving repository: it asks one model the same pages four ways and reports, besides CER, the two failure shapes an average hides — collapse (under a third of the reference) and runaway (over 1.5 times it).
+Every figure here comes from a stored evaluation report of a named run, on a named set of pages, and the corrections are recorded in the issue trackers of `thodel/serving-atr-inference` and `thodel/training-atr-models` rather than only in this summary. The operational side of these runs — scheduling, serving, how a measurement environment is built and taken down — is tracked there as well and deliberately not summarised here: this page is about what the models learned. The measuring instrument for the granularity table is `scripts/eval_granularity.py` in the serving repository: it asks one model the same pages four ways and reports, besides CER, the two failure shapes an average hides — collapse (under a third of the reference) and runaway (over 1.5 times it).
