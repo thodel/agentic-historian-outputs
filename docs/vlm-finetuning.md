@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "Fine-tuning vision models: what fifteen runs taught us"
+title: "Fine-tuning vision models: what nineteen runs taught us"
 ---
 
 > **Internal engineering document.** This page is a working document for project contributors. It is not part of the public-facing German site and is not linked from the global navigation. See the [language policy](about.html#sprachpolitik) for context.
 
-# Fine-tuning vision models: what fifteen runs taught us
+# Fine-tuning vision models: what nineteen runs taught us
 
-The [recognition engine evaluation](evaluation.html) measures engines this project did not build: published Transkribus models, TrOCR and kraken checkpoints from the hub, commercial and local vision models used zero-shot. This page is about the other half — the fifteen vision-language models fine-tuned for this project on Swiss and German material between 2026-09-03 and 2026-09-24, and what went wrong often enough to be worth writing down.
+The [recognition engine evaluation](evaluation.html) measures engines this project did not build: published Transkribus models, TrOCR and kraken checkpoints from the hub, commercial and local vision models used zero-shot. This page is about the other half — the nineteen vision-language models fine-tuned for this project on Swiss and German material between 2026-09-03 and 2026-09-26, and what went wrong often enough to be worth writing down.
 
 Almost none of the lessons are about hyperparameters. Every one of them is about **what the model was shown, and what the number it was judged by actually measured**.
 
@@ -15,7 +15,7 @@ As on the evaluation page, this records what was measured. Where an earlier clai
 
 ## The runs
 
-Two corpora, two bases, four model sizes, four sample granularities.
+Two corpora, **three** bases, four model sizes, four sample granularities.
 
 | Family | Base | Corpus | Runs |
 |---|---|---|---|
@@ -23,9 +23,11 @@ Two corpora, two bases, four model sizes, four sample granularities.
 | `qwen3.5-{4b,2b,0.8b}-medieval-german-v1` | Qwen3.5 | the same | 3 |
 | `qwen3vl-german-xix-v1, v2` | Qwen3-VL-4B | Zurich government minutes, federal protocols, kurrent-xix · 964 472 lines | 2 |
 | `qwen3.5-{4b,2b,0.8b}-german-xix-v{1,2}` | Qwen3.5 | the same | 5 |
-| `qwen3vl-german-xix-block-v1`, `-page-v1` | Qwen3-VL-4B | the same, cut into blocks of six lines / whole pages | 2 |
+| `qwen3vl-german-xix-block-v1`, `-page-v1`, `-mixed-v1` | Qwen3-VL-4B | the same, cut into blocks of six lines / whole pages / all three mixed | 3 |
+| `qwen3vl-medieval-german-page-v1`, `qwen3.5-4b-…-page-v1` | Qwen3-VL-4B, Qwen3.5-4B | the medieval corpus, whole pages | 2 |
+| `gemma-4-E4B-it` on the medieval corpus | Gemma 4 | the same, lines | 1 (+2 running: E4B on the 19th c., 12B on the medieval) |
 
-Each is a QLoRA adapter over a frozen base, one epoch, trained on one H100 (UBELIX) or two A40s. A 19th-century run costs 4–10 GPU-hours; building its corpus costs 2–16 CPU-hours, most of it copying files.
+Each is a QLoRA adapter over a frozen base, one epoch, trained on one H100 (UBELIX) or two A40s. A 19th-century run costs 4–10 GPU-hours; building its corpus costs 2–16 CPU-hours, most of it copying files. Later runs cost nothing to prepare at all: the compiled corpus is content-addressed and the base model is not part of its key, so a second base trains on the first one's bytes and, more importantly, on its split.
 
 ## 1. The ground truth decided everything
 
@@ -73,6 +75,8 @@ The fixes were structural: a stratified draw with an equal share per source, per
 
 The general form: **an in-domain validation split measures convergence, not accuracy.** It is the right number for "did this run work" and the wrong number for "how well does this model read".
 
+The same mistake was nearly made again a year later, in a smaller way, and it is worth recording because the fix is cheap. Two runs on the same corpus and the same split reported 14.27 % and 16.88 %, and the difference looked like a result. Each run's evaluation subset, however, is drawn at test time — and the two draws **overlapped in 4 of 200 samples**. Re-scoring the first model on the second's subset gave 13.65 %, which made the comparison real. It also produced, for the first time, an error bar: the same model on two draws from the same pool differs by **0.6 points**, so nothing smaller than that is a finding at all.
+
 ## 4. A model reads the unit it was trained on
 
 All the models above were trained on **line crops**, and served the same way. The obvious question — can they read a whole page in one call, or at least a paragraph? — turned out to have a sharp answer.
@@ -105,18 +109,66 @@ Three further observations:
 
 The block model's penalty on lines is uniform rather than an artefact of a few pages: it is worse than the line model on 14 of 15 pages, by 0.2 to 8.3 points, smallest on the easiest source and largest on the hardest.
 
+### The mixed run: one model can read all three, and pays for it
+
+A fifth model was then trained on the same corpus and split with lines, blocks and pages **in one training set** — 50 % lines, 30 % blocks of six, 20 % whole pages, each at its own pixel budget, 119 850 samples. Scored on its own held-out split, 200 samples drawn evenly across the four sources:
+
+| Input | CER | samples | length ratio |
+|---|---:|---:|---:|
+| blocks of 6 | **10.1 %** | 56 | 1.004 |
+| line crops | 13.5 % | 113 | 0.998 |
+| whole pages | 29.2 % | 31 | 0.997 |
+
+**The finding is the last column.** Read it against the table above: a line-trained model answers a page at length ratio 0.03, a page-trained model answers a line at 1.26. This model is at 1.00 on all three. The asymmetric failure that the whole of §4 is about — stop early, or keep writing — is simply gone, and three out of 200 predictions reached the generation cap.
+
+It is not free. On lines it reads at 13.5 % where the line-only model reads its own split at 5.3 %. So the honest reading of the question this page asked a year ago — hold the line accuracy *and* read pages, or land between the two on every level — is **the second**. One model that degrades gracefully at every granularity is a different product from one model that is excellent at one granularity and useless at the others, and which of the two is wanted is a decision about the task, not about the training.
+
+The caveat that §3 exists for applies here too: 13.5 % and 5.3 % are in-domain validation numbers on different draws, and the published benchmark was not scored for this run.
+
 ## 5. Two more hypotheses that measurement killed
 
 **"A page gives each line a quarter of the resolution."** Plausible arithmetic — 2 048 visual tokens for a page of 40 lines against 256 for one line — and wrong. Line crops never fill their budget, because a crop is small and is never upscaled. Measured on the image: a line inside a whole page keeps **74–77 %** of the height it has as a crop, 65–89 pixels, comfortably legible. For the 19th-century corpus resolution is not the bottleneck. (For the medieval corpus it may still be: those scans are 19.9 megapixels and are reduced to about a third.)
 
 **"Pages are too long for the token budget."** Also wrong, and also cheap to check: the longest page in the corpus needs about 1 800 tokens against a budget of 4 096, at roughly three characters per token. Both hypotheses were about the model; the answer was again about the data — the model had simply never seen a page.
 
+## 6. A second architecture, and what a drop-in actually costs
+
+Every model above sits on a Qwen base. That was never a decision — it was the first thing that worked — so a second family was trained on the same corpus, the same split, the same epoch and the same effective batch, and scored on **the same 200 samples**:
+
+| | overall | aaeb | bullinger | königsfelden | rats-u.-richteb. |
+|---|---:|---:|---:|---:|---:|
+| `Qwen3-VL-4B-Instruct` | **13.7 %** | 12.7 | 14.0 | 14.6 | 12.6 |
+| `gemma-4-E4B-it` | 16.9 % | 14.8 | 19.3 | 18.7 | 12.9 |
+
+Qwen reads better overall and on every one of the four sources, by 3.2 points — five times the 0.6-point selection noise established in §3. Gemma is not failing: length ratio 0.99, nothing truncated. It reads less well.
+
+**Two things make that number smaller than it looks, and both are ours.**
+
+The first is a size claim we got wrong. Gemma-4-E4B is advertised at 8 B parameters against Qwen's 4.4 B, and the result was first written up as "worse despite nearly double the size". Its config says otherwise: 42 layers with a per-layer embedding table of 262 144 × 256 each, so roughly 3.5 B of those 8 B are embedding lookup and about 4.5 B is transformer. The two models are the **same effective size**, and the honest statement is simply that Gemma read this material worse.
+
+The second is that the comparison was designed to be fair in pixels and was therefore unfair in tokens. Gemma spends a fixed budget per image, on one of five permitted steps, and one of its tokens covers a 48 × 48 px cell against Qwen's 32 × 32. Matching the two on *pixels* — both models shown the same image detail — put Gemma on the 140-token step while Qwen had 256. Gemma's own default is 280. So the run that produced 16.9 % was given half the visual tokens the model ships with, by a decision that was made deliberately and documented as the honest one.
+
+**The larger lesson is about what a "drop-in" comparison costs.** Six things had to be fixed before Gemma produced any number at all, and each one was invisible until the one before it was cleared:
+
+1. the training container silently ran a transformers version that had never heard of the model;
+2. the visual-token budget has no continuous knob, only five legal values, and the code refused the family rather than mapping onto them;
+3. the assistant header was derived from a render the training never uses — Gemma's generation prompt opens an empty reasoning channel that the training text does not contain, so the token the loss mask searched for occurred in no sample;
+4. the adapters were aimed at every module with a matching name, which on this family includes a vision tower whose wrapped layers the adapter library refuses outright — Qwen's tower simply does not reuse those names, so nobody had noticed the aim was that wide;
+5. images were handed over as one flat list per batch, which this family reads as one sample's images;
+6. and after a run had trained to completion — 19 162 of 19 162 steps — the evaluation refused it, because the tokens it stops generation on were hardcoded to one family's names.
+
+Only the fourth of those is a defect in the ordinary sense. The rest are places where a single family's conventions had been absorbed into code that looked general, and each was discovered by a run dying rather than by reading. The cheap part was the discovery: idle consumer GPUs on the cluster start a job in seconds, and five of the six failures arrived within ninety seconds of submission. The expensive part was the sixth, which cost a full day of training before the adapter could be scored — from an artefact that was still on disk, so the number was recovered without retraining.
+
+**What this does not establish** is that Gemma cannot do better. Every hyperparameter in both runs was chosen for Qwen. A separate plan now collects what the model's own documentation recommends — a different adapter scope, a different token budget, trained embeddings — and the first thing it will test is the budget the comparison above took away.
+
 ## Open questions
 
 - **Over-generation on sparse pages** is the page model's remaining weakness and the same failure the medieval page model shows. Neither a larger nor a smaller pixel budget addresses it.
-- **A mixed run** — lines, blocks and pages in one training set, each at its own budget — is queued. It should hold the line accuracy *and* read pages; if it lands between the two on every level instead, the honest conclusion is two models rather than one.
+- **Whether Gemma closes the gap when it is tuned for itself**, starting with the visual-token budget its own default sets higher than ours did. Until that is measured, §6 says "worse as a drop-in", which is a narrower claim than "worse".
+- **A page-level Gemma number on the 19th-century corpus**, scored on the published benchmark rather than on a split of our own, is training now. It is the first cross-family number that will be comparable to a figure someone else can reproduce.
+- **Training variance is still unmeasured.** §3 establishes that drawing a different evaluation subset moves a CER by 0.6 points. What two runs of the *same* arm at different seeds do is unknown, and every ranking on this page assumes it is small.
 - **There is no page-level benchmark** with ground truth that no run has seen. The published Federal Council test set is 2 751 isolated lines. Until one exists, page numbers are measured on held-out pages of our own corpora, which is weaker.
 
 ## Provenance
 
-Every figure here comes from a stored evaluation report of a named run, on a named set of pages, and the corrections are recorded in the issue trackers of `thodel/serving-atr-inference` and `thodel/training-atr-models` rather than only in this summary. The operational side of these runs — scheduling, serving, how a measurement environment is built and taken down — is tracked there as well and deliberately not summarised here: this page is about what the models learned. The measuring instrument for the granularity table is `scripts/eval_granularity.py` in the serving repository: it asks one model the same pages four ways and reports, besides CER, the two failure shapes an average hides — collapse (under a third of the reference) and runaway (over 1.5 times it).
+Every figure here comes from a stored evaluation report of a named run, on a named set of pages, and the corrections are recorded in the issue trackers of `thodel/serving-atr-inference` and `thodel/training-atr-models` rather than only in this summary. The operational side of these runs — scheduling, serving, how a measurement environment is built and taken down — is tracked there as well and deliberately not summarised here: this page is about what the models learned. Sections 3 and 6 rest on re-scoring stored adapters against another run's evaluation subset, which is why they can claim a comparison at all. The measuring instrument for the granularity table is `scripts/eval_granularity.py` in the serving repository: it asks one model the same pages four ways and reports, besides CER, the two failure shapes an average hides — collapse (under a third of the reference) and runaway (over 1.5 times it).
