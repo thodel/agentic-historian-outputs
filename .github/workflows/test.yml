@@ -28,6 +28,11 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m unittest discover -s tests -v
+      # Reported, not gated. #182's exit condition is a human judgement — a
+      # verified reference or a recorded reason for each document — and a gate
+      # would only invite a placeholder entry to make it green.
+      - name: Source coverage (#182)
+        run: python scripts/source_ledger.py
 
   node-unit:
     name: Node unit and syntax tests

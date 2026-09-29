@@ -19,6 +19,7 @@ _INTERNAL_PAGES = [
     "docs/catalogue-performance.md",
     "docs/evaluation.md",
     "docs/vlm-finetuning.md",
+    "docs/source-backfill.md",
 ]
 
 _PUBLIC_NAV_PAGES = [

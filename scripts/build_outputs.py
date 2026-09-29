@@ -18,6 +18,7 @@ from pathlib import Path
 from build_recognitions import build_recognition_section, write_package
 from source_references import normalize_source_reference, public_url
 from editorial_reviews import apply_review, load_reviews
+from source_ledger import apply_source_ledger, load_source_ledger
 from training_contract import published_training_runs
 from withdrawals import (
     build_tombstones, load_withdrawals, remove_withdrawn_entity_pages,
@@ -814,13 +815,18 @@ def build_status_header(
 
 def build_document(path: Path, entity_index: dict, collect_entities: bool = True,
                    reviews: dict[str, dict] | None = None,
-                   training_runs: dict[str, str] | None = None) -> bool:
+                   training_runs: dict[str, str] | None = None,
+                   source_ledger: dict[str, dict] | None = None) -> bool:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         data = {}
     doc_id = path.parent.name
     data, editorial_review = apply_review(data, doc_id, reviews)
+    # A verified source reference is an editorial claim, not a pipeline
+    # output, so it is overlaid from the committed ledger and a replacement
+    # run cannot drop it (#182).
+    data, _source_verified = apply_source_ledger(data, doc_id, source_ledger)
     description = data.get("description") if isinstance(data.get("description"), dict) else {}
     fields = description.get("source_json") if isinstance(description.get("source_json"), dict) else {}
     meta = data.get("a_meta") if isinstance(data.get("a_meta"), dict) else {}
@@ -1346,6 +1352,7 @@ def build() -> None:
     tests = []
     doc_paths = sorted(DOCS.glob("*/pipeline.json"))
     reviews = load_reviews()
+    source_ledger = load_source_ledger()
     pipeline_data = {}
     for path in doc_paths:
         try:
@@ -1379,7 +1386,7 @@ def build() -> None:
             )
     for path in doc_paths:
         if build_document(path, entity_index, collect_entities=False, reviews=reviews,
-                          training_runs=training_runs):
+                          training_runs=training_runs, source_ledger=source_ledger):
             tests.append(path.parent.name)
     entity_targets = build_entity_pages(entity_index)
     # Order matters. Withdrawal is a deliberate decision that a page must stop
