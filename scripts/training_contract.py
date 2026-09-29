@@ -65,7 +65,8 @@ REVISION_RE = re.compile(r"^[A-Za-z0-9._-]{7,128}$")
 KNOWN_FIELDS = frozenset({
     "schema_version", "run_id", "model_id", "engine", "status",
     "created_at", "finished_at", "epochs", "epochs_trained",
-    "params", "metrics", "curves", "base_model", "datasets", "log",
+    "params", "metrics", "curves", "curves_provenance",
+    "base_model", "datasets", "log",
 })
 
 
@@ -119,7 +120,7 @@ class TrainingContract:
         "created_at", "finished_at",
         "epochs", "epochs_trained",
         "params", "metrics",
-        "curves",
+        "curves", "curves_provenance",
         "base_model", "datasets", "log",
         "_raw",
     )
@@ -151,6 +152,7 @@ class TrainingContract:
         self.curves: list[CurveEpoch] = [
             CurveEpoch(**_ensure_dict(e)) for e in data.get("curves") or []
         ]
+        self.curves_provenance = dict(data.get("curves_provenance") or {}) or None
         self.base_model = data.get("base_model") or None
         self.datasets = [dict(d) for d in data.get("datasets") or []]
         self.log = data.get("log") or None
@@ -301,6 +303,38 @@ class TrainingContract:
                         errors.append(
                             f"datasets[{i}].{key}: must be a non-negative int when present"
                         )
+
+        # ── curve provenance ───────────────────────────────────────────────
+        # A curve is not automatically every epoch. kraken keeps only its top
+        # ten checkpoints, and the trainer derives the curve from those
+        # filenames because ketos renders progress through `rich` and the
+        # numbers do not survive a redirected stdout (serving-atr-inference
+        # #38/#51). Ten best epochs drawn as a line is a different claim from
+        # a training curve, and the reader has to be told which one they are
+        # looking at — so the record must be able to say.
+        provenance = data.get("curves_provenance")
+        if provenance is not None:
+            if not isinstance(provenance, dict):
+                errors.append("curves_provenance: must be a dict or null")
+            else:
+                complete = provenance.get("complete")
+                if complete is not None and not isinstance(complete, bool):
+                    errors.append(
+                        f"curves_provenance.complete: must be true or false, "
+                        f"got {complete!r}"
+                    )
+                for key in ("source", "note"):
+                    val = provenance.get(key)
+                    if val is not None and not isinstance(val, str):
+                        errors.append(
+                            f"curves_provenance.{key}: must be a string or null"
+                        )
+                if complete is False and not str(provenance.get("note") or "").strip():
+                    errors.append(
+                        "curves_provenance.note: required when complete is "
+                        "false — an incomplete curve must say what was kept "
+                        "and why, or the chart overstates what it shows"
+                    )
 
         # ── metrics ────────────────────────────────────────────────────────
         metrics = data.get("metrics")

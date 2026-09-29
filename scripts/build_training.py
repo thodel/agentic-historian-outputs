@@ -231,17 +231,34 @@ def _metric_points(curves: list[CurveEpoch], field: str) -> list[tuple[int, floa
 
 
 def _sample_points(points: list[tuple[int, float]]) -> list[tuple[int, float]]:
-    """Bound SVG geometry while the exact HTML table keeps every epoch.
+    """Bound SVG geometry without deleting the events worth seeing.
 
-    Uniform sampling is deterministic and always retains both endpoints.  This
-    keeps the inline graphic responsive for unusually long runs without
-    silently discarding the underlying values.
+    Uniform sampling was deterministic, kept both endpoints, and threw away
+    exactly the thing a reader looks at a loss curve for. With 1,000 epochs
+    all at 1.0 except a single spike to 1,000 at epoch 1, every kept index
+    missed the spike and the chart drew a flat line — while its own caption
+    reported a range of 0.99 to 1.01, because the axis was derived from the
+    sampled points too.
+
+    Bucketed extrema instead: split the series into equal buckets and keep the
+    minimum and maximum of each. Every excursion survives at the resolution
+    the chart can actually draw, endpoints are still kept, and the result is
+    still deterministic and still within the point budget.
     """
     limit = TRAINING_PERFORMANCE_BUDGETS["svg_points_per_series"]
-    if len(points) <= limit:
+    count = len(points)
+    if count <= limit:
         return points
-    indexes = {round(index * (len(points) - 1) / (limit - 1)) for index in range(limit)}
-    return [points[index] for index in sorted(indexes)]
+    # Two points per bucket, plus both endpoints, must fit the budget.
+    buckets = max(1, (limit - 2) // 2)
+    keep = {0, count - 1}
+    for bucket in range(buckets):
+        low = bucket * count // buckets
+        high = max(low + 1, (bucket + 1) * count // buckets)
+        window = range(low, high)
+        keep.add(min(window, key=lambda index: points[index][1]))
+        keep.add(max(window, key=lambda index: points[index][1]))
+    return [points[index] for index in sorted(keep)]
 
 
 def _polyline(points: list[tuple[int, float]], x_min: float, x_max: float,
@@ -265,16 +282,23 @@ def _render_svg_chart(curves: list[CurveEpoch], run_id: str, chart: str) -> str:
         series = [("Validierungsgenauigkeit", "val_accuracy", "training-chart__accuracy")]
         title = "Validierungsgenauigkeit nach Epoche"
         y_label = "Genauigkeit (%)"
-    available = [
-        (label, css, _sample_points(_metric_points(curves, field)))
+    # Keep the full series alongside the drawn one. The axis, the range in the
+    # description and the reduction notice are all derived from the full data;
+    # deriving them from the sampled points is how a chart came to report a
+    # range of 0.99-1.01 for a series containing a value of 1,000.
+    resolved = [
+        (label, css, full, _sample_points(full))
         for label, field, css in series
+        for full in [_metric_points(curves, field)]
     ]
-    available = [item for item in available if item[2]]
+    available = [item for item in resolved if item[2]]
     if not available:
         return ""
-    all_points = [point for _, _, points in available for point in points]
-    x_min, x_max = min(x for x, _ in all_points), max(x for x, _ in all_points)
-    y_values = [y for _, y in all_points]
+    full_points = [point for _, _, full, _ in available for point in full]
+    reduced_from = sum(len(full) for _, _, full, _ in available)
+    reduced_to = sum(len(drawn) for _, _, _, drawn in available)
+    x_min, x_max = min(x for x, _ in full_points), max(x for x, _ in full_points)
+    y_values = [y for _, y in full_points]
     # Loss and accuracy want OPPOSITE axis treatment (#232).
     #
     # Accuracy is a percentage and must include the origin: a run whose
@@ -293,10 +317,17 @@ def _render_svg_chart(curves: list[CurveEpoch], run_id: str, chart: str) -> str:
         y_min = 0.0 if min(y_values) >= 0 else min(y_values)
         y_max = max(y_values) or 1.0
         axis_note = "Achse beginnt bei null"
+    # Say so when the drawn line is not every point. Silent reduction is what
+    # makes a chart quietly disagree with the table beneath it.
+    reduction_note = (
+        f" Gezeichnet sind {reduced_to} von {reduced_from} Messpunkten; "
+        "Minimum und Maximum jedes Abschnitts bleiben erhalten."
+        if reduced_to < reduced_from else ""
+    )
     chart_id = re.sub(r"[^a-zA-Z0-9_-]", "-", f"{run_id}-{chart}")
     lines = []
     legend = []
-    for label, css, points in available:
+    for label, css, _full, points in available:
         lines.append(
             f'<polyline class="training-chart__line {css}" points="{_polyline(points, x_min, x_max, y_min, y_max)}" />'
         )
@@ -309,7 +340,7 @@ def _render_svg_chart(curves: list[CurveEpoch], run_id: str, chart: str) -> str:
         '<figure class="training-chart">'
         f'<svg viewBox="0 0 720 280" role="img" aria-labelledby="{chart_id}-title {chart_id}-desc">'
         f'<title id="{chart_id}-title">{title}</title>'
-        f'<desc id="{chart_id}-desc">Epochen {x_min} bis {x_max}; Wertebereich {y_min:.3g} bis {y_max:.3g} ({axis_note}). Die exakten Werte folgen als Tabelle.</desc>'
+        f'<desc id="{chart_id}-desc">Epochen {x_min} bis {x_max}; Wertebereich {y_min:.3g} bis {y_max:.3g} ({axis_note}).{reduction_note} Die exakten Werte folgen als Tabelle.</desc>'
         f'{grid}<line class="training-chart__axis" x1="62" y1="234" x2="682" y2="234" />'
         '<line class="training-chart__axis" x1="62" y1="24" x2="62" y2="234" />'
         f'<text class="training-chart__label" x="372" y="270" text-anchor="middle">Epoche</text>'
@@ -341,12 +372,57 @@ def _render_curve_table(curves: list[CurveEpoch]) -> str:
     )
 
 
+def _render_curve_provenance(contract: TrainingContract) -> str:
+    """Say where the curve came from, and whether it is every epoch.
+
+    It usually is not. kraken keeps its ten best checkpoints and the trainer
+    reads the curve off those filenames, because ketos renders progress
+    through `rich` and the numbers do not survive a redirected stdout
+    (serving-atr-inference#38/#51). Drawing ten best epochs as a line and
+    calling it a training curve is a different claim, and which epochs
+    survived is itself the finding: late ones mean the run was still
+    improving, early ones mean it peaked and then got worse.
+    """
+    provenance = contract.curves_provenance or {}
+    complete = provenance.get("complete")
+    source = str(provenance.get("source") or "").strip()
+    note = str(provenance.get("note") or "").strip()
+
+    if complete is None and not source and not note:
+        return (
+            '<p class="notice notice--warning training-curve-provenance">'
+            '<strong>Herkunft der Kurvendaten nicht angegeben.</strong> '
+            'Ob die Punkte jede Epoche abbilden oder eine Auswahl sind, geht '
+            'aus dem Datensatz nicht hervor.</p>'
+        )
+    if complete is True:
+        body = '<strong>Vollständige Kurve:</strong> jede trainierte Epoche ist enthalten.'
+        css = "notice--info"
+    else:
+        body = (
+            '<strong>Unvollständige Kurve — Auswahl, nicht jede Epoche.</strong> '
+            'Der Verlauf zwischen den gezeigten Punkten ist nicht belegt.'
+        )
+        css = "notice--warning"
+    details = "".join(
+        f'<p>{_esc(text)}</p>' for text in (source and f"Quelle: {source}", note) if text
+    )
+    return (
+        f'<div class="notice {css} training-curve-provenance">'
+        f'<p>{body}</p>{details}</div>'
+    )
+
+
 def _render_curves(contract: TrainingContract) -> str:
     if not contract.curves:
         return '<p class="training-empty">Für diesen Lauf wurden keine Kurvendaten veröffentlicht.</p>'
     charts = _render_svg_chart(contract.curves, contract.run_id, "loss")
     charts += _render_svg_chart(contract.curves, contract.run_id, "accuracy")
-    return f'<div class="training-charts">{charts}</div>{_render_curve_table(contract.curves)}'
+    return (
+        f'{_render_curve_provenance(contract)}'
+        f'<div class="training-charts">{charts}</div>'
+        f'{_render_curve_table(contract.curves)}'
+    )
 
 
 def _join_projects(values: object) -> str:

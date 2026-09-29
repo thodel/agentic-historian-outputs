@@ -22,6 +22,31 @@ The current schema version is `1`.
 `epochs_trained`, `finished_at`, `params`, `metrics`, `curves`, `base_model`,
 and `log` are optional but should be emitted whenever the producer knows them.
 
+## Curve provenance
+
+`curves_provenance` is optional but should always be emitted, because a curve
+is not automatically every epoch:
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| `complete` | boolean | Whether `curves` holds every trained epoch. |
+| `source` | string | Where the points were read from. |
+| `note` | string | What was kept and why. Required when `complete` is false. |
+
+kraken keeps only its ten best checkpoints, and the trainer derives the curve
+from those filenames because ketos renders progress through `rich` and the
+numbers do not survive a redirected stdout (serving-atr-inference#38/#51). Ten
+best epochs drawn as a line is a different claim from a training curve, and
+which epochs survived is itself the finding: late ones mean the run was still
+improving, early ones mean it peaked and then got worse. A report whose record
+says nothing here shows the provenance as unknown rather than assuming the
+curve is complete.
+
+Separately, the rendered chart reduces long series to a point budget. Reduction
+keeps the minimum and maximum of each section, so isolated spikes survive, and
+the chart states how many points it drew. Axis bounds always come from the full
+series, never from the reduced one.
+
 ## Validation rules that surprise producers
 
 These are the rules a record is most often rejected by, and why each exists.
