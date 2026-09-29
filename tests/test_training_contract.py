@@ -18,6 +18,9 @@ from training_contract import (
     TrainingContract,
     VALID_ENGINES,
     VALID_STATUSES,
+    KNOWN_FIELDS,
+    VALID_EVALUATION_KINDS,
+    VALID_SEGMENTATIONS,
     validate_all_training_jsons,
     validate_training_json,
 )
@@ -252,6 +255,37 @@ class TestRegexPatterns(unittest.TestCase):
     def test_slug_invalid_trailing_underscore(self):
         self.assertFalse(SLUG_RE.match("u-17__"))
         self.assertFalse(SLUG_RE.match("doc-"))
+
+
+# ── The schema document is part of the contract ──────────────────────────────
+
+class SchemaDocumentTests(unittest.TestCase):
+    """Producers read the document, not this module.
+
+    Unknown fields are refused, so the document is the only way a producer
+    learns which fields exist. A field added here and not there is a field
+    nobody can use, and a rule stated only in code is one every producer
+    discovers by having a record rejected.
+    """
+
+    DOCUMENT = Path(__file__).parent.parent / "docs" / "training" / "TRAINING_SCHEMA.md"
+
+    def test_every_accepted_field_is_documented(self):
+        text = self.DOCUMENT.read_text(encoding="utf-8")
+        missing = sorted(
+            field for field in KNOWN_FIELDS if f"`{field}`" not in text
+        )
+        self.assertEqual(
+            [], missing,
+            "these fields are accepted but appear nowhere in "
+            "TRAINING_SCHEMA.md:\n  " + "\n  ".join(missing),
+        )
+
+    def test_the_enums_a_producer_must_match_are_documented(self):
+        text = self.DOCUMENT.read_text(encoding="utf-8")
+        for value in sorted(VALID_EVALUATION_KINDS | VALID_SEGMENTATIONS | VALID_ENGINES):
+            with self.subTest(value=value):
+                self.assertIn(f"`{value}`", text)
 
 
 # ── Hostile and foreign input ────────────────────────────────────────────────

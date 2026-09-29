@@ -22,6 +22,53 @@ The current schema version is `1`.
 `epochs_trained`, `finished_at`, `params`, `metrics`, `curves`, `base_model`,
 and `log` are optional but should be emitted whenever the producer knows them.
 
+## What the publisher has to assemble (agentic_historian#365)
+
+**This record is not a file the trainer already writes.** The trainer's job
+store also contains a `training.json`, and it is a different document: the
+per-epoch curve file from serving-atr-inference#38, holding `job_id`,
+`source`, `complete`, `note`, `best`, `last_epoch`, `still_improving` and
+`points[{epoch, val_metric, val_error}]`. It shares no field name with this
+contract. Copying it across would be refused outright by the unknown-field
+rule below — deliberately, because the alternative is a report with no
+metrics and no curve that looks like a real run.
+
+The publication record has to be assembled from the job record (`job.json`,
+`TrainJob`) plus that curve file:
+
+| This contract | Source |
+| --- | --- |
+| `run_id` | `TrainJob.id` — also the published directory name |
+| `model_id` | `TrainJob.request.model_id` |
+| `base_model` | the request's base model |
+| `engine` | the backend that ran it (`kraken`, `trocr`, `vllm`) |
+| `status` | `TrainJob.status`, narrowed to completed / failed / cancelled |
+| `created_at`, `finished_at` | `TrainJob.created_at`, `TrainJob.finished_at` |
+| `epochs`, `epochs_trained` | the request's epoch count; `Progress.epoch` |
+| `params` | the request's hyperparameters |
+| `datasets[]` | the request's dataset selection, with the Hub revision pinned |
+| `metrics.cer`, `.wer` | `TrainJob.metrics` (already error rates, not accuracies) |
+| `metrics.char_accuracy`, `.word_accuracy`, `.chars`, `.errors` | `TrainJob.metrics`, where the backend reports them |
+| `metrics.evaluation_kind` | `line_crop` for `ketos test`; `full_page` for the eval harness |
+| `metrics.segmentation` | `ground_truth` for `ketos test` |
+| `curves[]` | curve-file `points[]`: `epoch` → `epoch`, `val_metric` → `val_accuracy` as a percentage |
+| `curves_provenance` | curve-file `complete`, `source`, `note`, carried across verbatim |
+| `log` | the job's stage log directory |
+| `schema_version` | `1` |
+
+Two things in that table are easy to get wrong and are worth restating.
+`val_metric` is an accuracy in 0..1 while `val_accuracy` here is a percentage,
+so it needs scaling. And `curves_provenance` must be carried, not dropped: a
+kraken curve is the ten best checkpoints rather than every epoch, and a report
+that loses that note presents a selection as a training curve.
+
+Publishing must also commit the generated output alongside the record, because
+CI gates on a clean `git diff` after regeneration. Note that the catalogue
+refresh workflow triggers on `docs/**/pipeline.json` only, so a training-only
+push does not currently trigger a regeneration; either the publisher commits
+the generated pages itself, as #365 specifies, or that trigger must be widened
+deliberately.
+
 ## Evaluation context
 
 Whenever `metrics.cer` or `metrics.wer` is reported, `metrics.evaluation_kind`
