@@ -661,7 +661,15 @@ def _url_entry(loc: str, lastmod: str | None = None, priority: str = "0.7") -> s
 
 def build_sitemap(records: list) -> None:
     """Generate docs/sitemap.xml listing all site URLs."""
-    entity_dirs = sorted(d for d in (DOCS / "entities").iterdir() if d.is_dir()) if (DOCS / "entities").exists() else []
+    # Tombstoned entity pages keep their URL so existing citations resolve, but
+    # they carry no evidence and must not be advertised for indexing. They are
+    # marked noindex in their own front matter; leaving them in the sitemap
+    # would contradict that.
+    from build_outputs import is_entity_tombstone
+    entity_dirs = sorted(
+        d for d in (DOCS / "entities").iterdir()
+        if d.is_dir() and not is_entity_tombstone(d / "index.md")
+    ) if (DOCS / "entities").exists() else []
     entries: list[str] = [
         _url_entry(f"{SITE}/",                  priority="1.0"),
         _url_entry(f"{SITE}/methodology.html",  priority="0.8"),

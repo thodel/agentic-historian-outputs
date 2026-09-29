@@ -1128,9 +1128,16 @@ def _jsonld_dataset(doc_id: str, canonical: str, source_url: str,
     return f'<script type="application/ld+json">{payload}</script>'
 
 
-def build_entity_pages(index: dict) -> None:
+def build_entity_pages(index: dict) -> set[str]:
+    """Write a page per current entity and return the manifest of slugs written.
+
+    The manifest is what reconciliation needs: the set of pages this build
+    actually produced, so anything else under ``entities/`` can be recognised
+    as no longer supported by any record.
+    """
     root = DOCS / "entities"
     root.mkdir(exist_ok=True)
+    live_targets: set[str] = set()
     credible_summary = []
     uncertain_summary = []
     obsolete_variant_targets = set()
@@ -1203,15 +1210,109 @@ def build_entity_pages(index: dict) -> None:
         )
         page = frontmatter(label) + f'''<nav class="breadcrumbs"><a href="../">Entitäten</a> / {html.escape(label)}</nav><h1>{html.escape(label)}</h1><p><span class="entity-type">{html.escape(kind)}</span> · {len(occurrences)} Vorkommen</p>{variants_html}{triage}{external_html}<div class="table-scroll"><table><thead><tr><th>Ausgabe</th><th>Form</th><th>Kontext</th><th>Konfidenz</th></tr></thead><tbody>{rows}</tbody></table></div>'''
         (directory / "index.md").write_text(page, encoding="utf-8")
+        live_targets.add(target)
         row = f'<tr><td><a href="{target}/">{html.escape(label)}</a></td><td>{html.escape(kind)}</td><td>{len(occurrences)}</td></tr>'
         (uncertain_summary if score >= 2 else credible_summary).append(row)
     for obsolete_target in obsolete_variant_targets:
         directory = root / obsolete_target
         if directory.is_dir() and (directory / "index.md").exists():
             shutil.rmtree(directory)
+    live_targets -= obsolete_variant_targets
     table_head = '<div class="table-scroll"><table><thead><tr><th>Entität</th><th>Typ</th><th>Vorkommen</th></tr></thead><tbody>'
-    page = frontmatter("Entitäten") + f'''<nav class="breadcrumbs"><a href="../">Alle Ausgaben</a> / Entitäten</nav><h1>Entitäten</h1><p>Automatisch erkannte Personen, Orte, Organisationen und weitere Entitätstypen. Die heuristische Einteilung löscht keine Daten und ist keine wissenschaftliche Verifikation.</p><h2>Glaubwürdige Erkennungen</h2>{table_head}{''.join(credible_summary)}</tbody></table></div><details class="entity-noise-group"><summary>Unsichere Erkennungen ({len(uncertain_summary)})</summary><p>Diese Einträge weisen formale OCR-Risikomerkmale auf und werden zur Prüfung sichtbar aufbewahrt.</p>{table_head}{''.join(uncertain_summary)}</tbody></table></div></details>'''
+    page = frontmatter("Entitäten") + f'''<nav class="breadcrumbs"><a href="../">Alle Ausgaben</a> / Entitäten</nav><h1>Entitäten</h1><p>Automatisch erkannte Personen, Orte, Organisationen und weitere Entitätstypen. Die heuristische Einteilung löscht keine Daten und ist keine wissenschaftliche Verifikation.</p><p class="muted">Entitäten, die von keiner aktuellen Ausgabe mehr belegt werden, verschwinden nicht: ihre Adresse bleibt als Hinweisseite erhalten, damit bestehende Zitate nicht brechen. Sie sind hier nicht mehr gelistet und nicht mehr für Suchmaschinen freigegeben.</p><h2>Glaubwürdige Erkennungen</h2>{table_head}{''.join(credible_summary)}</tbody></table></div><details class="entity-noise-group"><summary>Unsichere Erkennungen ({len(uncertain_summary)})</summary><p>Diese Einträge weisen formale OCR-Risikomerkmale auf und werden zur Prüfung sichtbar aufbewahrt.</p>{table_head}{''.join(uncertain_summary)}</tbody></table></div></details>'''
     (root / "index.md").write_text(page, encoding="utf-8")
+    return live_targets
+
+
+# An entity page's URL is citable, so it outlives the evidence behind it.  When
+# a document is re-recognised, superseded or corrected, entities it used to
+# mention stop being generated — but the pages stay on disk and in the sitemap,
+# still presenting evidence no current record supports.  Deleting them would
+# break every existing citation; leaving them is worse, because a stale page
+# reads exactly like a current one.  They become tombstones instead: the URL
+# resolves, the claim is withdrawn, and the last published version stays in the
+# repository's git history.
+ENTITY_TOMBSTONE_MARKER = 'data-entity-status="obsolete"'
+
+
+def is_entity_tombstone(page: Path) -> bool:
+    try:
+        return ENTITY_TOMBSTONE_MARKER in page.read_text(encoding="utf-8")
+    except OSError:
+        return False
+
+
+def entity_page_label(page: Path, fallback: str) -> str:
+    """Recover a page's display label from its own front matter.
+
+    A tombstone keeps the label of the page it replaces, and re-derives it from
+    itself on every later build.  That is what makes the operation idempotent:
+    the second build produces the same bytes as the first, so the clean-diff
+    gate stays green.
+    """
+    try:
+        for line in page.read_text(encoding="utf-8").splitlines()[:6]:
+            if line.startswith("title:"):
+                title = line[len("title:"):].strip()
+                if title.startswith('"') and title.endswith('"') and len(title) > 1:
+                    title = title[1:-1]
+                return title.replace('\\"', '"') or fallback
+    except OSError:
+        pass
+    return fallback
+
+
+def entity_tombstone_page(label: str) -> str:
+    """Render a citable notice that carries no evidence of its own."""
+    safe = html.escape(label)
+    return frontmatter(label).replace(
+        "---\n\n<link", "robots: noindex\n---\n\n<link", 1
+    ) + (
+        f'<nav class="breadcrumbs"><a href="../">Entitäten</a> / {safe}</nav>'
+        f'<main class="entity-tombstone" {ENTITY_TOMBSTONE_MARKER}>'
+        f'<p class="output-kicker">Nicht mehr belegte Entität</p>'
+        f'<h1>{safe}</h1>'
+        '<p><strong>Keine aktuelle Ausgabe belegt diese Entität mehr.</strong> '
+        'Sie stammt aus einem Erkennungslauf, der seither ersetzt, korrigiert '
+        'oder zurückgezogen wurde.</p>'
+        '<p>Diese Adresse bleibt erhalten, damit bestehende Zitate und Verweise '
+        'nicht brechen. Die frühere Belegtabelle wird bewusst nicht mehr '
+        'angezeigt: sie verwies auf Nachweise, die der aktuelle Datenstand '
+        'nicht mehr trägt.</p>'
+        '<p><a href="../">Zur Entitätenübersicht</a></p>'
+        '<p>Die zuletzt veröffentlichte Fassung samt Belegtabelle bleibt zur '
+        'Nachvollziehbarkeit in der Git-Historie des Repositoriums erhalten.</p>'
+        '</main>'
+    )
+
+
+def tombstone_orphan_entity_pages(root: Path, live_targets: set[str]) -> list[str]:
+    """Turn every entity page outside *live_targets* into a tombstone.
+
+    *live_targets* is the manifest :func:`build_entity_pages` just wrote, so
+    reconciliation is against what this build actually generated rather than
+    against a guess.  An entity that returns in a later run is overwritten with
+    a real page again, because generation runs first.
+    """
+    if not root.exists():
+        return []
+    tombstoned = []
+    for directory in sorted(root.iterdir()):
+        page = directory / "index.md"
+        if not directory.is_dir() or directory.name in live_targets:
+            continue
+        if not page.exists():
+            continue
+        label = entity_page_label(page, directory.name)
+        for child in sorted(directory.iterdir()):
+            if child.name != "index.md":
+                if child.is_dir():
+                    shutil.rmtree(child)
+                else:
+                    child.unlink()
+        page.write_text(entity_tombstone_page(label), encoding="utf-8")
+        tombstoned.append(directory.name)
+    return tombstoned
 
 
 def build() -> None:
@@ -1272,8 +1373,19 @@ def build() -> None:
     for path in doc_paths:
         if build_document(path, entity_index, collect_entities=False, reviews=reviews):
             tests.append(path.parent.name)
-    build_entity_pages(entity_index)
+    entity_targets = build_entity_pages(entity_index)
+    # Order matters. Withdrawal is a deliberate decision that a page must stop
+    # existing (#194), so it still deletes; run it first, while the pages it
+    # matches on still carry their document links. Whatever survives and is not
+    # in this build's manifest is merely obsolete, and keeps its URL as a
+    # tombstone rather than vanishing from under existing citations.
     remove_withdrawn_entity_pages(DOCS / "entities", set(withdrawals))
+    tombstoned = tombstone_orphan_entity_pages(DOCS / "entities", entity_targets)
+    if tombstoned:
+        print(
+            f"Tombstoned {len(tombstoned)} entity page(s) no longer supported "
+            "by any current record"
+        )
     test_root = DOCS / "tests"
     test_root.mkdir(exist_ok=True)
     links = "".join(f'<li><a href="../{html.escape(doc_id)}/">{html.escape(doc_id)}</a></li>' for doc_id in tests)

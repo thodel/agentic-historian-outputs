@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "ie"
+robots: noindex
 ---
 
 <link rel="stylesheet" href="{{ '/assets/output.css' | relative_url }}">
 
-<nav class="breadcrumbs"><a href="../">Entitäten</a> / ie</nav><h1>ie</h1><p><span class="entity-type">PERSON</span> · 1 Vorkommen</p><p><strong>Belegte Schreibvarianten:</strong> <code>Ie</code>, <code>ie</code></p><div class="notice notice--warning entity-noise-notice"><strong>Unsichere Erkennung.</strong> Heuristischer Score 3: sehr kurz, nur einmal erkannt. Dieser Eintrag bleibt zur Nachvollziehbarkeit vollständig erhalten.</div><p class="notice notice--warning">Nicht mit einem externen Normdatensatz verknüpft.</p><div class="table-scroll"><table><thead><tr><th>Ausgabe</th><th>Form</th><th>Kontext</th><th>Konfidenz</th></tr></thead><tbody><tr><td><a href="../../BAT_664_r_00027/">BAT_664_r_00027</a></td><td>Ie</td><td>d̾ Ie ibn aligũt Rast</td><td>unverified</td></tr></tbody></table></div>
+<nav class="breadcrumbs"><a href="../">Entitäten</a> / ie</nav><main class="entity-tombstone" data-entity-status="obsolete"><p class="output-kicker">Nicht mehr belegte Entität</p><h1>ie</h1><p><strong>Keine aktuelle Ausgabe belegt diese Entität mehr.</strong> Sie stammt aus einem Erkennungslauf, der seither ersetzt, korrigiert oder zurückgezogen wurde.</p><p>Diese Adresse bleibt erhalten, damit bestehende Zitate und Verweise nicht brechen. Die frühere Belegtabelle wird bewusst nicht mehr angezeigt: sie verwies auf Nachweise, die der aktuelle Datenstand nicht mehr trägt.</p><p><a href="../">Zur Entitätenübersicht</a></p><p>Die zuletzt veröffentlichte Fassung samt Belegtabelle bleibt zur Nachvollziehbarkeit in der Git-Historie des Repositoriums erhalten.</p></main>

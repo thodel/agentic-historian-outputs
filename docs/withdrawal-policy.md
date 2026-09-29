@@ -53,6 +53,36 @@ Direct deletion is reserved for material that must be removed from Git history f
 legal, security, privacy, or comparable safety reason. That exceptional operation
 requires a separate documented decision; it is not the normal withdrawal process.
 
+## Obsolete entity pages
+
+Entity pages under `docs/entities/<slug>/` are generated from the entities named in
+current records, and their URLs are citable in the same way document URLs are. When a
+document is re-recognised, superseded, or corrected, entities it used to mention stop
+being generated — but the page remains. Such a page is **obsolete**, not withdrawn:
+no decision was taken about it, the evidence behind it simply moved.
+
+Obsolescence and withdrawal therefore have different outcomes:
+
+- an **obsolete** entity page keeps its URL and becomes a tombstone, because deleting
+  it would break citations nobody decided to invalidate;
+- an entity page whose only evidence came from a **withdrawn** output is deleted,
+  because the withdrawal decision says that material must stop being presented.
+
+The generators enforce this by reconciling against the manifest of entity pages the
+build actually produced, and by running withdrawal removal before tombstoning. An
+obsolete-entity tombstone must:
+
+- state plainly that no current output supports the entity;
+- keep the label the URL was cited under;
+- carry no evidence table and no links presented as sources; and
+- be marked `noindex` and excluded from the sitemap.
+
+Tombstoning is idempotent — a tombstone re-derives its label from itself, so rebuilds
+produce identical bytes — and reversible: an entity that reappears in a record is
+regenerated as an ordinary page, because generation runs before reconciliation. The
+last published version of the page, including its evidence table, remains in Git
+history.
+
 ## Required withdrawal record
 
 Withdrawal state must live in committed source data, not in a hand-edited generated
