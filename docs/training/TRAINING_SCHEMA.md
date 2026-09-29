@@ -22,6 +22,31 @@ The current schema version is `1`.
 `epochs_trained`, `finished_at`, `params`, `metrics`, `curves`, `base_model`,
 and `log` are optional but should be emitted whenever the producer knows them.
 
+## Evaluation context
+
+Whenever `metrics.cer` or `metrics.wer` is reported, `metrics.evaluation_kind`
+is required:
+
+| Value | Meaning |
+| --- | --- |
+| `line_crop` | Scored on individual line images. Segmentation error is **not** in the number. |
+| `full_page` | Scored on whole pages through our own segmentation. Segmentation error **is** in the number. |
+
+`metrics.segmentation` (`ground_truth` or `predicted`) says where the line
+boxes came from.
+
+These are different measurements and will disagree, often by a lot. `ketos
+test` scores line crops cut from ground-truth segmentation; the eval harness
+scores a whole page through our own segmentation and so also pays for every
+segmentation error. The training integration plan requires the two to stay
+visibly distinct, and an unlabelled error rate gets compared anyway — the
+overview used to take a single minimum across every completed run, so a 4%
+line-crop run and a 19% full-page run of the same model collapsed into
+"lowest CER: 4.00%".
+
+Best scores are therefore reported per measurement, never across them, and a
+rate with no declared kind is excluded from the best scores and said to be.
+
 ## Curve provenance
 
 `curves_provenance` is optional but should always be emitted, because a curve

@@ -588,6 +588,54 @@ def _evaluation_scope(contract: TrainingContract) -> str:
     return "; ".join(scopes) or "Evaluationssplit nicht genauer dokumentiert"
 
 
+EVALUATION_KIND_LABELS = {
+    "line_crop": (
+        "Zeilenausschnitte",
+        "Gemessen auf einzelnen Zeilenbildern. Segmentierungsfehler gehen "
+        "nicht in diese Zahl ein.",
+    ),
+    "full_page": (
+        "Ganze Seite",
+        "Gemessen auf vollständigen Seiten über die eigene Segmentierung. "
+        "Segmentierungsfehler sind in dieser Zahl enthalten.",
+    ),
+}
+
+SEGMENTATION_LABELS = {
+    "ground_truth": "Zeilen aus der Referenzsegmentierung",
+    "predicted": "Zeilen aus der eigenen Segmentierung",
+}
+
+
+def _evaluation_context_html(metrics: dict) -> str:
+    """State what a CER was measured on, before stating the CER.
+
+    `ketos test` scores line crops cut from ground-truth segmentation; the
+    eval harness scores whole pages through our own segmentation and so also
+    pays for every segmentation error. The two will disagree, often by a lot,
+    and an unlabelled pair of numbers invites exactly the comparison that is
+    not valid — which is why the integration plan requires them to stay
+    visibly distinct.
+    """
+    kind = metrics.get("evaluation_kind")
+    if kind not in EVALUATION_KIND_LABELS:
+        return (
+            '<p class="notice notice--warning training-evaluation-kind" '
+            'data-evaluation-kind="unknown"><strong>Messart nicht angegeben.</strong> '
+            'Ob diese Werte auf Zeilenausschnitten oder auf ganzen Seiten '
+            'erhoben wurden, geht aus dem Datensatz nicht hervor; sie sind '
+            'daher mit keinem anderen Lauf vergleichbar.</p>'
+        )
+    label, explanation = EVALUATION_KIND_LABELS[kind]
+    segmentation = SEGMENTATION_LABELS.get(metrics.get("segmentation"), "")
+    return (
+        f'<p class="training-evaluation-kind" data-evaluation-kind="{_esc(kind, attr=True)}">'
+        f'<strong>Messart: {label}.</strong> {explanation}'
+        + (f' {_esc(segmentation)}.' if segmentation else "")
+        + '</p>'
+    )
+
+
 def _render_metrics(contract: TrainingContract) -> str:
     metrics = contract.metrics or {}
     definitions = []
@@ -619,11 +667,20 @@ def _render_metrics(contract: TrainingContract) -> str:
         if metrics.get(key) is None:
             continue
         direction_text = {"lower": "Niedriger ist besser.", "higher": "Höher ist besser.", "none": ""}[direction]
+        # The engine reports accuracies; error rates are what the rest of the
+        # report compares. Showing the complement next to it keeps one
+        # direction for comparison without discarding the engine's own number
+        # (#225).
+        complement = (
+            f'<span class="training-metric__complement">Entspricht einer '
+            f'Fehlerrate von {100 - float(metrics[key]):.2f}%.</span>'
+            if unit == "percent" else ""
+        )
         definitions.append(
             f'<div class="training-metric" data-quality-metric="{key}" data-unit="{unit}" '
             f'data-scope="validation-set" data-direction="{direction}" data-datasets="{_esc(datasets, attr=True)}">'
             f'<dt>{label}</dt><dd><strong>{formatter(metrics[key])}</strong>'
-            f'<span>{direction_text}</span></dd></div>'
+            f'<span>{direction_text}</span>{complement}</dd></div>'
         )
     if not reference_blocks and not definitions:
         return '<p class="training-empty">Keine Validierungsmetriken veröffentlicht.</p>'
@@ -632,8 +689,9 @@ def _render_metrics(contract: TrainingContract) -> str:
         if definitions else ""
     )
     return (
+        f'{_evaluation_context_html(metrics)}'
         '<p class="training-metric-note">Diese Werte wurden auf den dokumentierten Evaluationsdaten berechnet. '
-        'Sie sind nur zwischen Läufen mit demselben Datensatz, derselben Revision und demselben Evaluationssplit direkt vergleichbar.</p>'
+        'Sie sind nur zwischen Läufen mit derselben Messart sowie demselben Datensatz, derselben Revision und demselben Evaluationssplit direkt vergleichbar.</p>'
         f'<p><strong>Geltungsbereich:</strong> {_esc(scope)}</p>'
         f'<div class="training-reference-metrics">{"".join(reference_blocks)}</div>{supplementary}'
     )
@@ -670,11 +728,35 @@ def _render_summary(rows: list[dict]) -> str:
                           ("cancelled", "Abgebrochen"), ("parse-error", "Lesefehler")):
         if counts[status]:
             lines.append(f'  - {label}: {counts[status]}')
-    completed_rates = [float(row["contract"].metrics["cer"]) for row in rows
-                       if row.get("contract") and row["status"] == "completed"
-                       and row["contract"].metrics and row["contract"].metrics.get("cer") is not None]
-    if completed_rates:
-        lines.append(f'- **Niedrigste berichtete Validierungs-CER:** {min(completed_rates) * 100:.2f}%')
+    # A single "lowest CER across all runs" is the summary this page must not
+    # produce. Line-crop CER and full-page CER measure different things and
+    # will disagree, so a minimum taken across both reports the easier
+    # measurement as if it were the best model (#225). Group by what was
+    # measured, and say so in the label; an unlabelled rate joins no group.
+    by_kind: dict[str, list[float]] = {}
+    for row in rows:
+        contract = row.get("contract")
+        if not contract or row["status"] != "completed":
+            continue
+        metrics = contract.metrics or {}
+        if metrics.get("cer") is None:
+            continue
+        kind = metrics.get("evaluation_kind")
+        by_kind.setdefault(kind if kind in EVALUATION_KIND_LABELS else "", []).append(
+            float(metrics["cer"]))
+    for kind, rates in sorted(by_kind.items()):
+        if kind:
+            label = EVALUATION_KIND_LABELS[kind][0]
+            lines.append(
+                f'- **Niedrigste berichtete Validierungs-CER ({label}):** '
+                f'{min(rates) * 100:.2f}%'
+            )
+        else:
+            lines.append(
+                f'- **{len(rates)} Lauf/Läufe mit CER ohne angegebene Messart** — '
+                'nicht in die Bestwerte einbezogen, weil unklar ist, worauf '
+                'gemessen wurde.'
+            )
     return "\n".join(lines)
 
 

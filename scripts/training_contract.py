@@ -44,6 +44,16 @@ from urllib.parse import quote
 VALID_ENGINES = frozenset({"kraken", "vllm", "trocr"})
 CURRENT_SCHEMA_VERSION = 1
 VALID_STATUSES = frozenset({"completed", "failed", "cancelled"})
+# What a CER/WER pair was measured on. The integration plan requires these two
+# to stay visibly distinct, because they measure different things and will
+# disagree: `ketos test` scores line crops cut from ground-truth segmentation,
+# while the eval harness scores a whole page through our own segmentation, so
+# the latter also carries every segmentation error. A single unlabelled CER
+# invites exactly the comparison that is not valid.
+VALID_EVALUATION_KINDS = frozenset({"line_crop", "full_page"})
+# Where the line boxes came from. `ground_truth` excludes segmentation error
+# from the score; `predicted` includes it.
+VALID_SEGMENTATIONS = frozenset({"ground_truth", "predicted"})
 SLUG_RE = re.compile(r"^[A-Za-z0-9]([A-Za-z0-9._-]*[A-Za-z0-9])?$", re.IGNORECASE)
 MODEL_ID_RE = re.compile(r"^[a-z0-9][a-z0-9._-]*$")
 # A run id becomes a directory name, so it must be a safe slug — but the FORMAT
@@ -303,6 +313,29 @@ class TrainingContract:
                         errors.append(
                             f"datasets[{i}].{key}: must be a non-negative int when present"
                         )
+
+        # ── evaluation context ─────────────────────────────────────────────
+        metrics_block = data.get("metrics")
+        if isinstance(metrics_block, dict):
+            kind = metrics_block.get("evaluation_kind")
+            if kind is not None and kind not in VALID_EVALUATION_KINDS:
+                errors.append(
+                    f"metrics.evaluation_kind: must be one of "
+                    f"{sorted(VALID_EVALUATION_KINDS)}, got {kind!r}"
+                )
+            segmentation = metrics_block.get("segmentation")
+            if segmentation is not None and segmentation not in VALID_SEGMENTATIONS:
+                errors.append(
+                    f"metrics.segmentation: must be one of "
+                    f"{sorted(VALID_SEGMENTATIONS)}, got {segmentation!r}"
+                )
+            if (metrics_block.get("cer") is not None
+                    or metrics_block.get("wer") is not None) and kind is None:
+                errors.append(
+                    "metrics.evaluation_kind: required whenever cer or wer is "
+                    "reported — an unlabelled error rate cannot be compared "
+                    "with anything, and will be anyway"
+                )
 
         # ── curve provenance ───────────────────────────────────────────────
         # A curve is not automatically every epoch. kraken keeps only its top
