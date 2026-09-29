@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "run_id": "20260807T161137Z-kraken-medieval-scripts-v1",
+  "model_id": "dh-unibe/kraken-medieval-scripts-v1",
+  "base_model": "dh-unibe/kraken-base-xiv",
+  "engine": "kraken",
+  "status": "completed",
+  "created_at": "2026-08-07T16:11:37+00:00",
+  "finished_at": "2026-08-07T22:48:02+00:00",
+  "epochs": 50,
+  "epochs_trained": 47,
+  "log": "jobs/20260807T161137Z/logs",
+  "params": {
+    "lrate": 0.0001,
+    "batch_size": 4,
+    "quit": "early",
+    "normalization": "NFD",
+    "workers": 8,
+    "augment": false
+  },
+  "datasets": [
+    {
+      "hf_repo": "dh-unibe/image-text_medieval-scripts_xiv-xv-xvi",
+      "revision": "a1b2c3d4e5f6a7b8",
+      "split": "train[:90%] / validation[90%:]",
+      "train_projects": [
+        "koenigsfelden",
+        "basel-hgb"
+      ],
+      "eval_projects": [
+        "koenigsfelden"
+      ],
+      "pages": 18432,
+      "lines": 241887,
+      "chars": 8712334,
+      "pages_skipped": 61
+    }
+  ],
+  "metrics": {
+    "cer": 0.0412,
+    "wer": 0.1387,
+    "evaluation_kind": "line_crop",
+    "segmentation": "ground_truth",
+    "char_accuracy": 95.88,
+    "word_accuracy": 86.13,
+    "chars": 812443,
+    "errors": 33472
+  },
+  "curves_provenance": {
+    "complete": false,
+    "source": "checkpoint filenames (checkpoint_<NN>-<val_metric>.ckpt)",
+    "note": "kraken keeps the top 10 checkpoints, so these are the best epochs rather than every epoch. Which epochs survived is itself the signal: late ones mean the run was still improving, early ones mean it peaked and then got worse."
+  },
+  "curves": [
+    {
+      "epoch": 0,
+      "val_accuracy": 71.2,
+      "train_loss": 3.41,
+      "val_loss": 3.02,
+      "lr": 0.0001
+    },
+    {
+      "epoch": 1,
+      "val_accuracy": 82.6,
+      "train_loss": 1.88,
+      "val_loss": 1.74,
+      "lr": 0.0001
+    },
+    {
+      "epoch": 2,
+      "val_accuracy": 88.1,
+      "train_loss": 1.12,
+      "val_loss": 1.09,
+      "lr": 0.0001
+    },
+    {
+      "epoch": 3,
+      "val_accuracy": 91.4,
+      "train_loss": 0.81,
+      "val_loss": 0.86,
+      "lr": 0.0001
+    },
+    {
+      "epoch": 4,
+      "val_accuracy": 93.0,
+      "train_loss": 0.64,
+      "val_loss": 0.71,
+      "lr": 0.0001
+    },
+    {
+      "epoch": 5,
+      "val_accuracy": 94.2,
+      "train_loss": 0.52,
+      "val_loss": 0.62,
+      "lr": 5e-05
+    },
+    {
+      "epoch": 6,
+      "val_accuracy": 95.1,
+      "train_loss": 0.44,
+      "val_loss": 0.57,
+      "lr": 5e-05
+    },
+    {
+      "epoch": 7,
+      "val_accuracy": 95.6,
+      "train_loss": 0.39,
+      "val_loss": 0.54,
+      "lr": 5e-05
+    },
+    {
+      "epoch": 8,
+      "val_accuracy": 95.8,
+      "train_loss": 0.36,
+      "val_loss": 0.53,
+      "lr": 2.5e-05
+    },
+    {
+      "epoch": 9,
+      "val_accuracy": 95.88,
+      "train_loss": 0.34,
+      "val_loss": 0.52,
+      "lr": 2.5e-05
+    }
+  ]
+}

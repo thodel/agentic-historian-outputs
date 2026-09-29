@@ -75,6 +75,12 @@ jobs:
         with:
           node-version: "22"
           cache: npm
+      # The training fixture is rendered by the real Python generator rather
+      # than hand-written, so what the browser sees cannot drift from what the
+      # site publishes.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - run: npm ci
       - name: Cache Playwright Chromium
         id: playwright-cache
@@ -85,7 +91,9 @@ jobs:
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Generate HTML fixtures
-        run: node generate-fixtures.mjs
+        run: |
+          python tests/generate_training_fixture.py
+          node generate-fixtures.mjs
       - name: Run behavioral tests
         run: node --test tests/behavioural/*.mjs
       - name: Capture browser diagnostics
