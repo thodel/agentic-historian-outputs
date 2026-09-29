@@ -22,11 +22,18 @@ from build_training import (  # noqa: E402
 from training_contract import CurveEpoch, TrainingContract  # noqa: E402
 
 
+#: The fixture file carries "name"/"_expect_error" for its harness; the
+#: contract rejects unknown fields, so a case must be stripped to the record a
+#: producer would actually write.
+_HARNESS_KEYS = frozenset({"name", "_expect_error"})
+
+
 def fixture() -> dict:
     cases = json.loads(
         (ROOT / "tests" / "fixtures" / "training_contract_cases.json").read_text()
     )
-    return next(case for case in cases if case["name"] == "valid completed kraken run")
+    case = next(c for c in cases if c["name"] == "valid completed kraken run")
+    return {k: v for k, v in case.items() if k not in _HARNESS_KEYS}
 
 
 class TrainingPerformanceBudgets(unittest.TestCase):

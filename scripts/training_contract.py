@@ -56,6 +56,19 @@ HF_REPO_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*/[A-Za-z0-9][A-Za-z0-9._-]*
 REVISION_RE = re.compile(r"^[A-Za-z0-9._-]{7,128}$")
 
 
+# Every key this contract understands. An unknown key is rejected rather than
+# ignored: the trainer writes a *different* training.json (job_id, points[],
+# complete, note — serving-atr-inference#38) that shares not one field name
+# with this one. Ignoring unknown keys would let such a record validate as an
+# almost-empty run and publish a report with no metrics and no curve, which is
+# far worse than refusing it.
+KNOWN_FIELDS = frozenset({
+    "schema_version", "run_id", "model_id", "engine", "status",
+    "created_at", "finished_at", "epochs", "epochs_trained",
+    "params", "metrics", "curves", "base_model", "datasets", "log",
+})
+
+
 class ContractError(ValueError):
     """A training.json violates the contract."""
 
@@ -112,6 +125,15 @@ class TrainingContract:
     )
 
     def __init__(self, data: dict, source_path: Path | None = None):
+        # Before anything reads a key. A list or a string here used to reach
+        # data.get() and raise AttributeError/TypeError straight past the
+        # ContractError path, so the caller got a traceback instead of a
+        # contract violation it could report.
+        if not isinstance(data, dict):
+            raise ContractError(
+                f"training.json{f' in {source_path}' if source_path else ''} must "
+                f"contain a JSON object, got {type(data).__name__}"
+            )
         self._raw = data
         self._validate(data, source_path)
 
@@ -137,6 +159,14 @@ class TrainingContract:
         errors: list[str] = []
         path_hint = f" in {source_path}" if source_path else ""
 
+        unknown = sorted(set(data) - KNOWN_FIELDS)
+        if unknown:
+            errors.append(
+                "unknown field(s): " + ", ".join(repr(k) for k in unknown)
+                + " — either this record was produced against a different "
+                "schema, or the site needs updating before it can render it"
+            )
+
         # ── required string fields ────────────────────────────────────────
         for field in ("run_id", "model_id", "engine", "status"):
             val = data.get(field)
@@ -145,8 +175,13 @@ class TrainingContract:
 
         # schema_version — present and known, so a future producer cannot be
         # rendered silently wrong by an older site build
+        if "schema_version" not in data:
+            errors.append(
+                "schema_version: required — a record without one cannot be "
+                "read safely by a future site build"
+            )
         version = data.get("schema_version", CURRENT_SCHEMA_VERSION)
-        if not isinstance(version, int) or version < 1:
+        if isinstance(version, bool) or not isinstance(version, int) or version < 1:
             errors.append(f"schema_version: must be a positive int, got {version!r}")
         elif version > CURRENT_SCHEMA_VERSION:
             errors.append(
@@ -156,7 +191,8 @@ class TrainingContract:
 
         # run_id doubles as a directory name
         run_id = data.get("run_id", "")
-        if run_id and not RUN_ID_RE.match(run_id):
+        # Only after the type check above: RUN_ID_RE.match(123) raises TypeError.
+        if isinstance(run_id, str) and run_id and not RUN_ID_RE.match(run_id):
             errors.append(
                 f"run_id {run_id!r} is not a safe directory slug "
                 f"(expected {RUN_ID_RE.pattern})"
@@ -185,17 +221,19 @@ class TrainingContract:
             errors.append(f"finished_at: invalid ISO-8601 value {finished!r}")
 
         # ── numeric constraints ────────────────────────────────────────────
+        # An epoch count is a count. Accepting 2.7 and silently truncating it
+        # to 2 reports a number the trainer never ran.
         epochs = data.get("epochs")
         if epochs is None:
             errors.append("epochs: required")
-        elif not isinstance(epochs, (int, float)):
-            errors.append(f"epochs: must be numeric, got {epochs!r}")
-        elif int(epochs) < 1:
+        elif isinstance(epochs, bool) or not isinstance(epochs, int):
+            errors.append(f"epochs: must be a whole number, got {epochs!r}")
+        elif epochs < 1:
             errors.append("epochs: must be >= 1")
 
         et = data.get("epochs_trained", 0)
-        if not isinstance(et, (int, float)):
-            errors.append(f"epochs_trained: must be numeric, got {et!r}")
+        if isinstance(et, bool) or not isinstance(et, int):
+            errors.append(f"epochs_trained: must be a whole number, got {et!r}")
         elif data.get("status") == "completed" and int(et) < 1:
             errors.append(
                 "epochs_trained: a completed run must have trained at least one epoch"
@@ -273,8 +311,13 @@ class TrainingContract:
                 for key in ("cer", "wer"):
                     val = metrics.get(key)
                     if val is not None:
-                        if not isinstance(val, (int, float)):
+                        # bool is an int in Python, so True passed every range
+                        # check and was published as an error rate of 1.0. The
+                        # percentage fields below already guard both of these.
+                        if isinstance(val, bool) or not isinstance(val, (int, float)):
                             errors.append(f"metrics.{key}: must be numeric, got {val!r}")
+                        elif not math.isfinite(float(val)):
+                            errors.append(f"metrics.{key}: must be finite, got {val!r}")
                         elif val < 0 or val > 1:
                             errors.append(
                                 f"metrics.{key}: must be 0-1 (error rate), got {val}"
@@ -363,11 +406,36 @@ def validate_training_json(path: Path) -> tuple[bool, str]:
         return False, f"cannot read training.json: {exc}"
 
     try:
-        TrainingContract(data, source_path=path)
+        contract = TrainingContract(data, source_path=path)
     except ContractError as exc:
         return False, str(exc)
+    except Exception as exc:  # noqa: BLE001 - defence in depth, see below
+        # A validator that raises something other than ContractError takes the
+        # whole site build down instead of reporting one bad record. Every
+        # such case found so far has been a missing type check, and those are
+        # fixed above; this keeps the next one a reportable failure.
+        return False, (
+            f"training.json in {path} could not be validated "
+            f"({type(exc).__name__}: {exc})"
+        )
 
     return True, ""
+
+
+def placement_error(path: Path, run_id: str) -> str:
+    """Why this record may not be published at this path, or "".
+
+    Kept apart from :func:`validate_training_json`, which answers only "is
+    this a well-formed record" and must stay usable on a file anywhere. Where
+    a record is *allowed to live* is a property of the published tree.
+    """
+    if run_id != path.parent.name:
+        return (
+            f"run_id {run_id!r} does not match its directory "
+            f"{path.parent.name!r} — the run id is the published URL, so the "
+            "two cannot differ"
+        )
+    return ""
 
 
 def training_json_paths(docs_root: Path) -> list[Path]:
@@ -443,6 +511,14 @@ def validate_all_training_jsons(docs_root: Path) -> dict[str, str]:
         ok, err = validate_training_json(tpath)
         if not ok:
             results[run_id] = err
+            continue
+        try:
+            declared = json.loads(tpath.read_text(encoding="utf-8")).get("run_id", "")
+        except (OSError, json.JSONDecodeError):  # pragma: no cover - just validated
+            continue
+        placement = placement_error(tpath, str(declared))
+        if placement:
+            results[run_id] = placement
     return results
 
 

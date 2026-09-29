@@ -22,6 +22,29 @@ The current schema version is `1`.
 `epochs_trained`, `finished_at`, `params`, `metrics`, `curves`, `base_model`,
 and `log` are optional but should be emitted whenever the producer knows them.
 
+## Validation rules that surprise producers
+
+These are the rules a record is most often rejected by, and why each exists.
+
+- **No unknown top-level fields.** A record carrying a field this contract does
+  not define is refused, not partially read. The trainer writes a *different*
+  document under the same filename — `training.json` in a job's store holds
+  `job_id`, `points[]`, `complete` and `note` (serving-atr-inference#38) and
+  shares no field with this contract. Ignoring unknown keys would let such a
+  record validate as an almost-empty run and publish a report with no metrics
+  and no curve, which is worse than refusing it. Extending the schema is a
+  deliberate change here, not something a producer can do by writing a new key.
+- **`schema_version` is required**, not defaulted. A record that does not say
+  which contract it was written against cannot be read safely by a later build.
+- **`epochs` and `epochs_trained` are whole numbers.** `2.7` is refused rather
+  than truncated to an epoch count the trainer never ran.
+- **`metrics.cer` and `metrics.wer` must be finite and must not be booleans.**
+  In Python `True` is an `int`, so `"cer": true` cleared every range check and
+  would have been published as an error rate of 1.0.
+- **`run_id` must equal its directory name.** The run id is the published URL.
+  This is checked when the published tree is walked, not by the record
+  validator, which stays usable on a file sitting anywhere.
+
 ## Dataset provenance
 
 Every dataset record requires `hf_repo` in `owner/name` form. It may additionally
