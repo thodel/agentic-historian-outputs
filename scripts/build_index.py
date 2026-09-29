@@ -12,7 +12,9 @@ from __future__ import annotations
 import hashlib
 import html
 import json
+import os
 import re
+import unicodedata
 import shutil
 import subprocess
 from dataclasses import dataclass, field, replace
@@ -184,6 +186,8 @@ class Record:
     recognition_summary: "RecognitionSummary | None" = None
     # Issue #125: supersedes relation
     superseded: bool = False          # True when this doc is superseded by another (newer) run
+    #: Curator-declared partition; empty means "derive it" (#239).
+    collection: str = ""
     display_title: str = ""
     shelfmark: str = ""
     source_thumbnail_url: str = ""
@@ -398,6 +402,7 @@ def _record(path: Path, reviews: dict[str, dict] | None = None) -> Record:
             "",
         )
     return Record(
+        collection=str(data.get("collection") or "").strip(),
         doc_id=doc_id,
         created=created,
         date_label=date_label,
@@ -448,6 +453,127 @@ def _review_badge(review_status: str) -> str:
         review_status, (review_status, "review-unknown")
     )
     return _badge(label, css_mod)
+
+
+def catalogue_page_size() -> int:
+    """How many full cards the catalogue front page renders.
+
+    The page ships one ~4 KB card per record and the browser filters that
+    DOM. Two thousand records is an eight-megabyte page before a reader has
+    typed anything, which is the bottleneck #239 is about.
+
+    The default of 50 is above the present corpus, so the page is unchanged
+    today, and bounds the front page at roughly 200 KB rather than the 628 KB
+    that 200 cards produced in the scale test.
+    Past it the front page shows the newest cards and the rest are reached
+    through collection pages and the search index — both of which exist
+    whatever the size, so search stays complete.
+    """
+    raw = os.environ.get("AH_CATALOGUE_PAGE_SIZE", "50")
+    try:
+        return max(1, int(raw))
+    except ValueError:
+        raise SystemExit(
+            f"AH_CATALOGUE_PAGE_SIZE must be a positive integer, got {raw!r}"
+        )
+
+
+def collection_of(record: Record) -> str:
+    """Which partition a record belongs to.
+
+    An explicit ``collection`` in the pipeline record wins, because a curator
+    knows better than a heuristic which corpus a document came from. Failing
+    that, the publication year: it is always available, it is meaningful, and
+    it bounds each partition by intake rather than letting one grow forever.
+    """
+    return record.collection or str(record.created.year)
+
+
+def catalogue_index_row(record: Record, collection: str) -> dict:
+    """One compact row for the client search index.
+
+    Everything the filters and the search box read, and nothing else: this is
+    fetched by every visitor, so a field that is not searched is a field that
+    costs bandwidth for nothing.
+    """
+    return {
+        "id": record.doc_id,
+        "t": record.date_label,
+        "c": collection,
+        "d": record.created.date().isoformat(),
+        "l": record.language,
+        "s": record.script,
+        "k": record.document_type,
+        "e": record.entities,
+        "test": bool(record.is_test),
+        "sup": bool(record.superseded),
+        "rev": record.review_status,
+        # The text the search box matches against, folded once here rather
+        # than in every visitor's browser.
+        "q": " ".join(filter(None, (
+            record.doc_id, record.date_label, record.language, record.script,
+            record.document_type, record.preview[:200],
+        ))).casefold(),
+    }
+
+
+def write_catalogue_index(rows: list[dict]) -> int:
+    """Publish the search index. Always written, whatever the corpus size."""
+    payload = {"version": 1, "count": len(rows), "records": rows}
+    (DOCS / "catalogue-index.json").write_text(
+        json.dumps(payload, ensure_ascii=False, separators=(",", ":"),
+                   sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    return len(rows)
+
+
+def _collection_row(record: Record) -> str:
+    """A compact row — roughly a twentieth of a card, for partition pages."""
+    return (
+        f'<li class="collection-row" data-document-id="{html.escape(record.doc_id, quote=True)}">'
+        f'<a href="../../{html.escape(record.doc_id, quote=True)}/">'
+        f'{html.escape(record.date_label or record.doc_id)}</a> '
+        f'<span class="muted">{html.escape(record.created.date().isoformat())}'
+        f'{" · ersetzt" if record.superseded else ""}</span></li>'
+    )
+
+
+def write_collection_pages(grouped: dict[str, list[Record]]) -> list[str]:
+    """One page per collection, so no single page carries the whole corpus."""
+    root = DOCS / "collections"
+    root.mkdir(exist_ok=True)
+    written = []
+    for collection, records in sorted(grouped.items()):
+        target = slug_for_collection(collection)
+        directory = root / target
+        directory.mkdir(exist_ok=True)
+        rows = "".join(_collection_row(record) for record in records)
+        (directory / "index.md").write_text(
+            f'---\nlayout: default\ntitle: "Sammlung {collection}"\n---\n\n'
+            f'<link rel="stylesheet" href="{{{{ \'/assets/catalogue.css\' | relative_url }}}}">\n\n'
+            f'<nav class="breadcrumbs"><a href="../../">Alle Ausgaben</a> '
+            f'<span aria-hidden="true">/</span> Sammlung {html.escape(collection)}</nav>\n'
+            f'<h1>Sammlung {html.escape(collection)}</h1>\n'
+            f'<p>{len(records)} Ausgabe{"" if len(records) == 1 else "n"}.</p>\n'
+            f'<ul class="collection-list">{rows}</ul>\n',
+            encoding="utf-8",
+        )
+        written.append(target)
+    return written
+
+
+def slug_for_collection(name: str) -> str:
+    """A URL-safe directory name for a collection.
+
+    Diacritics are folded rather than replaced: a naive character filter
+    turns "Königsfelden" into "k-ngsfelden", which is both ugly and a worse
+    URL than the transliteration.
+    """
+    folded = unicodedata.normalize("NFKD", name)
+    folded = "".join(ch for ch in folded if not unicodedata.combining(ch))
+    safe = re.sub(r"[^A-Za-z0-9._-]+", "-", folded).strip("-").casefold()
+    return safe or "ohne-sammlung"
 
 
 def _card(record: Record) -> str:
@@ -806,7 +932,34 @@ def build() -> int:
         encoding="utf-8",
     )
 
-    cards = "\n".join(_card(record) for record in records)
+    # The search index covers every record whatever the page shows, so the
+    # search box never answers from a partial list (#239).
+    collections: dict[str, list[Record]] = {}
+    index_rows = []
+    for record in records:
+        collection = collection_of(record)
+        collections.setdefault(collection, []).append(record)
+        index_rows.append(catalogue_index_row(record, collection))
+    write_catalogue_index(index_rows)
+
+    page_size = catalogue_page_size()
+    partitioned = len(records) > page_size
+    shown = records[:page_size] if partitioned else records
+    collection_pages = write_collection_pages(collections) if partitioned else []
+    partition_note = (
+        '<div class="notice notice--info catalogue-partition-note">'
+        f'<p><strong>{len(shown)} von {len(records)} Ausgaben</strong> sind hier '
+        'aufgeführt, die neuesten zuerst. Die Suche durchsucht alle Ausgaben; '
+        'ohne JavaScript erreichen Sie die übrigen über die Sammlungen.</p>'
+        '<p>' + " · ".join(
+            f'<a href="collections/{slug_for_collection(name)}/">'
+            f'{html.escape(name)} ({len(items)})</a>'
+            for name, items in sorted(collections.items())
+        ) + '</p></div>'
+        if partitioned else ""
+    )
+
+    cards = "\n".join(_card(record) for record in shown)
     page = f'''---
 layout: default
 title: Katalog
@@ -925,7 +1078,7 @@ title: Katalog
 <p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">{len(records)} Einträge, nach Erstellungsdatum absteigend sortiert.</p>
 <p id="catalogue-empty" class="catalogue-empty" role="status" hidden>Keine Einträge entsprechen den aktiven Filtern. Ändern Sie die Filter oder setzen Sie sie zurück.</p>
 
-<div id="catalogue-list" class="catalogue-list" data-enhanced="false">
+{partition_note}<div id="catalogue-list" class="catalogue-list" data-enhanced="false" data-total-records="{len(records)}" data-shown-records="{len(shown)}">
 {cards}
 </div>
 
@@ -941,7 +1094,11 @@ title: Katalog
     copied = sync_browser_scripts()
     build_sitemap(records)
     build_atom_feed(records)
-    print(f"Wrote docs/index.md with {len(records)} record(s), newest first")
+    print(f"Wrote docs/index.md with {len(shown)} of {len(records)} record(s), newest first")
+    print(f"Wrote docs/catalogue-index.json with {len(index_rows)} record(s)")
+    if collection_pages:
+        print(f"Wrote {len(collection_pages)} collection page(s): "
+              f"{', '.join(collection_pages)}")
     print(f"Synced {len(copied)} browser scripts to docs/assets/: {', '.join(copied)}")
     return len(records)
 

@@ -105,6 +105,11 @@ behaviour, so nothing changes until they are raised deliberately.
 | Setting | Default | Effect |
 | --- | --- | --- |
 | `AH_ENTITY_PAGE_MIN_OCCURRENCES` | `1` | Occurrences an entity needs before it gets its own page. Below it the entity is still named by the documents that mention it and counted on the entity index, but has no page; an existing page that falls below keeps its URL as a tombstone. |
+| `AH_CATALOGUE_PAGE_SIZE` | `50` | Full cards the catalogue front page renders. Past it the page shows the newest and links collection pages for the rest. `docs/catalogue-index.json` is written whatever the size, so search stays complete, and every record stays reachable without JavaScript through its collection. |
+
+A record may declare a `collection` in its `pipeline.json`; without one the
+publication year is used, which is always available and bounds each partition
+by intake.
 
 The right threshold depends on corpus size and on nothing else. In the present
 ten-document corpus 136 of 140 entities occur exactly once — not because they

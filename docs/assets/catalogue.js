@@ -153,11 +153,65 @@ function initCatalogue() {
     active.textContent = filters.length ? `Aktive Filter: ${filters.map(([, value]) => value).join(", ")}.` : "Keine Filter aktiv.";
     status.textContent = catalogueStatusText(visible, filters, sortLabel);
     empty.hidden = visible !== 0;
+    reportOffPageMatches(state);
     if (push) {
       const url = new URL(window.location.href); url.search = catalogueParams(state).toString();
       history.pushState(state, "", url);
     }
   };
+
+  // Beyond the page size the front page carries only the newest cards, so
+  // DOM filtering can only ever answer about those. The generated index
+  // covers every record; matches that are not on this page are reported and
+  // linked rather than silently missing from the result count. Without
+  // JavaScript the collection pages reach the same records.
+  let searchIndex = null;
+  let offPage = null;
+  const onPage = new Set(cards.map(card => card.dataset.documentId));
+  const partial = Number(list.dataset.totalRecords || 0) > Number(list.dataset.shownRecords || 0);
+  // Only build the notice where it is needed and can be placed. A complete
+  // page has nothing off it to report.
+  if (partial && list.parentNode) {
+    offPage = document.createElement("p");
+    offPage.className = "catalogue-offpage";
+    offPage.hidden = true;
+    list.parentNode.insertBefore(offPage, list);
+  }
+
+  function matchesIndexRow(row, state) {
+    if (state.q && !row.q.includes(state.q.toLowerCase())) return false;
+    if (state.language && row.l !== state.language) return false;
+    if (state.script && row.s !== state.script) return false;
+    if (state.kind === "output" && row.test) return false;
+    if (state.kind === "test" && !row.test) return false;
+    if (state.superseded !== "show" && row.sup) return false;
+    return true;
+  }
+
+  function reportOffPageMatches(state) {
+    if (!offPage || !searchIndex) return;
+    const hits = searchIndex.records.filter(
+      row => !onPage.has(row.id) && matchesIndexRow(row, state));
+    offPage.hidden = hits.length === 0;
+    if (!hits.length) return;
+    const links = hits.slice(0, 25).map(row =>
+      `<a href="${encodeURIComponent(row.id)}/">${row.t || row.id}</a>`).join(" \u00b7 ");
+    offPage.innerHTML =
+      `<strong>${hits.length} weitere Treffer</strong> au\u00dferhalb dieser Seite: ${links}` +
+      (hits.length > 25 ? " \u2026" : "");
+  }
+
+  if (offPage && typeof fetch === "function") {
+    fetch("catalogue-index.json")
+      .then(response => response.ok ? response.json() : null)
+      .then(payload => {
+        if (payload && Array.isArray(payload.records)) {
+          searchIndex = payload;
+          update({ push: false });
+        }
+      })
+      .catch(() => { /* the page still works on its own cards */ });
+  }
 
   writeState(catalogueStateFromParams(new URL(window.location.href).searchParams));
   update({ push: false });
