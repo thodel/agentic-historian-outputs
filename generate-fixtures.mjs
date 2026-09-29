@@ -131,22 +131,8 @@ function generateCatalogueFixture(mdPath) {
   const html = mdToHtml(raw);
   const scripts = inlineScripts("catalogue");
   const withAssets = html.replace("</body>", scripts + "</body>");
-  // build_index.py adds catalogue-superseded after catalogue-failure via Python-side
-  // processing; inject it here so initCatalogue does not bail early.
-  const supersededControl = `<div>
-    <label for="catalogue-superseded">Ersetzte Einträge</label>
-    <select id="catalogue-superseded">
-      <option value="hide">Verbergen</option>
-      <option value="show">Anzeigen</option>
-    </select>
-  </div>
-`;
-  const withSuperseded = withAssets.replace(
-    '<label for="catalogue-source">',
-    supersededControl + '<label for="catalogue-source">'
-  );
   const outPath = join(FIXTURES, "index.html");
-  writeFileSync(outPath, withSuperseded, "utf8");
+  writeFileSync(outPath, withAssets, "utf8");
   console.log("Generated catalogue: " + outPath);
 }
 

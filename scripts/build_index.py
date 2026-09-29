@@ -455,6 +455,74 @@ def _review_badge(review_status: str) -> str:
     return _badge(label, css_mod)
 
 
+#: The secondary filters, kept out of the page template so their number
+#: can be counted rather than written by hand into the summary label.
+_ADVANCED_FILTER_MARKUP = """    <div class="catalogue-advanced__grid">
+    <div>
+      <label for="catalogue-review">Redaktionsstatus</label>
+      <select id="catalogue-review">
+        <option value="all">Alle Redaktionsstände</option>
+        <option value="human-verified">Menschlich geprüft</option>
+        <option value="machine-generated">Maschinell erzeugt</option>
+        <option value="in-review">In Prüfung</option>
+      </select>
+    </div>
+    <div>
+      <label for="catalogue-failure">Erkennungsstatus</label>
+      <select id="catalogue-failure">
+        <option value="all">Alle Status</option>
+        <option value="clean">Ohne bekannte Probleme</option>
+        <option value="issues">Fehler, leer oder degeneriert</option>
+      </select>
+    </div>
+    <div>
+      <label for="catalogue-source">Digitale Quelle</label>
+      <select id="catalogue-source">
+        <option value="all">Alle Quellenlagen</option>
+        <option value="available">Quelle vorhanden</option>
+        <option value="missing">Quelle fehlt</option>
+        <option value="iiif_manifest">IIIF</option>
+        <option value="image">Direktbild</option>
+        <option value="landing_page">Archivseite</option>
+      </select>
+    </div>
+      <div>
+        <label for="catalogue-filter">Anzeigen</label>
+        <select id="catalogue-filter">
+          <option value="all">Alle Einträge</option>
+          <option value="output">Nur Ausgaben</option>
+          <option value="test">Nur Testläufe</option>
+        </select>
+      </div>
+      <div><label for="catalogue-language">Sprache</label><select id="catalogue-language"><option value="all">Alle Sprachen</option></select></div>
+      <div><label for="catalogue-script">Schrift</label><select id="catalogue-script"><option value="all">Alle Schriften</option></select></div>
+      <div><label for="catalogue-engine">Erkennungsengine</label><select id="catalogue-engine"><option value="all">Alle Engines</option></select></div>
+      <div>
+        <label for="catalogue-readiness">Erkennungsdaten</label>
+        <select id="catalogue-readiness">
+          <option value="all">Alle Bereitschaftsstufen</option>
+          <option value="comparison">Vergleich möglich</option>
+          <option value="candidates">Kandidaten vorhanden</option>
+          <option value="legacy">Begrenzte Legacy-Provenienz</option>
+        </select>
+      </div>
+      <div>
+        <label for="catalogue-superseded">Ersetzte Einträge</label>
+        <select id="catalogue-superseded"><option value="hide">Verbergen</option><option value="show">Anzeigen</option></select>
+      </div>
+      <div>
+        <label for="catalogue-entity-type">Entitätstyp</label>
+        <select id="catalogue-entity-type">
+          <option value="all">Alle Entitätstypen</option><option value="PERSON">Personen</option><option value="PLACE">Orte</option><option value="ORG">Organisationen</option><option value="DATE">Datumsangaben</option><option value="EVENT">Ereignisse</option><option value="ROLE">Rollen</option><option value="TITLE">Titel</option><option value="SOCIAL_GROUP">Sozialgruppe</option>
+        </select>
+      </div>
+      <div>
+        <label for="catalogue-completeness">Vollständigkeit</label>
+        <select id="catalogue-completeness"><option value="all">Alle Stufen</option><option value="vollstaendig">Vollständig</option><option value="teilweise">Teilweise</option><option value="minimal">Minimal</option></select>
+      </div>
+    </div>"""
+
+
 def catalogue_page_size() -> int:
     """How many full cards the catalogue front page renders.
 
@@ -960,6 +1028,9 @@ def build() -> int:
     )
 
     cards = "\n".join(_card(record) for record in shown)
+    # Counted, not written by hand: a hard-coded number would keep claiming
+    # nine filters after someone adds a tenth.
+    advanced_filter_count = _ADVANCED_FILTER_MARKUP.count("<select ")
     page = f'''---
 layout: default
 title: Katalog
@@ -990,34 +1061,6 @@ title: Katalog
     <input id="catalogue-search" type="search" placeholder="Signatur, Sprache, Schrift oder Text …" autocomplete="off">
   </div>
   <div>
-    <label for="catalogue-review">Redaktionsstatus</label>
-    <select id="catalogue-review">
-      <option value="all">Alle Redaktionsstände</option>
-      <option value="human-verified">Menschlich geprüft</option>
-      <option value="machine-generated">Maschinell erzeugt</option>
-      <option value="in-review">In Prüfung</option>
-    </select>
-  </div>
-  <div>
-    <label for="catalogue-failure">Erkennungsstatus</label>
-    <select id="catalogue-failure">
-      <option value="all">Alle Status</option>
-      <option value="clean">Ohne bekannte Probleme</option>
-      <option value="issues">Fehler, leer oder degeneriert</option>
-    </select>
-  </div>
-  <div>
-    <label for="catalogue-source">Digitale Quelle</label>
-    <select id="catalogue-source">
-      <option value="all">Alle Quellenlagen</option>
-      <option value="available">Quelle vorhanden</option>
-      <option value="missing">Quelle fehlt</option>
-      <option value="iiif_manifest">IIIF</option>
-      <option value="image">Direktbild</option>
-      <option value="landing_page">Archivseite</option>
-    </select>
-  </div>
-  <div>
     <label for="catalogue-sort">Sortierung</label>
     <select id="catalogue-sort">
       <option value="created-desc">Erstellung: neueste zuerst</option>
@@ -1034,44 +1077,8 @@ title: Katalog
   </div>
   <div class="catalogue-clear"><button id="catalogue-clear" type="button">Alle Filter zurücksetzen</button></div>
   <details class="catalogue-advanced">
-    <summary>Weitere Filter</summary>
-    <div class="catalogue-advanced__grid">
-      <div>
-        <label for="catalogue-filter">Anzeigen</label>
-        <select id="catalogue-filter">
-          <option value="all">Alle Einträge</option>
-          <option value="output">Nur Ausgaben</option>
-          <option value="test">Nur Testläufe</option>
-        </select>
-      </div>
-      <div><label for="catalogue-language">Sprache</label><select id="catalogue-language"><option value="all">Alle Sprachen</option></select></div>
-      <div><label for="catalogue-script">Schrift</label><select id="catalogue-script"><option value="all">Alle Schriften</option></select></div>
-      <div><label for="catalogue-engine">Erkennungsengine</label><select id="catalogue-engine"><option value="all">Alle Engines</option></select></div>
-      <div>
-        <label for="catalogue-readiness">Erkennungsdaten</label>
-        <select id="catalogue-readiness">
-          <option value="all">Alle Bereitschaftsstufen</option>
-          <option value="comparison">Vergleich möglich</option>
-          <option value="candidates">Kandidaten vorhanden</option>
-          <option value="legacy">Begrenzte Legacy-Provenienz</option>
-        </select>
-      </div>
-      <div>
-        <label for="catalogue-superseded">Ersetzte Einträge</label>
-        <select id="catalogue-superseded"><option value="hide">Verbergen</option><option value="show">Anzeigen</option></select>
-      </div>
-      <div>
-        <label for="catalogue-entity-type">Entitätstyp</label>
-        <select id="catalogue-entity-type">
-          <option value="all">Alle Entitätstypen</option><option value="PERSON">Personen</option><option value="PLACE">Orte</option><option value="ORG">Organisationen</option><option value="DATE">Datumsangaben</option><option value="EVENT">Ereignisse</option><option value="ROLE">Rollen</option><option value="TITLE">Titel</option><option value="SOCIAL_GROUP">Sozialgruppe</option>
-        </select>
-      </div>
-      <div>
-        <label for="catalogue-completeness">Vollständigkeit</label>
-        <select id="catalogue-completeness"><option value="all">Alle Stufen</option><option value="vollstaendig">Vollständig</option><option value="teilweise">Teilweise</option><option value="minimal">Minimal</option></select>
-      </div>
-    </div>
-  </details>
+    <summary>Weitere Filter ({advanced_filter_count})</summary>
+{_ADVANCED_FILTER_MARKUP}  </details>
 </form>
 
 <p id="catalogue-active-filters" class="catalogue-active-filters">Keine Filter aktiv.</p>

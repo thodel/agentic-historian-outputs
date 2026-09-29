@@ -118,3 +118,34 @@ jobs:
           path: test-results/browser/
           if-no-files-found: warn
           retention-days: 14
+
+  styled-site:
+    name: Styled site integration
+    # The behavioural suite loads raw generated HTML from file://, so it cannot
+    # see what the Jekyll theme does to a page. That is how /training/ came to
+    # be served as an eighty-byte fragment with no head, no navigation and no
+    # stylesheet, on a page that is in the public navigation.
+    if: github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'Publish ')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+      - run: gem install --no-document jekyll minima
+      - run: npm ci
+      - name: Cache Playwright Chromium
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - run: npx playwright install --with-deps chromium
+      - name: Build the site as Pages builds it
+        run: ./scripts/build_styled_site.sh
+      - name: Run styled-site integration tests
+        run: node --test tests/integration/styled_site.mjs

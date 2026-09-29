@@ -28,34 +28,6 @@ title: Katalog
     <input id="catalogue-search" type="search" placeholder="Signatur, Sprache, Schrift oder Text …" autocomplete="off">
   </div>
   <div>
-    <label for="catalogue-review">Redaktionsstatus</label>
-    <select id="catalogue-review">
-      <option value="all">Alle Redaktionsstände</option>
-      <option value="human-verified">Menschlich geprüft</option>
-      <option value="machine-generated">Maschinell erzeugt</option>
-      <option value="in-review">In Prüfung</option>
-    </select>
-  </div>
-  <div>
-    <label for="catalogue-failure">Erkennungsstatus</label>
-    <select id="catalogue-failure">
-      <option value="all">Alle Status</option>
-      <option value="clean">Ohne bekannte Probleme</option>
-      <option value="issues">Fehler, leer oder degeneriert</option>
-    </select>
-  </div>
-  <div>
-    <label for="catalogue-source">Digitale Quelle</label>
-    <select id="catalogue-source">
-      <option value="all">Alle Quellenlagen</option>
-      <option value="available">Quelle vorhanden</option>
-      <option value="missing">Quelle fehlt</option>
-      <option value="iiif_manifest">IIIF</option>
-      <option value="image">Direktbild</option>
-      <option value="landing_page">Archivseite</option>
-    </select>
-  </div>
-  <div>
     <label for="catalogue-sort">Sortierung</label>
     <select id="catalogue-sort">
       <option value="created-desc">Erstellung: neueste zuerst</option>
@@ -72,8 +44,36 @@ title: Katalog
   </div>
   <div class="catalogue-clear"><button id="catalogue-clear" type="button">Alle Filter zurücksetzen</button></div>
   <details class="catalogue-advanced">
-    <summary>Weitere Filter</summary>
+    <summary>Weitere Filter (11)</summary>
     <div class="catalogue-advanced__grid">
+    <div>
+      <label for="catalogue-review">Redaktionsstatus</label>
+      <select id="catalogue-review">
+        <option value="all">Alle Redaktionsstände</option>
+        <option value="human-verified">Menschlich geprüft</option>
+        <option value="machine-generated">Maschinell erzeugt</option>
+        <option value="in-review">In Prüfung</option>
+      </select>
+    </div>
+    <div>
+      <label for="catalogue-failure">Erkennungsstatus</label>
+      <select id="catalogue-failure">
+        <option value="all">Alle Status</option>
+        <option value="clean">Ohne bekannte Probleme</option>
+        <option value="issues">Fehler, leer oder degeneriert</option>
+      </select>
+    </div>
+    <div>
+      <label for="catalogue-source">Digitale Quelle</label>
+      <select id="catalogue-source">
+        <option value="all">Alle Quellenlagen</option>
+        <option value="available">Quelle vorhanden</option>
+        <option value="missing">Quelle fehlt</option>
+        <option value="iiif_manifest">IIIF</option>
+        <option value="image">Direktbild</option>
+        <option value="landing_page">Archivseite</option>
+      </select>
+    </div>
       <div>
         <label for="catalogue-filter">Anzeigen</label>
         <select id="catalogue-filter">
@@ -108,8 +108,7 @@ title: Katalog
         <label for="catalogue-completeness">Vollständigkeit</label>
         <select id="catalogue-completeness"><option value="all">Alle Stufen</option><option value="vollstaendig">Vollständig</option><option value="teilweise">Teilweise</option><option value="minimal">Minimal</option></select>
       </div>
-    </div>
-  </details>
+    </div>  </details>
 </form>
 
 <p id="catalogue-active-filters" class="catalogue-active-filters">Keine Filter aktiv.</p>

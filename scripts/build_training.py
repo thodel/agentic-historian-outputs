@@ -830,6 +830,7 @@ def _run_page(row: dict) -> str:
             f'budget is {TRAINING_PERFORMANCE_BUDGETS["report_bytes_per_run"]}'
         )
     return f"""---
+layout: default
 title: "Training: {_esc(row["model_id"])}"
 ---
 
@@ -850,7 +851,10 @@ def build_training() -> int:
     TRAINING_INDEX.parent.mkdir(parents=True, exist_ok=True)
     if not training_jsons:
         TRAINING_INDEX.write_text(
-            "---\ntitle: Training\n---\n\n# Training\n\nBisher keine Training-Läufe vorhanden.\n",
+            "---\nlayout: default\ntitle: Training\n---\n\n# Training\n\n"
+            "Es sind noch keine Trainingsläufe veröffentlicht. Sobald ein Lauf "
+            "abgeschlossen ist, erscheinen hier seine Kurven, die Herkunft der "
+            "Trainingsdaten und die Modellkarte.\n",
             encoding="utf-8",
         )
         print("build_training: no training.json files found, wrote empty index")
