@@ -33,6 +33,11 @@ jobs:
       # would only invite a placeholder entry to make it green.
       - name: Source coverage (#182)
         run: python scripts/source_ledger.py
+      # Gated: unlike source coverage this is a measurable limit, and the
+      # projection is the only warning before a corpus import meets the
+      # Pages size limit.
+      - name: Generated site budget (#239)
+        run: python scripts/site_budget.py
 
   node-unit:
     name: Node unit and syntax tests
