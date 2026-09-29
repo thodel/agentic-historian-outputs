@@ -18,6 +18,7 @@ from pathlib import Path
 from build_recognitions import build_recognition_section, write_package
 from source_references import normalize_source_reference, public_url
 from editorial_reviews import apply_review, load_reviews
+from training_contract import published_training_runs
 from withdrawals import (
     build_tombstones, load_withdrawals, remove_withdrawn_entity_pages,
 )
@@ -812,7 +813,8 @@ def build_status_header(
     )
 
 def build_document(path: Path, entity_index: dict, collect_entities: bool = True,
-                   reviews: dict[str, dict] | None = None) -> bool:
+                   reviews: dict[str, dict] | None = None,
+                   training_runs: dict[str, str] | None = None) -> bool:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
@@ -920,6 +922,7 @@ license: "CC-BY-4.0"
         doc_id=doc_id,
         transcript=transcript,
         directory=path.parent,
+        training_runs=training_runs,
     )
     package = write_package(path.parent, doc_id, data.get("recognitions", []), transcript) if data.get("recognitions") else None
     package_link = (f'<li><a href="{html.escape(package.name, quote=True)}">Vollständiges Erkennungspaket (ZIP)</a></li>'
@@ -1361,6 +1364,10 @@ def build() -> None:
     }
     validate_no_test_ids(list(pipeline_data))
     validate_slugs(list(pipeline_data), superseded_ids)
+    # One index, read once, feeding both directions of the model link (#226):
+    # a recognition names the run its model came from, and the run's report
+    # lists the recognitions that used it.
+    training_runs = published_training_runs(DOCS)
     for path in doc_paths:
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -1371,7 +1378,8 @@ def build() -> None:
                 {"doc_id": path.parent.name, **item}
             )
     for path in doc_paths:
-        if build_document(path, entity_index, collect_entities=False, reviews=reviews):
+        if build_document(path, entity_index, collect_entities=False, reviews=reviews,
+                          training_runs=training_runs):
             tests.append(path.parent.name)
     entity_targets = build_entity_pages(entity_index)
     # Order matters. Withdrawal is a deliberate decision that a page must stop

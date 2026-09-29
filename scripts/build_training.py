@@ -21,7 +21,10 @@ from urllib.parse import quote
 
 from build_recognitions import _candidates
 from quality import render_reference_evaluation, training_reference_evaluations
-from training_contract import ContractError, CurveEpoch, TrainingContract, training_json_paths
+from training_contract import (
+    ContractError, CurveEpoch, TrainingContract, external_model_url,
+    training_json_paths,
+)
 
 DOCS = Path("docs")
 TRAINING_INDEX = DOCS / "training" / "index.md"
@@ -386,13 +389,17 @@ def _format_param(value: object) -> str:
 
 
 def _base_model_html(base_model: str | None) -> str:
+    """Link a base model to its upstream record.
+
+    Resolution is shared with the recognition side (``external_model_url``) so
+    the same identifier cannot point at a hub repo in one place and a DOI in
+    the other.
+    """
     if not base_model:
         return "Nicht angegeben"
-    if _HF_MODEL.fullmatch(base_model):
-        url = f"https://huggingface.co/{quote(base_model, safe='/')}"
+    url = external_model_url(base_model)
+    if url:
         return f'<a href="{_esc(url, attr=True)}" rel="external"><code>{_esc(base_model)}</code></a>'
-    if re.fullmatch(r"10\.\d{4,9}/\S+", base_model):
-        return f'<a href="https://doi.org/{_esc(quote(base_model, safe="/"), attr=True)}"><code>{_esc(base_model)}</code></a>'
     return f'<code>{_esc(base_model)}</code>'
 
 
@@ -402,7 +409,11 @@ def _render_reproducibility(contract: TrainingContract) -> str:
         for key, value in sorted(contract.params.items())
     ) or '<div><dt>Parameter</dt><dd>Nicht veröffentlicht</dd></div>'
     finished = contract.finished_at.isoformat() if contract.finished_at else "Nicht angegeben"
-    run_path = f'{quote(contract.run_id, safe="")}/training.json'
+    # Relative to the run's own page at /training/<run_id>/. Prefixing the run
+    # id again resolved to /training/<run_id>/<run_id>/training.json — the link
+    # broke when reports moved from the shared index to a page per run (#231),
+    # because the depth it was written for stopped existing.
+    run_path = "training.json"
     return (
         '<dl class="training-facts training-model-card">'
         f'<div><dt>Erzeugtes Modell</dt><dd><code>{_esc(contract.model_id)}</code></dd></div>'
@@ -429,8 +440,10 @@ def _render_recognition_usages(model_id: str, usages: list[dict]) -> str:
     for usage in usages:
         doc_id = str(usage["doc_id"])
         candidate_id = str(usage["candidate_id"])
+        # From /training/<run_id>/ a document lives two levels up. A single
+        # `../` pointed at /training/<doc_id>/, which does not exist.
         href = (
-            f'../{quote(doc_id, safe="")}/?rec={quote(candidate_id, safe="")}'
+            f'../../{quote(doc_id, safe="")}/?rec={quote(candidate_id, safe="")}'
             f'#recognition-{quote(candidate_id, safe="")}'
         )
         context = [str(usage.get("engine") or "Unbekannte Engine")]

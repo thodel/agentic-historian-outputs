@@ -36,6 +36,7 @@ import math
 import re
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 
 # ── schema constants ─────────────────────────────────────────────────────────
 
@@ -376,6 +377,59 @@ def training_json_paths(docs_root: Path) -> list[Path]:
     run belongs to its datasets, not to any one catalogue entry.
     """
     return sorted(docs_root.glob("training/*/training.json"))
+
+
+DOI_RE = re.compile(r"^10\.\d{4,9}/\S+$")
+
+
+def external_model_url(model_id: str) -> str:
+    """Upstream record for a model this repository did not train, or "".
+
+    A model that never had a run here still has provenance somewhere, and #226
+    asks for that to be reachable rather than shown as a bare string.  Both
+    the training report's base-model field and a recognition's model field
+    resolve it the same way, so the two cannot disagree about what a given
+    identifier points at.
+    """
+    model_id = (model_id or "").strip()
+    if not model_id:
+        return ""
+    # DOI first: `10.5281/zenodo.123` also satisfies the hub's owner/name
+    # shape, and resolving it as a hub repo would send readers to a page that
+    # does not exist.
+    if DOI_RE.fullmatch(model_id):
+        return f"https://doi.org/{quote(model_id, safe='/')}"
+    if HF_REPO_RE.fullmatch(model_id):
+        return f"https://huggingface.co/{quote(model_id, safe='/')}"
+    return ""
+
+
+def published_training_runs(docs_root: Path) -> dict[str, str]:
+    """Map each published model id to the run that produced it.
+
+    Both directions of the model link are rendered from this one index (#226):
+    a training report lists the recognitions that used its model, and a
+    recognition names the run its model came from.  Deriving each side
+    separately is how they drifted apart in the first place.
+
+    Reading is deliberately tolerant — an unparsable or invalid record simply
+    contributes no link, because a broken record must not remove the
+    recognition pages that happen to mention its model.
+    """
+    runs: dict[str, str] = {}
+    for tpath in training_json_paths(docs_root):
+        try:
+            data = json.loads(tpath.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if not isinstance(data, dict):
+            continue
+        model_id = str(data.get("model_id") or "").strip()
+        run_id = str(data.get("run_id") or "").strip()
+        if not model_id or not run_id or run_id != tpath.parent.name:
+            continue
+        runs.setdefault(model_id, run_id)
+    return runs
 
 
 def validate_all_training_jsons(docs_root: Path) -> dict[str, str]:
