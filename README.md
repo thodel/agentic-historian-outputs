@@ -85,6 +85,18 @@ The release gate and a manual accessibility checklist are documented in
 [`docs/catalogue-verification.md`](docs/catalogue-verification.md); performance
 budgets in [`docs/catalogue-performance.md`](docs/catalogue-performance.md).
 
+### Writing Python tests
+
+`unittest discover` is the only Python collector, so **every test must live in
+a `unittest.TestCase` subclass**. A module-level `def test_x()` or a bare
+`class TestX:` is pytest's shape: it is skipped without a word, and the suite
+still reports green. Eighty-three cases had accumulated that way before
+`tests/test_suite_collection.py` was added to reject the shape and hold the
+suite to a recorded floor. Raise `MINIMUM_CASES` there when you add tests.
+
+Plain `assert` inside a `TestCase` method is fine and used throughout; the
+`assertEqual` family just gives better failure output.
+
 ## Repository layout
 
 | Path | Purpose |

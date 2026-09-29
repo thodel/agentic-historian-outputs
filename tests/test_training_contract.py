@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -237,45 +238,79 @@ class TestRegexPatterns(unittest.TestCase):
 
 # ── Standalone validator tests ───────────────────────────────────────────────
 
-class TestStandaloneValidator:
+class TestStandaloneValidator(unittest.TestCase):
+    """Runs live under ``<docs>/training/<run_id>/training.json``.
 
-    def test_validate_success(self, tmp_path):
+    These cases used to sit outside the stdlib runner, so nobody noticed when
+    they drifted: they still wrote ``<root>/<run_id>/training.json``, the
+    layout runs had before they moved out from under a document.  The
+    discovery glob had long since moved on, so the "mixed" case was asserting
+    against an empty result set.  Anything that writes a fixture here must use
+    the same layout the generator scans.
+    """
+
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self._tmp.name)
+        self.addCleanup(self._tmp.cleanup)
+
+    def _write_run(self, run_id, fixture):
+        run_dir = self.root / "training" / run_id
+        run_dir.mkdir(parents=True)
+        path = run_dir / "training.json"
+        path.write_text(json.dumps(fixture), encoding="utf-8")
+        return path
+
+    def test_validate_success(self):
         fixtures = _load_fixtures()
-        tpath = tmp_path / "training.json"
+        tpath = self.root / "training.json"
         tpath.write_text(json.dumps(fixtures[0]), encoding="utf-8")
         ok, err = validate_training_json(tpath)
-        assert ok, err
+        self.assertTrue(ok, err)
 
-    def test_validate_missing_file(self, tmp_path):
-        ok, err = validate_training_json(tmp_path / "nope.json")
-        assert not ok
-        assert "cannot read" in err
+    def test_validate_missing_file(self):
+        ok, err = validate_training_json(self.root / "nope.json")
+        self.assertFalse(ok)
+        self.assertIn("cannot read", err)
 
-    def test_validate_invalid(self, tmp_path):
+    def test_validate_invalid(self):
         fixtures = _load_fixtures()
-        tpath = tmp_path / "training.json"
+        tpath = self.root / "training.json"
         tpath.write_text(json.dumps(fixtures[5]), encoding="utf-8")  # bad run_id
         ok, err = validate_training_json(tpath)
-        assert not ok
-        assert "run_id" in err
+        self.assertFalse(ok)
+        self.assertIn("run_id", err)
 
-    def test_validate_all_empty(self, tmp_path):
-        results = validate_all_training_jsons(tmp_path)
-        assert results == {}
+    def test_validate_all_empty(self):
+        self.assertEqual({}, validate_all_training_jsons(self.root))
 
-    def test_validate_all_mixed(self, tmp_path):
+    def test_validate_all_mixed(self):
         fixtures = _load_fixtures()
-        (tmp_path / "doc-ok").mkdir()
-        (tmp_path / "doc-ok" / "training.json").write_text(
-            json.dumps(fixtures[0]), encoding="utf-8"
+        self._write_run("doc-ok", fixtures[0])
+        self._write_run("doc-bad", fixtures[5])
+
+        results = validate_all_training_jsons(self.root)
+        self.assertIn("doc-bad", results)
+        self.assertNotIn("doc-ok", results)
+
+    def test_records_outside_the_training_tree_are_ignored(self):
+        """The layout the stale fixture used must stay undiscovered.
+
+        A record dropped beside a document rather than under ``training/`` is
+        not a run.  Asserting that keeps the next drift visible instead of
+        silently emptying the result set.
+        """
+        fixtures = _load_fixtures()
+        stray = self.root / "doc-bad"
+        stray.mkdir()
+        (stray / "training.json").write_text(
+            json.dumps(fixtures[5]), encoding="utf-8")
+
+        self.assertEqual(
+            {}, validate_all_training_jsons(self.root),
+            "a training.json outside training/<run_id>/ was discovered; "
+            "either the layout or this test is wrong",
         )
-        (tmp_path / "doc-bad").mkdir()
-        (tmp_path / "doc-bad" / "training.json").write_text(
-            json.dumps(fixtures[5]), encoding="utf-8"
-        )
-        results = validate_all_training_jsons(tmp_path)
-        assert "doc-bad" in results
-        assert "doc-ok" not in results
 
 
 # ── to_dict round-trip ───────────────────────────────────────────────────────

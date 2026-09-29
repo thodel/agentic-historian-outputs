@@ -30,6 +30,12 @@ python3 scripts/build_index.py
 git diff --exit-code
 ```
 
+`unittest discover` is the only Python collector, so a test written in pytest's
+shape — a module-level `def test_x()` or a bare `class TestX:` — is skipped in
+silence and the gate still passes. `tests/test_suite_collection.py` rejects
+that shape and holds the suite to a recorded case floor; treat a failure there
+as tests having gone missing, not as a nuisance.
+
 Performance budgets and their measurement method are recorded in [Catalogue performance budgets](catalogue-performance.html).
 
 ## Manual accessibility matrix
