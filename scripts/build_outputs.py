@@ -147,47 +147,55 @@ def _superseding_run(
 def provenance_revision() -> str:
     """Return the revision that git-derived page content must be read from.
 
-    Generated pages record facts about the commits that touched a document —
-    its version history and its dates.  Reading those at HEAD makes a page
-    describe the very commit that creates it, which cannot be committed
-    correctly: the page is stale the moment it lands, and ``git diff
-    --exit-code`` then fails on every push that touches a document (#198).
+    ``HEAD`` — and this is a load-bearing choice, not a default.
 
-    Reading one commit back keeps the answer identical before and after the
-    publishing commit, so generated output stays a pure function of the
-    committed tree.
+    Generated pages record facts about a document: its version history and its
+    dates.  Those facts are read from the document's **input**
+    (``docs/<id>/pipeline.json``), never from the generated page.  That is what
+    makes ``HEAD`` correct here, and it is the whole invariant:
 
-    Do not restore ``git merge-base HEAD origin/main`` here.  On a push to
-    main that merge base *is* HEAD, which is precisely the broken case, and a
-    pull_request build cannot reveal it because there the merge base is
-    already the PR's base commit — which is why this bug survived several
-    green PR checks.
+    * The publishing commit ``P`` introduces ``pipeline.json``.
+    * The refresh commit ``R`` commits the page ``P`` produced.  ``R`` does not
+      touch ``pipeline.json``, so reading at ``R`` yields the same history as
+      reading at ``P``.
+    * Any later commit ``C`` that leaves ``pipeline.json`` alone yields that
+      same history again.
+
+    So the output is a pure function of the committed tree at every revision
+    from ``P`` onwards, which is exactly what the clean-diff gate demands.
+
+    Do not reintroduce a revision expressed as a distance from HEAD
+    (``HEAD^``, ``HEAD^^``, or ``git merge-base HEAD origin/main``).  Reading
+    one commit back was the fix for #198, but it buys stability across the
+    publishing commit at the price of stability across every *other* commit:
+    the window slides with HEAD, so the first unrelated commit pushed after a
+    publication re-dated the document and turned ``main`` red.  Pinning the
+    facts to the input file instead fixes both cases at once, because the
+    answer then stops depending on where HEAD happens to be.
     """
-    try:
-        head = subprocess.run(
-            ["git", "rev-parse", "HEAD"],
-            check=True, capture_output=True, text=True,
-        ).stdout.strip()
-    except (OSError, subprocess.CalledProcessError):
-        return "HEAD"
-    parent = subprocess.run(
-        ["git", "rev-parse", "--verify", "--quiet", f"{head}^"],
+    return "HEAD"
+
+
+def assert_complete_history() -> None:
+    """Refuse to generate from a shallow clone.
+
+    A shallow clone truncates history, and git reports the boundary commit as
+    having introduced every file it can still see.  Document histories and
+    dates are therefore silently wrong rather than absent — the build succeeds
+    and publishes fiction.  CI checks out with ``fetch-depth: 0``; anything
+    else must fail loudly here instead.
+    """
+    shallow = subprocess.run(
+        ["git", "rev-parse", "--is-shallow-repository"],
         capture_output=True, text=True,
     ).stdout.strip()
-    subject = subprocess.run(
-        ["git", "show", "-s", "--format=%s", head],
-        capture_output=True, text=True,
-    ).stdout.strip()
-    if subject == "build: refresh catalogue index" and parent:
-        grandparent = subprocess.run(
-            ["git", "rev-parse", "--verify", "--quiet", f"{parent}^"],
-            capture_output=True, text=True,
-        ).stdout.strip()
-        if grandparent:
-            return grandparent
-    # A repository with a single commit has no parent.  Nothing can have been
-    # superseded yet, so reading at HEAD is both safe and correct there.
-    return parent or head or "HEAD"
+    if shallow == "true":
+        raise SystemExit(
+            "Refusing to build from a shallow clone: document version "
+            "histories and dates are derived from git history, and a "
+            "truncated history yields plausible but wrong provenance.\n"
+            "Run `git fetch --unshallow` first (CI uses `fetch-depth: 0`)."
+        )
 
 
 def git_history(path: Path) -> list[tuple[str, str, str]]:
@@ -1207,6 +1215,9 @@ def build_entity_pages(index: dict) -> None:
 
 
 def build() -> None:
+    # Document histories and dates come from git; a truncated clone makes them
+    # wrong rather than missing, so refuse before writing anything.
+    assert_complete_history()
     # Explanation IDs no longer depend on a mutable counter (issue #112);
     # the counter reset has been removed.
     # Publish the progressive-enhancement asset from its single source.
