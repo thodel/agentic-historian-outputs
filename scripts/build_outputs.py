@@ -8,6 +8,7 @@ import hashlib
 import html
 import io
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -902,7 +903,16 @@ license: "CC-BY-4.0"
                 f'Unsichere Erkennung · Score {score}</span>'
                 if score >= 2 else ""
             )
-            links.append(f'<li><a href="../entities/{target}/">{html.escape(item["label"])}</a>{flag}' + (f' <span class="muted">— {html.escape(item["context"])}</span>' if item["context"] else "") + '</li>')
+            # Link only where a page exists. Below the threshold the entity
+            # is still named — it just is not a link, because linking to a
+            # page that was never generated is worse than not linking.
+            name = html.escape(item["label"])
+            named = (
+                f'<a href="../entities/{target}/">{name}</a>'
+                if entity_has_page(occurrences) else
+                f'<span class="entity-unlinked">{name}</span>'
+            )
+            links.append(f'<li>{named}{flag}' + (f' <span class="muted">— {html.escape(item["context"])}</span>' if item["context"] else "") + '</li>')
         entity_html.append(f'<h3>{html.escape(kind)}</h3><ul>{"".join(links)}</ul>')
 
     source_description = value(description.get("source_description"))
@@ -1137,6 +1147,41 @@ def _jsonld_dataset(doc_id: str, canonical: str, source_url: str,
     return f'<script type="application/ld+json">{payload}</script>'
 
 
+def entity_page_threshold() -> int:
+    """How many occurrences an entity needs before it gets its own page.
+
+    Every mentioned entity gets a page today, which is right for ten
+    documents and not for two thousand: at corpus scale most entities are
+    named once and would produce tens of thousands of single-mention pages,
+    each one a URL to keep and a row in the sitemap.
+
+    The threshold is configurable rather than fixed because the right value
+    depends entirely on corpus size. In the present corpus 136 of 140
+    entities occur exactly once — not because they are noise, but because
+    there are only ten documents. A threshold of 2 is correct at two thousand
+    documents and would gut the site at ten, so the default stays 1 and
+    raising it is an operational decision taken when the corpus justifies it.
+
+    Nothing is deleted when it is raised. An entity below the threshold is
+    still named on the pages of the documents that mention it, and counted on
+    the entity index; it just does not get a page of its own. A page that
+    falls below the threshold keeps its URL as a tombstone, like any other
+    entity page no longer supported by current evidence.
+    """
+    raw = os.environ.get("AH_ENTITY_PAGE_MIN_OCCURRENCES", "1")
+    try:
+        return max(1, int(raw))
+    except ValueError:
+        raise SystemExit(
+            f"AH_ENTITY_PAGE_MIN_OCCURRENCES must be a positive integer, got {raw!r}"
+        )
+
+
+def entity_has_page(occurrences: int, threshold: int | None = None) -> bool:
+    threshold = entity_page_threshold() if threshold is None else threshold
+    return occurrences >= threshold
+
+
 def build_entity_pages(index: dict) -> set[str]:
     """Write a page per current entity and return the manifest of slugs written.
 
@@ -1146,6 +1191,8 @@ def build_entity_pages(index: dict) -> set[str]:
     """
     root = DOCS / "entities"
     root.mkdir(exist_ok=True)
+    threshold = entity_page_threshold()
+    below_threshold = 0
     live_targets: set[str] = set()
     credible_summary = []
     uncertain_summary = []
@@ -1155,6 +1202,11 @@ def build_entity_pages(index: dict) -> set[str]:
         index.items(), key=lambda x: (x[0][0], x[0][1])
     ):
         label = entity_display_label(occurrences)
+        if not entity_has_page(len(occurrences), threshold):
+            # Not deleted: still named on every document that mentions it,
+            # and counted on the index below.
+            below_threshold += 1
+            continue
         target = slug(label, kind)
         obsolete_variant_targets.update(
             slug(item["label"], kind)
@@ -1227,8 +1279,16 @@ def build_entity_pages(index: dict) -> set[str]:
         if directory.is_dir() and (directory / "index.md").exists():
             shutil.rmtree(directory)
     live_targets -= obsolete_variant_targets
+    threshold_note = (
+        f'<p class="notice notice--info entity-threshold-note">'
+        f'{below_threshold} Entität{"" if below_threshold == 1 else "en"} mit '
+        f'weniger als {threshold} Belegen {"hat" if below_threshold == 1 else "haben"} '
+        'keine eigene Seite. Sie sind nicht entfernt: die Dokumente, die sie '
+        'nennen, führen sie weiterhin auf.</p>'
+        if below_threshold else ""
+    )
     table_head = '<div class="table-scroll"><table><thead><tr><th>Entität</th><th>Typ</th><th>Vorkommen</th></tr></thead><tbody>'
-    page = frontmatter("Entitäten") + f'''<nav class="breadcrumbs"><a href="../">Alle Ausgaben</a> / Entitäten</nav><h1>Entitäten</h1><p>Automatisch erkannte Personen, Orte, Organisationen und weitere Entitätstypen. Die heuristische Einteilung löscht keine Daten und ist keine wissenschaftliche Verifikation.</p><p class="muted">Entitäten, die von keiner aktuellen Ausgabe mehr belegt werden, verschwinden nicht: ihre Adresse bleibt als Hinweisseite erhalten, damit bestehende Zitate nicht brechen. Sie sind hier nicht mehr gelistet und nicht mehr für Suchmaschinen freigegeben.</p><h2>Glaubwürdige Erkennungen</h2>{table_head}{''.join(credible_summary)}</tbody></table></div><details class="entity-noise-group"><summary>Unsichere Erkennungen ({len(uncertain_summary)})</summary><p>Diese Einträge weisen formale OCR-Risikomerkmale auf und werden zur Prüfung sichtbar aufbewahrt.</p>{table_head}{''.join(uncertain_summary)}</tbody></table></div></details>'''
+    page = frontmatter("Entitäten") + f'''<nav class="breadcrumbs"><a href="../">Alle Ausgaben</a> / Entitäten</nav><h1>Entitäten</h1><p>Automatisch erkannte Personen, Orte, Organisationen und weitere Entitätstypen. Die heuristische Einteilung löscht keine Daten und ist keine wissenschaftliche Verifikation.</p><p class="muted">Entitäten, die von keiner aktuellen Ausgabe mehr belegt werden, verschwinden nicht: ihre Adresse bleibt als Hinweisseite erhalten, damit bestehende Zitate nicht brechen. Sie sind hier nicht mehr gelistet und nicht mehr für Suchmaschinen freigegeben.</p>{threshold_note}<h2>Glaubwürdige Erkennungen</h2>{table_head}{''.join(credible_summary)}</tbody></table></div><details class="entity-noise-group"><summary>Unsichere Erkennungen ({len(uncertain_summary)})</summary><p>Diese Einträge weisen formale OCR-Risikomerkmale auf und werden zur Prüfung sichtbar aufbewahrt.</p>{table_head}{''.join(uncertain_summary)}</tbody></table></div></details>'''
     (root / "index.md").write_text(page, encoding="utf-8")
     return live_targets
 
@@ -1405,7 +1465,16 @@ def build() -> None:
     test_root.mkdir(exist_ok=True)
     links = "".join(f'<li><a href="../{html.escape(doc_id)}/">{html.escape(doc_id)}</a></li>' for doc_id in tests)
     (test_root / "index.md").write_text(frontmatter("Testläufe") + f'<nav class="breadcrumbs"><a href="../">Alle Ausgaben</a> / Testläufe</nav><h1>Testläufe</h1><p>Diese Einträge dienen der technischen Prüfung und sind keine Forschungsresultate.</p><ul>{links or "<li>Keine Testläufe.</li>"}</ul>', encoding="utf-8")
-    print(f"Generated {len(list(DOCS.glob('*/pipeline.json')))} document pages and {len(entity_index)} entity pages")
+    # Report what was written, not what was indexed: below the entity-page
+    # threshold those two numbers differ, and the indexed count would claim
+    # pages that do not exist.
+    omitted = len(entity_index) - len(entity_targets)
+    print(
+        f"Generated {len(list(DOCS.glob('*/pipeline.json')))} document pages "
+        f"and {len(entity_targets)} entity pages"
+        + (f" ({omitted} below the {entity_page_threshold()}-occurrence "
+           "threshold, no page)" if omitted > 0 else "")
+    )
 
 
 if __name__ == "__main__":

@@ -97,6 +97,24 @@ suite to a recorded floor. Raise `MINIMUM_CASES` there when you add tests.
 Plain `assert` inside a `TestCase` method is fine and used throughout; the
 `assertEqual` family just gives better failure output.
 
+## Scale controls
+
+Two settings bound what a corpus import produces. Both default to the current
+behaviour, so nothing changes until they are raised deliberately.
+
+| Setting | Default | Effect |
+| --- | --- | --- |
+| `AH_ENTITY_PAGE_MIN_OCCURRENCES` | `1` | Occurrences an entity needs before it gets its own page. Below it the entity is still named by the documents that mention it and counted on the entity index, but has no page; an existing page that falls below keeps its URL as a tombstone. |
+
+The right threshold depends on corpus size and on nothing else. In the present
+ten-document corpus 136 of 140 entities occur exactly once — not because they
+are noise, but because there are ten documents. A threshold of 2 is correct at
+two thousand documents and would gut the site at ten.
+
+`python3 scripts/site_budget.py` reports the generated site's size, its
+largest contributors and what the current per-document cost implies at corpus
+scale. `python3 scripts/source_ledger.py` reports source-reference coverage.
+
 ## Repository layout
 
 | Path | Purpose |
