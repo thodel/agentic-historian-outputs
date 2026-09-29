@@ -33,6 +33,10 @@ _HF_MODEL = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*/[A-Za-z0-9][A-Za-z0-9._-]*$
 
 TRAINING_PERFORMANCE_BUDGETS = {
     "svg_points_per_series": 250,
+    # The exact table is the other half of the report's weight. A 2,000-epoch
+    # run rendered every row and produced a 183 KB report, which tripped the
+    # byte budget below and aborted the whole site build — see _render_curve_table.
+    "table_rows_per_run": 200,
     "report_bytes_per_run": 128_000,
     "page_bytes": 2_000_000,
     "synthetic_table_runs": 500,
@@ -355,9 +359,46 @@ def _render_svg_chart(curves: list[CurveEpoch], run_id: str, chart: str) -> str:
     )
 
 
+def _select_table_rows(curves: list[CurveEpoch]) -> list[CurveEpoch]:
+    """Bound the exact table the same way the chart is bounded.
+
+    Rendering every epoch is what made a valid 2,000-epoch run a publication
+    blocker: the report came to 183 KB against a 128 KB budget and the
+    generator raised, taking down the build for every other document too. A
+    budget that can only abort is not a budget, it is a cliff.
+
+    The rows kept are the ones the chart keeps — bucketed extrema plus both
+    endpoints — so the excerpt and the picture agree about where the
+    interesting epochs are. The complete series is not lost: it is published
+    verbatim in this run's own training.json, which the report links.
+    """
+    limit = TRAINING_PERFORMANCE_BUDGETS["table_rows_per_run"]
+    if len(curves) <= limit:
+        return curves
+    indexed = [(index, curve) for index, curve in enumerate(curves)]
+    scored = [
+        (index, next((getattr(curve, field) for field in
+                      ("train_loss", "val_loss", "val_accuracy", "lr")
+                      if getattr(curve, field) is not None), 0.0))
+        for index, curve in indexed
+    ]
+    kept = {point[0] for point in _sample_points(
+        [(index, float(value)) for index, value in scored])}
+    kept.update({0, len(curves) - 1})
+    return [curves[index] for index in sorted(kept)[:limit]]
+
+
 def _render_curve_table(curves: list[CurveEpoch]) -> str:
+    shown = _select_table_rows(curves)
+    excerpt_note = (
+        f'<p class="training-table-excerpt">Auszug: {len(shown)} von '
+        f'{len(curves)} Epochen. Minimum und Maximum jedes Abschnitts sowie '
+        'erste und letzte Epoche sind enthalten; die vollständige Reihe steht '
+        'im maschinenlesbaren Datensatz dieses Laufs.</p>'
+        if len(shown) < len(curves) else ""
+    )
     rows = []
-    for curve in curves:
+    for curve in shown:
         value = lambda field: "—" if getattr(curve, field) is None else f"{getattr(curve, field):.6g}"
         rows.append(
             f'<tr><th scope="row">{curve.epoch}</th><td>{value("train_loss")}</td>'
@@ -365,6 +406,7 @@ def _render_curve_table(curves: list[CurveEpoch]) -> str:
         )
     return (
         '<details class="training-curve-data"><summary>Kurvendaten als Tabelle</summary>'
+        f'{excerpt_note}'
         '<div class="training-table-wrap" tabindex="0"><table><thead><tr><th scope="col">Epoche</th>'
         '<th scope="col">Trainingsverlust</th><th scope="col">Validierungsverlust</th>'
         '<th scope="col">Validierungsgenauigkeit (%)</th><th scope="col">Lernrate</th>'

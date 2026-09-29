@@ -12,7 +12,8 @@ from pathlib import Path
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from build_training import (  # noqa: E402
+from build_training import (
+    _run_page,  # noqa: E402
     TRAINING_PERFORMANCE_BUDGETS,
     _build_rows,
     _render_curves,
@@ -47,17 +48,16 @@ class TrainingPerformanceBudgets(unittest.TestCase):
         size = len(_render_run_report(row).encode("utf-8"))
         self.assertLessEqual(size, TRAINING_PERFORMANCE_BUDGETS["report_bytes_per_run"])
 
-    def test_long_svg_series_is_bounded_but_table_keeps_every_epoch(self):
+    def _long_contract(self, count):
+        return TrainingContract({
+            **fixture(), "epochs": count, "epochs_trained": count,
+            "curves": [{"epoch": i, "train_loss": 1 / (i + 1),
+                        "val_loss": 1.1 / (i + 1)} for i in range(count)],
+        })
+
+    def test_long_svg_series_is_bounded(self):
         count = TRAINING_PERFORMANCE_BUDGETS["svg_points_per_series"] * 4
-        curves = [CurveEpoch(epoch=i, train_loss=1 / (i + 1), val_loss=1.1 / (i + 1))
-                  for i in range(count)]
-        contract = TrainingContract({**fixture(), "epochs": count, "epochs_trained": count,
-                                     "curves": [
-                                         {"epoch": c.epoch, "train_loss": c.train_loss,
-                                          "val_loss": c.val_loss}
-                                         for c in curves
-                                     ]})
-        markup = _render_curves(contract)
+        markup = _render_curves(self._long_contract(count))
         polylines = re.findall(r'<polyline[^>]+points="([^"]+)"', markup)
         self.assertTrue(polylines)
         for points in polylines:
@@ -65,7 +65,44 @@ class TrainingPerformanceBudgets(unittest.TestCase):
                 len(points.split()),
                 TRAINING_PERFORMANCE_BUDGETS["svg_points_per_series"],
             )
-        self.assertEqual(markup.count("<tr><th scope=\"row\">"), count)
+
+    def test_long_exact_table_is_bounded_and_says_so(self):
+        """This assertion used to be the opposite, and that was the bug.
+
+        Requiring the table to hold every epoch is what made a valid
+        2,000-epoch run a publication blocker: the report reached 183 KB
+        against a 128 KB budget and the generator raised, taking the whole
+        site build with it. A budget that can only abort is a cliff.
+
+        The table is now an excerpt that says it is one, and the complete
+        series stays published verbatim in the run's own training.json.
+        """
+        count = TRAINING_PERFORMANCE_BUDGETS["svg_points_per_series"] * 4
+        markup = _render_curves(self._long_contract(count))
+
+        rows = markup.count('<tr><th scope="row">')
+        self.assertLessEqual(rows, TRAINING_PERFORMANCE_BUDGETS["table_rows_per_run"])
+        self.assertIn(f"Auszug: {rows} von {count} Epochen", markup)
+
+    def test_a_short_run_still_shows_every_epoch_without_an_excerpt_notice(self):
+        count = 12
+        markup = _render_curves(self._long_contract(count))
+        self.assertEqual(count, markup.count('<tr><th scope="row">'))
+        self.assertNotIn("Auszug:", markup)
+
+    def test_a_very_long_run_publishes_instead_of_aborting_the_build(self):
+        """The case that took the build down: every other page went with it."""
+        for count in (2000, 20000):
+            with self.subTest(epochs=count):
+                row = {"contract": self._long_contract(count), "status_mod": "ok",
+                       "status_label": "Abgeschlossen", "run_id": "long-run",
+                       "model_id": "m-long", "recognition_usages": []}
+                size = len(_run_page(row).encode("utf-8"))
+                self.assertLessEqual(
+                    size, TRAINING_PERFORMANCE_BUDGETS["report_bytes_per_run"],
+                    f"a {count}-epoch run still exceeds the report budget, so "
+                    "publishing it aborts the entire site build",
+                )
 
     def test_500_run_summary_table_renders_within_budget(self):
         contract = TrainingContract(fixture())

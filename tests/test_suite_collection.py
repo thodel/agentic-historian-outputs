@@ -32,7 +32,7 @@ TESTS = Path(__file__).resolve().parent
 
 # Raise this when you add tests.  Lower it only deliberately, in the same
 # commit that removes them, and say why in the message.
-MINIMUM_CASES = 835
+MINIMUM_CASES = 838
 
 
 def _is_test_case_base(node: ast.expr, local_cases: set[str]) -> bool:
