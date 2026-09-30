@@ -5,7 +5,7 @@ title: "Fine-tuning vision models: what nineteen runs taught us"
 
 > **Internal engineering document.** This page is a working document for project contributors. It is not part of the public-facing German site and is not linked from the global navigation. See the [language policy](about.html#sprachpolitik) for context.
 
-# Fine-tuning vision models: what nineteen runs taught us
+# Fine-tuning vision models: what twenty-two runs taught us
 
 The [recognition engine evaluation](evaluation.html) measures engines this project did not build: published Transkribus models, TrOCR and kraken checkpoints from the hub, commercial and local vision models used zero-shot. This page is about the other half — the nineteen vision-language models fine-tuned for this project on Swiss and German material between 2026-09-03 and 2026-09-26, and what went wrong often enough to be worth writing down.
 
@@ -15,7 +15,7 @@ As on the evaluation page, this records what was measured. Where an earlier clai
 
 ## The runs
 
-Two corpora, **three** bases, four model sizes, four sample granularities.
+Two corpora, **three** bases, six model sizes, four sample granularities.
 
 | Family | Base | Corpus | Runs |
 |---|---|---|---|
@@ -25,7 +25,7 @@ Two corpora, **three** bases, four model sizes, four sample granularities.
 | `qwen3.5-{4b,2b,0.8b}-german-xix-v{1,2}` | Qwen3.5 | the same | 5 |
 | `qwen3vl-german-xix-block-v1`, `-page-v1`, `-mixed-v1` | Qwen3-VL-4B | the same, cut into blocks of six lines / whole pages / all three mixed | 3 |
 | `qwen3vl-medieval-german-page-v1`, `qwen3.5-4b-…-page-v1` | Qwen3-VL-4B, Qwen3.5-4B | the medieval corpus, whole pages | 2 |
-| `gemma-4-E4B-it` on the medieval corpus | Gemma 4 | the same, lines | 1 (+2 running: E4B on the 19th c., 12B on the medieval) |
+| `gemma-4-{E4B,12B}-it` on the medieval corpus | Gemma 4 | the same, lines and whole pages | 3 (+3 running: E4B and 12B on the 19th c., 12B on the medieval pages) |
 
 Each is a QLoRA adapter over a frozen base, one epoch, trained on one H100 (UBELIX) or two A40s. A 19th-century run costs 4–10 GPU-hours; building its corpus costs 2–16 CPU-hours, most of it copying files. Later runs cost nothing to prepare at all: the compiled corpus is content-addressed and the base model is not part of its key, so a second base trains on the first one's bytes and, more importantly, on its split.
 
@@ -75,6 +75,16 @@ The fixes were structural: a stratified draw with an equal share per source, per
 
 The general form: **an in-domain validation split measures convergence, not accuracy.** It is the right number for "did this run work" and the wrong number for "how well does this model read".
 
+There is a third way to lose the draw, and it is the quietest: the run never makes one. A
+compiled corpus is content-addressed and can be adopted by a later run instead of rebuilt, which
+is what makes a second base free — but the cached entry carries only the counts someone thought to
+put in it, and the per-source page counts were not among them. A run that adopts an entry therefore
+has no idea which source a page came from, and its evaluator falls back from a stratified draw to a
+random one, saying so in a single log line nobody reads: `0 source(s) could be attributed, so no
+strata`. Two of the page arms below were scored that way. The numbers are sound; they are simply
+not on the same 200 pages, so the small differences between them are not comparable at the
+0.6-point resolution this section establishes.
+
 The same mistake was nearly made again a year later, in a smaller way, and it is worth recording because the fix is cheap. Two runs on the same corpus and the same split reported 14.27 % and 16.88 %, and the difference looked like a result. Each run's evaluation subset, however, is drawn at test time — and the two draws **overlapped in 4 of 200 samples**. Re-scoring the first model on the second's subset gave 13.65 %, which made the comparison real. It also produced, for the first time, an error bar: the same model on two draws from the same pool differs by **0.6 points**, so nothing smaller than that is a finding at all.
 
 ## 4. A model reads the unit it was trained on
@@ -108,6 +118,44 @@ Three further observations:
 - **Whole pages are within reach for this material.** On its own validation split the page model reads 102 complete pages at **8.0 %**, length ratio 1.004; on the five Zurich pages of the comparison set at 4.8 %. Its corpus-wide 32.3 % is carried by two sparsely written pages where it over-generates: 485 reference characters answered with 2 420.
 
 The block model's penalty on lines is uniform rather than an artefact of a few pages: it is worse than the line model on 14 of 15 pages, by 0.2 to 8.3 points, smallest on the easiest source and largest on the hardest.
+
+### The medieval corpus reads pages too, and the second family reads them worst
+
+Everything above is the 19th century. The medieval corpus — older hands, 20-megapixel scans, many
+short charters — was trained at page granularity three times, one arm per base, on one shared
+corpus and one shared split:
+
+| Arm | Base | CER | WER | length ratio | CER without truncations |
+|---|---|---:|---:|---:|---:|
+| `qwen3.5-4b-medieval-german-page-v1` | Qwen3.5-4B | **41.6 %** | 69.3 | 1.08 | **30.7 %** |
+| `qwen3vl-medieval-german-page-v1` | Qwen3-VL-4B | 42.7 % | 76.6 | 1.13 | 31.6 % |
+| `gemma4-e4b-medieval-german-page-v1` | Gemma-4-E4B | 51.8 % | 90.1 | 1.10 | 39.0 % |
+
+The two Qwen arms are a point apart on different draws, which by §3 is not a finding. Gemma is
+nine points behind, which is. And it is behind for a reason that inverts the expectation the run
+was submitted with: Gemma spends a fixed token budget per image whatever the image is, so a line
+costs nearly what a page costs — the penalty should be *smallest* where the image really is a whole
+page. It is largest there, and it survives removing the truncations, so it is not an early-stopping
+artefact. It reads pages less well — and it runs into the generation cap on **30** of its 200
+pages where the two Qwen arms do on 15, so it also over-generates on twice as many.
+
+**What the page numbers mean at all** took a paired comparison to establish. The two Qwen arms'
+evaluation draws overlap in 33 pages; scored on those alone, against the same ground truth, they
+come out at 37.0 % and 32.9 % — and, with the truncated pages removed, at **34.07 % and 34.09 %**.
+Identical. The entire measured difference between two page models on the same corpus was the
+handful of pages one of them ran into the generation cap on.
+
+That points at the same weakness from the other side. Taking the length ratio page by page on one
+arm's 164 pages: the median is **1.00**, the 10th and 90th percentiles are 0.94 and 1.39, and 148
+of 164 pages sit inside a factor of 1.5 either way. On a normal page the text quantity is right.
+**Fifteen pages are not normal**: all fifteen ran to the generation cap, and together they answer
+9 243 reference characters with 33 955 — roughly 24 700 characters that are not on any page. One
+answers 19 reference characters with 1 545. The corpus-wide CER of 42.7 % is 31.6 % without them.
+
+So the practical finding of the medieval page work is not a ranking of bases. It is that a page
+model on this material is already usable on the pages that carry text, and that the remaining error
+is concentrated in a failure mode — write until the cap on a nearly empty page — which no pixel
+budget has moved and which a length check catches for free.
 
 ### The mixed run: one model can read all three, and pays for it
 
@@ -148,6 +196,35 @@ The first is a size claim we got wrong. Gemma-4-E4B is advertised at 8 B paramet
 
 The second is that the comparison was designed to be fair in pixels and was therefore unfair in tokens. Gemma spends a fixed budget per image, on one of five permitted steps, and one of its tokens covers a 48 × 48 px cell against Qwen's 32 × 32. Matching the two on *pixels* — both models shown the same image detail — put Gemma on the 140-token step while Qwen had 256. Gemma's own default is 280. So the run that produced 16.9 % was given half the visual tokens the model ships with, by a decision that was made deliberately and documented as the honest one.
 
+### Size, not family
+
+A larger arm of the same family was then trained on the same corpus and the same split and scored
+on the same 200 samples:
+
+| Model | Parameters | CER | convention-normalised | WER | CER without truncations |
+|---|---:|---:|---:|---:|---:|
+| `gemma-4-12B-it` | 12 B | **12.2 %** | **10.7 %** | **30.4** | **9.1 %** |
+| `qwen3vl-medieval-german-v3` | 4.4 B | 13.7 % | 12.3 % | 35.3 | 14.0 % |
+| `gemma-4-E4B-it` | ~4.5 B transformer | 16.9 % | 15.8 % | 38.8 | 17.5 % |
+
+Gemma now reads this material better than the model that has been our best on it since September —
+1.5 points, more than twice the selection noise of §3 — and by a wider margin on words than on
+characters. The last column is the strongest part of it: with the truncated predictions removed the
+12B arm is at 9.1 % against 14.0 %, a third better, so its lead comes from the body of the
+distribution rather than from a few easy pages.
+
+**It is a size result, not a family result, and the distinction is the point.** The three rows are
+4.5 B, 4.5 B and 12 B of transformer. At equal size Qwen reads this corpus better; the family that
+looked behind overtakes when it is given three times the parameters. Writing "Gemma beats Qwen"
+from the first row would repeat, one level up, exactly the mistake §3 is about: a comparison that
+varies two things and is reported as if it varied one. Nothing here says a 12 B Qwen would not win
+it back, and none was trained.
+
+What the larger arm costs is not yet measured against the smaller one on the same hardware. The
+data point that exists: at identical micro-batch, E4B needed 2.2× the GPU memory of a 4 B Qwen and
+ran 3 % slower, and the 12 B arm was trained at micro-batch 2 with gradient accumulation because 16
+does not fit. Its 12.2 % was also recovered rather than produced — see the seventh item below.
+
 **The larger lesson is about what a "drop-in" comparison costs.** Six things had to be fixed before Gemma produced any number at all, and each one was invisible until the one before it was cleared:
 
 1. the training container silently ran a transformers version that had never heard of the model;
@@ -156,6 +233,12 @@ The second is that the comparison was designed to be fair in pixels and was ther
 4. the adapters were aimed at every module with a matching name, which on this family includes a vision tower whose wrapped layers the adapter library refuses outright — Qwen's tower simply does not reuse those names, so nobody had noticed the aim was that wide;
 5. images were handed over as one flat list per batch, which this family reads as one sample's images;
 6. and after a run had trained to completion — 19 162 of 19 162 steps — the evaluation refused it, because the tokens it stops generation on were hardcoded to one family's names.
+7. and the same thing happened a second time, to the larger arm, for an unrelated reason: under
+   4-bit the patch projection's weight is an integer, so the library's own "cast the pixels to the
+   projection's dtype" step silently does not fire — and the encoder-free 12 B image path then hands
+   32-bit pixels to a 16-bit normalisation layer. Two days of training, a complete adapter, and a
+   `RuntimeError` in the first forward pass of the evaluation. The family with a vision tower never
+   hit it, because its tower casts on the way in.
 
 Only the fourth of those is a defect in the ordinary sense. The rest are places where a single family's conventions had been absorbed into code that looked general, and each was discovered by a run dying rather than by reading. The cheap part was the discovery: idle consumer GPUs on the cluster start a job in seconds, and five of the six failures arrived within ninety seconds of submission. The expensive part was the sixth, which cost a full day of training before the adapter could be scored — from an artefact that was still on disk, so the number was recovered without retraining.
 
@@ -166,6 +249,8 @@ Only the fourth of those is a defect in the ordinary sense. The rest are places 
 - **Over-generation on sparse pages** is the page model's remaining weakness and the same failure the medieval page model shows. Neither a larger nor a smaller pixel budget addresses it.
 - **Whether Gemma closes the gap when it is tuned for itself**, starting with the visual-token budget its own default sets higher than ours did. Until that is measured, §6 says "worse as a drop-in", which is a narrower claim than "worse".
 - **A page-level Gemma number on the 19th-century corpus**, scored on the published benchmark rather than on a split of our own, is training now. It is the first cross-family number that will be comparable to a figure someone else can reproduce.
+- **Whether size carries pages the way it carries lines.** At 12 B Gemma wins on lines and at ~4.5 B it loses on pages by nine points. A 12 B page arm is queued; until it lands, the two granularities say opposite things about the same family.
+- **Whether a 12 B Qwen would take the lead back.** The size comparison above is one-sided: three arms, and only one of them large. Nobody has trained the obvious control.
 - **Training variance is still unmeasured.** §3 establishes that drawing a different evaluation subset moves a CER by 0.6 points. What two runs of the *same* arm at different seeds do is unknown, and every ranking on this page assumes it is small.
 - **There is no page-level benchmark** with ground truth that no run has seen. The published Federal Council test set is 2 751 isolated lines. Until one exists, page numbers are measured on held-out pages of our own corpora, which is weaker.
 
