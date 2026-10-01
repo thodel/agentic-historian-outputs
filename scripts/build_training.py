@@ -21,7 +21,10 @@ from urllib.parse import quote
 
 from build_recognitions import _candidates
 from quality import render_reference_evaluation, training_reference_evaluations
-from training_contract import ContractError, CurveEpoch, TrainingContract, training_json_paths
+from training_contract import (
+    ContractError, CurveEpoch, TrainingContract, external_model_url,
+    training_json_paths,
+)
 
 DOCS = Path("docs")
 TRAINING_INDEX = DOCS / "training" / "index.md"
@@ -30,6 +33,10 @@ _HF_MODEL = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*/[A-Za-z0-9][A-Za-z0-9._-]*$
 
 TRAINING_PERFORMANCE_BUDGETS = {
     "svg_points_per_series": 250,
+    # The exact table is the other half of the report's weight. A 2,000-epoch
+    # run rendered every row and produced a 183 KB report, which tripped the
+    # byte budget below and aborted the whole site build — see _render_curve_table.
+    "table_rows_per_run": 200,
     "report_bytes_per_run": 128_000,
     "page_bytes": 2_000_000,
     "synthetic_table_runs": 500,
@@ -228,17 +235,34 @@ def _metric_points(curves: list[CurveEpoch], field: str) -> list[tuple[int, floa
 
 
 def _sample_points(points: list[tuple[int, float]]) -> list[tuple[int, float]]:
-    """Bound SVG geometry while the exact HTML table keeps every epoch.
+    """Bound SVG geometry without deleting the events worth seeing.
 
-    Uniform sampling is deterministic and always retains both endpoints.  This
-    keeps the inline graphic responsive for unusually long runs without
-    silently discarding the underlying values.
+    Uniform sampling was deterministic, kept both endpoints, and threw away
+    exactly the thing a reader looks at a loss curve for. With 1,000 epochs
+    all at 1.0 except a single spike to 1,000 at epoch 1, every kept index
+    missed the spike and the chart drew a flat line — while its own caption
+    reported a range of 0.99 to 1.01, because the axis was derived from the
+    sampled points too.
+
+    Bucketed extrema instead: split the series into equal buckets and keep the
+    minimum and maximum of each. Every excursion survives at the resolution
+    the chart can actually draw, endpoints are still kept, and the result is
+    still deterministic and still within the point budget.
     """
     limit = TRAINING_PERFORMANCE_BUDGETS["svg_points_per_series"]
-    if len(points) <= limit:
+    count = len(points)
+    if count <= limit:
         return points
-    indexes = {round(index * (len(points) - 1) / (limit - 1)) for index in range(limit)}
-    return [points[index] for index in sorted(indexes)]
+    # Two points per bucket, plus both endpoints, must fit the budget.
+    buckets = max(1, (limit - 2) // 2)
+    keep = {0, count - 1}
+    for bucket in range(buckets):
+        low = bucket * count // buckets
+        high = max(low + 1, (bucket + 1) * count // buckets)
+        window = range(low, high)
+        keep.add(min(window, key=lambda index: points[index][1]))
+        keep.add(max(window, key=lambda index: points[index][1]))
+    return [points[index] for index in sorted(keep)]
 
 
 def _polyline(points: list[tuple[int, float]], x_min: float, x_max: float,
@@ -262,16 +286,23 @@ def _render_svg_chart(curves: list[CurveEpoch], run_id: str, chart: str) -> str:
         series = [("Validierungsgenauigkeit", "val_accuracy", "training-chart__accuracy")]
         title = "Validierungsgenauigkeit nach Epoche"
         y_label = "Genauigkeit (%)"
-    available = [
-        (label, css, _sample_points(_metric_points(curves, field)))
+    # Keep the full series alongside the drawn one. The axis, the range in the
+    # description and the reduction notice are all derived from the full data;
+    # deriving them from the sampled points is how a chart came to report a
+    # range of 0.99-1.01 for a series containing a value of 1,000.
+    resolved = [
+        (label, css, full, _sample_points(full))
         for label, field, css in series
+        for full in [_metric_points(curves, field)]
     ]
-    available = [item for item in available if item[2]]
+    available = [item for item in resolved if item[2]]
     if not available:
         return ""
-    all_points = [point for _, _, points in available for point in points]
-    x_min, x_max = min(x for x, _ in all_points), max(x for x, _ in all_points)
-    y_values = [y for _, y in all_points]
+    full_points = [point for _, _, full, _ in available for point in full]
+    reduced_from = sum(len(full) for _, _, full, _ in available)
+    reduced_to = sum(len(drawn) for _, _, _, drawn in available)
+    x_min, x_max = min(x for x, _ in full_points), max(x for x, _ in full_points)
+    y_values = [y for _, y in full_points]
     # Loss and accuracy want OPPOSITE axis treatment (#232).
     #
     # Accuracy is a percentage and must include the origin: a run whose
@@ -290,10 +321,17 @@ def _render_svg_chart(curves: list[CurveEpoch], run_id: str, chart: str) -> str:
         y_min = 0.0 if min(y_values) >= 0 else min(y_values)
         y_max = max(y_values) or 1.0
         axis_note = "Achse beginnt bei null"
+    # Say so when the drawn line is not every point. Silent reduction is what
+    # makes a chart quietly disagree with the table beneath it.
+    reduction_note = (
+        f" Gezeichnet sind {reduced_to} von {reduced_from} Messpunkten; "
+        "Minimum und Maximum jedes Abschnitts bleiben erhalten."
+        if reduced_to < reduced_from else ""
+    )
     chart_id = re.sub(r"[^a-zA-Z0-9_-]", "-", f"{run_id}-{chart}")
     lines = []
     legend = []
-    for label, css, points in available:
+    for label, css, _full, points in available:
         lines.append(
             f'<polyline class="training-chart__line {css}" points="{_polyline(points, x_min, x_max, y_min, y_max)}" />'
         )
@@ -306,7 +344,7 @@ def _render_svg_chart(curves: list[CurveEpoch], run_id: str, chart: str) -> str:
         '<figure class="training-chart">'
         f'<svg viewBox="0 0 720 280" role="img" aria-labelledby="{chart_id}-title {chart_id}-desc">'
         f'<title id="{chart_id}-title">{title}</title>'
-        f'<desc id="{chart_id}-desc">Epochen {x_min} bis {x_max}; Wertebereich {y_min:.3g} bis {y_max:.3g} ({axis_note}). Die exakten Werte folgen als Tabelle.</desc>'
+        f'<desc id="{chart_id}-desc">Epochen {x_min} bis {x_max}; Wertebereich {y_min:.3g} bis {y_max:.3g} ({axis_note}).{reduction_note} Die exakten Werte folgen als Tabelle.</desc>'
         f'{grid}<line class="training-chart__axis" x1="62" y1="234" x2="682" y2="234" />'
         '<line class="training-chart__axis" x1="62" y1="24" x2="62" y2="234" />'
         f'<text class="training-chart__label" x="372" y="270" text-anchor="middle">Epoche</text>'
@@ -321,9 +359,46 @@ def _render_svg_chart(curves: list[CurveEpoch], run_id: str, chart: str) -> str:
     )
 
 
+def _select_table_rows(curves: list[CurveEpoch]) -> list[CurveEpoch]:
+    """Bound the exact table the same way the chart is bounded.
+
+    Rendering every epoch is what made a valid 2,000-epoch run a publication
+    blocker: the report came to 183 KB against a 128 KB budget and the
+    generator raised, taking down the build for every other document too. A
+    budget that can only abort is not a budget, it is a cliff.
+
+    The rows kept are the ones the chart keeps — bucketed extrema plus both
+    endpoints — so the excerpt and the picture agree about where the
+    interesting epochs are. The complete series is not lost: it is published
+    verbatim in this run's own training.json, which the report links.
+    """
+    limit = TRAINING_PERFORMANCE_BUDGETS["table_rows_per_run"]
+    if len(curves) <= limit:
+        return curves
+    indexed = [(index, curve) for index, curve in enumerate(curves)]
+    scored = [
+        (index, next((getattr(curve, field) for field in
+                      ("train_loss", "val_loss", "val_accuracy", "lr")
+                      if getattr(curve, field) is not None), 0.0))
+        for index, curve in indexed
+    ]
+    kept = {point[0] for point in _sample_points(
+        [(index, float(value)) for index, value in scored])}
+    kept.update({0, len(curves) - 1})
+    return [curves[index] for index in sorted(kept)[:limit]]
+
+
 def _render_curve_table(curves: list[CurveEpoch]) -> str:
+    shown = _select_table_rows(curves)
+    excerpt_note = (
+        f'<p class="training-table-excerpt">Auszug: {len(shown)} von '
+        f'{len(curves)} Epochen. Minimum und Maximum jedes Abschnitts sowie '
+        'erste und letzte Epoche sind enthalten; die vollständige Reihe steht '
+        'im maschinenlesbaren Datensatz dieses Laufs.</p>'
+        if len(shown) < len(curves) else ""
+    )
     rows = []
-    for curve in curves:
+    for curve in shown:
         value = lambda field: "—" if getattr(curve, field) is None else f"{getattr(curve, field):.6g}"
         rows.append(
             f'<tr><th scope="row">{curve.epoch}</th><td>{value("train_loss")}</td>'
@@ -331,10 +406,52 @@ def _render_curve_table(curves: list[CurveEpoch]) -> str:
         )
     return (
         '<details class="training-curve-data"><summary>Kurvendaten als Tabelle</summary>'
+        f'{excerpt_note}'
         '<div class="training-table-wrap" tabindex="0"><table><thead><tr><th scope="col">Epoche</th>'
         '<th scope="col">Trainingsverlust</th><th scope="col">Validierungsverlust</th>'
         '<th scope="col">Validierungsgenauigkeit (%)</th><th scope="col">Lernrate</th>'
         f'</tr></thead><tbody>{"".join(rows)}</tbody></table></div></details>'
+    )
+
+
+def _render_curve_provenance(contract: TrainingContract) -> str:
+    """Say where the curve came from, and whether it is every epoch.
+
+    It usually is not. kraken keeps its ten best checkpoints and the trainer
+    reads the curve off those filenames, because ketos renders progress
+    through `rich` and the numbers do not survive a redirected stdout
+    (serving-atr-inference#38/#51). Drawing ten best epochs as a line and
+    calling it a training curve is a different claim, and which epochs
+    survived is itself the finding: late ones mean the run was still
+    improving, early ones mean it peaked and then got worse.
+    """
+    provenance = contract.curves_provenance or {}
+    complete = provenance.get("complete")
+    source = str(provenance.get("source") or "").strip()
+    note = str(provenance.get("note") or "").strip()
+
+    if complete is None and not source and not note:
+        return (
+            '<p class="notice notice--warning training-curve-provenance">'
+            '<strong>Herkunft der Kurvendaten nicht angegeben.</strong> '
+            'Ob die Punkte jede Epoche abbilden oder eine Auswahl sind, geht '
+            'aus dem Datensatz nicht hervor.</p>'
+        )
+    if complete is True:
+        body = '<strong>Vollständige Kurve:</strong> jede trainierte Epoche ist enthalten.'
+        css = "notice--info"
+    else:
+        body = (
+            '<strong>Unvollständige Kurve — Auswahl, nicht jede Epoche.</strong> '
+            'Der Verlauf zwischen den gezeigten Punkten ist nicht belegt.'
+        )
+        css = "notice--warning"
+    details = "".join(
+        f'<p>{_esc(text)}</p>' for text in (source and f"Quelle: {source}", note) if text
+    )
+    return (
+        f'<div class="notice {css} training-curve-provenance">'
+        f'<p>{body}</p>{details}</div>'
     )
 
 
@@ -343,7 +460,11 @@ def _render_curves(contract: TrainingContract) -> str:
         return '<p class="training-empty">Für diesen Lauf wurden keine Kurvendaten veröffentlicht.</p>'
     charts = _render_svg_chart(contract.curves, contract.run_id, "loss")
     charts += _render_svg_chart(contract.curves, contract.run_id, "accuracy")
-    return f'<div class="training-charts">{charts}</div>{_render_curve_table(contract.curves)}'
+    return (
+        f'{_render_curve_provenance(contract)}'
+        f'<div class="training-charts">{charts}</div>'
+        f'{_render_curve_table(contract.curves)}'
+    )
 
 
 def _join_projects(values: object) -> str:
@@ -386,13 +507,17 @@ def _format_param(value: object) -> str:
 
 
 def _base_model_html(base_model: str | None) -> str:
+    """Link a base model to its upstream record.
+
+    Resolution is shared with the recognition side (``external_model_url``) so
+    the same identifier cannot point at a hub repo in one place and a DOI in
+    the other.
+    """
     if not base_model:
         return "Nicht angegeben"
-    if _HF_MODEL.fullmatch(base_model):
-        url = f"https://huggingface.co/{quote(base_model, safe='/')}"
+    url = external_model_url(base_model)
+    if url:
         return f'<a href="{_esc(url, attr=True)}" rel="external"><code>{_esc(base_model)}</code></a>'
-    if re.fullmatch(r"10\.\d{4,9}/\S+", base_model):
-        return f'<a href="https://doi.org/{_esc(quote(base_model, safe="/"), attr=True)}"><code>{_esc(base_model)}</code></a>'
     return f'<code>{_esc(base_model)}</code>'
 
 
@@ -402,7 +527,11 @@ def _render_reproducibility(contract: TrainingContract) -> str:
         for key, value in sorted(contract.params.items())
     ) or '<div><dt>Parameter</dt><dd>Nicht veröffentlicht</dd></div>'
     finished = contract.finished_at.isoformat() if contract.finished_at else "Nicht angegeben"
-    run_path = f'{quote(contract.run_id, safe="")}/training.json'
+    # Relative to the run's own page at /training/<run_id>/. Prefixing the run
+    # id again resolved to /training/<run_id>/<run_id>/training.json — the link
+    # broke when reports moved from the shared index to a page per run (#231),
+    # because the depth it was written for stopped existing.
+    run_path = "training.json"
     return (
         '<dl class="training-facts training-model-card">'
         f'<div><dt>Erzeugtes Modell</dt><dd><code>{_esc(contract.model_id)}</code></dd></div>'
@@ -429,8 +558,10 @@ def _render_recognition_usages(model_id: str, usages: list[dict]) -> str:
     for usage in usages:
         doc_id = str(usage["doc_id"])
         candidate_id = str(usage["candidate_id"])
+        # From /training/<run_id>/ a document lives two levels up. A single
+        # `../` pointed at /training/<doc_id>/, which does not exist.
         href = (
-            f'../{quote(doc_id, safe="")}/?rec={quote(candidate_id, safe="")}'
+            f'../../{quote(doc_id, safe="")}/?rec={quote(candidate_id, safe="")}'
             f'#recognition-{quote(candidate_id, safe="")}'
         )
         context = [str(usage.get("engine") or "Unbekannte Engine")]
@@ -455,6 +586,54 @@ def _evaluation_scope(contract: TrainingContract) -> str:
         if projects:
             scopes.extend(f'{dataset["hf_repo"]}: {project}' for project in projects)
     return "; ".join(scopes) or "Evaluationssplit nicht genauer dokumentiert"
+
+
+EVALUATION_KIND_LABELS = {
+    "line_crop": (
+        "Zeilenausschnitte",
+        "Gemessen auf einzelnen Zeilenbildern. Segmentierungsfehler gehen "
+        "nicht in diese Zahl ein.",
+    ),
+    "full_page": (
+        "Ganze Seite",
+        "Gemessen auf vollständigen Seiten über die eigene Segmentierung. "
+        "Segmentierungsfehler sind in dieser Zahl enthalten.",
+    ),
+}
+
+SEGMENTATION_LABELS = {
+    "ground_truth": "Zeilen aus der Referenzsegmentierung",
+    "predicted": "Zeilen aus der eigenen Segmentierung",
+}
+
+
+def _evaluation_context_html(metrics: dict) -> str:
+    """State what a CER was measured on, before stating the CER.
+
+    `ketos test` scores line crops cut from ground-truth segmentation; the
+    eval harness scores whole pages through our own segmentation and so also
+    pays for every segmentation error. The two will disagree, often by a lot,
+    and an unlabelled pair of numbers invites exactly the comparison that is
+    not valid — which is why the integration plan requires them to stay
+    visibly distinct.
+    """
+    kind = metrics.get("evaluation_kind")
+    if kind not in EVALUATION_KIND_LABELS:
+        return (
+            '<p class="notice notice--warning training-evaluation-kind" '
+            'data-evaluation-kind="unknown"><strong>Messart nicht angegeben.</strong> '
+            'Ob diese Werte auf Zeilenausschnitten oder auf ganzen Seiten '
+            'erhoben wurden, geht aus dem Datensatz nicht hervor; sie sind '
+            'daher mit keinem anderen Lauf vergleichbar.</p>'
+        )
+    label, explanation = EVALUATION_KIND_LABELS[kind]
+    segmentation = SEGMENTATION_LABELS.get(metrics.get("segmentation"), "")
+    return (
+        f'<p class="training-evaluation-kind" data-evaluation-kind="{_esc(kind, attr=True)}">'
+        f'<strong>Messart: {label}.</strong> {explanation}'
+        + (f' {_esc(segmentation)}.' if segmentation else "")
+        + '</p>'
+    )
 
 
 def _render_metrics(contract: TrainingContract) -> str:
@@ -488,11 +667,20 @@ def _render_metrics(contract: TrainingContract) -> str:
         if metrics.get(key) is None:
             continue
         direction_text = {"lower": "Niedriger ist besser.", "higher": "Höher ist besser.", "none": ""}[direction]
+        # The engine reports accuracies; error rates are what the rest of the
+        # report compares. Showing the complement next to it keeps one
+        # direction for comparison without discarding the engine's own number
+        # (#225).
+        complement = (
+            f'<span class="training-metric__complement">Entspricht einer '
+            f'Fehlerrate von {100 - float(metrics[key]):.2f}%.</span>'
+            if unit == "percent" else ""
+        )
         definitions.append(
             f'<div class="training-metric" data-quality-metric="{key}" data-unit="{unit}" '
             f'data-scope="validation-set" data-direction="{direction}" data-datasets="{_esc(datasets, attr=True)}">'
             f'<dt>{label}</dt><dd><strong>{formatter(metrics[key])}</strong>'
-            f'<span>{direction_text}</span></dd></div>'
+            f'<span>{direction_text}</span>{complement}</dd></div>'
         )
     if not reference_blocks and not definitions:
         return '<p class="training-empty">Keine Validierungsmetriken veröffentlicht.</p>'
@@ -501,8 +689,9 @@ def _render_metrics(contract: TrainingContract) -> str:
         if definitions else ""
     )
     return (
+        f'{_evaluation_context_html(metrics)}'
         '<p class="training-metric-note">Diese Werte wurden auf den dokumentierten Evaluationsdaten berechnet. '
-        'Sie sind nur zwischen Läufen mit demselben Datensatz, derselben Revision und demselben Evaluationssplit direkt vergleichbar.</p>'
+        'Sie sind nur zwischen Läufen mit derselben Messart sowie demselben Datensatz, derselben Revision und demselben Evaluationssplit direkt vergleichbar.</p>'
         f'<p><strong>Geltungsbereich:</strong> {_esc(scope)}</p>'
         f'<div class="training-reference-metrics">{"".join(reference_blocks)}</div>{supplementary}'
     )
@@ -539,11 +728,35 @@ def _render_summary(rows: list[dict]) -> str:
                           ("cancelled", "Abgebrochen"), ("parse-error", "Lesefehler")):
         if counts[status]:
             lines.append(f'  - {label}: {counts[status]}')
-    completed_rates = [float(row["contract"].metrics["cer"]) for row in rows
-                       if row.get("contract") and row["status"] == "completed"
-                       and row["contract"].metrics and row["contract"].metrics.get("cer") is not None]
-    if completed_rates:
-        lines.append(f'- **Niedrigste berichtete Validierungs-CER:** {min(completed_rates) * 100:.2f}%')
+    # A single "lowest CER across all runs" is the summary this page must not
+    # produce. Line-crop CER and full-page CER measure different things and
+    # will disagree, so a minimum taken across both reports the easier
+    # measurement as if it were the best model (#225). Group by what was
+    # measured, and say so in the label; an unlabelled rate joins no group.
+    by_kind: dict[str, list[float]] = {}
+    for row in rows:
+        contract = row.get("contract")
+        if not contract or row["status"] != "completed":
+            continue
+        metrics = contract.metrics or {}
+        if metrics.get("cer") is None:
+            continue
+        kind = metrics.get("evaluation_kind")
+        by_kind.setdefault(kind if kind in EVALUATION_KIND_LABELS else "", []).append(
+            float(metrics["cer"]))
+    for kind, rates in sorted(by_kind.items()):
+        if kind:
+            label = EVALUATION_KIND_LABELS[kind][0]
+            lines.append(
+                f'- **Niedrigste berichtete Validierungs-CER ({label}):** '
+                f'{min(rates) * 100:.2f}%'
+            )
+        else:
+            lines.append(
+                f'- **{len(rates)} Lauf/Läufe mit CER ohne angegebene Messart** — '
+                'nicht in die Bestwerte einbezogen, weil unklar ist, worauf '
+                'gemessen wurde.'
+            )
     return "\n".join(lines)
 
 
@@ -617,6 +830,7 @@ def _run_page(row: dict) -> str:
             f'budget is {TRAINING_PERFORMANCE_BUDGETS["report_bytes_per_run"]}'
         )
     return f"""---
+layout: default
 title: "Training: {_esc(row["model_id"])}"
 ---
 
@@ -637,7 +851,10 @@ def build_training() -> int:
     TRAINING_INDEX.parent.mkdir(parents=True, exist_ok=True)
     if not training_jsons:
         TRAINING_INDEX.write_text(
-            "---\ntitle: Training\n---\n\n# Training\n\nBisher keine Training-Läufe vorhanden.\n",
+            "---\nlayout: default\ntitle: Training\n---\n\n# Training\n\n"
+            "Es sind noch keine Trainingsläufe veröffentlicht. Sobald ein Lauf "
+            "abgeschlossen ist, erscheinen hier seine Kurven, die Herkunft der "
+            "Trainingsdaten und die Modellkarte.\n",
             encoding="utf-8",
         )
         print("build_training: no training.json files found, wrote empty index")

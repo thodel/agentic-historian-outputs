@@ -176,6 +176,89 @@ class PublishPathTests(unittest.TestCase):
         sitemap = (self.clone / "docs" / "sitemap.xml").read_text(encoding="utf-8")
         self.assertIn(f"/{PROBE}/", sitemap)
 
+    def test_08_unrelated_commits_do_not_disturb_the_document(self):
+        """The gap that let the sliding-window bug through.
+
+        Phase two proved the tree settles at the refresh commit and stopped
+        there.  But provenance was resolved as a distance from HEAD, so the
+        answer moved again as soon as HEAD did: the first ordinary commit
+        pushed after a publication re-dated the document, and the very next
+        ``generated-output`` job failed on a push nobody connected to
+        publishing.
+
+        Ordinary site and tooling commits are the common case on ``main``, so
+        they must leave every published document untouched.
+        """
+        for number in range(1, 4):
+            with self.subTest(commit=number):
+                git("commit", "-q", "--allow-empty", "-m",
+                    f"chore: unrelated change {number}", cwd=self.clone)
+                git("update-ref", "refs/remotes/origin/main", "HEAD",
+                    cwd=self.clone)
+                self.build()
+                self.assertEqual(
+                    self.dirty_files(), [],
+                    f"unrelated commit {number} after publication dirtied the "
+                    "tree; `git diff --exit-code` fails and main goes red",
+                )
+
+    def test_09_republication_settles_and_stays_settled(self):
+        """A second run of the same document must reach the same steady state.
+
+        Re-publication is how a corrected or re-recognised document reaches
+        the site, so it has to survive the same sequence: publish, refresh,
+        then ordinary commits.
+        """
+        document = self.clone / "docs" / PROBE
+        (document / "pipeline.json").write_text(json.dumps({
+            "doc_id": PROBE,
+            "transcription": "Zweite Fassung der Probe-Transkription.",
+            "description": {
+                "source_description": "Sondierung des Publikationspfads, Lauf zwei.",
+                "source_json": {"Datierung": "1500", "Sprache": "Deutsch"},
+            },
+            "entities": [],
+            "errors": [],
+            "a_meta": {"transcription": "probe", "qa_score": 0.95},
+            "recognitions": [],
+        }, ensure_ascii=False, indent=2), encoding="utf-8")
+
+        git("add", "-A", cwd=self.clone)
+        git("commit", "-q", "-m", f"Publish {PROBE}", cwd=self.clone)
+        git("update-ref", "refs/remotes/origin/main", "HEAD", cwd=self.clone)
+        self.build()
+
+        git("add", "-A", cwd=self.clone)
+        git("commit", "-q", "-m", "build: refresh catalogue index", cwd=self.clone)
+        git("update-ref", "refs/remotes/origin/main", "HEAD", cwd=self.clone)
+        self.build()
+        self.assertEqual(
+            self.dirty_files(), [],
+            "the tree is still dirty after republishing and refreshing",
+        )
+
+        git("commit", "-q", "--allow-empty", "-m", "chore: after republication",
+            cwd=self.clone)
+        git("update-ref", "refs/remotes/origin/main", "HEAD", cwd=self.clone)
+        self.build()
+        self.assertEqual(
+            self.dirty_files(), [],
+            "an unrelated commit after republication dirtied the tree",
+        )
+
+    def test_10_the_document_page_records_its_publication(self):
+        """The page must name the commit that published it.
+
+        Under the sliding window a freshly published document reported no
+        history at all and grew one later, so the same page could show two
+        different creation dates over its life.
+        """
+        page = (self.clone / "docs" / PROBE / "index.md").read_text(encoding="utf-8")
+        self.assertNotIn(
+            "Noch keine Git-Historie verfügbar.", page,
+            "a published document page reports no version history at all",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

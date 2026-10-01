@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import sys
+import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
@@ -24,7 +25,7 @@ from rec_artifacts import (
 
 # ── _safe_name_component ─────────────────────────────────────────────────────
 
-class TestSafeNameComponent:
+class TestSafeNameComponent(unittest.TestCase):
     def test_lowercase(self):
         assert _safe_name_component("VLM") == "vlm"
 
@@ -57,7 +58,7 @@ class TestSafeNameComponent:
 
 # ── _normalize_model_id ──────────────────────────────────────────────────────
 
-class TestNormalizeModelId:
+class TestNormalizeModelId(unittest.TestCase):
     def test_slashes_become_hyphens(self):
         assert _normalize_model_id("anthropic/claude-3-5") == "anthropic-claude-3-5"
 
@@ -70,7 +71,7 @@ class TestNormalizeModelId:
 
 # ── artifact_segment ─────────────────────────────────────────────────────────
 
-class TestArtifactSegment:
+class TestArtifactSegment(unittest.TestCase):
     def test_basic(self):
         seg = artifact_segment("vlm", "internvl3-8b-instruct")
         assert seg == "vlm-internvl3-8b-instruct"
@@ -99,7 +100,7 @@ class TestArtifactSegment:
 
 # ── recognition_artifact_path ────────────────────────────────────────────────
 
-class TestRecognitionArtifactPath:
+class TestRecognitionArtifactPath(unittest.TestCase):
     def test_basic(self):
         path = recognition_artifact_path("bat", "vlm", "internvl3-8b-instruct")
         assert path == "recognitions/vlm-internvl3-8b-instruct.txt"
@@ -119,7 +120,7 @@ class TestRecognitionArtifactPath:
 
 # ── fused_artifact_path ──────────────────────────────────────────────────────
 
-class TestFusedArtifactPath:
+class TestFusedArtifactPath(unittest.TestCase):
     def test_basic(self):
         assert fused_artifact_path("bat") == "recognitions/fused.txt"
 
@@ -129,7 +130,7 @@ class TestFusedArtifactPath:
 
 # ── make_unique_segment ──────────────────────────────────────────────────────
 
-class TestMakeUniqueSegment:
+class TestMakeUniqueSegment(unittest.TestCase):
     def test_first_occurrence_no_suffix(self):
         seen: set = set()
         seg = make_unique_segment("vlm", "model", seen)
@@ -184,7 +185,7 @@ class TestMakeUniqueSegment:
 
 # ── Package naming ────────────────────────────────────────────────────────────
 
-class TestPackageNaming:
+class TestPackageNaming(unittest.TestCase):
     def test_manifest_filename(self):
         assert manifest_filename("bat") == "bat-manifest.json"
 
@@ -206,7 +207,7 @@ class TestPackageNaming:
 
 # ── collect_artifacts ────────────────────────────────────────────────────────
 
-class TestCollectArtifacts:
+class TestCollectArtifacts(unittest.TestCase):
     def make_rec(self, engine, model, text="test", error="", confidence=None, page=None):
         return {"engine": engine, "model_id": model, "text": text,
                 "error": error, "confidence": confidence, "page": page}
@@ -275,7 +276,7 @@ class TestCollectArtifacts:
 
 # ── Determinism: same input → same output ─────────────────────────────────────
 
-class TestDeterminism:
+class TestDeterminism(unittest.TestCase):
     def test_same_inputs_same_segment(self):
         seen: set = set()
         s1 = make_unique_segment("vlm", "model", seen, page=1)
@@ -294,3 +295,7 @@ class TestDeterminism:
         seen: set = set()
         segs = [make_unique_segment("vlm", "model", seen) for _ in range(5)]
         assert len(segs) == len(set(segs)), "Overwrite detected!"
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -4,6 +4,10 @@ description: >-
   (14.–16. Jh.), erzeugt von der Agentic-Historian-Pipeline.
 theme: minima
 
+# The site is German. Minima defaults to "en", so every page declared the
+# wrong language to screen readers, translation tools and search engines.
+lang: de
+
 # Minima otherwise adds every page with a title to the header, including each
 # processed document. Keep global navigation at collection level only; the
 # catalogue itself provides access to individual outputs.
@@ -11,6 +15,7 @@ header_pages:
   - index.md
   - training/index.md
   - entities/index.md
+  - forschung.md
   - methodology.md
   - about.md
 

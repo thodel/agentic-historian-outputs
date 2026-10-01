@@ -8,6 +8,7 @@ import hashlib
 import html
 import io
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -18,6 +19,8 @@ from pathlib import Path
 from build_recognitions import build_recognition_section, write_package
 from source_references import normalize_source_reference, public_url
 from editorial_reviews import apply_review, load_reviews
+from source_ledger import apply_source_ledger, load_source_ledger
+from training_contract import published_training_runs
 from withdrawals import (
     build_tombstones, load_withdrawals, remove_withdrawn_entity_pages,
 )
@@ -147,47 +150,55 @@ def _superseding_run(
 def provenance_revision() -> str:
     """Return the revision that git-derived page content must be read from.
 
-    Generated pages record facts about the commits that touched a document —
-    its version history and its dates.  Reading those at HEAD makes a page
-    describe the very commit that creates it, which cannot be committed
-    correctly: the page is stale the moment it lands, and ``git diff
-    --exit-code`` then fails on every push that touches a document (#198).
+    ``HEAD`` — and this is a load-bearing choice, not a default.
 
-    Reading one commit back keeps the answer identical before and after the
-    publishing commit, so generated output stays a pure function of the
-    committed tree.
+    Generated pages record facts about a document: its version history and its
+    dates.  Those facts are read from the document's **input**
+    (``docs/<id>/pipeline.json``), never from the generated page.  That is what
+    makes ``HEAD`` correct here, and it is the whole invariant:
 
-    Do not restore ``git merge-base HEAD origin/main`` here.  On a push to
-    main that merge base *is* HEAD, which is precisely the broken case, and a
-    pull_request build cannot reveal it because there the merge base is
-    already the PR's base commit — which is why this bug survived several
-    green PR checks.
+    * The publishing commit ``P`` introduces ``pipeline.json``.
+    * The refresh commit ``R`` commits the page ``P`` produced.  ``R`` does not
+      touch ``pipeline.json``, so reading at ``R`` yields the same history as
+      reading at ``P``.
+    * Any later commit ``C`` that leaves ``pipeline.json`` alone yields that
+      same history again.
+
+    So the output is a pure function of the committed tree at every revision
+    from ``P`` onwards, which is exactly what the clean-diff gate demands.
+
+    Do not reintroduce a revision expressed as a distance from HEAD
+    (``HEAD^``, ``HEAD^^``, or ``git merge-base HEAD origin/main``).  Reading
+    one commit back was the fix for #198, but it buys stability across the
+    publishing commit at the price of stability across every *other* commit:
+    the window slides with HEAD, so the first unrelated commit pushed after a
+    publication re-dated the document and turned ``main`` red.  Pinning the
+    facts to the input file instead fixes both cases at once, because the
+    answer then stops depending on where HEAD happens to be.
     """
-    try:
-        head = subprocess.run(
-            ["git", "rev-parse", "HEAD"],
-            check=True, capture_output=True, text=True,
-        ).stdout.strip()
-    except (OSError, subprocess.CalledProcessError):
-        return "HEAD"
-    parent = subprocess.run(
-        ["git", "rev-parse", "--verify", "--quiet", f"{head}^"],
+    return "HEAD"
+
+
+def assert_complete_history() -> None:
+    """Refuse to generate from a shallow clone.
+
+    A shallow clone truncates history, and git reports the boundary commit as
+    having introduced every file it can still see.  Document histories and
+    dates are therefore silently wrong rather than absent — the build succeeds
+    and publishes fiction.  CI checks out with ``fetch-depth: 0``; anything
+    else must fail loudly here instead.
+    """
+    shallow = subprocess.run(
+        ["git", "rev-parse", "--is-shallow-repository"],
         capture_output=True, text=True,
     ).stdout.strip()
-    subject = subprocess.run(
-        ["git", "show", "-s", "--format=%s", head],
-        capture_output=True, text=True,
-    ).stdout.strip()
-    if subject == "build: refresh catalogue index" and parent:
-        grandparent = subprocess.run(
-            ["git", "rev-parse", "--verify", "--quiet", f"{parent}^"],
-            capture_output=True, text=True,
-        ).stdout.strip()
-        if grandparent:
-            return grandparent
-    # A repository with a single commit has no parent.  Nothing can have been
-    # superseded yet, so reading at HEAD is both safe and correct there.
-    return parent or head or "HEAD"
+    if shallow == "true":
+        raise SystemExit(
+            "Refusing to build from a shallow clone: document version "
+            "histories and dates are derived from git history, and a "
+            "truncated history yields plausible but wrong provenance.\n"
+            "Run `git fetch --unshallow` first (CI uses `fetch-depth: 0`)."
+        )
 
 
 def git_history(path: Path) -> list[tuple[str, str, str]]:
@@ -804,13 +815,19 @@ def build_status_header(
     )
 
 def build_document(path: Path, entity_index: dict, collect_entities: bool = True,
-                   reviews: dict[str, dict] | None = None) -> bool:
+                   reviews: dict[str, dict] | None = None,
+                   training_runs: dict[str, str] | None = None,
+                   source_ledger: dict[str, dict] | None = None) -> bool:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         data = {}
     doc_id = path.parent.name
     data, editorial_review = apply_review(data, doc_id, reviews)
+    # A verified source reference is an editorial claim, not a pipeline
+    # output, so it is overlaid from the committed ledger and a replacement
+    # run cannot drop it (#182).
+    data, _source_verified = apply_source_ledger(data, doc_id, source_ledger)
     description = data.get("description") if isinstance(data.get("description"), dict) else {}
     fields = description.get("source_json") if isinstance(description.get("source_json"), dict) else {}
     meta = data.get("a_meta") if isinstance(data.get("a_meta"), dict) else {}
@@ -886,7 +903,16 @@ license: "CC-BY-4.0"
                 f'Unsichere Erkennung · Score {score}</span>'
                 if score >= 2 else ""
             )
-            links.append(f'<li><a href="../entities/{target}/">{html.escape(item["label"])}</a>{flag}' + (f' <span class="muted">— {html.escape(item["context"])}</span>' if item["context"] else "") + '</li>')
+            # Link only where a page exists. Below the threshold the entity
+            # is still named — it just is not a link, because linking to a
+            # page that was never generated is worse than not linking.
+            name = html.escape(item["label"])
+            named = (
+                f'<a href="../entities/{target}/">{name}</a>'
+                if entity_has_page(occurrences) else
+                f'<span class="entity-unlinked">{name}</span>'
+            )
+            links.append(f'<li>{named}{flag}' + (f' <span class="muted">— {html.escape(item["context"])}</span>' if item["context"] else "") + '</li>')
         entity_html.append(f'<h3>{html.escape(kind)}</h3><ul>{"".join(links)}</ul>')
 
     source_description = value(description.get("source_description"))
@@ -912,6 +938,7 @@ license: "CC-BY-4.0"
         doc_id=doc_id,
         transcript=transcript,
         directory=path.parent,
+        training_runs=training_runs,
     )
     package = write_package(path.parent, doc_id, data.get("recognitions", []), transcript) if data.get("recognitions") else None
     package_link = (f'<li><a href="{html.escape(package.name, quote=True)}">Vollständiges Erkennungspaket (ZIP)</a></li>'
@@ -1120,9 +1147,53 @@ def _jsonld_dataset(doc_id: str, canonical: str, source_url: str,
     return f'<script type="application/ld+json">{payload}</script>'
 
 
-def build_entity_pages(index: dict) -> None:
+def entity_page_threshold() -> int:
+    """How many occurrences an entity needs before it gets its own page.
+
+    Every mentioned entity gets a page today, which is right for ten
+    documents and not for two thousand: at corpus scale most entities are
+    named once and would produce tens of thousands of single-mention pages,
+    each one a URL to keep and a row in the sitemap.
+
+    The threshold is configurable rather than fixed because the right value
+    depends entirely on corpus size. In the present corpus 136 of 140
+    entities occur exactly once — not because they are noise, but because
+    there are only ten documents. A threshold of 2 is correct at two thousand
+    documents and would gut the site at ten, so the default stays 1 and
+    raising it is an operational decision taken when the corpus justifies it.
+
+    Nothing is deleted when it is raised. An entity below the threshold is
+    still named on the pages of the documents that mention it, and counted on
+    the entity index; it just does not get a page of its own. A page that
+    falls below the threshold keeps its URL as a tombstone, like any other
+    entity page no longer supported by current evidence.
+    """
+    raw = os.environ.get("AH_ENTITY_PAGE_MIN_OCCURRENCES", "1")
+    try:
+        return max(1, int(raw))
+    except ValueError:
+        raise SystemExit(
+            f"AH_ENTITY_PAGE_MIN_OCCURRENCES must be a positive integer, got {raw!r}"
+        )
+
+
+def entity_has_page(occurrences: int, threshold: int | None = None) -> bool:
+    threshold = entity_page_threshold() if threshold is None else threshold
+    return occurrences >= threshold
+
+
+def build_entity_pages(index: dict) -> set[str]:
+    """Write a page per current entity and return the manifest of slugs written.
+
+    The manifest is what reconciliation needs: the set of pages this build
+    actually produced, so anything else under ``entities/`` can be recognised
+    as no longer supported by any record.
+    """
     root = DOCS / "entities"
     root.mkdir(exist_ok=True)
+    threshold = entity_page_threshold()
+    below_threshold = 0
+    live_targets: set[str] = set()
     credible_summary = []
     uncertain_summary = []
     obsolete_variant_targets = set()
@@ -1131,6 +1202,11 @@ def build_entity_pages(index: dict) -> None:
         index.items(), key=lambda x: (x[0][0], x[0][1])
     ):
         label = entity_display_label(occurrences)
+        if not entity_has_page(len(occurrences), threshold):
+            # Not deleted: still named on every document that mentions it,
+            # and counted on the index below.
+            below_threshold += 1
+            continue
         target = slug(label, kind)
         obsolete_variant_targets.update(
             slug(item["label"], kind)
@@ -1195,18 +1271,123 @@ def build_entity_pages(index: dict) -> None:
         )
         page = frontmatter(label) + f'''<nav class="breadcrumbs"><a href="../">Entitäten</a> / {html.escape(label)}</nav><h1>{html.escape(label)}</h1><p><span class="entity-type">{html.escape(kind)}</span> · {len(occurrences)} Vorkommen</p>{variants_html}{triage}{external_html}<div class="table-scroll"><table><thead><tr><th>Ausgabe</th><th>Form</th><th>Kontext</th><th>Konfidenz</th></tr></thead><tbody>{rows}</tbody></table></div>'''
         (directory / "index.md").write_text(page, encoding="utf-8")
+        live_targets.add(target)
         row = f'<tr><td><a href="{target}/">{html.escape(label)}</a></td><td>{html.escape(kind)}</td><td>{len(occurrences)}</td></tr>'
         (uncertain_summary if score >= 2 else credible_summary).append(row)
     for obsolete_target in obsolete_variant_targets:
         directory = root / obsolete_target
         if directory.is_dir() and (directory / "index.md").exists():
             shutil.rmtree(directory)
+    live_targets -= obsolete_variant_targets
+    threshold_note = (
+        f'<p class="notice notice--info entity-threshold-note">'
+        f'{below_threshold} Entität{"" if below_threshold == 1 else "en"} mit '
+        f'weniger als {threshold} Belegen {"hat" if below_threshold == 1 else "haben"} '
+        'keine eigene Seite. Sie sind nicht entfernt: die Dokumente, die sie '
+        'nennen, führen sie weiterhin auf.</p>'
+        if below_threshold else ""
+    )
     table_head = '<div class="table-scroll"><table><thead><tr><th>Entität</th><th>Typ</th><th>Vorkommen</th></tr></thead><tbody>'
-    page = frontmatter("Entitäten") + f'''<nav class="breadcrumbs"><a href="../">Alle Ausgaben</a> / Entitäten</nav><h1>Entitäten</h1><p>Automatisch erkannte Personen, Orte, Organisationen und weitere Entitätstypen. Die heuristische Einteilung löscht keine Daten und ist keine wissenschaftliche Verifikation.</p><h2>Glaubwürdige Erkennungen</h2>{table_head}{''.join(credible_summary)}</tbody></table></div><details class="entity-noise-group"><summary>Unsichere Erkennungen ({len(uncertain_summary)})</summary><p>Diese Einträge weisen formale OCR-Risikomerkmale auf und werden zur Prüfung sichtbar aufbewahrt.</p>{table_head}{''.join(uncertain_summary)}</tbody></table></div></details>'''
+    page = frontmatter("Entitäten") + f'''<nav class="breadcrumbs"><a href="../">Alle Ausgaben</a> / Entitäten</nav><h1>Entitäten</h1><p>Automatisch erkannte Personen, Orte, Organisationen und weitere Entitätstypen. Die heuristische Einteilung löscht keine Daten und ist keine wissenschaftliche Verifikation.</p><p class="muted">Entitäten, die von keiner aktuellen Ausgabe mehr belegt werden, verschwinden nicht: ihre Adresse bleibt als Hinweisseite erhalten, damit bestehende Zitate nicht brechen. Sie sind hier nicht mehr gelistet und nicht mehr für Suchmaschinen freigegeben.</p>{threshold_note}<h2>Glaubwürdige Erkennungen</h2>{table_head}{''.join(credible_summary)}</tbody></table></div><details class="entity-noise-group"><summary>Unsichere Erkennungen ({len(uncertain_summary)})</summary><p>Diese Einträge weisen formale OCR-Risikomerkmale auf und werden zur Prüfung sichtbar aufbewahrt.</p>{table_head}{''.join(uncertain_summary)}</tbody></table></div></details>'''
     (root / "index.md").write_text(page, encoding="utf-8")
+    return live_targets
+
+
+# An entity page's URL is citable, so it outlives the evidence behind it.  When
+# a document is re-recognised, superseded or corrected, entities it used to
+# mention stop being generated — but the pages stay on disk and in the sitemap,
+# still presenting evidence no current record supports.  Deleting them would
+# break every existing citation; leaving them is worse, because a stale page
+# reads exactly like a current one.  They become tombstones instead: the URL
+# resolves, the claim is withdrawn, and the last published version stays in the
+# repository's git history.
+ENTITY_TOMBSTONE_MARKER = 'data-entity-status="obsolete"'
+
+
+def is_entity_tombstone(page: Path) -> bool:
+    try:
+        return ENTITY_TOMBSTONE_MARKER in page.read_text(encoding="utf-8")
+    except OSError:
+        return False
+
+
+def entity_page_label(page: Path, fallback: str) -> str:
+    """Recover a page's display label from its own front matter.
+
+    A tombstone keeps the label of the page it replaces, and re-derives it from
+    itself on every later build.  That is what makes the operation idempotent:
+    the second build produces the same bytes as the first, so the clean-diff
+    gate stays green.
+    """
+    try:
+        for line in page.read_text(encoding="utf-8").splitlines()[:6]:
+            if line.startswith("title:"):
+                title = line[len("title:"):].strip()
+                if title.startswith('"') and title.endswith('"') and len(title) > 1:
+                    title = title[1:-1]
+                return title.replace('\\"', '"') or fallback
+    except OSError:
+        pass
+    return fallback
+
+
+def entity_tombstone_page(label: str) -> str:
+    """Render a citable notice that carries no evidence of its own."""
+    safe = html.escape(label)
+    return frontmatter(label).replace(
+        "---\n\n<link", "robots: noindex\n---\n\n<link", 1
+    ) + (
+        f'<nav class="breadcrumbs"><a href="../">Entitäten</a> / {safe}</nav>'
+        f'<main class="entity-tombstone" {ENTITY_TOMBSTONE_MARKER}>'
+        f'<p class="output-kicker">Nicht mehr belegte Entität</p>'
+        f'<h1>{safe}</h1>'
+        '<p><strong>Keine aktuelle Ausgabe belegt diese Entität mehr.</strong> '
+        'Sie stammt aus einem Erkennungslauf, der seither ersetzt, korrigiert '
+        'oder zurückgezogen wurde.</p>'
+        '<p>Diese Adresse bleibt erhalten, damit bestehende Zitate und Verweise '
+        'nicht brechen. Die frühere Belegtabelle wird bewusst nicht mehr '
+        'angezeigt: sie verwies auf Nachweise, die der aktuelle Datenstand '
+        'nicht mehr trägt.</p>'
+        '<p><a href="../">Zur Entitätenübersicht</a></p>'
+        '<p>Die zuletzt veröffentlichte Fassung samt Belegtabelle bleibt zur '
+        'Nachvollziehbarkeit in der Git-Historie des Repositoriums erhalten.</p>'
+        '</main>'
+    )
+
+
+def tombstone_orphan_entity_pages(root: Path, live_targets: set[str]) -> list[str]:
+    """Turn every entity page outside *live_targets* into a tombstone.
+
+    *live_targets* is the manifest :func:`build_entity_pages` just wrote, so
+    reconciliation is against what this build actually generated rather than
+    against a guess.  An entity that returns in a later run is overwritten with
+    a real page again, because generation runs first.
+    """
+    if not root.exists():
+        return []
+    tombstoned = []
+    for directory in sorted(root.iterdir()):
+        page = directory / "index.md"
+        if not directory.is_dir() or directory.name in live_targets:
+            continue
+        if not page.exists():
+            continue
+        label = entity_page_label(page, directory.name)
+        for child in sorted(directory.iterdir()):
+            if child.name != "index.md":
+                if child.is_dir():
+                    shutil.rmtree(child)
+                else:
+                    child.unlink()
+        page.write_text(entity_tombstone_page(label), encoding="utf-8")
+        tombstoned.append(directory.name)
+    return tombstoned
 
 
 def build() -> None:
+    # Document histories and dates come from git; a truncated clone makes them
+    # wrong rather than missing, so refuse before writing anything.
+    assert_complete_history()
     # Explanation IDs no longer depend on a mutable counter (issue #112);
     # the counter reset has been removed.
     # Publish the progressive-enhancement asset from its single source.
@@ -1231,6 +1412,7 @@ def build() -> None:
     tests = []
     doc_paths = sorted(DOCS.glob("*/pipeline.json"))
     reviews = load_reviews()
+    source_ledger = load_source_ledger()
     pipeline_data = {}
     for path in doc_paths:
         try:
@@ -1249,6 +1431,10 @@ def build() -> None:
     }
     validate_no_test_ids(list(pipeline_data))
     validate_slugs(list(pipeline_data), superseded_ids)
+    # One index, read once, feeding both directions of the model link (#226):
+    # a recognition names the run its model came from, and the run's report
+    # lists the recognitions that used it.
+    training_runs = published_training_runs(DOCS)
     for path in doc_paths:
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -1259,15 +1445,36 @@ def build() -> None:
                 {"doc_id": path.parent.name, **item}
             )
     for path in doc_paths:
-        if build_document(path, entity_index, collect_entities=False, reviews=reviews):
+        if build_document(path, entity_index, collect_entities=False, reviews=reviews,
+                          training_runs=training_runs, source_ledger=source_ledger):
             tests.append(path.parent.name)
-    build_entity_pages(entity_index)
+    entity_targets = build_entity_pages(entity_index)
+    # Order matters. Withdrawal is a deliberate decision that a page must stop
+    # existing (#194), so it still deletes; run it first, while the pages it
+    # matches on still carry their document links. Whatever survives and is not
+    # in this build's manifest is merely obsolete, and keeps its URL as a
+    # tombstone rather than vanishing from under existing citations.
     remove_withdrawn_entity_pages(DOCS / "entities", set(withdrawals))
+    tombstoned = tombstone_orphan_entity_pages(DOCS / "entities", entity_targets)
+    if tombstoned:
+        print(
+            f"Tombstoned {len(tombstoned)} entity page(s) no longer supported "
+            "by any current record"
+        )
     test_root = DOCS / "tests"
     test_root.mkdir(exist_ok=True)
     links = "".join(f'<li><a href="../{html.escape(doc_id)}/">{html.escape(doc_id)}</a></li>' for doc_id in tests)
     (test_root / "index.md").write_text(frontmatter("Testläufe") + f'<nav class="breadcrumbs"><a href="../">Alle Ausgaben</a> / Testläufe</nav><h1>Testläufe</h1><p>Diese Einträge dienen der technischen Prüfung und sind keine Forschungsresultate.</p><ul>{links or "<li>Keine Testläufe.</li>"}</ul>', encoding="utf-8")
-    print(f"Generated {len(list(DOCS.glob('*/pipeline.json')))} document pages and {len(entity_index)} entity pages")
+    # Report what was written, not what was indexed: below the entity-page
+    # threshold those two numbers differ, and the indexed count would claim
+    # pages that do not exist.
+    omitted = len(entity_index) - len(entity_targets)
+    print(
+        f"Generated {len(list(DOCS.glob('*/pipeline.json')))} document pages "
+        f"and {len(entity_targets)} entity pages"
+        + (f" ({omitted} below the {entity_page_threshold()}-occurrence "
+           "threshold, no page)" if omitted > 0 else "")
+    )
 
 
 if __name__ == "__main__":

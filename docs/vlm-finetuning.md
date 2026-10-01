@@ -1,9 +1,9 @@
 ---
 layout: default
-title: "Fine-tuning vision models: what nineteen runs taught us"
+title: "Fine-tuning vision models: what twenty-two runs taught us"
 ---
 
-> **Internal engineering document.** This page is a working document for project contributors. It is not part of the public-facing German site and is not linked from the global navigation. See the [language policy](about.html#sprachpolitik) for context.
+> **Research publication, in English.** This page is part of the public site and is linked from [Forschung](forschung.html), the German research index. It is not a working document: it records what was measured. The rest of the public site is German — see the [language policy](about.html#sprachpolitik) for why this one is not.
 
 # Fine-tuning vision models: what twenty-two runs taught us
 

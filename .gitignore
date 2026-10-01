@@ -219,3 +219,4 @@ __marimo__/
 .streamlit/secrets.toml
 tests/behavioural/fixtures/
 node_modules/
+_styled-site/

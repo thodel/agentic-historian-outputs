@@ -85,6 +85,41 @@ The release gate and a manual accessibility checklist are documented in
 [`docs/catalogue-verification.md`](docs/catalogue-verification.md); performance
 budgets in [`docs/catalogue-performance.md`](docs/catalogue-performance.md).
 
+### Writing Python tests
+
+`unittest discover` is the only Python collector, so **every test must live in
+a `unittest.TestCase` subclass**. A module-level `def test_x()` or a bare
+`class TestX:` is pytest's shape: it is skipped without a word, and the suite
+still reports green. Eighty-three cases had accumulated that way before
+`tests/test_suite_collection.py` was added to reject the shape and hold the
+suite to a recorded floor. Raise `MINIMUM_CASES` there when you add tests.
+
+Plain `assert` inside a `TestCase` method is fine and used throughout; the
+`assertEqual` family just gives better failure output.
+
+## Scale controls
+
+Two settings bound what a corpus import produces. Both default to the current
+behaviour, so nothing changes until they are raised deliberately.
+
+| Setting | Default | Effect |
+| --- | --- | --- |
+| `AH_ENTITY_PAGE_MIN_OCCURRENCES` | `1` | Occurrences an entity needs before it gets its own page. Below it the entity is still named by the documents that mention it and counted on the entity index, but has no page; an existing page that falls below keeps its URL as a tombstone. |
+| `AH_CATALOGUE_PAGE_SIZE` | `50` | Full cards the catalogue front page renders. Past it the page shows the newest and links collection pages for the rest. `docs/catalogue-index.json` is written whatever the size, so search stays complete, and every record stays reachable without JavaScript through its collection. |
+
+A record may declare a `collection` in its `pipeline.json`; without one the
+publication year is used, which is always available and bounds each partition
+by intake.
+
+The right threshold depends on corpus size and on nothing else. In the present
+ten-document corpus 136 of 140 entities occur exactly once — not because they
+are noise, but because there are ten documents. A threshold of 2 is correct at
+two thousand documents and would gut the site at ten.
+
+`python3 scripts/site_budget.py` reports the generated site's size, its
+largest contributors and what the current per-document cost implies at corpus
+scale. `python3 scripts/source_ledger.py` reports source-reference coverage.
+
 ## Repository layout
 
 | Path | Purpose |

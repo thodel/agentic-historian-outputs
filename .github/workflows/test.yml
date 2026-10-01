@@ -28,6 +28,16 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m unittest discover -s tests -v
+      # Reported, not gated. #182's exit condition is a human judgement — a
+      # verified reference or a recorded reason for each document — and a gate
+      # would only invite a placeholder entry to make it green.
+      - name: Source coverage (#182)
+        run: python scripts/source_ledger.py
+      # Gated: unlike source coverage this is a measurable limit, and the
+      # projection is the only warning before a corpus import meets the
+      # Pages size limit.
+      - name: Generated site budget (#239)
+        run: python scripts/site_budget.py
 
   node-unit:
     name: Node unit and syntax tests
@@ -75,6 +85,12 @@ jobs:
         with:
           node-version: "22"
           cache: npm
+      # The training fixture is rendered by the real Python generator rather
+      # than hand-written, so what the browser sees cannot drift from what the
+      # site publishes.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - run: npm ci
       - name: Cache Playwright Chromium
         id: playwright-cache
@@ -85,7 +101,9 @@ jobs:
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Generate HTML fixtures
-        run: node generate-fixtures.mjs
+        run: |
+          python tests/generate_training_fixture.py
+          node generate-fixtures.mjs
       - name: Run behavioral tests
         run: node --test tests/behavioural/*.mjs
       - name: Capture browser diagnostics
@@ -100,3 +118,34 @@ jobs:
           path: test-results/browser/
           if-no-files-found: warn
           retention-days: 14
+
+  styled-site:
+    name: Styled site integration
+    # The behavioural suite loads raw generated HTML from file://, so it cannot
+    # see what the Jekyll theme does to a page. That is how /training/ came to
+    # be served as an eighty-byte fragment with no head, no navigation and no
+    # stylesheet, on a page that is in the public navigation.
+    if: github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'Publish ')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+      - run: gem install --no-document jekyll minima
+      - run: npm ci
+      - name: Cache Playwright Chromium
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - run: npx playwright install --with-deps chromium
+      - name: Build the site as Pages builds it
+        run: ./scripts/build_styled_site.sh
+      - name: Run styled-site integration tests
+        run: node --test tests/integration/styled_site.mjs

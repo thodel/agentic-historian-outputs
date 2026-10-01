@@ -30,6 +30,30 @@ python3 scripts/build_index.py
 git diff --exit-code
 ```
 
+A fifth check runs the site as GitHub Pages builds it:
+
+```sh
+./scripts/build_styled_site.sh
+node --test tests/integration/styled_site.mjs
+```
+
+Everything else in the suite tests generated markup. The behavioural fixtures
+load raw HTML from `file://`, so nothing in them can see what the Jekyll theme
+does to a page — which is how `/training/` came to be served as an eighty-byte
+fragment with no head, no navigation and no stylesheet, on a page that is in
+the public navigation. This suite opens the built site over HTTP at desktop
+and phone widths and checks that every navigation page is themed, that a
+document is visible without scrolling, that the catalogue works with
+JavaScript disabled, and that a document's citable downloads all resolve. It
+fails rather than skips when the site has not been built, because a test that
+quietly does not run is worse than one that fails.
+
+`unittest discover` is the only Python collector, so a test written in pytest's
+shape — a module-level `def test_x()` or a bare `class TestX:` — is skipped in
+silence and the gate still passes. `tests/test_suite_collection.py` rejects
+that shape and holds the suite to a recorded case floor; treat a failure there
+as tests having gone missing, not as a nuisance.
+
 Performance budgets and their measurement method are recorded in [Catalogue performance budgets](catalogue-performance.html).
 
 ## Manual accessibility matrix

@@ -21,6 +21,8 @@ from collections import Counter
 from pathlib import Path
 from urllib.parse import quote
 
+from training_contract import external_model_url
+
 try:
     from quality import (
         EXPLANATIONS,
@@ -344,7 +346,38 @@ def _candidates(recognitions, transcript: str) -> list[dict]:
     return result
 
 
-def _engine_confidence_dl(candidate: dict) -> str:
+def _model_provenance_html(model_id: str, training_runs: dict[str, str]) -> str:
+    """Name the training run a model came from, when one is published.
+
+    The training report already lists the recognitions that used its model;
+    without this the link only pointed one way, so a reader on a document page
+    had no route to the model's provenance (#226).  Both directions come from
+    the same index, so they cannot disagree about which run a model belongs to.
+    """
+    if not model_id:
+        return '<p>Modell: —</p>'
+    run_id = (training_runs or {}).get(model_id)
+    if run_id:
+        href = f'../training/{quote(run_id, safe="")}/'
+        return (
+            f'<p>Modell: {html.escape(model_id)} · '
+            f'<a href="{html.escape(href, quote=True)}" class="rec-training-link">'
+            'Trainingsbericht</a></p>'
+        )
+    # No run of ours produced it. A model trained elsewhere still has an
+    # upstream record, and #226 asks for that to be reachable rather than
+    # printed as a bare string.
+    upstream = external_model_url(model_id)
+    if upstream:
+        return (
+            f'<p>Modell: {html.escape(model_id)} · '
+            f'<a href="{html.escape(upstream, quote=True)}" rel="external" '
+            'class="rec-model-upstream">Externer Modelldatensatz</a></p>'
+        )
+    return f'<p>Modell: {html.escape(model_id)}</p>'
+
+
+def _engine_confidence_dl(candidate: dict, training_runs: dict[str, str] | None = None) -> str:
     """Build the confidence portion of the metadata <dl>, with scope label and explanation.
 
     Issue #29: label engine confidence with engine/model/page scope, show
@@ -365,7 +398,7 @@ def _engine_confidence_dl(candidate: dict) -> str:
         f'<details class="rec-confidence-raw">'
         f"<summary>Rohtext</summary>"
         f"<p>Engine: {html.escape(engine)}</p>"
-        f'<p>Modell: {html.escape(model) or "—"}</p>'
+        f'{_model_provenance_html(model, training_runs or {})}'
         f'<p>Seite: {html.escape(page) or "Nicht zugeordnet"}</p>'
         f"<p>Konfidenz: {html.escape(str(confidence)) if confidence is not None else 'Nicht angegeben'}</p>"
         f"</details>"
@@ -437,7 +470,8 @@ def _build_ref_eval_html(candidate: dict) -> str:
 
 def build_recognition_section(recognitions, doc_id: str, transcript: str,
                               directory: Path | None = None,
-                              reference_eval: dict | None = None) -> str:
+                              reference_eval: dict | None = None,
+                              training_runs: dict[str, str] | None = None) -> str:
     """Render a no-JS-complete viewer that JavaScript enhances to switching.
 
     Issues implemented:
@@ -585,7 +619,7 @@ def build_recognition_section(recognitions, doc_id: str, transcript: str,
                 '<pre class="rec-text" tabindex="0"><code>'
                 f'{html.escape(candidate["text"])}</code></pre>'
             )
-            confidence_dl = _engine_confidence_dl(candidate)
+            confidence_dl = _engine_confidence_dl(candidate, training_runs)
 
         # Issue #31: add reference evaluation provenance if available
         ref_eval_html = _build_ref_eval_html(candidate) if candidate.get("reference_eval") else ""
