@@ -76,26 +76,120 @@ into the ledger.
 | --- | --- | --- |
 | `u-17` | `pipeline.json` already carries `source_url`, label "e-codices: Staatsarchiv Aargau, SAA 428", attribution, rights and four mapped page images | Staatsarchiv Aargau, SAA 428 — complete except for who verified it |
 | `saa-0428` | its own transcript page ids are `e-codices_saa-0428_001r_large.jpg`; the text names the `Closter ze Königl[felden]` | the same e-codices SAA 428 as `u-17` |
-| `BAT_664_r_00027` | model-written description states "Bern, Burgerbibliothek, BAT664" with `unsicher: false`; page id `BAT_664_r_00027.jpg` | Burgerbibliothek Bern, BAT 664 |
-| `bat` | page id `BAT_663_r_00050.jpg` | Burgerbibliothek Bern, BAT 663 |
+| `BAT_664_r_00027` | page id `BAT_664_r_00027.jpg`; its own description is wrong, see below | Staatsarchiv Bern, A V 1443–1447 |
+| `bat` | page id `BAT_663_r_00050.jpg` | Staatsarchiv Bern, A V 1443–1447 |
 | `koenige`, `kf`, `order-ens`, `order-001-group` | nothing in the record identifies an original | none |
 
-## Inconsistencies to resolve first
+## The two inconsistencies, resolved
 
-Two of these need answering before any entry is written, because a ledger
-entry would otherwise record a contradiction as a fact.
+Both were recorded here as questions that "cannot be settled from the
+repository alone". That was right about the repository and wrong about the
+project: the answer to the first is written down upstream, and the second
+turned out to be an error on this page.
 
-1. **`bat` and `BAT_664_r_00027` disagree about the institution.** The
-   `BAT_664_r_00027` description says Burgerbibliothek Bern; the `bat`
-   description says "Staatsarchiv des Kantons Bern (unsicher)". Both are
-   model-written. At most one can be right for the BAT shelfmarks.
-2. **`u-17` mixes two identifiers.** Its transcript page id is
-   `U-17_0057_r.jpg`, but its mapped source pages are `e-codices_saa-0428_*`,
-   and `koenige`'s transcript carries the same `U-17_0057_r.jpg` page id. So
-   either `u-17` and `koenige` transcribe the same image, or the page mapping
-   on `u-17` belongs to `saa-0428`. The mapping is what the evidence viewer
-   shows a reader, so this decides whether the one embeddable facsimile on the
-   site is attached to the right document.
+### 1. BAT is Staatsarchiv Bern, not the Burgerbibliothek
 
-Both are questions about the existing data, not about missing data, and
-neither can be settled from the repository alone.
+Two model-written descriptions disagreed. `bat` said "Staatsarchiv des Kantons
+Bern" and flagged itself `unsicher: true`, with a note saying the archive was
+not derivable from the image and that the `BAT_663` format is characteristic of
+the Staatsarchiv's holdings. `BAT_664_r_00027` said "Bern, Burgerbibliothek,
+BAT664" with `unsicher: false` and **no note at all**.
+
+The confident claim was the unsourced one, and it is the wrong one.
+`serving-atr-inference/config/models.yaml` records, where it registers the
+model that reads these hands:
+
+> Registered on 2026-09-29 for the Berner Disputation manuscripts (Staatsarchiv
+> Bern A V 1443-1447), which the xix models cannot read: they were trained on
+> 19th-century Kurrent and this is 1528.
+
+So the corpus is the Berner Disputation, the institution is **Staatsarchiv
+Bern**, and the shelfmark is **A V 1443–1447**. `BAT_663` and `BAT_664` are
+scan-batch identifiers, not shelfmarks — which is why neither description could
+source them: there was nothing to source. A ledger entry keyed on "BAT 664"
+would have recorded a filename as a call number.
+
+This resolves the contradiction. It is still not a verification: a line in a
+configuration file is not somebody matching a facsimile against the text, and
+`verified_by` means the person who did that.
+
+### 2. `u-17` did not mix two identifiers — this page did
+
+The claim was that `u-17`'s transcript page id is `U-17_0057_r.jpg` while its
+mapped source pages are `e-codices_saa-0428_*`. That was wrong.
+`U-17_0057_r.jpg` is `koenige`'s page id. `u-17` carried no `U-17_*` id at all:
+its four transcript pages were `e-codices_saa-0428_015v/016r/016v/017r`, exactly
+and in the same order as its `source_pages` mapping, and always had been. Two
+documents were conflated when this page was written.
+
+What was actually wrong was worse, and it was live on the site:
+
+| document | pages | facsimile mapping | transcription | recognitions |
+| --- | --- | --- | --- | --- |
+| `u-17` (canonical) | 4 | **4 — the only one on the site** | 451 alphabetic characters over 4 distinct letters | **0** |
+| `u-17__` (retired) | the same 4 | none | 12,655 characters, 41 letters | 39 |
+| `saa-0428` | those 4 plus 2 | none | 12,861 characters, 50 letters | 51 |
+
+`u-17`'s published transcription was engine noise — 371 "u", 77 "i", 2 "s", one
+"g" — scoring `qa_score: 0.8`. Three documents transcribed the same four
+images; `u-17__` and `saa-0428` were independent readings of them, and both
+held real text.
+
+**The cause is the id cleanup in #195.** Commit `0cf46c4` moved the
+`supersedes` pointer from the malformed id to the clean one without moving the
+content. Before it, `u-17__` carried `supersedes: "u-17"` — the substantive
+record was canonical and the stub was retired, which was correct. After it the
+stub was canonical and the substantive record retired. `kf`/`kf-` is the same
+swap over two records whose transcriptions are byte-identical.
+
+So the answer to the question this page asked — whether the site's one
+embeddable facsimile was attached to the right document — is: **it was attached
+to the right pages on the wrong record.**
+
+### Why nothing caught it
+
+`detect_degeneration` existed and was good, but its patterns are anchored
+across the whole string, so they only match a page that is one unbroken run of
+one character. A line-based engine failing produces one short run *per line*,
+and every newline breaks the anchor. It now tests the alphabet the text uses:
+measured against all 140 candidate texts in the corpus, that added exactly one,
+a kraken run on `bat` that emitted 350 characters of 94% "u".
+
+More basically, the check ran only over *candidates* inside a recognition. A
+document with no recognitions had no candidates, so nothing inspected its
+published transcription at all. `scripts/transcription_integrity.py` now
+reports per published document.
+
+### What was decided
+
+All ten outputs were withdrawn on 2026-10-01 (#254): every input published so
+far was a test input rather than a corpus the project meant to edition. Each
+URL still resolves and carries a notice saying the output must not be cited,
+each machine record is archived under `data/withdrawn/`, and the entity pages
+derived from them are gone.
+
+That settles what to do with `u-17`, `kf`, `kf-` and `order-001-group`, which
+this page had listed as open editorial questions. It does **not** settle the
+defects they exposed:
+
+- **The `supersedes` inversion is still in the publishing path.** Nothing has
+  changed upstream, so the next publication that retires an id can make a stub
+  canonical again in exactly the same way.
+- **Published failure records still do not exist.** Every `error_path` in a
+  generated catalogue points at a file that is never written, because
+  `write_error_record` is called only from tests.
+- **The ledger is still empty**, which is now trivially true: there is nothing
+  published to reference. The BAT provenance above stands for whenever that
+  material is published properly.
+
+The integrity report keeps its value through the empty period: it reports on
+published documents, so it says nothing today, and its test holds the finding
+set to empty. A re-publication of material like this fails that test rather
+than passing unnoticed.
+
+One test moved as a consequence. `tests/integration/styled_site.mjs` used
+`/u-17/` as its download-resolution fixture precisely because it was the only
+document with mapped pages, and five of its cases assumed a non-empty
+catalogue. They now run against a two-document synthetic corpus built by
+`scripts/build_styled_fixture.sh`, so they no longer depend on what happens to
+be published.

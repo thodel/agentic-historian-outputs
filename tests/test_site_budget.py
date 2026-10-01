@@ -146,7 +146,13 @@ class LiveSiteTests(unittest.TestCase):
     def test_the_report_names_its_largest_contributors(self):
         text = report_text(measure(ROOT / "docs"))
         self.assertIn("Largest single files:", text)
-        self.assertIn("documents/", text)
+        # "documents/" is an area of the report, so it appears when documents
+        # do. Every output is withdrawn (#254); the report then has to say so
+        # rather than silently omitting the projection the budget exists for.
+        if any((ROOT / "docs").glob("*/pipeline.json")):
+            self.assertIn("documents/", text)
+        else:
+            self.assertIn("No documents published", text)
 
 
 if __name__ == "__main__":

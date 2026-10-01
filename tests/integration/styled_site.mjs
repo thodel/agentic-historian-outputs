@@ -12,8 +12,20 @@
  * navigation. No amount of asserting on strings in index.md would have found
  * that.
  *
+ * Two sites are served, because the suite asks two different kinds of
+ * question. The real one (_styled-site) answers "is the site we publish
+ * correct" — navigation, language, the empty catalogue, the research index.
+ * A fixture one (_styled-fixture) carries two synthetic documents and answers
+ * "is a document card correct".
+ *
+ * They were one site until #254, when every output was withdrawn and five
+ * card-level tests failed at once. The site was fine; the suite had been
+ * borrowing whatever happened to be published. Skipping them was not an
+ * option — see the note above — so they got a corpus of their own.
+ *
  * Run:
  *   ./scripts/build_styled_site.sh
+ *   ./scripts/build_styled_fixture.sh
  *   node --test tests/integration/styled_site.mjs
  */
 
@@ -28,6 +40,7 @@ import assert from "node:assert";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const SITE = join(ROOT, "_styled-site");
+const FIXTURE = join(ROOT, "_styled-fixture");
 
 const TYPES = {
   ".html": "text/html; charset=utf-8", ".css": "text/css",
@@ -38,20 +51,25 @@ const TYPES = {
 };
 
 let server;
+let fixtureServer;
 let browser;
-let origin;
+let origin;          // the site we publish
+let fixtureOrigin;   // the same site with two synthetic documents in it
 
 before(async () => {
-  assert.ok(
-    existsSync(SITE),
-    `no built site at ${SITE}. Run ./scripts/build_styled_site.sh first — ` +
-    "this suite deliberately fails rather than skipping, because a test that " +
-    "quietly does not run is worse than one that fails.",
-  );
+  for (const [path, script] of [[SITE, "build_styled_site.sh"],
+                               [FIXTURE, "build_styled_fixture.sh"]]) {
+    assert.ok(
+      existsSync(path),
+      `no built site at ${path}. Run ./scripts/${script} first — ` +
+      "this suite deliberately fails rather than skipping, because a test " +
+      "that quietly does not run is worse than one that fails.",
+    );
+  }
 
-  server = createServer(async (request, response) => {
+  const serve = (root) => createServer(async (request, response) => {
     let path = decodeURIComponent(new URL(request.url, "http://x").pathname);
-    let file = join(SITE, path);
+    let file = join(root, path);
     try {
       if ((await stat(file)).isDirectory()) file = join(file, "index.html");
     } catch {
@@ -67,8 +85,13 @@ before(async () => {
       response.writeHead(404).end("not found");
     }
   });
+
+  server = serve(SITE);
+  fixtureServer = serve(FIXTURE);
   await new Promise(resolve => server.listen(0, "127.0.0.1", resolve));
+  await new Promise(resolve => fixtureServer.listen(0, "127.0.0.1", resolve));
   origin = `http://127.0.0.1:${server.address().port}`;
+  fixtureOrigin = `http://127.0.0.1:${fixtureServer.address().port}`;
   browser = await chromium.launch({
     headless: true,
     executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined,
@@ -78,13 +101,16 @@ before(async () => {
 after(async () => {
   if (browser) await browser.close();
   if (server) await new Promise(resolve => server.close(resolve));
+  if (fixtureServer) await new Promise(resolve => fixtureServer.close(resolve));
 });
 
 //: A slow runner needs room: on GitHub Actions a single navigation to this
 //: local static site took 11-20 seconds, where it takes under a second here.
 const NAVIGATION_TIMEOUT = 60_000;
 
-async function open(path, { width = 1280, height = 720, javaScriptEnabled = true } = {}) {
+async function open(path, { width = 1280, height = 720,
+                            javaScriptEnabled = true, from = null } = {}) {
+  const base = from || origin;
   const context = await browser.newContext({
     viewport: { width, height }, javaScriptEnabled,
   });
@@ -97,10 +123,10 @@ async function open(path, { width = 1280, height = 720, javaScriptEnabled = true
   // one test past the 30-second default and failed a correct page. Every
   // assertion below waits on a locator or reads layout after load, so none
   // of them needs the network quiet.
-  const response = await page.goto(origin + path, {
+  const response = await page.goto(base + path, {
     waitUntil: "load", timeout: NAVIGATION_TIMEOUT,
   });
-  return { page, context, response };
+  return { page, context, response, origin: base };
 }
 
 // ── every page the theme touches must actually be a page ────────────────
@@ -146,7 +172,7 @@ test("the site declares the language it is written in", async () => {
 
 for (const [label, width, height] of [["desktop", 1280, 720], ["phone", 390, 844]]) {
   test(`a document is visible without scrolling on ${label}`, async () => {
-    const { page, context } = await open("/", { width, height });
+    const { page, context } = await open("/", { width, height, from: fixtureOrigin });
     try {
       const box = await page.locator(".catalogue-card").first().boundingBox();
       assert.ok(box, "no document card on the catalogue");
@@ -183,7 +209,7 @@ test("search and sort are in the open; the rest are behind one disclosure", asyn
 });
 
 test("a missing source is a label, a real facsimile is a thumbnail", async () => {
-  const { page, context } = await open("/");
+  const { page, context } = await open("/", { from: fixtureOrigin });
   try {
     const missing = page.locator(".catalogue-source-visual--missing").first();
     const image = page.locator(".catalogue-source-visual--image").first();
@@ -206,7 +232,7 @@ test("a missing source is a label, a real facsimile is a thumbnail", async () =>
 // ── the site has to work without JavaScript ─────────────────────────────
 
 test("the catalogue and its documents are navigable without JavaScript", async () => {
-  const { page, context } = await open("/", { javaScriptEnabled: false });
+  const { page, context } = await open("/", { javaScriptEnabled: false, from: fixtureOrigin });
   try {
     const cards = await page.locator(".catalogue-card").count();
     assert.ok(cards > 0, "no documents are listed without JavaScript");
@@ -226,18 +252,20 @@ test("the catalogue and its documents are navigable without JavaScript", async (
 });
 
 test("the citable downloads a document offers all resolve", async () => {
-  const { page, context } = await open("/u-17/");
+  // A fixture document, not a published one: /u-17/ was used here only
+  // because it was the one document with mapped pages, and it is withdrawn.
+  const { page, context } = await open("/fixture-mit-quelle/", { from: fixtureOrigin });
   try {
     const hrefs = await page.locator('#downloads a[href]').evaluateAll(
       nodes => nodes.map(node => node.getAttribute("href")));
     assert.ok(hrefs.length > 0, "the document offers no downloads");
     for (const href of hrefs) {
       if (/^https?:/.test(href)) continue;   // external rights statements
-      const target = new URL(href, `${origin}/u-17/`).toString();
+      const target = new URL(href, `${fixtureOrigin}/fixture-mit-quelle/`).toString();
       const response = await page.request.get(target);
       assert.strictEqual(
         response.status(), 200,
-        `${href} on /u-17/ resolves to ${response.status()} — a citable ` +
+        `${href} on /fixture-mit-quelle/ resolves to ${response.status()} — a citable ` +
         "artifact that 404s is worse than one that is not offered",
       );
     }
@@ -305,5 +333,56 @@ test("a research page no longer calls itself an internal document", async () => 
     } finally {
       await context.close();
     }
+  }
+});
+
+// ── what the site looks like with nothing published ─────────────────────
+
+test("an empty catalogue explains itself instead of showing bare filters", async () => {
+  const { page, context } = await open("/");
+  try {
+    const cards = await page.locator(".catalogue-card").count();
+    const notice = page.locator(".catalogue-no-outputs");
+    if (cards > 0) {
+      assert.strictEqual(await notice.count(), 0,
+        "the catalogue lists outputs and also claims to have none");
+      return;
+    }
+    assert.strictEqual(
+      await notice.count(), 1,
+      "the catalogue has no documents and does not say why; a page of " +
+      "filters over nothing reads as broken rather than empty",
+    );
+    const text = await notice.innerText();
+    assert.match(text, /zurückgezogen/,
+      "the notice does not say the outputs were withdrawn");
+    assert.ok(
+      await notice.boundingBox(),
+      "the explanation is in the markup but not visible to a reader",
+    );
+  } finally {
+    await context.close();
+  }
+});
+
+test("a withdrawn document keeps its URL and says it must not be cited", async () => {
+  const { page, context, response } = await open("/u-17/");
+  try {
+    assert.strictEqual(
+      response.status(), 200,
+      "withdrawal is not deletion: the URL has to go on resolving, or every " +
+      "citation of it breaks silently",
+    );
+    const text = await page.locator("body").innerText();
+    assert.match(text, /must not be cited/);
+    assert.ok(
+      await page.locator("header.site-header, .site-header, nav").first().count() > 0,
+      "the tombstone renders without the theme",
+    );
+    const robots = await page.locator('meta[name="robots"]').getAttribute("content");
+    assert.match(String(robots), /noindex/,
+      "a withdrawn output is still being offered to search engines");
+  } finally {
+    await context.close();
   }
 });

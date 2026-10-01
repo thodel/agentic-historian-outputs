@@ -220,3 +220,5 @@ __marimo__/
 tests/behavioural/fixtures/
 node_modules/
 _styled-site/
+_styled-fixture/
+_styled-fixture-src/

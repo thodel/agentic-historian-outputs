@@ -24,8 +24,14 @@ class FeedReviewCategoryTests(unittest.TestCase):
         cls.root = ET.fromstring(FEED.read_text(encoding="utf-8"))
         cls.entries = cls.root.findall(".//a:entry", ATOM)
 
-    def test_feed_is_well_formed_and_has_entries(self):
-        self.assertTrue(self.entries, "feed contains no entries")
+    def test_feed_is_well_formed(self):
+        """Parsing it in setUp is the test; an empty entry list is valid Atom.
+
+        This asserted a non-empty corpus, which stopped being true when every
+        output was withdrawn (#254). The per-entry tests below still hold each
+        entry to its review category, which is what this module is about.
+        """
+        self.assertIsNotNone(self.entries)
 
     def test_every_entry_carries_a_review_category(self):
         for entry in self.entries:

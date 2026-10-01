@@ -1,114 +1,19 @@
 ---
 layout: default
-title: "kf"
+title: "Withdrawn output: kf"
+robots: noindex
 ---
 
-<link rel="stylesheet" href="{{ '/assets/output.css' | relative_url }}">
-
-<nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> kf</nav>
-<header class="output-header page-section page-section--identity" data-page-section="identity">
-  <p class="output-kicker">Forschungsausgabe</p><h1>kf</h1>
-  <div class="output-status-bar" role="group" aria-label="Verifikationsstatus und Qualität"><span class="output-status-badge output-status-badge--machine-generated" data-review-status="machine-generated">⚙ Maschinell erzeugt<button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-verification_needed-hdr"><span aria-hidden="true">ⓘ</span> Menschliche Überprüfung empfohlen</button></span><span class="output-status-badge output-status-badge--pages">3 Seiten</span><span class="output-status-badge output-status-badge--legacy">Legacy-QA 80%<button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-legacy_qa-hdr"><span aria-hidden="true">ⓘ</span> Legacy-QA-Wert (unspezifiziert)</button></span></div>
-  <div class="quality-explanation" id="quality-explanation-verification_needed-hdr" role="region" aria-label="Menschliche Überprüfung empfohlen" hidden><p><strong>Menschliche Überprüfung empfohlen:</strong> Diese Transkription ist maschinell erzeugt.  Sie sollte anhand des Originaldokuments überprüft werden, bevor sie in einer wissenschaftlichen Arbeit zitiert wird. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-verification">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-legacy_qa-hdr" role="region" aria-label="Legacy-QA-Wert (unspezifiziert)" hidden><p><strong>Legacy-QA-Wert (unspezifiziert):</strong> Dieser QA-Wert stammt aus einem älteren Verarbeitungsschritt und hat keine definierte Bedeutung oder Einheit.  Er gibt keinen Aufschluss darüber, wie korrekt die Transkription ist.  Verlässlichere Qualitätshinweise sind Erkennungskonfidenz, Erkennungsfehler oder — wenn vorhanden — CER/WER gegen eine Referenztranskription. <a class="quality-explanation-link" href="../methodology.html#quality-metrics">Methodik <span aria-hidden="true">→</span></a></p></div>
-  <p class="notice"><strong>Maschinell erzeugt:</strong> Dieser Output wurde automatisch erzeugt und nicht menschlich überprüft. Nicht als Edition oder verifizierte Transkription zitieren.</p>
-</header>
-<nav class="page-section-nav" aria-label="Seitennavigation" data-page-nav>
-<ol class="page-section-nav-list"><li><a href="#source">Quelle</a></li><li><a href="#transcription">Transkription</a></li><li><a href="#orientation">Orientierung</a></li><li><a href="#claims">Metadaten</a></li><li><a href="#entities">Entitäten</a></li><li><a href="#downloads">Downloads</a></li><li><a href="#citation">Zitation</a></li><li><a href="#history">Versionsgeschichte</a></li></ol>
-</nav>
-
-<section id="source" class="page-section page-section--evidence" data-page-section="source" aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
-<div class="notice notice--warning"><strong>Kein öffentliches Digitalisat verknüpft.</strong> Ein lokaler Verarbeitungspfad ist kein zitierbarer Quellenbeleg. Ergänzen Sie <code>source_url</code> oder <code>iiif_manifest</code> in der Pipeline-Ausgabe.</div></section>
-
-<section id="transcription" class="page-section page-section--evidence" data-page-section="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
-<div class="transcription-toolbar"><button type="button" class="copy-btn" data-copy-transcript aria-label="Transkription in die Zwischenablage kopieren"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>Transkription kopieren</button></div><div class="transcription-wrap" role="table" aria-label="Transkription mit Zeilennummern"><span class="line" data-line="1" role="row"><span class="line-number" aria-hidden="true">1</span><span class="line-text">--- 0000004_478964_0001_19804829.jpg.png ---</span></span><span class="line" data-line="2" role="row"><span class="line-number" aria-hidden="true">2</span><span class="line-text">uuiuu</span></span><span class="line" data-line="3" role="row"><span class="line-number" aria-hidden="true">3</span><span class="line-text">uuuuuuuuuuuuuuuuuuuu</span></span><span class="line" data-line="4" role="row"><span class="line-number" aria-hidden="true">4</span><span class="line-text">uuuuuuuuuuu</span></span><span class="line" data-line="5" role="row"><span class="line-number" aria-hidden="true">5</span><span class="line-text">uuuuuuuuuuuuuuuuuu</span></span><span class="line" data-line="6" role="row"><span class="line-number" aria-hidden="true">6</span><span class="line-text">iuuuuuuuuuuuuuu</span></span><span class="line" data-line="7" role="row"><span class="line-number" aria-hidden="true">7</span><span class="line-text">uuuuuuiuuuu</span></span><span class="line" data-line="8" role="row"><span class="line-number" aria-hidden="true">8</span><span class="line-text">uuuuuuuuuuuuuuuuuuu</span></span><span class="line" data-line="9" role="row"><span class="line-number" aria-hidden="true">9</span><span class="line-text">uuuuuuuu</span></span><span class="line" data-line="10" role="row"><span class="line-number" aria-hidden="true">10</span><span class="line-text">uuuuuuuuuu</span></span><span class="line" data-line="11" role="row"><span class="line-number" aria-hidden="true">11</span><span class="line-text">uuuuuuuu</span></span><span class="line" data-line="12" role="row"><span class="line-number" aria-hidden="true">12</span><span class="line-text">uuuuuuuuuuuuuu</span></span><span class="line" data-line="13" role="row"><span class="line-number" aria-hidden="true">13</span><span class="line-text">uuuuuuuuuuuuuuuuu</span></span><span class="line" data-line="14" role="row"><span class="line-number" aria-hidden="true">14</span><span class="line-text">uuuuuuuuuuuuuuuuu</span></span><span class="line" data-line="15" role="row"><span class="line-number" aria-hidden="true">15</span><span class="line-text">uuuuuu</span></span><span class="line" data-line="16" role="row"><span class="line-number" aria-hidden="true">16</span><span class="line-text">uuuuiuuuuuuuu</span></span><span class="line" data-line="17" role="row"><span class="line-number" aria-hidden="true">17</span><span class="line-text">uuuuuuuu</span></span><span class="line" data-line="18" role="row"><span class="line-number" aria-hidden="true">18</span><span class="line-text">u</span></span><span class="line" data-line="19" role="row"><span class="line-number" aria-hidden="true">19</span><span class="line-text">u</span></span><span class="line" data-line="20" role="row"><span class="line-number" aria-hidden="true">20</span><span class="line-text">i</span></span><span class="line" data-line="21" role="row"><span class="line-number" aria-hidden="true">21</span><span class="line-text"> </span></span><span class="line" data-line="22" role="row"><span class="line-number" aria-hidden="true">22</span><span class="line-text">u</span></span><span class="line" data-line="23" role="row"><span class="line-number" aria-hidden="true">23</span><span class="line-text"> </span></span><span class="line" data-line="24" role="row"><span class="line-number" aria-hidden="true">24</span><span class="line-text">--- 0000007_024634_0002_663320.jpg.png ---</span></span><span class="line" data-line="25" role="row"><span class="line-number" aria-hidden="true">25</span><span class="line-text">iuu</span></span><span class="line" data-line="26" role="row"><span class="line-number" aria-hidden="true">26</span><span class="line-text">u</span></span><span class="line" data-line="27" role="row"><span class="line-number" aria-hidden="true">27</span><span class="line-text">uuuu</span></span><span class="line" data-line="28" role="row"><span class="line-number" aria-hidden="true">28</span><span class="line-text">i</span></span><span class="line" data-line="29" role="row"><span class="line-number" aria-hidden="true">29</span><span class="line-text">u</span></span><span class="line" data-line="30" role="row"><span class="line-number" aria-hidden="true">30</span><span class="line-text"> </span></span><span class="line" data-line="31" role="row"><span class="line-number" aria-hidden="true">31</span><span class="line-text">uuu</span></span><span class="line" data-line="32" role="row"><span class="line-number" aria-hidden="true">32</span><span class="line-text">uuu</span></span><span class="line" data-line="33" role="row"><span class="line-number" aria-hidden="true">33</span><span class="line-text">uu</span></span><span class="line" data-line="34" role="row"><span class="line-number" aria-hidden="true">34</span><span class="line-text">uuu</span></span><span class="line" data-line="35" role="row"><span class="line-number" aria-hidden="true">35</span><span class="line-text">u</span></span><span class="line" data-line="36" role="row"><span class="line-number" aria-hidden="true">36</span><span class="line-text"> </span></span><span class="line" data-line="37" role="row"><span class="line-number" aria-hidden="true">37</span><span class="line-text">iuuu</span></span><span class="line" data-line="38" role="row"><span class="line-number" aria-hidden="true">38</span><span class="line-text">uuu</span></span><span class="line" data-line="39" role="row"><span class="line-number" aria-hidden="true">39</span><span class="line-text">uu</span></span><span class="line" data-line="40" role="row"><span class="line-number" aria-hidden="true">40</span><span class="line-text">u</span></span><span class="line" data-line="41" role="row"><span class="line-number" aria-hidden="true">41</span><span class="line-text"> </span></span><span class="line" data-line="42" role="row"><span class="line-number" aria-hidden="true">42</span><span class="line-text"> </span></span><span class="line" data-line="43" role="row"><span class="line-number" aria-hidden="true">43</span><span class="line-text"> </span></span><span class="line" data-line="44" role="row"><span class="line-number" aria-hidden="true">44</span><span class="line-text"> </span></span><span class="line" data-line="45" role="row"><span class="line-number" aria-hidden="true">45</span><span class="line-text">u</span></span><span class="line" data-line="46" role="row"><span class="line-number" aria-hidden="true">46</span><span class="line-text"> </span></span><span class="line" data-line="47" role="row"><span class="line-number" aria-hidden="true">47</span><span class="line-text">--- 0000015_034634_0001_1169403.png ---</span></span><span class="line" data-line="48" role="row"><span class="line-number" aria-hidden="true">48</span><span class="line-text">iuu</span></span><span class="line" data-line="49" role="row"><span class="line-number" aria-hidden="true">49</span><span class="line-text">uuiuuuuuuuuuuuuuuuuu</span></span><span class="line" data-line="50" role="row"><span class="line-number" aria-hidden="true">50</span><span class="line-text">uuuuuuuuuu</span></span><span class="line" data-line="51" role="row"><span class="line-number" aria-hidden="true">51</span><span class="line-text">uuiuuu</span></span><span class="line" data-line="52" role="row"><span class="line-number" aria-hidden="true">52</span><span class="line-text">uuuuuiuuuuuuuuuuuuu</span></span><span class="line" data-line="53" role="row"><span class="line-number" aria-hidden="true">53</span><span class="line-text">uuuuuuuuuuuuuuu</span></span><span class="line" data-line="54" role="row"><span class="line-number" aria-hidden="true">54</span><span class="line-text">uuuuuiiuuuuuuuuuuu</span></span><span class="line" data-line="55" role="row"><span class="line-number" aria-hidden="true">55</span><span class="line-text">uuuuuuuuuuu</span></span><span class="line" data-line="56" role="row"><span class="line-number" aria-hidden="true">56</span><span class="line-text">uiiiiiuuu</span></span><span class="line" data-line="57" role="row"><span class="line-number" aria-hidden="true">57</span><span class="line-text">u</span></span></div>
-</section>
-
-
-
-<details class="page-section-disclosure" data-disclosure="orientation" open>
-<summary class="page-section-summary"><span class="summary-title">Inhaltliche Orientierung</span> <span class="summary-detail">Automatisch zusammengestellt</span></summary>
-<section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
-<p>{ &quot;Aufbewahrungsort&quot;: { &quot;wert&quot;: &quot;&quot;, &quot;unsicher&quot;: true, &quot;notiz&quot;: &quot;keine gesicherten Angaben möglich&quot; }, &quot;Beschreibstoff&quot;: { &quot;wert&quot;: &quot;&quot;, &quot;unsicher&quot;: true, &quot;notiz&quot;: &quot;keine Sicht auf Material, Wasserzeichen, Qualität oder Palimpsest&quot; }, &quot;Blaetter&quot;: { &quot;wert&quot;: &quot;&quot;, &quot;unsicher&quot;: true, &quot;notiz&quot;: &quot;keine Zählung der Blätter, keine Angaben zu Foliierung oder Lagenstruktur&quot; }, &quot;Format&quot;: { &quot;wert&quot;: &quot;&quot;, &quot;unsicher&quot;: true, &quot;notiz&quot;: &quot;keine Messungen, kein Hinweis auf Folio/Quarto/Oktav&quot; }, &quot;Datierung&quot;: { &quot;wert&quot;: &quot;&quot;, </p>
-<p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt; keine unabhängige historische Interpretation. <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p></section>
-</details>
-
-<details class="page-section-disclosure" data-disclosure="claims" open>
-<summary class="page-section-summary"><span class="summary-title">Metadaten, Provenienz und Unsicherheit</span> <span class="summary-detail">Keine Beschreibungsfelder</span></summary>
-<section id="claims" class="page-section page-section--interpretation" data-page-section="claims" aria-labelledby="claims-heading"><h2 id="claims-heading">Metadaten, Provenienz und Unsicherheit</h2><div class="table-scroll"><table><thead><tr><th>Feld</th><th>Wert</th><th>Sicherheit</th><th>Begründung</th><th>Nachweis</th></tr></thead><tbody><tr><td colspan="5">Keine strukturierten Beschreibungsfelder verfügbar.</td></tr></tbody></table></div></section>
-</details>
-
-<details class="page-section-disclosure" data-disclosure="entities">
-<summary class="page-section-summary"><span class="summary-title">Erkannte Entitäten</span> <span class="summary-detail">Keine Entitäten</span></summary>
-<section id="entities" class="page-section page-section--interpretation" data-page-section="entities" aria-labelledby="entities-heading"><h2 id="entities-heading">Erkannte Entitäten</h2>
-<p>Keine Entitäten erkannt.</p>
-<p><a href="entities.csv">Entitäten als CSV herunterladen</a> · <a href="../entities/">Alle Entitäten durchsuchen</a></p></section>
-</details>
-
-<details class="page-section-disclosure" data-disclosure="downloads">
-<summary class="page-section-summary"><span class="summary-title">Downloads und Nachnutzung</span> <span class="summary-detail">4 Dateien</span></summary>
-<section id="downloads" class="page-section page-section--administrative" data-page-section="downloads" aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
-<ul><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
-<p><strong>Rechtehinweis:</strong> Diese Forschungsdaten stehen unter <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Namensnennung erforderlich: Agentic Historian. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Bitte prüfen Sie die Quellenrechte vor der Nachnutzung.</p></section>
-</details>
-
-<details class="page-section-disclosure" data-disclosure="citation">
-<summary class="page-section-summary"><span class="summary-title">Zitation und stabile Adresse</span> <span class="summary-detail">Stabile Adresse verfügbar</span></summary>
-<section id="citation" class="page-section page-section--administrative" data-page-section="citation" aria-labelledby="citation-heading"><h2 id="citation-heading">Zitation und stabile Adresse</h2>
-<p><code>Agentic Historian. (2026). Agentic Historian output: kf [Machine-generated dataset]. https://thodel.github.io/agentic-historian-outputs/kf/</code></p>
-<p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/kf/">https://thodel.github.io/agentic-historian-outputs/kf/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/kf/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
-</details>
-
-<details class="page-section-disclosure" data-disclosure="history">
-<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">2 Commits</span></summary>
-<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/0cf46c4"><code>0cf46c4</code></a> · <time datetime="2026-08-02T14:49:39+02:00">2026-08-02</time> · fix(#195): retire malformed ids through lineage (#210)</li><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/a4e998a"><code>a4e998a</code></a> · <time datetime="2026-07-07T15:29:12+02:00">2026-07-07</time> · Publish kf</li></ol></section>
-</details>
-<script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/page-sync.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/page-disclosure.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/quality-explain.js' | relative_url }}" defer></script>
-<script type="application/ld+json">{
-  "@context": "https://schema.org/",
-  "@type": "Dataset",
-  "name": "Agentic Historian output: kf",
-  "url": "https://thodel.github.io/agentic-historian-outputs/kf/",
-  "creator": {
-    "@type": "SoftwareApplication",
-    "name": "Agentic Historian"
-  },
-  "publisher": {
-    "@type": "SoftwareApplication",
-    "name": "Agentic Historian"
-  },
-  "license": "https://creativecommons.org/licenses/by/4.0/",
-  "dateCreated": "2026-07-07T15:29:12+02:00",
-  "dateModified": "2026-08-02T14:49:39+02:00",
-  "distribution": [
-    {
-      "@type": "DataDownload",
-      "name": "Pipeline JSON",
-      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/kf/pipeline.json",
-      "encodingFormat": "application/json"
-    },
-    {
-      "@type": "DataDownload",
-      "name": "TEI-XML Transkription",
-      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/kf/transcription.tei.xml",
-      "encodingFormat": "application/tei+xml"
-    },
-    {
-      "@type": "DataDownload",
-      "name": "Entitäten (CSV)",
-      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/kf/entities.csv",
-      "encodingFormat": "text/csv"
-    },
-    {
-      "@type": "DataDownload",
-      "name": "CITATION.cff",
-      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/kf/CITATION.cff",
-      "encodingFormat": "text/x-yaml"
-    }
-  ],
-  "description": "{ \"Aufbewahrungsort\": { \"wert\": \"\", \"unsicher\": true, \"notiz\": \"keine gesicherten Angaben möglich\" }, \"Beschreibstoff\": { \"wert\": \"\", \"unsicher\": true, \"notiz\": \"keine Sicht auf Material, Wasserzeichen, Qualität oder Palimpsest\" }, \"Blaetter\": { \"wert\": \"\", \"unsicher\": true, \"notiz\": \"keine Zählung der Blätter, keine Angaben zu Foliierung oder Lagenstruktur\" }, \"Format\": { \"wert\": \"\", \"unsicher\": true, \"notiz\": \"keine Messungen, kein Hinweis auf Folio/Quarto/Oktav\" }, \"Datierung\": { \"wert\": \"\", "
-}</script>
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../">All outputs</a> <span aria-hidden="true">/</span> kf</nav>
+<main class="withdrawal-notice" data-status="withdrawn">
+  <p class="output-kicker">Withdrawn output</p>
+  <h1>kf</h1>
+  <p><strong>This output has been withdrawn and must not be cited as a current research output.</strong></p>
+  <dl>
+    <dt>Withdrawal date</dt><dd><time datetime="2026-10-01">2026-10-01</time></dd>
+    <dt>Reason</dt><dd>Test input; not a research output. Transcription was degenerate and byte-identical to kf-.</dd>
+    <dt>Decision</dt><dd><a href="https://github.com/thodel/agentic-historian-outputs/issues/254">Public decision record</a></dd>
+  </dl>
+  <p>No replacement is available.</p>
+  <p>The previously published material remains available only through the repository's Git history for auditability.</p>
+</main>

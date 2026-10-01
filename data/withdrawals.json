@@ -1,9 +1,58 @@
 {
+  "BAT_664_r_00027": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-10-01",
+    "reason": "Test input; not a research output. Its description also misnamed the holding institution.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/254",
+    "replacement": null
+  },
+  "bat": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-10-01",
+    "reason": "Test input; not a research output.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/254",
+    "replacement": null
+  },
   "epic2-test-doc": {
     "status": "withdrawn",
     "withdrawal_date": "2026-08-01",
     "reason": "End-to-end publishing verification fixture; not a research output.",
     "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/197",
+    "replacement": null
+  },
+  "kf": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-10-01",
+    "reason": "Test input; not a research output. Transcription was degenerate and byte-identical to kf-.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/254",
+    "replacement": null
+  },
+  "kf-": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-10-01",
+    "reason": "Test input; not a research output. Transcription was degenerate and byte-identical to kf.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/254",
+    "replacement": null
+  },
+  "koenige": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-10-01",
+    "reason": "Test input; not a research output.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/254",
+    "replacement": null
+  },
+  "order-001-group": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-10-01",
+    "reason": "Test input; not a research output. Two pages were listed with no text transcribed.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/254",
+    "replacement": null
+  },
+  "order-ens": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-10-01",
+    "reason": "Test input; not a research output.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/254",
     "replacement": null
   },
   "saa-0001-test": {
@@ -46,6 +95,27 @@
     "withdrawal_date": "2026-08-01",
     "reason": "Engineering fixture published unintentionally; not a research output.",
     "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/196",
+    "replacement": null
+  },
+  "saa-0428": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-10-01",
+    "reason": "Test input; not a research output.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/254",
+    "replacement": null
+  },
+  "u-17": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-10-01",
+    "reason": "Test input; not a research output. Its transcription was also engine noise, and it carried the site's only mapped facsimile.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/254",
+    "replacement": null
+  },
+  "u-17__": {
+    "status": "withdrawn",
+    "withdrawal_date": "2026-10-01",
+    "reason": "Test input; not a research output. Held the substantive reading of u-17's pages before the #195 id cleanup retired it.",
+    "decision_reference": "https://github.com/thodel/agentic-historian-outputs/issues/254",
     "replacement": null
   }
 }

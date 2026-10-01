@@ -152,5 +152,9 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - name: Build the site as Pages builds it
         run: ./scripts/build_styled_site.sh
+      # The same site over two synthetic documents, so the card-level tests do
+      # not depend on the published corpus being non-empty (#254).
+      - name: Build the fixture corpus site
+        run: ./scripts/build_styled_fixture.sh
       - name: Run styled-site integration tests
         run: node --test tests/integration/styled_site.mjs

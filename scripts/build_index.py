@@ -901,14 +901,59 @@ def build_sitemap(records: list) -> None:
     print(f"Wrote docs/sitemap.xml with {len(entries)} URLs")
 
 
+#: Shown when the catalogue has no outputs at all — not the same thing as a
+#: filter matching nothing, which `#catalogue-empty` already covers and which
+#: a reader can undo. A catalogue with nothing in it has to say why, the way
+#: the training section does; a page of filters over nothing looks broken.
+_NO_OUTPUTS_NOTICE = """<section class="catalogue-no-outputs" role="status" aria-labelledby="catalogue-no-outputs-heading">
+  <h2 id="catalogue-no-outputs-heading">Zurzeit keine veröffentlichten Ausgaben</h2>
+  <p>Alle bisher veröffentlichten Ausgaben wurden zurückgezogen: ihre Eingaben
+  waren Testeingaben und keine Korpora, die dieses Projekt editieren wollte.
+  Die Begründung steht je Ausgabe auf ihrer eigenen Seite, die weiterhin
+  erreichbar bleibt und sagt, dass sie nicht zitiert werden darf.</p>
+  <p>Die maschinellen Datensätze sind nicht gelöscht, sondern unter
+  <code>data/withdrawn/</code> im Repository archiviert. Was gemessen wurde,
+  steht unverändert unter <a href="forschung.html">Forschung</a>; wie
+  gearbeitet wird, unter <a href="methodology.html">Methode</a>.</p>
+</section>"""
+
+
+def _no_outputs_notice(records: list) -> str:
+    """The notice, or nothing when there is something to show."""
+    return "" if records else _NO_OUTPUTS_NOTICE
+
+
+def _last_withdrawal_date() -> str:
+    """The newest withdrawal date, for a feed with no entries left.
+
+    Deliberately read from the committed registry rather than the clock, so
+    the generated feed stays byte-identical across builds. Falls back to the
+    epoch only when nothing has ever been published or withdrawn, where
+    "unchanged since 1970" is at least not a false claim.
+    """
+    from withdrawals import load_withdrawals  # noqa: PLC0415
+    try:
+        dates = sorted(str(record.get("withdrawal_date") or "")
+                       for record in load_withdrawals().values())
+    except (OSError, ValueError):
+        dates = []
+    latest = next((value for value in reversed(dates) if value), "")
+    return f"{latest}T00:00:00+00:00" if latest else "1970-01-01T00:00:00+00:00"
+
+
 def build_atom_feed(records: list) -> None:
     """Generate docs/feed.xml (Atom 1.0) for newly published outputs."""
     from xml.sax.saxutils import escape as xml_escape  # noqa: PLC0415
     feed_records = [r for r in records if not r.is_test][:20]
-    updated = (
-        feed_records[0].created.strftime(_RFC3339_FMT)
-        if feed_records else "1970-01-01T00:00:00+00:00"
-    )
+    # An empty feed is a legitimate state — every output can be withdrawn
+    # (#254) — but it still has to carry a credible <updated>. The epoch said
+    # the feed had not changed since 1970, which readers treat as ancient and
+    # which is false: it changed when the last output left it. Fall back to the
+    # newest withdrawal instead, and only then to today.
+    # Not the current time: the generators must be deterministic or the
+    # clean-diff gate fails on every build.
+    updated = (feed_records[0].created.strftime(_RFC3339_FMT) if feed_records
+               else _last_withdrawal_date())
     entries_xml: list[str] = []
     for record in feed_records:
         entry_id = f"{SITE}/{record.doc_id}/"
@@ -1099,6 +1144,7 @@ title: Katalog
 {partition_note}<div id="catalogue-list" class="catalogue-list" data-enhanced="false" data-total-records="{len(records)}" data-shown-records="{len(shown)}">
 {cards}
 </div>
+{_no_outputs_notice(records)}
 
 <noscript><p>Die Suche benötigt JavaScript. Alle Einträge bleiben ohne JavaScript sichtbar und sind bereits nach Erstellungsdatum sortiert.</p></noscript>
 <script src="{{{{ '/assets/catalogue.js' | relative_url }}}}" defer></script>

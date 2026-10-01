@@ -33,15 +33,16 @@ from quality import alphabet_profile, detect_degeneration  # noqa: E402
 
 DOCS = ROOT / "docs"
 
-#: What the corpus is known to contain, awaiting an editorial decision.
-#: doc_id -> the kinds of finding it currently carries.
-KNOWN_FINDINGS = {
-    "kf": {"degenerate", "unaudited", "duplicate_pages"},
-    "kf-": {"degenerate", "unaudited", "duplicate_pages"},
-    "u-17": {"degenerate", "unaudited", "duplicate_pages"},
-    "u-17__": {"duplicate_pages"},
-    "order-001-group": {"no_text"},
-}
+#: What the published corpus is known to contain. Empty, as of #254: every
+#: output published up to 2026-10-01 came from a test input and has been
+#: withdrawn, and a withdrawn output is not a live publication problem.
+#:
+#: The five documents this once listed — kf, kf-, u-17 (degenerate text with no
+#: recognition behind it), u-17__ (duplicate page set) and order-001-group (no
+#: text at all) — are the reason the report exists. Their records are kept under
+#: ``data/withdrawn/``; the report's job now is to catch the next publication
+#: that looks like them, which is why these tests stay.
+KNOWN_FINDINGS: dict[str, set[str]] = {}
 
 
 class DegenerationDetectionTests(unittest.TestCase):
@@ -150,52 +151,34 @@ class PublishedCorpusTests(unittest.TestCase):
         summary = integrity.summarize(self.rows)
         for doc_id in KNOWN_FINDINGS:
             self.assertIn(doc_id, summary, f"{doc_id} is missing from the report")
+        if not KNOWN_FINDINGS:
+            self.assertIn("no findings", summary)
+
+    def test_a_withdrawn_document_is_not_a_finding(self):
+        """The report is about what is published, not about what was."""
+        archived = sorted(p.name for p in (ROOT / "data" / "withdrawn").iterdir()
+                          if p.is_dir())
+        self.assertTrue(archived, "no withdrawn records to check against")
+        reported = {row["doc_id"] for row in self.rows}
+        self.assertEqual(
+            set(), reported & set(archived),
+            "withdrawn outputs are being reported as live integrity problems",
+        )
 
     def test_an_empty_report_says_so(self):
         self.assertIn("no findings", integrity.summarize([]))
 
 
-class LineageTests(unittest.TestCase):
-    """The supersedes pointer must not make the thinner record canonical."""
-
-    def _record(self, doc_id):
-        import json
-        path = DOCS / doc_id / "pipeline.json"
-        return json.loads(path.read_text(encoding="utf-8"))
-
-    def test_u_17_supersedes_the_record_that_holds_the_text(self):
-        """#195's id cleanup moved the pointer without moving the content.
-
-        This is the inversion itself, asserted so it cannot be read as
-        intentional: the canonical document holds less text than the one it
-        retires. The fix is an editorial decision, so this records the state
-        rather than requiring it to be the other way round.
-        """
-        canonical = self._record("u-17")
-        retired = self._record("u-17__")
-        self.assertEqual("u-17__", canonical.get("supersedes"))
-        canonical_text = integrity.body_text(canonical.get("transcription") or "")
-        retired_text = integrity.body_text(retired.get("transcription") or "")
-        self.assertLess(
-            len(canonical_text), len(retired_text),
-            "u-17 now holds more text than u-17__ — if the lineage was "
-            "corrected or the document re-run, remove this test and the "
-            "u-17 entries from KNOWN_FINDINGS",
-        )
-        self.assertEqual(
-            0, len(canonical.get("recognitions") or []),
-            "u-17 has gained recognitions; update KNOWN_FINDINGS",
-        )
-
-    def test_the_facsimile_mapping_sits_on_the_canonical_document(self):
-        """Whichever record is canonical is the one a reader's facsimile hangs on."""
-        canonical = self._record("u-17")
-        self.assertTrue(
-            canonical.get("source_pages"),
-            "u-17 is the only document with a mapped facsimile; if that moved, "
-            "docs/source-backfill.md needs updating with it",
-        )
-
+# The lineage tests that stood here asserted the state of the published
+# ``u-17``/``u-17__`` pair: that the canonical record held less text than the
+# one it retired, and that the facsimile mapping sat on the canonical one. Both
+# documents are withdrawn (#254), so there is no published state left to
+# assert.
+#
+# The defect they recorded is *not* fixed. ``0cf46c4`` moved the ``supersedes``
+# pointer from the malformed id to the clean one without moving the content, so
+# the next publication through that path will make a stub canonical again. That
+# belongs upstream, where the lineage is written; see docs/source-backfill.md.
 
 if __name__ == "__main__":
     unittest.main()

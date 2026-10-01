@@ -190,7 +190,12 @@ class CatalogueHardeningTests(unittest.TestCase):
     def test_every_generated_card_action_resolves_to_a_document_state(self):
         catalogue = (ROOT / "docs/index.md").read_text(encoding="utf-8")
         articles = re.findall(r'<article class="catalogue-card".*?</article>', catalogue, re.S)
-        self.assertTrue(articles)
+        if not articles:
+            # Every output is withdrawn (#254), so there are no cards to check.
+            # The catalogue then owes the reader an explanation instead, which
+            # is asserted in test_an_empty_catalogue_explains_itself below.
+            self.assertIn('class="catalogue-no-outputs"', catalogue)
+            return
         for article in articles:
             document_id = re.search(r'data-document-id="([^"]+)"', article).group(1)
             actions = re.findall(r'class="catalogue-action [^"]+" href="([^"]+)"', article)
@@ -226,9 +231,30 @@ class CatalogueHardeningTests(unittest.TestCase):
         self.assertIn(":focus-visible", css)
         self.assertIn("min-height: 2.75rem", css)
         self.assertIn('<details class="catalogue-advanced">', catalogue)
-        self.assertIn('<details class="catalogue-details">', catalogue)
-        self.assertIn('class="catalogue-source-visual', catalogue)
-        self.assertIn('catalogue-action--primary', catalogue)
+        # These three are per-card, so they exist only when a card does.
+        if 'class="catalogue-card"' in catalogue:
+            self.assertIn('<details class="catalogue-details">', catalogue)
+            self.assertIn('class="catalogue-source-visual', catalogue)
+            self.assertIn('catalogue-action--primary', catalogue)
+
+    def test_an_empty_catalogue_explains_itself(self):
+        """A page of filters over nothing reads as broken rather than empty.
+
+        The existing `#catalogue-empty` message is about a filter matching
+        nothing, which a reader can undo. Having no outputs at all is a
+        different state and needs saying, the way the training section says it.
+        """
+        catalogue = (ROOT / "docs/index.md").read_text(encoding="utf-8")
+        has_cards = 'class="catalogue-card"' in catalogue
+        notice = 'class="catalogue-no-outputs"' in catalogue
+        self.assertNotEqual(
+            has_cards, notice,
+            "the catalogue either lists outputs or explains why it does not, "
+            "never both and never neither",
+        )
+        if notice:
+            self.assertIn("zurückgezogen", catalogue)
+            self.assertIn("data/withdrawn/", catalogue)
 
 
     def test_processing_and_recognition_statuses_are_visually_separated(self):
