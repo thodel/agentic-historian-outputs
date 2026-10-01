@@ -343,7 +343,15 @@ def _record(path: Path, reviews: dict[str, dict] | None = None) -> Record:
     if explicit_title:
         display_title = explicit_title
     elif document_type:
-        display_title = f"{document_type} · {date_label}" if date_label else document_type
+        # The date belongs in the facts row, not in the title, and it was in
+        # both: a card read "Urkunde … · Anfang 16. Jahrhundert" above a
+        # "Datierung: Anfang 16. Jahrhundert" line. The title is the only
+        # place it gives way, because the facts row is where structured
+        # metadata is supposed to live. Documents stay distinguishable by the
+        # document id the card shows beside the title, and both the catalogue
+        # search string and the generated search index still carry the date
+        # separately, so searching by period is unaffected.
+        display_title = document_type
     elif shelfmark:
         display_title = shelfmark.split(":", 1)[-1].strip()
     else:
@@ -566,7 +574,10 @@ def catalogue_index_row(record: Record, collection: str) -> dict:
     """
     return {
         "id": record.doc_id,
-        "t": record.date_label,
+        # The label an off-page search hit is shown under. It held the date,
+        # which made those hits read differently from the cards above them —
+        # and now that titles no longer carry the date, differently again.
+        "t": record.display_title or record.doc_id,
         "c": collection,
         "d": record.created.date().isoformat(),
         "l": record.language,

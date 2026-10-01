@@ -10,7 +10,7 @@ from urllib.parse import parse_qs, urlsplit
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from build_index import _card, _record, recognition_summary
+from build_index import _card, _record, catalogue_index_row, recognition_summary
 
 
 class CatalogueHardeningTests(unittest.TestCase):
@@ -103,12 +103,12 @@ class CatalogueHardeningTests(unittest.TestCase):
         """
         cases = [
             (
-                "doc-a", "document type and date",
+                "doc-a", "the date stays out of the title",
                 {"doc_id": "d", "description": {"source_json": {
                     "Inhalt": {"wert": "Urbar"},
                     "Datierung": {"wert": "1429"},
                 }}},
-                "Urbar · 1429",
+                "Urbar",
             ),
             (
                 "doc-b", "document type without a date",
@@ -123,7 +123,7 @@ class CatalogueHardeningTests(unittest.TestCase):
                     "Inhalt": {"wert": "Gerichtsbrief, vermutlich eine Abschrift"},
                     "Datierung": {"wert": "1518"},
                 }}},
-                "Gerichtsbrief · 1518",
+                "Gerichtsbrief",
             ),
             (
                 "doc-d", "shelfmark when no document type is known",
@@ -143,6 +143,49 @@ class CatalogueHardeningTests(unittest.TestCase):
                     target.parent.mkdir(parents=True)
                     target.write_text(json.dumps(data), encoding="utf-8")
                     self.assertEqual(_record(target).display_title, expected)
+
+    def test_the_date_is_a_fact_not_part_of_the_title(self):
+        """It used to be both, and a card said it twice.
+
+        A card read "Urkunde … · Anfang 16. Jahrhundert" above a
+        "Datierung: Anfang 16. Jahrhundert" line. The title is the place that
+        gives way, because the facts row is where structured metadata lives —
+        so the date must still be on the record, and still searchable.
+        """
+        with tempfile.TemporaryDirectory() as temp:
+            target = Path(temp) / "doc" / "pipeline.json"
+            target.parent.mkdir(parents=True)
+            target.write_text(json.dumps({"doc_id": "doc", "description": {
+                "source_json": {"Inhalt": {"wert": "Urbar"},
+                                "Datierung": {"wert": "1429"}}}}),
+                encoding="utf-8")
+            record = _record(target)
+
+        self.assertEqual("Urbar", record.display_title)
+        self.assertNotIn("1429", record.display_title)
+        self.assertEqual("1429", record.date_label,
+                         "the date left the title and the record too")
+
+    def test_a_date_free_title_is_still_searchable_by_date(self):
+        """Removing it from the title must not remove it from search."""
+        with tempfile.TemporaryDirectory() as temp:
+            target = Path(temp) / "doc" / "pipeline.json"
+            target.parent.mkdir(parents=True)
+            target.write_text(json.dumps({"doc_id": "doc", "description": {
+                "source_json": {"Inhalt": {"wert": "Urbar"},
+                                "Datierung": {"wert": "1429"}}}}),
+                encoding="utf-8")
+            record = _record(target)
+
+        card = _card(record)
+        search = re.search(r'data-search="([^"]*)"', card).group(1)
+        self.assertIn("1429", search, "the card is no longer findable by date")
+
+        row = catalogue_index_row(record, "2026")
+        self.assertIn("1429", row["q"],
+                      "the search index is no longer findable by date")
+        self.assertEqual("Urbar", row["t"],
+                         "an off-page hit is labelled differently from its card")
 
     def test_every_generated_card_action_resolves_to_a_document_state(self):
         catalogue = (ROOT / "docs/index.md").read_text(encoding="utf-8")
