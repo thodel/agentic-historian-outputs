@@ -106,8 +106,8 @@ async function open(path, { width = 1280, height = 720, javaScriptEnabled = true
 // ── every page the theme touches must actually be a page ────────────────
 
 test("pages in the public navigation are rendered with the theme", async () => {
-  for (const path of ["/", "/training/", "/entities/", "/methodology.html",
-                      "/about.html"]) {
+  for (const path of ["/", "/training/", "/entities/", "/forschung.html",
+                      "/methodology.html", "/about.html"]) {
     const { page, context, response } = await open(path);
     try {
       assert.strictEqual(response.status(), 200, `${path} returned ${response.status()}`);
@@ -260,5 +260,50 @@ test("the empty training section explains itself", async () => {
     );
   } finally {
     await context.close();
+  }
+});
+
+// ── the research section ────────────────────────────────────────────────
+
+test("the research index reaches both studies, and says they are English", async () => {
+  const { page, context } = await open("/forschung.html");
+  try {
+    for (const target of ["evaluation.html", "vlm-finetuning.html"]) {
+      const link = page.locator(`a[href="${target}"]`).first();
+      assert.strictEqual(await link.count(), 1, `${target} is not linked`);
+
+      const response = await page.request.get(new URL(target, origin + "/").toString());
+      assert.strictEqual(
+        response.status(), 200,
+        `${target} is linked from the navigation but resolves to ` +
+        `${response.status()}`,
+      );
+    }
+    const text = await page.locator("body").innerText();
+    const marks = text.match(/englisch/gi) || [];
+    assert.ok(
+      marks.length >= 2,
+      "the research index links English pages without marking them as English",
+    );
+  } finally {
+    await context.close();
+  }
+});
+
+test("a research page no longer calls itself an internal document", async () => {
+  for (const path of ["/evaluation.html", "/vlm-finetuning.html"]) {
+    const { page, context } = await open(path);
+    try {
+      const text = await page.locator("body").innerText();
+      assert.ok(
+        !text.includes("Internal engineering document"),
+        `${path} is in the public navigation but still presents itself as an ` +
+        "internal working document",
+      );
+      assert.match(text, /in English/,
+        `${path} does not tell a reader it is in English`);
+    } finally {
+      await context.close();
+    }
   }
 });

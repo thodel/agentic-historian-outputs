@@ -32,4 +32,6 @@ Quell- und Ausgabedaten: <https://github.com/thodel/agentic-historian-outputs>
 
 Die öffentlich zugänglichen Seiten dieses Projekts sind ausschließlich auf Deutsch gehalten. Technische Internas (Checklisten, Qualitätsbudgets, CI-Dokumentation) können intern auf Englisch verfaßt sein, werden aber nicht in der globalen Navigation aufgeführt und sind nicht als Bestandteil des öffentlichen Angebots zu verstehen.
 
-Seiten mit englischsprachigem Inhalt sind interne Arbeitsdokumente für Projektmitarbeitende; sie enthalten einen entsprechenden Hinweis am Seitenanfang.
+Davon ausgenommen sind **Forschungstexte**: Untersuchungen zum Verfahren selbst — etwa der Vergleich der Erkennungsmodelle — gehören zum öffentlichen Angebot und sind über [Forschung](forschung.html) erreichbar, auch wenn sie auf Englisch verfaßt sind. Sie werden dort als englischsprachig ausgewiesen. Eine Übersetzung zu erzwingen hieße, gemessene Aussagen zu übertragen, ohne sie erneut zu prüfen; sie zu verstecken hieße, Belege zurückzuhalten, die das Verfahren beurteilbar machen.
+
+Jede englischsprachige Seite trägt einen Hinweis am Seitenanfang, der sagt, ob sie ein internes Arbeitsdokument oder ein Forschungstext ist.
