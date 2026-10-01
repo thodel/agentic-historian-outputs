@@ -80,12 +80,26 @@ after(async () => {
   if (server) await new Promise(resolve => server.close(resolve));
 });
 
+//: A slow runner needs room: on GitHub Actions a single navigation to this
+//: local static site took 11-20 seconds, where it takes under a second here.
+const NAVIGATION_TIMEOUT = 60_000;
+
 async function open(path, { width = 1280, height = 720, javaScriptEnabled = true } = {}) {
   const context = await browser.newContext({
     viewport: { width, height }, javaScriptEnabled,
   });
   const page = await context.newPage();
-  const response = await page.goto(origin + path, { waitUntil: "networkidle" });
+  // "load", not "networkidle". This is a static site, so there is no network
+  // to go idle — networkidle only adds its 500ms quiet window on top of a
+  // page that has already finished, and the browser's own favicon request
+  // 404s on every page, which is exactly the kind of straggler it waits on.
+  // Measured here: 181ms against 856ms. On the CI runner that multiple ran
+  // one test past the 30-second default and failed a correct page. Every
+  // assertion below waits on a locator or reads layout after load, so none
+  // of them needs the network quiet.
+  const response = await page.goto(origin + path, {
+    waitUntil: "load", timeout: NAVIGATION_TIMEOUT,
+  });
   return { page, context, response };
 }
 
