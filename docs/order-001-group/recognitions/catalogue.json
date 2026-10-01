@@ -15,7 +15,7 @@
     {
       "characters": null,
       "engine": "vlm",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung hat keine Ausgabe erzeugt.",
       "error_path": "recognitions/vlm-internvl3-8b-instruct.error.txt",
       "id": "vlm-internvl3-8b-instruct",
       "model_id": "internvl3-8b-instruct",
@@ -48,7 +48,7 @@
     {
       "characters": null,
       "engine": "vlm",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung hat keine Ausgabe erzeugt.",
       "error_path": "recognitions/vlm-internvl3-8b-instruct.error.txt",
       "id": "vlm-internvl3-8b-instruct-2",
       "model_id": "internvl3-8b-instruct",

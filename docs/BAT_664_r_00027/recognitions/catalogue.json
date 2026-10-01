@@ -39,7 +39,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/BAT_664_r_00027/trocr-trocr-medieval-escriptmask.error.txt",
       "id": "bat-664-r-00027-jpg-trocr-trocr-medieval-escriptmask",
       "model_id": "trocr-medieval-escriptmask",
@@ -62,7 +62,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/BAT_664_r_00027/trocr-trocr-kurrent-xvi-xvii.error.txt",
       "id": "bat-664-r-00027-jpg-trocr-trocr-kurrent-xvi-xvii",
       "model_id": "trocr-kurrent-xvi-xvii",
@@ -85,7 +85,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/BAT_664_r_00027/trocr-trocr-essoins-middle-latin.error.txt",
       "id": "bat-664-r-00027-jpg-trocr-trocr-essoins-middle-latin",
       "model_id": "trocr-essoins-middle-latin",

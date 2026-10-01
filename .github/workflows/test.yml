@@ -33,6 +33,11 @@ jobs:
       # would only invite a placeholder entry to make it green.
       - name: Source coverage (#182)
         run: python scripts/source_ledger.py
+      # Reported, not gated, for the same reason: withdrawing or re-running an
+      # already-published document is an editorial decision. The accompanying
+      # test holds the findings to a known set, so a new one does fail.
+      - name: Transcription integrity
+        run: python scripts/transcription_integrity.py
       # Gated: unlike source coverage this is a measurable limit, and the
       # projection is the only warning before a corpus import meets the
       # Pages size limit.

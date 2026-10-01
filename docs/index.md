@@ -184,7 +184,7 @@ title: Katalog
   </div>
   </div>
 </article>
-<article class="catalogue-card" data-document-id="bat" data-created="2026-07-15T21:19:05+02:00" data-kind="output" data-language="deutsch (mittelhochdeutsche und mitteldeutsche konstruktionen, alemannischer dialektraum)" data-script="gotische kurrentschrift, schwarz, zeilenhöhe ca. 4,5 mm" data-search="bat verwaltungsdokument  15. jahrhundert (unsicher) deutsch (mittelhochdeutsche und mitteldeutsche konstruktionen, alemannischer dialektraum) gotische kurrentschrift, schwarz, zeilenhöhe ca. 4,5 mm verwaltungsdokument bat_663_r_00050.jpg aimien undectetngen willegen dicust be uor lieden gnediuen hacrẽ si ucq al zut uon nat be- rent uñ ouch deñ urern lieben quedien herren ich blahen eeusthlicq" data-superseded="false" data-recognition-provenance="current" data-recognition-total="10" data-recognition-successful="6" data-recognition-failed="1" data-recognition-empty="0" data-recognition-degenerate="3" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="DATE,ORG,PERSON,PLACE,SOCIAL_GROUP" data-completeness="teilweise">
+<article class="catalogue-card" data-document-id="bat" data-created="2026-07-15T21:19:05+02:00" data-kind="output" data-language="deutsch (mittelhochdeutsche und mitteldeutsche konstruktionen, alemannischer dialektraum)" data-script="gotische kurrentschrift, schwarz, zeilenhöhe ca. 4,5 mm" data-search="bat verwaltungsdokument  15. jahrhundert (unsicher) deutsch (mittelhochdeutsche und mitteldeutsche konstruktionen, alemannischer dialektraum) gotische kurrentschrift, schwarz, zeilenhöhe ca. 4,5 mm verwaltungsdokument bat_663_r_00050.jpg aimien undectetngen willegen dicust be uor lieden gnediuen hacrẽ si ucq al zut uon nat be- rent uñ ouch deñ urern lieben quedien herren ich blahen eeusthlicq" data-superseded="false" data-recognition-provenance="current" data-recognition-total="10" data-recognition-successful="5" data-recognition-failed="1" data-recognition-empty="0" data-recognition-degenerate="4" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="DATE,ORG,PERSON,PLACE,SOCIAL_GROUP" data-completeness="teilweise">
   <div class="catalogue-card__layout">
   <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
   <div class="catalogue-card__content">
@@ -194,23 +194,23 @@ title: Katalog
       <h2><a href="bat/">Verwaltungsdokument</a></h2>
       <p class="catalogue-id">Dokument-ID <code>bat</code></p>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">4 problematische Kandidaten</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">5 problematische Kandidaten</span></div>
   </div>
   <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>15. Jahrhundert (unsicher)</dd></div><div><dt>Seiten</dt><dd>1</dd></div><div><dt>Entitäten</dt><dd>12</dd></div></dl>
   <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="bat/" aria-label="Dokument öffnen: Verwaltungsdokument">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="bat/?cmp=vlm-internvl3-8b-instruct:kraken-kraken-catmus-medieval#recognitions" aria-label="Modelle vergleichen: Verwaltungsdokument">Modelle vergleichen</a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
-      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Verwaltungsdokument</dd></div><div><dt>Sprache</dt><dd>Deutsch (mittelhochdeutsche und mitteldeutsche Konstruktionen, alemannischer Dialektraum)</dd></div><div><dt>Schrift</dt><dd>Gotische Kurrentschrift, schwarz, Zeilenhöhe ca. 4,5 mm</dd></div><div><dt>Kandidaten</dt><dd>6 erfolgreich / 10 insgesamt</dd></div></dl>
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Verwaltungsdokument</dd></div><div><dt>Sprache</dt><dd>Deutsch (mittelhochdeutsche und mitteldeutsche Konstruktionen, alemannischer Dialektraum)</dd></div><div><dt>Schrift</dt><dd>Gotische Kurrentschrift, schwarz, Zeilenhöhe ca. 4,5 mm</dd></div><div><dt>Kandidaten</dt><dd>5 erfolgreich / 10 insgesamt</dd></div></dl>
       <div class="catalogue-status-groups">
         <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
-        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">4 von 10 Kandidaten problematisch</p></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">5 von 10 Kandidaten problematisch</p></div>
       </div>
 
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
         <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
-        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 1 fehlgeschlagener Erkennungsversuch</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> 3 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 1 fehlgeschlagener Erkennungsversuch</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> 4 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
       </div>
       <p class="catalogue-preview">BAT_663_r_00050.jpg Aimien undectetngen willegen dicust be uor lieden gnediuen hacrẽ si ucq al zut uon nat be- rent uñ ouch deñ urern lieben quedien herren ich blahen eeusthlicq…</p>
     </div>

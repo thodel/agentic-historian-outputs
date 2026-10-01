@@ -92,7 +92,7 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 <div><dt>Zeichen</dt><dd>0</dd></div>
 <div><dt>Status</dt><dd><span class="quality-badge quality-badge--failed" title="Fehlgeschlagene Erkennung">Fehlgeschlagen</span></dd></div>
 </dl>
-<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong><br>Der Erkennungsdienst antwortete mit einem Fehler. <a href="/methodology/#recognition-failures" class="rec-methodology-link">Erklärung der Fehlerkategorien</a> <span class="rec-retry-hint">— Wiederholung moeglich</span></div>
+<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong><br>Die Erkennung hat keine Ausgabe erzeugt.</div>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
 </details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval" data-recognition-panel="kraken-kraken-catmus-medieval" data-page="" data-engine="kraken" data-model="kraken-catmus_medieval">
@@ -131,7 +131,7 @@ Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sicht
 <div><dt>Zeichen</dt><dd>0</dd></div>
 <div><dt>Status</dt><dd><span class="quality-badge quality-badge--failed" title="Fehlgeschlagene Erkennung">Fehlgeschlagen</span></dd></div>
 </dl>
-<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong><br>Der Erkennungsdienst antwortete mit einem Fehler. <a href="/methodology/#recognition-failures" class="rec-methodology-link">Erklärung der Fehlerkategorien</a> <span class="rec-retry-hint">— Wiederholung moeglich</span></div>
+<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong><br>Die Erkennung hat keine Ausgabe erzeugt.</div>
 
 <p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
 </details><details class="rec-panel" id="recognition-kraken-kraken-catmus-medieval-2" data-recognition-panel="kraken-kraken-catmus-medieval-2" data-page="" data-engine="kraken" data-model="kraken-catmus_medieval">

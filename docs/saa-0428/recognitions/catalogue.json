@@ -39,7 +39,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
       "id": "trocr-trocr-medieval-escriptmask",
       "model_id": "trocr-medieval-escriptmask",
@@ -74,7 +74,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
       "id": "trocr-trocr-medieval-escriptmask-2",
       "model_id": "trocr-medieval-escriptmask",
@@ -97,7 +97,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
       "id": "trocr-trocr-kurrent-xvi-xvii",
       "model_id": "trocr-kurrent-xvi-xvii",
@@ -119,7 +119,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/trocr-trocr-essoins-middle-latin.error.txt",
       "id": "trocr-trocr-essoins-middle-latin",
       "model_id": "trocr-essoins-middle-latin",
@@ -154,7 +154,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
       "id": "trocr-trocr-medieval-escriptmask-3",
       "model_id": "trocr-medieval-escriptmask",
@@ -177,7 +177,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
       "id": "trocr-trocr-kurrent-xvi-xvii-2",
       "model_id": "trocr-kurrent-xvi-xvii",
@@ -199,7 +199,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/trocr-trocr-essoins-middle-latin.error.txt",
       "id": "trocr-trocr-essoins-middle-latin-2",
       "model_id": "trocr-essoins-middle-latin",
@@ -234,7 +234,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
       "id": "trocr-trocr-medieval-escriptmask-4",
       "model_id": "trocr-medieval-escriptmask",
@@ -257,7 +257,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
       "id": "trocr-trocr-kurrent-xvi-xvii-3",
       "model_id": "trocr-kurrent-xvi-xvii",
@@ -279,7 +279,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/trocr-trocr-essoins-middle-latin.error.txt",
       "id": "trocr-trocr-essoins-middle-latin-3",
       "model_id": "trocr-essoins-middle-latin",
@@ -314,7 +314,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
       "id": "trocr-trocr-medieval-escriptmask-5",
       "model_id": "trocr-medieval-escriptmask",
@@ -349,7 +349,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/trocr-trocr-medieval-escriptmask.error.txt",
       "id": "trocr-trocr-medieval-escriptmask-6",
       "model_id": "trocr-medieval-escriptmask",
@@ -384,7 +384,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
       "id": "trocr-trocr-kurrent-xvi-xvii-4",
       "model_id": "trocr-kurrent-xvi-xvii",
@@ -563,7 +563,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
       "id": "trocr-trocr-kurrent-xvi-xvii-5",
       "model_id": "trocr-kurrent-xvi-xvii",
@@ -598,7 +598,7 @@
     {
       "characters": null,
       "engine": "trocr",
-      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
       "error_path": "recognitions/trocr-trocr-kurrent-xvi-xvii.error.txt",
       "id": "trocr-trocr-kurrent-xvi-xvii-6",
       "model_id": "trocr-kurrent-xvi-xvii",
