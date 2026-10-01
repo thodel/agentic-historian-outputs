@@ -70,12 +70,27 @@ def _document(doc_id: str, *, with_source: bool) -> dict:
         ],
         "errors": [],
         "a_meta": {"pages": 1, "qa_score": 0.8},
-        "recognitions": [{
-            "engine": "vlm", "model_id": "internvl3-8b-instruct", "page": PAGE,
-            "text": "Wir Johans von Habspurg tuon kunt allen den die disen "
-                    "brief ansehent oder hoerent lesen.",
-            "confidence": 0.81, "error": None,
-        }],
+        # Three, not one. The behavioural suite needs at least two candidates
+        # for the compare pane to open and for recognition selection to have
+        # something to switch between, and a failed one so the viewer renders
+        # its error state too.
+        "recognitions": [
+            {"engine": "vlm", "model_id": "internvl3-8b-instruct", "page": PAGE,
+             "text": "Wir Johans von Habspurg tuon kunt allen den die disen "
+                     "brief ansehent oder hoerent lesen daz wir mit gutem "
+                     "willen gegeben haben dem closter ze Koenigsfelden.",
+             "confidence": 0.81, "error": None},
+            {"engine": "kraken", "model_id": "kraken-catmus-medieval",
+             "page": PAGE,
+             "text": "Wir Johans von Habspurg tuon kunt allen den die disen "
+                     "brief ansehnt oder horent lesen daz wir mit gutem "
+                     "willen gegeben haben dem closter ze Konigsfelden.",
+             "confidence": 0.74, "error": None},
+            {"engine": "trocr", "model_id": "trocr-kurrent-xvi-xvii",
+             "page": PAGE, "text": "", "confidence": None,
+             "error": "Der Erkennungsdienst war nicht erreichbar.",
+             "status_code": "unavailable"},
+        ],
     }
     if with_source:
         record |= {

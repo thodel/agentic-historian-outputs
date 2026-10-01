@@ -18,8 +18,12 @@ import { resolve, dirname } from "path";
 import test from "node:test";
 import { fileURLToPath } from "url";
 
+// The behavioural corpus is synthetic (#254): the two documents this suite
+// used to borrow were withdrawn. See scripts/build_behavioural_fixtures.sh.
+const FIXTURE_DOC = process.env.AH_FIXTURE_DOC_IDS?.split(",")[0].trim()
+  || "fixture-mit-quelle";
 const __dirname = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
-const FIXTURE = "file://" + resolve(__dirname, "tests", "behavioural", "fixtures", "bat", "index.html");
+const FIXTURE = "file://" + resolve(__dirname, "tests", "behavioural", "fixtures", FIXTURE_DOC, "index.html");
 
 async function launchBrowser() {
   const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH;
