@@ -17,7 +17,20 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const DOCS      = join(__dirname, "docs");
+
+// Where the pages come from, and which of them become fixtures.
+//
+// These were `docs/` and a hardcoded ["bat", "u-17"]. Both documents were
+// withdrawn (#254), so their pages became tombstones and 24 of the 40
+// behavioural cases had nothing to find — the suite had been built on two
+// specific published outputs rather than on a corpus of its own. The defaults
+// below keep the old behaviour for a local run against the real site; CI
+// points them at a synthetic corpus built by tests/fixtures/styled_fixture.py.
+const DOCS      = process.env.AH_FIXTURE_DOCS
+  ? join(process.cwd(), process.env.AH_FIXTURE_DOCS)
+  : join(__dirname, "docs");
+const DOC_IDS   = (process.env.AH_FIXTURE_DOC_IDS || "bat,u-17")
+  .split(",").map(id => id.trim()).filter(Boolean);
 const FIXTURES  = join(__dirname, "tests", "behavioural", "fixtures");
 const ASSETS    = join(DOCS, "assets");
 const ASSETS_REL = "assets";
@@ -148,11 +161,21 @@ function main() {
   mkdirSync(FIXTURES, { recursive: true });
   setupAssets();
 
-  for (const p of [
-    join(DOCS, "bat", "index.md"),
-    join(DOCS, "u-17", "index.md"),
-  ]) {
-    if (existsSync(p)) generateDocumentFixture(p);
+  let written = 0;
+  for (const id of DOC_IDS) {
+    const p = join(DOCS, id, "index.md");
+    if (existsSync(p)) {
+      generateDocumentFixture(p);
+      written += 1;
+    }
+  }
+  if (written === 0) {
+    console.error(
+      `No document fixtures written. Looked for ${DOC_IDS.join(", ")} under ` +
+      `${DOCS}. The behavioural suite cannot run against nothing, and a ` +
+      "fixture that silently does not exist fails every case with \"no " +
+      "element found\" rather than saying why.");
+    process.exit(1);
   }
 
   const indexPage = join(DOCS, "index.md");

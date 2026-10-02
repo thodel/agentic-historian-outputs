@@ -379,9 +379,21 @@ class StaticContentCompletenessTests(unittest.TestCase):
 class DeploymentIntegrationTests(unittest.TestCase):
     """Checks against the real generated output files checked in to docs/."""
 
-    def test_generated_pages_exist(self) -> None:
-        pages = _collect_document_pages()
-        self.assertGreater(len(pages), 0, "No generated document pages found in docs/")
+    def test_generated_pages_match_the_published_records(self) -> None:
+        """One generated page per live machine record — zero when zero.
+
+        Every output was withdrawn in #254, so docs/ holds tombstones and no
+        generated document pages. The checks below then have nothing to parse,
+        which is correct rather than a gap: they guard the shape of a page when
+        one exists.
+        """
+        live = [path.parent.name
+                for path in DOCS_ROOT.glob("*/pipeline.json")]
+        self.assertEqual(
+            len(live), len(_collect_document_pages()),
+            f"{len(live)} documents carry a machine record but "
+            f"{len(_collect_document_pages())} generated pages were found",
+        )
 
     def test_no_duplicate_anchors_in_all_generated_pages(self) -> None:
         pages = _collect_document_pages()

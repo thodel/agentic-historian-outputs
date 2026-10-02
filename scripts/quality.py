@@ -41,6 +41,7 @@ from __future__ import annotations
 
 import html
 import re
+from collections import Counter
 from dataclasses import dataclass, field
 from typing import Literal
 
@@ -217,6 +218,36 @@ DEGENERATE_PATTERNS = [
     (re.compile(r"^[\s\n]{50,}$"), "nur Leerzeichen"),            # 50+ whitespace only
 ]
 
+# Those patterns are anchored across the whole string, so they only ever match
+# a page that is one unbroken run of one character. A line-based engine that
+# fails does not produce that: it produces one short run *per line*, and every
+# newline breaks the anchor.
+#
+# This is not hypothetical. `u-17`'s published transcription is 451 alphabetic
+# characters drawn from four distinct letters — 371 "u", 77 "i", 2 "s", 1 "g" —
+# and it passed all three patterns above. So the test has to be the alphabet
+# the text uses, not the shape it has.
+#
+# The thresholds come from measuring this corpus. Real transcriptions carry
+# 22-50 distinct letters with the commonest at about 14% of the text;
+# degenerate ones carry 2-4 letters with the commonest at 82-95%. The floor
+# keeps short legitimate pages out, because a 26-character page has no room
+# for twenty-two letters. Checked against all 140 candidate texts in the
+# corpus: this rule adds exactly one, a kraken run on `bat` that emitted 350
+# characters of 94% "u".
+DEGENERATE_MIN_ALPHA = 100
+DEGENERATE_MAX_DISTINCT = 8
+DEGENERATE_MAX_TOP_SHARE = 0.5
+
+
+def alphabet_profile(text: str) -> tuple[int, int, float]:
+    """Return (alphabetic length, distinct letters, share of the commonest)."""
+    letters = [char.lower() for char in text if char.isalpha()]
+    if not letters:
+        return 0, 0, 0.0
+    counts = Counter(letters)
+    return len(letters), len(counts), counts.most_common(1)[0][1] / len(letters)
+
 
 def detect_degeneration(text: str, confidence: float | None = None) -> tuple[bool, str]:
     """Return (is_degenerate, reason)."""
@@ -229,6 +260,18 @@ def detect_degeneration(text: str, confidence: float | None = None) -> tuple[boo
             return True, f"degenerierte Ausgabe ({label})"
     if len(text) > 1_000_000:
         return True, "unrealistisch lange Ausgabe"
+    alpha, distinct, top_share = alphabet_profile(text)
+    if alpha >= DEGENERATE_MIN_ALPHA:
+        if distinct <= DEGENERATE_MAX_DISTINCT:
+            return True, (
+                f"degenerierte Ausgabe (nur {distinct} verschiedene Buchstaben "
+                f"auf {alpha} Zeichen)"
+            )
+        if top_share >= DEGENERATE_MAX_TOP_SHARE:
+            return True, (
+                f"degenerierte Ausgabe (ein Buchstabe stellt "
+                f"{top_share:.0%} des Textes)"
+            )
     return False, ""
 
 

@@ -196,7 +196,11 @@ def _catalogue_data(doc_id: str, candidates: list[dict]) -> dict:
             "page": candidate["page"] or None,
             "status": "error" if candidate["error"] else "success",
             **({"status_code": normalize(candidate).code} if not candidate["error"] else {}),
-            "error": _public_error(candidate.get("error")) or None,
+            # From the status, not from the prose. ``_public_error`` sees only
+            # the string, so it cannot know a verdict the candidate carries;
+            # the two agree on every free-text error in the corpus.
+            "error": (normalize(candidate).public_msg if candidate["error"]
+                      else None),
             "path": candidate["path"] if candidate["path"] and not candidate["error"] else None,
             "error_path": _error_path(candidate) if candidate["error"] else None,
             "characters": len(candidate["text"]) if not candidate["error"] else None,
@@ -310,7 +314,8 @@ def _candidates(recognitions, transcript: str) -> list[dict]:
         confidence = raw.get("confidence")
         # Empty-text check before degeneration (backward-compat with test
         # "empty_success_becomes_failure" which expects "keinen Text").
-        if not error and not text.strip():
+        empty_result = not error and not text.strip()
+        if empty_result:
             error = "Der Erkennungsversuch lieferte keinen Text."
         # Degeneration check (#29): detect mechanically degenerate output
         # even when no technical error was reported.
@@ -320,6 +325,24 @@ def _candidates(recognitions, transcript: str) -> list[dict]:
         )
         if is_degenerate and not error:
             error = f"Degenerierte Erkennung: {deg_reason}"
+        # Say so in the structured field too, not only in German prose.
+        #
+        # ``_classify_from_fields`` reads a free-text error (step 3) before the
+        # ``is_degenerate`` flag (step 4), and no pattern matches either
+        # sentence set above — so both an empty result and a degenerate one
+        # were classified ``backend_error`` and published as "Der
+        # Erkennungsdienst antwortete mit einem Fehler." In neither case did
+        # the service fail: one returned nothing, the other returned 350
+        # characters of "u". The taxonomy already has ``empty`` and
+        # ``degenerate`` with the right wording; the verdict just never reached
+        # it. Setting the explicit code lets step 1 decide, which leaves every
+        # other classification exactly as it was.
+        status_code = raw.get("status_code")
+        if not status_code:
+            if is_degenerate:
+                status_code = "degenerate"
+            elif empty_result:
+                status_code = "empty"
         result.append({
             "id": candidate_id,
             "engine": engine,
@@ -331,7 +354,7 @@ def _candidates(recognitions, transcript: str) -> list[dict]:
             "selected": False,
             "is_degenerate": is_degenerate,
             # Preserve safe machine-readable attempt context for exports.
-            "status_code": raw.get("status_code"),
+            "status_code": status_code,
             "error_code": raw.get("error_code"),
             "timing_ms": raw.get("timing_ms"),
             "run_id": raw.get("run_id"),

@@ -227,8 +227,35 @@ class AtomFeedTests(unittest.TestCase):
     def test_feed_has_updated(self):
         self.assertIn("<updated>", self._feed())
 
-    def test_feed_has_entries(self):
-        self.assertIn("<entry>", self._feed())
+    def test_feed_carries_one_entry_per_published_output(self):
+        """The guarantee is completeness, not a non-empty corpus.
+
+        Every output published up to 2026-10-01 was withdrawn (#254), so the
+        feed is legitimately empty. Asserting "<entry> appears" tested that the
+        project had published something, which is not a property of the feed.
+        """
+        import json
+        feed = self._feed()
+        live = sorted(
+            path.parent.name
+            for path in (REPO / "docs").glob("*/pipeline.json")
+        )
+        withdrawn = set(json.loads(
+            (REPO / "data" / "withdrawals.json").read_text(encoding="utf-8")))
+        expected = [doc_id for doc_id in live if doc_id not in withdrawn]
+        self.assertEqual(
+            len(expected), feed.count("<entry>"),
+            f"the feed has {feed.count('<entry>')} entries for "
+            f"{len(expected)} published outputs: {expected}",
+        )
+
+    def test_feed_updated_is_not_the_epoch(self):
+        """An empty feed still has to say something credible about its age."""
+        self.assertNotIn(
+            "<updated>1970-01-01", self._feed(),
+            "the feed claims it has not changed since 1970; it changed when "
+            "its last entry was withdrawn",
+        )
 
     def test_feed_entries_have_license(self):
         feed = self._feed()
