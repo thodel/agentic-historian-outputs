@@ -175,9 +175,15 @@ defects they exposed:
 - **The `supersedes` inversion is still in the publishing path.** Nothing has
   changed upstream, so the next publication that retires an id can make a stub
   canonical again in exactly the same way.
-- **Published failure records still do not exist.** Every `error_path` in a
-  generated catalogue points at a file that is never written, because
-  `write_error_record` is called only from tests.
+- ~~**Published failure records still do not exist.**~~ Fixed. The records are
+  written beside the catalogue that names them, and `write_catalogue` emits an
+  `error_path` only for a record it wrote, so the two cannot drift apart again.
+  The content was never lost — `write_package` always put the same provenance
+  in the ZIP — but `catalogue.json` is a loose published artifact whose own
+  `reuse_notice` tells a reader to cite the failure record, and a citation
+  needs an address that resolves. A styled-site case now fetches every
+  advertised record over HTTP, because checking the generator would not have
+  caught a record that the themed build drops.
 - **The ledger is still empty**, which is now trivially true: there is nothing
   published to reference. The BAT provenance above stands for whenever that
   material is published properly.

@@ -386,3 +386,49 @@ test("a withdrawn document keeps its URL and says it must not be cited", async (
     await context.close();
   }
 });
+
+// ── the records a catalogue points at ───────────────────────────────────
+
+test("every failure record a catalogue advertises resolves over HTTP", async () => {
+  // catalogue.json used to name 56 error_path files that were never written,
+  // because the function writing them was called only from tests. Checking
+  // the generator is not enough: what matters is that a reader following the
+  // path over HTTP gets the record, which is what this asks.
+  const { page, context } = await open("/", { from: fixtureOrigin });
+  try {
+    const index = await (await page.request.get(
+      `${fixtureOrigin}/catalogue-index.json`)).json();
+    const rows = Array.isArray(index) ? index : (index.records || []);
+    const ids = rows.map(row => row.i || row.id || row.doc_id).filter(Boolean);
+    assert.ok(ids.length > 0, "the fixture site lists no documents");
+
+    let checked = 0;
+    for (const id of ids) {
+      const response = await page.request.get(
+        `${fixtureOrigin}/${id}/recognitions/catalogue.json`);
+      if (response.status() !== 200) continue;
+      const catalogue = await response.json();
+      for (const artifact of catalogue.artifacts || []) {
+        if (!artifact.error_path) continue;
+        const target = `${fixtureOrigin}/${id}/${artifact.error_path}`;
+        const record = await page.request.get(target);
+        assert.strictEqual(
+          record.status(), 200,
+          `${id} advertises ${artifact.error_path}, which resolves to ` +
+          `${record.status()} — a failure record that 404s cannot be cited, ` +
+          "and its own reuse_notice tells a reader to cite it",
+        );
+        const body = await record.json();
+        assert.ok(body.status_code, "the record carries no typed status");
+        checked += 1;
+      }
+    }
+    assert.ok(
+      checked > 0,
+      "no failure record was checked; the fixture corpus should contain a " +
+      "failed recognition, so this test is not silently passing on nothing",
+    );
+  } finally {
+    await context.close();
+  }
+});
