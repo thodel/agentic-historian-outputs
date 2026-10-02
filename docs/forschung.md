@@ -8,10 +8,11 @@ title: Forschung
 Neben den einzelnen Ausgaben im [Katalog](index.html) entstehen in diesem
 Projekt Untersuchungen, die nicht ein Dokument betreffen, sondern das
 Verfahren selbst: wie gut die eingesetzten Erkennungsmodelle tatsächlich
-lesen, und was beim Nachtrainieren eigener Modelle schiefging.
+lesen, was beim Nachtrainieren eigener Modelle schiefging, und was ein
+vollständig durchgelesenes Korpus über die Grenzen dieser Messungen verrät.
 
-Beide Texte halten fest, **was gemessen wurde**, und trennen das bewusst von
-der Frage, was daraus für die Pipeline folgen soll. Sie sind auf Englisch
+Alle drei Texte halten fest, **was gemessen wurde**, und trennen das bewusst
+von der Frage, was daraus für die Pipeline folgen soll. Sie sind auf Englisch
 verfaßt; die [Sprachpolitik](about.html#sprachpolitik) erklärt, warum sie
 trotzdem hier verlinkt sind und nicht als interne Arbeitsdokumente gelten.
 
@@ -35,6 +36,18 @@ trotzdem hier verlinkt sind und nicht als interne Arbeitsdokumente gelten.
       die Zahl, an der es gemessen wurde, tatsächlich misst. Wo eine frühere
       Aussage sich als falsch erwies, steht die Korrektur im Text statt einer
       stillen Änderung.</dd>
+  </div>
+  <div>
+    <dt><a href="lassberg-evaluation/">Reading the Laßberg correspondence</a>
+      <span class="research-language" lang="en">englisch</span></dt>
+    <dd>6742 digitalisierte Briefseiten Joseph von Laßbergs, maschinell
+      gelesen: was der Durchlauf kostete, wie weit zwei Lesungen voneinander
+      abweichen, und — für ein Modell auf 276 Seiten — wie weit sie von einer
+      menschlichen Transkription abweichen. Der Befund, der alles weitere
+      bestimmt: die Fehlerrate spaltet sich um das Vier- bis Fünffache nach
+      der <em>Hand</em>, innerhalb eines Modells auf einem Korpus. Die Seite
+      ist kein Modellvergleich — sieben der acht Kandidaten haben noch keine
+      Qualitätszahl.</dd>
   </div>
 </dl>
 
