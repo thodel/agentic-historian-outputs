@@ -162,7 +162,44 @@ def _failure_provenance(candidate: dict) -> dict:
     }
 
 
-def _catalogue_data(doc_id: str, candidates: list[dict]) -> dict:
+def write_error_records(directory: Path,
+                        candidates: list[dict]) -> dict[str, str]:
+    """Write one failure record per failed candidate; return what was written.
+
+    ``catalogue.json`` used to advertise an ``error_path`` for every failed
+    candidate while nothing ever wrote the file: ``write_error_record`` existed
+    and was covered by three tests, but no production code called it. Every one
+    of the 56 ``error_path`` references in the published site pointed at a file
+    that was not there.
+
+    The content was not lost — ``write_package`` puts the same provenance in
+    the ZIP as ``candidates/<page>/<id>.error.txt``. But ``catalogue.json`` is
+    itself a loose published artifact, and a reader following its paths should
+    not have to download a package to resolve one. A successful candidate is a
+    loose citable file; a failed attempt now is too, beside it.
+
+    Returns a mapping of candidate id to the relative path written, which is
+    what ``_catalogue_data`` emits. Keeping the two in one place is the point:
+    a path appears in the catalogue only because a file was written for it.
+    """
+    written: dict[str, str] = {}
+    for candidate in candidates:
+        if not candidate["error"]:
+            continue
+        # An ambiguous path is already blanked for successful candidates
+        # (historical multi-page records collide at one publisher path). Never
+        # write a record whose name does not identify one attempt; the package
+        # still carries it, disambiguated by candidate id.
+        if not candidate["path"]:
+            continue
+        path = write_error_record(directory, candidate)
+        if path is not None:
+            written[candidate["id"]] = _error_path(candidate)
+    return written
+
+
+def _catalogue_data(doc_id: str, candidates: list[dict],
+                    error_paths: dict[str, str] | None = None) -> dict:
     # Issue #52: compute aggregate counts for catalogue-level filtering
     total = len(candidates)
     failed = sum(1 for c in candidates if c["error"] and not c.get("is_degenerate"))
@@ -202,7 +239,10 @@ def _catalogue_data(doc_id: str, candidates: list[dict]) -> dict:
             "error": (normalize(candidate).public_msg if candidate["error"]
                       else None),
             "path": candidate["path"] if candidate["path"] and not candidate["error"] else None,
-            "error_path": _error_path(candidate) if candidate["error"] else None,
+            # Only what was actually written. Deriving this from
+            # candidate["error"] is how the catalogue came to advertise 56
+            # files that did not exist.
+            "error_path": (error_paths or {}).get(candidate["id"]),
             "characters": len(candidate["text"]) if not candidate["error"] else None,
         } for candidate in candidates],
     }
@@ -212,8 +252,11 @@ def write_catalogue(directory: Path, doc_id: str, recognitions: list,
                     transcript: str) -> Path:
     path = directory / "recognitions" / "catalogue.json"
     path.parent.mkdir(parents=True, exist_ok=True)
+    candidates = _candidates(recognitions, transcript)
+    # The records first, so the catalogue can only name files that exist.
+    error_paths = write_error_records(directory, candidates)
     path.write_text(json.dumps(_catalogue_data(
-        doc_id, _candidates(recognitions, transcript)), ensure_ascii=False,
+        doc_id, candidates, error_paths), ensure_ascii=False,
         indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return path
 
