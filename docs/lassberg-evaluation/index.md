@@ -69,27 +69,55 @@ Hand-corrected transcriptions exist in Transkribus for part of this corpus. 552 
 | **scored** | **552** |
 | unusable (21 empty files, 3 below DONE) | 24 |
 
-DONE counts as ground truth here. A page marked DONE has been corrected by a human; this collection used the GT tag on only 19 pages, so requiring it would have discarded 96 % of the available truth.
+DONE counts as ground truth here. A page marked DONE has been corrected by a human; this collection used the GT tag on only 19 pages, so requiring it would have discarded 96 % of the available truth. The gate is enforced once and rejects a status below DONE loudly.
+
+The 27 pages with **no status recorded** are a different case: the gate reads `if gt.status and …`, so an unreadable status short-circuits it and the page is admitted without a warning. None of the 27 is hand-made — all 576 files carry the harvester's naming, and 23 of the 27 hold a `TranskribusMetadata` element that simply omits the status. The harvest knew it, because it only ever fetches corrected pages, and wrote the file without recording it. So 4.9 % of the ground truth is admitted on trust, and the policy is the reverse of the one the module argues for: a known-bad status is refused, an unknown one is accepted in silence.
 
 ### Matching, and the floor that is not a measurement
 
 Transkribus shares no identifier with the page keys this pipeline uses, so each ground-truth page is located by content: its text is scored against every page of a run, and the best match wins. Every match carries its runner-up, and is called *clear* only when the best is substantially better than the second best.
 
-That test turned out to carry most of the information. **Two unrelated German pages of this corpus score about 68 % CER against each other.** A large block of ground-truth pages matched at 60–69 % with a runner-up within a percentage point of the best — the signature of a page that is not in the run at all. Without the confidence test, 68 % would have entered the table as a quality figure for every one of them.
+That test turned out to carry most of the information. **Two unrelated German pages of this corpus score about 68 % CER against each other.** Cross-document ground truth scored against ground truth gives a 1st percentile of 68.6 % and a median of 78.5 %; the runner-up of a page that *was* located has a median of 67.2 % and never exceeds 70.6 %. Without the confidence test, 68 % would have entered the table as a quality figure for a large block of pages.
 
 276 pages located a corpus page unambiguously.
 
+### Two corrections to the paragraph above, found by re-reading the same run
+
+**The test is "clear" only when the best is half again better than the second best** — `cer × 1.5 < runner_up_cer` ([`gt_score.py:92`](https://github.com/thodel/agentic_historian/blob/main/agentic_historian/gt_score.py)). Put that factor beside a runner-up that sits on the 67–69 % chance floor and it becomes an absolute ceiling: **no page can be called located if it reads worse than about 45 %**, whatever it is. The boundary is visible in the table — 43.7 % and 43.8 % are clear, 44.9 %, 45.7 % and 45.8 % are doubtful, and nothing above 46 % is ever clear. The located set is therefore **censored, not sampled**, and the verdict cannot tell "the true page is absent from the run" from "the true page is present and was read badly".
+
+**The doubtful block is not one population, and this page previously said it was.** It is at least three, and only the first is a non-match.
+
+| | What it is | Evidence |
+|---|---|---|
+| ~a fifth of scored pages | A genuine non-match. CER is noise and the matched key arbitrary | A tight cluster at 69.0–69.2 %, no alignment to any window of the ground-truth page (window-CER 74–75 %), overshooting the page's own length floor by ~41 points. Two are exact floating-point ties, broken only by alphabetical key order |
+| Most of the 60–69 % band | A **correct** match of a long page that a line-trained reading only half covers | `doc1350778_page244` scores 68.6 % overall and 29.8 % against a *window* of its ground truth; page 251 scores 66.4 % / 32.3 %, page 264 68.1 % / 31.3 %. 17 of 24 sampled pages of that document match the same Winterthur shelfmark with strictly monotone ordinals — 16 of 16 steps, which chance does not produce |
+| The 47–60 % end | A correct match, read badly | 10–20 points below the chance floor, runner-ups 10–20 points worse, and the matched readings are recognisable verbatim (`doc1682344_page1`, 51.0 % against a runner-up of 68.5 %) |
+
+The missing discriminator is **length**. A 900–1400-character reading cannot score below 42–61 % against a 2000–2900-character ground-truth page however accurately it reads the part it covers. Non-matches overshoot that floor by ~41 points, correct partial matches by 9–25. A ratio between two CERs cannot separate those, which is why one rule marks a 12 % match and a correct 68.6 % match doubtful for opposite reasons.
+
+**And 15 of 71 sampled doubtful pages read at 12–25 %.** They are doubtful only because the run holds a near-duplicate of the page they matched, so the runner-up is almost as good. Duplication in the *reading* corpus costs ground-truth pages their verdict.
+
+One mechanism makes a page unlocatable before any of this: 625 of the 6719 readings are empty and 1349 are under 100 characters, and an empty candidate scores a CER of exactly 1.0. **A ground-truth page whose own reading came back empty can never win its own match** — it is not in the located set, and its absence is invisible there.
+
 ### What the ground truth turned out not to be
 
-**Two documents are a printed edition, not scans.** `doc1350777` and `doc1350778` carry 45–51 lines and 2000–2900 characters per page, their first lines are page numbers running 231–293, and one reads `BRIEFE PUPIKOFERS AN JVLASZBREG`. These are pages of an *edition* of the correspondence. They cannot match a letter scan, and they account for much of the unmatched block.
+**Two documents are a printed edition, not scans.** `doc1350777` (32 pages) and `doc1350778` (53) carry 45–51 lines and 2000–2900 characters per page, their first lines are folio numbers running 231–283, and the opening page reads `BRIEFWECHSEL ZWISCHEN J VON LASZBERG UND JOHANN ADAM PUPIKOFER` above an editor's introduction. These are pages of an *edition* of the correspondence. All 85 share one scan size, 2479 × 3508; no other document in the collection has it. They are **15.4 % of the scored pages and 27.9 % of the ground-truth characters** — mean 2458 characters and 47.9 lines against 1154 and 19.7 for the rest.
 
-**The same page appears under several document ids.** `doc7151593` and `doc4726794` hold identical text and score identically to three decimal places; so do at least five further pairs. Transkribus holds the same material under multiple document ids, and a page counted twice carries double weight in any average. The key list this harvest produces is deduplicated; the per-page table is not yet.
+*Correction:* this page previously said they account for much of the unmatched block. They do not. 85 pages are **about 31 % of the 276** that failed to locate, so they are a large distortion of the character budget and not the explanation of the split.
+
+**A corrected status does not mean a corrected page.** Those 85 carry uncorrected PyLaia output (`model_id=39995`) under statuses `Final` and `FINAL`, so the status ladder admitted machine output as ground truth. Two of them are two OCR passes of the same printed folio and disagree in 8 of 48 lines; one carries a fully garbled Greek line. Their own error rate is only 0.1–0.5 %, so they would serve as a reference — what disqualifies them is that no page of the manuscript corpus corresponds to them at all.
+
+**The same page appears under several document ids — 98 times, not five.** Measured over all 552 scored files: they describe **454 distinct pages**. There are 98 duplicate groups, every one of them a pair; 87 pairs are byte-identical text and 11 differ by one to four characters while sharing a Transkribus `pageId`. `doc4726754_page2` and `doc7152014_page6` are the same `pageId=86566867`. The pair `doc12542129_page2` / `doc12632012_page1` is the only kind that does *not* share a pageId: a second upload of the same images.
+
+*Correction:* the headline "552 ground-truth pages" counts files, so it overstates the available truth by 17.8 %. And the located fraction reads better against the right denominator: **276 of 454 distinct pages, 61 %**, not half of 552. Nothing in the scorer mentions duplicates and no test covers them.
 
 ### The result
 
-On the 276 located pages, scored against the human transcription, `qwen3.5-4b-german-xix-v2` reads at a character error rate ranging from **3.5 %** to about 56 %.
+On the 276 located pages, scored against the human transcription, `qwen3.5-4b-german-xix-v2` reads at a median character error rate of **17.2 %**, with the best page at **3.5 %**.
 
-That range is not noise, and it is not a property of the model.
+*Correction:* this page previously gave the range as 3.5 % to about 56 %. The upper end cannot belong to a located page. The confidence rule caps a located page at roughly 45 % (see above), the clear rows in the table stop at 43.8 %, and a clear row at 56 % would need a runner-up above 84 % — which no page has. The 56 % came from a row the scorer itself marked doubtful.
+
+That spread is not noise, and it is not a property of the model.
 
 | Written by | Example | CER |
 |---|---|---:|
@@ -102,6 +130,8 @@ That range is not noise, and it is not a property of the model.
 | Laßberg, from Meersburg | `doc4726783` "Auf der alten Meersburg am 17 October 1840" | 34.7 · 31.2 · 43.8 % |
 
 **The error rate splits by hand, by a factor of four to five, within a single engine on a single corpus.** His correspondents' hands read at 6–20 %; Laßberg's own reads at 27–45 %.
+
+**That factor is a lower bound.** Laßberg's hand reads at 27–45 %, and 45 % is exactly where the confidence rule stops admitting pages. His hardest pages cannot enter the located set at all, so the measured range is cut off at the top by the matcher rather than by the model. Whatever his true error rate is, it is worse than this table can show, and the gap to his correspondents is wider than four to five.
 
 This has a consequence for everything that follows. A corpus-wide average would hide it, and an engine comparison that does not control for it would reward whichever engine's pages happen to include more correspondent letters. The comparison has to be stratified.
 
@@ -132,6 +162,9 @@ A tenth is not a defect in this pipeline but shaped the measurements: the share 
 - **The French letters.** `kraken-fondue_gd_v2` is the only plausible candidate and is untested on them.
 - **Whether the 625 empty pages are blank.** Nobody has looked at the images.
 - **A median per hand**, for the reason given above.
+- **How badly Laßberg's hand actually reads.** The confidence rule cuts the located set off at about 45 % CER, which is inside his range, so his worst pages are absent by construction. Measuring him needs a match test that does not depend on how well the page was read — the Transkribus `pageId` would do it, if the readings carried one.
+- **Which doubtful pages are non-matches.** Three populations share that verdict and a CER ratio cannot separate them. The discriminator that can is each page's own length floor: the error rate a reading of its length cannot beat even when it is right. Nothing computes it yet.
+- **Whether the 27 unstatused pages were corrected.** The harvest only fetches corrected pages, so they probably were, but the file does not say and the harvester records nothing.
 
 ## Reproducing
 
