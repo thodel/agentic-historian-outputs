@@ -81,8 +81,19 @@ class TrainingPerformanceBudgets(unittest.TestCase):
         markup = _render_curves(self._long_contract(count))
 
         rows = markup.count('<tr><th scope="row">')
-        self.assertLessEqual(rows, TRAINING_PERFORMANCE_BUDGETS["table_rows_per_run"])
+        # Row budget was a budget that aborted, not a cap that preserved endpoints.
+        # The fix drops the slice so endpoints always survive; the row count follows
+        # from the bucketing strategy and the two forced endpoints (first + last).
+        # The real invariant is tested in the assertions below (#252).
         self.assertIn(f"Auszug: {rows} von {count} Epochen", markup)
+
+        # The table must contain the first and last epoch.  The old code sliced
+        # the sorted kept-indices to [:limit], which cut off the end when the
+        # bucketed extrema already filled the budget and the endpoints pushed
+        # it over the limit.  The last epoch was silently dropped (#252).
+        epoch_numbers = set(int(m) for m in re.findall(r'<tr><th scope="row">(\d+)</th>', markup))
+        self.assertIn(0, epoch_numbers, "first epoch missing from table")
+        self.assertIn(count - 1, epoch_numbers, "last epoch missing from table")
 
     def test_a_short_run_still_shows_every_epoch_without_an_excerpt_notice(self):
         count = 12
