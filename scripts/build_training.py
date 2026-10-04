@@ -385,7 +385,7 @@ def _select_table_rows(curves: list[CurveEpoch]) -> list[CurveEpoch]:
     kept = {point[0] for point in _sample_points(
         [(index, float(value)) for index, value in scored])}
     kept.update({0, len(curves) - 1})
-    return [curves[index] for index in sorted(kept)[:limit]]
+    return [curves[index] for index in sorted(kept)]
 
 
 def _render_curve_table(curves: list[CurveEpoch]) -> str:
