@@ -25,7 +25,8 @@ Two corpora, **three** bases, six model sizes, four sample granularities.
 | `qwen3.5-{4b,2b,0.8b}-german-xix-v{1,2}` | Qwen3.5 | the same | 5 |
 | `qwen3vl-german-xix-block-v1`, `-page-v1`, `-mixed-v1` | Qwen3-VL-4B | the same, cut into blocks of six lines / whole pages / all three mixed | 3 |
 | `qwen3vl-medieval-german-page-v1`, `qwen3.5-4b-…-page-v1` | Qwen3-VL-4B, Qwen3.5-4B | the medieval corpus, whole pages | 2 |
-| `gemma-4-{E4B,12B}-it` on the medieval corpus | Gemma 4 | the same, lines and whole pages | 3 (+3 running: E4B and 12B on the 19th c., 12B on the medieval pages) |
+| `gemma-4-{E4B,12B}-it` on the medieval corpus | Gemma 4 | the same, lines and whole pages | 3 |
+| `gemma-4-{E4B,12B}-it` on the 19th century, `gemma-4-12B` on the medieval pages | Gemma 4 | both corpora | 2 landed 2026-10-03/04, 1 running |
 
 Each is a QLoRA adapter over a frozen base, one epoch, trained on one H100 (UBELIX) or two A40s. A 19th-century run costs 4–10 GPU-hours; building its corpus costs 2–16 CPU-hours, most of it copying files. Later runs cost nothing to prepare at all: the compiled corpus is content-addressed and the base model is not part of its key, so a second base trains on the first one's bytes and, more importantly, on its split.
 
@@ -84,6 +85,8 @@ random one, saying so in a single log line nobody reads: `0 source(s) could be a
 strata`. Two of the page arms below were scored that way. The numbers are sound; they are simply
 not on the same 200 pages, so the small differences between them are not comparable at the
 0.6-point resolution this section establishes.
+
+**It happened a third time, on 2026-10-04, and this time the split was shared.** The 19th-century Gemma E4B arm takes its corpus from the Qwen3-VL run by symlink — `crops`, `train.jsonl` and `pages_val.lst` all point into that job's directory, so the training data and the page-level split are the same bytes. Its evaluation draw is not: the stratification is computed from `job.progress.dataset_counts`, which belongs to the **job** and not to the corpus, so an arm that adopted an artefact rather than compiling one plans a different subset out of the same pool. The four Qwen arms of that ladder share one `data/val_eval.jsonl` byte for byte; the Gemma arm wrote its own. **The check is one line** — compare the md5 of `data/val_eval.jsonl` across the arms before putting their CERs in one table — and it is now the first thing done to a ladder.
 
 The same mistake was nearly made again a year later, in a smaller way, and it is worth recording because the fix is cheap. Two runs on the same corpus and the same split reported 14.27 % and 16.88 %, and the difference looked like a result. Each run's evaluation subset, however, is drawn at test time — and the two draws **overlapped in 4 of 200 samples**. Re-scoring the first model on the second's subset gave 13.65 %, which made the comparison real. It also produced, for the first time, an error bar: the same model on two draws from the same pool differs by **0.6 points**, so nothing smaller than that is a finding at all.
 
@@ -244,12 +247,22 @@ Only the fourth of those is a defect in the ordinary sense. The rest are places 
 
 **What this does not establish** is that Gemma cannot do better. Every hyperparameter in both runs was chosen for Qwen. A separate plan now collects what the model's own documentation recommends — a different adapter scope, a different token budget, trained embeddings — and the first thing it will test is the budget the comparison above took away.
 
+### Two more arms landed, and neither answers the question it was queued for
+
+**The 19th-century E4B arm finished at 11.10 % CER** after sixteen attempts across a week of preemptions — and the number cannot be put beside the ladder it was meant to join. The four Qwen arms of that ladder read the same corpus at 4.78 %, 5.33 %, 5.49 % and 7.04 %, but on a draw this arm does not share (§3). A re-score on the shared draw is queued; until it lands, the only honest statement is that an arm at roughly 4.5 B transformer parameters reads this corpus **worse than a 0.87 B Qwen reads it**, by a margin of about four points — far outside the 0.6-point draw resolution, so the direction survives even though the figure does not.
+
+**The 12 B medieval page arm trained to completion and produced nothing.** Three epochs, validation loss improving 2.837 → 2.611 → 2.645, the best adapter promoted from step 1012 — and a test CER of **96.20 %**. It is not a bad reading; it is an absent one. Over 164 pages the model emitted **four distinct outputs**, the most common of them 68 times, averaging 101 characters against a reference averaging 1 226. The text it emits is the archival stamp that appears on many pages of that collection — `Königsf. 100 / Staatsarchiv / AARGAU` — so it learned the most frequent furniture of a page and ignored the image.
+
+Two explanations are ruled out by measurement rather than by argument. **Not truncation:** the report's own `truncated_cer` of 95.83 % sits within half a point of the CER, only fifteen samples in the whole run exceeded `max_seq_len=4096` (at 4 098–4 263 tokens), and a token ceiling would have produced 164 *different* stumps rather than four identical ones. **Not the vision tower:** the warning in its log — `exclude_modules=.*\.(vision_tower|audio_tower)\..* but no modules were excluded` — looks like the defect §6 item 4 describes, but the saved adapter holds 656 tensors and **none** under a vision subtree. There was nothing there to exclude.
+
+So the question this arm was queued to answer — whether size carries pages the way it carries lines — is still open, and now for a different reason. What the run does establish is narrower and still useful: a family can train to convergence on a page corpus, promote a best adapter on a falling validation loss, and emit a constant. **Validation loss did not detect it.** The only signal that did was counting distinct outputs, which no stage does.
+
 ## Open questions
 
 - **Over-generation on sparse pages** is the page model's remaining weakness and the same failure the medieval page model shows. Neither a larger nor a smaller pixel budget addresses it.
 - **Whether Gemma closes the gap when it is tuned for itself**, starting with the visual-token budget its own default sets higher than ours did. Until that is measured, §6 says "worse as a drop-in", which is a narrower claim than "worse".
 - **A page-level Gemma number on the 19th-century corpus**, scored on the published benchmark rather than on a split of our own, is training now. It is the first cross-family number that will be comparable to a figure someone else can reproduce.
-- **Whether size carries pages the way it carries lines.** At 12 B Gemma wins on lines and at ~4.5 B it loses on pages by nine points. A 12 B page arm is queued; until it lands, the two granularities say opposite things about the same family.
+- **Whether size carries pages the way it carries lines.** At 12 B Gemma wins on lines and at ~4.5 B it loses on pages by nine points. The 12 B page arm has now landed and collapsed to a constant output (above), so it answers nothing; the question needs the run repeated, and the repeat needs a stage that fails a run whose outputs do not vary.
 - **Whether a 12 B Qwen would take the lead back.** The size comparison above is one-sided: three arms, and only one of them large. Nobody has trained the obvious control.
 - **Training variance is still unmeasured.** §3 establishes that drawing a different evaluation subset moves a CER by 0.6 points. What two runs of the *same* arm at different seeds do is unknown, and every ranking on this page assumes it is small.
 - **There is no page-level benchmark** with ground truth that no run has seen. The published Federal Council test set is 2 751 isolated lines. Until one exists, page numbers are measured on held-out pages of our own corpora, which is weaker.
