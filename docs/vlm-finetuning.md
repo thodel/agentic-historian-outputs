@@ -283,7 +283,19 @@ Only the fourth of those is a defect in the ordinary sense. The rest are places 
 
 ### Two more arms landed, and neither answers the question it was queued for
 
-**The 19th-century E4B arm finished at 11.10 % CER** after sixteen attempts across a week of preemptions — and the number cannot be put beside the ladder it was meant to join. The four Qwen arms of that ladder read the same corpus at 4.78 %, 5.33 %, 5.49 % and 7.04 %, but on a draw this arm does not share (§3). A re-score on the shared draw is queued; until it lands, the only honest statement is that an arm at roughly 4.5 B transformer parameters reads this corpus **worse than a 0.87 B Qwen reads it**, by a margin of about four points — far outside the 0.6-point draw resolution, so the direction survives even though the figure does not.
+**The 19th-century E4B arm finished after sixteen attempts across a week of preemptions**, at 11.10 % CER on its own evaluation draw and **6.44 % on the one its four Qwen siblings share**. The ladder, all five arms on one draw:
+
+| Base | Params | CER |
+|---|---:|---:|
+| `Qwen/Qwen3.5-4B` | 4.66 B | **4.78 %** |
+| `Qwen/Qwen3-VL-4B-Instruct` | 4.44 B | 5.33 % |
+| `Qwen/Qwen3.5-2B` | 2.27 B | 5.49 % |
+| `google/gemma-4-E4B-it` | ~4.5 B transformer | 6.44 % |
+| `Qwen/Qwen3.5-0.8B` | 0.87 B | 7.04 % |
+
+*Correction, and it is this page's own claim that was wrong.* When only the own-draw figure existed, this section said the arm reads the corpus "worse than a 0.87 B Qwen reads it" and that "the direction survives even though the figure does not". **The direction did not survive.** On the shared draw Gemma sits fourth of five — better than the 0.87 B Qwen, between the 2.27 B and the 0.87 B, and 1.7 points behind the 4.66 B. Gemma is behind on this corpus as it is on the medieval one, but by a third of what the uncorrected number suggested.
+
+**The draw moved that number by 4.66 points, and that is the larger finding.** It is the same adapter, the same validation pool — the arm's `val.jsonl` is a symlink into its sibling's job directory — the same seed, and a stratification with the same source mix: both draws report `200 pages, stratified (100 per source …, seed 42) kurrent-xix=100 … zh-regierungsratsprotokolle=100`. The only difference is which 100 pages per source the plan happened to pick, because the attributable pool it picks from differed by 91 of 93 280 pages. §3 puts the resolution of this measurement at **0.6 points**, established from two overlapping draws on the medieval corpus. On the 19th-century corpus two non-overlapping draws of one pool differ by nearly **eight times** that. The 0.6-point figure is a floor for a corpus where the draws overlap, not an error bar for this one, and every single-draw comparison on the 19th century should be read with that in mind.
 
 **The 12 B medieval page arm trained to completion and produced nothing.** Three epochs, validation loss improving 2.837 → 2.611 → 2.645, the best adapter promoted from step 1012 — and a test CER of **96.20 %**. It is not a bad reading; it is an absent one. Over 164 pages the model emitted **four distinct outputs**, the most common of them 68 times, averaging 101 characters against a reference averaging 1 226. The text it emits is the archival stamp that appears on many pages of that collection — `Königsf. 100 / Staatsarchiv / AARGAU` — so it learned the most frequent furniture of a page and ignored the image.
 
