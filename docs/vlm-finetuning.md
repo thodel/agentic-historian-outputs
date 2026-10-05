@@ -135,7 +135,23 @@ corpus and one shared split:
 | `gemma4-e4b-medieval-german-page-v1` | Gemma-4-E4B | 51.8 % | 90.1 | 1.10 | 39.0 % |
 
 The two Qwen arms are a point apart on different draws, which by §3 is not a finding. Gemma is
-nine points behind, which is. And it is behind for a reason that inverts the expectation the run
+nine points behind, which is.
+
+**All five page arms, re-scored onto one draw** (164 pages, 2026-10-05). The CER column above is
+each arm's own draw; this one is comparable across rows, and it moves three of them:
+
+| Arm | CER, one draw | own draw | s/step at micro-batch 2 × 8 |
+|---|---:|---:|---:|
+| `olmocr2-7b-medieval-german-page-v1` | **34.9 %** | — | 29.1 |
+| `qwen3.5-4b-medieval-german-page-v1` | 37.6 % | 41.6 % | 24.3 |
+| `qwen3vl-medieval-german-page-v1` | 42.7 % | — | 10.3 |
+| `gemma4-e4b-medieval-german-page-v1` | 55.0 % | 51.8 % | 9.1 |
+| `gemma4-12b-medieval-german-page-v1` | 96.2 % | — | 13.7 (micro 1 × 16) |
+
+The draw was worth 4.0 points to one arm and −3.2 to another, so the ordering of the two Qwen arms
+survives and its size does not: 5.1 points apart, not 1.1. Gemma's deficit grows from nine points to
+seventeen. And the cost column changes how the winner reads: olmOCR's 2.7 points over the
+next-best cost 20 % more time per step, while its 7.7 points over `qwen3vl` cost 180 % more. And it is behind for a reason that inverts the expectation the run
 was submitted with: Gemma spends a fixed token budget per image whatever the image is, so a line
 costs nearly what a page costs — the penalty should be *smallest* where the image really is a whole
 page. It is largest there, and it survives removing the truncations, so it is not an early-stopping
