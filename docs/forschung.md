@@ -40,14 +40,16 @@ trotzdem hier verlinkt sind und nicht als interne Arbeitsdokumente gelten.
   <div>
     <dt><a href="lassberg-evaluation/">Reading the Laßberg correspondence</a>
       <span class="research-language" lang="en">englisch</span></dt>
-    <dd>6742 digitalisierte Briefseiten Joseph von Laßbergs, maschinell
-      gelesen: was der Durchlauf kostete, wie weit zwei Lesungen voneinander
-      abweichen, und — für ein Modell auf 276 Seiten — wie weit sie von einer
-      menschlichen Transkription abweichen. Der Befund, der alles weitere
-      bestimmt: die Fehlerrate spaltet sich um das Vier- bis Fünffache nach
-      der <em>Hand</em>, innerhalb eines Modells auf einem Korpus. Die Seite
-      ist kein Modellvergleich — sieben der acht Kandidaten haben noch keine
-      Qualitätszahl.</dd>
+    <dd>Rund 6700 digitalisierte Briefseiten Joseph von Laßbergs, maschinell
+      gelesen, und <strong>acht Erkennungsmodelle</strong> gegen eine
+      menschliche Transkription von 226 Seiten gemessen. Zwischen dem besten
+      und dem schlechtesten liegt Faktor 3,3 im Median — kein Feld von
+      Gleichen, und damit ist Fusion der Lesungen nach allem, was dazu
+      gemessen wurde, der falsche Weg. Der Befund, der die Zahlen begrenzt:
+      die Fehlerrate spaltet sich um das Vier- bis Fünffache nach der
+      <em>Hand</em>, innerhalb eines Modells auf einem Korpus. Und der Share
+      hält inzwischen 35 Seiten nicht mehr, für die handkorrigierter Text
+      vorliegt.</dd>
   </div>
 </dl>
 

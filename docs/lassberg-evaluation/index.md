@@ -7,31 +7,38 @@ title: "Reading the Laßberg correspondence"
 
 # Reading the Laßberg correspondence
 
-6742 digitised pages of letters to and from Joseph von Laßberg (1770–1855), held across thirteen archives and libraries, were read end to end by machine. This page records what that cost, how far the readings disagree with each other, and — for one engine, on 276 pages — how far they disagree with a human transcription.
+Some 6700 digitised pages of letters to and from Joseph von Laßberg (1770–1855), held across thirteen archives and libraries, were read end to end by machine. **Eight recognition engines** then read the pages for which a human transcription exists and were scored against it. This page records what that cost, how far the readings disagree with each other, and how far each of them differs from the transcription.
 
-It records **what was measured**, and marks clearly where a number is provisional. One result here is a measurement of quality; everything else is a measurement of cost or of disagreement, and those are not the same thing. Where a figure contradicts something this project said earlier, the correction is stated rather than quietly applied.
+It records **what was measured**, and marks clearly where a number is provisional. The engine comparison is a measurement of quality, because one side of it is a human transcription; the run figures measure cost, and the disagreement figures measure neither. Where a figure contradicts something this project said earlier, the correction is stated rather than quietly applied — and seven of them do.
 
-**What this page is not.** It is not an engine comparison. Eight candidate engines are queued against this ground truth and have not run; the single quality column below belongs to one model. Treating it as a ranking would be reading one number as a field.
+**What this page was not, until 5 October 2026.** It said, in this place, that it was not an engine comparison, because seven of the eight candidates had no quality figure. They have one now.
 
 ## The corpus
 
 | | |
 |---|---|
 | Material | German Kurrent, c. 1808–1855, letters and enclosures |
-| Extent | 6742 pages · 73.87 GB uncompressed TIFF |
+| Extent | 6722 pages · 73.98 GB uncompressed TIFF (5 October 2026) |
 | Holdings | Aarau, Basel, Donaueschingen, Freiburg i. Br., Karlsruhe (blb), Appenzell, Luzern, Marbach, St. Gallen, Stuttgart (wlb), Thurgau, Weimar, Winterthur, Zürich |
 | Access | GWDG Nextcloud public share, read in place |
 
 The share is one folder per holding institution, then one per letter. A folder name is therefore the **archive that holds the letter, not the hand that wrote it** — a distinction that matters below, and which this project initially got wrong.
 
-## What two complete runs cost
+**The corpus is not stable, and this page previously gave its extent as fixed.** On 2 October the share held 6742 files and 73.87 GB; on 4 October, 6722 and 73.98 GB. Two folders had gone, each answering 404 as a whole rather than losing individual files: `Briefe UB Freiburg/` and `Donaueschingen/Photos-1-001/`. Between them they held the images of **35 pages for which hand-corrected text exists** — six letters and a set of photographs — so those pages can no longer be measured or published. The transcriptions are untouched in Transkribus; it is the digitisations that are absent, and whether they were deleted, moved or renamed is a question for the share's custodians. The engine comparison below therefore ran over 241 reachable pages where the ground-truth harvest had located 276.
 
-| Run | Engine | Pages | chars/page | s/page | Wall | Empty |
+## What the runs cost
+
+| Run | Engine(s) | Pages | chars/page | s/page | Wall | Empty |
 |---|---|---:|---:|---:|---:|---:|
 | `atr_corpus_qwen35_line` | `qwen3.5-4b-german-xix-v2` | 6719 | 1088 | 19.3 | 79.6 h | 625 (9.3 %) |
 | `atr_trocr_corpus` | `trocr-kurrent` | 899 | 844 | 38.0 | 8.7 h | 77 (8.6 %) |
+| `atr_gt_candidates` | seven candidates | 241 each | — | ~40 | 16.5 h | — |
 
-Neither run was cut off at a token ceiling, which is worth stating because a page that hits one comes back as an ordinary success and stops mid-sentence.
+The candidate run is 1687 page-engine pairs with **no failures and no source errors**, and it was the first time four of the kraken engines had read a page in this stack at all. It read only the pages the ground truth locates, which is why it is 16.5 hours and not the fortnight the whole corpus would have cost for seven engines.
+
+**Every engine costs about the same per page** — 1.4 to 1.7 pages a minute — whether it is a 15.8 GiB vision-language model or a 2.6 GiB line recogniser, and whether the page cache was cold or warm. Whatever dominates the per-page cost is therefore common to all of them, request overhead or the size of a 25 MB TIFF, and not the model. *Correction:* a working estimate published here assumed the line recognisers would be some three times faster than the vision models, on the strength of a three-page smoke run. Over 241 pages they are not.
+
+Neither corpus run was cut off at a token ceiling, which is worth stating because a page that hits one comes back as an ordinary success and stops mid-sentence.
 
 **The empty pages are a property of the page, not of the engine.** Both runs report the same rate, and the twenty each report names are the same twenty in the same order. A page both engines return nothing for is most likely a blank verso or an envelope flap; a page one returns nothing for would have meant a segmenter that found no lines. The coincidence is evidence for the first reading — not proof, since the reports print only twenty names each.
 
@@ -56,7 +63,7 @@ Two corrections are built into that table.
 
 **One engine's padding moved the page-length column.** Before the quality classifier described below, the same comparison read 973 vs **1183** characters per page — a gap that reads as "the VLM transcribes more". Thirty pages account for it, each padded with thousands of repeated characters. Removing them closed the gap to 24 characters.
 
-## Ground truth, and the one quality measurement
+## Ground truth, and how a page is found at all
 
 Hand-corrected transcriptions exist in Transkribus for part of this corpus. 552 pages at status DONE, FINAL or GT were harvested on 2 October 2026.
 
@@ -117,6 +124,8 @@ On the 276 located pages, scored against the human transcription, `qwen3.5-4b-ge
 
 *Correction:* this page previously gave the range as 3.5 % to about 56 %. The upper end cannot belong to a located page. The confidence rule caps a located page at roughly 45 % (see above), the clear rows in the table stop at 43.8 %, and a clear row at 56 % would need a runner-up above 84 % — which no page has. The 56 % came from a row the scorer itself marked doubtful.
 
+**The eight-engine run below gives this engine 16.1 % over 226 pages, and the two figures measure different things.** 17.2 % is a median over the ground-truth *files* this engine located on its own; 16.1 % is a median over distinct corpus *pages* located by eight readings in agreement. Counting pages rather than files accounts for most of the difference, and requiring eight readings to agree makes a page harder to locate, which is why 226 is fewer than 276.
+
 That spread is not noise, and it is not a property of the model.
 
 | Written by | Example | CER |
@@ -135,9 +144,44 @@ That spread is not noise, and it is not a property of the model.
 
 This has a consequence for everything that follows. A corpus-wide average would hide it, and an engine comparison that does not control for it would reward whichever engine's pages happen to include more correspondent letters. The comparison has to be stratified.
 
+## How the engines compare
+
+On 5 October 2026 eight readings of the same pages were scored against the human transcription in one run: the seven candidates over the pages the ground truth locates, and the corpus reading from September. **226 corpus pages were located, each counted once** — of the 241 the candidate run could reach, since 35 pages lost their images.
+
+| Engine | Median CER | p90 | best page | worst page |
+|---|---:|---:|---:|---:|
+| `qwen3.5-4b-german-xix-v2` | **16.1 %** | 34.1 % | 3.5 % | 43.8 % |
+| `qwen3vl-german-xix-v2` | **16.8 %** | 37.3 % | 4.5 % | 45.9 % |
+| `trocr-kurrent-xvi-xvii` | 18.7 % | 39.9 % | 6.3 % | 55.0 % |
+| `trocr-kurrent` | 22.3 % | 45.7 % | 7.6 % | 75.0 % |
+| `kraken-fondue_gd_v2` | 22.3 % | 38.4 % | 6.1 % | 51.4 % |
+| `kraken-manu_mcfondue` | 26.9 % | 42.8 % | 6.8 % | 53.4 % |
+| `kraken-bohemian_19th` | 44.1 % | 61.5 % | 14.8 % | 68.4 % |
+| `kraken-mendelssohn_letters` | 53.2 % | 63.2 % | 25.0 % | 69.2 % |
+
+**This is not a field of equals.** Between first and last there is a factor of 3.3 in the median. That settles more than an order: majority voting over several readings has been measured to win among comparable candidates whose errors are uncorrelated, and to lose where one candidate dominates weaker ones. These eight are the second case, so fusing them would be expected to make the best reading worse. The disagreement table above, which read as "comparable candidates", was the wrong instrument for that question.
+
+**The two fine-tuned Qwen models lead**, and the one that has already read the whole corpus leads overall — so the 79.6 hours spent in September were not spent on the wrong engine. The 0.7-point gap between the two is not a decisive difference on 226 pages.
+
+**`kraken-mendelssohn_letters` is finished as a candidate.** A median of 53.2 % and a worst page of 69.2 % put it at the chance floor for unrelated German text: on the harder pages it produces text that is German-shaped and does not correspond to the page.
+
+**A model for the wrong century beats one named for the right one.** `trocr-kurrent-xvi-xvii`, trained on sixteenth- and seventeenth-century material, reads this nineteenth-century Kurrent better than `trocr-kurrent` (18.7 % against 22.3 %), and `kraken-fondue_gd_v2`, trained on French hands, ties with it on the median and beats it at p90 (38.4 % against 45.7 %). Training-set labels are a weak predictor here.
+
+### Why eight readings measure more than one can
+
+The confidence rule described above — a match counts as clear only when the best is half again better than the runner-up — caps a *single* reading's located pages at roughly 45 % CER. With eight readings the cap moves off the engine being measured: a page is located when the readings agree **and at least one** of them places it clearly, so a page that `qwen3.5` reads at 20 % can be scored for `kraken-mendelssohn_letters` at 69 %. That is why the worst-page column above reaches figures no single-engine measurement could have shown, and it is a real gain in what the table can say about weak engines.
+
+The censoring is reduced, not removed. A page **no** engine reads well enough still cannot be located, so the located set remains bounded by the best engine rather than by the corpus. Laßberg's hardest pages are still likely to be missing, and the stratification point below is unaffected.
+
+### Two cautions about these numbers
+
+**The pages are not a sample of the corpus.** They are the pages that have hand-corrected text *and* were located, which is 226 of some 6700. The hand effect below is larger than the differences between most of these engines, so a figure here is a statement about which hands happened to be measured.
+
+**The first version of this table was wrong, and the correction changed a rank.** It counted ground-truth files rather than pages: 66 corpus pages of this ground truth are described by 138 files, so 72 pages entered every median two or three times. Counting each page once moved `trocr-kurrent` from 25.6 % to 22.3 % — from behind `kraken-fondue_gd_v2` to level with it. The duplicates are not an error in the harvest but two people's corrections of one page, so they are averaged into one figure per page rather than dropped.
+
 **And the obvious stratification key does not work.** This project proposed grouping by the first path segment, on the reasoning that it encodes provenance and provenance tracks the hand. It does not: `doc7151991` (Wackernagel, 8.1 %) and `doc4726780` (Laßberg, 34.8 %) are both held in Basel and both sit under `Basel__`. The folder is the holding archive, which holds both sides of a correspondence. Assigning a writer needs the dateline or the Transkribus document metadata, and is not yet in code — the groupings in the table above were read off the datelines by hand, and no median over them has been computed.
 
-## Nine defects the measurements found
+## Thirteen defects the measurements found
 
 Measuring this corpus was mostly a matter of finding out why the measurement was wrong. Each of these was found by a number that could not be true.
 
@@ -152,14 +196,20 @@ Measuring this corpus was mostly a matter of finding out why the measurement was
 | One empty file | A 16-page scoring run reported nothing at all | One unreadable file raised instead of being collected; 15 measured pages were discarded with it |
 | Unlisted model | A smoke run spent 23 minutes to fail on its first page | An id the gateway had already said it does not have was treated as "unknown — run anyway" |
 | Punctuation floor | Word-identical texts scored 3.1 % against each other | The metric strips punctuation *after* collapsing whitespace |
+| Keys all missing | "None of the 276 keys name a page under this source" | `--limit 3` cut the corpus to its first three pages *before* the key filter ran, so 276 correct keys matched none of them. The message read as a key-spelling problem and was not one |
+| Share "down" | The same request answered 207 from a shell and 401 from a service, seconds apart | A stale password in the service's environment. A value already in `os.environ` wins over every `.env` file, so the corrected file looked innocent and three rounds of diagnosis went to the wrong half of the system |
+| Waiting for deleted files | A run read fifteen pages in 140 minutes and looked merely slow | A 404 from the source was routed through the circuit built for outages: five failures in a row, pause 60 s, then 120, then 900, retrying files that had been removed from the share |
+| Pages counted as files | The comparison table claimed 298 pages | It counted ground-truth files, one section below its own report's warning that 66 pages are described by 138 files. 226 is the count, and the correction moved one engine's rank |
 
-A tenth is not a defect in this pipeline but shaped the measurements: the share answered 401 to every request on 2 October, the mount was empty, and some 6700 pages sat on local disk in a cache that was not an admissible source. It is one now.
+A fourteenth is not a defect in this pipeline but shaped the measurements: the share answered 401 to every request on 2 October, the mount was empty, and some 6700 pages sat on local disk in a cache that was not an admissible source. It is one now.
+
+Three of the four newest are failures of diagnosis rather than of code — a filter applied after a cut, a status code read as a statement about the server rather than about the process asking, and a page count that was a file count directly under its own warning. Each was settled by one observation that nobody had made: the order of two operations, the length of a password in two processes, the difference between a file and a page.
 
 ## What is not measured
 
-- **Seven of eight candidate engines.** `trocr-kurrent`, `trocr-kurrent-xvi-xvii`, `kraken-bohemian_19th`, `kraken-mendelssohn_letters`, `kraken-fondue_gd_v2`, `kraken-manu_mcfondue` and `qwen3vl-german-xix-v2` have no quality figure here. Four of the kraken models have never read a page in this stack.
-- **Whether fusion helps.** The symmetry signals favour trying it; the magnitude of disagreement does not settle it.
-- **The French letters.** `kraken-fondue_gd_v2` is the only plausible candidate and is untested on them.
+- **Whether fusion helps.** The comparison now predicts that it does not for these eight, because one candidate dominates weaker ones. It has not been tried, and the prediction rests on measurements made elsewhere.
+- **The French letters.** `kraken-fondue_gd_v2` has now read German pages creditably — level with `trocr-kurrent` on the median, better at p90 — and nobody has scored it on the French material it was trained for.
+- **The 35 withdrawn pages.** Their transcriptions exist and their images do not. Until the share's custodians answer, they are measurable only if a copy turns up elsewhere.
 - **Whether the 625 empty pages are blank.** Nobody has looked at the images.
 - **A median per hand**, for the reason given above.
 - **How badly Laßberg's hand actually reads.** The confidence rule cuts the located set off at about 45 % CER, which is inside his range, so his worst pages are absent by construction. Measuring him needs a match test that does not depend on how well the page was read — the Transkribus `pageId` would do it, if the readings carried one.
@@ -168,6 +218,8 @@ A tenth is not a defect in this pipeline but shaped the measurements: the share 
 
 ## Reproducing
 
-The runs, the comparison and the scoring are three commands in the [`agentic_historian`](https://github.com/thodel/agentic_historian) repository; `docs/BATCH_ATR.md` there is the runbook. The ground truth is a Transkribus collection and is not public. The readings are published per page as plain text.
+The runs, the comparison and the scoring are commands in the [`agentic_historian`](https://github.com/thodel/agentic_historian) repository; `docs/BATCH_ATR.md` there is the runbook and names the five steps in the order in which each produces what the next one reads. The ground truth is a Transkribus collection and is not public. The readings are published per page as plain text.
 
-The figures on this page come from the runs' own reports, rebuilt from the files on disk rather than observed as the runs happened — which is why the *failed* column of those reports is not quoted here: a page that failed wrote nothing, and nothing is what a rebuilt report cannot count.
+Scoring 552 ground-truth files against eight readings takes about 32 minutes of one CPU, most of it spent matching each page against the 6719-page corpus reading.
+
+The figures for the two older runs come from reports rebuilt from the files on disk rather than observed as those runs happened — which is why the *failed* column is not quoted for them: a page that failed wrote nothing, and nothing is what a rebuilt report cannot count. The candidate run's report was written at the end of the run, so its zero failures are a measurement.
