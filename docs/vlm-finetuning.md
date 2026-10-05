@@ -160,6 +160,40 @@ model on this material is already usable on the pages that carry text, and that 
 is concentrated in a failure mode — write until the cap on a nearly empty page — which no pixel
 budget has moved and which a length check catches for free.
 
+### A family whose strong granularity is the page
+
+A sixth base was then trained on the same medieval corpus at both granularities:
+`allenai/olmOCR-2-7B-1025`, which is not a general vision model but a Qwen2.5-VL fine-tuned by its
+authors on document OCR. It is the first family measured here whose two granularities come out the
+other way round.
+
+| | Lines (200 samples, one draw) | Pages (164 pages, one draw) |
+|---|---:|---:|
+| `olmocr2-7b` | **74.6 %** | **34.9 %** |
+| best other arm on that draw | 12.1 % (`qwen3.5-9b`) | 42.7 % (`qwen3vl`) |
+
+On pages it is **7.7 points better** than the best previous arm on byte-identical samples, at a
+length ratio of 1.006 — the best page number this project has. On lines it is the worst arm in the
+field by a factor of six, at a length ratio of 0.649: it answers two thirds of the text and gets
+most of that wrong. Same base, same corpus, same split, same instruction; only the unit differs.
+
+**This does not contradict the heading of this section — it extends it one level down.** The other
+five bases were pre-trained on general image–text pairs and fine-tuned here on lines or on pages,
+and each read best what it was fine-tuned on. olmOCR arrives already fine-tuned, by someone else, on
+whole document pages. Fine-tuning it on line crops asks it to unlearn that, and 306 582 lines of
+QLoRA over a frozen base does not. *A model reads the unit it was trained on* turns out to mean the
+unit it was trained on **first**.
+
+Two readings are ruled out. **It is not the token budget:** olmOCR's 28-px cell spends 334 image
+tokens on a line where Qwen spends 256, and 2 674 on a page where Qwen spends 2 048 — 30 % more at
+both granularities, so a budget argument would have to explain a gain and a loss with the same sign.
+**It is not a broken run:** both arms report `status: completed`, and the line arm's failure is
+visible in the length ratio rather than in a traceback.
+
+The practical consequence is a change to how this project picks a base. Until now the question was
+which base reads best; for page work it is now **which base was pre-trained on pages**, and that is
+answerable from a model card before any GPU is booked.
+
 ### The mixed run: one model can read all three, and pays for it
 
 A fifth model was then trained on the same corpus and split with lines, blocks and pages **in one training set** — 50 % lines, 30 % blocks of six, 20 % whole pages, each at its own pixel budget, 119 850 samples. Scored on its own held-out split, 200 samples drawn evenly across the four sources:
@@ -262,6 +296,7 @@ So the question this arm was queued to answer — whether size carries pages the
 - **Over-generation on sparse pages** is the page model's remaining weakness and the same failure the medieval page model shows. Neither a larger nor a smaller pixel budget addresses it.
 - **Whether Gemma closes the gap when it is tuned for itself**, starting with the visual-token budget its own default sets higher than ours did. Until that is measured, §6 says "worse as a drop-in", which is a narrower claim than "worse".
 - **A page-level Gemma number on the 19th-century corpus**, scored on the published benchmark rather than on a split of our own, is training now. It is the first cross-family number that will be comparable to a figure someone else can reproduce.
+- **Whether a page-pre-trained base beats a bigger general one.** olmOCR at 7 B reads pages better than every general base measured here, including a 12 B one. Whether that is the pre-training or the size is unseparated: no general 7 B page arm exists, and no page-pre-trained 4 B one either.
 - **Whether size carries pages the way it carries lines.** At 12 B Gemma wins on lines and at ~4.5 B it loses on pages by nine points. The 12 B page arm has now landed and collapsed to a constant output (above), so it answers nothing; the question needs the run repeated, and the repeat needs a stage that fails a run whose outputs do not vary.
 - **Whether a 12 B Qwen would take the lead back.** The size comparison above is one-sided: three arms, and only one of them large. Nobody has trained the obvious control.
 - **Training variance is still unmeasured.** §3 establishes that drawing a different evaluation subset moves a CER by 0.6 points. What two runs of the *same* arm at different seeds do is unknown, and every ranking on this page assumes it is small.
