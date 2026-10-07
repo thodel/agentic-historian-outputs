@@ -223,7 +223,7 @@ def git_history(path: Path) -> list[tuple[str, str, str]]:
     return rows
 
 
-def entities(data: dict) -> list[dict[str, str]]:
+def entities(data: dict) -> list[dict]:
     raw = data.get("entities") or {}
     if isinstance(raw, dict) and isinstance(raw.get("entities"), list):
         raw = raw["entities"]
@@ -258,6 +258,12 @@ def entities(data: dict) -> list[dict[str, str]]:
                     or item.get("degenerate")
                     or value(item.get("recognition_quality")).casefold() == "degenerate"
                 ),
+                # Carried raw, not through `value()`: these are positions, and
+                # a stringified offset cannot be compared with len(text).
+                # Absent for every document published before they existed
+                # (agentic-historian#466).
+                "char_start": item.get("char_start"),
+                "char_end": item.get("char_end"),
             })
     return result
 
@@ -488,23 +494,129 @@ def source_panel(data: dict) -> str:
 
 
 
-def _highlight_entities(text: str, data: dict) -> str:
-    """Wrap entity mentions in <mark> spans. Returns HTML with entity highlights."""
+#: The anchor contract, shared with `/find` in agentic_historian
+#: (`passage_find.ANCHOR_PREFIX` / `anchor_for`). Both sides must spell it the
+#: same way: if each computed its own, they would agree until the day they did
+#: not, and the symptom would be a link that scrolls to the top of a long page
+#: — which looks like a working link (agentic-historian#397).
+PASSAGE_ANCHOR_PREFIX = "passage-"
+
+
+def passage_anchor(item: dict) -> str | None:
+    """``passage-<char_start>-<char_end>``, or None without offsets.
+
+    Two entities over the same words — a role and a social group — share an
+    anchor, which is right: it names a *place in the text*, which is what a
+    reader following a link wants to see. It is not an entity id.
+
+    None for an entity the recogniser could not place verbatim
+    (agentic-historian#466), and for every document published before those
+    offsets existed. Those mentions are still highlighted, just not linkable.
+    """
+    start, end = item.get("char_start"), item.get("char_end")
+    if not isinstance(start, int) or not isinstance(end, int) or end <= start:
+        return None
+    return f"{PASSAGE_ANCHOR_PREFIX}{start}-{end}"
+
+
+def _entity_items(data: dict) -> list[dict]:
+    """Every entity record, whichever of the three shapes `entities` is in."""
     raw = data.get("entities") or {}
-    items = []
+    items: list[dict] = []
     if isinstance(raw, dict) and isinstance(raw.get("entities"), list):
-        items = raw["entities"]
+        items = [i for i in raw["entities"] if isinstance(i, dict)]
     elif isinstance(raw, dict):
         for group, group_items in raw.items():
             if not isinstance(group_items, list):
                 continue
             for item in group_items:
                 if isinstance(item, dict):
-                    items.append({**item, "type": item.get("type") or group.rstrip("s").upper()})
+                    items.append({**item,
+                                  "type": item.get("type")
+                                  or group.rstrip("s").upper()})
                 else:
-                    items.append({"text": str(item), "type": group.rstrip("s").upper()})
+                    items.append({"text": str(item),
+                                  "type": group.rstrip("s").upper()})
     elif isinstance(raw, list):
-        items = raw
+        items = [i for i in raw if isinstance(i, dict)]
+    return items
+
+
+def _placed(text: str, items: list[dict]) -> list[tuple[int, int, dict]]:
+    """The entities that name a span this text actually has, sorted, no overlaps.
+
+    A span is kept only when the characters there are the ones the record
+    claims. An offset written against a different transcription — a re-run that
+    changed the reading, a record copied between documents — would otherwise
+    mark the wrong words and anchor a link to them, which is worse than not
+    linking at all.
+
+    Overlaps are dropped rather than nested, because `<mark>` inside `<mark>`
+    is not what either CSS or a screen reader expects here. The longer span
+    wins, so "armen lüten" keeps its anchor over a nested "armen".
+    """
+    spans: list[tuple[int, int, dict]] = []
+    for item in items:
+        start, end = item.get("char_start"), item.get("char_end")
+        if not isinstance(start, int) or not isinstance(end, int):
+            continue
+        if not (0 <= start < end <= len(text)):
+            continue
+        surface = item.get("text") or ""
+        if surface and text[start:end] != surface:
+            continue
+        spans.append((start, end, item))
+    spans.sort(key=lambda s: (s[0], -(s[1] - s[0])))
+    kept: list[tuple[int, int, dict]] = []
+    for span in spans:
+        if kept and span[0] < kept[-1][1]:
+            continue
+        kept.append(span)
+    return kept
+
+
+def _highlight_by_offset(text: str, items: list[dict]) -> str | None:
+    """Mark the placed entities by position, each carrying its anchor.
+
+    None when nothing can be placed, so the caller falls back to the
+    surface-based highlighter below — which is every document published before
+    the offsets existed.
+
+    Escaping happens **per segment**, not once over the whole text: the offsets
+    index the raw transcription, and escaping first moves every position after
+    the first `&` or `<`. That is the bug this function would have if it reused
+    the escaped string.
+    """
+    placed = _placed(text, items)
+    if not placed:
+        return None
+    out: list[str] = []
+    cursor = 0
+    for start, end, item in placed:
+        out.append(html.escape(text[cursor:start]))
+        etype = str(item.get("type") or "UNKNOWN").upper()
+        anchor = passage_anchor(item)
+        attrs = f' class="entity-{etype.lower()}"'
+        if anchor:
+            attrs += f' id="{html.escape(anchor, quote=True)}"'
+        out.append(f"<mark{attrs}>{html.escape(text[start:end])}</mark>")
+        cursor = end
+    out.append(html.escape(text[cursor:]))
+    return "".join(out)
+
+
+def _highlight_entities(text: str, data: dict) -> str:
+    """Wrap entity mentions in <mark> spans. Returns HTML with entity highlights.
+
+    Offsets when the records carry them (agentic-historian#466): each mention
+    then gets the anchor `/find` deep-links to. Surface replacement otherwise,
+    which is what every document published before those offsets existed has —
+    highlighted, just not linkable.
+    """
+    items = _entity_items(data)
+    by_offset = _highlight_by_offset(text, items) if items else None
+    if by_offset is not None:
+        return by_offset
     if not items:
         return html.escape(text)
     surfaces = []
@@ -912,7 +1024,16 @@ license: "CC-BY-4.0"
                 if entity_has_page(occurrences) else
                 f'<span class="entity-unlinked">{name}</span>'
             )
-            links.append(f'<li>{named}{flag}' + (f' <span class="muted">— {html.escape(item["context"])}</span>' if item["context"] else "") + '</li>')
+            # The place in the transcription, where the recogniser could fix
+            # one (agentic-historian#466/#397). Same anchor `/find` deep-links
+            # to, from the same function, so the two cannot drift. Omitted
+            # rather than guessed for an entity with no verbatim position — on
+            # the principle already stated above: linking to something that
+            # was never generated is worse than not linking.
+            anchor = passage_anchor(item)
+            at = (f' <a class="entity-passage-link" href="#{html.escape(anchor, quote=True)}">'
+                  f'Stelle im Text</a>' if anchor else "")
+            links.append(f'<li>{named}{flag}{at}' + (f' <span class="muted">— {html.escape(item["context"])}</span>' if item["context"] else "") + '</li>')
         entity_html.append(f'<h3>{html.escape(kind)}</h3><ul>{"".join(links)}</ul>')
 
     source_description = value(description.get("source_description"))
