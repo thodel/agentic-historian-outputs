@@ -319,11 +319,52 @@ Two explanations are ruled out by measurement rather than by argument. **Not tru
 
 So the question this arm was queued to answer — whether size carries pages the way it carries lines — is still open, and now for a different reason. What the run does establish is narrower and still useful: a family can train to convergence on a page corpus, promote a best adapter on a falling validation loss, and emit a constant. **Validation loss did not detect it.** The only signal that did was counting distinct outputs, which no stage does.
 
+## 7. The families on a set someone else can check
+
+Everything above is measured on draws of our own. The 19th-century corpus has an alternative: the [Federal Council test set](https://doi.org/10.5281/zenodo.4746342), 2 751 published lines that no run of ours has ever trained on. Every arm trained on that corpus, scored there, lines, same instruction, same 262 144-pixel budget:
+
+| Base | Parameters | CER | WER | length ratio | at cap |
+|---|---:|---:|---:|---:|---:|
+| `Qwen/Qwen3.5-4B` | 4.66 B | **6.80 %** | 23.4 | 1.000 | 0 |
+| `Qwen/Qwen3-VL-4B-Instruct` | 4.44 B | 7.65 % | 24.6 | 1.002 | 1 |
+| `Qwen/Qwen3.5-2B` | 2.27 B | 8.95 % | 26.2 | 1.001 | 2 |
+| `google/gemma-4-12B-it` | 11.96 B | 9.95 % | 24.2 | 0.964 | 1 |
+| `google/gemma-4-E4B-it` | ≈4.5 B effective | 10.24 % | 28.7 | 1.004 | 3 |
+| `Qwen/Qwen3.5-0.8B` | 0.87 B | 11.15 % | 30.7 | 0.998 | 0 |
+
+Three readings, and the third is a correction.
+
+**Within one family, size pays and keeps paying.** 0.8 → 2 → 4 B is 11.15, 8.95, 6.80: about 2.2 points per doubling, with no sign of flattening. The ranking on a published set is the same as the one on our own split, which is the first time this project can say that.
+
+**Across families, the generation matters as much as the size.** At an identical 4 B, `Qwen3.5-4B` reads 0.85 points better than `Qwen3-VL-4B` — most of a doubling, for changing nothing but which year the base was published. And Gemma's best arm here, at 12 B, sits below a 2 B Qwen.
+
+**But Gemma's number was wrong until the day this was written, and the error was ours.** The 12 B arm first scored **22.94 %** on this set. Its error budget was the tell: 17 027 insertions against 4 783 deletions, where every arm that reads normally is substitution-dominated. Insertion-dominated is not a reading failure, it is a *generation* failure — and reading the two chat renders side by side found it in minutes:
+
+| | what the model is asked to continue from |
+|---|---|
+| at inference | `<\|turn>model` + newline + **`<\|channel>thought` + newline + `<channel\|>`** |
+| during training | `<\|turn>model` + newline + the transcription + `<turn\|>` |
+
+The 12 B was being asked, at evaluation, to continue **inside an empty thinking channel it had never seen while training**. A model told to think writes text that is not a transcription. Asked instead to continue from the render it was trained on, the same adapter on the same 2 751 lines:
+
+| Arm | CER | insertions | length ratio | at cap |
+|---|---:|---:|---:|---:|
+| 12 B, generation prompt | 22.94 % | 17 027 | 0.894 | 11 |
+| 12 B, **training render** | **9.95 %** | 5 910 | 0.964 | 1 |
+| E4B, generation prompt | 10.24 % | 2 039 | 1.004 | 3 |
+| E4B, **training render** | 10.24 % | 2 039 | 1.004 | 3 |
+
+**Thirteen points on the arm whose two renders differ, and byte-identical output on the arm whose renders agree.** The E4B rows match in every field — same insertions, same deletions, same hypothesis length — which is what makes this a controlled result rather than a lucky one: the mechanism was identified from the renders *before* the measurement, and the control was predicted not to move.
+
+What it cost to find out: nothing. What was nearly spent instead was five days of GPU time on the wrong hypothesis — that the 12 B arm had been damaged by being preempted four times across five days. That guess was killed for free by reading its loss history, which runs smooth across all four attempts with no discontinuity at a single boundary. A training loss of 0.15 beside a 22.94 % CER is not a damaged run; it is a mismatch between training and inference.
+
+**One confound remains, and it is also ours.** Every Qwen number in the table was produced in bf16; both Gemma arms trained and were scored in 4-bit, because that is what their configuration set. What 4-bit costs in accuracy on this corpus is unmeasured. So the Gemma figures are an upper bound on their deficit, not a clean comparison — and the evaluation report now records the quantisation, so the next reader does not have to find this out by digging.
+
 ## Open questions
 
 - **Over-generation on sparse pages** is the page model's remaining weakness and the same failure the medieval page model shows. Neither a larger nor a smaller pixel budget addresses it.
-- **Whether Gemma closes the gap when it is tuned for itself**, starting with the visual-token budget its own default sets higher than ours did. Until that is measured, §6 says "worse as a drop-in", which is a narrower claim than "worse".
-- **A page-level Gemma number on the 19th-century corpus**, scored on the published benchmark rather than on a split of our own, is training now. It is the first cross-family number that will be comparable to a figure someone else can reproduce.
+- **Whether Gemma closes the gap when it is tuned for itself.** One of its three known handicaps is gone: §7's prompt mismatch cost the 12 B arm thirteen points and is now fixed by default. Two remain — both arms still ran at the 140-token visual budget where Gemma's own default is 280, and both were quantised to 4-bit against the Qwens' bf16. Until those are measured, "worse as a drop-in" stays the claim, and it is narrower than "worse".
+- **Page numbers on a published set.** §7 gives the line comparison on 2 751 published lines; there is no page equivalent, so every page figure on this page is still measured on held-out pages of our own corpora.
 - **Whether a page-pre-trained base beats a bigger general one.** olmOCR at 7 B reads pages better than every general base measured here, including a 12 B one. Whether that is the pre-training or the size is unseparated: no general 7 B page arm exists, and no page-pre-trained 4 B one either.
 - **Whether size carries pages the way it carries lines.** At 12 B Gemma wins on lines and at ~4.5 B it loses on pages by nine points. The 12 B page arm has now landed and collapsed to a constant output (above), so it answers nothing; the question needs the run repeated, and the repeat needs a stage that fails a run whose outputs do not vary.
 - **Whether a 12 B Qwen would take the lead back.** The size comparison above is one-sided: three arms, and only one of them large. Nobody has trained the obvious control.
