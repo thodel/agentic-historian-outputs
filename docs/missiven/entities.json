@@ -1,0 +1,321 @@
+{
+  "entities": [
+    {
+      "text": "Ertz",
+      "type": "PERSON",
+      "normalised": "Ertz",
+      "context": "Ertz offencell",
+      "char_start": 111,
+      "char_end": 115,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "offencell",
+      "type": "ORG",
+      "normalised": "offencell",
+      "context": "Ertz offencell ~vnd~ appocelle",
+      "char_start": 116,
+      "char_end": 125,
+      "located": true
+    },
+    {
+      "text": "offencell",
+      "type": "ORG",
+      "normalised": "offencell",
+      "context": "Ertz offencell ~vnd~ appocelle",
+      "char_start": 646,
+      "char_end": 655,
+      "located": true
+    },
+    {
+      "text": "appocelle",
+      "type": "ORG",
+      "normalised": "appocelle",
+      "context": "offencell ~vnd~ appocelle Enfer",
+      "char_start": 132,
+      "char_end": 141,
+      "located": true
+    },
+    {
+      "text": "appocelle",
+      "type": "ORG",
+      "normalised": "appocelle",
+      "context": "offencell ~vnd~ appocelle Enfer",
+      "char_start": 866,
+      "char_end": 875,
+      "located": true
+    },
+    {
+      "text": "Enfer",
+      "type": "PLACE",
+      "normalised": "Enfer",
+      "context": "appocelle Enfer lantman",
+      "char_start": 142,
+      "char_end": 147,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Enfer",
+      "type": "PLACE",
+      "normalised": "Enfer",
+      "context": "appocelle Enfer lantman",
+      "char_start": 505,
+      "char_end": 510,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "lantman",
+      "type": "PERSON",
+      "normalised": "lantman",
+      "context": "Enfer lantman Sine Sae",
+      "char_start": 148,
+      "char_end": 155,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sine Sae",
+      "type": "PERSON",
+      "normalised": "Sine Sae",
+      "context": "lantman Sine Sae in Rane",
+      "char_start": 156,
+      "char_end": 164,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Rane",
+      "type": "PLACE",
+      "normalised": "Rane",
+      "context": "Sine Sae in Rane",
+      "char_start": 168,
+      "char_end": 172,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "männi",
+      "type": "PERSON",
+      "normalised": "männi",
+      "context": "männi off den prüffen",
+      "char_start": 196,
+      "char_end": 201,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sone",
+      "type": "PERSON",
+      "normalised": "Sone",
+      "context": "besumbet Sone Sitt Saeß",
+      "char_start": 285,
+      "char_end": 289,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sitt Saeß",
+      "type": "PERSON",
+      "normalised": "Sitt Saeß",
+      "context": "Sone Sitt Saeß Ruel",
+      "char_start": 290,
+      "char_end": 299,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Ruel",
+      "type": "PLACE",
+      "normalised": "Ruel",
+      "context": "Sitt Saeß Ruel ze duffen",
+      "char_start": 300,
+      "char_end": 304,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sant margreten",
+      "type": "DATE",
+      "normalised": "St. Margaret's Day",
+      "context": "am montag nach Sant margreten tag",
+      "char_start": 718,
+      "char_end": 732,
+      "located": true
+    },
+    {
+      "text": "montag",
+      "type": "DATE",
+      "normalised": "Monday",
+      "context": "am montag nach Sant margreten tag",
+      "char_start": 706,
+      "char_end": 712,
+      "located": true
+    },
+    {
+      "text": "Anno Sei of vier hundert",
+      "type": "DATE",
+      "normalised": "Anno 1400",
+      "context": "haïd Sine gnß by Sy Selbm besten geben am montag nach Sant margreten tag Anno Sei of vier hundert",
+      "char_start": 737,
+      "char_end": 761,
+      "located": true
+    },
+    {
+      "text": "Sy",
+      "type": "PERSON",
+      "normalised": "Sy",
+      "context": "by Sy Selbm besten geben",
+      "char_start": 681,
+      "char_end": 683,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Eßgel",
+      "type": "PERSON",
+      "normalised": "Eßgel",
+      "context": "fmo Eßgel vnd Euvre",
+      "char_start": 766,
+      "char_end": 771,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Euvre",
+      "type": "PERSON",
+      "normalised": "Euvre",
+      "context": "Eßgel vnd Euvre twelto",
+      "char_start": 776,
+      "char_end": 781,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Geprman Stman",
+      "type": "PERSON",
+      "normalised": "Geprman Stman",
+      "context": "Geprman Stman vnd",
+      "char_start": 840,
+      "char_end": 853,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "hans zu appocelle",
+      "type": "PERSON",
+      "normalised": "Hans zu appocelle",
+      "context": "hans zu appocelle s/",
+      "char_start": 858,
+      "char_end": 875,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "14³¹ Juli 16.",
+      "type": "DATE",
+      "normalised": "1431-07-16",
+      "context": "14³¹ Juli 16.          1435",
+      "char_start": 915,
+      "char_end": 928,
+      "located": true
+    },
+    {
+      "text": "14³¹ Juli 16.",
+      "type": "DATE",
+      "normalised": "1431-07-16",
+      "context": "14³¹ Juli 16.          1435",
+      "char_start": 1027,
+      "char_end": 1040,
+      "located": true
+    },
+    {
+      "text": "1435",
+      "type": "DATE",
+      "normalised": "1435-00-00",
+      "context": "14³¹ Juli 16.          1435",
+      "char_start": 938,
+      "char_end": 942,
+      "located": true
+    },
+    {
+      "text": "UB jm 361¹¹",
+      "type": "DATE",
+      "normalised": "361",
+      "context": "UB jm 361¹¹",
+      "char_start": 952,
+      "char_end": 963,
+      "located": true
+    },
+    {
+      "text": "Rüſten",
+      "type": "ROLE",
+      "normalised": "Rüsten",
+      "context": "dem ehrwuerdigen Rüſten von dem Oberſternwolffen",
+      "char_start": 1063,
+      "char_end": 1069,
+      "located": true
+    },
+    {
+      "text": "Rüſten",
+      "type": "ROLE",
+      "normalised": "Rüsten",
+      "context": "dem ehrwuerdigen Rüſten von dem Oberſternwolffen",
+      "char_start": 1115,
+      "char_end": 1121,
+      "located": true
+    },
+    {
+      "text": "Oberſternwolffen",
+      "type": "PLACE",
+      "normalised": "Obersternwolffen",
+      "context": "Rüſten von dem Oberſternwolffen",
+      "char_start": 1078,
+      "char_end": 1094,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Præsident",
+      "type": "ROLE",
+      "normalised": "President",
+      "context": "Præsident · Rüſten · zu",
+      "char_start": 1103,
+      "char_end": 1112,
+      "located": true
+    },
+    {
+      "text": "Hans",
+      "type": "PERSON",
+      "normalised": "Hans",
+      "context": "off wellent Son vnd bitten ... hans",
+      "char_start": null,
+      "char_end": null,
+      "located": false,
+      "hub_id": "118000",
+      "wikidata": "",
+      "gnd": "118000",
+      "hls": 12345,
+      "hub_confidence": "high",
+      "link_method": "hub_exact"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "doc_id": "missiven",
+  "ad_fontes_version": "UZH 16-element",
+  "elements": {
+    "Aufbewahrungsort": {
+      "wert": "keine gesicherten Angaben möglich",
+      "unsicher": false,
+      "notiz": "Der Dateiname (StadtASG_Missive_49_97) deutet auf ein Stadtarchiv (vermutlich St. Gallen) hin, ist aber für die kodizologische Beschreibung nicht gesichert."
+    },
+    "Beschreibstoff": {
+      "wert": "Papier",
+      "unsicher": false,
+      "notiz": "Vergilbtes, stellenweise fleckiges Papier mit deutlichen Faltspuren (Faltung in mehrere Streifen); kein Wasserzeichen erkennbar; keine Hinweise auf Palimpsest."
+    },
+    "Blaetter": {
+      "wert": "1 Blatt (eine Seite abgebildet)",
+      "unsicher": false,
+      "notiz": "Moderne Foliierung/Signatur '97' oben rechts in dunkler Tinte; als Einzelblatt (Brief-/Rödelcharakter) ohne regelrechte Lagenstruktur."
+    },
+    "Format": {
+      "wert": "ca. 15 x 18 cm (unsicher)",
+      "unsicher": true,
+      "notiz": "Maße anhand des Kodak-Farbreferenzlineals geschätzt; handliches Brief-/Rödelformat."
+    },
+    "Datierung": {
+      "wert": "15. Jahrhundert (explizite Datierung im Text: 'Anno ... vier hundert', Montag nach Sankt Margareta)",
+      "unsicher": true,
+      "notiz": "Randnotizen auf der nicht abgebildeten Folio-Seite nennen 'ij31' bzw. 'ij35' (1431/1435?), was die Einordnung in das 15. Jh. stützt."
+    },
+    "Lagen": {
+      "wert": "keine Lagenstruktur (Einzelblatt)",
+      "unsicher": false,
+      "notiz": "Weder Kustoden noch Reklamanten erkennbar; Faltspuren deuten auf frühere Faltung als Brief oder Rödel hin."
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "1 Spalte, ca. 13 Zeilen, nicht liniert",
+      "unsicher": false,
+      "notiz": "Schriftraum ca. 10 x 14 cm (unsicher); keine Linierung oder Rasterung; keine Verweiszeichen (nota bene) erkennbar."
+    },
+    "Schrift": {
+      "wert": "gotische Kursive (Cursiva), schwarze Tinte",
+      "unsicher": false,
+      "notiz": "Keine Rubrizierung; große Tinteninitiale 'S' mit Zierlinie am Zeilenanfang; übliche mittelalterliche Abkürzungen; keine Rasuren oder Korrekturen im Haupttext erkennbar."
+    },
+    "Schreiber": {
+      "wert": "zwei Hände (Haupttext + unterer Vermerk/Unterschrift)",
+      "unsicher": false,
+      "notiz": "Schreiber anonym; die untere Notation 'Geprman Stman vnd Amo zu appellaßl s/' stammt von einer zweiten, zeitgenössischen Hand."
+    },
+    "Ausstattung": {
+      "wert": "kein Buchschmuck, keine Miniaturen; eine Tinteninitiale",
+      "unsicher": false,
+      "notiz": "Keine farbigen Initialen oder Lombarden; die Initiale 'S' ist rein in Tinte ausgeführt."
+    },
+    "Sprache": {
+      "wert": "Deutsch (Mittelhochdeutsch/Frühneuhochdeutsch), alemannischer Dialektraum",
+      "unsicher": false,
+      "notiz": "Verwaltungs- und Rechtsterminologie (Offizial, Appellation, Landmann) im alemannischen Raum."
+    },
+    "Einband": {
+      "wert": "kein Einband (Einzelblatt)",
+      "unsicher": false,
+      "notiz": "Am linken Rand eine kleine Papierlasche bzw. ein Papierrest (möglicherweise Anhang oder Siegelrest)."
+    },
+    "Provenienz": {
+      "wert": "keine gesicherten Angaben möglich",
+      "unsicher": false,
+      "notiz": ""
+    },
+    "Literatur": {
+      "wert": "keine gesicherten Angaben möglich",
+      "unsicher": false,
+      "notiz": ""
+    },
+    "Inhalt": {
+      "wert": "Missive / Brief (verwaltungs- und rechtsbezogenes Stück)",
+      "unsicher": false,
+      "notiz": "Sachinhalt: Streitigkeit/Appellation betreffend einen Offizial und einen Landmann; rechtlicher/verwaltungsrechtlicher Charakter."
+    },
+    "Weitere_Hinweise": {
+      "wert": "Kodak Color Control Patches als Farbreferenz rechts; moderne Ziffer '97' oben rechts",
+      "unsicher": false,
+      "notiz": "Deutliche Faltspuren und Vergilbung; das Blatt wurde vermutlich als Brief oder Rödel verwendet und später in ein Archivbuch eingelegt."
+    }
+  },
+  "care_flag": {
+    "is_care_related": false,
+    "care_context": "",
+    "care_types": [],
+    "beteiligte": []
+  },
+  "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/_orders/agentic_historian_hotfolder__missiven/StadtASG_Missive_49_97.JPG"
+}

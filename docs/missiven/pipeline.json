@@ -1,0 +1,610 @@
+{
+  "doc_id": "missiven",
+  "transcription": "--- StadtASG_Missive_49_97.JPG ---\nEuer fründlich willig dienst ~xoran~ lieb vnd güten fründ vnd güt furbrüder\nErtz offencell ~vnd~ appocelle Enfer lantman Sine Sae in Rane gschriben über mitburg\nmänni off den prüffen vnd ettwaß mit willen mit im trüb Sae Sine gar enthaltung\nbesumbet Sone Sitt Saeß Ruel ze duffen off Sae in ~xormalt~ am andren frid gebn hans\noff wellent Son vnd bitten mit gantzem crup fleißig Sae in Sin ubern gar zu\nenfinen Sae er Sin fründ fürdae harlt / mber gelich wellent Son den Enfern daß Sin\nzu haiden / dunctet Sin Sae in Stichen vnndre vnd meren purgen vnd not bespehde\nvnd gedient sind in Sine willig sinden / über offencell antwort haid Sine gnß by\nSy Selbm besten geben am montag nach Sant margreten tag Anno Sei of vier hundert\nfmo Eßgel vnd Euvre twelto infeld gebrechenfall Enfore landes aufget [sigel]\n\nGeprman Stman vnd\nhans zu appocelle s/\n\n--- StadtASG_Missive_49_98.JPG ---\n14³¹ Juli 16.          1435          UB jm 361¹¹   ⁹⁸\n                                                          14³¹ Juli 16.\n\n[S] dem ehrwuerdigen Rüſten von dem Oberſternwolffen zu⸗\n    Præsident ⸗ Rüſten ⸗ zu⸗",
+  "description": {
+    "doc_id": "missiven",
+    "source_description": "# Kodizologische Beschreibung (Ad-fontes, UZH)\n\n**1. Aufbewahrungsort**\nKeine gesicherten Angaben möglich. Der vorliegende Dateiname (*StadtASG_Missive_49_97*) lässt auf eine städtische Archivbestände (vermutlich Stadtarchiv St. Gallen) schließen, was jedoch für die hier geforderte ad-fontes-Beschreibung nicht als gesichertes Merkmal gewertet werden kann.\n\n**2. Beschreibstoff**\nDer Beschreibstoff ist **Papier**. Das Blatt ist deutlich vergilbt, stellenweise mit braunen Flecken und Oxidationsstellen versehen und zeigt mehrere vertikale Faltspuren, die auf eine frühere Faltung in Streifen (Brief- oder Rödelcharakter) hindeuten. Ein **Wasserzeichen ist nicht erkennbar**; auch **keine Hinweise auf ein Palimpsest** (keine abgeschabte oder durchscheinende Schicht). Die Qualität ist als gebrauchtes, leicht brüchiges Verwaltungspapier zu bezeichnen.\n\n**3. Blaetter**\nAb",
+    "source_json": {
+      "Aufbewahrungsort": {
+        "wert": "keine gesicherten Angaben möglich",
+        "unsicher": false,
+        "notiz": "Der Dateiname (StadtASG_Missive_49_97) deutet auf ein Stadtarchiv (vermutlich St. Gallen) hin, ist aber für die kodizologische Beschreibung nicht gesichert."
+      },
+      "Beschreibstoff": {
+        "wert": "Papier",
+        "unsicher": false,
+        "notiz": "Vergilbtes, stellenweise fleckiges Papier mit deutlichen Faltspuren (Faltung in mehrere Streifen); kein Wasserzeichen erkennbar; keine Hinweise auf Palimpsest."
+      },
+      "Blaetter": {
+        "wert": "1 Blatt (eine Seite abgebildet)",
+        "unsicher": false,
+        "notiz": "Moderne Foliierung/Signatur '97' oben rechts in dunkler Tinte; als Einzelblatt (Brief-/Rödelcharakter) ohne regelrechte Lagenstruktur."
+      },
+      "Format": {
+        "wert": "ca. 15 x 18 cm (unsicher)",
+        "unsicher": true,
+        "notiz": "Maße anhand des Kodak-Farbreferenzlineals geschätzt; handliches Brief-/Rödelformat."
+      },
+      "Datierung": {
+        "wert": "15. Jahrhundert (explizite Datierung im Text: 'Anno ... vier hundert', Montag nach Sankt Margareta)",
+        "unsicher": true,
+        "notiz": "Randnotizen auf der nicht abgebildeten Folio-Seite nennen 'ij31' bzw. 'ij35' (1431/1435?), was die Einordnung in das 15. Jh. stützt."
+      },
+      "Lagen": {
+        "wert": "keine Lagenstruktur (Einzelblatt)",
+        "unsicher": false,
+        "notiz": "Weder Kustoden noch Reklamanten erkennbar; Faltspuren deuten auf frühere Faltung als Brief oder Rödel hin."
+      },
+      "Schriftraum_Gliederung": {
+        "wert": "1 Spalte, ca. 13 Zeilen, nicht liniert",
+        "unsicher": false,
+        "notiz": "Schriftraum ca. 10 x 14 cm (unsicher); keine Linierung oder Rasterung; keine Verweiszeichen (nota bene) erkennbar."
+      },
+      "Schrift": {
+        "wert": "gotische Kursive (Cursiva), schwarze Tinte",
+        "unsicher": false,
+        "notiz": "Keine Rubrizierung; große Tinteninitiale 'S' mit Zierlinie am Zeilenanfang; übliche mittelalterliche Abkürzungen; keine Rasuren oder Korrekturen im Haupttext erkennbar."
+      },
+      "Schreiber": {
+        "wert": "zwei Hände (Haupttext + unterer Vermerk/Unterschrift)",
+        "unsicher": false,
+        "notiz": "Schreiber anonym; die untere Notation 'Geprman Stman vnd Amo zu appellaßl s/' stammt von einer zweiten, zeitgenössischen Hand."
+      },
+      "Ausstattung": {
+        "wert": "kein Buchschmuck, keine Miniaturen; eine Tinteninitiale",
+        "unsicher": false,
+        "notiz": "Keine farbigen Initialen oder Lombarden; die Initiale 'S' ist rein in Tinte ausgeführt."
+      },
+      "Sprache": {
+        "wert": "Deutsch (Mittelhochdeutsch/Frühneuhochdeutsch), alemannischer Dialektraum",
+        "unsicher": false,
+        "notiz": "Verwaltungs- und Rechtsterminologie (Offizial, Appellation, Landmann) im alemannischen Raum."
+      },
+      "Einband": {
+        "wert": "kein Einband (Einzelblatt)",
+        "unsicher": false,
+        "notiz": "Am linken Rand eine kleine Papierlasche bzw. ein Papierrest (möglicherweise Anhang oder Siegelrest)."
+      },
+      "Provenienz": {
+        "wert": "keine gesicherten Angaben möglich",
+        "unsicher": false,
+        "notiz": ""
+      },
+      "Literatur": {
+        "wert": "keine gesicherten Angaben möglich",
+        "unsicher": false,
+        "notiz": ""
+      },
+      "Inhalt": {
+        "wert": "Missive / Brief (verwaltungs- und rechtsbezogenes Stück)",
+        "unsicher": false,
+        "notiz": "Sachinhalt: Streitigkeit/Appellation betreffend einen Offizial und einen Landmann; rechtlicher/verwaltungsrechtlicher Charakter."
+      },
+      "Weitere_Hinweise": {
+        "wert": "Kodak Color Control Patches als Farbreferenz rechts; moderne Ziffer '97' oben rechts",
+        "unsicher": false,
+        "notiz": "Deutliche Faltspuren und Vergilbung; das Blatt wurde vermutlich als Brief oder Rödel verwendet und später in ein Archivbuch eingelegt."
+      }
+    },
+    "sampling": {
+      "temperature": 0.0
+    },
+    "care_flag": {
+      "is_care_related": false,
+      "care_context": "",
+      "care_types": [],
+      "beteiligte": []
+    },
+    "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/_orders/agentic_historian_hotfolder__missiven/StadtASG_Missive_49_97.JPG"
+  },
+  "entities": {
+    "entities": [
+      {
+        "text": "Ertz",
+        "type": "PERSON",
+        "normalised": "Ertz",
+        "context": "Ertz offencell",
+        "char_start": 111,
+        "char_end": 115,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "offencell",
+        "type": "ORG",
+        "normalised": "offencell",
+        "context": "Ertz offencell ~vnd~ appocelle",
+        "char_start": 116,
+        "char_end": 125,
+        "located": true
+      },
+      {
+        "text": "offencell",
+        "type": "ORG",
+        "normalised": "offencell",
+        "context": "Ertz offencell ~vnd~ appocelle",
+        "char_start": 646,
+        "char_end": 655,
+        "located": true
+      },
+      {
+        "text": "appocelle",
+        "type": "ORG",
+        "normalised": "appocelle",
+        "context": "offencell ~vnd~ appocelle Enfer",
+        "char_start": 132,
+        "char_end": 141,
+        "located": true
+      },
+      {
+        "text": "appocelle",
+        "type": "ORG",
+        "normalised": "appocelle",
+        "context": "offencell ~vnd~ appocelle Enfer",
+        "char_start": 866,
+        "char_end": 875,
+        "located": true
+      },
+      {
+        "text": "Enfer",
+        "type": "PLACE",
+        "normalised": "Enfer",
+        "context": "appocelle Enfer lantman",
+        "char_start": 142,
+        "char_end": 147,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Enfer",
+        "type": "PLACE",
+        "normalised": "Enfer",
+        "context": "appocelle Enfer lantman",
+        "char_start": 505,
+        "char_end": 510,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "lantman",
+        "type": "PERSON",
+        "normalised": "lantman",
+        "context": "Enfer lantman Sine Sae",
+        "char_start": 148,
+        "char_end": 155,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Sine Sae",
+        "type": "PERSON",
+        "normalised": "Sine Sae",
+        "context": "lantman Sine Sae in Rane",
+        "char_start": 156,
+        "char_end": 164,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Rane",
+        "type": "PLACE",
+        "normalised": "Rane",
+        "context": "Sine Sae in Rane",
+        "char_start": 168,
+        "char_end": 172,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "männi",
+        "type": "PERSON",
+        "normalised": "männi",
+        "context": "männi off den prüffen",
+        "char_start": 196,
+        "char_end": 201,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Sone",
+        "type": "PERSON",
+        "normalised": "Sone",
+        "context": "besumbet Sone Sitt Saeß",
+        "char_start": 285,
+        "char_end": 289,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Sitt Saeß",
+        "type": "PERSON",
+        "normalised": "Sitt Saeß",
+        "context": "Sone Sitt Saeß Ruel",
+        "char_start": 290,
+        "char_end": 299,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Ruel",
+        "type": "PLACE",
+        "normalised": "Ruel",
+        "context": "Sitt Saeß Ruel ze duffen",
+        "char_start": 300,
+        "char_end": 304,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Sant margreten",
+        "type": "DATE",
+        "normalised": "St. Margaret's Day",
+        "context": "am montag nach Sant margreten tag",
+        "char_start": 718,
+        "char_end": 732,
+        "located": true
+      },
+      {
+        "text": "montag",
+        "type": "DATE",
+        "normalised": "Monday",
+        "context": "am montag nach Sant margreten tag",
+        "char_start": 706,
+        "char_end": 712,
+        "located": true
+      },
+      {
+        "text": "Anno Sei of vier hundert",
+        "type": "DATE",
+        "normalised": "Anno 1400",
+        "context": "haïd Sine gnß by Sy Selbm besten geben am montag nach Sant margreten tag Anno Sei of vier hundert",
+        "char_start": 737,
+        "char_end": 761,
+        "located": true
+      },
+      {
+        "text": "Sy",
+        "type": "PERSON",
+        "normalised": "Sy",
+        "context": "by Sy Selbm besten geben",
+        "char_start": 681,
+        "char_end": 683,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Eßgel",
+        "type": "PERSON",
+        "normalised": "Eßgel",
+        "context": "fmo Eßgel vnd Euvre",
+        "char_start": 766,
+        "char_end": 771,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Euvre",
+        "type": "PERSON",
+        "normalised": "Euvre",
+        "context": "Eßgel vnd Euvre twelto",
+        "char_start": 776,
+        "char_end": 781,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Geprman Stman",
+        "type": "PERSON",
+        "normalised": "Geprman Stman",
+        "context": "Geprman Stman vnd",
+        "char_start": 840,
+        "char_end": 853,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "hans zu appocelle",
+        "type": "PERSON",
+        "normalised": "Hans zu appocelle",
+        "context": "hans zu appocelle s/",
+        "char_start": 858,
+        "char_end": 875,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "14³¹ Juli 16.",
+        "type": "DATE",
+        "normalised": "1431-07-16",
+        "context": "14³¹ Juli 16.          1435",
+        "char_start": 915,
+        "char_end": 928,
+        "located": true
+      },
+      {
+        "text": "14³¹ Juli 16.",
+        "type": "DATE",
+        "normalised": "1431-07-16",
+        "context": "14³¹ Juli 16.          1435",
+        "char_start": 1027,
+        "char_end": 1040,
+        "located": true
+      },
+      {
+        "text": "1435",
+        "type": "DATE",
+        "normalised": "1435-00-00",
+        "context": "14³¹ Juli 16.          1435",
+        "char_start": 938,
+        "char_end": 942,
+        "located": true
+      },
+      {
+        "text": "UB jm 361¹¹",
+        "type": "DATE",
+        "normalised": "361",
+        "context": "UB jm 361¹¹",
+        "char_start": 952,
+        "char_end": 963,
+        "located": true
+      },
+      {
+        "text": "Rüſten",
+        "type": "ROLE",
+        "normalised": "Rüsten",
+        "context": "dem ehrwuerdigen Rüſten von dem Oberſternwolffen",
+        "char_start": 1063,
+        "char_end": 1069,
+        "located": true
+      },
+      {
+        "text": "Rüſten",
+        "type": "ROLE",
+        "normalised": "Rüsten",
+        "context": "dem ehrwuerdigen Rüſten von dem Oberſternwolffen",
+        "char_start": 1115,
+        "char_end": 1121,
+        "located": true
+      },
+      {
+        "text": "Oberſternwolffen",
+        "type": "PLACE",
+        "normalised": "Obersternwolffen",
+        "context": "Rüſten von dem Oberſternwolffen",
+        "char_start": 1078,
+        "char_end": 1094,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Præsident",
+        "type": "ROLE",
+        "normalised": "President",
+        "context": "Præsident · Rüſten · zu",
+        "char_start": 1103,
+        "char_end": 1112,
+        "located": true
+      },
+      {
+        "text": "Hans",
+        "type": "PERSON",
+        "normalised": "Hans",
+        "context": "off wellent Son vnd bitten ... hans",
+        "char_start": null,
+        "char_end": null,
+        "located": false,
+        "hub_id": "118000",
+        "wikidata": "",
+        "gnd": "118000",
+        "hls": 12345,
+        "hub_confidence": "high",
+        "link_method": "hub_exact"
+      }
+    ]
+  },
+  "errors": [],
+  "a_meta": {
+    "pages": 2,
+    "qa_score": 0.0,
+    "source": "grouped-ensemble-criteria",
+    "criteria_rerun": true
+  },
+  "recognitions": [
+    {
+      "engine": "vlm",
+      "model_id": "qwen3.8-27b",
+      "text": "Supr fründlich willig dienst voran lichen vnd guten fründ vnd gät furbrüder \nErtz offizial vnd appellaßl Enfer lantman Sine Sae in Ranc gschrißn vber mitburg \nmänni off fen prüffen vnd ettwaß mit willen mit im trüb Sae Sine gar vnwillig \nbesumbt / dan daß Saeß Ruel ze duffin off Sae in Rormalo im andren friß gebn hans \noff wellent von vng botten mit zungen vnß fleißt Sae in Sin ubern gar zu \nEnflin Sae er Sin find fürdae hait / mber gelich wellent von den Enfern daß Sin \nzu haiden / duncto wir Sae im Stichen vnndre vnd meren purgen vnd not bespüldt \nvnd gedient sind in Sine willig sinden / vber offizial vnßwrt laüt Sine gnäß \nby Sinen besten gebn am montag nach Sant margreten tag Anno Sre of vier hundert \nfmo Eßglat mit Supre Gnädle nifchl gebrestenfall Enfre landes aufget \n\nGeprman Stman vnd \nAmo zu appellaßl s/",
+      "confidence": 0.8,
+      "error": "",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-bastarda_inzigkofen",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-medieval-escriptmask",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/segment: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-bifrost_old_norse",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-kurrent-xvi-xvii",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/segment: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-catmus_gothic_print",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-essoins-middle-latin",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/segment: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "vlm",
+      "model_id": "qwen3.8-27b",
+      "text": "```\n--- SEITE 1 ---\n```\n`links oben:`   `Mitte oben:`   `rechts oben:`   `rechts vertikal:`  \n`Juli ijs.`     `ij³⁵`          `UB jm j⁶¹¹`    `ij³¹ Juli ijs.`  \n                                                        `j⁸`  \n\n```\n[S]em ehrw[u]rdig[e]n R[-]ten v[-] d[e]m Obe[r]ste[rnwo]lff[e]n z[u]\nP[-]sid[e]nt[e]n R[-]ten [unleserlich] z[u] [?]\n```",
+      "confidence": 0.8,
+      "error": "",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-bastarda_inzigkofen",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-medieval-escriptmask",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/segment: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-bifrost_old_norse",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-kurrent-xvi-xvii",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/segment: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-catmus_gothic_print",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-essoins-middle-latin",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/segment: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "vlm",
+      "model_id": "qwen3.8-27b",
+      "text": "Euer fründlich willig dienst ~xoran~ lieb vnd güten fründ vnd güt furbrüder\nErtz offencell ~vnd~ appocelle Enfer lantman Sine Sae in Rane gschriben über mitburg\nmänni off den prüffen vnd ettwaß mit willen mit im trüb Sae Sine gar enthaltung\nbesumbet Sone Sitt Saeß Ruel ze duffen off Sae in ~xormalt~ am andren frid gebn hans\noff wellent Son vnd bitten mit gantzem crup fleißig Sae in Sin ubern gar zu\nenfinen Sae er Sin fründ fürdae harlt / mber gelich wellent Son den Enfern daß Sin\nzu haiden / dunctet Sin Sae in Stichen vnndre vnd meren purgen vnd not bespehde\nvnd gedient sind in Sine willig sinden / über offencell antwort haid Sine gnß by\nSy Selbm besten geben am montag nach Sant margreten tag Anno Sei of vier hundert\nfmo Eßgel vnd Euvre twelto infeld gebrechenfall Enfore landes aufget [sigel]\n\nGeprman Stman vnd\nhans zu appocelle s/",
+      "confidence": 0.8,
+      "error": "",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-cursive_inzigkofen",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-bohemian_19th",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "vlm",
+      "model_id": "qwen3.8-27b",
+      "text": "14³¹ Juli 16.          1435          UB jm 361¹¹   ⁹⁸\n                                                          14³¹ Juli 16.\n\n[S] dem ehrwuerdigen Rüſten von dem Oberſternwolffen zu⸗\n    Præsident ⸗ Rüſten ⸗ zu⸗",
+      "confidence": 0.8,
+      "error": "",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-cursive_inzigkofen",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-bohemian_19th",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null
+    }
+  ]
+}
