@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this output, cite it using these metadata."
+title: "Agentic Historian output: missiven"
+type: dataset
+authors:
+  - name: "Agentic Historian"
+repository-code: "https://github.com/thodel/agentic-historian-outputs"
+url: "https://thodel.github.io/agentic-historian-outputs/missiven/"
+date-released: "2026-10-09"
+license: "CC-BY-4.0"
