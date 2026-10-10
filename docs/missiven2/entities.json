@@ -1,0 +1,222 @@
+{
+  "entities": [
+    {
+      "text": "Enfer",
+      "type": "PERSON",
+      "normalised": "Enfer",
+      "context": "Ertz offizial ꝙ appallaßl Enfer lantman",
+      "char_start": 138,
+      "char_end": 143,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Enfer",
+      "type": "PERSON",
+      "normalised": "Enfer",
+      "context": "Ertz offizial ꝙ appallaßl Enfer lantman",
+      "char_start": 493,
+      "char_end": 498,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sine Sae",
+      "type": "PERSON",
+      "normalised": "Sine Sae",
+      "context": "Sine Sae in Ranc",
+      "char_start": 152,
+      "char_end": 160,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Ranc",
+      "type": "PLACE",
+      "normalised": "Ranc",
+      "context": "Sine Sae in Ranc gschrißn",
+      "char_start": 164,
+      "char_end": 168,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "mitburg",
+      "type": "PLACE",
+      "normalised": "Mitburg",
+      "context": "vber mitburg",
+      "char_start": 183,
+      "char_end": 190,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Saeß Ruel",
+      "type": "PERSON",
+      "normalised": "Saeß Ruel",
+      "context": "daß Saeß Ruel ze duffin",
+      "char_start": 289,
+      "char_end": 298,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Hans",
+      "type": "PERSON",
+      "normalised": "Hans",
+      "context": "Hans zu appellaßl s/",
+      "char_start": 842,
+      "char_end": 846,
+      "located": true,
+      "hub_id": "118000",
+      "wikidata": "",
+      "gnd": "118000",
+      "hls": 12345,
+      "hub_confidence": "high",
+      "link_method": "hub_exact"
+    },
+    {
+      "text": "Dimmen",
+      "type": "PLACE",
+      "normalised": "Dimmen",
+      "context": "Geprindt Dimmen vnd",
+      "char_start": 830,
+      "char_end": 836,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Obersternwolffen",
+      "type": "PLACE",
+      "normalised": "Obersternwolffen",
+      "context": "dem Obersternwolffen",
+      "char_start": 1053,
+      "char_end": 1069,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "R̃sten",
+      "type": "PERSON",
+      "normalised": "Rusten",
+      "context": "R̃sten",
+      "char_start": 1039,
+      "char_end": 1045,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "R̃sten",
+      "type": "PERSON",
+      "normalised": "Rusten",
+      "context": "R̃sten",
+      "char_start": 1083,
+      "char_end": 1089,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Anno Srre of vier hundert",
+      "type": "DATE",
+      "normalised": "1400",
+      "context": "Anno Srre of vier hundert",
+      "char_start": 722,
+      "char_end": 747,
+      "located": true
+    },
+    {
+      "text": "1435",
+      "type": "DATE",
+      "normalised": "1435",
+      "context": "1435",
+      "char_start": 922,
+      "char_end": 926,
+      "located": true
+    },
+    {
+      "text": "14³¹ Juli 16.",
+      "type": "DATE",
+      "normalised": "14 July 1616",
+      "context": "14³¹ Juli 16.",
+      "char_start": 899,
+      "char_end": 912,
+      "located": true
+    },
+    {
+      "text": "furbrüder",
+      "type": "SOCIAL_GROUP",
+      "normalised": "Furbrüder",
+      "context": "gät furbrüder",
+      "char_start": 101,
+      "char_end": 110,
+      "located": true
+    },
+    {
+      "text": "offizial",
+      "type": "CARE_ACTOR",
+      "normalised": "Offizial",
+      "context": "Ertz offizial",
+      "char_start": 117,
+      "char_end": 125,
+      "located": true
+    },
+    {
+      "text": "offizial",
+      "type": "CARE_ACTOR",
+      "normalised": "Offizial",
+      "context": "Ertz offizial",
+      "char_start": 635,
+      "char_end": 643,
+      "located": true
+    },
+    {
+      "text": "Supre Gnädigk",
+      "type": "ORG",
+      "normalised": "Supreme Gnadigkeit",
+      "context": "Supre Gnädigk infall",
+      "char_start": 764,
+      "char_end": 777,
+      "located": true
+    },
+    {
+      "text": "President",
+      "type": "ROLE",
+      "normalised": "President",
+      "context": "Pr̃sident R̃sten",
+      "char_start": null,
+      "char_end": null,
+      "located": false
+    },
+    {
+      "text": "Montag nach Sant margreten tag",
+      "type": "DATE",
+      "normalised": "Monday after St. Margaret's Day",
+      "context": "am montag nach Sant margreten tag",
+      "char_start": null,
+      "char_end": null,
+      "located": false
+    },
+    {
+      "text": "Dienst",
+      "type": "CARE_ACTION",
+      "normalised": "Dienst",
+      "context": "willig dienst voran",
+      "char_start": null,
+      "char_end": null,
+      "located": false,
+      "controlled_vocab": "dienst",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    }
+  ]
+}
