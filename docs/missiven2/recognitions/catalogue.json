@@ -1,0 +1,250 @@
+{
+  "artifacts": [
+    {
+      "characters": 1092,
+      "engine": "fusion",
+      "error": null,
+      "error_path": null,
+      "id": "selected",
+      "model_id": null,
+      "page": null,
+      "path": "recognitions/fused.txt",
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 822,
+      "engine": "vlm",
+      "error": null,
+      "error_path": null,
+      "id": "vlm-qwen3-8-27b",
+      "model_id": "qwen3.8-27b",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "kraken-kraken-bastarda-inzigkofen",
+      "model_id": "kraken-bastarda_inzigkofen",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "trocr-trocr-medieval-escriptmask",
+      "model_id": "trocr-medieval-escriptmask",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "kraken-kraken-bifrost-old-norse",
+      "model_id": "kraken-bifrost_old_norse",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "trocr-trocr-kurrent-xvi-xvii",
+      "model_id": "trocr-kurrent-xvi-xvii",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "kraken-kraken-catmus-gothic-print",
+      "model_id": "kraken-catmus_gothic_print",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "trocr-trocr-essoins-middle-latin",
+      "model_id": "trocr-essoins-middle-latin",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 237,
+      "engine": "vlm",
+      "error": null,
+      "error_path": null,
+      "id": "vlm-qwen3-8-27b-2",
+      "model_id": "qwen3.8-27b",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "kraken-kraken-bastarda-inzigkofen-2",
+      "model_id": "kraken-bastarda_inzigkofen",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "trocr-trocr-medieval-escriptmask-2",
+      "model_id": "trocr-medieval-escriptmask",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "kraken-kraken-bifrost-old-norse-2",
+      "model_id": "kraken-bifrost_old_norse",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "trocr-trocr-kurrent-xvi-xvii-2",
+      "model_id": "trocr-kurrent-xvi-xvii",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "kraken-kraken-catmus-gothic-print-2",
+      "model_id": "kraken-catmus_gothic_print",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "trocr-trocr-essoins-middle-latin-2",
+      "model_id": "trocr-essoins-middle-latin",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 827,
+      "engine": "vlm",
+      "error": null,
+      "error_path": null,
+      "id": "vlm-qwen3-8-27b-3",
+      "model_id": "qwen3.8-27b",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "kraken-kraken-cursive-inzigkofen",
+      "model_id": "kraken-cursive_inzigkofen",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "kraken-kraken-bohemian-19th",
+      "model_id": "kraken-bohemian_19th",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 193,
+      "engine": "vlm",
+      "error": null,
+      "error_path": null,
+      "id": "vlm-qwen3-8-27b-4",
+      "model_id": "qwen3.8-27b",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "kraken-kraken-cursive-inzigkofen-2",
+      "model_id": "kraken-cursive_inzigkofen",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": null,
+      "id": "kraken-kraken-bohemian-19th-2",
+      "model_id": "kraken-bohemian_19th",
+      "page": null,
+      "path": null,
+      "status": "error"
+    }
+  ],
+  "doc_id": "missiven2",
+  "run_counts": {
+    "degenerate": 0,
+    "empty": 0,
+    "failed": 16,
+    "successful": 5,
+    "total": 21
+  },
+  "run_quality": "partial_failure",
+  "version": "1.0"
+}
