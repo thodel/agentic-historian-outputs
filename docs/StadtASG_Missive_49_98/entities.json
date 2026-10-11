@@ -1,0 +1,79 @@
+{
+  "entities": [
+    {
+      "text": "14.31 Juli 16.",
+      "type": "DATE",
+      "normalised": "16-07-31",
+      "context": "14.31 Juli 16.          1435",
+      "char_start": 0,
+      "char_end": 14,
+      "located": true
+    },
+    {
+      "text": "14.31 Juli 16.",
+      "type": "DATE",
+      "normalised": "16-07-31",
+      "context": "14.31 Juli 16.          1435",
+      "char_start": 117,
+      "char_end": 131,
+      "located": true
+    },
+    {
+      "text": "1435",
+      "type": "DATE",
+      "normalised": "1435",
+      "context": "14.31 Juli 16.          1435",
+      "char_start": 24,
+      "char_end": 28,
+      "located": true
+    },
+    {
+      "text": "28ten December 1848",
+      "type": "DATE",
+      "normalised": "1848-12-28",
+      "context": "m 28ten December 1848 den Obersternwachtmeister",
+      "char_start": 137,
+      "char_end": 156,
+      "located": true
+    },
+    {
+      "text": "Obersternwachtmeister",
+      "type": "ROLE",
+      "normalised": "Obersternwachtmeister",
+      "context": "den Obersternwachtmeister -[unlesbar]-",
+      "char_start": 161,
+      "char_end": 182,
+      "located": true,
+      "controlled_vocab": "meister",
+      "hub_confidence": "medium",
+      "link_method": "controlled_vocab"
+    },
+    {
+      "text": "Empfang",
+      "type": "CARE_ACTION",
+      "normalised": "Empfang",
+      "context": "die Papiere Stellen Empfang Quittung",
+      "char_start": 227,
+      "char_end": 234,
+      "located": true
+    },
+    {
+      "text": "Quittung",
+      "type": "CARE_ACTION",
+      "normalised": "Quittung",
+      "context": "die Papiere Stellen Empfang Quittung",
+      "char_start": 235,
+      "char_end": 243,
+      "located": true
+    },
+    {
+      "text": "Stellen",
+      "type": "CARE_ACTION",
+      "normalised": "Stellen",
+      "context": "die Papiere Stellen Empfang Quittung",
+      "char_start": 219,
+      "char_end": 226,
+      "located": true
+    }
+  ]
+}

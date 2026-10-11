@@ -1,0 +1,216 @@
+{
+  "doc_id": "StadtASG_Missive_49_98",
+  "transcription": "14.31 Juli 16.          1435          UB jm 3611          98\n                                                        14.31 Juli 16.\n\nA\nm 28ten December 1848 den Obersternwachtmeister -[unlesbar]-\n[unlesbar] die Papiere Stellen Empfang Quittung hiezu?",
+  "description": {
+    "doc_id": "StadtASG_Missive_49_98",
+    "source_description": "\n\n{\n  \"Aufbewahrungsort\": {\n    \"wert\": \"\",\n    \"unsicher\": true,\n    \"notiz\": \"Keine gesicherten Angaben möglich; moderne Signaturnotiz 'UB jm 3611' oben rechts deutet auf eine Bibliotheks-/Archivsignatur hin (unsicher).\"\n  },\n  \"Beschreibstoff\": {\n    \"wert\": \"Papier (unsicher)\",\n    \"unsicher\": true,\n    \"notiz\": \"Dünn, stark vergilbtes, teils fleckiges Papier mit ausgeprägtem Faltkreuz (horizontal und vertikal gefaltet); Wasserzeichen nicht erkennbar; keine Hinweise auf Palimpsest.\"\n  },\n  \"Blaetter\": {\n    \"wert\": \"1 Blatt (unsicher)\",\n    \"unsicher\": true,\n    \"notiz\": \"Einzelnes, gefaltetes Blatt; moderne Ziffer '98' oben rechts (Foliierung/Inventarnummer, unsicher); keine Lagenstruktur, kein Textverlust erkennbar.\"\n  },\n  \"Format\": {\n    \"wert\": \"ca. 15 x 20 cm (unsicher)\",\n    \"unsicher\": true,\n    \"notiz\": \"Maße anhand der Kodak-Farbreferenz geschätzt; Formatbezeichnung (Folio/Quarto/Oktav) nicht eindeutig zuordenbar, eher kleines Format.\"\n  },\n  \"Datierung\": {\n    \"wert\": \"1435 (unsicher); spätere Eintragung 1848; Erfassungsnotiz 2016\",\n    \"unsicher\": true,\n    \"notiz\": \"Jahreszahl '1435' oben Mitte (moderne Notiz, unsicher); mittlere kursive Notiz datiert '28ten December 1848'; obere Notizen '14.31 Juli 16.' (Erfassung 2016).\"\n  },\n  \"Lagen\": {\n    \"wert\": \"nicht anwendbar (unsicher)\",\n    \"unsicher\": true,\n    \"notiz\": \"Einzelnes Blatt, keine Lagenstruktur, keine Kustoden oder Reklamanten erkennbar.\"\n  },\n  \"Schriftraum_Gliederung\": {\n    \"wert\": \"nicht liniert/gerastert (unsicher)\",\n    \"unsicher\": true,\n    \"notiz\": \"Kein Raster oder Linierung erkennbar; Schriftraum unregelmäßig, Notizen in Rand- und Mittelzone; großes geschwungenes Zeichen (Initial/Verweiszeichen, unsicher) in der Mitte.\"\n  },\n  \"Schrift\": {\n    \"wert\": \"mehrere Schriften: moderne Handschrift (schwarz) und kursive Schrift des 19. Jh. (schwarz); Durchschlag von der Rückseite (unsicher)\",\n    \"unsicher\": true,\n    \"notiz\": \"Tinte durchweg schwarz; keine Rubrizierung; Abkürzungen in der mittleren Notiz; Rasuren/Korrekturen nicht sicher erkennbar.\"\n  },\n  \"Schreiber\": {\n    \"wert\": \"mindestens zwei Hände, anonym (unsicher)\",\n    \"unsicher\": true,\n    \"notiz\": \"Moderne Erfassungshand (obere Notizen) und ältere kursive Hand (1848, Mitte); Durchschlag des Rückseitentextes sichtbar; keine namentlich bekannten Schreiber.\"\n  },\n  \"Ausstattung\": {\n    \"wert\": \"grüner Siegelrest links; rundes Anhängsel rechts (unsicher)\",\n    \"unsicher\": true,\n    \"notiz\": \"Kein Buchschmuck, keine Miniaturen oder verzierte Initialen; links abgebrochener grünlicher Siegelrest, rechts rundes, papierartiges Anhängsel (Funktion unsicher).\"\n  },\n  \"Sprache\": {\n    \"wert\": \"Deutsch (unsicher)\",\n    \"unsicher\": true,\n    \"notiz\": \"Mittlere Notiz und moderne Vermerke in Deutsch; Dialektraum nicht sicher bestimmbar; lateinische Abkürzungen in der Signatur.\"\n  },\n  \"Einband\": {\n    \"wert\": \"kein Einband (unsicher)\",\n    \"unsicher\": true,\n    \"notiz\": \"Einzelnes, ungebundenes Blatt; kein Bezug, keine Schließen oder Metallbeschläge, keine Titelschilder erkennbar.\"\n  },\n  \"Provenienz\": {\n    \"wert\": \"\",\n    \"unsicher\": true,\n    \"notiz\": \"Keine gesicherten Angaben möglich.\"\n  },\n  \"Literatur\": {\n    \"wert\": \"\",\n    \"unsicher\": true,\n    \"notiz\": \"Keine gesicherten Angaben möglich.\"\n  },\n  \"Inhalt\": {\n    \"wert\": \"Urkunde/Quittung/Vermerk (unsicher)\",\n    \"unsicher\": true,\n    \"notiz\": \"Sachinhalt nicht sicher lesbar; mittlere Notiz nennt 'Obersternwachtmeister' und 'Paul Stoll'; Durchschlag deutet auf ursprünglichen Rückseitentext hin.\"\n  },\n  \"Weitere_Hinweise\": {\n    \"wert\":",
+    "source_json": {},
+    "sampling": {
+      "temperature": 0.0
+    },
+    "care_flag": {
+      "is_care_related": false,
+      "care_context": "",
+      "care_types": [],
+      "beteiligte": []
+    },
+    "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/StadtASG_Missive_49_98.JPG"
+  },
+  "entities": {
+    "entities": [
+      {
+        "text": "14.31 Juli 16.",
+        "type": "DATE",
+        "normalised": "16-07-31",
+        "context": "14.31 Juli 16.          1435",
+        "char_start": 0,
+        "char_end": 14,
+        "located": true
+      },
+      {
+        "text": "14.31 Juli 16.",
+        "type": "DATE",
+        "normalised": "16-07-31",
+        "context": "14.31 Juli 16.          1435",
+        "char_start": 117,
+        "char_end": 131,
+        "located": true
+      },
+      {
+        "text": "1435",
+        "type": "DATE",
+        "normalised": "1435",
+        "context": "14.31 Juli 16.          1435",
+        "char_start": 24,
+        "char_end": 28,
+        "located": true
+      },
+      {
+        "text": "28ten December 1848",
+        "type": "DATE",
+        "normalised": "1848-12-28",
+        "context": "m 28ten December 1848 den Obersternwachtmeister",
+        "char_start": 137,
+        "char_end": 156,
+        "located": true
+      },
+      {
+        "text": "Obersternwachtmeister",
+        "type": "ROLE",
+        "normalised": "Obersternwachtmeister",
+        "context": "den Obersternwachtmeister -[unlesbar]-",
+        "char_start": 161,
+        "char_end": 182,
+        "located": true,
+        "controlled_vocab": "meister",
+        "hub_confidence": "medium",
+        "link_method": "controlled_vocab"
+      },
+      {
+        "text": "Empfang",
+        "type": "CARE_ACTION",
+        "normalised": "Empfang",
+        "context": "die Papiere Stellen Empfang Quittung",
+        "char_start": 227,
+        "char_end": 234,
+        "located": true
+      },
+      {
+        "text": "Quittung",
+        "type": "CARE_ACTION",
+        "normalised": "Quittung",
+        "context": "die Papiere Stellen Empfang Quittung",
+        "char_start": 235,
+        "char_end": 243,
+        "located": true
+      },
+      {
+        "text": "Stellen",
+        "type": "CARE_ACTION",
+        "normalised": "Stellen",
+        "context": "die Papiere Stellen Empfang Quittung",
+        "char_start": 219,
+        "char_end": 226,
+        "located": true
+      }
+    ]
+  },
+  "errors": [],
+  "a_meta": {
+    "qa_score": 0.0,
+    "source": "single-ensemble-criteria",
+    "criteria_rerun": true
+  },
+  "recognitions": [
+    {
+      "engine": "vlm",
+      "model_id": "qwen3.8-27b",
+      "text": "14.31 Juli 16.          1435          UB jm 3611          98\n                                                          14.31 Juli 16.\n\nA\nm 28ten December 1848 den Obersternwachtmeister—[illeg.]—\n(Bewilligt?) den Paul Stoll zu [illeg.] [illeg.]",
+      "confidence": 0.8,
+      "error": "",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_98.JPG"
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-catmus_medieval",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_98.JPG"
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-medieval-escriptmask",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/segment: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_98.JPG"
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-tridis_v2",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_98.JPG"
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-kurrent-xvi-xvii",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/segment: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_98.JPG"
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-cremma_medieval",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_98.JPG"
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-essoins-middle-latin",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/segment: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_98.JPG"
+    },
+    {
+      "engine": "vlm",
+      "model_id": "qwen3.8-27b",
+      "text": "14.31 Juli 16.          1435          UB jm 3611          98\n                                                        14.31 Juli 16.\n\nA\nm 28ten December 1848 den Obersternwachtmeister -[unlesbar]-\n[unlesbar] die Papiere Stellen Empfang Quittung hiezu?",
+      "confidence": 0.8,
+      "error": "",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_98.JPG"
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-cursive_inzigkofen",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_98.JPG"
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-bohemian_19th",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_98.JPG"
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-mendelssohn_letters",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_98.JPG"
+    }
+  ]
+}
