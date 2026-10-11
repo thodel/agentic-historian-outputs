@@ -19,7 +19,7 @@ title: Katalog
     </dl>
   </details>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
-  <p class="catalogue-summary" id="catalogue-count"><strong>4</strong> Ausgaben · <span class="superseded-count">0 ersetzt</span> · 0 Testläufe</p>
+  <p class="catalogue-summary" id="catalogue-count"><strong>5</strong> Ausgaben · <span class="superseded-count">0 ersetzt</span> · 0 Testläufe</p>
 </div>
 
 <form class="catalogue-tools" role="search" aria-label="Ausgaben durchsuchen" onsubmit="return false">
@@ -112,10 +112,10 @@ title: Katalog
 </form>
 
 <p id="catalogue-active-filters" class="catalogue-active-filters">Keine Filter aktiv.</p>
-<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">4 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
+<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">5 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
 <p id="catalogue-empty" class="catalogue-empty" role="status" hidden>Keine Einträge entsprechen den aktiven Filtern. Ändern Sie die Filter oder setzen Sie sie zurück.</p>
 
-<div id="catalogue-list" class="catalogue-list" data-enhanced="false" data-total-records="4" data-shown-records="4">
+<div id="catalogue-list" class="catalogue-list" data-enhanced="false" data-total-records="5" data-shown-records="5">
 <article class="catalogue-card" data-document-id="stadtasg_missive_49_97" data-created="2026-10-11T10:33:21+02:00" data-kind="output" data-language="mittelhochdeutsch / frühneuhochdeutsch (alemannisch, ostschweizerisch)" data-script="gotische kursive (kanzleischrift)" data-search="stadtasg_missive_49_97 brief / klage- oder bittschrift  1456 mittelhochdeutsch / frühneuhochdeutsch (alemannisch, ostschweizerisch) gotische kursive (kanzleischrift) brief / klage- oder bittschrift supr fründlich willig dienst voran lichen vnd guten fründ vnd gät fur bratter ertz offizial ꝛ appellaßl enfer lantman sine sae in rane gschrißn über mitburg männi off fen prüffen ꝛ" data-superseded="false" data-recognition-provenance="current" data-recognition-total="11" data-recognition-successful="2" data-recognition-failed="9" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="DATE,ORG,PERSON,PLACE,ROLE,SOCIAL_GROUP" data-completeness="teilweise">
   <div class="catalogue-card__layout">
   <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
@@ -246,6 +246,40 @@ title: Katalog
         <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 16 fehlgeschlagene Erkennungsversuche</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
       </div>
       <p class="catalogue-preview">StadtASG_Missive_49_97.JPG Euer fründlich willig dienst ~xoran~ lieb vnd güten fründ vnd güt furbrüder Ertz offencell ~vnd~ appocelle Enfer lantman Sine Sae in Rane gschriben über …</p>
+    </div>
+  </details>
+  </div>
+  </div>
+</article>
+<article class="catalogue-card" data-document-id="bat_664_r_00027" data-created="2026-07-07T15:25:18+02:00" data-kind="output" data-language="deutsch (spätmittelhochdeutsch), alemannisch (unsicher)" data-script="gotische kursive (kanzleischrift), braun-schwarze tinte" data-search="bat_664_r_00027 gerichtlicher eintrag / klage / urteil  1439 (explizit) deutsch (spätmittelhochdeutsch), alemannisch (unsicher) gotische kursive (kanzleischrift), braun-schwarze tinte gerichtlicher eintrag / klage / urteil 1439 t̄ 9 27 vnser freuntlich grib vnd liebe getruwe von de stoff wer so da mit zwnstent sein vaff vnd gmeindt seyn / darnmb und de selbe vaff im dorf und vil firgema hat aber noch" data-superseded="false" data-recognition-provenance="current" data-recognition-total="11" data-recognition-successful="2" data-recognition-failed="9" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="CARE_ACTION,CARE_ACTOR,DATE,ORG,PERSON,PLACE,ROLE" data-completeness="teilweise">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
+  <div class="catalogue-card__content">
+  <div class="catalogue-card__heading">
+    <div>
+      <p class="catalogue-created">Erstellt <time datetime="2026-07-07T15:25:18+02:00">07.07.2026, 15:25</time></p>
+      <h2><a href="BAT_664_r_00027/">gerichtlicher Eintrag / Klage / Urteil</a></h2>
+      <p class="catalogue-id">Dokument-ID <code>BAT_664_r_00027</code></p>
+    </div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">9 problematische Kandidaten</span></div>
+  </div>
+  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>1439 (explizit)</dd></div><div><dt>Entitäten</dt><dd>20</dd></div></dl>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="BAT_664_r_00027/" aria-label="Dokument öffnen: gerichtlicher Eintrag / Klage / Urteil">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="BAT_664_r_00027/?cmp=bat-664-r-00027-jpg-vlm-qwen3-8-27b:bat-664-r-00027-jpg-vlm-qwen3-8-27b-2&amp;page=BAT_664_r_00027.jpg#recognitions" aria-label="Modelle vergleichen: gerichtlicher Eintrag / Klage / Urteil">Modelle vergleichen</a></p>
+  <details class="catalogue-details">
+    <summary>Details und Vorschau</summary>
+    <div class="catalogue-details__body">
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>gerichtlicher Eintrag / Klage / Urteil</dd></div><div><dt>Sprache</dt><dd>Deutsch (spätmittelhochdeutsch), alemannisch (unsicher)</dd></div><div><dt>Schrift</dt><dd>gotische Kursive (Kanzleischrift), braun-schwarze Tinte</dd></div><div><dt>Kandidaten</dt><dd>2 erfolgreich / 11 insgesamt</dd></div></dl>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">9 von 11 Kandidaten problematisch</p></div>
+      </div>
+
+      <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
+        <p class="catalogue-provenance__label">Engines</p>
+        <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
+        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 9 fehlgeschlagene Erkennungsversuche</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+      </div>
+      <p class="catalogue-preview">1439 T̄ 9 27 Vnser freuntlich grib vnd liebe getruwe Von de stoff wer so da mit zwnstent sein vaff vnd gmeindt seyn / darnmb und de selbe vaff im dorf und vil firgema hat aber noch…</p>
     </div>
   </details>
   </div>
