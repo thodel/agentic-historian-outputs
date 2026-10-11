@@ -1,0 +1,9 @@
+label,surface,type,context,confidence,uri
+16-07-31,14.31 Juli 16.,DATE,14.31 Juli 16.          1435,,
+16-07-31,14.31 Juli 16.,DATE,14.31 Juli 16.          1435,,
+1435,1435,DATE,14.31 Juli 16.          1435,,
+1848-12-28,28ten December 1848,DATE,m 28ten December 1848 den Obersternwachtmeister,,
+Obersternwachtmeister,Obersternwachtmeister,ROLE,den Obersternwachtmeister -[unlesbar]-,medium,
+Empfang,Empfang,CARE_ACTION,die Papiere Stellen Empfang Quittung,,
+Quittung,Quittung,CARE_ACTION,die Papiere Stellen Empfang Quittung,,
+Stellen,Stellen,CARE_ACTION,die Papiere Stellen Empfang Quittung,,

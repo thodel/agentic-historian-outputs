@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt><title>Machine transcription: StadtASG_Missive_49_98</title></titleStmt>
+      <publicationStmt><p>Agentic Historian output. License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).</p></publicationStmt>
+      <sourceDesc><p>Source image not published</p></sourceDesc>
+    </fileDesc>
+    <revisionDesc><change when="2026-10-11">Generated from pipeline.json.</change></revisionDesc>
+  </teiHeader>
+  <text><body><div type="transcription"><p>14.31 Juli 16.          1435          UB jm 3611          98
+                                                        14.31 Juli 16.
+
+A
+m 28ten December 1848 den Obersternwachtmeister -[unlesbar]-
+[unlesbar] die Papiere Stellen Empfang Quittung hiezu?</p></div></body></text>
+</TEI>
