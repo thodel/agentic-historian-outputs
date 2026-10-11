@@ -1,0 +1,457 @@
+{
+  "doc_id": "StadtASG_Missive_49_97",
+  "transcription": "Supr fründlich willig dienst voran lichen vnd guten fründ vnd gät fur bratter\nErtz offizial ꝛ appellaßl Enfer lantman Sine Sae in Rane gschrißn über mitburg\nmänni off fen prüffen ꝛ ettwaß mit willen mit im trüb Sae Sine gar vnwillig\nbesumbt / dan daß Saeß wohl ze woffen ist Sae sy vormals im andren frid gebn hans\nvff wellent sin ꝛ bitten mit gunsten vnß fleißt Sae in sin ubern gar zu\ngnüeg Sae er sin frid fürdae hait / mber gelich wellent sin Enfern daß zu\nsin gnaden / dunct sin Sae im stichen vnndre ꝛ meren purgen ꝛ not bespüldt\nꝛ gedient sind in Sine willig sinden / über offizial vnßwurt laüt Sine gnädig\nby sitem botten geben am montag nach sant margreten tag Anno Sae of vier hundert\nfimo sechszec mit Supre Gnade nifcht gebresten hab Enfore landes ansicht          Geprant Stamen ꝛ\nHans zu appellaßl s/",
+  "description": {
+    "doc_id": "StadtASG_Missive_49_97",
+    "source_description": "# Kodizologische Beschreibung (Ad-fontes-Richtlinien, UZH)\n\n**1. Aufbewahrungsort**\nKeine gesicherten Angaben möglich. Aus der Abbildung lässt sich kein Archiv oder Bestand ableiten.\n\n**2. Beschreibstoff**\nPapier. Der Beschreibstoff ist ein faseriges, leicht vergilbtes Schreibpapier, das durch mehrere Faltlinien (vertikal und horizontal) geprägt ist – ein typisches Merkmal eines Faltbriefs. In der rechten Blattmitte zieht sich ein brauner, feiner Wasser- bzw. Schmutzriss, links sind kleinere Flecken und eine leichte Verfärbung zu beobachten. Ein Wasserzeichen ist im vorliegenden Bild nicht sicher erkennbar (unsicher); eine Durchsicht wäre für eine Piccard-/Briquet-Lokalisierung erforderlich. Hinweise auf ein Palimpsest fehlen.\n\n**3. Blaetter**\nDie Überlieferung umfasst ein einzelnes Blatt mit einer beschrifteten Seite. Oben rechts ist eine moderne Foliierung „97“ (Bleistift bzw. dünne Tinte) zu lesen. Textverluste oder fehlende Blätter sind nicht erkennbar; der Text schließt mit einer Subskription ab.\n\n**4. Format**\nDas Blatt ist querformatig (breiter als hoch). Anhand des Kodak-Farbreferenzlineals rechts lässt sich das Format auf ca. 15 × 19 cm schätzen (unsicher). Es handelt sich nicht um ein gebundenes Format (Folio/Quarto/Oktav), sondern um ein loses Faltblatt.\n\n**5. Datierung**\nEine explizite Datierung ist vorhanden: „am montag nach sant margreten tag Anno Sae of vier hundert fimo sechszec“, d. h. Montag nach dem Fest der hl. Margareta (20. Juli) im Jahr 1456.\n\n**6. Lagen**\nEine Lagenstruktur (Quaternio u. a.) ist nicht vorhanden, da es sich um ein Einzelblatt handelt. Kustoden oder Reklamanten fehlen. Die Faltlinien deuten auf eine mehrmalige Faltung im Briefformat hin, was für Gebrauchsschriften und Korrespondanz des 15. Jahrhunderts typisch ist.\n\n**7. Schriftraum_Gliederung**\nDer Schriftraum ist in einer Spalte angelegt und umfasst ca. 12 Zeilen. Die Blätter sind weder liniert noch gerastert; der Schreiber hat ohne Hilfslinien geschrieben. Der Text beschriftet nur die obere Blatthälfte, die untere Hälfte bleibt leer. Der Schriftraum misst ca. 12 × 17 cm (unsicher). Verweiszeichen (kleine Hand, nota bene) sind nicht erkennbar.\n\n**8. Schrift**\nDie Schrift ist eine flüssige, kursiv geschwungene gotische Kursive (Kanzleischrift), wie sie im 15. Jahrhundert in der Verwaltung und Korrespondenz üblich war. Die Tinte ist braun-schwarz. Es gibt keine farbige Rubrizierung und keine Auszeichnungsschriften. Zahlreiche Abkürzungen mit Abkürzungsstrichen und Tironischen Noten sind zu beobachten (z. B. „ꝛ“ für „er“, das „et“- bzw. „und“-Zeichen). Rasuren oder Korrekturen im Text sind nicht erkennbar.\n\n**9. Schreiber**\nEine einzige, einheitliche Schreiberhand ist zu erkennen; der Schreiber ist namentlich nicht bekannt (anonym). Am Ende steht die Subskription/Signatur des Absenders („Hans zu appellaßl s/“). Streichungen, Überschreibungen, Randkorrekturen, Marginalien oder Federproben fehlen.\n\n**10. Ausstattung**\nBuchschmuck, Miniaturen oder verzierte Initialen in Farbe sind nicht vorhanden. Am Textanfang steht eine große, monochrom in Tinte ausgeführte Initiale „S“, die mit einer langen, geschwungenen Linie (Schwungdekor) versehen ist. Es gibt keine Lombarden in Rot/Blau und keine Goldausstattung.\n\n**11. Sprache**\nDer Text ist in Mittelhochdeutsch bzw. Frühneuhochdeutsch verfasst",
+    "source_json": {
+      "Aufbewahrungsort": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Keine gesicherten Angaben möglich; aus dem Bild nicht ableitbar."
+      },
+      "Beschreibstoff": {
+        "wert": "Papier",
+        "unsicher": false,
+        "notiz": "Faseriges, leicht vergilbtes Papier mit deutlichen Faltlinien (Faltbrief); ein brauner Wasser-/Schmutzriss in der rechten Blattmitte, kleinere Flecken links. Wasserzeichen im Bild nicht sicher erkennbar (unsicher)."
+      },
+      "Blaetter": {
+        "wert": "1 Blatt (1 Seite beschriftet)",
+        "unsicher": false,
+        "notiz": "Einzelnes, gefaltetes Blatt; moderne Foliierung '97' oben rechts (Bleistift/Tinte). Kein Textverlust erkennbar."
+      },
+      "Format": {
+        "wert": "ca. 15 x 19 cm (querformatig) (unsicher)",
+        "unsicher": true,
+        "notiz": "Geschätzt anhand des Kodak-Farbreferenzlineals rechts; querformatiges Faltblatt, kein gebundenes Format (kein Folio/Quarto/Oktav im engeren Sinn)."
+      },
+      "Datierung": {
+        "wert": "1456",
+        "unsicher": false,
+        "notiz": "Explizite Datierung im Text: 'am montag nach sant margreten tag Anno Sae of vier hundert fimo sechszec' (Montag nach St. Margareta, 1456)."
+      },
+      "Lagen": {
+        "wert": "keine Lagenstruktur (Einzelblatt / Faltbrief)",
+        "unsicher": false,
+        "notiz": "Keine Kustoden oder Reklamanten; Faltlinien deuten auf eine mehrmalige Faltung (Briefformat) hin."
+      },
+      "Schriftraum_Gliederung": {
+        "wert": "1 Spalte, ca. 12 Zeilen, nicht liniert",
+        "unsicher": false,
+        "notiz": "Keine Linien oder Rasterung erkennbar; Text beschriftet nur die obere Blatthälfte, untere Hälfte leer. Schriftraum ca. 12 x 17 cm (unsicher). Keine Verweiszeichen."
+      },
+      "Schrift": {
+        "wert": "gotische Kursive (Kanzleischrift)",
+        "unsicher": false,
+        "notiz": "Flüssige, kursiv geschwungene gotische Kursive; Tinte braun-schwarz. Zahlreiche Abkürzungen mit Abkürzungsstrichen und Tironischen Noten (z. B. 'ꝛ' für 'er', 'ꝛ'/'et'-Zeichen). Keine farbige Rubrizierung."
+      },
+      "Schreiber": {
+        "wert": "eine anonyme Hand",
+        "unsicher": false,
+        "notiz": "Einheitliche Schreiberhand; Subskription/Signatur am Ende ('Hans zu appellaßl s/'). Keine Rasuren oder Streichungen erkennbar; keine Marginalien."
+      },
+      "Ausstattung": {
+        "wert": "keine Miniaturen; eine in Tinte ausgeführte, geschwungene Initiale 'S'",
+        "unsicher": false,
+        "notiz": "Große, mit einer langen Schwunglinie versehene Initial 'S' am Textanfang, monochrom in Tinte (keine Lombarden in Farbe, kein Gold)."
+      },
+      "Sprache": {
+        "wert": "Mittelhochdeutsch / Frühneuhochdeutsch (alemannisch, ostschweizerisch)",
+        "unsicher": false,
+        "notiz": "Alemannische Formen (z. B. 'Sae' = sie, 'Sine' = sein, 'gnüeg', 'purgen', 'bespüldt'); Orts-/Namensbezug 'appellaßl' (Appenzell) weist in die Ostschweiz."
+      },
+      "Einband": {
+        "wert": "kein Einband (loses Faltblatt)",
+        "unsicher": false,
+        "notiz": "Links ein kleiner Papierlasch/Klebestreifen (möglicherweise Überrest eines Verschlusses oder Klebestelle); keine Schließen, keine Metallbeschläge, kein Titelschild."
+      },
+      "Provenienz": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Keine gesicherten Angaben möglich."
+      },
+      "Literatur": {
+        "wert": "",
+        "unsicher": true,
+        "notiz": "Keine gesicherten Angaben möglich."
+      },
+      "Inhalt": {
+        "wert": "Brief / Klage- oder Bittschrift (Faltbrief)",
+        "unsicher": false,
+        "notiz": "Anrede an einen 'Ertz offizial' bzw. an 'appellaßl' (Appenzell); Inhalt: Beschwerde/Klage über einen Streit ('trüb'), Bitte um Frieden und Gerechtigkeit, Erwähnung von Bürgen ('purgen') und eines Boten; Subskription des Absenders 'Hans zu appellaßl'."
+      },
+      "Weitere_Hinweise": {
+        "wert": "moderne Foliierung '97' oben rechts; Kodak-Farbreferenz mit Lineal rechts im Bild",
+        "unsicher": false,
+        "notiz": "Faltlinien und Papierlasch links bestätigen die Überlieferung als Faltbrief; Farbreferenz dient der fotografischen Dokumentation, nicht dem Original."
+      }
+    },
+    "sampling": {
+      "temperature": 0.0
+    },
+    "care_flag": {
+      "is_care_related": false,
+      "care_context": "",
+      "care_types": [],
+      "beteiligte": []
+    },
+    "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/StadtASG_Missive_49_97.JPG"
+  },
+  "entities": {
+    "entities": [
+      {
+        "text": "Hans",
+        "type": "PERSON",
+        "normalised": "Hans",
+        "context": "Hans zu appellaßl s/",
+        "char_start": 794,
+        "char_end": 798,
+        "located": true,
+        "hub_id": "118000",
+        "wikidata": "",
+        "gnd": "118000",
+        "hls": 12345,
+        "hub_confidence": "high",
+        "link_method": "hub_exact"
+      },
+      {
+        "text": "Rane",
+        "type": "PLACE",
+        "normalised": "Rane",
+        "context": "Sine Sae in Rane gschrißn",
+        "char_start": 130,
+        "char_end": 134,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "mitburg",
+        "type": "PLACE",
+        "normalised": "Mitburg",
+        "context": "über mitburg",
+        "char_start": 149,
+        "char_end": 156,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Enfer",
+        "type": "ORG",
+        "normalised": "Enfer",
+        "context": "Enfer lantman",
+        "char_start": 104,
+        "char_end": 109,
+        "located": true
+      },
+      {
+        "text": "Enfer",
+        "type": "ORG",
+        "normalised": "Enfer",
+        "context": "Enfer lantman",
+        "char_start": 447,
+        "char_end": 452,
+        "located": true
+      },
+      {
+        "text": "offizial",
+        "type": "ROLE",
+        "normalised": "offizial",
+        "context": "Ertz offizial",
+        "char_start": 83,
+        "char_end": 91,
+        "located": true
+      },
+      {
+        "text": "offizial",
+        "type": "ROLE",
+        "normalised": "offizial",
+        "context": "Ertz offizial",
+        "char_start": 580,
+        "char_end": 588,
+        "located": true
+      },
+      {
+        "text": "appellaßl",
+        "type": "ROLE",
+        "normalised": "appellant",
+        "context": "Ertz offizial ꝛ appellaßl",
+        "char_start": 94,
+        "char_end": 103,
+        "located": true
+      },
+      {
+        "text": "appellaßl",
+        "type": "ROLE",
+        "normalised": "appellant",
+        "context": "Ertz offizial ꝛ appellaßl",
+        "char_start": 802,
+        "char_end": 811,
+        "located": true
+      },
+      {
+        "text": "lantman",
+        "type": "ROLE",
+        "normalised": "Landsmann",
+        "context": "Enfer lantman",
+        "char_start": 110,
+        "char_end": 117,
+        "located": true
+      },
+      {
+        "text": "Sae",
+        "type": "PERSON",
+        "normalised": "Sae",
+        "context": "Sine Sae in Rane",
+        "char_start": 123,
+        "char_end": 126,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Sae",
+        "type": "PERSON",
+        "normalised": "Sae",
+        "context": "Sine Sae in Rane",
+        "char_start": 211,
+        "char_end": 214,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Sae",
+        "type": "PERSON",
+        "normalised": "Sae",
+        "context": "Sine Sae in Rane",
+        "char_start": 251,
+        "char_end": 254,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Sae",
+        "type": "PERSON",
+        "normalised": "Sae",
+        "context": "Sine Sae in Rane",
+        "char_start": 275,
+        "char_end": 278,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Sae",
+        "type": "PERSON",
+        "normalised": "Sae",
+        "context": "Sine Sae in Rane",
+        "char_start": 363,
+        "char_end": 366,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Sae",
+        "type": "PERSON",
+        "normalised": "Sae",
+        "context": "Sine Sae in Rane",
+        "char_start": 393,
+        "char_end": 396,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Sae",
+        "type": "PERSON",
+        "normalised": "Sae",
+        "context": "Sine Sae in Rane",
+        "char_start": 484,
+        "char_end": 487,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Sae",
+        "type": "PERSON",
+        "normalised": "Sae",
+        "context": "Sine Sae in Rane",
+        "char_start": 675,
+        "char_end": 678,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Saeß",
+        "type": "PERSON",
+        "normalised": "Saeß",
+        "context": "dan daß Saeß wohl",
+        "char_start": 251,
+        "char_end": 255,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "bratter",
+        "type": "SOCIAL_GROUP",
+        "normalised": "Bratter (vagabonds)",
+        "context": "gät fur bratter",
+        "char_start": 70,
+        "char_end": 77,
+        "located": true
+      },
+      {
+        "text": "Montag",
+        "type": "DATE",
+        "normalised": "Monday",
+        "context": "am montag nach",
+        "char_start": null,
+        "char_end": null,
+        "located": false
+      },
+      {
+        "text": "Sant Margreten tag",
+        "type": "DATE",
+        "normalised": "Saint Margaret's Day",
+        "context": "nach sant margreten tag",
+        "char_start": null,
+        "char_end": null,
+        "located": false
+      },
+      {
+        "text": "Anno Sae of vier hundert fimo sechszec",
+        "type": "DATE",
+        "normalised": "Year 456?",
+        "context": "Anno Sae of vier hundert fimo sechszec",
+        "char_start": null,
+        "char_end": null,
+        "located": false
+      }
+    ]
+  },
+  "errors": [],
+  "a_meta": {
+    "qa_score": 0.0,
+    "source": "single-ensemble-criteria",
+    "criteria_rerun": true
+  },
+  "recognitions": [
+    {
+      "engine": "vlm",
+      "model_id": "qwen3.8-27b",
+      "text": "Supr fründlich willig dienst voran lichen vnd guten fründ vnd gät fur bratter\nErtz offizial ꝛ appellaßl Enfer lantman Sine Sae in Rane gschrißn über mitburg\nmänni off fen prüffen ꝛ ettwaß mit willen mit im trüb Sae Sine gar vnwillig\nbesumbt / dan daß Saeß wohl ze woffen ist Sae sy vormals im andren frid gebn hans\nvff wellent sin ꝛ bitten mit gunsten vnß fleißt Sae in sin ubern gar zu\ngnüeg Sae er sin frid fürdae hait / mber gelich wellent sin Enfern daß zu\nsin gnaden / dunct sin Sae im stichen vnndre ꝛ meren purgen ꝛ not bespüldt\nꝛ gedient sind in Sine willig sinden / über offizial vnßwurt laüt Sine gnädig\nby sitem botten geben am montag nach sant margreten tag Anno Sae of vier hundert\nfimo sechszec mit Supre Gnade nifcht gebresten hab Enfore landes ansicht\n\nGeprant Stamen ꝛ\nHans zu appellaßl s/",
+      "confidence": 0.8,
+      "error": "",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_97.JPG"
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-catmus_medieval",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_97.JPG"
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-medieval-escriptmask",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/segment: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_97.JPG"
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-tridis_v2",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_97.JPG"
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-kurrent-xvi-xvii",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/segment: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_97.JPG"
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-cremma_medieval",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_97.JPG"
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-essoins-middle-latin",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/segment: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_97.JPG"
+    },
+    {
+      "engine": "vlm",
+      "model_id": "qwen3.8-27b",
+      "text": "Supr fründlich willig dienst voran lichen vnd guten fründ vnd gät fur bratter\nErtz offizial ꝛ appellaßl Enfer lantman Sine Sae in Rane gschrißn über mitburg\nmänni off fen prüffen ꝛ ettwaß mit willen mit im trüb Sae Sine gar vnwillig\nbesumbt / dan daß Saeß wohl ze woffen ist Sae sy vormals im andren frid gebn hans\nvff wellent sin ꝛ bitten mit gunsten vnß fleißt Sae in sin ubern gar zu\ngnüeg Sae er sin frid fürdae hait / mber gelich wellent sin Enfern daß zu\nsin gnaden / dunct sin Sae im stichen vnndre ꝛ meren purgen ꝛ not bespüldt\nꝛ gedient sind in Sine willig sinden / über offizial vnßwurt laüt Sine gnädig\nby sitem botten geben am montag nach sant margreten tag Anno Sae of vier hundert\nfimo sechszec mit Supre Gnade nifcht gebresten hab Enfore landes ansicht          Geprant Stamen ꝛ\nHans zu appellaßl s/",
+      "confidence": 0.8,
+      "error": "",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_97.JPG"
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-cursive_inzigkofen",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_97.JPG"
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-bohemian_19th",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_97.JPG"
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-bastarda_inzigkofen",
+      "text": "",
+      "confidence": 0.0,
+      "error": "Kraken service 502 at http://130.92.59.240:8200/ocr: {\"detail\":\"kraken engine unreachable at http://127.0.0.1:8201/recognize: All connection attempts failed\"}",
+      "timing_ms": 0,
+      "segmented_by": null,
+      "page": "StadtASG_Missive_49_97.JPG"
+    }
+  ]
+}

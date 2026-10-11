@@ -1,0 +1,239 @@
+{
+  "entities": [
+    {
+      "text": "Hans",
+      "type": "PERSON",
+      "normalised": "Hans",
+      "context": "Hans zu appellaßl s/",
+      "char_start": 794,
+      "char_end": 798,
+      "located": true,
+      "hub_id": "118000",
+      "wikidata": "",
+      "gnd": "118000",
+      "hls": 12345,
+      "hub_confidence": "high",
+      "link_method": "hub_exact"
+    },
+    {
+      "text": "Rane",
+      "type": "PLACE",
+      "normalised": "Rane",
+      "context": "Sine Sae in Rane gschrißn",
+      "char_start": 130,
+      "char_end": 134,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "mitburg",
+      "type": "PLACE",
+      "normalised": "Mitburg",
+      "context": "über mitburg",
+      "char_start": 149,
+      "char_end": 156,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Enfer",
+      "type": "ORG",
+      "normalised": "Enfer",
+      "context": "Enfer lantman",
+      "char_start": 104,
+      "char_end": 109,
+      "located": true
+    },
+    {
+      "text": "Enfer",
+      "type": "ORG",
+      "normalised": "Enfer",
+      "context": "Enfer lantman",
+      "char_start": 447,
+      "char_end": 452,
+      "located": true
+    },
+    {
+      "text": "offizial",
+      "type": "ROLE",
+      "normalised": "offizial",
+      "context": "Ertz offizial",
+      "char_start": 83,
+      "char_end": 91,
+      "located": true
+    },
+    {
+      "text": "offizial",
+      "type": "ROLE",
+      "normalised": "offizial",
+      "context": "Ertz offizial",
+      "char_start": 580,
+      "char_end": 588,
+      "located": true
+    },
+    {
+      "text": "appellaßl",
+      "type": "ROLE",
+      "normalised": "appellant",
+      "context": "Ertz offizial ꝛ appellaßl",
+      "char_start": 94,
+      "char_end": 103,
+      "located": true
+    },
+    {
+      "text": "appellaßl",
+      "type": "ROLE",
+      "normalised": "appellant",
+      "context": "Ertz offizial ꝛ appellaßl",
+      "char_start": 802,
+      "char_end": 811,
+      "located": true
+    },
+    {
+      "text": "lantman",
+      "type": "ROLE",
+      "normalised": "Landsmann",
+      "context": "Enfer lantman",
+      "char_start": 110,
+      "char_end": 117,
+      "located": true
+    },
+    {
+      "text": "Sae",
+      "type": "PERSON",
+      "normalised": "Sae",
+      "context": "Sine Sae in Rane",
+      "char_start": 123,
+      "char_end": 126,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sae",
+      "type": "PERSON",
+      "normalised": "Sae",
+      "context": "Sine Sae in Rane",
+      "char_start": 211,
+      "char_end": 214,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sae",
+      "type": "PERSON",
+      "normalised": "Sae",
+      "context": "Sine Sae in Rane",
+      "char_start": 251,
+      "char_end": 254,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sae",
+      "type": "PERSON",
+      "normalised": "Sae",
+      "context": "Sine Sae in Rane",
+      "char_start": 275,
+      "char_end": 278,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sae",
+      "type": "PERSON",
+      "normalised": "Sae",
+      "context": "Sine Sae in Rane",
+      "char_start": 363,
+      "char_end": 366,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sae",
+      "type": "PERSON",
+      "normalised": "Sae",
+      "context": "Sine Sae in Rane",
+      "char_start": 393,
+      "char_end": 396,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sae",
+      "type": "PERSON",
+      "normalised": "Sae",
+      "context": "Sine Sae in Rane",
+      "char_start": 484,
+      "char_end": 487,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sae",
+      "type": "PERSON",
+      "normalised": "Sae",
+      "context": "Sine Sae in Rane",
+      "char_start": 675,
+      "char_end": 678,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Saeß",
+      "type": "PERSON",
+      "normalised": "Saeß",
+      "context": "dan daß Saeß wohl",
+      "char_start": 251,
+      "char_end": 255,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "bratter",
+      "type": "SOCIAL_GROUP",
+      "normalised": "Bratter (vagabonds)",
+      "context": "gät fur bratter",
+      "char_start": 70,
+      "char_end": 77,
+      "located": true
+    },
+    {
+      "text": "Montag",
+      "type": "DATE",
+      "normalised": "Monday",
+      "context": "am montag nach",
+      "char_start": null,
+      "char_end": null,
+      "located": false
+    },
+    {
+      "text": "Sant Margreten tag",
+      "type": "DATE",
+      "normalised": "Saint Margaret's Day",
+      "context": "nach sant margreten tag",
+      "char_start": null,
+      "char_end": null,
+      "located": false
+    },
+    {
+      "text": "Anno Sae of vier hundert fimo sechszec",
+      "type": "DATE",
+      "normalised": "Year 456?",
+      "context": "Anno Sae of vier hundert fimo sechszec",
+      "char_start": null,
+      "char_end": null,
+      "located": false
+    }
+  ]
+}

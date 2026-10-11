@@ -1,0 +1,93 @@
+{
+  "doc_id": "StadtASG_Missive_49_97",
+  "ad_fontes_version": "UZH 16-element",
+  "elements": {
+    "Aufbewahrungsort": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben möglich; aus dem Bild nicht ableitbar."
+    },
+    "Beschreibstoff": {
+      "wert": "Papier",
+      "unsicher": false,
+      "notiz": "Faseriges, leicht vergilbtes Papier mit deutlichen Faltlinien (Faltbrief); ein brauner Wasser-/Schmutzriss in der rechten Blattmitte, kleinere Flecken links. Wasserzeichen im Bild nicht sicher erkennbar (unsicher)."
+    },
+    "Blaetter": {
+      "wert": "1 Blatt (1 Seite beschriftet)",
+      "unsicher": false,
+      "notiz": "Einzelnes, gefaltetes Blatt; moderne Foliierung '97' oben rechts (Bleistift/Tinte). Kein Textverlust erkennbar."
+    },
+    "Format": {
+      "wert": "ca. 15 x 19 cm (querformatig) (unsicher)",
+      "unsicher": true,
+      "notiz": "Geschätzt anhand des Kodak-Farbreferenzlineals rechts; querformatiges Faltblatt, kein gebundenes Format (kein Folio/Quarto/Oktav im engeren Sinn)."
+    },
+    "Datierung": {
+      "wert": "1456",
+      "unsicher": false,
+      "notiz": "Explizite Datierung im Text: 'am montag nach sant margreten tag Anno Sae of vier hundert fimo sechszec' (Montag nach St. Margareta, 1456)."
+    },
+    "Lagen": {
+      "wert": "keine Lagenstruktur (Einzelblatt / Faltbrief)",
+      "unsicher": false,
+      "notiz": "Keine Kustoden oder Reklamanten; Faltlinien deuten auf eine mehrmalige Faltung (Briefformat) hin."
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "1 Spalte, ca. 12 Zeilen, nicht liniert",
+      "unsicher": false,
+      "notiz": "Keine Linien oder Rasterung erkennbar; Text beschriftet nur die obere Blatthälfte, untere Hälfte leer. Schriftraum ca. 12 x 17 cm (unsicher). Keine Verweiszeichen."
+    },
+    "Schrift": {
+      "wert": "gotische Kursive (Kanzleischrift)",
+      "unsicher": false,
+      "notiz": "Flüssige, kursiv geschwungene gotische Kursive; Tinte braun-schwarz. Zahlreiche Abkürzungen mit Abkürzungsstrichen und Tironischen Noten (z. B. 'ꝛ' für 'er', 'ꝛ'/'et'-Zeichen). Keine farbige Rubrizierung."
+    },
+    "Schreiber": {
+      "wert": "eine anonyme Hand",
+      "unsicher": false,
+      "notiz": "Einheitliche Schreiberhand; Subskription/Signatur am Ende ('Hans zu appellaßl s/'). Keine Rasuren oder Streichungen erkennbar; keine Marginalien."
+    },
+    "Ausstattung": {
+      "wert": "keine Miniaturen; eine in Tinte ausgeführte, geschwungene Initiale 'S'",
+      "unsicher": false,
+      "notiz": "Große, mit einer langen Schwunglinie versehene Initial 'S' am Textanfang, monochrom in Tinte (keine Lombarden in Farbe, kein Gold)."
+    },
+    "Sprache": {
+      "wert": "Mittelhochdeutsch / Frühneuhochdeutsch (alemannisch, ostschweizerisch)",
+      "unsicher": false,
+      "notiz": "Alemannische Formen (z. B. 'Sae' = sie, 'Sine' = sein, 'gnüeg', 'purgen', 'bespüldt'); Orts-/Namensbezug 'appellaßl' (Appenzell) weist in die Ostschweiz."
+    },
+    "Einband": {
+      "wert": "kein Einband (loses Faltblatt)",
+      "unsicher": false,
+      "notiz": "Links ein kleiner Papierlasch/Klebestreifen (möglicherweise Überrest eines Verschlusses oder Klebestelle); keine Schließen, keine Metallbeschläge, kein Titelschild."
+    },
+    "Provenienz": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben möglich."
+    },
+    "Literatur": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben möglich."
+    },
+    "Inhalt": {
+      "wert": "Brief / Klage- oder Bittschrift (Faltbrief)",
+      "unsicher": false,
+      "notiz": "Anrede an einen 'Ertz offizial' bzw. an 'appellaßl' (Appenzell); Inhalt: Beschwerde/Klage über einen Streit ('trüb'), Bitte um Frieden und Gerechtigkeit, Erwähnung von Bürgen ('purgen') und eines Boten; Subskription des Absenders 'Hans zu appellaßl'."
+    },
+    "Weitere_Hinweise": {
+      "wert": "moderne Foliierung '97' oben rechts; Kodak-Farbreferenz mit Lineal rechts im Bild",
+      "unsicher": false,
+      "notiz": "Faltlinien und Papierlasch links bestätigen die Überlieferung als Faltbrief; Farbreferenz dient der fotografischen Dokumentation, nicht dem Original."
+    }
+  },
+  "care_flag": {
+    "is_care_related": false,
+    "care_context": "",
+    "care_types": [],
+    "beteiligte": []
+  },
+  "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/StadtASG_Missive_49_97.JPG"
+}
