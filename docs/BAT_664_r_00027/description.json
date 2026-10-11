@@ -1,0 +1,93 @@
+{
+  "doc_id": "BAT_664_r_00027",
+  "ad_fontes_version": "UZH 16-element",
+  "elements": {
+    "Aufbewahrungsort": {
+      "wert": "keine gesicherten Angaben möglich",
+      "unsicher": false,
+      "notiz": "Im Bild ein modernes Archivetikett 'BAT664 27r' (oben rechts); der konkrete Aufbewahrungsort lässt sich daraus nicht sicher bestimmen."
+    },
+    "Beschreibstoff": {
+      "wert": "Papier",
+      "unsicher": false,
+      "notiz": "Faserstruktur und unregelmässige Büttenränder weisen auf Papier hin; vergilbt, stellenweise fleckig (Flecken links und rechts), keine Durchscheinung, die ein Wasserzeichen erkennen liesse; keine Hinweise auf Palimpsest."
+    },
+    "Blaetter": {
+      "wert": "1 Blatt, 1 Seite beschrieben (27r)",
+      "unsicher": false,
+      "notiz": "Nummer '27' oben rechts in Tinte (moderne Foliierung, unsicher); keine antike Foliierung erkennbar; keine sichtbaren Textverluste oder fehlenden Blätter."
+    },
+    "Format": {
+      "wert": "ca. 15 x 22 cm (unsicher)",
+      "unsicher": true,
+      "notiz": "Kleines Format (unter Folio, eher Quarto/Oktav), typisch für Rodel/Verwaltungsschriftgut; Schätzung anhand des im Bild eingeblendeten Zentimeterlineals (rechte Kante, 0–15)."
+    },
+    "Datierung": {
+      "wert": "1439 (explizit)",
+      "unsicher": false,
+      "notiz": "Jahreszahl '1439' (mit Tausender-/Zusatzzeichen und '9') oben links; korrespondiert mit der Schriftform (gotische Kursive des 15. Jh.)."
+    },
+    "Lagen": {
+      "wert": "nicht bestimmbar",
+      "unsicher": true,
+      "notiz": "Nur ein einzelnes Blatt abgebildet; Lagenstruktur, Kustoden und Reklamanten nicht beobachtbar."
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "1 Spalte, ca. 11 Zeilen Haupttext + 2 Zeilen Unterschrift; nicht liniert",
+      "unsicher": false,
+      "notiz": "Schriftraum ca. 10 x 18 cm (unsicher); keine Linien oder Raster erkennbar; keine Verweiszeichen (nota bene) sichtbar."
+    },
+    "Schrift": {
+      "wert": "gotische Kursive (Kanzleischrift), braun-schwarze Tinte",
+      "unsicher": false,
+      "notiz": "Grosse schwarze Initiale 'V' am Zeilenanfang; gotische Abkürzungen (u. a. '⁊' für 'und', Überstriche); keine Rubrizierung; Klammerzusatz/Glosse im Textverlauf."
+    },
+    "Schreiber": {
+      "wert": "2 Hände (Haupttext + Unterschrift), anonym",
+      "unsicher": false,
+      "notiz": "Haupttext in einer Hand; Unterschrift 'Gribis und ... vor den' unten links in separater, kursiverer Hand; Glosse '(Nun him)' als zeitgenössischer Zusatz/Korrektur."
+    },
+    "Ausstattung": {
+      "wert": "keine Miniaturen; eine grosse schwarze Initiale 'V'",
+      "unsicher": false,
+      "notiz": "Keine farbigen Initialen, Lombarden oder Buchschmuck; Ausstattung schlicht, entsprechend dem Gebrauchsschriftgut."
+    },
+    "Sprache": {
+      "wert": "Deutsch (spätmittelhochdeutsch), alemannisch (unsicher)",
+      "unsicher": true,
+      "notiz": "Rechts-/Verwaltungssprache; Dialektmerkmale (z. B. 'gervine', 'Von de stoff', 'haff') deuten auf den alemannischen Raum."
+    },
+    "Einband": {
+      "wert": "nicht vollständig sichtbar; links Buchrücken mit Pergament-/Papiestreifen und grünem Siegelrest",
+      "unsicher": true,
+      "notiz": "Einbandmaterial und Beschläge nicht bestimmbar; modernes Archivetikett auf der Seite; Siegelrest (grün) am linken Rand."
+    },
+    "Provenienz": {
+      "wert": "keine gesicherten Angaben möglich",
+      "unsicher": false,
+      "notiz": ""
+    },
+    "Literatur": {
+      "wert": "keine gesicherten Angaben möglich",
+      "unsicher": false,
+      "notiz": ""
+    },
+    "Inhalt": {
+      "wert": "gerichtlicher Eintrag / Klage / Urteil (unsicher)",
+      "unsicher": true,
+      "notiz": "Sachinhalt: Streit ('zwistichet') um Haus/Hof ('haff') und Güter; Bezug auf Gericht ('gerecht') und 'puch'; vermutlich Eintrag in ein Rodel/Gerichtsbuch."
+    },
+    "Weitere_Hinweise": {
+      "wert": "modernes Etikett 'BAT664 27r'; Zentimeterlineal im Bild; Siegelrest links",
+      "unsicher": false,
+      "notiz": "Nummerierung '1439 ... 9' oben links und '27' oben rechts; grüner Siegel-/Farbrest am linken Buchrücken."
+    }
+  },
+  "care_flag": {
+    "is_care_related": false,
+    "care_context": "",
+    "care_types": [],
+    "beteiligte": []
+  },
+  "image_path": "/home/dh/agentic_historian/agentic_historian/data/hot_folder/BAT_664_r_00027.jpg"
+}
