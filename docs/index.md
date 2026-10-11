@@ -19,7 +19,7 @@ title: Katalog
     </dl>
   </details>
   <p><a href="entities/">Entitäten durchsuchen</a> · <a href="tests/">Testläufe separat anzeigen</a></p>
-  <p class="catalogue-summary" id="catalogue-count"><strong>3</strong> Ausgaben · <span class="superseded-count">0 ersetzt</span> · 0 Testläufe</p>
+  <p class="catalogue-summary" id="catalogue-count"><strong>4</strong> Ausgaben · <span class="superseded-count">0 ersetzt</span> · 0 Testläufe</p>
 </div>
 
 <form class="catalogue-tools" role="search" aria-label="Ausgaben durchsuchen" onsubmit="return false">
@@ -112,10 +112,44 @@ title: Katalog
 </form>
 
 <p id="catalogue-active-filters" class="catalogue-active-filters">Keine Filter aktiv.</p>
-<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">3 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
+<p id="catalogue-status" class="catalogue-status" role="status" aria-live="polite">4 Einträge, nach Erstellungsdatum absteigend sortiert.</p>
 <p id="catalogue-empty" class="catalogue-empty" role="status" hidden>Keine Einträge entsprechen den aktiven Filtern. Ändern Sie die Filter oder setzen Sie sie zurück.</p>
 
-<div id="catalogue-list" class="catalogue-list" data-enhanced="false" data-total-records="3" data-shown-records="3">
+<div id="catalogue-list" class="catalogue-list" data-enhanced="false" data-total-records="4" data-shown-records="4">
+<article class="catalogue-card" data-document-id="stadtasg_missive_49_97" data-created="2026-10-11T10:33:21+02:00" data-kind="output" data-language="mittelhochdeutsch / frühneuhochdeutsch (alemannisch, ostschweizerisch)" data-script="gotische kursive (kanzleischrift)" data-search="stadtasg_missive_49_97 brief / klage- oder bittschrift  1456 mittelhochdeutsch / frühneuhochdeutsch (alemannisch, ostschweizerisch) gotische kursive (kanzleischrift) brief / klage- oder bittschrift supr fründlich willig dienst voran lichen vnd guten fründ vnd gät fur bratter ertz offizial ꝛ appellaßl enfer lantman sine sae in rane gschrißn über mitburg männi off fen prüffen ꝛ" data-superseded="false" data-recognition-provenance="current" data-recognition-total="11" data-recognition-successful="2" data-recognition-failed="9" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="DATE,ORG,PERSON,PLACE,ROLE,SOCIAL_GROUP" data-completeness="teilweise">
+  <div class="catalogue-card__layout">
+  <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
+  <div class="catalogue-card__content">
+  <div class="catalogue-card__heading">
+    <div>
+      <p class="catalogue-created">Erstellt <time datetime="2026-10-11T10:33:21+02:00">11.10.2026, 10:33</time></p>
+      <h2><a href="StadtASG_Missive_49_97/">Brief / Klage- oder Bittschrift</a></h2>
+      <p class="catalogue-id">Dokument-ID <code>StadtASG_Missive_49_97</code></p>
+    </div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">9 problematische Kandidaten</span></div>
+  </div>
+  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>1456</dd></div><div><dt>Entitäten</dt><dd>23</dd></div></dl>
+  <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="StadtASG_Missive_49_97/" aria-label="Dokument öffnen: Brief / Klage- oder Bittschrift">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="StadtASG_Missive_49_97/?cmp=stadtasg-missive-49-97-jpg-vlm-qwen3-8-27b:stadtasg-missive-49-97-jpg-vlm-qwen3-8-27b-2&amp;page=StadtASG_Missive_49_97.JPG#recognitions" aria-label="Modelle vergleichen: Brief / Klage- oder Bittschrift">Modelle vergleichen</a></p>
+  <details class="catalogue-details">
+    <summary>Details und Vorschau</summary>
+    <div class="catalogue-details__body">
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Brief / Klage- oder Bittschrift</dd></div><div><dt>Sprache</dt><dd>Mittelhochdeutsch / Frühneuhochdeutsch (alemannisch, ostschweizerisch)</dd></div><div><dt>Schrift</dt><dd>gotische Kursive (Kanzleischrift)</dd></div><div><dt>Kandidaten</dt><dd>2 erfolgreich / 11 insgesamt</dd></div></dl>
+      <div class="catalogue-status-groups">
+        <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">9 von 11 Kandidaten problematisch</p></div>
+      </div>
+
+      <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
+        <p class="catalogue-provenance__label">Engines</p>
+        <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
+        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 9 fehlgeschlagene Erkennungsversuche</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+      </div>
+      <p class="catalogue-preview">Supr fründlich willig dienst voran lichen vnd guten fründ vnd gät fur bratter Ertz offizial ꝛ appellaßl Enfer lantman Sine Sae in Rane gschrißn über mitburg männi off fen prüffen ꝛ…</p>
+    </div>
+  </details>
+  </div>
+  </div>
+</article>
 <article class="catalogue-card" data-document-id="stadtasg_missive_49_98" data-created="2026-10-11T10:30:31+02:00" data-kind="output" data-language="" data-script="" data-search="stadtasg_missive_49_98 stadtasg_missive_49_98      14.31 juli 16. 1435 ub jm 3611 98 14.31 juli 16. a m 28ten december 1848 den obersternwachtmeister -[unlesbar]- [unlesbar] die papiere stellen empfang quittung hiezu?" data-superseded="false" data-recognition-provenance="current" data-recognition-total="11" data-recognition-successful="2" data-recognition-failed="9" data-recognition-empty="0" data-recognition-degenerate="0" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="1" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="true" data-entity-types="CARE_ACTION,DATE,ROLE" data-completeness="teilweise">
   <div class="catalogue-card__layout">
   <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>

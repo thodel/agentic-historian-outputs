@@ -1,0 +1,149 @@
+{
+  "artifacts": [
+    {
+      "characters": 814,
+      "engine": "fusion",
+      "error": null,
+      "error_path": null,
+      "id": "selected",
+      "model_id": null,
+      "page": null,
+      "path": "recognitions/fused.txt",
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 806,
+      "engine": "vlm",
+      "error": null,
+      "error_path": null,
+      "id": "stadtasg-missive-49-97-jpg-vlm-qwen3-8-27b",
+      "model_id": "qwen3.8-27b",
+      "page": "StadtASG_Missive_49_97.JPG",
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/StadtASG_Missive_49_97/kraken-kraken-catmus_medieval.error.txt",
+      "id": "stadtasg-missive-49-97-jpg-kraken-kraken-catmus-medieval",
+      "model_id": "kraken-catmus_medieval",
+      "page": "StadtASG_Missive_49_97.JPG",
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/StadtASG_Missive_49_97/trocr-trocr-medieval-escriptmask.error.txt",
+      "id": "stadtasg-missive-49-97-jpg-trocr-trocr-medieval-escriptmask",
+      "model_id": "trocr-medieval-escriptmask",
+      "page": "StadtASG_Missive_49_97.JPG",
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/StadtASG_Missive_49_97/kraken-kraken-tridis_v2.error.txt",
+      "id": "stadtasg-missive-49-97-jpg-kraken-kraken-tridis-v2",
+      "model_id": "kraken-tridis_v2",
+      "page": "StadtASG_Missive_49_97.JPG",
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/StadtASG_Missive_49_97/trocr-trocr-kurrent-xvi-xvii.error.txt",
+      "id": "stadtasg-missive-49-97-jpg-trocr-trocr-kurrent-xvi-xvii",
+      "model_id": "trocr-kurrent-xvi-xvii",
+      "page": "StadtASG_Missive_49_97.JPG",
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/StadtASG_Missive_49_97/kraken-kraken-cremma_medieval.error.txt",
+      "id": "stadtasg-missive-49-97-jpg-kraken-kraken-cremma-medieval",
+      "model_id": "kraken-cremma_medieval",
+      "page": "StadtASG_Missive_49_97.JPG",
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/StadtASG_Missive_49_97/trocr-trocr-essoins-middle-latin.error.txt",
+      "id": "stadtasg-missive-49-97-jpg-trocr-trocr-essoins-middle-latin",
+      "model_id": "trocr-essoins-middle-latin",
+      "page": "StadtASG_Missive_49_97.JPG",
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 814,
+      "engine": "vlm",
+      "error": null,
+      "error_path": null,
+      "id": "stadtasg-missive-49-97-jpg-vlm-qwen3-8-27b-2",
+      "model_id": "qwen3.8-27b",
+      "page": "StadtASG_Missive_49_97.JPG",
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/StadtASG_Missive_49_97/kraken-kraken-cursive_inzigkofen.error.txt",
+      "id": "stadtasg-missive-49-97-jpg-kraken-kraken-cursive-inzigkofen",
+      "model_id": "kraken-cursive_inzigkofen",
+      "page": "StadtASG_Missive_49_97.JPG",
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/StadtASG_Missive_49_97/kraken-kraken-bohemian_19th.error.txt",
+      "id": "stadtasg-missive-49-97-jpg-kraken-kraken-bohemian-19th",
+      "model_id": "kraken-bohemian_19th",
+      "page": "StadtASG_Missive_49_97.JPG",
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": null,
+      "engine": "kraken",
+      "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+      "error_path": "recognitions/StadtASG_Missive_49_97/kraken-kraken-bastarda_inzigkofen.error.txt",
+      "id": "stadtasg-missive-49-97-jpg-kraken-kraken-bastarda-inzigkofen",
+      "model_id": "kraken-bastarda_inzigkofen",
+      "page": "StadtASG_Missive_49_97.JPG",
+      "path": null,
+      "status": "error"
+    }
+  ],
+  "doc_id": "StadtASG_Missive_49_97",
+  "run_counts": {
+    "degenerate": 0,
+    "empty": 0,
+    "failed": 9,
+    "successful": 3,
+    "total": 12
+  },
+  "run_quality": "partial_failure",
+  "version": "1.0"
+}

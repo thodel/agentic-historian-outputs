@@ -1,0 +1,17 @@
+{
+  "attempt": 1,
+  "complete": false,
+  "diagnostic_code": "backend_error",
+  "engine": "trocr",
+  "error": "Der Erkennungsdienst antwortete mit einem Fehler.",
+  "fusion_decision": "excluded",
+  "model_id": "trocr-kurrent-xvi-xvii",
+  "page": "StadtASG_Missive_49_97.JPG",
+  "retry_count": 0,
+  "retryable": true,
+  "reuse_notice": "Incomplete recognition attempt; cite the failure record with the run provenance.",
+  "run_id": null,
+  "status_code": "backend_error",
+  "text_artifact": null,
+  "timing_ms": 0
+}

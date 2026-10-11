@@ -1,0 +1,8 @@
+---
+layout: default
+title: "appellant"
+---
+
+<link rel="stylesheet" href="{{ '/assets/output.css' | relative_url }}">
+
+<nav class="breadcrumbs"><a href="../">Entitäten</a> / appellant</nav><h1>appellant</h1><p><span class="entity-type">ROLE</span> · 2 Vorkommen</p><p><strong>Belegte Schreibvarianten:</strong> <code>appellant</code>, <code>appellaßl</code></p><p class="notice notice--warning">Nicht mit einem externen Normdatensatz verknüpft.</p><div class="table-scroll"><table><thead><tr><th>Ausgabe</th><th>Form</th><th>Kontext</th><th>Konfidenz</th></tr></thead><tbody><tr><td><a href="../../StadtASG_Missive_49_97/">StadtASG_Missive_49_97</a></td><td>appellaßl</td><td>Ertz offizial ꝛ appellaßl</td><td>Nicht angegeben</td></tr><tr><td><a href="../../StadtASG_Missive_49_97/">StadtASG_Missive_49_97</a></td><td>appellaßl</td><td>Ertz offizial ꝛ appellaßl</td><td>Nicht angegeben</td></tr></tbody></table></div>
