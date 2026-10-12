@@ -7,7 +7,7 @@ title: "Fine-tuning vision models: what twenty-two runs taught us"
 
 # Fine-tuning vision models: what twenty-two runs taught us
 
-The [recognition engine evaluation](evaluation.html) measures engines this project did not build: published Transkribus models, TrOCR and kraken checkpoints from the hub, commercial and local vision models used zero-shot. This page is about the other half — the nineteen vision-language models fine-tuned for this project on Swiss and German material between 2026-09-03 and 2026-09-26, and what went wrong often enough to be worth writing down.
+The [recognition engine evaluation](evaluation.html) measures engines this project did not build: published Transkribus models, TrOCR and kraken checkpoints from the hub, commercial and local vision models used zero-shot. This page is about the other half — the nineteen vision-language models fine-tuned for this project on Swiss and German material between 2026-09-03 and 2026-09-26, and what went wrong often enough to be worth writing down. Section 8 extends that window to 2026-10-11 and is kept separate, because everything before it was measured before those runs existed.
 
 Almost none of the lessons are about hyperparameters. Every one of them is about **what the model was shown, and what the number it was judged by actually measured**.
 
@@ -340,6 +340,28 @@ Three readings, and the third is a correction.
 
 **But Gemma's number was wrong until the day this was written, and the error was ours.** The 12 B arm first scored **22.94 %** on this set. Its error budget was the tell: 17 027 insertions against 4 783 deletions, where every arm that reads normally is substitution-dominated. Insertion-dominated is not a reading failure, it is a *generation* failure — and reading the two chat renders side by side found it in minutes:
 
+> **The orientation of those counts, stated — because this site uses both.** The
+> numbers in this section come from the training repository's `textmetrics`,
+> which follows the **kraken** convention: an *insertion* is a reference
+> character the hypothesis did **not** produce, a *deletion* one it added. The
+> [evaluation page](evaluation.html#error-taxonomy) deliberately uses the
+> opposite, CERberus convention and says so there. Reading one page's numbers
+> with the other page's convention inverts them, so here is the arithmetic that
+> settles it without trusting either sentence:
+>
+>     hypothesis_chars = chars − insertions + deletions
+>                      = 114 960 − 17 027 + 4 783 = 102 716  →  ratio 0.893
+>
+> which reproduces the length ratio of **0.894** in the table below. So the 12 B
+> arm under the generation prompt wrote a net **10.7 % less** than the
+> reference, not more. *An earlier version of the training repository's own
+> documentation said that arm "invents 15 % of the text" — the direction
+> backwards, against a length ratio printed two tables above it. Corrected in
+> `thodel/training-atr-models` on 2026-10-12, together with two other places
+> that had inverted the same convention.* The error **shape** diagnosed here —
+> a generation failure rather than a reading one — is unaffected, and it is what
+> the prompt mismatch explains.
+
 | | what the model is asked to continue from |
 |---|---|
 | at inference | `<\|turn>model` + newline + **`<\|channel>thought` + newline + `<channel\|>`** |
@@ -360,14 +382,111 @@ What it cost to find out: nothing. What was nearly spent instead was five days o
 
 **One confound remains, and it is also ours.** Every Qwen number in the table was produced in bf16; both Gemma arms trained and were scored in 4-bit, because that is what their configuration set. What 4-bit costs in accuracy on this corpus is unmeasured. So the Gemma figures are an upper bound on their deficit, not a clean comparison — and the evaluation report now records the quantisation, so the next reader does not have to find this out by digging.
 
+## 8. October: the ladder's large arms, and a sweep that measured its own knobs
+
+*This section extends the window named in the introduction (2026-09-03 to
+2026-09-26) to 2026-10-11. It is kept separate rather than folded in, because
+every figure above was measured before these runs existed.*
+
+### The first 9 B and 27 B — on one draw, and one that is not
+
+Four arms on the medieval corpus, all on the **same draw `8686f6ad`**, which is
+the condition this project sets before putting two CER values side by side. The
+4 B row is `qwen3vl-medieval-german-v3` re-scored onto that draw, the same device
+§3 and §6 rest on:
+
+| Base | CER on `8686f6ad` | 4-bit |
+|---|---:|---|
+| `Qwen/Qwen3.5-27B` | **9.55 %** | yes |
+| `Qwen/Qwen3.5-9B` | 12.13 % | yes |
+| `Qwen/Qwen3-VL-4B-Instruct` | 12.59 % | no |
+| `allenai/olmOCR-2-7B-1025` | 74.65 % | yes |
+
+On its own draw the 4 B arm reads 11.20 %, so the draw alone is worth 1.4 points
+here — the same lesson §6's 19th-century correction taught at 4.66 points.
+
+**The 27 B is the best medieval line model this project has**, 3.0 points ahead
+of the 4 B reference. But the step **4 B → 9 B is 0.46 points**, where §7's
+19th-century ladder pays about 2.2 per doubling. Three confounds sit in that gap
+and none is settled: both large arms are 4-bit against the 4 B arm's bf16, the
+4 B arm is a different family generation, and both large arms carry
+`code_drift: true` — they ran on a commit other than the one they were created
+with. The extrapolation in §7 was made for the 19th-century corpus and these
+numbers do not touch it.
+
+**And the arm queued to answer the generation question does not answer it.**
+`Qwen3.8-27B` finished on 2026-10-11 after 21 h 26 and measures **12.15 %** — on
+draw `9fe26816`, which it shares with no other run. The cause is instructive and
+is now written into the training repository's documentation: its four datasets
+were pinned to exact commit shas, identical to what the siblings used (each
+dataset's newest commit is from April 2026, months before those runs), **and the
+draw still differs**, because the siblings had left no artefact in the corpus
+cache to adopt, so this arm re-materialised the corpus under a different commit.
+*Pinning revisions makes the inputs identical, not the draw.* 12.15 % beside the
+9.55 % of the Qwen3.5-27 B is not a comparison; that 12.15 % sits almost exactly
+on the 9 B's 12.13 % is a coincidence of two numbers from different pools, not a
+finding. A re-score onto `8686f6ad` would settle it and costs under four minutes.
+
+### Four knobs on the page arms, and none of them buys half a point
+
+The olmOCR page model was swept over its geometry and prompt settings, all on
+draw `cb4d1c88`, all over one shared corpus artefact — so the arms differ in
+nothing else. Three of four landed; the fourth was cancelled.
+
+| Arm | CER | `truncated_cer` | length ratio |
+|---|---:|---:|---:|
+| olmOCR's own prompt | **34.38 %** | 28.31 % | 1.083 |
+| baseline | 34.92 % | 30.89 % | 1.006 |
+| 1 288 px budget | 41.14 % | 36.46 % | 1.053 |
+| 3 072-token cap | 46.74 % | **29.29 %** | 1.202 |
+
+**The two geometry knobs fail in different ways, and only the truncated CER
+separates them.** The pixel-budget arm is worse clipped as well as unclipped
+(36.46 %), which is genuinely worse reading. The token-cap arm is the opposite:
+clipped to the reference length it reads **better** than the baseline (29.29 %
+against 30.89 %) and unclipped it is twelve points worse, because it writes a
+fifth too much. Its edit decomposition says the same thing exactly —
+54 346 deletions against 13 618 insertions, and 54 346 − 13 618 = 40 728 =
+241 887 − 201 159. Raising the cap did not cost reading ability, it cost
+*stopping* ability, so the next iteration belongs in the stop-token handling and
+not in the recognition path. Reading the full CER alone would have sent it to the
+wrong place.
+
+### A model over twenty corpora, including six nobody here made
+
+`qwen3.5-4b-german-kurrent-xvi-xix-v1` reads **8.82 %** on 198 lines of draw
+`1c7eb9b3` (length ratio 0.997). It is trained over twenty datasets — seventeen
+of this project's own and six imported from public ground-truth collections,
+minus three whose layout no selection form could address. Building that corpus
+took 11 h 15. Two caveats travel with the figure: `code_drift: true`, and its
+draw is shared with no other run, so it is comparable with nothing else on this
+page.
+
+### Which container produced a number became knowable on 2026-10-10
+
+A gap worth recording because it touches every figure above that was measured on
+the cluster. Two container images are in use and they differ by a transformers
+major version — one does not recognise the `qwen3_5` architecture at all — and
+until 2026-10-10 **neither the job record nor the job log named which one had
+run**. Both submission scripts defaulted to the older image, which killed one
+27 B run after 59 seconds. The image is now logged with its transformers version
+before anything loads. For every CER measured before that, the container is not
+recoverable from the record; for one run still executing when the fix landed it
+was recoverable only from the live process, and that evidence died with the job.
+A transformers major version changes tokenisation, generation defaults and the
+attention implementation, so this is the second condition on comparability beside
+the draw — and it was not even checkable.
+
 ## Open questions
 
 - **Over-generation on sparse pages** is the page model's remaining weakness and the same failure the medieval page model shows. Neither a larger nor a smaller pixel budget addresses it.
 - **Whether Gemma closes the gap when it is tuned for itself.** One of its three known handicaps is gone: §7's prompt mismatch cost the 12 B arm thirteen points and is now fixed by default. Two remain — both arms still ran at the 140-token visual budget where Gemma's own default is 280, and both were quantised to 4-bit against the Qwens' bf16. Until those are measured, "worse as a drop-in" stays the claim, and it is narrower than "worse".
 - **Page numbers on a published set.** §7 gives the line comparison on 2 751 published lines; there is no page equivalent, so every page figure on this page is still measured on held-out pages of our own corpora.
-- **Whether a page-pre-trained base beats a bigger general one.** olmOCR at 7 B reads pages better than every general base measured here, including a 12 B one. Whether that is the pre-training or the size is unseparated: no general 7 B page arm exists, and no page-pre-trained 4 B one either.
+- **Whether a page-pre-trained base beats a bigger general one.** olmOCR at 7 B reads pages better than every general base measured here, including a 12 B one. Whether that is the pre-training or the size is unseparated: no general 7 B page arm exists, and no page-pre-trained 4 B one either. §8 adds that its own knobs are not where the remaining points are: three settings swept over one artefact move the CER by at most half a point in the right direction.
 - **Whether size carries pages the way it carries lines.** At 12 B Gemma wins on lines and at ~4.5 B it loses on pages by nine points. The 12 B page arm has now landed and collapsed to a constant output (above), so it answers nothing; the question needs the run repeated, and the repeat needs a stage that fails a run whose outputs do not vary.
-- **Whether a 12 B Qwen would take the lead back.** The size comparison above is one-sided: three arms, and only one of them large. Nobody has trained the obvious control.
+- **Whether a larger Qwen takes the lead back.** Partly answered since §8: on the medieval corpus a 9 B and a 27 B have landed on one draw, and the 27 B leads by 3.0 points over the 4 B reference while the 9 B gains only 0.46. On the 19th-century corpus the comparison is still one-sided — three arms, one of them large — and nobody has trained the control there.
+- **Whether the 3.5 → 3.8 generation pays at 27 B.** The arm exists and is measured, and the number is unusable for the comparison because its draw is its own (§8). The question needs a re-score onto the siblings' draw, which costs minutes, not a retrain.
+- **Why a pinned corpus can still draw differently.** §8's 27 B arm had every dataset pinned to an exact sha and still produced a draw nothing else shares, because there was no cached artefact to adopt and it re-materialised under another commit. Pinning the inputs is necessary and not sufficient; what would make a draw reproducible across commits is not established.
 - **Training variance is still unmeasured.** §3 establishes that drawing a different evaluation subset moves a CER by 0.6 points. What two runs of the *same* arm at different seeds do is unknown, and every ranking on this page assumes it is small.
 - **There is no page-level benchmark** with ground truth that no run has seen. The published Federal Council test set is 2 751 isolated lines. Until one exists, page numbers are measured on held-out pages of our own corpora, which is weaker.
 
