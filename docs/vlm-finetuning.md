@@ -398,6 +398,7 @@ the condition this project sets before putting two CER values side by side. The
 | Base | CER on `8686f6ad` | 4-bit |
 |---|---:|---|
 | `Qwen/Qwen3.5-27B` | **9.55 %** | yes |
+| `Qwen/Qwen3.8-27B` | 10.77 % | yes |
 | `Qwen/Qwen3.5-9B` | 12.13 % | yes |
 | `Qwen/Qwen3-VL-4B-Instruct` | 12.59 % | no |
 | `allenai/olmOCR-2-7B-1025` | 74.65 % | yes |
@@ -414,18 +415,35 @@ and none is settled: both large arms are 4-bit against the 4 B arm's bf16, the
 with. The extrapolation in §7 was made for the 19th-century corpus and these
 numbers do not touch it.
 
-**And the arm queued to answer the generation question does not answer it.**
-`Qwen3.8-27B` finished on 2026-10-11 after 21 h 26 and measures **12.15 %** — on
-draw `9fe26816`, which it shares with no other run. The cause is instructive and
-is now written into the training repository's documentation: its four datasets
-were pinned to exact commit shas, identical to what the siblings used (each
-dataset's newest commit is from April 2026, months before those runs), **and the
-draw still differs**, because the siblings had left no artefact in the corpus
-cache to adopt, so this arm re-materialised the corpus under a different commit.
-*Pinning revisions makes the inputs identical, not the draw.* 12.15 % beside the
-9.55 % of the Qwen3.5-27 B is not a comparison; that 12.15 % sits almost exactly
-on the 9 B's 12.13 % is a coincidence of two numbers from different pools, not a
-finding. A re-score onto `8686f6ad` would settle it and costs under four minutes.
+**The newer generation does not pay at this size — it costs.** `Qwen3.8-27B`
+finished on 2026-10-11 after 21 h 26 and measured **12.15 %** on a draw
+(`9fe26816`) it shares with no other run. That is worth recording for its cause
+alone: its four datasets were pinned to exact commit shas, identical to what the
+siblings used — each dataset's newest commit is from April 2026, months before
+those runs — **and the draw still differed**, because the siblings had left no
+artefact in the corpus cache to adopt, so this arm re-materialised the corpus
+under a different commit. *Pinning revisions makes the inputs identical, not the
+draw.*
+
+A re-score onto `8686f6ad` repaired the comparability in **8 minutes 53** on a
+single consumer GPU, and the number it returns is **10.77 %** (WER 28.37 %, 200
+lines) — **1.22 points behind the Qwen3.5-27 B at the same size and the same
+quantisation.** So the question the arm was queued for is answered, with the
+opposite sign to the one expected.
+
+Two figures belong beside it. **The draw alone was worth 1.38 points** — 12.15 %
+on its own against 10.77 % on the shared one, more than the generation difference
+it was meant to measure, and in line with the 1.4 points the 4 B arm's draw is
+worth. And the comparison carries one confound: the Qwen3.5 arm ran with
+`code_drift: true` and this one without, so they executed on different commits.
+A shared draw equalises the data, not the code.
+
+This narrows §7's second reading rather than overturning it. "Across families,
+the generation matters as much as the size" holds for the *magnitude* of the
+effect: 0.85 points for `Qwen3-VL-4B` → `Qwen3.5-4B` on the 19th-century corpus,
+1.22 points here — comparable in size, opposite in direction. A newer base is not
+progress that can be bought; which generation suits a corpus is itself a
+measurement.
 
 ### Four knobs on the page arms, and none of them buys half a point
 
@@ -485,7 +503,7 @@ the draw — and it was not even checkable.
 - **Whether a page-pre-trained base beats a bigger general one.** olmOCR at 7 B reads pages better than every general base measured here, including a 12 B one. Whether that is the pre-training or the size is unseparated: no general 7 B page arm exists, and no page-pre-trained 4 B one either. §8 adds that its own knobs are not where the remaining points are: three settings swept over one artefact move the CER by at most half a point in the right direction.
 - **Whether size carries pages the way it carries lines.** At 12 B Gemma wins on lines and at ~4.5 B it loses on pages by nine points. The 12 B page arm has now landed and collapsed to a constant output (above), so it answers nothing; the question needs the run repeated, and the repeat needs a stage that fails a run whose outputs do not vary.
 - **Whether a larger Qwen takes the lead back.** Partly answered since §8: on the medieval corpus a 9 B and a 27 B have landed on one draw, and the 27 B leads by 3.0 points over the 4 B reference while the 9 B gains only 0.46. On the 19th-century corpus the comparison is still one-sided — three arms, one of them large — and nobody has trained the control there.
-- **Whether the 3.5 → 3.8 generation pays at 27 B.** The arm exists and is measured, and the number is unusable for the comparison because its draw is its own (§8). The question needs a re-score onto the siblings' draw, which costs minutes, not a retrain.
+- ~~**Whether the 3.5 → 3.8 generation pays at 27 B.**~~ Answered in §8 since this page was last revised: it does not — 10.77 % against 9.55 % on the shared draw, the older generation ahead by 1.22 points. What remains open is narrower: the two arms ran on different commits (`code_drift`), so a repeat with the code equalised would settle whether the 1.22 points are the generation or the drift.
 - **Why a pinned corpus can still draw differently.** §8's 27 B arm had every dataset pinned to an exact sha and still produced a draw nothing else shares, because there was no cached artefact to adopt and it re-materialised under another commit. Pinning the inputs is necessary and not sufficient; what would make a draw reproducible across commits is not established.
 - **Training variance is still unmeasured.** §3 establishes that drawing a different evaluation subset moves a CER by 0.6 points. What two runs of the *same* arm at different seeds do is unknown, and every ranking on this page assumes it is small.
 - **There is no page-level benchmark** with ground truth that no run has seen. The published Federal Council test set is 2 751 isolated lines. Until one exists, page numbers are measured on held-out pages of our own corpora, which is weaker.
