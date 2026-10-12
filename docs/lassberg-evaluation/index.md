@@ -7,9 +7,9 @@ title: "Reading the Laßberg correspondence"
 
 # Reading the Laßberg correspondence
 
-Some 6700 digitised pages of letters to and from Joseph von Laßberg (1770–1855), held across thirteen archives and libraries, were read end to end by machine. **Eight recognition engines** then read the pages for which a human transcription exists and were scored against it. This page records what that cost, how far the readings disagree with each other, and how far each of them differs from the transcription.
+Some 6700 digitised pages of letters to and from Joseph von Laßberg (1770–1855), held across thirteen archives and libraries, were read end to end by machine. **Eight recognition engines** then read the pages for which a human transcription exists and were scored against it. A **ninth reader**, a commercial model behind an API, read a 300-page sample in October and is the subject of its own section: it has no quality figure, because the sample was drawn from the pages nobody has transcribed. This page records what that cost, how far the readings disagree with each other, and how far each of them differs from the transcription.
 
-It records **what was measured**, and marks clearly where a number is provisional. The engine comparison is a measurement of quality, because one side of it is a human transcription; the run figures measure cost, and the disagreement figures measure neither. Where a figure contradicts something this project said earlier, the correction is stated rather than quietly applied — and seven of them do.
+It records **what was measured**, and marks clearly where a number is provisional. The engine comparison is a measurement of quality, because one side of it is a human transcription; the run figures measure cost, and the disagreement figures measure neither. Where a figure contradicts something this project said earlier, the correction is stated rather than quietly applied — eight of them contradict a figure this page itself used to carry, and the sections below record several more that never made it this far.
 
 **What this page was not, until 5 October 2026.** It said, in this place, that it was not an engine comparison, because seven of the eight candidates had no quality figure. They have one now.
 
@@ -33,6 +33,8 @@ The share is one folder per holding institution, then one per letter. A folder n
 | `atr_corpus_qwen35_line` | `qwen3.5-4b-german-xix-v2` | 6719 | 1088 | 19.3 | 79.6 h | 625 (9.3 %) |
 | `atr_trocr_corpus` | `trocr-kurrent` | 899 | 844 | 38.0 | 8.7 h | 77 (8.6 %) |
 | `atr_gt_candidates` | seven candidates | 241 each | — | ~40 | 16.5 h | — |
+| `gemini-300-strict` | `gemini-3.8-flash` (API) | 300 | — | 6.4 | 32.4 min | 28 (9.3 %) |
+| `gemini-300-final` | `gemini-3.8-flash`, 3 attempts merged | 300 | 883 | — | — | 19 (6.3 %) |
 
 The candidate run is 1687 page-engine pairs with **no failures and no source errors**, and it was the first time four of the kraken engines had read a page in this stack at all. It read only the pages the ground truth locates, which is why it is 16.5 hours and not the fortnight the whole corpus would have cost for seven engines.
 
@@ -40,7 +42,11 @@ The candidate run is 1687 page-engine pairs with **no failures and no source err
 
 Neither corpus run was cut off at a token ceiling, which is worth stating because a page that hits one comes back as an ordinary success and stops mid-sentence.
 
+The external reader is billed per page rather than per hour of a card that is idle anyway, and it is the cheapest reading in the table: 6.4 seconds and about 1500 input plus 250 output tokens a page, some 32 minutes and well under a dollar for 300 pages. The two local corpus runs cost nothing per page and 88 hours of one GPU.
+
 **The empty pages are a property of the page, not of the engine.** Both runs report the same rate, and the twenty each report names are the same twenty in the same order. A page both engines return nothing for is most likely a blank verso or an envelope flap; a page one returns nothing for would have meant a segmenter that found no lines. The coincidence is evidence for the first reading — not proof, since the reports print only twenty names each.
+
+*Correction, 11 October:* that claim holds for these two engines and does **not** generalise to a reader that is sampled. It was made without ever having run one engine twice over the same pages, and when that was finally done the empties moved: three of 25 pages empty in the first attempt came back with text in the second, under an identical prompt and an identical thinking level. One of them, `Winterthur__310-MsBRH_513-91-131`, had been empty in **four** prior runs and reads, on the fifth, as a complete 978-character letter from Justizrat Zellweger, Trogen, 27 April 1831. For a sampled reader an empty answer is partly a property of the attempt, and "empty in both engines" is a weaker statement than it looked. See [*Variance, measured too late*](#variance-measured-too-late).
 
 ## Disagreement between two readings
 
@@ -62,6 +68,132 @@ Two corrections are built into that table.
 **Fragments inflated the median.** An unfiltered comparison put it at 45.9 %, because a five-character fragment against an eight-character one disagrees by 75 % and says nothing about whether the engines can read the hand. Excluding pages under 100 characters on either side moved the median to 16.8 % on the probe pair that exposed it.
 
 **One engine's padding moved the page-length column.** Before the quality classifier described below, the same comparison read 973 vs **1183** characters per page — a gap that reads as "the VLM transcribes more". Thirty pages account for it, each padded with thousands of repeated characters. Removing them closed the gap to 24 characters.
+
+## A ninth reader, and what a sentence in a prompt costs
+
+Between 10 and 12 October 2026 a commercial model behind an API — `gemini-3.8-flash`, reached through an OpenAI-compatible endpoint — read **300 pages sampled from the 6466 that have no transcription at all**. The sample is deterministic (seed 20260915), so the same 300 pages come back on every re-run.
+
+**There is no quality figure in this section, and there cannot be.** The pages were chosen because nobody has transcribed them; scoring them would need the thing that is missing. What this reader could be measured on is everything else: what it costs, what form it returns, how it fails, and how far two readings of the same page differ. Three of those turned out to be more informative than a character error rate would have been, because each of them found a defect that the eight scored engines could not have shown.
+
+### Thinking is paid for out of the answer
+
+The first finding is a property of this class of model rather than of this corpus. The model may reason before it answers, and its reasoning tokens are billed as output **and** spent against the same ceiling as the answer.
+
+| Prompt | Thinking | Ceiling | Result |
+|---|---|---:|---|
+| `lassberg_atr @092fb6b0` | model default | 8192 | complete, 1592 characters |
+| `lassberg_atr_strict @03c5a660` | model default | 8192 | **cut off**, 1153 characters |
+| `lassberg_atr_strict @03c5a660` | **low** | 8192 | complete, 1375 characters, **392 output tokens** |
+
+392 of 8192. Under the default setting roughly 7800 tokens went into deliberation until nothing was left for the page, and the page came back as an ordinary success that stops mid-word. **Transcribing what stands on a page is not a reasoning task**, and the side effect of saying so is a factor of 3.6 in speed: 6.4 seconds a page instead of 23.3.
+
+### Three pages where the model argued with itself, in the transcription field
+
+`gemini-300-strict` reported four pages cut off at the ceiling. Three of them carry **no text of the page**. They carry the model reasoning aloud, in English, in the field the transcription belongs in:
+
+```
+- e - n - k - t !
+LOOK AT WORD 3:
+g - e - s - c - h - e - n - k - t !
+Wait, does it have 'sch'?
+…
+Entry stroke, downstroke, loop up to the right... THAT'S A 'V'!
+```
+
+**No quality column moved.** These pages are not empty, not short (816–928 characters), and not repetitive — every line differs and the longest run of one character is three. They were seen *only* because the arguing ran into the token ceiling. A page that argues for four hundred characters and then stops cleanly would have entered the corpus as a reading.
+
+That inverts the obvious remedy. Raising the ceiling, which is right for a genuinely truncated transcription, **buys more arguing** for these three. What they need is a different prompt.
+
+A classifier verdict now names the failure, and the separation it rests on was measured rather than assumed: the density of English self-addressed line openings ("Wait", "Look at", "Line 12:") is **0.38, 0.55 and 0.70** on the three leaked pages and **0.00** on every clean reading of the same pages. The threshold sits at 0.2, far from both. A transcription of this corpus is German and Latin and never addresses itself.
+
+**The open question was how many pages argued without hitting the ceiling, and the answer is none.** All 300 pages of the run were reclassified under the new verdict: `ok` 249, `short` 19, `empty` 28, `deliberation` 3, `repetitive` 1 — and the three are exactly the three the ceiling had given away. No fourth. What that number does *not* say is that the 249 are read correctly; `ok` means "none of the known defects", and in this run there is no reference for anything stronger.
+
+### A single sentence about blankness hid two letters
+
+The stricter prompt bought its discipline with silence: 21 pages that the same model had read as text under the first prompt came back empty under the second. Reading all 28 empty pages under both prompts settled what that silence was, and it went **against the first prompt**, not the second:
+
+| What is on the page | Pages |
+|---|---:|
+| **A real transcription** the strict prompt lost | **2** |
+| A stamp or a registry note — text, but not the letter's hand | 3 |
+| **A commentary about a blank page** ("Vakatseite", show-through, watermark) | 21 |
+| Empty under both prompts | 2 |
+
+On an unwritten leaf, **nothing** is the correct transcription. The first prompt was filling the transcription field with museum prose — `### Transkription *[Die Seite enthält keinen handschriftlichen Text / vacat. In der Papiermitte ist schwach ein Wasserzeichen erkennbar.]*` — and the quality classifier counted that prose as text, which is why the column named `empty` looked like a failure of the stricter prompt. Published, those 21 pages would be invented description presented as transcription.
+
+The real loss was 5 pages of 28, and all five trace back to **one sentence**. `An empty page is an empty answer` was the strict prompt's only statement about blankness, and the model applied it to every page it did not want to write out. An empty answer therefore meant two different things — *this leaf is unwritten* and *this page I am not transcribing* — and in the second meaning two written pages disappeared. An empty answer is a success by every signal the runner has, so five pages hid inside a column called `empty`.
+
+The variant `lassberg_atr_strict2 @9e0503e8` keeps the output discipline verbatim and separates the cases:
+
+| On the page | Answer |
+|---|---|
+| no writing at all | an empty answer — which now **asserts** that the leaf is blank |
+| writing, legible | a transcription, with `[...]` and `word[?]` where needed |
+| writing, none of it legible | `[unlesbar]`, once — not 24 lines of `[...]` |
+| a stamp, an accession number | `[stempel: …]` |
+| foliation, a docket, a later hand | `[fremde hand: …]` |
+
+and it names three things that are **not** text on the page and are neither transcribed nor described: show-through from the other side, watermark and paper condition, and anything inferred rather than read. Those three are precisely what the 21 commentaries were made of.
+
+Marking a stamp rather than transcribing it bare is an editorial decision, and it is recorded as one: an unmarked "Schillermuseum 11551" in the middle of a transcription is worse than no stamp at all, because nothing downstream can remove it again.
+
+Validated on the same 33 pages that produced the finding — the 21 blank ones as a control, the 5 losses as the probe: **22 of 22 blank pages stayed blank**, no page gained prose, 4 of the 5 losses came back (both written pages, both stamps), one docket is still missing, and two pages were newly found. Over the whole 300, the two prompts disagree by a **median of 6.6 %** on 240 comparable pages, while `arguing` falls from 3 to 0, `cut off` from 4 to 0, and the flagged total from 33 to 25.
+
+### Variance, measured too late
+
+A whole day of prompt comparisons had been read off differences between runs without anyone measuring what two *identical* runs differ by. Done on 11 October: the same 25 flagged pages, the same prompt, the same thinking level, a second attempt.
+
+| | |
+|---|---:|
+| Pages | 25 |
+| Empty in both attempts | 21 |
+| **Empty in the first, read in the second** | **3** |
+| The other way round | 0 |
+
+What is in those three pages is not scrap. `Winterthur__310-MsBRH_513-91-131` is a complete 978-character letter from Justizrat Zellweger, Trogen, 27 April 1831, and it had been empty in four earlier runs, one of them under a different prompt. `StATG …1339_00101` is a 902-character letter from Pupikofer, Bischofszell, 25 July 1829 — the same page, same prompt, three attempts: text, empty, text.
+
+**This corrected two statements made the same morning.** "22 of 22 blank pages stay blank" was the control of *one* attempt, and `Winterthur` was among those 22, booked as unwritten while a letter stands on it. "21 of the 28 are blank versos" counted the same page as blank.
+
+On ordinary pages the scatter is small — 6.6 % median between two *different* prompts over 240 pages. **The noise does not sit in the running text; it sits on the tipping point between reading a page and answering nothing.** That is also where it does the most damage, because an empty answer is indistinguishable from a blank leaf.
+
+A third attempt on the 19 still-empty pages recovered two more, and neither carries substance:
+
+| Attempt | Still empty | Newly read | Of which substance |
+|---|---:|---:|---|
+| 1 (the 300-page run) | 24 | — | — |
+| 2 | 21 | 3 | **2 complete letters** (978 + 902 characters) |
+| 3 | 19 | 2 | **0** |
+
+**The second attempt fetches the letters, the third only fragments.** Two attempts is therefore the policy this measurement supports, and nothing here shows the yield is zero after that — only that it collapses. Counted in pages the two rows read 3 and then 2, almost no decline at all; the collapse is visible only by reading what is in them. **A count of pages is not a count of text.**
+
+### The merged corpus, and a ranking that is an editorial decision
+
+Three attempts live in three run directories, and publication takes one. A merge step writes a run that holds, per page, the best attempt — decided by verdict, never by length, with the caller's order of the inputs breaking ties:
+
+| Verdict | Rank | |
+|---|---:|---|
+| `ok` | 3 | a reading of the page |
+| `short` | 2 | little, but it stands on the page |
+| `empty` | 1 | asserts nothing |
+| `repetitive`, `deliberation` | 0 | **below `empty`** |
+
+That last row is the actual decision and it is arguable. Those pages carry text that is not a reading of the page, and in a published edition that is invention wearing a transcription's clothes. **Nothing is better than something invented.** Deciding by length would be exactly wrong: a deliberating page carries 800 characters of self-address and wins any size comparison against the transcription it replaced.
+
+Each merged page keeps its own attempt's payload — settings, prompt digest, gateway version, timings stay true — and gains a record of which attempt was chosen and what the others answered. One field is recomputed rather than carried: the quality verdict, because it is the only part of the payload that is a judgement rather than a fact about the call. That distinction was found the hard way, by reading a published file that carried `merged_from.verdict: ok` beside `quality.verdict: repetitive`.
+
+The result was published on 12 October 2026 into the edition's pull request ([michaelscho/lassberg#3](https://github.com/michaelscho/lassberg/pull/3)), as plain text and per-page JSON side by side:
+
+| | |
+|---|---:|
+| Pages | **300** |
+| With text | **281** |
+| Empty after two attempts | 19 |
+| `looped` / `arguing` / `cut off` | 0 / 0 / 0 |
+| Characters per page | 883 |
+| Files | 602 (300 `.txt`, 300 `.json`, two reports) |
+| Prompt | `lassberg_atr_strict2 @9e0503e8`, thinking `low` |
+
+The JSON travels with the text on purpose: for every page it records which prompt digest, which thinking level and which ceiling produced that reading, so the question "would this come out differently now?" has an answer per page rather than per run.
 
 ## Ground truth, and how a page is found at all
 
@@ -181,7 +313,7 @@ The censoring is reduced, not removed. A page **no** engine reads well enough st
 
 **And the obvious stratification key does not work.** This project proposed grouping by the first path segment, on the reasoning that it encodes provenance and provenance tracks the hand. It does not: `doc7151991` (Wackernagel, 8.1 %) and `doc4726780` (Laßberg, 34.8 %) are both held in Basel and both sit under `Basel__`. The folder is the holding archive, which holds both sides of a correspondence. Assigning a writer needs the dateline or the Transkribus document metadata, and is not yet in code — the groupings in the table above were read off the datelines by hand, and no median over them has been computed.
 
-## Thirteen defects the measurements found
+## Nineteen defects the measurements found
 
 Measuring this corpus was mostly a matter of finding out why the measurement was wrong. Each of these was found by a number that could not be true.
 
@@ -200,17 +332,28 @@ Measuring this corpus was mostly a matter of finding out why the measurement was
 | Share "down" | The same request answered 207 from a shell and 401 from a service, seconds apart | A stale password in the service's environment. A value already in `os.environ` wins over every `.env` file, so the corrected file looked innocent and three rounds of diagnosis went to the wrong half of the system |
 | Waiting for deleted files | A run read fifteen pages in 140 minutes and looked merely slow | A 404 from the source was routed through the circuit built for outages: five failures in a row, pause 60 s, then 120, then 900, retrying files that had been removed from the share |
 | Pages counted as files | The comparison table claimed 298 pages | It counted ground-truth files, one section below its own report's warning that 66 pages are described by 138 files. 226 is the count, and the correction moved one engine's rank |
+| Arguing in the transcription field | Three pages carried the model reasoning aloud in English instead of text | No column could show it — not empty, not short, not repetitive. They were visible only because the arguing ran into the token ceiling, and the obvious remedy, a higher ceiling, buys more arguing |
+| An empty answer meaning two things | Two written letters disappeared into a column named `empty` | One sentence of a prompt made "this leaf is blank" and "this page I am not writing out" the same answer. An empty answer is a success by every signal the runner has |
+| A count without the names | A report said 33 pages were flagged and printed twenty of them | A count is a complaint; only the keys are a task, because the next run reads a list. The cap belonged where the report is rendered, not where the keys are collected |
+| Hours-old code answering | A report came back in the previous version's shape from a checkout that was current | A long-lived server process is a cache of its own source. A `git pull` reaches a run started as a subprocess; it does not reach what the server computes in-process, and three deployments were reported as live without it |
+| A printed rule read as filler | An archive's insert slip was flagged `repetitive` for a line of 80 underscores | Repetition was measured as the longest run of one character, with no account of **where** the run sits. A run that is a line of its own and under a quarter of the page is a rule; the same run inside a line of text is filler |
+| Two verdicts on one page | A published file read `merged_from.verdict: ok` beside `quality.verdict: repetitive` | The merge copies the payload on purpose, so that settings and timings stay facts about the call it came from — and carried a stale judgement along with them. A judgement has to be recomputed where a fact must not be |
 
-A fourteenth is not a defect in this pipeline but shaped the measurements: the share answered 401 to every request on 2 October, the mount was empty, and some 6700 pages sat on local disk in a cache that was not an admissible source. It is one now.
+A twentieth is not a defect in this pipeline but shaped the measurements: the share answered 401 to every request on 2 October, the mount was empty, and some 6700 pages sat on local disk in a cache that was not an admissible source. It is one now.
 
-Three of the four newest are failures of diagnosis rather than of code — a filter applied after a cut, a status code read as a statement about the server rather than about the process asking, and a page count that was a file count directly under its own warning. Each was settled by one observation that nobody had made: the order of two operations, the length of a password in two processes, the difference between a file and a page.
+Seven of these are failures of diagnosis rather than of code — a filter applied after a cut, a status code read as a statement about the server rather than about the process asking, a page count that was a file count directly under its own warning, a deployment reported from the fact that a restart was ordered. Each was settled by one observation nobody had made: the order of two operations, the length of a password in two processes, the difference between a file and a page, the commit a running process actually holds. Every report of this pipeline now carries that last one, as the pair *code loaded* / *code on disk*.
+
+And two findings that looked like defects were artefacts of the instrument, which is the same mistake pointing the other way. A count of published files came to 276 of 300 and read as an incomplete push: `git` quotes paths containing non-ASCII, and the Laßberg keys are full of `Zürrich` and `Mülinen`, so those lines end in a quotation mark rather than in `.txt`. And a fetch into a shallow clone reports `(forced update)` for an ordinary fast-forward, because descent beyond the shallow boundary cannot be proven — which reads alarmingly like a rewritten history on a shared branch and is not one. **A count that depends on how a tool displays a thing is not a count of the thing.**
 
 ## What is not measured
 
 - **Whether fusion helps.** The comparison now predicts that it does not for these eight, because one candidate dominates weaker ones. It has not been tried, and the prediction rests on measurements made elsewhere.
 - **The French letters.** `kraken-fondue_gd_v2` has now read German pages creditably — level with `trocr-kurrent` on the median, better at p90 — and nobody has scored it on the French material it was trained for.
 - **The 35 withdrawn pages.** Their transcriptions exist and their images do not. Until the share's custodians answer, they are measurable only if a copy turns up elsewhere.
-- **Whether the 625 empty pages are blank.** Nobody has looked at the images.
+- **Whether the 625 empty pages are blank.** Nobody has looked at the images. The variance measurement narrows this for a sampled reader and widens it for everything else: a page that answers empty once is not evidence of a blank leaf, and the 625 come from a single pass.
+- **Whether the 19 empty pages of the published 300 are blank.** They are the pages that answered empty on two attempts, which is the strongest statement a re-reading can make, and it is not a look at the leaf. For two of the nineteen there is circumstantial testimony: under the first prompt, which described rather than refused, the same model wrote out that those leaves carry no handwriting. That is the same model family talking about itself, not an independent instrument.
+- **Whether a fourth attempt would recover anything.** The yield collapses between the second and the third — two complete letters, then nothing of substance. Collapsing is not zero, and nothing here measures where it ends.
+- **How well the ninth reader reads.** Its 300 pages were sampled from the untranscribed part of the corpus on purpose, so there is nothing to score them against. 252 of 300 are `ok`, which means only "none of the known defects".
 - **A median per hand**, for the reason given above.
 - **How badly Laßberg's hand actually reads.** The confidence rule cuts the located set off at about 45 % CER, which is inside his range, so his worst pages are absent by construction. Measuring him needs a match test that does not depend on how well the page was read — the Transkribus `pageId` would do it, if the readings carried one.
 - **Which doubtful pages are non-matches.** Three populations share that verdict and a CER ratio cannot separate them. The discriminator that can is each page's own length floor: the error rate a reading of its length cannot beat even when it is right. Nothing computes it yet.
@@ -219,6 +362,8 @@ Three of the four newest are failures of diagnosis rather than of code — a fil
 ## Reproducing
 
 The runs, the comparison and the scoring are commands in the [`agentic_historian`](https://github.com/thodel/agentic_historian) repository; `docs/BATCH_ATR.md` there is the runbook and names the five steps in the order in which each produces what the next one reads. The ground truth is a Transkribus collection and is not public. The readings are published per page as plain text.
+
+The prompts of the ninth reader are files in that repository under `agentic_historian/prompts/`, each identified by the first eight characters of its sha256 digest — `lassberg_atr @092fb6b0`, `lassberg_atr_strict @03c5a660`, `lassberg_atr_strict2 @9e0503e8` — and every page of every run records the digest that produced it, beside the thinking level and the token ceiling. A prompt is a parameter of the measurement, so a measurement that does not name it is not reproducible. Re-reading the same pages needs a **new run name**: output is the only state this runner keeps, so a page already on disk is skipped, and the second attempt of a page is a second run compared against the first.
 
 Scoring 552 ground-truth files against eight readings takes about 32 minutes of one CPU, most of it spent matching each page against the 6719-page corpus reading.
 

@@ -49,7 +49,15 @@ trotzdem hier verlinkt sind und nicht als interne Arbeitsdokumente gelten.
       die Fehlerrate spaltet sich um das Vier- bis Fünffache nach der
       <em>Hand</em>, innerhalb eines Modells auf einem Korpus. Und der Share
       hält inzwischen 35 Seiten nicht mehr, für die handkorrigierter Text
-      vorliegt.</dd>
+      vorliegt. Seit Oktober 2026 kommt ein <strong>neunter Leser</strong>
+      hinzu, ein kommerzielles Modell hinter einer API: 300 bislang
+      untranskribierte Seiten, in der Edition publiziert — und drei Befunde,
+      die keine Qualitätszahl gezeigt hätte. Ein Modell, das im
+      Transkriptionsfeld laut mit sich selbst ringt; <em>ein Satz</em> im
+      Prompt, der zwei beschriebene Seiten in einer Spalte namens „leer“
+      verschwinden liess; und die Streuung zwischen zwei identischen Läufen,
+      die niemand gemessen hatte — ein vollständiger Brief von 1831 war in
+      vier Läufen „leer“ und liest sich im fünften durch.</dd>
   </div>
 </dl>
 
