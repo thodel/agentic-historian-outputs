@@ -9,7 +9,7 @@ title: "Reading the Laßberg correspondence"
 
 Some 6700 digitised pages of letters to and from Joseph von Laßberg (1770–1855), held across thirteen archives and libraries, were read end to end by machine. **Eight recognition engines** then read the pages for which a human transcription exists and were scored against it. A **ninth reader**, a commercial model behind an API, read a 300-page sample in October and is the subject of its own section: it has no quality figure, because the sample was drawn from the pages nobody has transcribed. This page records what that cost, how far the readings disagree with each other, and how far each of them differs from the transcription.
 
-It records **what was measured**, and marks clearly where a number is provisional. The engine comparison is a measurement of quality, because one side of it is a human transcription; the run figures measure cost, and the disagreement figures measure neither. Where a figure contradicts something this project said earlier, the correction is stated rather than quietly applied — eight of them contradict a figure this page itself used to carry, and the sections below record several more that never made it this far.
+It records **what was measured**, and marks clearly where a number is provisional. The engine comparison is a measurement of quality, because one side of it is a human transcription; the run figures measure cost, and the disagreement figures measure neither. Where a figure contradicts something this project said earlier, the correction is stated rather than quietly applied — nine of them contradict a figure this page itself used to carry, and the sections below record several more that never made it this far.
 
 **What this page was not, until 5 October 2026.** It said, in this place, that it was not an engine comparison, because seven of the eight candidates had no quality figure. They have one now.
 
@@ -164,7 +164,32 @@ A third attempt on the 19 still-empty pages recovered two more, and neither carr
 | 2 | 21 | 3 | **2 complete letters** (978 + 902 characters) |
 | 3 | 19 | 2 | **0** |
 
-**The second attempt fetches the letters, the third only fragments.** Two attempts is therefore the policy this measurement supports, and nothing here shows the yield is zero after that — only that it collapses. Counted in pages the two rows read 3 and then 2, almost no decline at all; the collapse is visible only by reading what is in them. **A count of pages is not a count of text.**
+**The second attempt fetches the letters, the third only fragments.** Two attempts is therefore the policy this measurement supports. Counted in pages the two rows read 3 and then 2, almost no decline at all; the collapse is visible only by reading what is in them. **A count of pages is not a count of text.**
+
+### A fourth attempt against a second reader
+
+The sentence above used to end "nothing here shows the yield is zero after that — only that it collapses". Both halves of that have now been measured, on 13 October, over the 19 pages the published corpus still had empty.
+
+| | Pages recovered |
+|---|---:|
+| A fourth attempt — same reader, same prompt, same thinking level | **0 of 19** |
+| A second *reader* — two local engines from other model families, one of them segmenting lines | **1 of 19** |
+
+So the yield curve of one reader over four attempts is **3 → 2 → 0**, and "ask again" is exhausted as a lever. The page the other engines found is `blb lassberg__K 2911,93__page_0001`. Both return **24 lines**; 14 of the 24 agree, among them the shelfmark in line 1, the number `67` in line 2, a salutation in line 3 (`Hochwolgebohrner`, which the other engine garbles to `Gottesvollgeboren`), and both end the final line with a hyphen, so the text runs on to the next leaf. **Neither reading is usable as a transcription**, and that was not the question: the question was whether there is ink on the leaf.
+
+The same measurement carried its own negative control, which is what makes it a measurement rather than a hope. On five of the nineteen both engines also returned something, and three signals mark it as noise over a nearly blank page: **zero** shared words of five characters or more across those five pages; each engine repeating its own phrases on different leaves (`haußhaltung zu Buchstetten verschicken`, verbatim, twice); and the engine trained on sixteenth- and seventeenth-century material dating a Laßberg leaf to `1655`. **Agreement between independent readers is evidence. Output from independent readers is not.**
+
+| | Pages | What it is |
+|---|---:|---|
+| Silent in three readers from three model families | **13** | blank, as far as any machine can say |
+| A trace of ink, hallucinated over by both segmenters | **5** | foliation, a stamp, show-through — no letter text |
+| **Written** | **1** | a letter's first page, refused four times |
+
+For one of the five there is independent testimony that fits exactly: `UB Bern__Mss_h_h_XLIV_180_32_169` is the page the external reader described, under its first prompt, as "vollständig unbeschrieben … Durchschlagen". The strict prompt forbids transcribing show-through, so its silence there is the correct answer.
+
+**Repeating a measurement with the same instrument estimates that instrument's noise.** It cannot separate a property of the object from a bias of the instrument; for that the instrument has to change. The policy this leaves is: two attempts of the reader you are using, then a reader from another family — 38 calls and six minutes of a GPU that is idle anyway.
+
+*Correction:* this page said, one section above, that it is not known whether the 19 are blank. It is now known for 18 of them in the strongest sense a machine can offer, and known to be false for the nineteenth.
 
 ### The merged corpus, and a ranking that is an editorial decision
 
@@ -181,17 +206,21 @@ That last row is the actual decision and it is arguable. Those pages carry text 
 
 Each merged page keeps its own attempt's payload — settings, prompt digest, gateway version, timings stay true — and gains a record of which attempt was chosen and what the others answered. One field is recomputed rather than carried: the quality verdict, because it is the only part of the payload that is a judgement rather than a fact about the call. That distinction was found the hard way, by reading a published file that carried `merged_from.verdict: ok` beside `quality.verdict: repetitive`.
 
+**A verdict is currency inside one reader and not between two.** Having found the written page, the obvious move was to merge the other engines' run into the corpus and let this ranking pick the better reading. A dry run first: 300 pages plus 38 is 338, nothing improved, nothing compared — the merge identifies a page by *(model, key)*, not by key alone, so the two engines' readings never met the pages they were meant to repair. That is the safe side of the mistake. Keyed on the page alone, the five noise pages would have won, because their verdict is `short` and the refusals' is `empty`, and `orchecker classica` would have been published as a transcription in somebody else's edition. The ranking guards against `repetitive` and `deliberation`; a *short, fluent* invention by a foreign model walks past it. Taking one page's reading from another engine is an editorial act that has to name that engine on that page — not bookkeeping a merge can do quietly.
+
 The result was published on 12 October 2026 into the edition's pull request ([michaelscho/lassberg#3](https://github.com/michaelscho/lassberg/pull/3)), as plain text and per-page JSON side by side:
 
 | | |
 |---|---:|
 | Pages | **300** |
 | With text | **281** |
-| Empty after two attempts | 19 |
+| Empty after two attempts | 19 — of which **one is a written page**, see below |
 | `looped` / `arguing` / `cut off` | 0 / 0 / 0 |
 | Characters per page | 883 |
 | Files | 602 (300 `.txt`, 300 `.json`, two reports) |
 | Prompt | `lassberg_atr_strict2 @9e0503e8`, thinking `low` |
+
+Nothing published there is false — an empty text file asserts nothing about the leaf — and no byte of it was changed when the written page was found. What that page needs is a note at the edition saying which of the nineteen it is, which is a message to the maintainer rather than an edit to the corpus.
 
 The JSON travels with the text on purpose: for every page it records which prompt digest, which thinking level and which ceiling produced that reading, so the question "would this come out differently now?" has an answer per page rather than per run.
 
@@ -351,8 +380,8 @@ And two findings that looked like defects were artefacts of the instrument, whic
 - **The French letters.** `kraken-fondue_gd_v2` has now read German pages creditably — level with `trocr-kurrent` on the median, better at p90 — and nobody has scored it on the French material it was trained for.
 - **The 35 withdrawn pages.** Their transcriptions exist and their images do not. Until the share's custodians answer, they are measurable only if a copy turns up elsewhere.
 - **Whether the 625 empty pages are blank.** Nobody has looked at the images. The variance measurement narrows this for a sampled reader and widens it for everything else: a page that answers empty once is not evidence of a blank leaf, and the 625 come from a single pass.
-- **Whether the 19 empty pages of the published 300 are blank.** They are the pages that answered empty on two attempts, which is the strongest statement a re-reading can make, and it is not a look at the leaf. For two of the nineteen there is circumstantial testimony: under the first prompt, which described rather than refused, the same model wrote out that those leaves carry no handwriting. That is the same model family talking about itself, not an independent instrument.
-- **Whether a fourth attempt would recover anything.** The yield collapses between the second and the third — two complete letters, then nothing of substance. Collapsing is not zero, and nothing here measures where it ends.
+- **Whether the 13 silent pages of the published 300 are blank.** Three readers from three model families return nothing for them, which is the strongest statement a machine can make here, and it is not a look at the leaf. Of the original nineteen, five carry a trace of ink and one carries a letter — see [*A fourth attempt against a second reader*](#a-fourth-attempt-against-a-second-reader).
+- **What is on the five pages with a trace of ink.** Both segmenters find something and read it as noise; whether it is foliation, a stamp or show-through is a question for the image.
 - **How well the ninth reader reads.** Its 300 pages were sampled from the untranscribed part of the corpus on purpose, so there is nothing to score them against. 252 of 300 are `ok`, which means only "none of the known defects".
 - **A median per hand**, for the reason given above.
 - **How badly Laßberg's hand actually reads.** The confidence rule cuts the located set off at about 45 % CER, which is inside his range, so his worst pages are absent by construction. Measuring him needs a match test that does not depend on how well the page was read — the Transkribus `pageId` would do it, if the readings carried one.

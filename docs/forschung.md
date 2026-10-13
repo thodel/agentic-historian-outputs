@@ -57,7 +57,10 @@ trotzdem hier verlinkt sind und nicht als interne Arbeitsdokumente gelten.
       Prompt, der zwei beschriebene Seiten in einer Spalte namens „leer“
       verschwinden liess; und die Streuung zwischen zwei identischen Läufen,
       die niemand gemessen hatte — ein vollständiger Brief von 1831 war in
-      vier Läufen „leer“ und liest sich im fünften durch.</dd>
+      vier Läufen „leer“ und liest sich im fünften durch. Die Lehre daraus ist
+      nicht „noch ein Versuch“, sondern ein zweiter Leser: ein vierter Durchgang
+      desselben Modells holte 0 von 19 Seiten, zwei Modelle anderer Familien
+      eine — den Anfang eines Briefes, 24 Zeilen, viermal verschwiegen.</dd>
   </div>
 </dl>
 
