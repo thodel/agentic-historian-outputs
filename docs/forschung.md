@@ -60,7 +60,11 @@ trotzdem hier verlinkt sind und nicht als interne Arbeitsdokumente gelten.
       vier Läufen „leer“ und liest sich im fünften durch. Die Lehre daraus ist
       nicht „noch ein Versuch“, sondern ein zweiter Leser: ein vierter Durchgang
       desselben Modells holte 0 von 19 Seiten, zwei Modelle anderer Familien
-      eine — den Anfang eines Briefes, 24 Zeilen, viermal verschwiegen.</dd>
+      eine — den Anfang eines Briefes, 24 Zeilen, viermal verschwiegen. Und ein
+      dritter Strang betrifft nicht das Lesen, sondern das <em>Bild</em>: von 43
+      Seiten, deren Transkription nicht zu ihrem Scan passt, sind 27 zwei
+      verschiedene Aufnahmen derselben Seite — darunter eine Doppelseite gegen
+      ein halbiertes Blatt — und 16 dasselbe Bild in zwei Auflösungen.</dd>
   </div>
 </dl>
 

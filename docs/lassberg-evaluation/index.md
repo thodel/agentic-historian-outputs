@@ -342,7 +342,37 @@ The censoring is reduced, not removed. A page **no** engine reads well enough st
 
 **And the obvious stratification key does not work.** This project proposed grouping by the first path segment, on the reasoning that it encodes provenance and provenance tracks the hand. It does not: `doc7151991` (Wackernagel, 8.1 %) and `doc4726780` (Laßberg, 34.8 %) are both held in Basel and both sit under `Basel__`. The folder is the holding archive, which holds both sides of a correspondence. Assigning a writer needs the dateline or the Transkribus document metadata, and is not yet in code — the groupings in the table above were read off the datelines by hand, and no median over them has been computed.
 
-## Nineteen defects the measurements found
+## Two archives, two scans of one page
+
+Everything above reads pages. This section is about pairing a page's transcription with its *image*, which is what a line-level training set needs and a character error rate does not: the hand-corrected text carries line polygons in the pixel coordinates of **Transkribus's** copy of the scan, and the image beside it is this pipeline's working copy of the **share's** copy. If the two differ in size, every polygon crops the wrong strip of every line.
+
+**That failure is invisible downstream.** The crops are plausible images, the text is real text, and the only symptom is a model that trains badly for no stated reason. So the export compares the XML's declared geometry against the actual image and refuses a page that disagrees. Of 552 ground-truth files, 241 were exportable and **43 were refused on geometry**.
+
+Those 43 are not one population. Grouped by their pair of sizes — 21 distinct pairs — they are two:
+
+| | Pages | What the two sizes are |
+|---|---:|---|
+| **One factor on both axes** | **16** | the same scan at two resolutions |
+| **Anything else** | **27** | two different photographs of the page |
+
+The boundary is not in a crowded place: the sixteen agree on their factor to **0.11 % or better**, and the nearest refused pair is **0.78 %** out. Nothing is rotated and nothing is a pixel or two apart — so the tempting explanation, two renderers rounding a page's width differently, is not what this is.
+
+**What the 27 are, read off the numbers alone:**
+
+- **A fixed frame.** Sixteen pages land on an image of exactly 1420×1781 while their XML records three different heights against one width. A derivative that maps pages of different heights onto one format is not scaled per page: that page at width 1420 would be 1858 high, not 1781.
+- **A second fixed frame**, 1296×1636, reached from four different declared sizes — and in two cases the image is *larger* than the transcription's own copy. An image bigger than the page its polygons describe is not a reduced derivative of it.
+- **A scanned opening against a half leaf.** One pair has identical width and exactly half the height (factor 1.9917). The transcription describes a tall image; the share holds one half of it.
+- **A landscape photograph against a portrait page.** 2479×3508 — A4 at 300 dpi — against 2968×2553. Not a rotation, which would be 3508×2479.
+
+For the last two, "which scan is authoritative" is the wrong question. The question is which photograph shows the page, and it belongs to the archives rather than to this pipeline.
+
+**The 16 are taken along, and they say so in their own data.** Picking one of two *different* scans is a judgement this project has no standing to make; a factor both axes agree on to a tenth of a percent is not that judgement but an arithmetic fact about one scan. So the coordinates are divided by it — outlines *and* baselines, because moving one and not the other would crop correctly and order the lines wrongly — the declared geometry is rewritten to the image, and each such page carries a comment as its first line naming the factor, both sizes, and how far the two axes disagreed. The export tree is images and XML and nothing else, so a note in a file beside it would not reach whoever reads the dataset; this one travels with the page. 16 pages on 241 is **6.6 %** more training material, and a page without a factor stays a byte-for-byte copy.
+
+That last paragraph describes what the export now does, held by its tests on the 21 measured size pairs; the 27-minute run that would produce the tree of 257 pages has not been repeated since the change, so no figure here is quoted from it.
+
+*A reading this project briefly held, and it was wrong.* The most frequent factor, 2.2548 on six pages, looks like 300 against 133 dpi and therefore like a systematic relationship between two derivative pipelines. The full table has seven factors — 1.58, 1.62, 1.99, 2.10, 2.26, 2.63, 3.31 — and no single relationship to name; it is nine archives delivering their own derivatives. The claim was made from the one signature the report had printed, which is the third time in a fortnight that a pattern visible in a handful of cases was written down as a rule. **The sample that shows a pattern is not the sample that establishes it.**
+
+## Twenty defects the measurements found
 
 Measuring this corpus was mostly a matter of finding out why the measurement was wrong. Each of these was found by a number that could not be true.
 
@@ -364,13 +394,16 @@ Measuring this corpus was mostly a matter of finding out why the measurement was
 | Arguing in the transcription field | Three pages carried the model reasoning aloud in English instead of text | No column could show it — not empty, not short, not repetitive. They were visible only because the arguing ran into the token ceiling, and the obvious remedy, a higher ceiling, buys more arguing |
 | An empty answer meaning two things | Two written letters disappeared into a column named `empty` | One sentence of a prompt made "this leaf is blank" and "this page I am not writing out" the same answer. An empty answer is a success by every signal the runner has |
 | A count without the names | A report said 33 pages were flagged and printed twenty of them | A count is a complaint; only the keys are a task, because the next run reads a list. The cap belonged where the report is rendered, not where the keys are collected |
+| The same cap, in a second report | "43 refused on geometry", and five names printed, of which one was a geometry case | The fix above was applied where it had been noticed and nowhere else. One size pair cannot be grouped, so the cause could not be found — and "43 pages missing" invites the one remedy this check exists to prevent, exporting them unchecked |
 | Hours-old code answering | A report came back in the previous version's shape from a checkout that was current | A long-lived server process is a cache of its own source. A `git pull` reaches a run started as a subprocess; it does not reach what the server computes in-process, and three deployments were reported as live without it |
 | A printed rule read as filler | An archive's insert slip was flagged `repetitive` for a line of 80 underscores | Repetition was measured as the longest run of one character, with no account of **where** the run sits. A run that is a line of its own and under a quarter of the page is a rule; the same run inside a line of text is filler |
 | Two verdicts on one page | A published file read `merged_from.verdict: ok` beside `quality.verdict: repetitive` | The merge copies the payload on purpose, so that settings and timings stay facts about the call it came from — and carried a stale judgement along with them. A judgement has to be recomputed where a fact must not be |
 
-A twentieth is not a defect in this pipeline but shaped the measurements: the share answered 401 to every request on 2 October, the mount was empty, and some 6700 pages sat on local disk in a cache that was not an admissible source. It is one now.
+A twenty-first is not a defect in this pipeline but shaped the measurements: the share answered 401 to every request on 2 October, the mount was empty, and some 6700 pages sat on local disk in a cache that was not an admissible source. It is one now.
 
-Seven of these are failures of diagnosis rather than of code — a filter applied after a cut, a status code read as a statement about the server rather than about the process asking, a page count that was a file count directly under its own warning, a deployment reported from the fact that a restart was ordered. Each was settled by one observation nobody had made: the order of two operations, the length of a password in two processes, the difference between a file and a page, the commit a running process actually holds. Every report of this pipeline now carries that last one, as the pair *code loaded* / *code on disk*.
+Eight of these are failures of diagnosis rather than of code — a filter applied after a cut, a status code read as a statement about the server rather than about the process asking, a page count that was a file count directly under its own warning, a deployment reported from the fact that a restart was ordered, a fix applied in the one report where it had been noticed. Each was settled by one observation nobody had made: the order of two operations, the length of a password in two processes, the difference between a file and a page, the commit a running process actually holds, the pair of sizes behind a count. Every report of this pipeline now carries that fourth one, as the pair *code loaded* / *code on disk*.
+
+A ninth was entirely mine and not the code's: the number of geometry rejections was carried around for days as **27**, which is the count in a *different column* of the same report — the pages whose hand no dateline names. Two numbers from one printout, one of them misremembered, and nothing in between to check it. The same family as *pages counted as files*, one level up: not a file mistaken for a page, but one column's answer given to another column's question.
 
 And two findings that looked like defects were artefacts of the instrument, which is the same mistake pointing the other way. A count of published files came to 276 of 300 and read as an incomplete push: `git` quotes paths containing non-ASCII, and the Laßberg keys are full of `Zürrich` and `Mülinen`, so those lines end in a quotation mark rather than in `.txt`. And a fetch into a shallow clone reports `(forced update)` for an ordinary fast-forward, because descent beyond the shallow boundary cannot be proven — which reads alarmingly like a rewritten history on a shared branch and is not one. **A count that depends on how a tool displays a thing is not a count of the thing.**
 
@@ -387,6 +420,9 @@ And two findings that looked like defects were artefacts of the instrument, whic
 - **How badly Laßberg's hand actually reads.** The confidence rule cuts the located set off at about 45 % CER, which is inside his range, so his worst pages are absent by construction. Measuring him needs a match test that does not depend on how well the page was read — the Transkribus `pageId` would do it, if the readings carried one.
 - **Which doubtful pages are non-matches.** Three populations share that verdict and a CER ratio cannot separate them. The discriminator that can is each page's own length floor: the error rate a reading of its length cannot beat even when it is right. Nothing computes it yet.
 - **Whether the 27 unstatused pages were corrected.** The harvest only fetches corrected pages, so they probably were, but the file does not say and the harvester records nothing.
+- **Which of two scans of a page is the authoritative one.** For the 27 refused on geometry, two archives hold different photographs of the same leaf — in two cases a scanned opening and a half leaf, a landscape and a portrait. That is a question for the archives, and until it is answered those pages have a transcription and no image that matches it.
+- **Whether the rescaled polygons sit on the ink.** Dividing the coordinates by a measured factor makes the XML consistent with its image, and consistency is not correctness: nobody has looked at a line crop from one of those 16 pages to confirm the box lands on the writing. The arithmetic says it must; an eye would say it does.
+- **Whether a dataset trained on these 257 pages reads better.** The export tree has never been uploaded. Publishing a dataset is a public act, and the pipeline deliberately stops at the tree and prints the command.
 
 ## Reproducing
 
