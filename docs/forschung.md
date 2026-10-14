@@ -66,6 +66,25 @@ trotzdem hier verlinkt sind und nicht als interne Arbeitsdokumente gelten.
       verschiedene Aufnahmen derselben Seite — darunter eine Doppelseite gegen
       ein halbiertes Blatt — und 16 dasselbe Bild in zwei Auflösungen.</dd>
   </div>
+  <div>
+    <dt><a href="disputation-page-model/">A page model on the Berner Disputation</a>
+      <span class="research-language" lang="en">englisch</span></dt>
+    <dd>Das erste Modell dieses Projekts, das auf <em>ganzen Seiten</em>
+      trainiert wurde, gegen jenes, das die fünf Berner Handschriften von 1528
+      zeilenweise gelesen hat — 40 Seiten aus vier Abschriften. Das
+      Seitenmodell ist auf diesem Material der deutlich schlechtere Leser, und
+      zwar eindeutig: auf den zehn Seiten der Schlussredaktion, für die eine
+      ältere Lesung existiert, liegt es auf <strong>zehn von zehn</strong>
+      zurück, Median 0,16 gegen 0,85. Dazu eine Entartungsrate, die in allen
+      vier Handschriften dieselbe ist — eine Seite von zehn läuft in eine
+      Wiederholungsschleife —, was sie zu einer Eigenschaft des Modells macht
+      und nicht einer schwierigen Hand. Eine Sache kann es besser: es schreibt
+      die Abbreviaturen des Schreibers (<em>un̄</em>, <em>vˀschriben</em>,
+      <em>ꝫ</em>), die das Zeilenmodell auf denselben Seiten kein einziges Mal
+      wiedergibt. Was die Seite nicht entscheidet, steht ausdrücklich darin:
+      für keine dieser Handschriften existiert eine Ground Truth, jede Zahl
+      hier vergleicht zwei Maschinen.</dd>
+  </div>
 </dl>
 
 ## Verhältnis zu den Ausgaben
