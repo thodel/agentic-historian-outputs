@@ -5,6 +5,189 @@
  "line_model": "dh-unibe/qwen3vl-medieval-german-v3",
  "note": "Every page_model reading was verified against the sha256 of the image in its own manuscript directory before publication. The edition transcription, where present, is itself machine output and is not ground truth.",
  "witnesses": {
+  "a_v_1443_hertwig": {
+   "shelfmark": "A V 1443",
+   "name": "Hertwig",
+   "run": "hertwig_page_v1",
+   "line_run": "hertwig_medieval_v3",
+   "pages": [
+    {
+     "page": 29,
+     "source_image": "page_29.jpg",
+     "source_sha256": "88d2c5670b8e474ef281ae36242aaef9437a3dd63a668bd3f7272b5e35e5c056",
+     "source_bytes": 617175,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1443/29",
+     "page_model": {
+      "file": "readings/a_v_1443_hertwig/page_29.page.txt",
+      "chars": 10924,
+      "truncated": true,
+      "repetitive": true
+     },
+     "line_model": {
+      "file": "readings/a_v_1443_hertwig/page_29.line.txt",
+      "chars": 868
+     },
+     "edition_transcription": {
+      "chars": 919,
+      "similarity_page_model": 0.053,
+      "similarity_line_model": 0.761
+     }
+    },
+    {
+     "page": 84,
+     "source_image": "page_84.jpg",
+     "source_sha256": "1297c032618bf58f8de1d76f1d289fd28b2f6f07dc68328301e8dd50ad0d35f2",
+     "source_bytes": 840613,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1443/84",
+     "page_model": {
+      "file": "readings/a_v_1443_hertwig/page_84.page.txt",
+      "chars": 1930,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1443_hertwig/page_84.line.txt",
+      "chars": 1921
+     }
+    },
+    {
+     "page": 114,
+     "source_image": "page_114.jpg",
+     "source_sha256": "a107b5364afe3c08bb551fe1f1608b36d153322b7141cc1b033e0dfa3e73b316",
+     "source_bytes": 664704,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1443/114",
+     "page_model": {
+      "file": "readings/a_v_1443_hertwig/page_114.page.txt",
+      "chars": 983,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1443_hertwig/page_114.line.txt",
+      "chars": 1011
+     }
+    },
+    {
+     "page": 194,
+     "source_image": "page_194.jpg",
+     "source_sha256": "18f8acaa60d02e52ad32091d4e7d4c25e788cf213e4ec40a0955fd59336cadde",
+     "source_bytes": 610271,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1443/194",
+     "page_model": {
+      "file": "readings/a_v_1443_hertwig/page_194.page.txt",
+      "chars": 1025,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1443_hertwig/page_194.line.txt",
+      "chars": 992
+     }
+    },
+    {
+     "page": 195,
+     "source_image": "page_195.jpg",
+     "source_sha256": "f942e6ef6a448661be63297e420e4e21319836d528f96fa66e4c93b959fe8dbe",
+     "source_bytes": 650290,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1443/195",
+     "page_model": {
+      "file": "readings/a_v_1443_hertwig/page_195.page.txt",
+      "chars": 977,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1443_hertwig/page_195.line.txt",
+      "chars": 1000
+     }
+    },
+    {
+     "page": 370,
+     "source_image": "page_370.jpg",
+     "source_sha256": "01a0f232d1d817cdae70410907e48835ff4b973b49222945e103eb08a235f2e9",
+     "source_bytes": 672367,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1443/370",
+     "page_model": {
+      "file": "readings/a_v_1443_hertwig/page_370.page.txt",
+      "chars": 967,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1443_hertwig/page_370.line.txt",
+      "chars": 1016
+     }
+    },
+    {
+     "page": 406,
+     "source_image": "page_406.jpg",
+     "source_sha256": "223286a305b7c1f49a533857fcf43b804a0664c30b0b6934ab63f6a179b19607",
+     "source_bytes": 773110,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1443/406",
+     "page_model": {
+      "file": "readings/a_v_1443_hertwig/page_406.page.txt",
+      "chars": 1185,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1443_hertwig/page_406.line.txt",
+      "chars": 1160
+     }
+    },
+    {
+     "page": 471,
+     "source_image": "page_471.jpg",
+     "source_sha256": "a56abea267c5d6b7aab762765ba33b8451dc073f3148f22f084ef5c246a66839",
+     "source_bytes": 655810,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1443/471",
+     "page_model": {
+      "file": "readings/a_v_1443_hertwig/page_471.page.txt",
+      "chars": 1092,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1443_hertwig/page_471.line.txt",
+      "chars": 1097
+     }
+    },
+    {
+     "page": 631,
+     "source_image": "page_631.jpg",
+     "source_sha256": "ca6b0b1c3770c7f574c5d554b5d299c111d1c44831c6e0f0541443ebc165a220",
+     "source_bytes": 743029,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1443/631",
+     "page_model": {
+      "file": "readings/a_v_1443_hertwig/page_631.page.txt",
+      "chars": 1267,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1443_hertwig/page_631.line.txt",
+      "chars": 1213
+     }
+    },
+    {
+     "page": 690,
+     "source_image": "page_690.jpg",
+     "source_sha256": "bcbb39c5f28483eaecba6e1780f81ba303fedf947e971596b47f6c7b65608fa0",
+     "source_bytes": 950035,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1443/690",
+     "page_model": {
+      "file": "readings/a_v_1443_hertwig/page_690.page.txt",
+      "chars": 1808,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1443_hertwig/page_690.line.txt",
+      "chars": 2259
+     }
+    }
+   ]
+  },
   "a_v_1445_schoeni": {
    "shelfmark": "A V 1445",
    "name": "Schöni",

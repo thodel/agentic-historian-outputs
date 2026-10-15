@@ -71,19 +71,22 @@ trotzdem hier verlinkt sind und nicht als interne Arbeitsdokumente gelten.
       <span class="research-language" lang="en">englisch</span></dt>
     <dd>Das erste Modell dieses Projekts, das auf <em>ganzen Seiten</em>
       trainiert wurde, gegen jenes, das die fünf Berner Handschriften von 1528
-      zeilenweise gelesen hat — 40 Seiten aus vier Abschriften,
+      zeilenweise gelesen hat — 50 Seiten aus allen fünf Abschriften,
       <a href="disputation-page-model/readings.html">alle vollständig
-      publiziert</a>. Der Befund: nicht das Modell entscheidet, sondern die
-      Hand. Auf der Schlussredaktion, der Reinschrift, entartet keine einzige
-      Seite, die Lesung trifft die Länge der Seite und weicht vom Zeilenmodell
-      nur um 24,5 % ab; auf Schöni verliert dasselbe Modell eine Seite von zehn
-      an eine Wiederholungsschleife und schreibt das 1,8-fache. Eine Sache kann
-      es besser: es gibt die Abbreviaturen des Schreibers wieder (39 Zeichen
-      gegen 2) — und zwar fast nur dort, wo ein Schreiber sie überhaupt
-      verwendet. <strong>Die erste Fassung dieser Seite war falsch</strong>:
-      drei der vier Läufe hatten wegen einer Cache-Kollision dieselbe
-      Handschrift ein zweites Mal gelesen. Die Korrektur steht oben auf der
-      Seite, samt dem, was sie umgestossen hat.</dd>
+      publiziert</a>. Zwei Befunde, die auseinanderlaufen: die
+      Wiederholungsschleife trifft <strong>vier von fünf Handschriften, und
+      zwar exakt eine Seite von zehn</strong> — nur die Schlussredaktion, die
+      Reinschrift, bleibt verschont. Auf den Seiten, die nicht entarten, ist
+      das Seitenmodell dagegen fast überall ein gewöhnlicher Leser: auf
+      Hertwig schreibt es im Mittel 1178 Zeichen gegen 1176 des Zeilenmodells.
+      Schöni ist die Ausnahme in beidem — dort schreibt es das 1,8-fache und
+      weicht um 53 % ab. Eine Sache kann es besser: die Abbreviaturen des
+      Schreibers (52 Zeichen gegen 5), und zwar fast nur dort, wo ein Schreiber
+      sie überhaupt verwendet. <strong>Die erste Fassung dieser Seite war
+      falsch</strong>: drei der vier damaligen Läufe hatten wegen einer
+      Cache-Kollision dieselbe Handschrift ein zweites Mal gelesen. Die
+      Korrektur steht oben auf der Seite, samt dem, was sie umgestossen
+      hat.</dd>
   </div>
 </dl>
 

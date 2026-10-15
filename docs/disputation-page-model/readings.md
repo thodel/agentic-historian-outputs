@@ -19,6 +19,23 @@ Everything is here as plain text, one file per page per model, plus [`readings.j
 - **Similarity** is against the edition's existing transcription where one exists. That transcription is *itself machine output*, so the figure says how far two machines agree, not how right either is.
 - **Facsimile** links open the page in the [Reformation edition](https://thodel.github.io/reformation/) viewer.
 
+## A V 1443 — Hertwig
+
+Runs `hertwig_page_v1` (page model) and `hertwig_medieval_v3` (line model).
+
+| Page | Facsimile | Page model | Line model | Edition transcription | sim. page | sim. line |
+|---:|---|---|---|---:|---:|---:|
+| 29 | [S. 29](https://thodel.github.io/reformation/#/disputation/a-v-1443/29) | [10924 chars](readings/a_v_1443_hertwig/page_29.page.txt) **(looped, cut off)** | [868 chars](readings/a_v_1443_hertwig/page_29.line.txt) | 919 | 0.05 | 0.76 |
+| 84 | [S. 84](https://thodel.github.io/reformation/#/disputation/a-v-1443/84) | [1930 chars](readings/a_v_1443_hertwig/page_84.page.txt) | [1921 chars](readings/a_v_1443_hertwig/page_84.line.txt) | — | — | — |
+| 114 | [S. 114](https://thodel.github.io/reformation/#/disputation/a-v-1443/114) | [983 chars](readings/a_v_1443_hertwig/page_114.page.txt) | [1011 chars](readings/a_v_1443_hertwig/page_114.line.txt) | — | — | — |
+| 194 | [S. 194](https://thodel.github.io/reformation/#/disputation/a-v-1443/194) | [1025 chars](readings/a_v_1443_hertwig/page_194.page.txt) | [992 chars](readings/a_v_1443_hertwig/page_194.line.txt) | — | — | — |
+| 195 | [S. 195](https://thodel.github.io/reformation/#/disputation/a-v-1443/195) | [977 chars](readings/a_v_1443_hertwig/page_195.page.txt) | [1000 chars](readings/a_v_1443_hertwig/page_195.line.txt) | — | — | — |
+| 370 | [S. 370](https://thodel.github.io/reformation/#/disputation/a-v-1443/370) | [967 chars](readings/a_v_1443_hertwig/page_370.page.txt) | [1016 chars](readings/a_v_1443_hertwig/page_370.line.txt) | — | — | — |
+| 406 | [S. 406](https://thodel.github.io/reformation/#/disputation/a-v-1443/406) | [1185 chars](readings/a_v_1443_hertwig/page_406.page.txt) | [1160 chars](readings/a_v_1443_hertwig/page_406.line.txt) | — | — | — |
+| 471 | [S. 471](https://thodel.github.io/reformation/#/disputation/a-v-1443/471) | [1092 chars](readings/a_v_1443_hertwig/page_471.page.txt) | [1097 chars](readings/a_v_1443_hertwig/page_471.line.txt) | — | — | — |
+| 631 | [S. 631](https://thodel.github.io/reformation/#/disputation/a-v-1443/631) | [1267 chars](readings/a_v_1443_hertwig/page_631.page.txt) | [1213 chars](readings/a_v_1443_hertwig/page_631.line.txt) | — | — | — |
+| 690 | [S. 690](https://thodel.github.io/reformation/#/disputation/a-v-1443/690) | [1808 chars](readings/a_v_1443_hertwig/page_690.page.txt) | [2259 chars](readings/a_v_1443_hertwig/page_690.line.txt) | — | — | — |
+
 ## A V 1445 — Schöni
 
 Runs `schoeni_page_v1` (page model) and `schoeni_medieval_v3` (line model).

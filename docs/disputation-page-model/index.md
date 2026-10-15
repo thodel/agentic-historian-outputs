@@ -23,22 +23,24 @@ title: "A page model on the Berner Disputation"
 >
 > **Withdrawn, and replaced:** the similarity table against the Schlussredaktion's transcription. It had scored a reading of *Schöni's* images against the *Schlussredaktion's* reference on 8 of 10 pages and produced a median of 0.16. The correct figure is **0.77**.
 >
-> **Unaffected:** the Schöni run, and the line model's readings of all 3,666 pages from September and October, which were checked digest by digest against their own manuscripts and are clean.
+> **Unaffected:** the Schöni run, and the line model's readings of all 3,666 pages from September and October, which were checked digest by digest against their own manuscripts and are clean. **Hertwig** was read later the same day, after the fix, with its own cache and all ten digests verified; it was never touched by this.
 
 Every handwriting model this project has fine-tuned reads **one line per call**, because one line is all it ever saw in training. That was measured rather than assumed, and the measurement was unkind: asked for a whole page, a line-trained model returns a short, fluent, wrong fragment and reports success. `qwen3.5-4b-german-kurrent-xvi-xix-page-v1` is the first fine-tune here trained at page granularity, so it is the first that may legitimately be asked for a page in one request.
 
-It read **40 pages** — ten each from four of the five Staatsarchiv Bern manuscripts of the Berner Disputation of 1528 — against the line model that had read all 3,666 pages of the same manuscripts in September and October. **[All forty readings are published here](readings.html)**, both models side by side, with the digest of the scan each was made from.
+It read **50 pages** — ten from each of the five Staatsarchiv Bern manuscripts of the Berner Disputation of 1528 — against the line model that had read all 3,666 pages of the same manuscripts in September and October. **[All fifty readings are published here](readings.html)**, both models side by side, with the digest of the scan each was made from.
 
-**The short version: the page model is a competent reader of the fair copy and an unreliable one of the working copies.** On the Schlussredaktion it lost no page to a loop, produced text of the same length as the page holds, and disagreed with the line model by 24.5 % at the median. On Schöni it lost one page in ten to a loop, wrote 1.8 times as much text as the line model, and disagreed by 53.4 %. The variable is the hand, not the model's general competence — which is the opposite of what this page claimed before the correction.
+**Two findings, and they pull apart.** The repetition loop is close to universal: **four of the five manuscripts lose exactly one page in ten to it**, and only the Schlussredaktion — the fair copy — loses none. But on the pages that do not degenerate, the page model is a perfectly ordinary reader almost everywhere: its text comes out within a few percent of the line model's length on Hertwig, Rümlang, Cyro and the Schlussredaktion, and it disagrees with it by 25–42 %. **Schöni is the exception on both counts** — there it writes 1.8 times as much text and disagrees by 53 %.
+
+So the earlier formula — "competent on the fair copy, unreliable on the working copies" — was too neat. Degeneration is a property of the model that one manuscript happens to escape; over-writing is a property of one difficult hand.
 
 ## What was compared
 
 | | |
 |---|---|
-| Material | German Kurrent, 1528, four scribal copies, Staatsarchiv Bern A V 1444–1447 |
+| Material | German Kurrent, 1528, five scribal copies, Staatsarchiv Bern A V 1443–1447 |
 | Page model | [`qwen3.5-4b-german-kurrent-xvi-xix-page-v1`](https://huggingface.co/dh-unibe/qwen3.5-4b-german-kurrent-xvi-xix-page-v1) · `granularity: page` · base Qwen3.5-4B · 20 training corpora, XVI–XIX |
 | Line model | [`qwen3vl-medieval-german-v3`](https://huggingface.co/dh-unibe/qwen3vl-medieval-german-v3) · `granularity: line` · base Qwen3-VL-4B · 4 training corpora, XV–XVII |
-| Sample | 10 pages per manuscript, drawn deterministically, 40 in total |
+| Sample | 10 pages per manuscript, drawn deterministically, 50 in total |
 | Reference, where one exists | the edition's existing Transkribus transcriptions — **themselves machine output** |
 
 The page model's own card reports **CER 0.2704** over 171 validation pages, and says plainly what that is: a seeded split of the training projects, so pages unseen in hands that *were* seen. A 1528 Bern chancery hand is not among those projects, and nothing here contradicts that figure.
@@ -47,12 +49,15 @@ The page model's own card reports **CER 0.2704** over 171 validation pages, and 
 
 | Run | Pages | Looped | Cut off | chars/page | s/page | Wall |
 |---|---:|---:|---:|---:|---:|---:|
+| `hertwig_page_v1` | 10 | 1 | 1 | 2216 | 26.1 | 9.4 min |
 | `schoeni_page_v1` | 10 | 1 | 2 | 2008 | 34.1 | 12.8 min |
 | `cyro_page_v1` | 10 | 1 | 1 | 1751 | 20.2 | 8.5 min |
 | `ruemlang_page_v1` | 10 | 1 | 1 | 1639 | 24.4 | 9.1 min |
 | `schlussredaktion_page_v1` | 10 | **0** | **0** | **1108** | **12.8** | 7.1 min |
 
-No failures and no empty pages in 40 attempts. The last row is the finding: on the Schlussredaktion — the fair copy, the most regular hand of the four — **nothing degenerated at all**, the reading came in at a length the page can actually hold, and it cost half the time per page of the worst of the others. The three working copies each lost one page in ten to a repetition loop.
+No failures and no empty pages in 50 attempts. **Exactly one page in ten loops, in four manuscripts out of five** — a rate too regular to be about any one hand, and the Schlussredaktion is the only escape from it.
+
+Characters per page is inflated in every row that contains a loop, which is most of them: Hertwig leads the column at 2216 only because one of its ten pages ran to 10,924 characters. The nine that did not average 1,248.
 
 What degeneration looks like, from the Schöni run:
 
@@ -67,12 +72,17 @@ Both carry text and both returned HTTP 200. The runner's `looped` and `cut off` 
 
 | Manuscript | Pages compared | Median disagreement | 90th pct | chars/page, page model | chars/page, line model |
 |---|---:|---:|---:|---:|---:|
-| A V 1445 Schöni | 7 | 53.4 % | 96.0 % | 1515 | 849 |
+| A V 1447 Schlussredaktion | 10 | **24.5 %** | 31.9 % | 1108 | 1133 |
+| A V 1443 Hertwig | 8 | 29.4 % | 37.3 % | 1178 | 1176 |
 | A V 1444 Cyro | 7 | 39.3 % | 65.2 % | 850 | 881 |
 | A V 1446 Rümlang | 7 | 41.9 % | 45.9 % | 1089 | 1101 |
-| A V 1447 Schlussredaktion | **10** | **24.5 %** | **31.9 %** | 1108 | 1133 |
+| A V 1445 Schöni | 7 | **53.4 %** | 96.0 % | **1515** | **849** |
 
-**This is disagreement, not quality.** Without ground truth neither column says which reading is right. What it does say is where fusion could be worth trying at all: the Schlussredaktion row — ten of ten pages comparable, lengths within 2 % of each other, only one page above the no-merge threshold — is the shape in which majority voting has been measured to help. The Schöni row, with a 1.8× gap in characters per page and 96 % disagreement at the ninetieth percentile, is the shape in which it has been measured to hurt.
+**This is disagreement, not quality.** Without ground truth neither column says which reading is right. What it does say is where fusion could be worth trying at all, and the table now separates the manuscripts cleanly.
+
+Four of the five sit between 24 % and 42 % with the two readings producing **almost exactly the same amount of text** — Hertwig is 1178 against 1176, two characters apart on average. That is the shape in which majority voting has been measured to help: comparable candidates whose errors are uncorrelated.
+
+Schöni is the one that is not like the others. A 1.8× gap in characters per page and 96 % disagreement at the ninetieth percentile is the shape in which fusion has been measured to *hurt* — one candidate dominating a weaker one. Whatever makes that hand hard, it makes it hard for the page model specifically: the line model's output on Schöni (849 characters a page) is the shortest of the five, while the page model's (1515) is the longest.
 
 ## The one measurement that points at quality
 
@@ -98,17 +108,25 @@ The line model is ahead on all ten, but by a consistent and modest margin — 0.
 
 ## What the page model does better
 
-It reproduces the scribe's abbreviations — `un̄`, `vˀschriben`, `ꝫ`, `hˀren`. Across the 36 pages that did not degenerate: **39 abbreviation marks from the page model against 2 from the line model.**
+It reproduces the scribe's abbreviations — `un̄`, `vˀschriben`, `ꝫ`, `hˀren`. Across the 45 pages that did not degenerate: **52 abbreviation marks from the page model against 5 from the line model.**
 
-That total is concentrated, and the concentration is the point: **35 of the 39 are on Schöni**, four on the Schlussredaktion, none on Cyro or Rümlang. Schöni's scribe contracts heavily and the other three barely do. So this is not a general property of page models; it is a page model doing better on the one manuscript where there is something to get right — and that is, incidentally, the manuscript it is least reliable on overall.
+That total is concentrated, and the concentration is the point:
+
+| | Schöni | Hertwig | Schlussredaktion | Cyro | Rümlang |
+|---|---:|---:|---:|---:|---:|
+| page model | **35** | 13 | 4 | 0 | 0 |
+| line model | 0 | 3 | 0 | 1 | 1 |
+
+Schöni's scribe contracts heavily, Hertwig's some, the other three barely at all. So this is not a general property of page models; it is a page model doing better on the manuscripts where there is something to get right — and Schöni, where it does best, is the one it is least reliable on overall.
 
 A page model sees a line inside the scribe's system of contraction. A line model sees a crop.
 
 ## What this does not settle
 
-- **40 pages**, one deterministic sample per manuscript, and the similarity figures rest on ten pages of one of them.
+- **50 pages**, one deterministic sample per manuscript, and the similarity figures rest on ten pages of one of them.
 - **There is still no ground truth for any of these five manuscripts.** Every number here is a cost, a disagreement, or an agreement between two machines. Fifteen to twenty hand-transcribed pages would convert the third kind into a CER, and remain the cheapest way to make any of this decidable.
-- **Why the fair copy is easier is not established.** A more regular hand is the obvious reading, but layout, ink and scan quality were not separated.
+- **Why the Schlussredaktion escapes the loop, and why Schöni is hard, are both unexplained.** A more regular hand is the obvious reading for the first and an irregular one for the second, but layout, ink, line spacing and scan quality were not separated from the hand, and ten pages cannot separate them.
+- **The loop rate of "one in ten" is four samples of ten.** It is strikingly regular, which is itself a reason to be careful with it: a rate that comes out identical four times on small samples may be telling us about the sample size rather than the model.
 - **The token ceiling was not tuned.** Raising it would let a loop run further, not read better.
 
 ## What got in the way
