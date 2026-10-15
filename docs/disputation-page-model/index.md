@@ -136,13 +136,13 @@ Recorded because the next person will hit it.
 ### The cache collision
 {: #the-cache-collision }
 
-`atr-batch`'s `--cache-dir` **defaults to one shared directory**, and the working-copy cache keys a page by its path *relative to the source directory*. For `…/A_V_1444_Cyro/page_114.jpg` that key is `page_114.jpg`. The hit check then compares the basename and nothing else — not the directory, not a digest. Every manuscript here numbers its pages `page_N.jpg`, so the first run filled the cache and the next three read it back. Reported as [agentic_historian#663](https://github.com/thodel/agentic_historian/issues/663).
+`atr-batch`'s `--cache-dir` **defaults to one shared directory**, and the working-copy cache keys a page by its path *relative to the source directory*. For `…/A_V_1444_Cyro/page_114.jpg` that key is `page_114.jpg`. The hit check then compares the basename and nothing else — not the directory, not a digest. Every manuscript here numbers its pages `page_N.jpg`, so the first run filled the cache and the next three read it back. Reported and **fixed** as [agentic_historian#663](https://github.com/thodel/agentic_historian/issues/663): the cache key now carries the corpus root, and the hit test compares the file's size as well as its name — size rather than a digest, because hashing the original would mean reading it, which is the cost the cache exists to avoid.
 
 The damage followed the overlap exactly, which is how the cause was confirmed: Cyro drew the same ten page numbers as Schöni and got ten wrong pages; Rümlang drew five numbers Schöni had not and read precisely those five correctly; the Schlussredaktion drew two new ones and read two correctly.
 
 Two things made it hard to see. Every run reported success — no failures, no empty pages, plausible timings. And the readings were *plausible*: early modern German in a Bern chancery hand, filed under a manuscript that looks like that. Only the recorded `sha256` of each source file gave it away, and the symptom that should have raised the alarm was the opposite of alarming — four supposedly independent samples returning **the same numbers**. A figure that reproduces exactly across independent samples is a reason to check whether they are independent.
 
-The repeat passes `--cache-dir` per manuscript, and every one of the 40 digests was verified against its own manuscript directory before publication.
+The repeat passes `--cache-dir` per manuscript, and every one of the 50 digests was verified against its own manuscript directory before publication — a check that is now part of how these pages are published, not a thing remembered after a bad run.
 
 ### A refusal that reports success
 
