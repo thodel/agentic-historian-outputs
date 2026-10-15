@@ -1,0 +1,781 @@
+{
+ "schema": "disputation-page-model-readings/1",
+ "generated": "2026-10-15",
+ "page_model": "dh-unibe/qwen3.5-4b-german-kurrent-xvi-xix-page-v1",
+ "line_model": "dh-unibe/qwen3vl-medieval-german-v3",
+ "note": "Every page_model reading was verified against the sha256 of the image in its own manuscript directory before publication. The edition transcription, where present, is itself machine output and is not ground truth.",
+ "witnesses": {
+  "a_v_1445_schoeni": {
+   "shelfmark": "A V 1445",
+   "name": "Schöni",
+   "run": "schoeni_page_v1",
+   "line_run": "schoeni_medieval_v3",
+   "pages": [
+    {
+     "page": 29,
+     "source_image": "page_29.jpg",
+     "source_sha256": "d9e8d1f44af5acaba09b3d8a2a48673d4191811a5d601f241c348b02d4f12311",
+     "source_bytes": 462663,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1445/29",
+     "page_model": {
+      "file": "readings/a_v_1445_schoeni/page_29.page.txt",
+      "chars": 869,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1445_schoeni/page_29.line.txt",
+      "chars": 1333
+     },
+     "edition_transcription": {
+      "chars": 945,
+      "similarity_page_model": 0.408,
+      "similarity_line_model": 0.467
+     }
+    },
+    {
+     "page": 114,
+     "source_image": "page_114.jpg",
+     "source_sha256": "7a385883c5a216be2307c182ca08a021be0332ae139f2ff21c67384d8ea54dca",
+     "source_bytes": 331008,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1445/114",
+     "page_model": {
+      "file": "readings/a_v_1445_schoeni/page_114.page.txt",
+      "chars": 839,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1445_schoeni/page_114.line.txt",
+      "chars": 782
+     }
+    },
+    {
+     "page": 194,
+     "source_image": "page_194.jpg",
+     "source_sha256": "1365a246f3b27d02dd99f71857cd6b26b3f5bb66ea77cb41b3755c79476af661",
+     "source_bytes": 464574,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1445/194",
+     "page_model": {
+      "file": "readings/a_v_1445_schoeni/page_194.page.txt",
+      "chars": 824,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1445_schoeni/page_194.line.txt",
+      "chars": 777
+     }
+    },
+    {
+     "page": 195,
+     "source_image": "page_195.jpg",
+     "source_sha256": "eed480e13caa61d8b572a987737c6bd500ee21c8662ff83ce21e3c2aaf4f85ae",
+     "source_bytes": 475948,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1445/195",
+     "page_model": {
+      "file": "readings/a_v_1445_schoeni/page_195.page.txt",
+      "chars": 5490,
+      "truncated": true,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1445_schoeni/page_195.line.txt",
+      "chars": 763
+     }
+    },
+    {
+     "page": 406,
+     "source_image": "page_406.jpg",
+     "source_sha256": "e43c79cf1b901c49666bfc2b5659701154efa4ca5d3e12c07408f29568aefa05",
+     "source_bytes": 460073,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1445/406",
+     "page_model": {
+      "file": "readings/a_v_1445_schoeni/page_406.page.txt",
+      "chars": 756,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1445_schoeni/page_406.line.txt",
+      "chars": 876
+     }
+    },
+    {
+     "page": 631,
+     "source_image": "page_631.jpg",
+     "source_sha256": "49c5616be2b20255d0cf7020f083dd886ce0ba5e1f240bda9c775d0dad1f9f4e",
+     "source_bytes": 441141,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1445/631",
+     "page_model": {
+      "file": "readings/a_v_1445_schoeni/page_631.page.txt",
+      "chars": 7739,
+      "truncated": true,
+      "repetitive": true
+     },
+     "line_model": {
+      "file": "readings/a_v_1445_schoeni/page_631.line.txt",
+      "chars": 923
+     }
+    },
+    {
+     "page": 690,
+     "source_image": "page_690.jpg",
+     "source_sha256": "9cb40a6295c0bf65fc8c068ca13bf064e01e8356a1026915087c0c80c37b3ea6",
+     "source_bytes": 465612,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1445/690",
+     "page_model": {
+      "file": "readings/a_v_1445_schoeni/page_690.page.txt",
+      "chars": 760,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1445_schoeni/page_690.line.txt",
+      "chars": 821
+     }
+    },
+    {
+     "page": 746,
+     "source_image": "page_746.jpg",
+     "source_sha256": "2d33d62e70bf9d5f33cbdb8cfb407f16eacf0b8a11326cad5acbb81c450c032c",
+     "source_bytes": 519996,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1445/746",
+     "page_model": {
+      "file": "readings/a_v_1445_schoeni/page_746.page.txt",
+      "chars": 869,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1445_schoeni/page_746.line.txt",
+      "chars": 1431
+     }
+    },
+    {
+     "page": 762,
+     "source_image": "page_762.jpg",
+     "source_sha256": "c15ac936e3302353ef470f0a80d7eccb9545ab5e73e78066fa65c785b790fa97",
+     "source_bytes": 645760,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1445/762",
+     "page_model": {
+      "file": "readings/a_v_1445_schoeni/page_762.page.txt",
+      "chars": 1091,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1445_schoeni/page_762.line.txt",
+      "chars": 1079
+     }
+    },
+    {
+     "page": 775,
+     "source_image": "page_775.jpg",
+     "source_sha256": "13fa6c4de78f50990f06880f389d85942451a20197320f7e119eedf4dec3c948",
+     "source_bytes": 516411,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1445/775",
+     "page_model": {
+      "file": "readings/a_v_1445_schoeni/page_775.page.txt",
+      "chars": 845,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1445_schoeni/page_775.line.txt",
+      "chars": 844
+     }
+    }
+   ]
+  },
+  "a_v_1444_cyro": {
+   "shelfmark": "A V 1444",
+   "name": "Cyro",
+   "run": "cyro_page_v1",
+   "line_run": "cyro_medieval_v3",
+   "pages": [
+    {
+     "page": 29,
+     "source_image": "page_29.jpg",
+     "source_sha256": "d2253fdfe6be6d397c3644a33a9af50eaa36226828cfb8af859daae299d9c3e2",
+     "source_bytes": 577449,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1444/29",
+     "page_model": {
+      "file": "readings/a_v_1444_cyro/page_29.page.txt",
+      "chars": 898,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1444_cyro/page_29.line.txt",
+      "chars": 929
+     }
+    },
+    {
+     "page": 114,
+     "source_image": "page_114.jpg",
+     "source_sha256": "451f745558311399a9672c117eedaee0bf46c32b58a4e29daf1eb40333fbf07a",
+     "source_bytes": 166911,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1444/114",
+     "page_model": {
+      "file": "readings/a_v_1444_cyro/page_114.page.txt",
+      "chars": 3,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1444_cyro/page_114.line.txt",
+      "chars": 4
+     }
+    },
+    {
+     "page": 194,
+     "source_image": "page_194.jpg",
+     "source_sha256": "79293948012fa8f2f76d0346659665b89e01f5ab28875a96ea5487576886825c",
+     "source_bytes": 552861,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1444/194",
+     "page_model": {
+      "file": "readings/a_v_1444_cyro/page_194.page.txt",
+      "chars": 873,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1444_cyro/page_194.line.txt",
+      "chars": 923
+     }
+    },
+    {
+     "page": 195,
+     "source_image": "page_195.jpg",
+     "source_sha256": "69126d9d14ff59c7126793c1340ec4a4bc845c2ab2700452b087f2f22901e2d8",
+     "source_bytes": 527768,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1444/195",
+     "page_model": {
+      "file": "readings/a_v_1444_cyro/page_195.page.txt",
+      "chars": 905,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1444_cyro/page_195.line.txt",
+      "chars": 922
+     }
+    },
+    {
+     "page": 406,
+     "source_image": "page_406.jpg",
+     "source_sha256": "5c7dc06cc78a4dd5507ffc168c72f9ccfdf652ea6109eaf1554caa25e6d8a3f0",
+     "source_bytes": 518815,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1444/406",
+     "page_model": {
+      "file": "readings/a_v_1444_cyro/page_406.page.txt",
+      "chars": 878,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1444_cyro/page_406.line.txt",
+      "chars": 953
+     }
+    },
+    {
+     "page": 631,
+     "source_image": "page_631.jpg",
+     "source_sha256": "e43269a92789638195fb0a16c7fae3692eae0996925091a05cce7cf602faca8c",
+     "source_bytes": 461938,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1444/631",
+     "page_model": {
+      "file": "readings/a_v_1444_cyro/page_631.page.txt",
+      "chars": 763,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1444_cyro/page_631.line.txt",
+      "chars": 764
+     }
+    },
+    {
+     "page": 690,
+     "source_image": "page_690.jpg",
+     "source_sha256": "9a1e2f7ad798a5fe06677599fd7056b0724d45d53199bfdb42b31fb10e62784e",
+     "source_bytes": 435703,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1444/690",
+     "page_model": {
+      "file": "readings/a_v_1444_cyro/page_690.page.txt",
+      "chars": 651,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1444_cyro/page_690.line.txt",
+      "chars": 668
+     }
+    },
+    {
+     "page": 746,
+     "source_image": "page_746.jpg",
+     "source_sha256": "acf8a8f9ab205fdfc6c20b470a2646a2010680d32951d2b2a00c691c32728884",
+     "source_bytes": 585585,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1444/746",
+     "page_model": {
+      "file": "readings/a_v_1444_cyro/page_746.page.txt",
+      "chars": 985,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1444_cyro/page_746.line.txt",
+      "chars": 1008
+     }
+    },
+    {
+     "page": 762,
+     "source_image": "page_762.jpg",
+     "source_sha256": "08fcb773c31653b3b5a205c24b80457eeee195170df25e4dc3d2e8e57c96c680",
+     "source_bytes": 527037,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1444/762",
+     "page_model": {
+      "file": "readings/a_v_1444_cyro/page_762.page.txt",
+      "chars": 11550,
+      "truncated": true,
+      "repetitive": true
+     },
+     "line_model": {
+      "file": "readings/a_v_1444_cyro/page_762.line.txt",
+      "chars": 978
+     }
+    },
+    {
+     "page": 775,
+     "source_image": "page_775.jpg",
+     "source_sha256": "90051df76a3b7cff6a6304c0bbba3e82c2b564edd86fbbfc2b2fb408f9eed69c",
+     "source_bytes": 179924,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1444/775",
+     "page_model": {
+      "file": "readings/a_v_1444_cyro/page_775.page.txt",
+      "chars": 2,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1444_cyro/page_775.line.txt",
+      "chars": 1
+     }
+    }
+   ]
+  },
+  "a_v_1446_ruemlang": {
+   "shelfmark": "A V 1446",
+   "name": "Rümlang",
+   "run": "ruemlang_page_v1",
+   "line_run": "ruemlang_medieval_v3",
+   "pages": [
+    {
+     "page": 29,
+     "source_image": "page_29.jpg",
+     "source_sha256": "7fe8f6abf145e81ab68609e5fa2326589e004b36f412453b3c9e1935c16de85c",
+     "source_bytes": 536027,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1446/29",
+     "page_model": {
+      "file": "readings/a_v_1446_ruemlang/page_29.page.txt",
+      "chars": 956,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1446_ruemlang/page_29.line.txt",
+      "chars": 1549
+     },
+     "edition_transcription": {
+      "chars": 1109,
+      "similarity_page_model": 0.675,
+      "similarity_line_model": 0.634
+     }
+    },
+    {
+     "page": 114,
+     "source_image": "page_114.jpg",
+     "source_sha256": "707060cfa32878a83b8e257fbfa2a0a9d20749f6dce34be7dd8b8278a7f71c48",
+     "source_bytes": 544848,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1446/114",
+     "page_model": {
+      "file": "readings/a_v_1446_ruemlang/page_114.page.txt",
+      "chars": 1219,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1446_ruemlang/page_114.line.txt",
+      "chars": 1224
+     }
+    },
+    {
+     "page": 194,
+     "source_image": "page_194.jpg",
+     "source_sha256": "e0fa4df97e6d461ce473e6f6007c25e60ede77851a412edc7ac853fe30f3fe6e",
+     "source_bytes": 605446,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1446/194",
+     "page_model": {
+      "file": "readings/a_v_1446_ruemlang/page_194.page.txt",
+      "chars": 1374,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1446_ruemlang/page_194.line.txt",
+      "chars": 1932
+     }
+    },
+    {
+     "page": 195,
+     "source_image": "page_195.jpg",
+     "source_sha256": "9d3d564735c52f7e7c2b2e247f501d92cd7b261ebb3611e33ce264315f3a37f1",
+     "source_bytes": 550481,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1446/195",
+     "page_model": {
+      "file": "readings/a_v_1446_ruemlang/page_195.page.txt",
+      "chars": 1135,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1446_ruemlang/page_195.line.txt",
+      "chars": 1228
+     }
+    },
+    {
+     "page": 219,
+     "source_image": "page_219.jpg",
+     "source_sha256": "682fd7a128f9a99cd74e1295ba9b3ac826a4e400ef915a5a2cbcf194c58831ec",
+     "source_bytes": 608407,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1446/219",
+     "page_model": {
+      "file": "readings/a_v_1446_ruemlang/page_219.page.txt",
+      "chars": 1271,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1446_ruemlang/page_219.line.txt",
+      "chars": 1283
+     }
+    },
+    {
+     "page": 246,
+     "source_image": "page_246.jpg",
+     "source_sha256": "8c8d6bc330d6e81059fa80788458ecca443f84cad89593f97fc601143bbcdf1b",
+     "source_bytes": 611273,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1446/246",
+     "page_model": {
+      "file": "readings/a_v_1446_ruemlang/page_246.page.txt",
+      "chars": 1317,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1446_ruemlang/page_246.line.txt",
+      "chars": 1292
+     }
+    },
+    {
+     "page": 370,
+     "source_image": "page_370.jpg",
+     "source_sha256": "3e269647c7ec15fbaa872cb50d578f1185a506b2e2d38db4fac9dc39320061c1",
+     "source_bytes": 574583,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1446/370",
+     "page_model": {
+      "file": "readings/a_v_1446_ruemlang/page_370.page.txt",
+      "chars": 6436,
+      "truncated": true,
+      "repetitive": true
+     },
+     "line_model": {
+      "file": "readings/a_v_1446_ruemlang/page_370.line.txt",
+      "chars": 1387
+     }
+    },
+    {
+     "page": 406,
+     "source_image": "page_406.jpg",
+     "source_sha256": "0f1d77d2b543303e5d3d5f2c747b25e7688ebeb4be9c3f230cbebdaef479423c",
+     "source_bytes": 591229,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1446/406",
+     "page_model": {
+      "file": "readings/a_v_1446_ruemlang/page_406.page.txt",
+      "chars": 1404,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1446_ruemlang/page_406.line.txt",
+      "chars": 1411
+     }
+    },
+    {
+     "page": 471,
+     "source_image": "page_471.jpg",
+     "source_sha256": "bee70ff8a8edf411c1c64b862bc203f7286524879b5ed7cd0f0fd1f8b53ac154",
+     "source_bytes": 303984,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1446/471",
+     "page_model": {
+      "file": "readings/a_v_1446_ruemlang/page_471.page.txt",
+      "chars": 393,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1446_ruemlang/page_471.line.txt",
+      "chars": 402
+     }
+    },
+    {
+     "page": 511,
+     "source_image": "page_511.jpg",
+     "source_sha256": "2d0463576a6518b80ec6bd762090153f25b157ddcc02ba2f6b2d51b9e18f332f",
+     "source_bytes": 441366,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1446/511",
+     "page_model": {
+      "file": "readings/a_v_1446_ruemlang/page_511.page.txt",
+      "chars": 884,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1446_ruemlang/page_511.line.txt",
+      "chars": 870
+     }
+    }
+   ]
+  },
+  "a_v_1447_schlussredaktion": {
+   "shelfmark": "A V 1447",
+   "name": "Schlussredaktion",
+   "run": "schlussredaktion_page_v1",
+   "line_run": "schlussredaktion_medieval_v3",
+   "pages": [
+    {
+     "page": 29,
+     "source_image": "page_29.jpg",
+     "source_sha256": "e33f7595eb48aaf861f15dd8e1d21922d939fdc717f67871eeb8f664a56af7a8",
+     "source_bytes": 627949,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1447/29",
+     "page_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_29.page.txt",
+      "chars": 935,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_29.line.txt",
+      "chars": 952
+     },
+     "edition_transcription": {
+      "chars": 1000,
+      "similarity_page_model": 0.751,
+      "similarity_line_model": 0.852
+     }
+    },
+    {
+     "page": 82,
+     "source_image": "page_82.jpg",
+     "source_sha256": "fe82ec1d8ac5af21aa7892fd9626cff29f7a27d0c42e8abd6176b6706a5d1dfe",
+     "source_bytes": 606886,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1447/82",
+     "page_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_82.page.txt",
+      "chars": 946,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_82.line.txt",
+      "chars": 1071
+     },
+     "edition_transcription": {
+      "chars": 1127,
+      "similarity_page_model": 0.712,
+      "similarity_line_model": 0.796
+     }
+    },
+    {
+     "page": 95,
+     "source_image": "page_95.jpg",
+     "source_sha256": "630fd12dd43ba1ab89b96bf4fe03c60ca0d79fd158503fbb650abd6468566bd9",
+     "source_bytes": 588937,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1447/95",
+     "page_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_95.page.txt",
+      "chars": 997,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_95.line.txt",
+      "chars": 995
+     },
+     "edition_transcription": {
+      "chars": 1068,
+      "similarity_page_model": 0.78,
+      "similarity_line_model": 0.857
+     }
+    },
+    {
+     "page": 114,
+     "source_image": "page_114.jpg",
+     "source_sha256": "ee10a91e6c6ee6d6169508914a58ef2aa9104910b6cc87f60cc286c907fd03f7",
+     "source_bytes": 616433,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1447/114",
+     "page_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_114.page.txt",
+      "chars": 1145,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_114.line.txt",
+      "chars": 1115
+     },
+     "edition_transcription": {
+      "chars": 1191,
+      "similarity_page_model": 0.796,
+      "similarity_line_model": 0.882
+     }
+    },
+    {
+     "page": 194,
+     "source_image": "page_194.jpg",
+     "source_sha256": "1823af02351b9cfa7083b06548d4d9f505b9ffd98fe59fbc16c29d0faf36d93a",
+     "source_bytes": 584446,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1447/194",
+     "page_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_194.page.txt",
+      "chars": 977,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_194.line.txt",
+      "chars": 987
+     },
+     "edition_transcription": {
+      "chars": 981,
+      "similarity_page_model": 0.693,
+      "similarity_line_model": 0.836
+     }
+    },
+    {
+     "page": 195,
+     "source_image": "page_195.jpg",
+     "source_sha256": "a74c37db7ab019444d0393f863589fc699293d26b41c532be742e7b1a2005c25",
+     "source_bytes": 580301,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1447/195",
+     "page_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_195.page.txt",
+      "chars": 866,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_195.line.txt",
+      "chars": 876
+     },
+     "edition_transcription": {
+      "chars": 869,
+      "similarity_page_model": 0.759,
+      "similarity_line_model": 0.853
+     }
+    },
+    {
+     "page": 406,
+     "source_image": "page_406.jpg",
+     "source_sha256": "f5a6756facc156a06e84fff1f90157af8379e4633533ea1ff1fc6d60536994f6",
+     "source_bytes": 690734,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1447/406",
+     "page_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_406.page.txt",
+      "chars": 1331,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_406.line.txt",
+      "chars": 1398
+     },
+     "edition_transcription": {
+      "chars": 1441,
+      "similarity_page_model": 0.751,
+      "similarity_line_model": 0.796
+     }
+    },
+    {
+     "page": 631,
+     "source_image": "page_631.jpg",
+     "source_sha256": "0f8b8afe49c1e62c8682f8c21e32cf536fb1edc80f3e5442e23ab83b495a43b2",
+     "source_bytes": 500471,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1447/631",
+     "page_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_631.page.txt",
+      "chars": 1345,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_631.line.txt",
+      "chars": 1346
+     },
+     "edition_transcription": {
+      "chars": 1350,
+      "similarity_page_model": 0.796,
+      "similarity_line_model": 0.859
+     }
+    },
+    {
+     "page": 690,
+     "source_image": "page_690.jpg",
+     "source_sha256": "c3c1a3b273f7dc96e0b81486f6db49142c00b7d7ba2a9a864582b511dc3c6362",
+     "source_bytes": 505665,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1447/690",
+     "page_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_690.page.txt",
+      "chars": 1136,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_690.line.txt",
+      "chars": 1183
+     },
+     "edition_transcription": {
+      "chars": 1154,
+      "similarity_page_model": 0.814,
+      "similarity_line_model": 0.835
+     }
+    },
+    {
+     "page": 746,
+     "source_image": "page_746.jpg",
+     "source_sha256": "d4da6d490db0f262c23fa98e98f6d15b4833b9e7d8a7c0db633224b630fef503",
+     "source_bytes": 577928,
+     "facsimile": "https://thodel.github.io/reformation/#/disputation/a-v-1447/746",
+     "page_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_746.page.txt",
+      "chars": 1401,
+      "truncated": false,
+      "repetitive": false
+     },
+     "line_model": {
+      "file": "readings/a_v_1447_schlussredaktion/page_746.line.txt",
+      "chars": 1407
+     },
+     "edition_transcription": {
+      "chars": 1387,
+      "similarity_page_model": 0.841,
+      "similarity_line_model": 0.869
+     }
+    }
+   ]
+  }
+ }
+}

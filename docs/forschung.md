@@ -71,19 +71,19 @@ trotzdem hier verlinkt sind und nicht als interne Arbeitsdokumente gelten.
       <span class="research-language" lang="en">englisch</span></dt>
     <dd>Das erste Modell dieses Projekts, das auf <em>ganzen Seiten</em>
       trainiert wurde, gegen jenes, das die fünf Berner Handschriften von 1528
-      zeilenweise gelesen hat — 40 Seiten aus vier Abschriften. Das
-      Seitenmodell ist auf diesem Material der deutlich schlechtere Leser, und
-      zwar eindeutig: auf den zehn Seiten der Schlussredaktion, für die eine
-      ältere Lesung existiert, liegt es auf <strong>zehn von zehn</strong>
-      zurück, Median 0,16 gegen 0,85. Dazu eine Entartungsrate, die in allen
-      vier Handschriften dieselbe ist — eine Seite von zehn läuft in eine
-      Wiederholungsschleife —, was sie zu einer Eigenschaft des Modells macht
-      und nicht einer schwierigen Hand. Eine Sache kann es besser: es schreibt
-      die Abbreviaturen des Schreibers (<em>un̄</em>, <em>vˀschriben</em>,
-      <em>ꝫ</em>), die das Zeilenmodell auf denselben Seiten kein einziges Mal
-      wiedergibt. Was die Seite nicht entscheidet, steht ausdrücklich darin:
-      für keine dieser Handschriften existiert eine Ground Truth, jede Zahl
-      hier vergleicht zwei Maschinen.</dd>
+      zeilenweise gelesen hat — 40 Seiten aus vier Abschriften,
+      <a href="disputation-page-model/readings.html">alle vollständig
+      publiziert</a>. Der Befund: nicht das Modell entscheidet, sondern die
+      Hand. Auf der Schlussredaktion, der Reinschrift, entartet keine einzige
+      Seite, die Lesung trifft die Länge der Seite und weicht vom Zeilenmodell
+      nur um 24,5 % ab; auf Schöni verliert dasselbe Modell eine Seite von zehn
+      an eine Wiederholungsschleife und schreibt das 1,8-fache. Eine Sache kann
+      es besser: es gibt die Abbreviaturen des Schreibers wieder (39 Zeichen
+      gegen 2) — und zwar fast nur dort, wo ein Schreiber sie überhaupt
+      verwendet. <strong>Die erste Fassung dieser Seite war falsch</strong>:
+      drei der vier Läufe hatten wegen einer Cache-Kollision dieselbe
+      Handschrift ein zweites Mal gelesen. Die Korrektur steht oben auf der
+      Seite, samt dem, was sie umgestossen hat.</dd>
   </div>
 </dl>
 
