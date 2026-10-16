@@ -516,18 +516,47 @@ lines. It says nothing about what they were *trained* on. Comparability needs
 both, and the training repository's reading tool now returns the corpus state
 beside every CER and refuses to call two rows comparable when it differs.
 
-### Four knobs on the page arms, and none of them buys half a point
+### Five knobs on the page arms, and resolution is the one that matters
+
+> **Correction, 2026-10-16.** This section was first published as *"Four knobs on
+> the page arms, and none of them buys half a point"*, from the three arms that
+> had landed. **The fourth had been cancelled, and it was the one that mattered**:
+> raising the pixel budget buys **7.17 points**, not half of one. The conclusion
+> was drawn from the arms that happened to finish, which is the error, not the
+> arithmetic. The table below is the complete sweep; the old reading is kept
+> below it, and it still holds: it is about the two knobs that *fail*, which the
+> completed sweep does not touch.
 
 The olmOCR page model was swept over its geometry and prompt settings, all on
 draw `cb4d1c88`, all over one shared corpus artefact — so the arms differ in
-nothing else. Three of four landed; the fourth was cancelled.
+nothing else. All five have landed.
 
-| Arm | CER | `truncated_cer` | length ratio |
-|---|---:|---:|---:|
-| olmOCR's own prompt | **34.38 %** | 28.31 % | 1.083 |
-| baseline | 34.92 % | 30.89 % | 1.006 |
-| 1 288 px budget | 41.14 % | 36.46 % | 1.053 |
-| 3 072-token cap | 46.74 % | **29.29 %** | 1.202 |
+| Arm | CER | `truncated_cer` | length ratio | vs. baseline |
+|---|---:|---:|---:|---:|
+| 4 MP budget **+** olmOCR's own prompt | **26.59 %** | **22.85 %** | 1.061 | **−8.33** |
+| 4 MP budget | 27.75 % | 24.16 % | 1.057 | **−7.17** |
+| olmOCR's own prompt | 34.38 % | 28.31 % | 1.083 | −0.54 |
+| baseline | 34.92 % | 30.89 % | 1.006 | — |
+| 1 288 px budget | 41.14 % | 36.46 % | 1.053 | +6.22 |
+| 3 072-token cap | 46.74 % | **29.29 %** | 1.202 | +11.82 |
+
+**Resolution is the lever, and it works in both directions**: doubled, it is
+7.17 points ahead of the baseline; halved, 6.22 points behind. And the 4 MP arm
+reads best *clipped* as well (`truncated_cer` 24.16 %), so this is genuinely
+better reading rather than better stopping. The price is 69 s per step against
+29 — a factor of 2.4, and the 24-hour wall no longer holds without a requeue.
+
+**The two knobs that helped also add up**, and slightly more than that: the
+prompt alone is worth 0.54 points, the budget alone 7.17, their sum 7.71, and
+both together **8.33**. The 0.62 points beyond the sum point in a readable
+direction — olmOCR's own prompt is worth more at a resolution where the script
+is legible at all (1.16 points on top of the 4 MP arm against 0.54 on top of the
+baseline). That is a direction, not an explanation: two differences of half a
+point and a point carry no interaction claim.
+
+*And the paragraph that followed the old heading **still holds** — it is about
+the two knobs that fail, and nothing in the completed sweep touches it. Only the
+heading's claim was wrong:*
 
 **The two geometry knobs fail in different ways, and only the truncated CER
 separates them.** The pixel-budget arm is worse clipped as well as unclipped
