@@ -395,6 +395,14 @@ the condition this project sets before putting two CER values side by side. The
 4 B row is `qwen3vl-medieval-german-v3` re-scored onto that draw, the same device
 §3 and §6 rest on:
 
+> **Correction, 2026-10-16, and it is this section's own numbers that were
+> wrong.** Every figure in this table was trained on a corpus **28 % larger than
+> the one the same arms get today**, because the evaluation set
+> `german-medieval-v1` was not withheld from training when they were built. The
+> corrected ladder is in §8a below; this table is kept because it was published,
+> and because the way it was wrong is the useful part. The numbers remain
+> comparable *with each other* and with nothing measured since.
+
 | Base | CER on `8686f6ad` | 4-bit |
 |---|---:|---|
 | `Qwen/Qwen3.5-27B` | **9.55 %** | yes |
@@ -406,8 +414,8 @@ the condition this project sets before putting two CER values side by side. The
 On its own draw the 4 B arm reads 11.20 %, so the draw alone is worth 1.4 points
 here — the same lesson §6's 19th-century correction taught at 4.66 points.
 
-**The 27 B is the best medieval line model this project has**, 3.0 points ahead
-of the 4 B reference. But the step **4 B → 9 B is 0.46 points**, where §7's
+~~**The 27 B is the best medieval line model this project has**, 3.0 points ahead
+of the 4 B reference.~~ **Not as stated** — see §8a. But the step **4 B → 9 B is 0.46 points**, where §7's
 19th-century ladder pays about 2.2 per doubling. Three confounds sit in that gap
 and none is settled: both large arms are 4-bit against the 4 B arm's bf16, the
 4 B arm is a different family generation, and both large arms carry
@@ -444,6 +452,69 @@ effect: 0.85 points for `Qwen3-VL-4B` → `Qwen3.5-4B` on the 19th-century corpu
 1.22 points here — comparable in size, opposite in direction. A newer base is not
 progress that can be bought; which generation suits a corpus is itself a
 measurement.
+
+### 8a. The held-out boundary, and a ladder that finally holds
+
+Two measurements on 14. and 16.10.2026 overturned the table above, and the cause
+is not a model but a date.
+
+**The corpus halved its claim.** The same `Qwen3.5-27B` arm that reads 9.55 %
+above measures **12.24 %** when re-trained today. Its corpus is the reason:
+
+| Built | `train_samples` | `reserved_pages` |
+|---|---:|---:|
+| September (the table above) | **306 582** | 0, and for the 9 B arm not even consulted |
+| October (everything since) | **219 261** | **3 173** |
+
+87 321 training lines fewer — 28 %. The prepare log names it: `held-out
+documents: dropped 3173 of 11277 training pages, reserved for evaluation by
+german-medieval-v1`. The September corpus was built on 25.09., **four days
+before** that evaluation set's identity was pinned. So the arms in the table
+above were trained on material that is reserved for measurement today, and
+their numbers are the optimistic ones.
+
+What this does *not* establish: that those arms were trained on their own test
+draw. The draw is a validation split of the same corpus; what is demonstrated is
+that the corpus contained material now reserved, not that training and test
+overlapped.
+
+**The corrected ladder**, four arms on one corpus artefact, one draw
+(`9fe26816`), one quantisation and one family — the first on this page where
+"only the size differs" is a checked statement rather than an assumption:
+
+| Base | CER | WER | truncated CER | step |
+|---|---:|---:|---:|---:|
+| `Qwen/Qwen3.5-4B` | 15.94 % | 38.51 % | 16.06 % | — |
+| `Qwen/Qwen3.5-9B` | 13.75 % | 33.71 % | 13.94 % | **−2.19** |
+| `Qwen/Qwen3.5-27B` | **12.24 %** | 30.30 % | 12.43 % | **−1.51** |
+| `Qwen/Qwen3.8-27B` | 12.15 % | 31.54 % | 12.49 % | −0.09 |
+
+**Size pays with a decelerating return**: 2.19 points for ×2.25 and 1.51 for ×3.
+And the generation question §8 reported as decided is decided the other way
+round — `Qwen3.5` and `Qwen3.8` at 27 B sit **0.09 points apart**, which is no
+difference at all. The 1.22-point gap this page published was a comparison
+across the boundary.
+
+**The boundary cost the larger model more.** Both the 9 B and the 27 B are now
+measured on both sides:
+
+| Base | before | after | difference |
+|---|---:|---:|---:|
+| `Qwen3.5-9B` | 12.13 % | 13.75 % | **+1.62** |
+| `Qwen3.5-27B` | 9.55 % | 12.24 % | **+2.69** |
+
+The 27 B lost 1.07 points more than the 9 B when 28 % of the training material
+left — the direction one expects if capacity needs data to use. The comparison
+that carries this is the **9 → 27 B** step, where base and quantisation are the
+same on both sides: −2.58 points before, −1.51 after. Before the boundary the
+curve looked as though it were accelerating; after it, it decelerates. The
+4 → 9 B step cannot carry the same comparison, because the 4 B arm before was a
+`Qwen3-VL-4B` in bf16 and after is a `Qwen3.5-4B` in 4-bit.
+
+**The rule this leaves.** A shared draw says two rows were *scored* on the same
+lines. It says nothing about what they were *trained* on. Comparability needs
+both, and the training repository's reading tool now returns the corpus state
+beside every CER and refuses to call two rows comparable when it differs.
 
 ### Four knobs on the page arms, and none of them buys half a point
 
@@ -502,8 +573,8 @@ the draw — and it was not even checkable.
 - **Page numbers on a published set.** §7 gives the line comparison on 2 751 published lines; there is no page equivalent, so every page figure on this page is still measured on held-out pages of our own corpora.
 - **Whether a page-pre-trained base beats a bigger general one.** olmOCR at 7 B reads pages better than every general base measured here, including a 12 B one. Whether that is the pre-training or the size is unseparated: no general 7 B page arm exists, and no page-pre-trained 4 B one either. §8 adds that its own knobs are not where the remaining points are: three settings swept over one artefact move the CER by at most half a point in the right direction.
 - **Whether size carries pages the way it carries lines.** At 12 B Gemma wins on lines and at ~4.5 B it loses on pages by nine points. The 12 B page arm has now landed and collapsed to a constant output (above), so it answers nothing; the question needs the run repeated, and the repeat needs a stage that fails a run whose outputs do not vary.
-- **Whether a larger Qwen takes the lead back.** Partly answered since §8: on the medieval corpus a 9 B and a 27 B have landed on one draw, and the 27 B leads by 3.0 points over the 4 B reference while the 9 B gains only 0.46. On the 19th-century corpus the comparison is still one-sided — three arms, one of them large — and nobody has trained the control there.
-- ~~**Whether the 3.5 → 3.8 generation pays at 27 B.**~~ Answered in §8 since this page was last revised: it does not — 10.77 % against 9.55 % on the shared draw, the older generation ahead by 1.22 points. What remains open is narrower: the two arms ran on different commits (`code_drift`), so a repeat with the code equalised would settle whether the 1.22 points are the generation or the drift.
+- **Whether a larger Qwen takes the lead back.** Answered for the medieval corpus in §8a: 4 B → 9 B → 27 B reads 15.94 / 13.75 / 12.24 %, a decelerating curve on one corpus and one draw. On the 19th-century corpus the comparison is still one-sided — three arms, one of them large — and nobody has trained the control there. Superseded reading, kept because it was published: *"the 27 B leads by 3.0 points over the 4 B reference while the 9 B gains only 0.46" — both figures from the table §8a corrects.*
+- ~~**Whether the 3.5 → 3.8 generation pays at 27 B.**~~ Answered, and twice over: §8 reported the older generation 1.22 points ahead, and §8a shows that gap was a comparison across the held-out boundary. Re-run on one corpus and one draw, the two sit **0.09 points apart** — the generation neither pays nor costs at this size. The `code_drift` worry that §8 raised turned out to be answerable for free: the 3.8 arm, run twice on different commits, produced **byte-identical** weights, so the drift between those commits does not touch the training path.
 - **Why a pinned corpus can still draw differently.** §8's 27 B arm had every dataset pinned to an exact sha and still produced a draw nothing else shares, because there was no cached artefact to adopt and it re-materialised under another commit. Pinning the inputs is necessary and not sufficient; what would make a draw reproducible across commits is not established.
 - **Training variance is still unmeasured.** §3 establishes that drawing a different evaluation subset moves a CER by 0.6 points. What two runs of the *same* arm at different seeds do is unknown, and every ranking on this page assumes it is small.
 - **There is no page-level benchmark** with ground truth that no run has seen. The published Federal Council test set is 2 751 isolated lines. Until one exists, page numbers are measured on held-out pages of our own corpora, which is weaker.
