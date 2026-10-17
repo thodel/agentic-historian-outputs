@@ -7,6 +7,63 @@ title: "Fine-tuning vision models: what twenty-two runs taught us"
 
 # Fine-tuning vision models: what twenty-two runs taught us
 
+## TL;DR — which architecture and which base, for the data we have
+
+*As of 2026-10-17. Each row names the best option measured so far and the
+number it rests on; the section cited carries the caveats. Figures in different
+rows are **not** comparable with each other — different corpora, units and
+evaluation draws.*
+
+**Architecture: a vision-language model with a QLoRA adapter over a frozen
+base, not a CTC line recogniser.** On the only published test set available to
+us — 2 751 lines of Federal Council minutes that no run has trained on — the best
+fine-tuned VLM reads at **6.80 %** CER. A kraken model trained on the same four
+19th-century corpora reads at **11.18 %**. It is a thousand times smaller
+(4.1 M parameters, 16 MB of weights), and that is its whole case; on accuracy it
+is not close. *(The kraken figure is from `thodel/training-atr-models#164` and
+is not discussed further on this page.)*
+
+**Decide the unit before the base.** A model reads the unit it was trained on: a
+line model shown a page stops after 3 % of the text, a page model shown a line
+keeps writing text that is not there (§4). One model trained on lines, blocks and
+pages together reads all three without either failure, and pays for it with
+several points on lines (§4).
+
+| Material | Read as | Use | CER | What the figure rests on |
+|---|---|---|---:|---|
+| 19th-century German — Zurich government minutes, federal protocols, kurrent | lines | `Qwen/Qwen3.5-4B` | **6.80 %** | the published test set (§7). Next: `Qwen3-VL-4B` 7.65, `Qwen3.5-2B` 8.95, `gemma-4-12B` 9.95, kraken 11.18 |
+| | pages | `Qwen/Qwen3-VL-4B`, trained on pages | 32.3 % | 15 held-out pages (§4); 8.0 % on 102 pages of its own split. One arm |
+| Medieval German, 1300–1600 | lines | `Qwen/Qwen3.5-27B` | **12.24 %** | one corpus, one draw, one quantisation (§8a). `Qwen3.8-27B` 12.15 (tied), `Qwen3.5-9B` 13.75, `Qwen3.5-4B` 15.94 |
+| | pages | `allenai/olmOCR-2-7B-1025` at a 4 MP pixel budget, with its own prompt | **26.59 %** | the knob sweep on one draw (§8). Every general base that produced a reading on this corpus: 37.6–55.0 % (§4) |
+| Kurrent, 16th–19th century — twenty datasets, six of them imported | lines | `Qwen/Qwen3.5-4B` | 8.82 % | one arm, on a draw shared with no other run (§8) |
+| | pages | `Qwen/Qwen3.5-4B`, trained on pages | 27.04 % | one arm (§8); not comparable with the line figure above it |
+
+**Which base:**
+
+- **Qwen3.5 for lines.** At equal size Qwen read better than Gemma 4 on both
+  corpora (§6, §7). Gemma ran with half its own visual-token budget and in 4-bit,
+  so this is a verdict on Gemma as a drop-in, not on Gemma.
+- **Size pays, with a decelerating return.** Medieval lines: 4 → 9 → 27 B gains
+  2.19, then 1.51 points (§8a) — the 9 B buys most of the gain at a third of the
+  parameters. 19th century: about 2.2 points per doubling up to 4 B, and nothing
+  larger has been trained on it.
+- **A newer generation is not automatically better.** `Qwen3.5-27B` and
+  `Qwen3.8-27B` sit 0.09 points apart (§8a); at 4 B on the 19th century,
+  `Qwen3.5` beats `Qwen3-VL` by 0.85 (§7). Which generation suits a corpus is a
+  measurement, not a release date.
+- **For pages, a base pre-trained on pages — and resolution.** olmOCR is the best
+  page model here and the worst line model (74.6 %); do not fine-tune it on lines
+  (§4). Its pixel budget is worth 7.17 points, its other knobs under one (§8).
+
+**Before putting any two figures side by side**, check two things: the same
+evaluation draw (a different draw alone moved a CER by 0.6 to 4.7 points, §3, §6)
+and the same corpus state (the medieval line figures in §8's first table trained
+on material now reserved for evaluation and are 1.6–2.7 points optimistic, §8a).
+
+**Not yet known:** whether a Qwen above 4 B pays on the 19th-century corpus,
+whether Gemma catches up when tuned for itself, and anything about pages on a
+published set — see *Open questions* at the end.
+
 The [recognition engine evaluation](evaluation.html) measures engines this project did not build: published Transkribus models, TrOCR and kraken checkpoints from the hub, commercial and local vision models used zero-shot. This page is about the other half — the nineteen vision-language models fine-tuned for this project on Swiss and German material between 2026-09-03 and 2026-09-26, and what went wrong often enough to be worth writing down. Section 8 extends that window to 2026-10-11 and is kept separate, because everything before it was measured before those runs existed.
 
 Almost none of the lessons are about hyperparameters. Every one of them is about **what the model was shown, and what the number it was judged by actually measured**.
@@ -551,6 +608,16 @@ took 11 h 15. Two caveats travel with the figure: `code_drift: true`, and its
 draw is shared with no other run, so it is comparable with nothing else on this
 page.
 
+The same corpus has since been trained at page granularity:
+`qwen3.5-4b-german-kurrent-xvi-xix-page-v1` reads **27.04 %** on 171 pages of
+draw `ecef5cb8` (`truncated_cer` 19.95 %, length ratio 1.059). The specification
+is the line arm's with the granularity, batch size and sequence cap changed, and
+the same twenty datasets at the same pinned revisions, so both arms select from
+the same pages. The two figures still do not stand against each other: a page
+carries layout, reading order and line breaks that a line does not, and the draws
+differ. It is the first page figure for this corpus, not a verdict on
+granularity.
+
 ### Which container produced a number became knowable on 2026-10-10
 
 A gap worth recording because it touches every figure above that was measured on
@@ -571,7 +638,7 @@ the draw — and it was not even checkable.
 - **Over-generation on sparse pages** is the page model's remaining weakness and the same failure the medieval page model shows. Neither a larger nor a smaller pixel budget addresses it.
 - **Whether Gemma closes the gap when it is tuned for itself.** One of its three known handicaps is gone: §7's prompt mismatch cost the 12 B arm thirteen points and is now fixed by default. Two remain — both arms still ran at the 140-token visual budget where Gemma's own default is 280, and both were quantised to 4-bit against the Qwens' bf16. Until those are measured, "worse as a drop-in" stays the claim, and it is narrower than "worse".
 - **Page numbers on a published set.** §7 gives the line comparison on 2 751 published lines; there is no page equivalent, so every page figure on this page is still measured on held-out pages of our own corpora.
-- **Whether a page-pre-trained base beats a bigger general one.** olmOCR at 7 B reads pages better than every general base measured here, including a 12 B one. Whether that is the pre-training or the size is unseparated: no general 7 B page arm exists, and no page-pre-trained 4 B one either. §8 adds that its own knobs are not where the remaining points are: three settings swept over one artefact move the CER by at most half a point in the right direction.
+- **Whether a page-pre-trained base beats a bigger general one.** olmOCR at 7 B reads pages better than every general base measured here, including a 12 B one. Whether that is the pre-training or the size is unseparated: no general 7 B page arm exists, and no page-pre-trained 4 B one either. §8 adds that resolution is where its remaining points are: a 4 MP pixel budget is worth 7.17 points, its prompt and token cap under one. *This bullet first said the swept settings moved the CER "by at most half a point" — drawn from the three arms that had finished, before the decisive fourth.*
 - **Whether size carries pages the way it carries lines.** At 12 B Gemma wins on lines and at ~4.5 B it loses on pages by nine points. The 12 B page arm has now landed and collapsed to a constant output (above), so it answers nothing; the question needs the run repeated, and the repeat needs a stage that fails a run whose outputs do not vary.
 - **Whether a larger Qwen takes the lead back.** Answered for the medieval corpus in §8a: 4 B → 9 B → 27 B reads 15.94 / 13.75 / 12.24 %, a decelerating curve on one corpus and one draw. On the 19th-century corpus the comparison is still one-sided — three arms, one of them large — and nobody has trained the control there. Superseded reading, kept because it was published: *"the 27 B leads by 3.0 points over the 4 B reference while the 9 B gains only 0.46" — both figures from the table §8a corrects.*
 - ~~**Whether the 3.5 → 3.8 generation pays at 27 B.**~~ Answered, and twice over: §8 reported the older generation 1.22 points ahead, and §8a shows that gap was a comparison across the held-out boundary. Re-run on one corpus and one draw, the two sit **0.09 points apart** — the generation neither pays nor costs at this size. The `code_drift` worry that §8 raised turned out to be answerable for free: the 3.8 arm, run twice on different commits, produced **byte-identical** weights, so the drift between those commits does not touch the training path.
