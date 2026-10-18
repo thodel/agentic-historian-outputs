@@ -41,7 +41,8 @@ several points on lines (§4).
 **Which base:**
 
 - **Qwen3.5 for lines.** At equal size Qwen read better than Gemma 4 on both
-  corpora (§6, §7). Gemma ran with half its own visual-token budget and in 4-bit,
+  corpora (§6, §7; the medieval comparison was made on the September corpus, on
+  which both sides trained, §8a). Gemma ran with half its own visual-token budget and in 4-bit,
   so this is a verdict on Gemma as a drop-in, not on Gemma.
 - **Size pays, with a decelerating return.** Medieval lines: 4 → 9 → 27 B gains
   2.19, then 1.51 points (§8a) — the 9 B buys most of the gain at a third of the
@@ -103,6 +104,12 @@ The models had learned the corpus exactly: on this kind of page, write the first
 | `qwen3.5-0.8b-german-xix` | — | 11.15 % | — → **0** |
 | `qwen3vl-medieval-german` | 53.2 % (own split) | **11.1 %** (held-out) | — |
 
+> *Left of the held-out boundary (§8a):* the medieval row
+> was trained on the September corpus, 3 091 of whose 11 448 pages belong to
+> documents reserved for evaluation today. "Held-out" here means the pages of its
+> own split, not the evaluation set that exists now. The 19th-century rows are
+> unaffected.
+
 Retraining changed nothing but the corpus — same repositories, same seed, same page-level split, same hyperparameters. The collapse did not shrink, it **disappeared**, in four independent runs across two model families and a 5× spread in parameters.
 
 Two things follow that are easy to miss:
@@ -158,6 +165,10 @@ Measured against ground truth on held-out pages:
 | line crops | **11.1 %** | **5.2 %** |
 | paragraphs (one `TextRegion`) | 196 % · 7 % of the text returned | 95 % · 5 % |
 | whole pages | 100 % · length ratio 0.001 | 98 % · length ratio 0.03 |
+
+> *Left of the held-out boundary (§8a):* the medieval
+> column is the September model of §1. The finding of this section — a line
+> model given a page stops — does not depend on the corpus; its 11.1 % does.
 
 The medieval model answered **every one of 14 pages with two characters** — "de", thirteen times, and once "te". The 19th-century model is worse in the way that matters more: it returns one fluent German line per page, often a line that is not on the page. A Zurich protocol page beginning "thur, zu einer Zuchthaus-Korrektion …" came back as "Hochzeitlich in der Stadt".
 
@@ -245,6 +256,13 @@ other way round.
 | `olmocr2-7b` | **74.6 %** | **34.9 %** |
 | best other arm on that draw | 12.1 % (`qwen3.5-9b`) | 42.7 % (`qwen3vl`) |
 
+> *Left of the held-out boundary (§8a):* the *Lines*
+> column was trained on the September corpus, both rows of it; the *Pages* column
+> was not. The line-versus-page contrast holds either way — 74.6 % is not a number
+> a corpus difference of a few points moves — but 12.1 % is not the 9 B figure
+> today: the same arm trained on the October corpus measures 13.75 %, on another
+> draw.
+
 On pages it is **7.7 points better** than the best previous arm on byte-identical samples, at a
 length ratio of 1.006 — the best page number this project has. On lines it is the worst arm in the
 field by a factor of six, at a length ratio of 0.649: it answers two thirds of the text and gets
@@ -298,6 +316,14 @@ Every model above sits on a Qwen base. That was never a decision — it was the 
 | `Qwen3-VL-4B-Instruct` | **13.7 %** | 12.7 | 14.0 | 14.6 | 12.6 |
 | `gemma-4-E4B-it` | 16.9 % | 14.8 | 19.3 | 18.7 | 12.9 |
 
+> *Left of the held-out boundary (§8a):* both rows,
+> and both rows of the next table, were trained on the September corpus. They
+> trained on the *same* corpus, so the comparison between them stands; no figure
+> in them is comparable with one measured on the October corpus. The Gemma arms
+> are also missing from every record-based count of this — their evaluation
+> crashed and the CER was recovered by re-scoring, so it lives in no job record
+> (training-atr-models#247).
+
 Qwen reads better overall and on every one of the four sources, by 3.2 points — five times the 0.6-point selection noise established in §3. Gemma is not failing: length ratio 0.99, nothing truncated. It reads less well.
 
 **Two things make that number smaller than it looks, and both are ours.**
@@ -316,6 +342,9 @@ on the same 200 samples:
 | `gemma-4-12B-it` | 12 B | **12.2 %** | **10.7 %** | **30.4** | **9.1 %** |
 | `qwen3vl-medieval-german-v3` | 4.4 B | 13.7 % | 12.3 % | 35.3 | 14.0 % |
 | `gemma-4-E4B-it` | ~4.5 B transformer | 16.9 % | 15.8 % | 38.8 | 17.5 % |
+
+> *Left of the held-out boundary (§8a):* all three
+> rows, on one corpus; see the note under the previous table.
 
 Gemma now reads this material better than the model that has been our best on it since September —
 1.5 points, more than twice the selection noise of §3 — and by a wider margin on words than on
@@ -570,8 +599,32 @@ curve looked as though it were accelerating; after it, it decelerates. The
 
 **The rule this leaves.** A shared draw says two rows were *scored* on the same
 lines. It says nothing about what they were *trained* on. Comparability needs
-both, and the training repository's reading tool now returns the corpus state
-beside every CER and refuses to call two rows comparable when it differs.
+both: the same evaluation draw (`draw_md5`) **and** the same corpus state
+(`reserved_pages`). The training repository's reading tool returns the corpus
+state beside every CER and names the runs that share a draw but not a corpus
+(training-atr-models#246).
+
+**How far the boundary reaches.** *Added 2026-10-18.* A census over every run
+with a stored CER applied today's registry to the manifest each run actually
+trained on — or, for a run that adopted a compiled corpus, to the manifest of
+the run that built it (training-atr-models#247). Of 58 runs, **6 cross the
+boundary**, all of them on medieval material: the four September runs
+the ladder above stood on, plus §3's run at 97.56 % — already reported there as
+a broken measurement — and an August run that lost 6 of 279 pages. The two
+medieval Gemma line arms cross it as well; their CER was recovered by
+re-scoring and is in no record, so a census that only reads records misses them.
+
+On this page that is §1's medieval row, the medieval column of §4's granularity
+table, the line column of §4's olmOCR table, both tables in §6 and the first
+table of §8 — each now marked where it stands. Within each of those tables the
+rows trained on one corpus and remain comparable with one another; none is
+comparable with a figure from the October corpus. **Every other figure on this
+page is clean**: the whole 19th-century series and its published benchmark, all
+five medieval page arms, the olmOCR knob sweep, both Kurrent arms and the ladder
+above. Eight first-generation runs from 10–14 September can no longer be
+checked, because their manifests were purged; of what this page reports, only
+part of §1's *before the fix* column rests on them, and it is reported as a
+defect, not as a result.
 
 ### Five knobs on the page arms, and resolution is the one that matters
 
@@ -668,7 +721,7 @@ the draw — and it was not even checkable.
 - **Whether Gemma closes the gap when it is tuned for itself.** One of its three known handicaps is gone: §7's prompt mismatch cost the 12 B arm thirteen points and is now fixed by default. Two remain — both arms still ran at the 140-token visual budget where Gemma's own default is 280, and both were quantised to 4-bit against the Qwens' bf16. Until those are measured, "worse as a drop-in" stays the claim, and it is narrower than "worse".
 - **Page numbers on a published set.** §7 gives the line comparison on 2 751 published lines; there is no page equivalent, so every page figure on this page is still measured on held-out pages of our own corpora.
 - **Whether a page-pre-trained base beats a bigger general one.** olmOCR at 7 B reads pages better than every general base measured here, including a 12 B one. Whether that is the pre-training or the size is unseparated: no general 7 B page arm exists, and no page-pre-trained 4 B one either. §8 adds that resolution is where its remaining points are: a 4 MP pixel budget is worth 7.17 points, its prompt and token cap under one. *This bullet first said the swept settings moved the CER "by at most half a point" — drawn from the three arms that had finished, before the decisive fourth.*
-- **Whether size carries pages the way it carries lines.** At 12 B Gemma wins on lines and at ~4.5 B it loses on pages by nine points. The 12 B page arm has now landed and collapsed to a constant output (above), so it answers nothing; the question needs the run repeated, and the repeat needs a stage that fails a run whose outputs do not vary.
+- **Whether size carries pages the way it carries lines.** At 12 B Gemma wins on lines — on the September corpus, §8a — and at ~4.5 B it loses on pages by nine points. The 12 B page arm has now landed and collapsed to a constant output (above), so it answers nothing; the question needs the run repeated, and the repeat needs a stage that fails a run whose outputs do not vary.
 - **Whether a larger Qwen takes the lead back.** Answered for the medieval corpus in §8a: 4 B → 9 B → 27 B reads 15.94 / 13.75 / 12.24 %, a decelerating curve on one corpus and one draw. On the 19th-century corpus the comparison is still one-sided — three arms, one of them large — and nobody has trained the control there. Superseded reading, kept because it was published: *"the 27 B leads by 3.0 points over the 4 B reference while the 9 B gains only 0.46" — both figures from the table §8a corrects.*
 - ~~**Whether the 3.5 → 3.8 generation pays at 27 B.**~~ Answered, and twice over: §8 reported the older generation 1.22 points ahead, and §8a shows that gap was a comparison across the held-out boundary. Re-run on one corpus and one draw, the two sit **0.09 points apart** — the generation neither pays nor costs at this size. The `code_drift` worry that §8 raised turned out to be answerable for free: the 3.8 arm, run twice on different commits, produced **byte-identical** weights, so the drift between those commits does not touch the training path.
 - **Why a pinned corpus can still draw differently.** §8's 27 B arm had every dataset pinned to an exact sha and still produced a draw nothing else shares, because there was no cached artefact to adopt and it re-materialised under another commit. Pinning the inputs is necessary and not sufficient; what would make a draw reproducible across commits is not established.
