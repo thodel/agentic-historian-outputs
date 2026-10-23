@@ -64,7 +64,18 @@ trotzdem hier verlinkt sind und nicht als interne Arbeitsdokumente gelten.
       dritter Strang betrifft nicht das Lesen, sondern das <em>Bild</em>: von 43
       Seiten, deren Transkription nicht zu ihrem Scan passt, sind 27 zwei
       verschiedene Aufnahmen derselben Seite — darunter eine Doppelseite gegen
-      ein halbiertes Blatt — und 16 dasselbe Bild in zwei Auflösungen.</dd>
+      ein halbiertes Blatt — und 16 dasselbe Bild in zwei Auflösungen. Seit
+      dem 22. Oktober hat der neunte Leser eine Zahl, auf Seiten, die er sich
+      nicht ausgesucht hat: auf dem Eval-Split des Trainingsprojekts, 35
+      handkorrigierte Seiten aus zwölf Dokumenten, liest er mit
+      <strong>4,8 % Median-Zeichenfehlerrate gegen 14,5 % des feinjustierten
+      Zeilenmodells</strong> — Faktor drei, und der Abstand öffnet sich auf den
+      schweren Händen. Die Verzerrung, die sich nicht ausschliessen lässt,
+      liefe zugunsten des Verlierers: das Zeilenmodell ist auf der
+      Projekt-Ground-Truth trainiert, die Aufteilung ist jünger als das
+      Modell. Die 281 gelesenen Seiten des 300er-Laufs liegen seither als
+      zweiter, privater Datensatz vor, ohne Zeilengeometrie und mit dem Satz
+      auf der Karte, dass niemand diesen Text gelesen hat.</dd>
   </div>
   <div>
     <dt><a href="disputation-page-model/">A page model on the Berner Disputation</a>
