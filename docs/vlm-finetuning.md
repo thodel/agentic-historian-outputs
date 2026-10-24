@@ -9,7 +9,7 @@ title: "Fine-tuning vision models: what twenty-two runs taught us"
 
 ## TL;DR — which architecture and which base, for the data we have
 
-*As of 2026-10-17. Each row names the best option measured so far and the
+*As of 2026-10-24. Each row names the best option measured so far and the
 number it rests on; the section cited carries the caveats. Figures in different
 rows are **not** comparable with each other — different corpora, units and
 evaluation draws.*
@@ -27,7 +27,10 @@ is not discussed further on this page.)*
 line model shown a page stops after 3 % of the text, a page model shown a line
 keeps writing text that is not there (§4). One model trained on lines, blocks and
 pages together reads all three without either failure, and pays for it with
-several points on lines (§4).
+several points on lines (§4). Where both units are available, read lines:
+on the same 164 medieval pages, `Qwen3.5-4B` reads them at **13.65 %** line by line and at
+37.61 % as whole pages, and is better line by line on 114 of the 146 pages the page arm does not
+over-generate on (§8). That line figure assumes the lines are already segmented.
 
 | Material | Read as | Use | CER | What the figure rests on |
 |---|---|---|---:|---|
@@ -680,6 +683,59 @@ fifth too much. Its edit decomposition says the same thing exactly —
 not in the recognition path. Reading the full CER alone would have sent it to the
 wrong place.
 
+### Lines against pages, on the same 164 pages
+
+*Added 2026-10-24 (training-atr-models#74).* §4 says a model reads the unit it
+was trained on. It does not say which unit to train on when both are available,
+because every page figure on this page and every line figure was measured on a
+different draw. This comparison puts one base on both units and scores both on
+the same pages.
+
+The 164 pages of draw `cb4d1c88` — the draw of every medieval page arm above —
+were cut into their 3 890 ground-truth lines. Two line arms of `Qwen/Qwen3.5-4B`,
+one in 4-bit and one in bf16, were re-scored on those lines. Their outputs were
+joined page by page in reading order and scored against the same page reference
+as the page arm. Line coverage is complete on every page. Everything here is on
+the right of the boundary (§8a). The line arms trained on the October corpus,
+and the 164 pages are all in that corpus's validation split, none among its
+8 104 training pages or its 3 173 reserved ones.
+
+| | Page, Qwen3.5-4B bf16 | Lines, Qwen3.5-4B 4-bit | Lines, Qwen3.5-4B bf16 |
+|---|---:|---:|---:|
+| CER over all 164 pages | 37.61 % | 14.02 % | **13.65 %** |
+| median per page | 26.88 % | **13.11 %** | 13.18 % |
+| mean per page | 63.44 % | 20.32 % | **18.50 %** |
+| pages over 1.5× / under ⅓ of the reference | 12 / 6 | 1 / 0 | 1 / 0 |
+
+Paired per page, mean ΔCER with a 95 % bootstrap interval:
+
+| | all 164 pages | 146 normal pages |
+|---|---|---|
+| lines bf16 − page | −0.449 [−0.781, −0.223]; lines better on 131 | −0.117 [−0.147, −0.086]; lines better on 114 |
+| lines bf16 − lines 4-bit | −0.018 [−0.057, +0.005] | −0.026 [−0.066, −0.001]; median −0.004 |
+
+*Normal* removes the 18 pages on which the page arm writes more than one and a
+half times the reference or less than a third of it — the over-generation of
+§4. On the pages that remain, the page arm reads at a mean of 28.88 % and the bf16
+line arm at 17.23 %.
+
+**On this material, the same base reads line by line far better than whole
+pages**, and not only because the page arm over-generates on sparse pages: on
+the normal pages it is still about twelve points behind, and better on only 31
+of 146. Even the best page model measured, olmOCR at 4 MP with its own prompt
+(26.59 % on the same draw, above), is about thirteen points behind the 4 B line
+arm. That comparison is unpaired and across bases.
+
+**Quantisation is not the explanation.** bf16 against 4-bit on lines is worth
+0.37 points pooled and 0.4 at the median. Over all pages the interval includes
+zero.
+
+Two limits stay with the figure. **The line arms read ground-truth lines**, so
+their CER is a ceiling for a line pipeline: a real one has to segment the page
+first, and segmentation errors are not in this number. **One base, one size**:
+whether the gap holds at 9 or 27 B, or against a page-pre-trained base at the
+same size, is not measured.
+
 ### A model over twenty corpora, including six nobody here made
 
 `qwen3.5-4b-german-kurrent-xvi-xix-v1` reads **8.82 %** on 198 lines of draw
@@ -719,6 +775,7 @@ the draw — and it was not even checkable.
 
 - **Over-generation on sparse pages** is the page model's remaining weakness and the same failure the medieval page model shows. Neither a larger nor a smaller pixel budget addresses it.
 - **Whether Gemma closes the gap when it is tuned for itself.** One of its three known handicaps is gone: §7's prompt mismatch cost the 12 B arm thirteen points and is now fixed by default. Two remain — both arms still ran at the 140-token visual budget where Gemma's own default is 280, and both were quantised to 4-bit against the Qwens' bf16. Until those are measured, "worse as a drop-in" stays the claim, and it is narrower than "worse".
+- **How much of the line arm's lead survives real segmentation.** §8 compares page and line reading on the same pages, but the line arms read lines cut from the ground truth. A line pipeline has to find the lines first (kraken, Transkribus), and the cost of that on these 164 pages is not measured.
 - **Page numbers on a published set.** §7 gives the line comparison on 2 751 published lines; there is no page equivalent, so every page figure on this page is still measured on held-out pages of our own corpora.
 - **Whether a page-pre-trained base beats a bigger general one.** olmOCR at 7 B reads pages better than every general base measured here, including a 12 B one. Whether that is the pre-training or the size is unseparated: no general 7 B page arm exists, and no page-pre-trained 4 B one either. §8 adds that resolution is where its remaining points are: a 4 MP pixel budget is worth 7.17 points, its prompt and token cap under one. *This bullet first said the swept settings moved the CER "by at most half a point" — drawn from the three arms that had finished, before the decisive fourth.*
 - **Whether size carries pages the way it carries lines.** At 12 B Gemma wins on lines — on the September corpus, §8a — and at ~4.5 B it loses on pages by nine points. The 12 B page arm has now landed and collapsed to a constant output (above), so it answers nothing; the question needs the run repeated, and the repeat needs a stage that fails a run whose outputs do not vary.
