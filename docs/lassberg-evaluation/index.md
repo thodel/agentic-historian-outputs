@@ -7,7 +7,7 @@ title: "Reading the Laßberg correspondence"
 
 # Reading the Laßberg correspondence
 
-Some 6700 digitised pages of letters to and from Joseph von Laßberg (1770–1855), held across thirteen archives and libraries, were read end to end by machine. **Eight recognition engines** then read the pages for which a human transcription exists and were scored against it. A **ninth reader**, a commercial model behind an API, read a 300-page sample in October and is the subject of its own section: it has no quality figure for those pages, because the sample was drawn from the pages nobody has transcribed — **and since 22 October it has one on a different set**, 35 pages of somebody else's evaluation split, where it reads three times as accurately as the fine-tuned line model (see [*The ninth reader, scored*](#the-ninth-reader-scored-on-a-split-somebody-else-drew)). This page records what that cost, how far the readings disagree with each other, and how far each of them differs from the transcription.
+Some 6700 digitised pages of letters to and from Joseph von Laßberg (1770–1855), held across thirteen archives and libraries, were read end to end by machine. **Eight recognition engines** then read the pages for which a human transcription exists and were scored against it. A **ninth reader**, a commercial model behind an API, read a 300-page sample in October and is the subject of its own section: it has no quality figure for those pages, because the sample was drawn from the pages nobody has transcribed — **and since 22 October it has one on a different set**, 35 pages of somebody else's evaluation split, where it reads three times as accurately as the fine-tuned line model (see [*The ninth reader, scored*](#the-ninth-reader-scored-on-a-split-somebody-else-drew)). **And since 23 October there is a second body of ground truth**, larger than the first and found rather than made: the Badische Landesbibliothek publishes its Laßberg holdings with a full text that turned out, measured, to be the same transcription this project holds (see [*A second source of ground truth*](#a-second-source-of-ground-truth-the-badische-landesbibliothek)). This page records what that cost, how far the readings disagree with each other, and how far each of them differs from the transcription.
 
 It records **what was measured**, and marks clearly where a number is provisional. The engine comparison is a measurement of quality, because one side of it is a human transcription; the run figures measure cost, and the disagreement figures measure neither. Where a figure contradicts something this project said earlier, the correction is stated rather than quietly applied — eleven of them contradict a figure this page itself used to carry — one within a day of publishing it, and one because an action this page called impossible was then taken — and the sections below record several more that never made it this far.
 
@@ -247,6 +247,56 @@ Three things bound this number, and the first bounds it in a known direction. **
 
 What this does not say: how the ninth reader reads the **published** 300 pages. They have no transcription, and that has not changed. It says that on 35 transcribed pages it chose none of, under the published settings, it reads at a twentieth of its characters wrong at the median — and that is the first number this project has for it.
 
+## A second source of ground truth: the Badische Landesbibliothek
+
+The Badische Landesbibliothek Karlsruhe (BLB) holds the largest single part of Laßberg's papers and publishes its digitisations under **Public Domain** in its [Digitale Sammlungen](https://digital.blb-karlsruhe.de/), harvestable through OAI-PMH (set `blbknajvl`, "Joseph von Laßberg"). Harvested on 23 October 2026:
+
+| | |
+|---|---:|
+| records in the set | 426 |
+| digitised objects with pages (anchor records without files dropped) | 401 |
+| page images | 4305 |
+| objects with an ALTO full text | 391 |
+| objects not in the GWDG share this page reads | 359 (3973 pages) |
+
+Most of it is new to this project: the share holds 55 BLB shelfmark folders, all in series K 2911. The BLB set also holds the other series, K 2912 to K 2915 and K 3123, and 1550 of its pages are a printed almanac (*Fürstenbergischer Landkalender*, K 2914).
+
+### A full text is not a transcription until it is measured
+
+A digital collection's "full text" is most often uncorrected OCR. Treated as ground truth for that reason, it would have made every model trained on it a model trained on machine reading. So it was measured first, against the hand-corrected Transkribus pages of this project, on the six pages both sides hold:
+
+| Reading of the same six pages | median CER against the Transkribus transcription |
+|---|---:|
+| BLB ALTO full text | **0.0 %** (identical on five pages, 2.8 % on the sixth) |
+| `gemini-3.8-flash`, the ninth reader | 7.5 % |
+| `qwen3.5-4b-german-xix-v2`, the fine-tuned line model | 16.5 % |
+
+Where the two transcriptions differ, they differ where two people follow different conventions, not where a reader misread. No engine measured on this corpus comes near zero. **The BLB text is a transcription, and on the pages both hold it is this project's transcription.** Who produced it, whether the editing project delivered it to the library or the library transcribed it, the BLB does not say. That question is put to the project, and until it is answered the dataset built from it stays private.
+
+### The dataset, and what it does not carry
+
+The set became a dataset in the shape this project's trainers read, one image and one PAGE XML document per page: `dh-unibe/image-text_lassberg-blb-gt`, **private**. Of 4123 page images in objects with a full text, **1419 have an ALTO file without a single line** — blank versos, address panels, covers and, in the almanac, whole runs the library did not transcribe. They are left out rather than carried as empty rows. 2704 pages remain, in five projects by the BLB's own catalogue title:
+
+| `project_name` | what it is | pages | objects |
+|---|---|---:|---:|
+| `lassberg` | letters *by* Laßberg ("Brief von Joseph von Laßberg an …") | 305 | 70 |
+| `korrespondenten` | letters *to* him ("Brief von X an Joseph von Laßberg") | 370 | 81 |
+| `unbestimmt` | letters whose title names no direction | 111 | 36 |
+| `manuskripte` | copies, excerpts, notes, documents: handwriting, hand not stated | 1022 | 137 |
+| `drucke` | the printed almanac (K 2914), Fraktur, not Kurrent | 896 | 66 |
+
+The hand labels are better than the first dataset's, which inferred the writer from a letter's dateline. Here the catalogue names sender and recipient. The price is the fourth project: most copies and excerpts are very probably in Laßberg's own hand, but the title does not say so, and a label that is not in the record is a guess. The **line geometry is converted, not measured**: ALTO gives a box per line, the PAGE line is that box as a rectangle scaled onto the image, and its baseline is the box's lower edge, which is a usable crop and not a baseline a segmenter was trained on. Every PAGE document says so in its first comment, with the shelfmark, the title, the date and the URLs of the image and the ALTO it was made from.
+
+**The evaluation side is held out by object, not by page.** Two pages of one letter share hand, paper and ink, so a page-level split reports how well a model reads hands it was trained on. A seeded tenth of the objects of every project, **40 objects and 288 pages**, sits in a sibling project `<name>_eval`. Three objects are on the evaluation side by design: `K 2911,17`, `,107` and `,110`, the BLB objects of the evaluation split [above](#the-ninth-reader-scored-on-a-split-somebody-else-drew), so a model trained here can be compared with the 4.8 % and 14.5 % measured there.
+
+### What the two ground truths share
+
+Against the Transkribus collection that holds this project's corrected pages (731 documents), **54 BLB shelfmarks are in both**, page for page the same count in the fifteen checked. 358 BLB objects, 4001 pages and 348 of them with full text, are not in Transkribus at all. Six shelfmarks are in Transkribus and not in the BLB set: `K 2911,114` and the five parts of `K 3123,8`. Which pages of the 54 shared objects are also in the first dataset and in the 276 scored pages above has not been worked out page by page, so an evaluation on either must exclude the shared shelfmarks from any training on the BLB set.
+
+### What follows from it, and what has not happened yet
+
+Three fine-tunes are specified on this dataset, one per engine the project's trainer has: Qwen3.5-4B and olmOCR-2-7B on **whole pages**, each with the twenty datasets of the Kurrent XVI–XIX page recipe plus this one, and a kraken model fine-tuned from the project's 19th-century kraken model on the BLB lines alone. The printed almanac stays out of all three. **None has run.** The upload of the dataset itself was repeated on 25 October, because the first attempt, from a terminal on the evening before, never reached the hub. That was noticed only because the training tool refused to send a request whose dataset had no commit to pin it to.
+
 ## Ground truth, and how a page is found at all
 
 Hand-corrected transcriptions exist in Transkribus for part of this corpus. 552 pages at status DONE, FINAL or GT were harvested on 2 October 2026.
@@ -450,7 +500,9 @@ And two findings that looked like defects were artefacts of the instrument, whic
 - **Which doubtful pages are non-matches.** Three populations share that verdict and a CER ratio cannot separate them. The discriminator that can is each page's own length floor: the error rate a reading of its length cannot beat even when it is right. Nothing computes it yet.
 - **Whether the 27 unstatused pages were corrected.** The harvest only fetches corrected pages, so they probably were, but the file does not say and the harvester records nothing.
 - **Which of two scans of a page is the authoritative one.** For the 27 refused on geometry, two archives hold different photographs of the same leaf — in two cases a scanned opening and a half leaf, a landscape and a portrait. That is a question for the archives, and until it is answered those pages have a transcription and no image that matches it.
-- **Whether a model trained on these pages reads better.** The dataset now exists and nothing has been trained on it.
+- **Whether a model trained on these pages reads better.** Two datasets now exist, the 254 pages of the first and the 2704 BLB pages of the second, and nothing has been trained on either. Three fine-tunes on the second are specified; none has run.
+- **Who produced the BLB full text.** It is identical to this project's transcriptions where both exist; whether it came from the editing project or from the library is not stated by the BLB.
+- **Which BLB pages are blank.** 1419 page images carry an ALTO file without a line. That is the library's transcription leaving them out, not a look at the leaf.
 - **Whether each individual line box is tight around its own line**, and whether the transcription attached to a line is the right one. What was measured (below) is that the geometry is in the right frame at the right size, which is a weaker statement than either.
 
 *Answered since, and the answer came the long way round.* This list used to carry "whether the rescaled polygons sit on the ink — the arithmetic says they must; an eye would say they do". An eye was never available to this project's tooling, so it was measured instead, and measuring turned out to be the stronger answer: not *they look right* but **every deviation from the applied factor catches less ink.**
@@ -474,5 +526,7 @@ The prompts of the ninth reader are files in that repository under `agentic_hist
 Scoring 552 ground-truth files against eight readings takes about 32 minutes of one CPU, most of it spent matching each page against the 6719-page corpus reading.
 
 The evaluation-split measurement of 22 October is four tool calls from a session, each handing the next a **name under a root rather than a path**: the manifest's files are staged as a named ground-truth set, scoring that set against the corpus reading locates the pages and writes their keys, the run reads those keys with the published prompt, and scoring both runs against the same set gives the table above. The runbook names them. The same day's share walk died on a folder that answered 404, and the run read its pages from the cold tier of the page cache instead; both the fix and the cold tier as a nameable source are in the repository since.
+
+The BLB dataset is four tool calls, each again a **name under a root**: harvesting the named source (`oai_gt_import`, step `inventory`), building the tree from the harvest (step `build`, a dry run first), holding out objects (`split_tree`) and uploading the tree as a private dataset (`upload_hf`). The source is a name the server knows, never a URL. The measurement that made its text ground truth is a script in the repository, `scripts/blb_fulltext_compare.py`.
 
 The figures for the two older runs come from reports rebuilt from the files on disk rather than observed as those runs happened — which is why the *failed* column is not quoted for them: a page that failed wrote nothing, and nothing is what a rebuilt report cannot count. The candidate run's report was written at the end of the run, so its zero failures are a measurement.

@@ -75,7 +75,14 @@ trotzdem hier verlinkt sind und nicht als interne Arbeitsdokumente gelten.
       Projekt-Ground-Truth trainiert, die Aufteilung ist jünger als das
       Modell. Die 281 gelesenen Seiten des 300er-Laufs liegen seither als
       zweiter, privater Datensatz vor, ohne Zeilengeometrie und mit dem Satz
-      auf der Karte, dass niemand diesen Text gelesen hat.</dd>
+      auf der Karte, dass niemand diesen Text gelesen hat. Und seit dem 23.
+      Oktober gibt es eine <strong>zweite Ground Truth</strong>: die Badische
+      Landesbibliothek veröffentlicht ihre Laßberg-Bestände mit einem
+      Volltext, der sich gemessen als dieselbe Transkription erwies, die das
+      Projekt hält (0,0 % auf fünf von sechs Seiten). Daraus sind 2704 Seiten
+      in fünf Projekten geworden, nach Objekten statt nach Seiten getrennt,
+      und drei Fine-Tunes darauf sind angelegt, keiner gelaufen.
+    </dd>
   </div>
   <div>
     <dt><a href="disputation-page-model/">A page model on the Berner Disputation</a>
