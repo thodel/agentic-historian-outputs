@@ -2,6 +2,7 @@ import { mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
+import { offline } from "../tests/support/offline.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const output = resolve(root, "test-results", "browser");
@@ -19,7 +20,7 @@ const browser = await chromium.launch({
 
 try {
   for (const [name, fixture] of fixtures) {
-    const context = await browser.newContext();
+    const context = await offline(await browser.newContext());
     await context.tracing.start({ screenshots: true, snapshots: true, sources: true });
     const page = await context.newPage();
     await page.goto(`file://${fixture}`);

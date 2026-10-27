@@ -37,6 +37,7 @@ import { extname, join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import test, { before, after } from "node:test";
 import assert from "node:assert";
+import { offline } from "../support/offline.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const SITE = join(ROOT, "_styled-site");
@@ -111,9 +112,9 @@ const NAVIGATION_TIMEOUT = 60_000;
 async function open(path, { width = 1280, height = 720,
                             javaScriptEnabled = true, from = null } = {}) {
   const base = from || origin;
-  const context = await browser.newContext({
+  const context = await offline(await browser.newContext({
     viewport: { width, height }, javaScriptEnabled,
-  });
+  }));
   const page = await context.newPage();
   // "load", not "networkidle". This is a static site, so there is no network
   // to go idle — networkidle only adds its 500ms quiet window on top of a
