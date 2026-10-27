@@ -17,6 +17,7 @@ import { chromium } from "playwright";
 import { resolve, dirname } from "path";
 import test from "node:test";
 import { fileURLToPath } from "url";
+import { offline } from "../support/offline.mjs";
 
 // The behavioural corpus is synthetic (#254): the two documents this suite
 // used to borrow were withdrawn. See scripts/build_behavioural_fixtures.sh.
@@ -35,7 +36,7 @@ let page;
 
 test.beforeEach(async () => {
   browser = await launchBrowser();
-  page = await browser.newPage();
+  page = await offline(await browser.newPage());
   await page.goto(FIXTURE);
   await page.waitForLoadState("domcontentloaded");
   await page.waitForTimeout(300);

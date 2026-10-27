@@ -846,12 +846,31 @@ title: "Training: {_esc(row["model_id"])}"
 {_STYLES}"""
 
 
+#: The authored half of the training page: how the systems trained for this
+#: project compare on the same data. Kept beside the index under a leading
+#: underscore, which Jekyll does not publish on its own — the generated index
+#: is the one place it appears, above the runs, so the comparison survives
+#: every rebuild instead of being overwritten by it.
+OVERVIEW_NAME = "_uebersicht.md"
+
+
+def _overview() -> str:
+    """The authored overview, or nothing when there is none."""
+    path = TRAINING_INDEX.parent / OVERVIEW_NAME
+    try:
+        return path.read_text(encoding="utf-8").strip() + "\n\n"
+    except OSError:
+        return ""
+
+
 def build_training() -> int:
     training_jsons = training_json_paths(DOCS)
     TRAINING_INDEX.parent.mkdir(parents=True, exist_ok=True)
     if not training_jsons:
         TRAINING_INDEX.write_text(
             "---\nlayout: default\ntitle: Training\n---\n\n# Training\n\n"
+            + _overview()
+            + "## Veröffentlichte Läufe\n\n"
             "Es sind noch keine Trainingsläufe veröffentlicht. Sobald ein Lauf "
             "abgeschlossen ist, erscheinen hier seine Kurven, die Herkunft der "
             "Trainingsdaten und die Modellkarte.\n",
@@ -881,7 +900,9 @@ title: Training
 
 # Training
 
-Training runs produced by [serving-atr-inference](https://github.com/thodel/serving-atr-inference).
+{_overview()}## Veröffentlichte Läufe
+
+Training runs produced by [training-atr-models](https://github.com/thodel/training-atr-models).
 
 ## Zusammenfassung
 

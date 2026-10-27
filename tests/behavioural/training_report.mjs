@@ -21,6 +21,7 @@ import { resolve, dirname } from "path";
 import test from "node:test";
 import assert from "node:assert";
 import { fileURLToPath } from "url";
+import { offline } from "../support/offline.mjs";
 
 const __dirname = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const FIXTURE = "file://" + resolve(__dirname, "tests", "behavioural", "fixtures", "training.html");
@@ -32,7 +33,7 @@ async function launchBrowser(javaScriptEnabled = true) {
 
 async function open({ javaScriptEnabled = true } = {}) {
   const browser = await launchBrowser();
-  const context = await browser.newContext({ javaScriptEnabled });
+  const context = await offline(await browser.newContext({ javaScriptEnabled }));
   const page = await context.newPage();
   await page.goto(FIXTURE);
   await page.waitForLoadState("domcontentloaded");
