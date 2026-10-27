@@ -116,5 +116,10 @@ eingesetzten Modelle, ihre Konfidenzen und die dokumentierten Probleme. Die
 Forschungstexte sagen etwas über das Verfahren im Mittel, nicht über ein
 einzelnes Dokument.
 
+Wie die selbst trainierten Systeme — Kraken, TrOCR und feinjustierte
+Bild-Sprach-Modelle — auf denselben Daten abschneiden, fasst
+[Training](training/) auf Deutsch zusammen. Was beim Trainieren und Messen
+schiefging, steht auf der Unterseite
+[Einsichten und Probleme im Ablauf](training/einsichten.html).
 Maschinenlesbare Aufzeichnungen zu abgeschlossenen Trainingsläufen erscheinen
-unter [Training](training/), sobald ein Lauf veröffentlicht ist.
+ebenfalls unter Training, sobald ein Lauf veröffentlicht ist.
