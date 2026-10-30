@@ -81,7 +81,14 @@ trotzdem hier verlinkt sind und nicht als interne Arbeitsdokumente gelten.
       Volltext, der sich gemessen als dieselbe Transkription erwies, die das
       Projekt hält (0,0 % auf fünf von sechs Seiten). Daraus sind 2704 Seiten
       in fünf Projekten geworden, nach Objekten statt nach Seiten getrennt,
-      und drei Fine-Tunes darauf sind angelegt, keiner gelaufen.
+      und drei Fine-Tunes darauf sind angelegt. Der erste ist gemessen: ein
+      kraken-Modell, nur auf den BLB-Zeilen nachtrainiert, liest Laßbergs
+      eigene, zurückgehaltene Hand auf ganzen Seiten mit <strong>5,3 % statt
+      14,5 %</strong> Median-Zeichenfehlerrate, die Manuskripte mit 10,1 % statt
+      20,6 %. Bei den Korrespondenten gewinnt es nichts: sechs von 22 Seiten
+      scheitern an der Segmentierung, und eine Hand fehlt im Training. Eine
+      erste Zahl dazu war zu gut, weil der Bewerter genau die Seiten
+      wegliess, die ein Modell nicht lesen kann.
     </dd>
   </div>
   <div>
