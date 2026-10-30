@@ -1,4 +1,4 @@
-*Stand: 27. Oktober 2026.* Diese Seite vergleicht die drei Systemfamilien, die
+*Stand: 30. Oktober 2026.* Diese Seite vergleicht die drei Systemfamilien, die
 das Projekt selbst trainiert hat, **auf denselben Daten**:
 
 - **Kraken**: ein kleiner CTC-Zeilenerkenner;
@@ -33,6 +33,12 @@ ausführlichen Belege stehen in den Forschungstexten
 - **Zeilen vor Seiten.** Dasselbe Basismodell liest dieselben 164
   mittelalterlichen Seiten Zeile für Zeile mit **13,65 %**. Als ganze Seite
   liest es sie mit 37,61 %.
+- **Laßberg-Briefe: Kraken wird durch Nachtrainieren auf dem Material
+  deutlich besser.** Auf zurückgehaltenen Objekten der BLB liest das auf den
+  BLB-Zeilen nachtrainierte Kraken Laßbergs eigene Hand auf ganzen Seiten
+  mit **5,3 %** statt 14,5 % und die Manuskripte mit 10,1 % statt 20,6 %. Bei
+  den Korrespondenten bringt es nichts (23,0 % wie vorher). Die beiden
+  Seiten-VLMs auf demselben Datensatz sind dort noch nicht gemessen.
 - **Die eigene Validierung schmeichelt.**
   - Kraken: 3,12 % auf dem eigenen Validierungssatz, 11,18 % auf dem fremden
     Testsatz.
@@ -163,7 +169,58 @@ derselben Familie und in 4 Bit:
 Mehr Parameter helfen, aber mit abnehmendem Ertrag. Diese Stichprobe ist
 nicht dieselbe wie die 164 Seiten oben.
 
-## 4. TrOCR
+## 4. 19. Jahrhundert: Laßberg-Briefe, zurückgehaltene Objekte (BLB)
+
+Testsatz ist die Eval-Seite von `image-text_lassberg-blb-gt`: Seiten aus
+**40 Objekten**, die als ganze Objekte aus dem Training herausgenommen
+wurden. Die Transkription stammt von der Badischen Landesbibliothek. Gelesen
+wurden **ganze Seiten** über das Gateway. Die Zeilen findet dabei das
+Gateway selbst, Fehler der Segmentierung zählen also mit. Jede Seite ist
+unter ihrem eigenen Namen bewertet, auch wenn sie schlecht gelesen wurde.
+
+Auf diesem Datensatz sind drei Modelle trainiert:
+
+- `kraken-german-xix-blb-v1`: `kraken-german-xix-v1` aus Abschnitt 1,
+  nachtrainiert nur auf den BLB-Zeilen (38 360 Zeilen, 136 Epochen).
+- `Qwen3.5-4B` auf Seiten, mit den zwanzig Kurrent-Datensätzen und diesem.
+- `olmOCR-2-7B` auf Seiten, ebenso. Es trainiert noch.
+
+Gemessen ist bisher nur Kraken, neu gegen alt im selben Lauf:
+
+| Eval-Projekt | Seiten | `kraken-german-xix-blb-v1` Median / gewichtet ⁴ | `kraken-german-xix-v1` Median / gewichtet |
+|---|---:|---:|---:|
+| Laßbergs eigene Hand | 23 | **5,3 % / 7,1 %** | 14,5 % / 15,9 % |
+| Korrespondenten | 22 | 23,0 % / 25,6 % | 23,0 % / 28,1 % |
+| Hand nicht bestimmt | 7 | 9,1 % / 11,0 % | 22,3 % / 22,0 % |
+| Manuskripte | 105 | **10,1 % / 12,1 %** | 20,6 % / 21,9 % |
+
+⁴ *Gewichtet* heisst: Fehler über alle Zeichen der Vorlage. Der Median sagt,
+wie eine typische Seite gelesen wird; der gewichtete Wert, wie viel des
+Textes falsch herauskommt.
+
+Drei Lesarten:
+
+- **Auf Laßbergs Hand sinkt der Fehler auf ein Drittel.** 19 von 23 Seiten
+  liegen unter 8 %. Auf den Manuskripten halbiert er sich. Trainiert wurde
+  dabei auf Zeilen, deren Grundlinie nicht gemessen ist: Die BLB liefert
+  Rechtecke, und als Grundlinie diente deren Unterkante.
+- **Bei den Korrespondenten gewinnt es nichts, aus zwei Gründen.** Sechs
+  von 22 Seiten scheitern bei beiden Modellen an der Segmentierung (55 bis
+  89 %), etwa eine Tabelle. Und die Hand von `K 3535` liest sich bei beiden
+  mit 26 bis 36 %; sie ist im Training offenbar kaum vertreten.
+- **Die Zahl des Trainers ist hier keine Schmeichelei, aber eine andere
+  Grösse.** Auf seinen eigenen zurückgehaltenen Zeilen meldet er 8,7 %.
+  Diese Zahl gilt Zeile für Zeile auf den Zeilen der Vorlage. Die Seiten oben
+  enthalten auch die Fehler der Segmentierung, und je nach Hand liegen sie
+  darunter oder deutlich darüber.
+
+**Zum Einordnen, nicht zum Vergleichen:** Der Trainer von `Qwen3.5-4B`
+meldet auf 168 Eval-Seiten 21,5 % (gekürzt 19,9 %). Seine Auswertung brach
+die Ausgabe nach 1536 Tokens ab und schneidet lange Seiten damit ab. Gemessen
+ist das mit einem anderen Werkzeug, und es ist keine Messung über das Gateway
+auf denselben Seiten.
+
+## 5. TrOCR
 
 Das Trainings-Backend für TrOCR existiert. Bisher gab es aber nur **zwei
 Probeläufe** auf dem Thuner Korpus, mit einer CER von 95,9 % und 97,6 %. Sie
@@ -183,8 +240,12 @@ Fertige TrOCR-Modelle von anderswo lesen teils gut:
 
 Ob ein eigenes Feintraining das übertrifft, ist ungemessen.
 
-## 5. Was daraus folgt, und was noch fehlt
+## 6. Was daraus folgt, und was noch fehlt
 
+- **Kraken lohnt sich nachzutrainieren, wo es Zeilen-Ground-Truth gibt.**
+  Auf den Laßberg-Briefen hat ein Nachtraining den Fehler auf Laßbergs Hand
+  gedrittelt (Abschnitt 4). Gegen Seiten, an denen die Segmentierung
+  scheitert, hilft es nicht.
 - **Für Genauigkeit lohnt sich ein feinjustiertes VLM auf Zeilen**, wo die
   Zeilen schon zerlegt sind. Kraken bleibt die Wahl, wo Grösse,
   Geschwindigkeit oder Rechenkosten entscheiden.
@@ -193,6 +254,8 @@ Ob ein eigenes Feintraining das übertrifft, ist ungemessen.
 - **Gemeinsame Testsätze fehlen.** Für einen vollständigen Vergleich fehlen
   drei Messungen:
   - Kraken und ein Zeilen-VLM auf `german-medieval-v1/test`;
+  - die beiden Seiten-VLMs auf der BLB-Eval-Seite über das Gateway, damit
+    Abschnitt 4 ein Vergleich wird;
   - ein erster echter TrOCR-Lauf;
   - ein eigener, nach Dokument zurückgehaltener Satz für Kurrent des 16. bis
     19. Jahrhunderts. Er ist seit dem 27. Oktober in Arbeit
