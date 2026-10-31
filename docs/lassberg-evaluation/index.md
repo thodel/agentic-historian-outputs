@@ -295,7 +295,7 @@ Against the Transkribus collection that holds this project's corrected pages (73
 
 ### What follows from it, and what has not happened yet
 
-Three fine-tunes are specified on this dataset, one per engine the project's trainer has: Qwen3.5-4B and olmOCR-2-7B on **whole pages**, each with the twenty datasets of the Kurrent XVI–XIX page recipe plus this one, and a kraken model fine-tuned from the project's 19th-century kraken model on the BLB lines alone. The printed almanac stays out of all three. *As of 30 October the kraken model is trained and measured, below; the Qwen3.5 model is trained and has only its trainer's own figure; the olmOCR model is still training.* The upload of the dataset itself was repeated on 25 October, because the first attempt, from a terminal on the evening before, never reached the hub. That was noticed only because the training tool refused to send a request whose dataset had no commit to pin it to.
+Three fine-tunes are specified on this dataset, one per engine the project's trainer has: Qwen3.5-4B and olmOCR-2-7B on **whole pages**, each with the twenty datasets of the Kurrent XVI–XIX page recipe plus this one, and a kraken model fine-tuned from the project's 19th-century kraken model on the BLB lines alone. The printed almanac stays out of all three. *As of 31 October all three are trained. The kraken model is measured, below; the two page models have only their trainer's own figures so far.* The upload of the dataset itself was repeated on 25 October, because the first attempt, from a terminal on the evening before, never reached the hub. That was noticed only because the training tool refused to send a request whose dataset had no commit to pin it to.
 
 ### The first of the three: kraken on the BLB lines
 
@@ -346,7 +346,16 @@ Two cautions carry over from the engine table. The located set is capped by the 
 What these numbers are not:
 
 - **Not a comparison with the ninth reader.** Its 4.8 % and the line model's 14.5 % were measured on 35 pages of the training project's split. Three of its documents (`K 2911,17`, `,107`, `,110`) were put on this evaluation side so that the comparison could be made one day. On their six BLB pages the fine-tuned kraken model reads at a median of 7.9 % and the old one at 15.2 %. These are six pages, not the 35, and Gemini and Qwen have not read these six under the BLB transcription.
-- **Not yet a three-way comparison.** The Qwen3.5 page model finished on 27 October with a trainer figure of 21.5 % CER on 168 evaluation pages. That evaluation stopped at 1536 output tokens, which cuts the longer pages short, so the figure is an upper bound on its error rather than a measurement of it. The model is not registered with the gateway and has not read these pages. The olmOCR model is in its third 15-hour window on UBELIX.
+- **Not yet a three-way comparison.** Both page models are trained, and each has only the figure its trainer measured on the dataset's 168 evaluation samples, under the same settings:
+
+  | Page model, trainer's own evaluation | CER | truncated ¹ | WER | samples |
+  |---|---:|---:|---:|---:|
+  | `olmocr2-7b-…-blb-page-px4m-native-v1` | **16.6 %** | 16.2 % | 32.5 % | 168 |
+  | `qwen3.5-4b-…-blb-page-v1` | 21.5 % | 19.9 % | 41.9 % | 168 |
+
+  ¹ Each reading cut to the length of its reference, so text written past the end of the page does not count.
+
+  The two are comparable with each other, and olmOCR reads about five points better. They are not comparable with the kraken figures above. The trainer's evaluation stops every answer at 1536 output tokens, which cuts the longer pages short, so both figures are upper bounds on the error rather than measurements of it. It is also a different tool on a different sample from the gateway's whole-page reading. Neither model is registered with the gateway yet, so neither has read the pages kraken read. olmOCR needed four 15-hour windows on UBELIX, from 27 to 31 October, resuming from its checkpoint after each.
 
 ## Ground truth, and how a page is found at all
 
