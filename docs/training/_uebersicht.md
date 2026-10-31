@@ -1,4 +1,4 @@
-*Stand: 30. Oktober 2026.* Diese Seite vergleicht die drei Systemfamilien, die
+*Stand: 31. Oktober 2026.* Diese Seite vergleicht die drei Systemfamilien, die
 das Projekt selbst trainiert hat, **auf denselben Daten**:
 
 - **Kraken**: ein kleiner CTC-Zeilenerkenner;
@@ -37,8 +37,10 @@ ausführlichen Belege stehen in den Forschungstexten
   deutlich besser.** Auf zurückgehaltenen Objekten der BLB liest das auf den
   BLB-Zeilen nachtrainierte Kraken Laßbergs eigene Hand auf ganzen Seiten
   mit **5,3 %** statt 14,5 % und die Manuskripte mit 10,1 % statt 20,6 %. Bei
-  den Korrespondenten bringt es nichts (23,0 % wie vorher). Die beiden
-  Seiten-VLMs auf demselben Datensatz sind dort noch nicht gemessen.
+  den Korrespondenten bringt es nichts (23,0 % wie vorher). Auf den 226
+  Transkribus-Seiten liest es mit **12,0 %** besser als das Zeilen-VLM, das
+  das Korpus gelesen hat (16,1 %). Die beiden Seiten-VLMs auf demselben
+  Datensatz sind noch nicht gemessen.
 - **Die eigene Validierung schmeichelt.**
   - Kraken: 3,12 % auf dem eigenen Validierungssatz, 11,18 % auf dem fremden
     Testsatz.
@@ -214,6 +216,30 @@ Drei Lesarten:
   enthalten auch die Fehler der Segmentierung, und je nach Hand liegen sie
   darunter oder deutlich darüber.
 
+**Dasselbe Modell auf der Transkribus-Ground-Truth.** Gelesen wurden die
+276 Seiten mit Transkribus-Transkription, bewertet in einem Durchgang mit den
+acht Lesungen der Modelltabelle auf der Laßberg-Seite. So stehen alle auf
+denselben 226 zugeordneten Seiten, und die veröffentlichten Zahlen kommen
+unverändert wieder heraus.
+
+| System, dieselben 226 Seiten | Familie | Median | gewichtet | p90 |
+|---|---|---:|---:|---:|
+| `kraken-german-xix-blb-v1` | Kraken | **12,0 %** | 13,1 % | 20,3 % |
+| `qwen3.5-4b-german-xix-v2` | VLM (Zeile) | 16,1 % | 19,2 % | 34,1 % |
+| `kraken-german-xix-v1` | Kraken | 16,7 % | 17,5 % | 28,2 % |
+| `qwen3vl-german-xix-v2` | VLM (Zeile) | 16,8 % | 20,5 % | 37,3 % |
+| `trocr-kurrent-xvi-xvii` | TrOCR, von anderswo | 18,7 % | 23,7 % | 39,9 % |
+
+- **Das nachtrainierte Kraken ist auf 154 von 226 Seiten besser** als das
+  Zeilen-VLM. Auch sein Ausgangsmodell, das nie einen Laßberg-Brief gesehen
+  hat, liegt mit den beiden VLMs gleichauf.
+- **Überschneidung mit dem Training erklärt es nicht.** Neun Seiten stammen
+  aus BLB-Objekten der Trainingsseite. Ohne sie bleibt der Median bei 12,0 %
+  (217 Seiten). Das Zeilen-VLM ist dagegen auf der Ground Truth des Projekts
+  trainiert; ob diese Seiten darunter waren, lässt sich nicht ausschliessen.
+- **Eine Ausnahme:** Auf den 30 Seiten aus dem Staatsarchiv Thurgau liest
+  das Ausgangsmodell besser (9,4 % gegen 11,9 %).
+
 **Zum Einordnen, nicht zum Vergleichen:** Der Trainer von `Qwen3.5-4B`
 meldet auf 168 Eval-Seiten 21,5 % (gekürzt 19,9 %). Seine Auswertung brach
 die Ausgabe nach 1536 Tokens ab und schneidet lange Seiten damit ab. Gemessen
@@ -244,7 +270,8 @@ Ob ein eigenes Feintraining das übertrifft, ist ungemessen.
 
 - **Kraken lohnt sich nachzutrainieren, wo es Zeilen-Ground-Truth gibt.**
   Auf den Laßberg-Briefen hat ein Nachtraining den Fehler auf Laßbergs Hand
-  gedrittelt (Abschnitt 4). Gegen Seiten, an denen die Segmentierung
+  gedrittelt, und auf den Transkribus-Seiten liest das Ergebnis besser als
+  jedes andere gemessene System (Abschnitt 4). Gegen Seiten, an denen die Segmentierung
   scheitert, hilft es nicht.
 - **Für Genauigkeit lohnt sich ein feinjustiertes VLM auf Zeilen**, wo die
   Zeilen schon zerlegt sind. Kraken bleibt die Wahl, wo Grösse,

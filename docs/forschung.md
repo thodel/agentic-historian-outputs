@@ -89,6 +89,9 @@ trotzdem hier verlinkt sind und nicht als interne Arbeitsdokumente gelten.
       scheitern an der Segmentierung, und eine Hand fehlt im Training. Eine
       erste Zahl dazu war zu gut, weil der Bewerter genau die Seiten
       wegliess, die ein Modell nicht lesen kann.
+      Auf den 226 Transkribus-Seiten der Modelltabelle liest dasselbe Modell
+      mit <strong>12,0 %</strong> und führt damit vor dem Zeilen-VLM, das das
+      Korpus gelesen hat (16,1 %).
     </dd>
   </div>
   <div>
