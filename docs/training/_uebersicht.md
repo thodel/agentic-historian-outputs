@@ -40,7 +40,8 @@ ausführlichen Belege stehen in den Forschungstexten
   den Korrespondenten bringt es nichts (23,0 % wie vorher). Auf den 226
   Transkribus-Seiten liest es mit **12,0 %** besser als das Zeilen-VLM, das
   das Korpus gelesen hat (16,1 %). Die beiden Seiten-VLMs auf demselben
-  Datensatz sind noch nicht gemessen.
+  Datensatz haben bisher nur die Zahl ihres Trainers: olmOCR 16,6 %,
+  Qwen3.5 21,5 %, beide auf denselben 168 Seiten.
 - **Die eigene Validierung schmeichelt.**
   - Kraken: 3,12 % auf dem eigenen Validierungssatz, 11,18 % auf dem fremden
     Testsatz.
@@ -185,7 +186,7 @@ Auf diesem Datensatz sind drei Modelle trainiert:
 - `kraken-german-xix-blb-v1`: `kraken-german-xix-v1` aus Abschnitt 1,
   nachtrainiert nur auf den BLB-Zeilen (38 360 Zeilen, 136 Epochen).
 - `Qwen3.5-4B` auf Seiten, mit den zwanzig Kurrent-Datensätzen und diesem.
-- `olmOCR-2-7B` auf Seiten, ebenso. Es trainiert noch.
+- `olmOCR-2-7B` auf Seiten, ebenso.
 
 Gemessen ist bisher nur Kraken, neu gegen alt im selben Lauf:
 
@@ -240,11 +241,21 @@ unverändert wieder heraus.
 - **Eine Ausnahme:** Auf den 30 Seiten aus dem Staatsarchiv Thurgau liest
   das Ausgangsmodell besser (9,4 % gegen 11,9 %).
 
-**Zum Einordnen, nicht zum Vergleichen:** Der Trainer von `Qwen3.5-4B`
-meldet auf 168 Eval-Seiten 21,5 % (gekürzt 19,9 %). Seine Auswertung brach
-die Ausgabe nach 1536 Tokens ab und schneidet lange Seiten damit ab. Gemessen
-ist das mit einem anderen Werkzeug, und es ist keine Messung über das Gateway
-auf denselben Seiten.
+**Die beiden Seiten-VLMs, nach der Auswertung ihres Trainers.** Beide sind
+auf denselben 168 Eval-Seiten mit denselben Einstellungen gemessen und deshalb
+untereinander vergleichbar:
+
+| System | Familie | CER | gekürzt ³ | WER |
+|---|---|---:|---:|---:|
+| `olmOCR-2-7B` | VLM (Seite) | **16,6 %** | 16,2 % | 32,5 % |
+| `Qwen3.5-4B` | VLM (Seite) | 21,5 % | 19,9 % | 41,9 % |
+
+olmOCR liest rund fünf Punkte besser. Mit den Kraken-Zahlen oben ist das
+**nicht** vergleichbar: Die Auswertung brach jede Ausgabe nach 1536 Tokens ab
+und schneidet lange Seiten damit ab, und sie ist ein anderes Werkzeug auf
+einer anderen Stichprobe als das Lesen ganzer Seiten über das Gateway. Beide
+Modelle sind noch nicht im Gateway registriert. olmOCR brauchte auf UBELIX vier
+Fenster von je 15 Stunden und setzte jedes Mal am letzten Zwischenstand an.
 
 ## 5. TrOCR
 
