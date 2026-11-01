@@ -250,3 +250,14 @@
 .catalogue-advanced { grid-column: 1 / -1; margin-top: .1rem; }
 .catalogue-advanced__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: .7rem; margin-top: .6rem; }
 .catalogue-clear { align-self: end; }
+
+/* Matches beyond the page size, from the search index (#250, #253). */
+.catalogue-offpage { margin: .5rem 0 1rem; padding: .7rem .9rem; border: 1px solid var(--catalogue-border); border-left: 4px solid var(--catalogue-accent); border-radius: .4rem; color: var(--catalogue-ink); background: #f7f9fa; font-size: .92rem; line-height: 1.6; }
+.catalogue-offpage a { color: var(--catalogue-accent); }
+.catalogue-offpage[hidden] { display: none; }
+
+/* Collection pages: compact rows, roughly a twentieth of a card (#239). */
+.collection-list { margin: 1rem 0; padding: 0; list-style: none; border-top: 1px solid var(--catalogue-border); }
+.collection-row { display: flex; flex-wrap: wrap; gap: .25rem .75rem; align-items: baseline; padding: .55rem .2rem; border-bottom: 1px solid var(--catalogue-border); }
+.collection-row a { color: var(--catalogue-accent); font-weight: 650; overflow-wrap: anywhere; }
+.collection-row .muted { color: var(--catalogue-muted); font-size: .88rem; }
