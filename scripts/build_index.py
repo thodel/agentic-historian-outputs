@@ -565,6 +565,70 @@ def collection_of(record: Record) -> str:
     return record.collection or str(record.created.year)
 
 
+def search_text(record: Record) -> str:
+    """What the search box matches against — for a card and for its index row (#253).
+
+    One function for both, because two had drifted apart: the index left out the
+    title and the shelfmark and cut the preview to 200 characters, so a search
+    for ``BAT 664`` lit cards up on the page and reported no further hits off it.
+    And one folding, ``casefold``, which ``catalogue.js``'s ``catalogueFold``
+    reproduces for the query: ``ß`` and ``ss``, ``ſ`` and ``s`` are the same
+    letters to a reader, and were different ones to ``.lower()``.
+    """
+    display_title = record.display_title or record.doc_id
+    return " ".join(filter(None, (
+        record.doc_id, display_title, record.shelfmark, record.date_label,
+        record.language, record.script, record.document_type, record.preview,
+    ))).casefold()
+
+
+def _summary_of(record: Record) -> RecognitionSummary:
+    return record.recognition_summary or RecognitionSummary(
+        "legacy", None, None, None, None, None, (), 0, None, False,
+        "missing", record.review_status, False)
+
+
+def _count_attr(value) -> str:
+    return "" if value is None else str(value)
+
+
+def card_match_data(record: Record) -> dict[str, str]:
+    """Every value ``catalogueMatches`` reads, keyed as the card's ``dataset`` (#253).
+
+    The card renders these as its ``data-*`` attributes and the index row carries
+    them under ``m``, so the browser filters an off-page record with the same
+    function and the same values as a card. Before, the off-page count checked
+    five of twelve filters and reported records the reader had filtered out.
+    """
+    summary = _summary_of(record)
+    return {
+        "documentId": record.doc_id.casefold(),
+        "kind": "test" if record.is_test else "output",
+        "language": record.language.casefold(),
+        "script": record.script.casefold(),
+        "superseded": str(record.superseded).lower(),
+        "recognitionProvenance": summary.provenance,
+        "recognitionTotal": _count_attr(summary.total),
+        "recognitionSuccessful": _count_attr(summary.successful),
+        "recognitionFailed": _count_attr(summary.failed),
+        "recognitionEmpty": _count_attr(summary.empty),
+        "recognitionDegenerate": _count_attr(summary.degenerate),
+        "recognitionEngines": ",".join(summary.engines),
+        "recognitionModels": str(summary.model_count),
+        "recognitionPages": _count_attr(summary.page_count),
+        "sourceType": summary.source_type,
+        "sourceAvailable": str(summary.source_available).lower(),
+        "reviewStatus": summary.review_status,
+        "comparisonReady": str(summary.comparison_ready).lower(),
+        "entityTypes": ",".join(record.entity_types) if record.entity_types else "",
+        "completeness": _completeness(record),
+    }
+
+
+def _data_attr(key: str) -> str:
+    return "data-" + re.sub(r"[A-Z]", lambda m: "-" + m.group(0).lower(), key)
+
+
 def catalogue_index_row(record: Record, collection: str) -> dict:
     """One compact row for the client search index.
 
@@ -587,12 +651,10 @@ def catalogue_index_row(record: Record, collection: str) -> dict:
         "test": bool(record.is_test),
         "sup": bool(record.superseded),
         "rev": record.review_status,
-        # The text the search box matches against, folded once here rather
-        # than in every visitor's browser.
-        "q": " ".join(filter(None, (
-            record.doc_id, record.date_label, record.language, record.script,
-            record.document_type, record.preview[:200],
-        ))).casefold(),
+        # The text the search box matches against: the card's own (#253).
+        "q": search_text(record),
+        # The values the filters read, the card's own too (#253).
+        "m": card_match_data(record),
     }
 
 
@@ -660,9 +722,7 @@ def _card(record: Record) -> str:
     created_label = record.created.strftime("%d.%m.%Y, %H:%M")
     badges = []
     detail_badges = []
-    summary = record.recognition_summary or RecognitionSummary(
-        "legacy", None, None, None, None, None, (), 0, None, False,
-        "missing", record.review_status, False)
+    summary = _summary_of(record)
     issue_count = (
         sum(value or 0 for value in (summary.failed, summary.empty, summary.degenerate))
         if record.recognition_summary is not None else record.recognition_errors
@@ -716,8 +776,8 @@ def _card(record: Record) -> str:
         f'\n      <p class="catalogue-id">Dokument-ID <code>{html.escape(record.doc_id)}</code></p>'
         if display_title != record.doc_id else ""
     )
-    search = " ".join((record.doc_id, display_title, record.shelfmark, record.date_label, record.language, record.script, record.document_type, record.preview)).lower()
-    kind = "test" if record.is_test else "output"
+    search = search_text(record)
+    match = card_match_data(record)
     engine_chips = "".join(
         f'<li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>{html.escape(engine)}</li>'
         for engine in summary.engines
@@ -753,7 +813,6 @@ def _card(record: Record) -> str:
         f'<div><dt>{html.escape(label)}</dt><dd>{html.escape(value)}</dd></div>'
         for label, value in summary_facts
     )
-    count = lambda value: "" if value is None else str(value)
     doc_href = f"{quote(record.doc_id, safe='')}/"
     secondary_action = ""
     if summary.comparison_pair:
@@ -795,30 +854,15 @@ def _card(record: Record) -> str:
             '<div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt">'
             '<span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>'
         )
-    entity_types_str = ",".join(record.entity_types) if record.entity_types else ""
-    completeness = _completeness(record)
-    summary_attrs = (
-        f'data-recognition-provenance="{summary.provenance}" '
-        f'data-recognition-total="{count(summary.total)}" '
-        f'data-recognition-successful="{count(summary.successful)}" '
-        f'data-recognition-failed="{count(summary.failed)}" '
-        f'data-recognition-empty="{count(summary.empty)}" '
-        f'data-recognition-degenerate="{count(summary.degenerate)}" '
-        f'data-recognition-engines="{html.escape(",".join(summary.engines), quote=True)}" '
-        f'data-recognition-models="{summary.model_count}" '
-        f'data-recognition-pages="{count(summary.page_count)}" '
-        f'data-source-type="{summary.source_type}" '
-        f'data-source-available="{str(summary.source_available).lower()}" '
-        f'data-review-status="{html.escape(summary.review_status, quote=True)}" '
-        f'data-comparison-ready="{str(summary.comparison_ready).lower()}" '
-        f'data-entity-types="{html.escape(entity_types_str, quote=True)}" '
-        f'data-completeness="{completeness}"'
-    )
+    head_keys = ("documentId", "kind", "language", "script")
+    summary_attrs = " ".join(
+        f'{_data_attr(key)}="{html.escape(value, quote=True)}"'
+        for key, value in match.items() if key not in head_keys and key != "superseded")
     metrics_html = (
         f'\n      <div class="catalogue-detail-badges" aria-label="Qualitätsmetriken">{"".join(detail_badges)}</div>'
         if detail_badges else ""
     )
-    return f'''<article class="catalogue-card" data-document-id="{html.escape(record.doc_id.casefold(), quote=True)}" data-created="{created_iso}" data-kind="{kind}" data-language="{html.escape(record.language.casefold(), quote=True)}" data-script="{html.escape(record.script.casefold(), quote=True)}" data-search="{html.escape(search, quote=True)}" data-superseded="{str(record.superseded).lower()}" {summary_attrs}>
+    return f'''<article class="catalogue-card" data-document-id="{html.escape(match["documentId"], quote=True)}" data-created="{created_iso}" data-kind="{match["kind"]}" data-language="{html.escape(match["language"], quote=True)}" data-script="{html.escape(match["script"], quote=True)}" data-search="{html.escape(search, quote=True)}" data-superseded="{match["superseded"]}" {summary_attrs}>
   <div class="catalogue-card__layout">
   {source_visual}
   <div class="catalogue-card__content">

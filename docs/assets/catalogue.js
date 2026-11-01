@@ -17,6 +17,18 @@ const CATALOGUE_FIXED_VALUES = {
   superseded: ["hide", "show"],
 };
 
+// Python's str.casefold, for the letters a German corpus carries (#253). The
+// search text is folded by build_index.search_text with casefold, so the query
+// has to be folded the same way: toLocaleLowerCase keeps "ß", "ſ" and the
+// ligatures, and a query with any of them matched no index row.
+const CATALOGUE_FOLD = { "ß": "ss", "ẞ": "ss", "ſ": "s", "ﬀ": "ff", "ﬁ": "fi", "ﬂ": "fl",
+  "ﬃ": "ffi", "ﬄ": "ffl", "ﬅ": "st", "ﬆ": "st" };
+
+function catalogueFold(text) {
+  return String(text || "").toLocaleLowerCase("de")
+    .replace(/[ßẞſﬀﬁﬂﬃﬄﬅﬆ]/g, ch => CATALOGUE_FOLD[ch]);
+}
+
 function catalogueStateFromParams(params) {
   const state = { ...CATALOGUE_DEFAULTS };
   for (const key of Object.keys(state)) {
@@ -50,7 +62,7 @@ function catalogueMatches(data, state) {
     (data.entityTypes || "").split(",").filter(Boolean).includes(state["entity-type"]);
   const matchesCompleteness = (!state.completeness || state.completeness === "all") ||
     data.completeness === state.completeness;
-  return (!state.q || (data.search || "").includes(state.q.toLocaleLowerCase("de"))) &&
+  return (!state.q || (data.search || "").includes(catalogueFold(state.q))) &&
     (state.kind === "all" || data.kind === state.kind) &&
     matchesSuperseded &&
     (state.language === "all" || data.language === state.language) &&
@@ -89,6 +101,34 @@ function catalogueCompare(left, right, sort) {
   if (a !== null && b === null) return -1;
   if (a !== b) return (a - b) * (direction === "desc" ? -1 : 1);
   return idCompare;
+}
+
+// An index row as a card's dataset: the same values under the same keys, so
+// catalogueMatches judges a record off the page exactly as it judges a card
+// (#253). build_index.card_match_data writes both.
+function catalogueIndexData(row) {
+  return { ...(row.m || {}), search: row.q || "", documentId: (row.m || {}).documentId || row.id };
+}
+
+function catalogueOffPageHits(records, onPage, state) {
+  return records.filter(row =>
+    !onPage.has(catalogueIndexData(row).documentId) && catalogueMatches(catalogueIndexData(row), state));
+}
+
+// The notice, as nodes: a title is text, never markup (#253).
+function catalogueRenderOffPage(target, hits, doc, limit = 25) {
+  const strong = doc.createElement("strong");
+  strong.textContent = `${hits.length} weitere Treffer`;
+  const parts = [strong, doc.createTextNode(" außerhalb dieser Seite: ")];
+  hits.slice(0, limit).forEach((row, i) => {
+    if (i) parts.push(doc.createTextNode(" · "));
+    const link = doc.createElement("a");
+    link.href = `${encodeURIComponent(row.id)}/`;
+    link.textContent = row.t || row.id;
+    parts.push(link);
+  });
+  if (hits.length > limit) parts.push(doc.createTextNode(" …"));
+  target.replaceChildren(...parts);
 }
 
 function catalogueStatusText(visible, filters, sortLabel) {
@@ -178,27 +218,11 @@ function initCatalogue() {
     list.parentNode.insertBefore(offPage, list);
   }
 
-  function matchesIndexRow(row, state) {
-    if (state.q && !row.q.includes(state.q.toLowerCase())) return false;
-    if (state.language && row.l !== state.language) return false;
-    if (state.script && row.s !== state.script) return false;
-    if (state.kind === "output" && row.test) return false;
-    if (state.kind === "test" && !row.test) return false;
-    if (state.superseded !== "show" && row.sup) return false;
-    return true;
-  }
-
   function reportOffPageMatches(state) {
     if (!offPage || !searchIndex) return;
-    const hits = searchIndex.records.filter(
-      row => !onPage.has(row.id) && matchesIndexRow(row, state));
+    const hits = catalogueOffPageHits(searchIndex.records, onPage, state);
     offPage.hidden = hits.length === 0;
-    if (!hits.length) return;
-    const links = hits.slice(0, 25).map(row =>
-      `<a href="${encodeURIComponent(row.id)}/">${row.t || row.id}</a>`).join(" \u00b7 ");
-    offPage.innerHTML =
-      `<strong>${hits.length} weitere Treffer</strong> au\u00dferhalb dieser Seite: ${links}` +
-      (hits.length > 25 ? " \u2026" : "");
+    if (hits.length) catalogueRenderOffPage(offPage, hits, document);
   }
 
   if (offPage && typeof fetch === "function") {
@@ -227,6 +251,7 @@ function initCatalogue() {
 
 if (typeof document !== "undefined") initCatalogue();
 if (typeof module !== "undefined") module.exports = {
-  CATALOGUE_DEFAULTS, catalogueCompare, catalogueMatches, catalogueParams, catalogueStateFromParams,
+  CATALOGUE_DEFAULTS, catalogueCompare, catalogueFold, catalogueIndexData, catalogueMatches,
+  catalogueOffPageHits, catalogueParams, catalogueRenderOffPage, catalogueStateFromParams,
   catalogueStatusText, initCatalogue,
 };

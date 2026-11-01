@@ -687,3 +687,10 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 .dl-link--xml { font-size: 0.85rem; color: #1a6b3a; }
 .dl-link--json { font-size: 0.85rem; color: #7b4f9e; }
 .dl-error-note { font-size: 0.85rem; color: var(--text-muted, #666); margin-top: 0.25rem; }
+
+/* The research index on forschung.html: one entry per study, its language named (#253). */
+.research-index { margin: 1rem 0; }
+.research-index > div { padding: .75rem 0; border-bottom: 1px solid #d9e0e6; }
+.research-index dt { font-weight: 650; }
+.research-index dd { margin: .3rem 0 0; color: var(--text-muted, #555); }
+.research-language { display: inline-block; margin-left: .4rem; padding: 0 .4rem; border: 1px solid #c3ccd5; border-radius: .3rem; color: var(--text-muted, #555); font-size: .78rem; font-weight: 500; vertical-align: .1em; }
