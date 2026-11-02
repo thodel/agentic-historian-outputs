@@ -295,7 +295,7 @@ Against the Transkribus collection that holds this project's corrected pages (73
 
 ### What follows from it, and what has not happened yet
 
-Three fine-tunes are specified on this dataset, one per engine the project's trainer has: Qwen3.5-4B and olmOCR-2-7B on **whole pages**, each with the twenty datasets of the Kurrent XVI–XIX page recipe plus this one, and a kraken model fine-tuned from the project's 19th-century kraken model on the BLB lines alone. The printed almanac stays out of all three. *As of 31 October all three are trained. The kraken model is measured, below; the two page models have only their trainer's own figures so far.* The upload of the dataset itself was repeated on 25 October, because the first attempt, from a terminal on the evening before, never reached the hub. That was noticed only because the training tool refused to send a request whose dataset had no commit to pin it to.
+Three fine-tunes are specified on this dataset, one per engine the project's trainer has: Qwen3.5-4B and olmOCR-2-7B on **whole pages**, each with the twenty datasets of the Kurrent XVI–XIX page recipe plus this one, and a kraken model fine-tuned from the project's 19th-century kraken model on the BLB lines alone. The printed almanac stays out of all three. *As of 2 November all three are trained and measured on the same pages, below: kraken first, then the two page models through the gateway.* The upload of the dataset itself was repeated on 25 October, because the first attempt, from a terminal on the evening before, never reached the hub. That was noticed only because the training tool refused to send a request whose dataset had no commit to pin it to.
 
 ### The first of the three: kraken on the BLB lines
 
@@ -346,16 +346,51 @@ Two cautions carry over from the engine table. The located set is capped by the 
 What these numbers are not:
 
 - **Not a comparison with the ninth reader.** Its 4.8 % and the line model's 14.5 % were measured on 35 pages of the training project's split. Three of its documents (`K 2911,17`, `,107`, `,110`) were put on this evaluation side so that the comparison could be made one day. On their six BLB pages the fine-tuned kraken model reads at a median of 7.9 % and the old one at 15.2 %. These are six pages, not the 35, and Gemini and Qwen have not read these six under the BLB transcription.
-- **Not yet a three-way comparison.** Both page models are trained, and each has only the figure its trainer measured on the dataset's 168 evaluation samples, under the same settings:
+- **Not the page models.** They were measured afterwards on the same pages, in the next section.
 
-  | Page model, trainer's own evaluation | CER | truncated ¹ | WER | samples |
-  |---|---:|---:|---:|---:|
-  | `olmocr2-7b-…-blb-page-px4m-native-v1` | **16.6 %** | 16.2 % | 32.5 % | 168 |
-  | `qwen3.5-4b-…-blb-page-v1` | 21.5 % | 19.9 % | 41.9 % | 168 |
+### The other two: the page models through the gateway
 
-  ¹ Each reading cut to the length of its reference, so text written past the end of the page does not count.
+`olmocr2-7b-…-blb-page-px4m-native-v1` and `qwen3.5-4b-…-blb-page-v1` were registered with the gateway on 2 November and read the same pages as kraken: the four evaluation projects, scored by name, and the 276 Transkribus pages, scored **in one pass** with every reading of the engine table. Each model reads a whole page in one request, at the pixel budget it was trained at, with the gateway's ceiling of 4096 output tokens.
 
-  The two are comparable with each other, and olmOCR reads about five points better. They are not comparable with the kraken figures above. The trainer's evaluation stops every answer at 1536 output tokens, which cuts the longer pages short, so both figures are upper bounds on the error rather than measurements of it. It is also a different tool on a different sample from the gateway's whole-page reading. Neither model is registered with the gateway yet, so neither has read the pages kraken read. olmOCR needed four 15-hour windows on UBELIX, from 27 to 31 October, resuming from its checkpoint after each.
+| Median CER per page | Pages | olmOCR page | kraken BLB | Qwen3.5 page | `kraken-german-xix-v1` |
+|---|---:|---:|---:|---:|---:|
+| Laßberg's own hand (`lassberg_eval`) | 23 | **4.4 %** | 5.3 % | 7.4 % | 14.5 % |
+| correspondents (`korrespondenten_eval`) | 22 | **21.0 %** | 23.0 % | 21.5 % | 23.0 % |
+| hand not determined (`unbestimmt_eval`) | 7 | **7.6 %** | 9.1 % | 11.7 % | 22.3 % |
+| manuscripts (`manuskripte_eval`) | 105 | 12.0 % | **10.1 %** | 13.5 % | 20.6 % |
+| Transkribus ground truth, located pages | 224 | **10.7 %** | 12.0 % | 12.5 % | 16.7 % |
+
+| Weighted CER (errors over all reference characters) | olmOCR page | kraken BLB | Qwen3.5 page |
+|---|---:|---:|---:|
+| `lassberg_eval` | **6.2 %** | 7.1 % | 9.0 % |
+| `korrespondenten_eval` | **22.7 %** | 25.6 % | 43.1 % |
+| `unbestimmt_eval` | 11.4 % | **11.0 %** | 82.2 % |
+| `manuskripte_eval` | 12.7 % | **12.1 %** | 27.2 % |
+| Transkribus, 224 pages | 13.5 % | **13.0 %** | 16.0 % |
+
+**On the letters olmOCR leads**, on both ground truths. On the Transkribus pages it is better than kraken on 131 of 224 pages and better than the line model that read the corpus on 176. Nine of the 224 pages belong to objects on the BLB training side, which both page models were trained on as well. Without them olmOCR reads at 11.2 % on 215 pages, kraken at 12.0 % and the Qwen page model at 12.6 %.
+
+**On the manuscripts kraken leads the median**, although olmOCR is the better reader on 66 of 105 pages. Two objects decide it. `K 2912,32` is a two-column Middle High German manuscript with its initials set apart: olmOCR reads the first column and then writes full stops until the token ceiling (80 % against 12 %). `K 2912,37` is a table of contents in a running hand (20 % against 7 %). Both are layouts in which a line segmenter keeps its place and a page model does not.
+
+**The weighted figure is where the Qwen page model gives itself away.** It loops — a run of dashes or full stops to the token ceiling — on 8 of the 157 evaluation pages and on 3 of the 276 Transkribus pages; olmOCR does so on 2 evaluation pages, both manuscripts, and on no Transkribus page. A loop costs a median almost nothing and a weighted figure a great deal: on `K 2911,124` page 2 the Qwen page model reads the letter correctly, then fills the rest of its 4096 tokens with dashes, and that single page carries it from 11.7 % to 82.2 % on the seven undetermined pages.
+
+**The errors are of a different kind, and the table cannot show it.** On the 29 pages from the Staatsarchiv Thurgau both page models read worse than kraken (olmOCR 19.8 %, Qwen 23.6 %, kraken 11.8 %). One letter of Pupikofer's, 15 September 1828, shows why. Kraken reads *"Sie haben die letzte schöne Woche nicht zu einem Staziergange nach Sipchofzell benutzt; dafür regnet es nun wieder, und selbst der Barometer vermag nichts dagege"*: wrong letters, right words, and the sentence is recognisable. olmOCR reads *"Sie haben die letzte schöne Wache nicht zu einem Odeonperg, nach Schlosshull bewegt; dafür ergiebt es nun mehrer, und selbst der Kameruder vermag nichts dagegen"*: fluent German that is not on the page. A character error rate counts the two alike. A reader catches the first at a glance and the second only with the image beside it. For an edition that difference outweighs a point of median, and it is the reason a reading from a page model should not go out uncorrected where its median is lowest.
+
+**One figure is too good to accept without a check.** On the six full pages of `K 3123,57`, some 2,500 to 2,900 characters each, olmOCR errs on 0.2 to 0.6 % of the characters and the Qwen page model on 0.3 to 0.8 %, against 4.7 to 6.9 % for kraken. The evaluation projects of the BLB dataset were excluded from both training requests. Whether the same text is in one of the twenty other datasets of the page recipe has not been checked.
+
+**What it costs.** On the 276 Transkribus pages olmOCR took 18.3 s and 1.41 Wh of the card per page, the Qwen page model 10.5 s and 1.10 Wh. Kraken reads on a CPU.
+
+**Adding two readings moved the located set from 226 to 224 pages.** The scorer locates a page by agreement among all readings, so two more of them change which pages are settled. The published figures move by at most 0.3 points: kraken BLB stays at 12.0 %, `kraken-german-xix-v1` at 16.7 %, the line model goes from 16.1 to 16.0 % and `trocr-kurrent-xvi-xvii` from 18.7 to 18.4 %. The tables above are left as they were measured.
+
+The trainer's own figures, measured before the models were registered, point the same way and are not comparable with the gateway's — they stop every answer at 1536 output tokens and use a different sample:
+
+| Page model, trainer's own evaluation | CER | truncated ¹ | WER | samples |
+|---|---:|---:|---:|---:|
+| `olmocr2-7b-…-blb-page-px4m-native-v1` | **16.6 %** | 16.2 % | 32.5 % | 168 |
+| `qwen3.5-4b-…-blb-page-v1` | 21.5 % | 19.9 % | 41.9 % | 168 |
+
+¹ Each reading cut to the length of its reference, so text written past the end of the page does not count.
+
 
 ## Ground truth, and how a page is found at all
 
@@ -562,7 +597,9 @@ And two findings that looked like defects were artefacts of the instrument, whic
 - **Which doubtful pages are non-matches.** Three populations share that verdict and a CER ratio cannot separate them. The discriminator that can is each page's own length floor: the error rate a reading of its length cannot beat even when it is right. Nothing computes it yet.
 - **Whether the 27 unstatused pages were corrected.** The harvest only fetches corrected pages, so they probably were, but the file does not say and the harvester records nothing.
 - **Which of two scans of a page is the authoritative one.** For the 27 refused on geometry, two archives hold different photographs of the same leaf — in two cases a scanned opening and a half leaf, a landscape and a portrait. That is a question for the archives, and until it is answered those pages have a transcription and no image that matches it.
-- **Whether a model trained on these pages reads better.** *Answered for one model on the second dataset:* kraken fine-tuned on the BLB lines reads Laßberg's held-out hand at 5.3 % against 14.5 % before, and the manuscripts at 10.1 % against 20.6 % (see [*The first of the three*](#the-first-of-the-three-kraken-on-the-blb-lines)). The two page models on the same dataset have not been measured on these pages, and nothing has been trained on the first dataset.
+- **Whether a model trained on these pages reads better.** *Answered for one model on the second dataset:* kraken fine-tuned on the BLB lines reads Laßberg's held-out hand at 5.3 % against 14.5 % before, and the manuscripts at 10.1 % against 20.6 % (see [*The first of the three*](#the-first-of-the-three-kraken-on-the-blb-lines)). The two page models on the same dataset read Laßberg's hand at 4.4 % (olmOCR) and 7.4 % (Qwen3.5), and the manuscripts at 12.0 and 13.5 % (see [*The other two*](#the-other-two-the-page-models-through-the-gateway)). Nothing has been trained on the first dataset.
+- **Whether a page model's fluent misreadings can be found without the image.** Where kraken and olmOCR disagree, one of them is wrong, and kraken's errors look like errors. Whether that disagreement marks the fluent misreadings well enough to send only those pages to a person has not been measured.
+- **Whether `K 3123,57` is in a page model's training data.** Both page models read it almost without error; see [*The other two*](#the-other-two-the-page-models-through-the-gateway).
 - **How the fine-tuned kraken model reads the rest of the corpus.** *Answered for the transcribed part:* on the 226 located Transkribus pages it reads at 12.0 % against 16.1 % for the line model that read the corpus (see [*On the Transkribus ground truth*](#on-the-transkribus-ground-truth)). Whether a re-reading of all 6700 pages with it would be the better corpus text has not been tried.
 - **Who produced the BLB full text.** It is identical to this project's transcriptions where both exist; whether it came from the editing project or from the library is not stated by the BLB.
 - **Which BLB pages are blank.** 1419 page images carry an ALTO file without a line. That is the library's transcription leaving them out, not a look at the leaf.
@@ -592,6 +629,6 @@ The evaluation-split measurement of 22 October is four tool calls from a session
 
 The BLB dataset is four tool calls, each again a **name under a root**: harvesting the named source (`oai_gt_import`, step `inventory`), building the tree from the harvest (step `build`, a dry run first), holding out objects (`split_tree`) and uploading the tree as a private dataset (`upload_hf`). The source is a name the server knows, never a URL. The measurement that made its text ground truth is a script in the repository, `scripts/blb_fulltext_compare.py`.
 
-The kraken measurement is two more tool calls per evaluation project, each naming the project rather than a path: `start_batch` with the source `datasets:lassberg-blb-gt/<project>_eval` and both kraken models, then `score_ground_truth` with the same name as its ground truth, which scores each page by its name. The runs are `blb-eval-lassberg`, `-korrespondenten`, `-unbestimmt` and `-manuskripte`. On the Transkribus pages it is `start_batch` over the page cache's cold tier with the key list `gt-keys.txt` (run `tk-gt-kraken-blb`), then **one** `score_ground_truth` over the ground truth `lassberg` with that run and the two runs of the engine table, `atr_gt_candidates` and `atr_corpus_qwen35_line`.
+The kraken measurement is two more tool calls per evaluation project, each naming the project rather than a path: `start_batch` with the source `datasets:lassberg-blb-gt/<project>_eval` and both kraken models, then `score_ground_truth` with the same name as its ground truth, which scores each page by its name. The runs are `blb-eval-lassberg`, `-korrespondenten`, `-unbestimmt` and `-manuskripte`. On the Transkribus pages it is `start_batch` over the page cache's cold tier with the key list `gt-keys.txt` (run `tk-gt-kraken-blb`), then **one** `score_ground_truth` over the ground truth `lassberg` with that run and the two runs of the engine table, `atr_gt_candidates` and `atr_corpus_qwen35_line`. The page models were added to the same five runs by `start_batch` with their model ids, **one model at a time**: two vLLM models without a fixed card evict each other, and both runs then answer 502.
 
 The figures for the two older runs come from reports rebuilt from the files on disk rather than observed as those runs happened — which is why the *failed* column is not quoted for them: a page that failed wrote nothing, and nothing is what a rebuilt report cannot count. The candidate run's report was written at the end of the run, so its zero failures are a measurement.
