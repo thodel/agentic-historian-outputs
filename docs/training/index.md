@@ -46,9 +46,11 @@ ausführlichen Belege stehen in den Forschungstexten
   mit **5,3 %** statt 14,5 % und die Manuskripte mit 10,1 % statt 20,6 %. Bei
   den Korrespondenten bringt es nichts (23,0 % wie vorher). Auf den 226
   Transkribus-Seiten liest es mit **12,0 %** besser als das Zeilen-VLM, das
-  das Korpus gelesen hat (16,1 %). Die beiden Seiten-VLMs auf demselben
-  Datensatz haben bisher nur die Zahl ihres Trainers: olmOCR 16,6 %,
-  Qwen3.5 21,5 %, beide auf denselben 168 Seiten.
+  das Korpus gelesen hat (16,1 %). Über das Gateway gemessen, liest das
+  olmOCR-Seitenmodell auf demselben Datensatz die Briefe noch besser
+  (Laßberg **4,4 %**, Transkribus-Seiten **10,7 %**), bei den Manuskripten
+  bleibt Kraken vorn (10,1 % gegen 12,0 %). Das Qwen3.5-Seitenmodell liegt
+  dazwischen und läuft öfter in Schleifen.
 - **Die eigene Validierung schmeichelt.**
   - Kraken: 3,12 % auf dem eigenen Validierungssatz, 11,18 % auf dem fremden
     Testsatz.
@@ -248,9 +250,36 @@ unverändert wieder heraus.
 - **Eine Ausnahme:** Auf den 30 Seiten aus dem Staatsarchiv Thurgau liest
   das Ausgangsmodell besser (9,4 % gegen 11,9 %).
 
-**Die beiden Seiten-VLMs, nach der Auswertung ihres Trainers.** Beide sind
-auf denselben 168 Eval-Seiten mit denselben Einstellungen gemessen und deshalb
-untereinander vergleichbar:
+**Die beiden Seiten-VLMs über das Gateway.** Seit dem 2. November sind beide
+registriert und haben dieselben Seiten gelesen wie Kraken, jede Seite in
+einer Anfrage. Auf den Transkribus-Seiten wurden sie in einem Durchgang mit
+allen Lesungen bewertet; mit zwei Lesungen mehr sind dort 224 statt 226
+Seiten zugeordnet.
+
+| Median CER pro Seite | Seiten | olmOCR (Seite) | Kraken BLB | Qwen3.5 (Seite) |
+|---|---:|---:|---:|---:|
+| Laßberg (`lassberg_eval`) | 23 | **4,4 %** | 5,3 % | 7,4 % |
+| Korrespondenten | 22 | **21,0 %** | 23,0 % | 21,5 % |
+| unbestimmt | 7 | **7,6 %** | 9,1 % | 11,7 % |
+| Manuskripte | 105 | 12,0 % | **10,1 %** | 13,5 % |
+| Transkribus-Ground-Truth | 224 | **10,7 %** | 12,0 % | 12,5 % |
+
+- **Auf den Briefen liegt olmOCR vorn**, auch ohne die neun Seiten aus
+  BLB-Trainingsobjekten (11,2 % gegen 12,0 % auf 215 Seiten).
+- **Bei den Manuskripten entscheiden zwei Objekte:** eine zweispaltige
+  Handschrift, auf der olmOCR nach der ersten Spalte nur noch Punkte schreibt,
+  und ein Inhaltsverzeichnis. Seite für Seite ist olmOCR auch dort auf 66 von
+  105 Seiten besser.
+- **Die Fehler sind anderer Art.** Kraken schreibt falsche Buchstaben in
+  richtigen Wörtern, olmOCR auf ungewohnten Händen flüssiges Deutsch, das
+  nicht dasteht (Staatsarchiv Thurgau: 19,8 % gegen 11,8 %). Die CER zählt
+  beides gleich; für eine Edition ist der zweite Fehler der gefährlichere.
+- **Qwen3.5 läuft öfter in Schleifen** (8 von 157 Eval-Seiten, olmOCR 2) und
+  verliert damit vor allem beim gewichteten Wert.
+
+**Die Auswertung ihres Trainers**, vor der Registrierung, auf denselben 168
+Eval-Seiten mit denselben Einstellungen und deshalb untereinander
+vergleichbar:
 
 | System | Familie | CER | gekürzt ³ | WER |
 |---|---|---:|---:|---:|
@@ -260,8 +289,8 @@ untereinander vergleichbar:
 olmOCR liest rund fünf Punkte besser. Mit den Kraken-Zahlen oben ist das
 **nicht** vergleichbar: Die Auswertung brach jede Ausgabe nach 1536 Tokens ab
 und schneidet lange Seiten damit ab, und sie ist ein anderes Werkzeug auf
-einer anderen Stichprobe als das Lesen ganzer Seiten über das Gateway. Beide
-Modelle sind noch nicht im Gateway registriert. olmOCR brauchte auf UBELIX vier
+einer anderen Stichprobe als das Lesen ganzer Seiten über das Gateway, deshalb
+die Tabelle davor. olmOCR brauchte auf UBELIX vier
 Fenster von je 15 Stunden und setzte jedes Mal am letzten Zwischenstand an.
 
 ## 5. TrOCR

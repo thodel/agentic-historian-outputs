@@ -91,7 +91,12 @@ trotzdem hier verlinkt sind und nicht als interne Arbeitsdokumente gelten.
       wegliess, die ein Modell nicht lesen kann.
       Auf den 226 Transkribus-Seiten der Modelltabelle liest dasselbe Modell
       mit <strong>12,0 %</strong> und führt damit vor dem Zeilen-VLM, das das
-      Korpus gelesen hat (16,1 %).
+      Korpus gelesen hat (16,1 %). Seit dem 2. November sind auch die beiden
+      Seitenmodelle auf demselben Datensatz gemessen. olmOCR liest die Briefe
+      am besten (Laßberg 4,4 %, Transkribus-Seiten <strong>10,7 %</strong>),
+      Kraken bleibt bei den Manuskripten vorn. Die Fehler der Seitenmodelle
+      sind aber anderer Art: wo Kraken falsche Buchstaben schreibt, schreibt
+      olmOCR flüssiges Deutsch, das nicht auf der Seite steht.
     </dd>
   </div>
   <div>
