@@ -96,9 +96,10 @@ trotzdem hier verlinkt sind und nicht als interne Arbeitsdokumente gelten.
       am besten (Laßberg 4,4 %, Transkribus-Seiten <strong>10,7 %</strong>),
       Kraken bleibt bei den Manuskripten vorn. Die Fehler der Seitenmodelle
       sind aber anderer Art: wo Kraken falsche Buchstaben schreibt, schreibt
-      olmOCR flüssiges Deutsch, das nicht auf der Seite steht. Das
-      Qwen-Seitenmodell unterschreibt Briefe an Laßberg sogar mit Laßbergs
-      Namen, wo es den des Absenders nicht lesen kann.
+      olmOCR flüssiges Deutsch, das nicht auf der Seite steht. Beide
+      Seitenmodelle unterschreiben Briefe an Laßberg sogar mit Laßbergs
+      Namen, wo sie den des Absenders nicht lesen können: zusammen auf 8 von
+      29 Thurgauer Briefen.
     </dd>
   </div>
   <div>
