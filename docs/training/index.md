@@ -274,6 +274,11 @@ Seiten zugeordnet.
   richtigen Wörtern, olmOCR auf ungewohnten Händen flüssiges Deutsch, das
   nicht dasteht (Staatsarchiv Thurgau: 19,8 % gegen 11,8 %). Die CER zählt
   beides gleich; für eine Edition ist der zweite Fehler der gefährlichere.
+- **Qwen3.5 setzt Laßbergs Namen ein, wo es einen Namen nicht lesen kann.**
+  Auf vier der 29 Thurgauer Seiten unterschreibt bei ihm statt Pupikofer
+  „JvLaszberg“, „JvL“ oder „Eppishausen“, Laßbergs Wohnsitz. kraken liest
+  dort „Pupikofer“ in verschiedenen Entstellungen, setzt aber keinen anderen
+  Namen ein. Namen aus einer VLM-Lesung sind Vorschläge.
 - **Qwen3.5 läuft öfter in Schleifen** (8 von 157 Eval-Seiten, olmOCR 2) und
   verliert damit vor allem beim gewichteten Wert.
 
