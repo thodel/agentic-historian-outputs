@@ -770,6 +770,164 @@ def _wrap_disclosure(
 
 
 # ---------------------------------------------------------------------------
+# Issue #778 — the evidence of a computed statement about the hand
+# ---------------------------------------------------------------------------
+
+def _hand_svg_matrix(matrix: list[list[float]], pages: list[str], outliers: set[str]) -> str:
+    """The page-against-page distance matrix as a heatmap: one cell per pair,
+    darker is more distant, outlier rows and columns marked. Static SVG, no
+    library, no script (the offline rule of every page here)."""
+    n = len(pages)
+    if n == 0:
+        return ""
+    cell = max(4, min(16, 480 // n))
+    pad = 14
+    size = n * cell
+    flat = [v for row in matrix for v in row if isinstance(v, (int, float))]
+    hi = max(flat) if flat else 1.0
+    parts = [f'<svg class="hand-matrix" role="img" viewBox="0 0 {size + pad} {size + pad}" '
+             f'width="{size + pad}" height="{size + pad}" '
+             f'aria-label="Abstandsmatrix: {n} Seiten gegen {n} Seiten">'
+             f'<title>Abstandsmatrix, {n} Seiten, dunkler ist ferner</title>']
+    for i, row in enumerate(matrix[:n]):
+        for j, v in enumerate(row[:n]):
+            shade = 1.0 - (min(float(v), hi) / hi if hi else 0.0)
+            grey = int(40 + 215 * shade)
+            parts.append(f'<rect x="{pad + j * cell}" y="{pad + i * cell}" width="{cell}" height="{cell}" '
+                         f'fill="rgb({grey},{grey},{grey})"><title>{html.escape(pages[i])} × '
+                         f'{html.escape(pages[j])}: {float(v):.2f}</title></rect>')
+    for k, name in enumerate(pages):
+        if name in outliers:
+            parts.append(f'<rect class="hand-matrix__outlier" x="{pad + k * cell}" y="2" width="{cell}" height="8" />')
+            parts.append(f'<rect class="hand-matrix__outlier" x="2" y="{pad + k * cell}" width="8" height="{cell}" />')
+    parts.append("</svg>")
+    return "".join(parts)
+
+
+def _hand_svg_curve(pages: list[str], centrality: list[float], outliers: set[str],
+                    changepoint: dict | None, threshold: float | None) -> str:
+    """Centrality per page along the volume as a line, outliers as circles, the
+    outlier threshold and the best split as dashed lines."""
+    n = len(pages)
+    if n < 2 or len(centrality) != n:
+        return ""
+    w, h, pad = 480, 160, 20
+    hi = max(max(centrality), threshold or 0) or 1.0
+    lo = min(centrality)
+    span = (hi - lo) or 1.0
+
+    def x(i: int) -> float:
+        return pad + i * (w - 2 * pad) / (n - 1)
+
+    def y(v: float) -> float:
+        return h - pad - (v - lo) / span * (h - 2 * pad)
+
+    pts = " ".join(f"{x(i):.1f},{y(v):.1f}" for i, v in enumerate(centrality))
+    parts = [f'<svg class="hand-curve" role="img" viewBox="0 0 {w} {h}" width="{w}" height="{h}" '
+             f'aria-label="Zentralität je Seite entlang des Bandes, {n} Seiten">'
+             f'<title>Zentralität je Seite; Kreise sind Ausreisser</title>',
+             f'<polyline class="hand-curve__line" points="{pts}" fill="none" />']
+    if threshold is not None:
+        parts.append(f'<line class="hand-curve__threshold" x1="{pad}" x2="{w - pad}" '
+                     f'y1="{y(threshold):.1f}" y2="{y(threshold):.1f}" />')
+    if changepoint and isinstance(changepoint.get("index"), int) and 0 < changepoint["index"] < n:
+        cx = (x(changepoint["index"] - 1) + x(changepoint["index"])) / 2
+        parts.append(f'<line class="hand-curve__split" x1="{cx:.1f}" x2="{cx:.1f}" y1="{pad}" y2="{h - pad}">'
+                     f'<title>Bester Trennpunkt vor {html.escape(str(changepoint.get("page", "")))}, '
+                     f'Trennmass {float(changepoint.get("ratio", 0)):.2f}</title></line>')
+    for i, (name, v) in enumerate(zip(pages, centrality)):
+        if name in outliers:
+            parts.append(f'<circle class="hand-curve__outlier" cx="{x(i):.1f}" cy="{y(v):.1f}" r="5">'
+                         f'<title>{html.escape(name)}: {v:.2f}</title></circle>')
+    parts.append("</svg>")
+    return "".join(parts)
+
+
+def _facsimile_links(data: dict) -> dict[str, str]:
+    """``page name → canvas or image URL`` from the document's per-page source
+    references, keyed loosely: by the declared page label and by the digits in it,
+    so ``page-0017.jpg`` finds the canvas a source lists as ``17`` or ``f. 17``."""
+    out: dict[str, str] = {}
+    for page in normalize_source_reference(data).get("pages") or []:
+        target = page.get("canvas_url") or page.get("image_url")
+        label = str(page.get("page") or "")
+        if not (target and label):
+            continue
+        out[label] = target
+        digits = re.sub(r"\D", "", label)
+        if digits:
+            out.setdefault(digits.lstrip("0") or "0", target)
+    return out
+
+
+def _link_for(name: str, links: dict[str, str]) -> str:
+    if name in links:
+        return links[name]
+    digits = re.sub(r"\D", "", Path(name).stem)
+    return links.get(digits.lstrip("0") or "0", "") if digits else ""
+
+
+def hand_consistency_section(doc_dir: Path, data: dict) -> tuple[str, int]:
+    """The section for a document that carries ``hand_consistency.json`` (#773,
+    written by the pipeline for multi-page orders): the matrix, the curve, the
+    outliers with a link to the facsimile where the source has one, and the
+    hypothesis the pipeline drew (#777). ``("", 0)`` when there is no data."""
+    path = doc_dir / "hand_consistency.json"
+    if not path.exists():
+        return "", 0
+    try:
+        rep = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return "", 0
+    pages = [str(p) for p in rep.get("pages") or []]
+    matrix = rep.get("matrix") or []
+    centrality = [float(c) for c in rep.get("centrality") or []]
+    if len(pages) < 2 or len(matrix) != len(pages):
+        return "", 0
+    outliers = {str(o) for o in rep.get("outliers") or []}
+    links = _facsimile_links(data)
+    hint = rep.get("hint") if isinstance(rep.get("hint"), dict) else None
+
+    items = []
+    for name in sorted(outliers, key=pages.index if all(o in pages for o in outliers) else str):
+        url = _link_for(name, links)
+        label = html.escape(name)
+        items.append(f'<li><a href="{html.escape(url, quote=True)}">{label}</a> — Faksimile</li>' if url
+                     else f'<li>{label}</li>')
+    threshold = float(rep.get("outlier_threshold") or 0)
+    outlier_html = (f'<p>Ausreisser (Zentralität über {threshold:.2f}):</p>'
+                    f'<ul class="hand-outliers">{"".join(items)}</ul>'
+                    if items else '<p>Keine Seite weicht stark ab.</p>')
+    hint_html = (f'<p class="hand-hypothesis"><strong>Berechnete Hypothese:</strong> '
+                 f'{html.escape(str(hint.get("wert", "")))} <em>(quelle: berechnet, unsicher)</em></p>'
+                 if hint else '<p class="hand-hypothesis">Keine Hypothese: Trennmass und Blockmittel liegen unter den Schwellen.</p>')
+    typical = rep.get("typical")
+    body = (
+        f'<p>{len(pages)} Seiten gemessen, alle gegen alle (#773): je Seite x-Höhe, Zeilenabstand, '
+        f'Schrägstellung, Strichbreite, Tintendichte und das Profil der Buchstabenformen. '
+        f'Typischste Seite: <code>{html.escape(str(typical))}</code>. Die Zahlen sind Abstände, keine Urteile.</p>'
+        f'{hint_html}'
+        f'<figure class="hand-figure">{_hand_svg_matrix(matrix, pages, outliers)}'
+        f'<figcaption>Seite gegen Seite; dunkler ist ferner, Markierungen am Rand sind Ausreisser.</figcaption></figure>'
+        f'<figure class="hand-figure">{_hand_svg_curve(pages, centrality, outliers, rep.get("changepoint"), rep.get("outlier_threshold"))}'
+        f'<figcaption>Zentralität je Seite entlang des Bandes; gestrichelt die Ausreisserschwelle und der beste Trennpunkt.</figcaption></figure>'
+        f'{outlier_html}'
+        f'<p><a href="hand_consistency.json">Messung als JSON</a></p>'
+    )
+    section = _wrap_disclosure(
+        '<section id="hand" class="page-section page-section--interpretation"'
+        ' data-page-section="hand" aria-labelledby="hand-heading">'
+        '<h2 id="hand-heading">Schriftbild entlang des Bandes</h2>'
+        f'{body}'
+        '</section>',
+        "hand", "Schriftbild entlang des Bandes",
+        f"{len(pages)}\u2009Seiten, {len(outliers)}\u2009Ausreisser" + (", Hypothese" if hint else ""),
+        open_default=False,
+    )
+    return section, len(outliers)
+
+
+# ---------------------------------------------------------------------------
 # Issue #21 — redesigned document status header
 # ---------------------------------------------------------------------------
 
@@ -1114,6 +1272,7 @@ license: "CC-BY-4.0"
         f"{n_fields}\u2009Felder" if n_fields else "Keine Beschreibungsfelder",
         open_default=True,
     )
+    _hand, _n_hand_outliers = hand_consistency_section(path.parent, data)     # #778
     _entity_body = ''.join(entity_html) or '<p>Keine Entitäten erkannt.</p>'
     _entities = _wrap_disclosure(
         '<section id="entities" class="page-section page-section--interpretation"'
@@ -1213,6 +1372,7 @@ license: "CC-BY-4.0"
         + evidence + '\n\n'
         + _orientation + '\n\n'
         + _claims + '\n\n'
+        + (_hand + '\n\n' if _hand else '')
         + _entities + '\n\n'
         + _downloads + '\n\n'
         + _citation + '\n\n'
