@@ -400,6 +400,28 @@ olmOCR either replaces the signature (3168, 1186) or moves the letter to "Eppish
 
 The likely reason, not tested: both models were fine-tuned on Laßberg's papers, where "Laßberg" is the commonest name at the foot of a letter, and where it cannot read a name it writes the likeliest one. The character error rate barely registers it, since a signature is a dozen characters. For an edition it is the worst error there is: it swaps the sender and the recipient of a letter, and it looks entirely plausible. kraken reads names badly but substitutes none; it reads characters line by line, with no language model to offer a likelier text. Names, places and dates from a page model's reading are therefore proposals, not readings. Where a page model writes the recipient's name or seat into the last lines of a letter, that page needs a look before it goes into an index, and the cheapest place to look is where kraken and the page model disagree.
 
+**The other 195 pages: no false signature, but the same substitution in the body.** *Added 6 November.* With the letter register (`michaelscho/lassberg`, `correspDesc`) the remaining Transkribus pages were split by sender and their closes read in both page models against kraken:
+
+| Group | Pages | false close, Qwen | false close, olmOCR |
+|---|---:|---:|---:|
+| Wackernagel to Laßberg | 68 | 0 | 0 |
+| not in the register (nearly all Laßberg's own letters, to Zellweger, Hartmann and others) | 89 | 0 | 0 |
+| Laßberg as sender | 38 | not testable | not testable |
+
+On Laßberg's own letters his name belongs at the foot, so a substitution there cannot be seen. Where the page models write Laßberg on the unregistered pages, kraken has a form of his name at the same place ("Jouphevon Lakberg", "IvLaszberg"). Three places stay open because kraken has nothing legible there: a receipt note below the signature (Appenzell 1257), Aarau 1810 and St. Gallen 230_1. The false signature is therefore confined to Pupikofer's letters from Thurgau, a hand the models do not know; Wackernagel's and Laßberg's they read well enough to get the signature right.
+
+In the body of the letter they do it here too. Five pages, each read against kraken:
+
+| Page | Model | page model writes | `kraken-german-xix-blb-v1` reads |
+|---|---|---|---|
+| St. Gallen 254_1 (Laßberg to Hartmann, 1832) | both | "die arbeit für H. von Laszberg" / "Hr. von Lasperg" | "für Hr. von n Tuppin" (Lupin) |
+| UB Freiburg 2326 (Laßberg, 1842) | Qwen | "Herr Meersburg hatte … vertrag", "welchen Meersburg als hofmeister" | "Herr Schücking", "Schühing" |
+| UB Freiburg 2902 (Laßberg, 1850) | olmOCR | "werke des Hr Oberst von Lassberg", "Oberst von Lassher" | "von Etgger", "Efger" (Elgger) |
+| Basel 1729, p. 146 (Wackernagel to Laßberg, 1833) | Qwen | "als ich in Eppishausen war" | "Göllingen" (olmOCR: "Göttingen") |
+| Weimar GSA 96/1743, p. 4 (Laßberg to Leonhard, 1838) | Qwen | signs "Haxthaus" | "Makberg" (olmOCR: "JvLaszberg") |
+
+On 254_1 both models make the same error on the same page for the first time, and Laßberg appears to write about a piece of work done for himself. Weimar runs the other way: Qwen replaces Laßberg's own signature with "Haxthaus", his mother-in-law's family. The closes were read on every page, the bodies not everywhere in full, so five pages is a floor, not a count. The rule above is therefore too narrow. Not only in the signature but anywhere in the text, both page models put Laßberg, Eppishausen or Meersburg where they cannot read a person's or a place's name with confidence, in Laßberg's own letters as well. For an index of persons or places, **every Laßberg, Eppishausen or Meersburg in a page model's reading is to be checked against kraken or the image.**
+
 **One figure is too good to accept without a check.** On the six full pages of `K 3123,57`, some 2,500 to 2,900 characters each, olmOCR errs on 0.2 to 0.6 % of the characters and the Qwen page model on 0.3 to 0.8 %, against 4.7 to 6.9 % for kraken. The evaluation projects of the BLB dataset were excluded from both training requests. Whether the same text is in one of the twenty other datasets of the page recipe has not been checked.
 
 **What it costs.** On the 276 Transkribus pages olmOCR took 18.3 s and 1.41 Wh of the card per page, the Qwen page model 10.5 s and 1.10 Wh. Kraken reads on a CPU.
@@ -623,7 +645,7 @@ And two findings that looked like defects were artefacts of the instrument, whic
 - **Which of two scans of a page is the authoritative one.** For the 27 refused on geometry, two archives hold different photographs of the same leaf — in two cases a scanned opening and a half leaf, a landscape and a portrait. That is a question for the archives, and until it is answered those pages have a transcription and no image that matches it.
 - **Whether a model trained on these pages reads better.** *Answered for one model on the second dataset:* kraken fine-tuned on the BLB lines reads Laßberg's held-out hand at 5.3 % against 14.5 % before, and the manuscripts at 10.1 % against 20.6 % (see [*The first of the three*](#the-first-of-the-three-kraken-on-the-blb-lines)). The two page models on the same dataset read Laßberg's hand at 4.4 % (olmOCR) and 7.4 % (Qwen3.5), and the manuscripts at 12.0 and 13.5 % (see [*The other two*](#the-other-two-the-page-models-through-the-gateway)). Nothing has been trained on the first dataset.
 - **Whether a page model's fluent misreadings can be found without the image.** Where kraken and olmOCR disagree, one of them is wrong, and kraken's errors look like errors. Whether that disagreement marks the fluent misreadings well enough to send only those pages to a person has not been measured.
-- **How often the page models put Laßberg's name where another's stands.** Four of 29 Thurgau pages for each page model, eight together, by reading the closes; the other 195 Transkribus pages have not been read for it. A count needs the sender of each letter, which the register has, against the signature each reading gives.
+- **How often the page models put Laßberg's name where another's stands, in the body of a letter.** The closes of all 224 located Transkribus pages have been read for it: 8 false closes, all in the 29 Thurgau letters. The bodies have not been read in full; the five pages above are a floor. A count needs every person and place name in each reading set against kraken's, which nobody has done.
 - **Whether `K 3123,57` is in a page model's training data.** Both page models read it almost without error; see [*The other two*](#the-other-two-the-page-models-through-the-gateway).
 - **How the fine-tuned kraken model reads the rest of the corpus.** *Answered for the transcribed part:* on the 226 located Transkribus pages it reads at 12.0 % against 16.1 % for the line model that read the corpus (see [*On the Transkribus ground truth*](#on-the-transkribus-ground-truth)). Whether a re-reading of all 6700 pages with it would be the better corpus text has not been tried.
 - **Who produced the BLB full text.** It is identical to this project's transcriptions where both exist; whether it came from the editing project or from the library is not stated by the BLB.
