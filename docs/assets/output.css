@@ -694,3 +694,15 @@ a:focus-visible, .transcription:focus, .rec-text:focus, .rec-panel > summary:foc
 .research-index dt { font-weight: 650; }
 .research-index dd { margin: .3rem 0 0; color: var(--text-muted, #555); }
 .research-language { display: inline-block; margin-left: .4rem; padding: 0 .4rem; border: 1px solid #c3ccd5; border-radius: .3rem; color: var(--text-muted, #555); font-size: .78rem; font-weight: 500; vertical-align: .1em; }
+
+/* The hand along the volume (#778): matrix, curve, outliers — static SVG, no script. */
+.hand-figure { margin: .75rem 0; }
+.hand-figure svg { max-width: 100%; height: auto; display: block; }
+.hand-figure figcaption { font-size: .85rem; color: var(--text-muted, #555); margin-top: .25rem; }
+.hand-matrix__outlier { fill: #b5443a; }
+.hand-curve__line { stroke: #245b78; stroke-width: 1.5; }
+.hand-curve__threshold { stroke: #b5443a; stroke-width: 1; stroke-dasharray: 4 3; }
+.hand-curve__split { stroke: #7b4f9e; stroke-width: 1; stroke-dasharray: 2 3; }
+.hand-curve__outlier { fill: #b5443a; stroke: white; stroke-width: 1.5; }
+.hand-hypothesis { padding: .5rem .75rem; border-left: 3px solid #7b4f9e; background: #f6f2fa; }
+.hand-outliers li { margin: .15rem 0; }
