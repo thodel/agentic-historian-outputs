@@ -1,0 +1,549 @@
+{
+  "question_id": "q-d340228163",
+  "question": "Welche Pflichten hat der Hofmeister von Königsfelden gegenüber dem Konvent?",
+  "filters": {
+    "bestand": "kf",
+    "from": null,
+    "to": null
+  },
+  "plan": {
+    "question": "Welche Pflichten hat der Hofmeister von Königsfelden gegenüber dem Konvent?",
+    "subquestions": [
+      {
+        "id": "q1",
+        "text": "Welche konkreten Aufgaben hat der Hofmeister in der Verwaltung des Klosterbesitzes?",
+        "terms": [
+          "gülte",
+          "besitz",
+          "verwalten"
+        ]
+      },
+      {
+        "id": "q2",
+        "text": "Welche liturgischen Pflichten, etwa Jartzit oder Selmesse, muss der Hofmeister für den Konvent erfüllen?",
+        "terms": [
+          "jartzit",
+          "selmesse",
+          "pflegen"
+        ]
+      },
+      {
+        "id": "q3",
+        "text": "Welche finanziellen Abgaben, wie Almuͦsen, Spende oder Zins, leistet der Hofmeister an den Konvent?",
+        "terms": [
+          "almuͦsen",
+          "spende",
+          "zins"
+        ]
+      },
+      {
+        "id": "q4",
+        "text": "Welche repräsentativen oder rechtlichen Pflichten, etwa Fürbitte oder Handlungen „durch got“, hat der Hofmeister gegenüber dem Konvent?",
+        "terms": [
+          "fùr uns bitten",
+          "durch got",
+          "bestimmung"
+        ]
+      }
+    ],
+    "period": null,
+    "languages": [
+      "de",
+      "la"
+    ],
+    "from_model": true,
+    "bestand": "kf"
+  },
+  "sampled": [
+    "ev-03367cef6735",
+    "ev-040a23a90d1c",
+    "ev-6cb8052cd8f7",
+    "ev-1424dd0c94e1",
+    "ev-fac21100347a",
+    "ev-b5aaeb277c45",
+    "ev-0e45ff88ccfa",
+    "ev-56f6de119cbf",
+    "ev-456180bd97a7",
+    "ev-7452dac44aa3",
+    "ev-c7c32a2030e6",
+    "ev-8cb6a6a55dd1"
+  ],
+  "dropped": [
+    {
+      "evidence_id": "ev-1353a22ffc92",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-214216934a36",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-243b28f73f0b",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-2488256c2471",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-289aab46030f",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-2ad7abaf6afe",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-31c0a5102651",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-369dd2e76550",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-39d368208e01",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3a77c2830a90",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3b150c16aba6",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3dc0fd9a7312",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3e81324f45b0",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3f7f36e0b562",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-417ecd9cacc8",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-4b835eed74bb",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-4d7830715532",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-4dfb49c5b102",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-59f5112eedf9",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-5a31de03c473",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6281b8f4e915",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6592c8a0d038",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6b0b94059a5d",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6b36e5ba1091",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6d28c31878c2",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6e93df75fdbe",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-70c0bf656a11",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-721e7b0879af",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-72835c16b389",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-737b47f5cb15",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-73d0b643711a",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-7b0067aa757b",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-8007f03144ac",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-859d7521bad7",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-877cbbe418cd",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-8b4eb59b7d0b",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9810c435230f",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9b7d12a9726a",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9f41a52d0cdb",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9f8a047cfcdc",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-a16cdefe1f5b",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-a34250620bee",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-a820a4ee6f7f",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-aa6d188412f5",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b136d701cf1d",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b2d555fbc921",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b338257f6081",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b383ee04af9b",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b481f1424cff",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b98d58861618",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-bcfbd1e6d4a4",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-bdb367aff4f8",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-c1dbdcfb59ec",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-c511f6cb5756",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-cc7a66b42ea2",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-cd170b8192e8",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d2e1347e5791",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d5541c6583bd",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d5db779fee29",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d97005fe9406",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-de3e99cbfdd8",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e19696408b94",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e4d4c1439c81",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-ebff20b2c70d",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-ec585ec91cc2",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-ecb236a14a7b",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-efb425302d80",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-f68d41fa6320",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-fe164c86d9a9",
+      "reason": "sample full"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Der Hofmeister muss dem Konvent den vorgesehenen Hof (die Hofanlage) zur Verfügung stellen, damit dieser ihn nutzen und genießen kann.",
+      "bindings": [
+        {
+          "evidence_id": "ev-56f6de119cbf",
+          "quote": "der convente den vorgnanten hof haben, nutzzen und niessen mit unserm und unsers lieben bruͦders her tzog Albrecht guͦtem willen",
+          "ok": true,
+          "reason": "",
+          "layer": "reading",
+          "source_span": "der convente den vorgnanten hof haben, ✳ ✳ nutzzen und niessen mit unserm und unsers lieben bruͦders hˀ her tzog Alb̄ Albrecht guͦtem willen",
+          "gloss": "der convente den vorgesehenen Hof haben, nutzen und genießen mit unserem und unseres lieben Bruders Herzog Albrecht gutem Willen …",
+          "gloss_flags": []
+        }
+      ],
+      "number": 2,
+      "checks": [
+        "Folgt nicht aus der eigenen Übersetzung: Die Übersetzung besagt lediglich, dass der Konvent den vorgesehenen Hof haben, nutzen und genießen soll, und dass dies im guten Willen des Bruders (Herzog Albrecht) geschieht. Sie enthält keinen Hinweis darauf, dass ein Hofmeister dem Konve"
+      ]
+    }
+  ],
+  "rejected_claims": [
+    {
+      "text": "Der Hofmeister von Königsfelden hat die Pflicht, die Güter des Konvents zu bewahren und dafür zu sorgen, dass die Gerechtigkeit des Gotteshauses nicht verloren geht.",
+      "bindings": [
+        {
+          "evidence_id": "ev-1424dd0c94e1",
+          "quote": "und unsern hofmeister fùr sich selbs har inn nuͦtz anders getàn, dann das imm unn ser frow die aͤptissin guͦter gedaͧchtnùstz het bevolhen unn szers gotzhus gerechtikeit und zùgeheͦrd nitt zuͣverlieren.",
+          "ok": false,
+          "reason": "quote not in the cited passage",
+          "layer": "",
+          "source_span": "",
+          "gloss": "und unsern hofmeister für sich selbst hat in Nutzen anders getan, dann das im und unser Frau die Äbtissin Güter Gedächtnis hat befohlen und ihres Gotteshaus Gerechtigkeit und Zugehörigkeit nicht zu verlieren.",
+          "gloss_flags": []
+        }
+      ],
+      "number": 1,
+      "checks": []
+    },
+    {
+      "text": "Der Hofmeister ist verpflichtet, die finanziellen Angelegenheiten des Konvents zu verwalten, insbesondere die Zinsen und Erträge aus den Gütern, und dafür zu sorgen, dass diese korrekt behandelt werden.",
+      "bindings": [
+        {
+          "evidence_id": "ev-0e45ff88ccfa",
+          "quote": "die hofmeister von ir wegen, die von Mùlinen und ander, so ver meinnen und vor inn haben die guͤter, so er in anspräch hab, sòllent zem teil ir eigen und nit lehen sin … allein begerte er siner zinsen nach dem und im die von alter har geben",
+          "ok": false,
+          "reason": "quote not in the cited passage",
+          "layer": "",
+          "source_span": "",
+          "gloss": "die Hofmeister von ihr wegen, die von Mùlinen und ander, so vermeinen und vor ihr haben die Güter, so er in Ansprache hat, sollen zu dem Teil ihr eigen und nicht leihen sein … allein begehren er seiner Zinsen nach dem und im die von alter her geben …",
+          "gloss_flags": []
+        }
+      ],
+      "number": 3,
+      "checks": []
+    }
+  ],
+  "summary": "",
+  "summary_rejected": "1 sentence(s) withheld: cites no claim",
+  "coverage": [
+    {
+      "subquestion": "q1",
+      "retriever": "passages",
+      "query": "Welche konkreten Aufgaben hat der Hofmeister in der Verwaltung des Klosterbesitzes?",
+      "status": "not in holding",
+      "hits": 0,
+      "error": "none of our own transcriptions is in holding kf"
+    },
+    {
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "gülte",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "guͤlte",
+      "status": "ok",
+      "hits": 4
+    },
+    {
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "besitz",
+      "status": "ok",
+      "hits": 3
+    },
+    {
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "verwalten",
+      "status": "empty",
+      "hits": 0
+    },
+    {
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "jartzit",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "selmesse",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "pflegen",
+      "status": "ok",
+      "hits": 2
+    },
+    {
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "almuͦsen",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "spende",
+      "status": "ok",
+      "hits": 3
+    },
+    {
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "zins",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "fùr uns bitten",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "durch got",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "bestimmung",
+      "status": "empty",
+      "hits": 0
+    }
+  ],
+  "gaps": [],
+  "audit": {
+    "max_tokens": 300000,
+    "max_calls": 12,
+    "calls": [
+      {
+        "stage": "plan",
+        "prompt_tokens": 800,
+        "completion_tokens": 761
+      },
+      {
+        "stage": "bind",
+        "prompt_tokens": 6089,
+        "completion_tokens": 2597
+      },
+      {
+        "stage": "verify",
+        "prompt_tokens": 328,
+        "completion_tokens": 423
+      },
+      {
+        "stage": "reflect-1",
+        "prompt_tokens": 902,
+        "completion_tokens": 789
+      }
+    ],
+    "prompt_tokens": 8119,
+    "completion_tokens": 4570,
+    "unknown_usage_calls": 0,
+    "rounds": 1,
+    "stopped_because": "",
+    "skipped": [],
+    "events": [
+      "model: gpt-oss-120b",
+      "bind: summary — 1 sentence(s) withheld: cites no claim"
+    ],
+    "tokens": 12689
+  },
+  "complete": true,
+  "created_at": "2026-11-12T10:57:14+00:00"
+}

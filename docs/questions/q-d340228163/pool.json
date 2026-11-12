@@ -1,0 +1,3104 @@
+{
+  "ev-4b835eed74bb": {
+    "evidence_id": "ev-4b835eed74bb",
+    "doc_id": "U-17_0182",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 182,
+    "quote": "…gûlte began sullent daz jarzit ✳ un sˀs sers lieben hˀ her ren und bruders chûnig Frid rˀ rich , seligen , ✳ in alle wise, ✳ als daz unser. ✳ und von dˀ der ûbrigen gulte ✳ sullent…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1340",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0182"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "gülte",
+      "period": "unchecked"
+    },
+    "reading_text": "…gûlte began sullent daz jarzit un sers lieben her ren und bruders chûnig Frid rich , seligen , in alle wise, als daz unser. und von der ûbrigen gulte sullent…"
+  },
+  "ev-de3e99cbfdd8": {
+    "evidence_id": "ev-de3e99cbfdd8",
+    "doc_id": "U-17_0179",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 198,
+    "quote": "…stucke herren gûlte sines eygenen guͦtes, ✳ die selben gùlte ze Vilmerin gē gen , ze Wile bi Baden ✳ und ze Gebistorf gelegen sint, ✳ und hat in ✳ die vorgnanten gùlte gegeben also bescheidenlich…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1339",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0179"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "gülte",
+      "period": "unchecked"
+    },
+    "reading_text": "…stucke herren gûlte sines eygenen guͦtes, die selben gùlte ze Vilmerin gen , ze Wile bi Baden und ze Gebistorf gelegen sint, und hat in die vorgnanten gùlte gegeben also bescheidenlich…"
+  },
+  "ev-73d0b643711a": {
+    "evidence_id": "ev-73d0b643711a",
+    "doc_id": "U-17_0309",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 171,
+    "quote": "…und da von schaffen und ordenen wir ✳ un smˀ serm ge tˀwn truwn Uͦlrichen, un smˀ serm keller, dise nachgeschri b̄n ben gùlte und das gelt zuͦ einem rechten lipdinge, uf…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1361",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0309"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "gülte",
+      "period": "unchecked"
+    },
+    "reading_text": "…und da von schaffen und ordenen wir un serm ge truwn Uͦlrichen, un serm keller, dise nachgeschri ben gùlte und das gelt zuͦ einem rechten lipdinge, uf…"
+  },
+  "ev-7b0067aa757b": {
+    "evidence_id": "ev-7b0067aa757b",
+    "doc_id": "U-17_0180",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 200,
+    "quote": "…chlosters ze Chungesfelt, Sant Claren ordens, in Costentzer bistuͦm, ✳ zehen schilling phen nīg ning gùlte, die man uns jerlich geben solte ✳ von dem zehenden ze Schafhusen in den hof ze Halderwang…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1339",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0180"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "gülte",
+      "period": "unchecked"
+    },
+    "reading_text": "…chlosters ze Chungesfelt, Sant Claren ordens, in Costentzer bistuͦm, zehen schilling phen ning gùlte, die man uns jerlich geben solte von dem zehenden ze Schafhusen in den hof ze Halderwang…"
+  },
+  "ev-2488256c2471": {
+    "evidence_id": "ev-2488256c2471",
+    "doc_id": "U-17_0107",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 169,
+    "quote": "…ez in iren briefen verschriben ist, und ùber zehen march gùlte, die das selbe chloster gekoͧffet hat, ✳ und zwo march gùlte, die von dem er bˀn bern ritter von Wola ko…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1330",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0107"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "gülte",
+      "period": "unchecked"
+    },
+    "reading_text": "…ez in iren briefen verschriben ist, und ùber zehen march gùlte, die das selbe chloster gekoͧffet hat, und zwo march gùlte, die von dem er bern ritter von Wola ko…"
+  },
+  "ev-a16cdefe1f5b": {
+    "evidence_id": "ev-a16cdefe1f5b",
+    "doc_id": "U-17_0252",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 172,
+    "quote": "…und swenne er nicht enist, so sol dù vorgenant gùlte gàntzlich und gar lideglich wider an ùns vallen, ald aber an die herschaft, ob wir nicht en wˀen weren . ✳ und dez zu…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1354",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0252"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "gülte",
+      "period": "unchecked"
+    },
+    "reading_text": "…und swenne er nicht enist, so sol dù vorgenant gùlte gàntzlich und gar lideglich wider an ùns vallen, ald aber an die herschaft, ob wir nicht en weren . und dez zu…"
+  },
+  "ev-3f7f36e0b562": {
+    "evidence_id": "ev-3f7f36e0b562",
+    "doc_id": "U-17_0185a",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 170,
+    "quote": "…her tzog Albreht ✳ un sˀm serm chloster ze Chùngesfelt gegeben hat sechs mrͣch herren gùlte, ✳ die gelegen sint in den bennen der doͤrfer ze Greni-kon und ze Sure. ✳ da…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1340",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0185a"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "gülte",
+      "period": "unchecked"
+    },
+    "reading_text": "…her tzog Albreht un serm chloster ze Chùngesfelt gegeben hat sechs mrͣch herren gùlte, die gelegen sint in den bennen der doͤrfer ze Greni-kon und ze Sure. da…"
+  },
+  "ev-9b7d12a9726a": {
+    "evidence_id": "ev-9b7d12a9726a",
+    "doc_id": "U-17_0207",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 190,
+    "quote": "…gùlte ✳ ùntzint har ✳ genossen un̄ und gehebet hat ✳ an alle geverde. ✳ oͧch hat die selbe jungfrow Clare ✳ mit dez vorgˀ vorgenanten ires voͧgtes handen ✳ die vorgeschrib nē nen gùlte ge…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1345",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0207"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "gülte",
+      "period": "unchecked"
+    },
+    "reading_text": "…gùlte ùntzint har genossen und gehebet hat an alle geverde. oͧch hat die selbe jungfrow Clare mit dez vorgenanten ires voͧgtes handen die vorgeschrib nen gùlte ge…"
+  },
+  "ev-cd170b8192e8": {
+    "evidence_id": "ev-cd170b8192e8",
+    "doc_id": "U-17_0165",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 172,
+    "quote": "…gegeben haben ✳ und ge bē ben mit disem brief ✳ zwelf march und siben stuk herren gûlte ✳ unsers eigens, das ze Vilmeringen und ze Wile bi Ba dē den gelegen ist und hie…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1337",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0165"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "gülte",
+      "period": "unchecked"
+    },
+    "reading_text": "…gegeben haben und ge ben mit disem brief zwelf march und siben stuk herren gûlte unsers eigens, das ze Vilmeringen und ze Wile bi Ba den gelegen ist und hie…"
+  },
+  "ev-6b36e5ba1091": {
+    "evidence_id": "ev-6b36e5ba1091",
+    "doc_id": "AA_0429_0309a",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 190,
+    "quote": "…unnd da von so schaffen unnd ordnen wir der bschei dn̄ den , unnser getrùwen, lieben Annen von Munolfingen, unnser junckfròwn, unnd die neùn dise nachgeschriben gùlte unnd guͤter ze ei nē…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1361",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG AA/0429, fol. 46r-46v (Abschrift der Urk. 0309a)"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "gülte",
+      "period": "unchecked"
+    },
+    "reading_text": "…unnd da von so schaffen unnd ordnen wir der bschei den , unnser getrùwen, lieben Annen von Munolfingen, unnser junckfròwn, unnd die neùn dise nachgeschriben gùlte unnd guͤter ze ei nē…"
+  },
+  "ev-1353a22ffc92": {
+    "evidence_id": "ev-1353a22ffc92",
+    "doc_id": "U-17_0175",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 148,
+    "quote": "…gˀn gern , ✳ zwo march hˀ her ren guͤlte, ✳ die ab den muͤlinen ✳ ze Zovingen, ✳ und oûch zwo march hˀ her ren guͤlte ✳ ab an dˀn dern un sˀn sern…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1338",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0175"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "guͤlte",
+      "period": "unchecked"
+    },
+    "reading_text": "gern , zwo march her ren guͤlte, die ab den muͤlinen ze Zovingen, und oûch zwo march her ren guͤlte ab an dern un sern…"
+  },
+  "ev-a34250620bee": {
+    "evidence_id": "ev-a34250620bee",
+    "doc_id": "U-17_0190",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 168,
+    "quote": "…convent unse rˀ rer stift ze Chuͤnigsveld ✳ in satzes weise ✳ aùf die vier march guͤlte, ✳ so seù von der von Hallwil, seli gē gen , innehabent, ✳ die ze Hˀ Her mans…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1341",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0190"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "guͤlte",
+      "period": "unchecked"
+    },
+    "reading_text": "…convent unse rer stift ze Chuͤnigsveld in satzes weise aùf die vier march guͤlte, so seù von der von Hallwil, seli gen , innehabent, die ze Her mans…"
+  },
+  "ev-ecb236a14a7b": {
+    "evidence_id": "ev-ecb236a14a7b",
+    "doc_id": "U-17_0020a",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 177,
+    "quote": "…diͤ sechs priͤster ewichleichen haben, ✳ also daz je dem priͤster ✳ vier march herren guͤlte ✳ als des landes gewonhait da ist gevallen. ✳ ouch wellen wiͤr, daz diͤ Minner bru…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1311",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0020a"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "guͤlte",
+      "period": "unchecked"
+    },
+    "reading_text": "…diͤ sechs priͤster ewichleichen haben, also daz je dem priͤster vier march herren guͤlte als des landes gewonhait da ist gevallen. ouch wellen wiͤr, daz diͤ Minner bru…"
+  },
+  "ev-721e7b0879af": {
+    "evidence_id": "ev-721e7b0879af",
+    "doc_id": "U-17_0901_01",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 176,
+    "quote": "…wēn wenn sünder urloub, ✳ gunst unnd willen. ✳ unnd so lang ich soͤliche pfruͦnd besitz, ✳ mich der frücht ✳ unnd zuͦfaͤ len̄ lenn , wie mir dann die ✳ von obbenan ten̄ tenn…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1516",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0901/01"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "besitz",
+      "period": "unchecked"
+    },
+    "reading_text": "wenn sünder urloub, gunst unnd willen. unnd so lang ich soͤliche pfruͦnd besitz, mich der frücht unnd zuͦfaͤ lenn , wie mir dann die von obbenan tenn…"
+  },
+  "ev-efb425302d80": {
+    "evidence_id": "ev-efb425302d80",
+    "doc_id": "AA_0428_0102a",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 194,
+    "quote": "✳ xxviij ✳ ¶ Der brief ùber die ✳ die niht ¶ eigener jartzit hant. ✳ 102a Wir, Ag¬nes, von gotz gnaden wilent chùnegin ze Ungern, ✳ tuͦn kunt allen den, die disen brief ansehent, ✳ lesent ✳ odˀ…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1329",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG AA/0428, fol. 122r-122v (Abschrift der Urk. 0102a)"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "jartzit",
+      "period": "unchecked"
+    },
+    "reading_text": "xxviij ¶ Der brief ùber die die niht ¶ eigener jartzit hant. 102a Wir, Agnes, von gotz gnaden wilent chùnegin ze Ungern, tuͦn kunt allen den, die disen brief ansehent, lesent odˀ…"
+  },
+  "ev-bcfbd1e6d4a4": {
+    "evidence_id": "ev-bcfbd1e6d4a4",
+    "doc_id": "AA_0428_0151a",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 197,
+    "quote": "…lieben herren und bruͦders, chùnig Fridrichs, seligen, husfrowen, ✳ mit der be¬scheidenheit, das si eweclich allù jar ir jartzit began sùllent an sant Marga¬ reten tag . ✳ also das dù swester, dù…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1335",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG AA/0428, fol. 121v-122r (Abschrift der Urk. 0151a)"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "jartzit",
+      "period": "unchecked"
+    },
+    "reading_text": "…lieben herren und bruͦders, chùnig Fridrichs, seligen, husfrowen, mit der bescheidenheit, das si eweclich allù jar ir jartzit began sùllent an sant Marga reten tag . also das dù swester, dù…"
+  },
+  "ev-9f8a047cfcdc": {
+    "evidence_id": "ev-9f8a047cfcdc",
+    "doc_id": "U-17_0885",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 203,
+    "quote": "…kamend für mich ingericht Ruͦdolff Müller, jartzit knecht zuͦ Küngsfel dn̄ den , ✳ innamen der geistli chē chen fro wē wen , ✳ frow Anna Segesserin, die zitt jartzit frow ✳ des gotzhuses zuͦ Kùngsfel…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1513",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0885"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "jartzit",
+      "period": "unchecked"
+    },
+    "reading_text": "…kamend für mich ingericht Ruͦdolff Müller, jartzit knecht zuͦ Küngsfel den , innamen der geistli chen fro wen , frow Anna Segesserin, die zitt jartzit frow des gotzhuses zuͦ Kùngsfel…"
+  },
+  "ev-d97005fe9406": {
+    "evidence_id": "ev-d97005fe9406",
+    "doc_id": "U-17_0461",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 145,
+    "quote": "…xvj ✳ Saltzmans jartzit gele g₎ gen ze Muͤnental ✳ Moͤnental j j mt mütt kn̄ kernen geltz ✳ ab ei nē nem guͦt zuͦ Muͤ nē nen tal ✳ K ✳ P ✳ 20…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1404",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0461"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "jartzit",
+      "period": "unchecked"
+    },
+    "reading_text": "…xvj Saltzmans jartzit gele gen ze Muͤnental Moͤnental j j mt mütt kernen geltz ab ei nem guͦt zuͦ Muͤ nen tal K P 20…"
+  },
+  "ev-6592c8a0d038": {
+    "evidence_id": "ev-6592c8a0d038",
+    "doc_id": "U-17_0770",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 170,
+    "quote": "…und ich es dan alles li chēn chenn und bevel hn̄ hen wie obstat zuͦ Cuͦnrat Widmers als einem amptman zuͦ handen des järtzit ampts zuͦ Kungsvelden. das alles zuͦ stund…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1474",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0770"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "jartzit",
+      "period": "unchecked"
+    },
+    "reading_text": "…und ich es dan alles li chenn und bevel hen wie obstat zuͦ Cuͦnrat Widmers als einem amptman zuͦ handen des järtzit ampts zuͦ Kungsvelden. das alles zuͦ stund…"
+  },
+  "ev-b338257f6081": {
+    "evidence_id": "ev-b338257f6081",
+    "doc_id": "U-17_0143",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 160,
+    "quote": "…jartzit began suͤllen an sant Syxten tag mit einer gesun gˀ gen selmesse und mit an dnˀ dern guͦten dingen ✳ un̄ und dù swes tˀ ter , dù der herschaft jartzit…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1334",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0143"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "jartzit",
+      "period": "unchecked"
+    },
+    "reading_text": "…jartzit began suͤllen an sant Syxten tag mit einer gesun gen selmesse und mit an dern guͦten dingen und dù swes ter , dù der herschaft jartzit…"
+  },
+  "ev-d5db779fee29": {
+    "evidence_id": "ev-d5db779fee29",
+    "doc_id": "U-17_0185a",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 150,
+    "quote": "…wanne aber das nût ist, ✳ so sol man in oͧch nichtz geben. ✳ wir wel lē len oͧch, das man dù selben jartzit begange nach aller der wise gar un̄ und…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1340",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0185a"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "jartzit",
+      "period": "unchecked"
+    },
+    "reading_text": "…wanne aber das nût ist, so sol man in oͧch nichtz geben. wir wel len oͧch, das man dù selben jartzit begange nach aller der wise gar und…"
+  },
+  "ev-d2e1347e5791": {
+    "evidence_id": "ev-d2e1347e5791",
+    "doc_id": "U-17_0745",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 169,
+    "quote": "…und also offnet der vorgenant Cuͦnrat Widmer durch si nē nen fûrsprechen, an statt und in na mē men der erwirdi gē gen froͧ wē wen , frow Annen Fundin, der jartzit…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1468",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0745"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "jartzit",
+      "period": "unchecked"
+    },
+    "reading_text": "…und also offnet der vorgenant Cuͦnrat Widmer durch si nen fûrsprechen, an statt und in na men der erwirdi gen froͧ wen , frow Annen Fundin, der jartzit…"
+  },
+  "ev-cc7a66b42ea2": {
+    "evidence_id": "ev-cc7a66b42ea2",
+    "doc_id": "U-17_0104",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 192,
+    "quote": "…der epthissenn und dem convente des chlosters ze Chûngesfeld ✳ mit der bescheidenheit, das si ir jartzit allû jar begen sûllen ewecklich an sant Fridelins abent. also das dù swes tˀ ter , dû…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1330",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0104"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "jartzit",
+      "period": "unchecked"
+    },
+    "reading_text": "…der epthissenn und dem convente des chlosters ze Chûngesfeld mit der bescheidenheit, das si ir jartzit allû jar begen sûllen ewecklich an sant Fridelins abent. also das dù swes ter , dû…"
+  },
+  "ev-5a31de03c473": {
+    "evidence_id": "ev-5a31de03c473",
+    "doc_id": "U-17_0185a",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 198,
+    "quote": "…selben tages ein selmesse ze singenne un̄ und eine vigilie ✳ un̄ und ein jecklicher bruͦder sunderlich ein selmesse zesprechenne. ✳ die frowen sùllent oͧch singen ein selmesse und ein vigily ✳ und…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1340",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0185a"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "selmesse",
+      "period": "unchecked"
+    },
+    "reading_text": "…selben tages ein selmesse ze singenne und eine vigilie und ein jecklicher bruͦder sunderlich ein selmesse zesprechenne. die frowen sùllent oͧch singen ein selmesse und ein vigily und…"
+  },
+  "ev-59f5112eedf9": {
+    "evidence_id": "ev-59f5112eedf9",
+    "doc_id": "U-17_0187a",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 178,
+    "quote": "…singen und ein vigily und je der bruͦder besunder ein selmesse spreche. ✳ die frowen sùllent och oͧch ein selmesse singen und ein vigily und dù swester besunder ein vigilie und…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1340",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0187a"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "selmesse",
+      "period": "unchecked"
+    },
+    "reading_text": "…singen und ein vigily und je der bruͦder besunder ein selmesse spreche. die frowen sùllent och oͧch ein selmesse singen und ein vigily und dù swester besunder ein vigilie und…"
+  },
+  "ev-39d368208e01": {
+    "evidence_id": "ev-39d368208e01",
+    "doc_id": "U-17_0116_01",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 171,
+    "quote": "…oͧch, das die bruͦder gebunden sin, ein selmesse ze singend und ein vigilii ✳ und ein jecklich bruͦder besunder ein selmesse, ✳ und das oͧch die frowen gebunden sin, ein…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1330",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0116/01"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "selmesse",
+      "period": "unchecked"
+    },
+    "reading_text": "…oͧch, das die bruͦder gebunden sin, ein selmesse ze singend und ein vigilii und ein jecklich bruͦder besunder ein selmesse, und das oͧch die frowen gebunden sin, ein…"
+  },
+  "ev-369dd2e76550": {
+    "evidence_id": "ev-369dd2e76550",
+    "doc_id": "U-17_0116_02",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 168,
+    "quote": "…oͧch, das die bruͦder gebunden sin, ein selmesse ze singend und ein vigilii und ein jecklich bruͦder besunder ein selmesse, ✳ un̄ und das oͧch die frowen gebunden sin…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1330",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0116/02"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "selmesse",
+      "period": "unchecked"
+    },
+    "reading_text": "…oͧch, das die bruͦder gebunden sin, ein selmesse ze singend und ein vigilii und ein jecklich bruͦder besunder ein selmesse, und das oͧch die frowen gebunden sin…"
+  },
+  "ev-6e93df75fdbe": {
+    "evidence_id": "ev-6e93df75fdbe",
+    "doc_id": "AA_0428_0151a",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 205,
+    "quote": "…teren , ✳ vigilen und selmesse, als andrù un sˀ ser geswistergit jartzit, ✳ dù nit eigener jartzit habent. ✳ die fròwen sùllent ouch zuͦ jetwederin jartzit singen ein vigilie und ein selmesse ✳ und je dù…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1335",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG AA/0428, fol. 121v-122r (Abschrift der Urk. 0151a)"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "selmesse",
+      "period": "unchecked"
+    },
+    "reading_text": "…teren , vigilen und selmesse, als andrù un ser geswistergit jartzit, dù nit eigener jartzit habent. die fròwen sùllent ouch zuͦ jetwederin jartzit singen ein vigilie und ein selmesse und je dù…"
+  },
+  "ev-d5541c6583bd": {
+    "evidence_id": "ev-d5541c6583bd",
+    "doc_id": "U-17_0104",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 185,
+    "quote": "…teile under gemein arme lûte. ✳ die frowen sùllent oͧch singen ein vigilie und ein selmesse. ✳ und je dû swester besunder sol sprechen ein vigilie und einen placebo und hun¬dert pater…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1330",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0104"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "selmesse",
+      "period": "unchecked"
+    },
+    "reading_text": "…teile under gemein arme lûte. die frowen sùllent oͧch singen ein vigilie und ein selmesse. und je dû swester besunder sol sprechen ein vigilie und einen placebo und hundert pater…"
+  },
+  "ev-e19696408b94": {
+    "evidence_id": "ev-e19696408b94",
+    "doc_id": "U-17_0143",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 154,
+    "quote": "…chloster ir jartzit began suͤllen an sant Syxten tag mit einer gesun gˀ gen selmesse und mit an dnˀ dern guͦten dingen ✳ un̄ und dù swes tˀ ter , dù der…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1334",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0143"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "selmesse",
+      "period": "unchecked"
+    },
+    "reading_text": "…chloster ir jartzit began suͤllen an sant Syxten tag mit einer gesun gen selmesse und mit an dern guͦten dingen und dù swes ter , dù der…"
+  },
+  "ev-8b4eb59b7d0b": {
+    "evidence_id": "ev-8b4eb59b7d0b",
+    "doc_id": "AA_0428_0102a",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 195,
+    "quote": "…swestran dar zuͦ gebunden sin, daz si ze jecklichem jartzit singen ein vigilie und ein selmesse, ✳ und das je dù swester speche spreche ein vigilia und einen placebo besunder, ✳ und ein hundert…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1329",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG AA/0428, fol. 122r-122v (Abschrift der Urk. 0102a)"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "selmesse",
+      "period": "unchecked"
+    },
+    "reading_text": "…swestran dar zuͦ gebunden sin, daz si ze jecklichem jartzit singen ein vigilie und ein selmesse, und das je dù swester speche spreche ein vigilia und einen placebo besunder, und ein hundert…"
+  },
+  "ev-b98d58861618": {
+    "evidence_id": "ev-b98d58861618",
+    "doc_id": "U-17_0074",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 183,
+    "quote": "…wachs. ✳ da von man sol kerzen machen, ✳ die man brenne, die wile man vigily und selmesse singet. ✳ und sùllen an einem jecklichem der sel bē ben jartage den ✳ Minren Bruͦdern, die…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1322",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0074"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "selmesse",
+      "period": "unchecked"
+    },
+    "reading_text": "…wachs. da von man sol kerzen machen, die man brenne, die wile man vigily und selmesse singet. und sùllen an einem jecklichem der sel ben jartage den Minren Bruͦdern, die…"
+  },
+  "ev-737b47f5cb15": {
+    "evidence_id": "ev-737b47f5cb15",
+    "doc_id": "AA_0428_0102d",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 173,
+    "quote": "…tern ze vier malen in dem jar lassent nach der regel, der sol dù kelnerin pflegen nach der epthissenn rat, als gewonlich ist, ✳ und ouch der swes tˀn tern , die dù epthiss…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1330",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG AA/0428, fol. 27r-28v (Abschrift der Urk. 0102d)"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "pflegen",
+      "period": "unchecked"
+    },
+    "reading_text": "…tern ze vier malen in dem jar lassent nach der regel, der sol dù kelnerin pflegen nach der epthissenn rat, als gewonlich ist, und ouch der swes tern , die dù epthiss…"
+  },
+  "ev-b481f1424cff": {
+    "evidence_id": "ev-b481f1424cff",
+    "doc_id": "U-17_0288",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 169,
+    "quote": "…mit disem almuͦsen, ✳ und ordenen und wellen, dz ein bruͦder, der hie ze Kùngsvelt der fro wē wen bihter ist in dem closter, ✳ dz vorgenant almuͦsen enphahen ✳ und in…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1359",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0288"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "almuͦsen",
+      "period": "unchecked"
+    },
+    "reading_text": "…mit disem almuͦsen, und ordenen und wellen, dz ein bruͦder, der hie ze Kùngsvelt der fro wen bihter ist in dem closter, dz vorgenant almuͦsen enphahen und in…"
+  },
+  "ev-fe164c86d9a9": {
+    "evidence_id": "ev-fe164c86d9a9",
+    "doc_id": "U-17_0145",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 152,
+    "quote": "…der Jacob ✳ dù vorgnan tē ten ding gebuwen und gekoͧffet hat mit erberr lùte almuͦsen. ✳ man sol oͧch wissen, da vor got si, das unser hˀ her re ùber…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1334",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0145"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "almuͦsen",
+      "period": "unchecked"
+    },
+    "reading_text": "…der Jacob dù vorgnan ten ding gebuwen und gekoͧffet hat mit erberr lùte almuͦsen. man sol oͧch wissen, da vor got si, das unser her re ùber…"
+  },
+  "ev-289aab46030f": {
+    "evidence_id": "ev-289aab46030f",
+    "doc_id": "U-17_0075",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 171,
+    "quote": "…und swaz si des hoves die wile geniezzent, ✳ daz geben wir in ze einem rehtem almuͦsen ✳ und lazzen es in durch got ✳ und durch unser und aller unser vordern sele willen…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1322",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0075"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "almuͦsen",
+      "period": "unchecked"
+    },
+    "reading_text": "…und swaz si des hoves die wile geniezzent, daz geben wir in ze einem rehtem almuͦsen und lazzen es in durch got und durch unser und aller unser vordern sele willen…"
+  },
+  "ev-9f41a52d0cdb": {
+    "evidence_id": "ev-9f41a52d0cdb",
+    "doc_id": "U-17_0109",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 166,
+    "quote": "…und swas si des hofes die wile geniessent, das geben wir in ze einem rehten almuͦsen ✳ und lassen ez in dur got und durch unser und aller unserr vordern sele willen…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1330",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0109"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "almuͦsen",
+      "period": "unchecked"
+    },
+    "reading_text": "…und swas si des hofes die wile geniessent, das geben wir in ze einem rehten almuͦsen und lassen ez in dur got und durch unser und aller unserr vordern sele willen…"
+  },
+  "ev-c1dbdcfb59ec": {
+    "evidence_id": "ev-c1dbdcfb59ec",
+    "doc_id": "U-17_0104",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 175,
+    "quote": "…drù und zwaintzig stuck giltet, das selbe guͦt wir koͧft haben mit dem almuͦsen unserr hertzlieben swester seli gē gen ✳ Guͦten, grefinne von ✳ Oͤttingen, geben und gegeben…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1330",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0104"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "almuͦsen",
+      "period": "unchecked"
+    },
+    "reading_text": "…drù und zwaintzig stuck giltet, das selbe guͦt wir koͧft haben mit dem almuͦsen unserr hertzlieben swester seli gen Guͦten, grefinne von Oͤttingen, geben und gegeben…"
+  },
+  "ev-b136d701cf1d": {
+    "evidence_id": "ev-b136d701cf1d",
+    "doc_id": "U-17_0316",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 190,
+    "quote": "…ge tˀ tru wn, die eptissinnͤ ✳ und ✳ ✳ der convent ze Kunigsvelt, ✳ das vorgeschri bn̄ ben almuͦsen ✳ gebunden sùllen sin ze gebennͤ dien vorbenemten ꝑ per sonen jeklichem die wile un̄ und…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1362",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0316"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "almuͦsen",
+      "period": "unchecked"
+    },
+    "reading_text": "…ge tru wn, die eptissinnͤ und der convent ze Kunigsvelt, das vorgeschri ben almuͦsen gebunden sùllen sin ze gebennͤ dien vorbenemten per sonen jeklichem die wile und…"
+  },
+  "ev-214216934a36": {
+    "evidence_id": "ev-214216934a36",
+    "doc_id": "AA_0428_0151a",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 215,
+    "quote": "…han den geistlichen frowen, der ✳ ✳ eptischin und dem ✳ ✳ convente unsers chlosters ze Chùngesvelt, mit dem almuͦsen unser lieben frowen un̄ und swester, chuneginne Elizabethen, un sˀs sers 111. 122. lieben herren…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1335",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG AA/0428, fol. 121v-122r (Abschrift der Urk. 0151a)"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "almuͦsen",
+      "period": "unchecked"
+    },
+    "reading_text": "…han den geistlichen frowen, der eptischin und dem convente unsers chlosters ze Chùngesvelt, mit dem almuͦsen unser lieben frowen und swester, chuneginne Elizabethen, un sers 111. 122. lieben herren…"
+  },
+  "ev-9810c435230f": {
+    "evidence_id": "ev-9810c435230f",
+    "doc_id": "U-17_0319",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 194,
+    "quote": "…gedinge, ✳ dz si allû jare eweclich ✳ von unsern wêgen ✳ luterlich durch got ✳ zuͦ einem rêhten almuͦsen ✳ da von richten und gêben soͤllen ✳ un sˀn sern getrùwen, andaͤhtigen, ✳ ✳ dem gardian…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1363",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0319"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "almuͦsen",
+      "period": "unchecked"
+    },
+    "reading_text": "…gedinge, dz si allû jare eweclich von unsern wêgen luterlich durch got zuͦ einem rêhten almuͦsen da von richten und gêben soͤllen un sern getrùwen, andaͤhtigen, dem gardian…"
+  },
+  "ev-3dc0fd9a7312": {
+    "evidence_id": "ev-3dc0fd9a7312",
+    "doc_id": "U-17_0143",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 174,
+    "quote": "…und ein stucke an das lieht in der kylchen, ✳ un̄ und zwei stucke zuͦ der spende gemeinen, armen lùten, ✳ und den swestern in dem chloster ein pfunt zuͦ dem male, ✳ und ein…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1334",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0143"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "spende",
+      "period": "unchecked"
+    },
+    "reading_text": "…und ein stucke an das lieht in der kylchen, und zwei stucke zuͦ der spende gemeinen, armen lùten, und den swestern in dem chloster ein pfunt zuͦ dem male, und ein…"
+  },
+  "ev-6281b8f4e915": {
+    "evidence_id": "ev-6281b8f4e915",
+    "doc_id": "AA_0428_0152_alt",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 188,
+    "quote": "…30 lieben hˀ her ren und vat tˀs ters , chùnig ✳ Albˀ Albrechts , ✳ se¬ligen, ✳ und unser lieben fròwen und muͦ¬ter, chùneginne Eliza b̄ƺ bethen , seligen, ✳ also das man ùber die spende…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1335",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG AA/0428, fol. 28v-30v (Abschrift der Urk. 0152*)"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "spende",
+      "period": "unchecked"
+    },
+    "reading_text": "…30 lieben her ren und vat ters , chùnig Albrechts , seligen, und unser lieben fròwen und muͦter, chùneginne Eliza bethen , seligen, also das man ùber die spende…"
+  },
+  "ev-3a77c2830a90": {
+    "evidence_id": "ev-3a77c2830a90",
+    "doc_id": "U-17_0204",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 182,
+    "quote": "…geben und oͧch ✳ ✳ den kloster froͧwen zwei viertel ✳ und armen lûten an ein spende ze Kûngesfelt ein mût dur des egen̄ egenanten Joh̄s Johans seligen sele willen ✳ und durch ✳ daz…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1344",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0204"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "spende",
+      "period": "unchecked"
+    },
+    "reading_text": "…geben und oͧch den kloster froͧwen zwei viertel und armen lûten an ein spende ze Kûngesfelt ein mût dur des egenanten Johans seligen sele willen und durch daz…"
+  },
+  "ev-3e81324f45b0": {
+    "evidence_id": "ev-3e81324f45b0",
+    "doc_id": "U-17_0718_01",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 191,
+    "quote": "…und si ouch umb die versessnen zins, so uff sechszechen jàr har daruff unbezalt usstuͤnden und inen des obgemelten koufs ✳ halb zuͦ gehorten, ✳ bezaln, ✳ denn si zuͦ irm zins vorgenempt all…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1462",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0718/01"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "zins",
+      "period": "unchecked"
+    },
+    "reading_text": "…und si ouch umb die versessnen zins, so uff sechszechen jàr har daruff unbezalt usstuͤnden und inen des obgemelten koufs halb zuͦ gehorten, bezaln, denn si zuͦ irm zins vorgenempt all…"
+  },
+  "ev-a820a4ee6f7f": {
+    "evidence_id": "ev-a820a4ee6f7f",
+    "doc_id": "U-17_0779",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 174,
+    "quote": "…das befroͤmdette inn, ✳ denn Uͤlin Zuͦlouff und sin forde rˀn ren hetten soͤlichen zins allwegen lenger denn viertzig jar geben gewert ✳ und solich aker ouch nye inn gehept…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1428",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0779"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "zins",
+      "period": "unchecked"
+    },
+    "reading_text": "…das befroͤmdette inn, denn Uͤlin Zuͦlouff und sin forde ren hetten soͤlichen zins allwegen lenger denn viertzig jar geben gewert und solich aker ouch nye inn gehept…"
+  },
+  "ev-ec585ec91cc2": {
+    "evidence_id": "ev-ec585ec91cc2",
+    "doc_id": "U-17_0748_04",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 173,
+    "quote": "…und also umb er deszhalb des sicher sye und soͤlich zins und houbtguͦts mit minderm costen und verlust beziechen und in bringen mog, so haben wir im, dem obgenanten ✳ Hans…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1470",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0748/04"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "zins",
+      "period": "unchecked"
+    },
+    "reading_text": "…und also umb er deszhalb des sicher sye und soͤlich zins und houbtguͦts mit minderm costen und verlust beziechen und in bringen mog, so haben wir im, dem obgenanten Hans…"
+  },
+  "ev-6d28c31878c2": {
+    "evidence_id": "ev-6d28c31878c2",
+    "doc_id": "U-17_0822",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 197,
+    "quote": "…dagegen und wider der genant Meyer fùrwandt, er muͤsde soͤli chen̄ chenn zins gen Kùngsfelden, ✳ das in Berner biet ✳ lege, ✳ weren ✳ und antwurten, ✳ darumb er vermeinte ✳ nit witter schuldig zù…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1492",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0822"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "zins",
+      "period": "unchecked"
+    },
+    "reading_text": "…dagegen und wider der genant Meyer fùrwandt, er muͤsde soͤli chenn zins gen Kùngsfelden, das in Berner biet lege, weren und antwurten, darumb er vermeinte nit witter schuldig zù…"
+  },
+  "ev-3b150c16aba6": {
+    "evidence_id": "ev-3b150c16aba6",
+    "doc_id": "U-17_0746_02",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 194,
+    "quote": "…jerlichem zins, ✳ zuͦwiderkouf ✳ uff und ab der herschaft Schenckemberg nach in̄ inn halt des houptbriefs da rub̄ rumb wisent ✳ und all unser gerechtikeit an soͤlich houptguͦt und zins ✳ geben…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1469",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0746/02"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "zins",
+      "period": "unchecked"
+    },
+    "reading_text": "…jerlichem zins, zuͦwiderkouf uff und ab der herschaft Schenckemberg nach inn halt des houptbriefs da rumb wisent und all unser gerechtikeit an soͤlich houptguͦt und zins geben…"
+  },
+  "ev-70c0bf656a11": {
+    "evidence_id": "ev-70c0bf656a11",
+    "doc_id": "U-17_0840",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 165,
+    "quote": "…Mùlinen, mit ir gerechtikeit, so byszhar unns zuͦ zins in gangen und zuͦgehoͤrig gewessen ist, nach ufwysung unn sˀ ser zins buͦcher und roͦdel, den selben mùt mit…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1497",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0840"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "zins",
+      "period": "unchecked"
+    },
+    "reading_text": "…Mùlinen, mit ir gerechtikeit, so byszhar unns zuͦ zins in gangen und zuͦgehoͤrig gewessen ist, nach ufwysung unn ser zins buͦcher und roͦdel, den selben mùt mit…"
+  },
+  "ev-417ecd9cacc8": {
+    "evidence_id": "ev-417ecd9cacc8",
+    "doc_id": "U-17_0711",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 176,
+    "quote": "…die beide stuk, er dem ob gen̄ genanten Heinrichen Kalten an statt und zuͦ handen siner swiger, ob gen̄t genant , umb soͤlich nach¬gemeldet hopptguͦt und zins fùr unbekùm btˀ…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1460",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0711"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "zins",
+      "period": "unchecked"
+    },
+    "reading_text": "…die beide stuk, er dem ob genanten Heinrichen Kalten an statt und zuͦ handen siner swiger, ob genant , umb soͤlich nachgemeldet hopptguͦt und zins fùr unbekùm btˀ…"
+  },
+  "ev-859d7521bad7": {
+    "evidence_id": "ev-859d7521bad7",
+    "doc_id": "U-17_0340",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 172,
+    "quote": "…mùli zins sibinzig mùt ✳ korns, ✳ des ist der zwen ✳ teil kerns un̄ und der tritteil mùli korns, ✳ un̄ und ein phfunt stebler fùr ein swin, ✳ un̄ und gat der zins an ✳ uf…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1367",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0340"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "zins",
+      "period": "unchecked"
+    },
+    "reading_text": "…mùli zins sibinzig mùt korns, des ist der zwen teil kerns und der tritteil mùli korns, und ein phfunt stebler fùr ein swin, und gat der zins an uf…"
+  },
+  "ev-b2d555fbc921": {
+    "evidence_id": "ev-b2d555fbc921",
+    "doc_id": "U-17_0684",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 169,
+    "quote": "…daruff ich und die genemp tē ten min suns sùn, si mitt mir und ich mitt inen, disen kouff geslagen und umb solich obgemeldet hoptgut und zins mitt hus und hoff, akern…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1455",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0684"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "zins",
+      "period": "unchecked"
+    },
+    "reading_text": "…daruff ich und die genemp ten min suns sùn, si mitt mir und ich mitt inen, disen kouff geslagen und umb solich obgemeldet hoptgut und zins mitt hus und hoff, akern…"
+  },
+  "ev-bdb367aff4f8": {
+    "evidence_id": "ev-bdb367aff4f8",
+    "doc_id": "U-17_0312a",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 168,
+    "quote": "…dz si uns in iren cloͤstern enphèlhen ✳ und got fùr uns bitten, ✳ und einen vierdenteil ✳ den frowen ze Sant Claren ze Wien, ✳ daz si got fùr uns bitten, ✳ und ei nē…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1362",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0312a"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "fùr uns bitten",
+      "period": "unchecked"
+    },
+    "reading_text": "…dz si uns in iren cloͤstern enphèlhen und got fùr uns bitten, und einen vierdenteil den frowen ze Sant Claren ze Wien, daz si got fùr uns bitten, und ei nē…"
+  },
+  "ev-2ad7abaf6afe": {
+    "evidence_id": "ev-2ad7abaf6afe",
+    "doc_id": "U-17_0109",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 197,
+    "quote": "…got und durch unser und aller unserr vordern sele willen, ✳ das si got eweclich fùr uns bitten sùllent. und ze einem urchùnde der vorgeschribenen dinge ist dirre brief besigelt mit unserm insigel…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1330",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0109"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "fùr uns bitten",
+      "period": "unchecked"
+    },
+    "reading_text": "…got und durch unser und aller unserr vordern sele willen, das si got eweclich fùr uns bitten sùllent. und ze einem urchùnde der vorgeschribenen dinge ist dirre brief besigelt mit unserm insigel…"
+  },
+  "ev-4d7830715532": {
+    "evidence_id": "ev-4d7830715532",
+    "doc_id": "U-17_0166",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 183,
+    "quote": "…fùr unserr egnanen swester ✳ und unserr vorder sele ewecliche bitten. ✳ wir wellen oͧch, swen¬ne wir die vorgnanten vier march geltes wider von in koͧffen welle, ✳ das si uns ✳ oder…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1337",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0166"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "fùr uns bitten",
+      "period": "unchecked"
+    },
+    "reading_text": "…fùr unserr egnanen swester und unserr vorder sele ewecliche bitten. wir wellen oͧch, swenne wir die vorgnanten vier march geltes wider von in koͧffen welle, das si uns oder…"
+  },
+  "ev-31c0a5102651": {
+    "evidence_id": "ev-31c0a5102651",
+    "doc_id": "U-17_0303",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 168,
+    "quote": "…chˀ cher und des tˀ ter fûrderli chˀ cher gedenken ✳ und och got ernstlich fûr si bitten wellen, ✳ und als wir inen des ouch wol ge tˀwn truwn sullen ✳ und och wellen…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1360",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0303"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "fùr uns bitten",
+      "period": "unchecked"
+    },
+    "reading_text": "cher und des ter fûrderli cher gedenken und och got ernstlich fûr si bitten wellen, und als wir inen des ouch wol ge truwn sullen und och wellen…"
+  },
+  "ev-4dfb49c5b102": {
+    "evidence_id": "ev-4dfb49c5b102",
+    "doc_id": "U-17_0546",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 154,
+    "quote": "…Kernden und ze Krayn, grafe ze Tyrol ꝫ et cꝭ cetera , tuͦn kūt kunt fùr uns, ✳ un snˀ sern bruͦder, ✳ vettern und er bn̄ ben , dz wir angesechen ha bn̄…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1411",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0546"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "fùr uns bitten",
+      "period": "unchecked"
+    },
+    "reading_text": "…Kernden und ze Krayn, grafe ze Tyrol ꝫ et cꝭ cetera , tuͦn kunt fùr uns, un sern bruͦder, vettern und er ben , dz wir angesechen ha bn̄…"
+  },
+  "ev-e4d4c1439c81": {
+    "evidence_id": "ev-e4d4c1439c81",
+    "doc_id": "U-17_0728",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 161,
+    "quote": "…inē inen die zegebend bitten ✳ ir weͣgen und ge schirˀ schirre , so den weg bru chēt chent soͤl lēt lent , ouch vom estur her¬fùr den rechten weg bisz anden…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1464",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0728"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "fùr uns bitten",
+      "period": "unchecked"
+    },
+    "reading_text": "inen die zegebend bitten ir weͣgen und ge schirre , so den weg bru chent soͤl lent , ouch vom estur herfùr den rechten weg bisz anden…"
+  },
+  "ev-aa6d188412f5": {
+    "evidence_id": "ev-aa6d188412f5",
+    "doc_id": "U-17_0242",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 197,
+    "quote": "…als vor bescheiden ist, ✳ ane alle geverde. ✳ wir haben uns ouch ✳ entzigen ✳ wizzentlich ✳ un̄ und entzihen uns mit disem brief ✳ fùr uns ✳ und un sˀ ser erben ✳ hilf ✳ und rates ✳ aller geistli…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1351",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0242"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "fùr uns bitten",
+      "period": "unchecked"
+    },
+    "reading_text": "…als vor bescheiden ist, ane alle geverde. wir haben uns ouch entzigen wizzentlich und entzihen uns mit disem brief fùr uns und un ser erben hilf und rates aller geistli…"
+  },
+  "ev-6b0b94059a5d": {
+    "evidence_id": "ev-6b0b94059a5d",
+    "doc_id": "U-17_0385",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 181,
+    "quote": "…ouch sol der selbe lùpriester gedenken und getruwlich got bitten fùr min, dez ob gen̄ genanten Nyclaus Settellis, sele und aller der selen, von dien mir je guͦt beschach. ✳ dar zu…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1380",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0385"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "fùr uns bitten",
+      "period": "unchecked"
+    },
+    "reading_text": "…ouch sol der selbe lùpriester gedenken und getruwlich got bitten fùr min, dez ob genanten Nyclaus Settellis, sele und aller der selen, von dien mir je guͦt beschach. dar zu…"
+  },
+  "ev-ebff20b2c70d": {
+    "evidence_id": "ev-ebff20b2c70d",
+    "doc_id": "U-17_0312a",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 149,
+    "quote": "…tod ir guͦt ze Oͤst r₎ rich hat geheis sz₎ szen dur got got got teilen viij ✳ lj testament fròw Agnesen vō von Unge r̄n ren ✳ ordnet das halb teil…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1362",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0312a"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "durch got",
+      "period": "unchecked"
+    },
+    "reading_text": "…tod ir guͦt ze Oͤst rich hat geheis szen dur got got got teilen viij lj testament fròw Agnesen von Unge ren ordnet das halb teil…"
+  },
+  "ev-72835c16b389": {
+    "evidence_id": "ev-72835c16b389",
+    "doc_id": "U-17_0261",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 163,
+    "quote": "…ben andêchti gn̄ gen in got, ✳ den klos tˀ ter frawͤn von Kûnigsveld, ✳ Sand Chlaren or dn̄ den Kostent zˀ zer bistum, durch got und durch un sˀr ser ✳ und aller…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1355",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0261"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "durch got",
+      "period": "unchecked"
+    },
+    "reading_text": "…ben andêchti gen in got, den klos ter frawͤn von Kûnigsveld, Sand Chlaren or den Kostent zer bistum, durch got und durch un ser und aller…"
+  },
+  "ev-877cbbe418cd": {
+    "evidence_id": "ev-877cbbe418cd",
+    "doc_id": "U-17_0481",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 177,
+    "quote": "…chn̄ chen in got, ✳ min gnedigen froͧwen, ✳ die ebtissin und dˀ der cō con vent gemeinlich ✳ des clos tˀs ters ze Kùngsfelt, ✳ mit gant zˀ zer gehellung, ✳ durch gots wil ln̄…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1408",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0481"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "durch got",
+      "period": "unchecked"
+    },
+    "reading_text": "chen in got, min gnedigen froͧwen, die ebtissin und der con vent gemeinlich des clos ters ze Kùngsfelt, mit gant zer gehellung, durch gots wil ln̄…"
+  },
+  "ev-8007f03144ac": {
+    "evidence_id": "ev-8007f03144ac",
+    "doc_id": "U-17_0307a",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 196,
+    "quote": "…Ungern, ✳ und unser vettern, ✳ und alle ander unser vordern zuͦ dem kloster ✳ ze Kùnigsvelde, ✳ durch got ✳ und durch irr selen heil willen, ✳ oder sust ✳ von sund rˀ rer begierd, ✳ gege b̄n ben…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1361",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0307a"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "durch got",
+      "period": "unchecked"
+    },
+    "reading_text": "…Ungern, und unser vettern, und alle ander unser vordern zuͦ dem kloster ze Kùnigsvelde, durch got und durch irr selen heil willen, oder sust von sund rer begierd, gege ben…"
+  },
+  "ev-243b28f73f0b": {
+    "evidence_id": "ev-243b28f73f0b",
+    "doc_id": "U-17_0492",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 161,
+    "quote": "…ver ge bn̄ ben , vˀ ver schaffen und vˀ ver pfich tē ten mag durch got, durch ere ✳ ir frùnden, maͧgen und ander lùten aͧn unser und menlichs ✳ hinderunge und…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1412",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0492"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "durch got",
+      "period": "unchecked"
+    },
+    "reading_text": "…ver ge ben , ver schaffen und ver pfich ten mag durch got, durch ere ir frùnden, maͧgen und ander lùten aͧn unser und menlichs hinderunge und…"
+  },
+  "ev-b383ee04af9b": {
+    "evidence_id": "ev-b383ee04af9b",
+    "doc_id": "U-17_0316",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 169,
+    "quote": "…Kunigsvelt, Sant Claren ordens, die je zuͦ den ziten sint, ge bn̄ ben sùllent durch got und durch un sˀr ser un̄ und der herschaft sele heyles willen ✳ von ire vor dˀn…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1362",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0316"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "durch got",
+      "period": "unchecked"
+    },
+    "reading_text": "…Kunigsvelt, Sant Claren ordens, die je zuͦ den ziten sint, ge ben sùllent durch got und durch un ser und der herschaft sele heyles willen von ire vor dˀn…"
+  },
+  "ev-f68d41fa6320": {
+    "evidence_id": "ev-f68d41fa6320",
+    "doc_id": "AA_0429_0307b",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 205,
+    "quote": "…eltest unn dˀ der unns yetzund fuͤren, unnd fùr unnser aller erben luterlich durch got unnd durch bett willen der hochgebornen fùrstin, frown Agnesen, wilend kunigin ze Ungern, unnser hertzlieben peselin…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1361",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG AA/0429, fol. 51v-52v (Abschrift der Urk. 0307b)"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "durch got",
+      "period": "unchecked"
+    },
+    "reading_text": "…eltest unn der unns yetzund fuͤren, unnd fùr unnser aller erben luterlich durch got unnd durch bett willen der hochgebornen fùrstin, frown Agnesen, wilend kunigin ze Ungern, unnser hertzlieben peselin…"
+  },
+  "ev-c511f6cb5756": {
+    "evidence_id": "ev-c511f6cb5756",
+    "doc_id": "U-17_0266_02",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 171,
+    "quote": "…ewichlich, ✳ lu tˀ ter lich durich got ✳ und durich un sˀr ser vor dˀn dern ✳ und un sˀr ser sel heiles willen, ✳ und auch durch chunftiges geluͤks willen ✳ aller un sˀr…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1356",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0266/02"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "durch got",
+      "period": "unchecked"
+    },
+    "reading_text": "…ewichlich, lu ter lich durich got und durich un ser vor dern und un ser sel heiles willen, und auch durch chunftiges geluͤks willen aller un sˀr…"
+  },
+  "ev-03367cef6735": {
+    "evidence_id": "ev-03367cef6735",
+    "doc_id": "U-17_0092",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 1367,
+    "quote": "…bruͦder ✳ geluͤche und selden willen ✳ und ouch unser ✳ und unserr vorderen sêle ✳ heil ✳ und ouch, ✳ daz ✳ gotes dienst ✳ da von gemeͤret wêrde, ✳ geben haben ✳ und geben ouch mit disem brief ✳ ✳ der abtessinne ✳ und den geistlichen vrowen ✳ des klosters ✳ von Chuͤnigesveld ✳ die eigen¬schaft ✳ zweiger march geltes, ✳ die ✳ der erber ritter Wern hˀ her von Wolon ✳ von uns ✳ und un sˀn sern bruͤ dˀn dern ✳ zelehen ge¬habt hat ✳ in dem dorf ze Husen, ✳ die ✳ di selben geistlichen vrowen ✳ von im gekuͦffet habent ✳ mit allen nuͤtzen und rechten, ✳ alz er es gehabt hat, ✳ an lûten ✳ und an guͦt, ✳ also, ✳ daz ✳ daz selbe kloͤster ✳ und die vrowen ✳ daz selb guͦt und guͤlte ✳ haben suͤllen ruͤwichlichen ✳ und niessen ewichlichen ✳ an allen ierresal. und ist dise gab ✳ beschehen ✳ mit aller ehafti und sicherheit, ✳ so dar zuͦ hoͤret. und des ze einem urchuͦnde ✳ haben wir unser insigel gehenket an disen brief, der ist geben ze En sichsh̄ sichshein ✳ an dem achtem tag nach des heili gē gen crùces tag ze dem meigen, da man zalt von Kristes gebûrte drûtzenhundert jar, ✳ dar nach in dem siben und zweintzichistem jar. ✳ ùbˀ ùber zwo mark geltes ze Hu sē sen ùbˀ ùber zwo march geltes ze Husen übergebnùsz vō von hertzog Albrech t₎ ten umb zwo march geltz zuͦ Hùsen ✳ hat vor der rit tˀ ter vō von Wolen zuͦ le chē lechen hoͤren jetz den frò wn̄ wen zuͦ…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1327",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0092"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "guͤlte",
+      "period": "unchecked",
+      "context": "document",
+      "snippet_id": "ev-0e7177309e8a"
+    },
+    "reading_text": "…bruͦder geluͤche und selden willen und ouch unser und unserr vorderen sêle heil und ouch, daz gotes dienst da von gemeͤret wêrde, geben haben und geben ouch mit disem brief der abtessinne und den geistlichen vrowen des klosters von Chuͤnigesveld die eigenschaft zweiger march geltes, die der erber ritter Wern her von Wolon von uns und un sern bruͤ dern zelehen gehabt hat in dem dorf ze Husen, die di selben geistlichen vrowen von im gekuͦffet habent mit allen nuͤtzen und rechten, alz er es gehabt hat, an lûten und an guͦt, also, daz daz selbe kloͤster und die vrowen daz selb guͦt und guͤlte haben suͤllen ruͤwichlichen und niessen ewichlichen an allen ierresal. und ist dise gab beschehen mit aller ehafti und sicherheit, so dar zuͦ hoͤret. und des ze einem urchuͦnde haben wir unser insigel gehenket an disen brief, der ist geben ze En sichshein an dem achtem tag nach des heili gen crùces tag ze dem meigen, da man zalt von Kristes gebûrte drûtzenhundert jar, dar nach in dem siben und zweintzichistem jar. ùber zwo mark geltes ze Hu sen ùber zwo march geltes ze Husen übergebnùsz von hertzog Albrech ten umb zwo march geltz zuͦ Hùsen hat vor der rit ter von Wolen zuͦ le chē lechen hoͤren jetz den frò wen zuͦ…"
+  },
+  "ev-040a23a90d1c": {
+    "evidence_id": "ev-040a23a90d1c",
+    "doc_id": "AA_0428_0074",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 507,
+    "quote": "¶ Hie fahent an die brief als das closter gebunden ist eweclich der herschaft jartzit jerlich ze beganne ✳ von erst ✳ des ✳ edeln und hochge¬ bornen fursten kunig Albrehtes unsers gnedigen herren und stifters ✳ und der edeln und hochgebornen furstin kùngin Elsbeten unser gnedigen frowen und ¶ stifterin. ✳ ✳ xxiiij ✳ 74 Da der Dokumenttext durch das Originaldokument vorhanden ist, ist der Text aus dem Kopialbuch nicht transkribiert worden. Durch diesen Link kommen Sie auf den Text des Originaldokuments.",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": null,
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG AA/0428, fol. 120r-120v (Abschrift der Urk. 0074)"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "jartzit",
+      "period": "unchecked",
+      "context": "document",
+      "snippet_id": "ev-3a1544d3052d"
+    },
+    "reading_text": "¶ Hie fahent an die brief als das closter gebunden ist eweclich der herschaft jartzit jerlich ze beganne von erst des edeln und hochge bornen fursten kunig Albrehtes unsers gnedigen herren und stifters und der edeln und hochgebornen furstin kùngin Elsbeten unser gnedigen frowen und ¶ stifterin. xxiiij 74 Da der Dokumenttext durch das Originaldokument vorhanden ist, ist der Text aus dem Kopialbuch nicht transkribiert worden. Durch diesen Link kommen Sie auf den Text des Originaldokuments."
+  },
+  "ev-6cb8052cd8f7": {
+    "evidence_id": "ev-6cb8052cd8f7",
+    "doc_id": "U-17_0320",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 1394,
+    "quote": "…als wir die nùweclichs gekoͧft haben ✳ mit unserm eigenn guͦt ✳ von unserm getrùwen, ✳ lieben ✳ Ruͦdolfen von Trostberg, ✳ gegeben haben ✳ mit aller ordenung, ✳ bescheidenheit und craft, ✳ worten und gebaͤrden, ✳ so von reht oder gewonheit ✳ darzuͦ gehoͤrent ✳ und geben oͧch wissentlich mit disem brief ✳ ei nˀ ner rehten, ✳ ewigen, ✳ unwiderroͤfenlichen gabe, ✳ die man nemmet ✳ under den lebenden, ✳ den erberen, geischlichen, unsern getrùwen, andaͤhtigen, ✳ ✳ der aͤptissenn und dem ✳ ✳ convent dez closters ze Kùngsvelt, Sant Claren ordens, in Costentzer bistuͦm, unserr stift, ✳ mit soͤlichem gedinge, ✳ daz si alle jar eweclich ✳ von unsern wêgen ✳ luterlich durch got ✳ zuͦ einem rehten almuͦsen ✳ da von richten und gèben soͤllen ✳ unsern getrùwen, ✳ andaͤhtigen, ✳ ✳ dem gardian und dem convent ✳ der Minren Bruͦder ✳ dez closters ze Kùngsvèlt, ✳ oͧch unserr stift, ✳ von allen den vorgenanten guͤtern ✳ acht mark gèltes nach dizz landes rèht und gewonheit, ✳ vollenclich ✳ als si von den selben guͤtern vallent, ✳ aun alle gevaͤrde, ✳ zuͦ besserung irs gewandes ✳ und zuͦ an derr iro notdurft. ✳ und waz die vorgenan tē ten guͤter allù gemeinlich ✳ jeclichs jares ùber die vorgenanten acht mark gèltent und bringen mugen, ✳ daz soͤllent die egenanten closterfrowen gaͤntzlich in nemen ✳ zuͦ iro selbes handen und in iren nutz bewenden. ✳ waͤr aber, daz dheins jares die obgenanten…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1363",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0320"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "almuͦsen",
+      "period": "unchecked",
+      "context": "document",
+      "snippet_id": "ev-08865a072a9d"
+    },
+    "reading_text": "…als wir die nùweclichs gekoͧft haben mit unserm eigenn guͦt von unserm getrùwen, lieben Ruͦdolfen von Trostberg, gegeben haben mit aller ordenung, bescheidenheit und craft, worten und gebaͤrden, so von reht oder gewonheit darzuͦ gehoͤrent und geben oͧch wissentlich mit disem brief ei ner rehten, ewigen, unwiderroͤfenlichen gabe, die man nemmet under den lebenden, den erberen, geischlichen, unsern getrùwen, andaͤhtigen, der aͤptissenn und dem convent dez closters ze Kùngsvelt, Sant Claren ordens, in Costentzer bistuͦm, unserr stift, mit soͤlichem gedinge, daz si alle jar eweclich von unsern wêgen luterlich durch got zuͦ einem rehten almuͦsen da von richten und gèben soͤllen unsern getrùwen, andaͤhtigen, dem gardian und dem convent der Minren Bruͦder dez closters ze Kùngsvèlt, oͧch unserr stift, von allen den vorgenanten guͤtern acht mark gèltes nach dizz landes rèht und gewonheit, vollenclich als si von den selben guͤtern vallent, aun alle gevaͤrde, zuͦ besserung irs gewandes und zuͦ an derr iro notdurft. und waz die vorgenan ten guͤter allù gemeinlich jeclichs jares ùber die vorgenanten acht mark gèltent und bringen mugen, daz soͤllent die egenanten closterfrowen gaͤntzlich in nemen zuͦ iro selbes handen und in iren nutz bewenden. waͤr aber, daz dheins jares die obgenanten…"
+  },
+  "ev-1424dd0c94e1": {
+    "evidence_id": "ev-1424dd0c94e1",
+    "doc_id": "U-17_0828_02",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 1369,
+    "quote": "…wirdt ettwas genom seylen, so er dem vestenn Casparenn Efingers zuͦ Wildek gene mē men sol haben, ✳ hàt wider zùgeben und sind dàrbi gemelldt ursach desselben und ob es nitt beschaͧhe, das es uwern gnà d₎ den nitt gevellig were, ✳ gnaͧdiger, lieber herrnn ùwer gnàd ✳ sel wàrlich wùstz, ✳ das unn sz₎ szer hofmeister fùr sich selbs har inn nuͦtz anders getàn, ✳ dann das im̄ imm ✳ unn sz₎ szer frow die aͤptissin guͦter gedaͧchtnùstz het bevolhen ✳ unn sz₎s szers gotzhus gerechtikeit und zùgeheͦrd nitt zuͣverlieren. ✳ und dàmitt ùwer gnàd was unns dàran ligt ✳ meg wùstz ✳ wellen wir gar in kurtzem die unn sz₎n szern zuͦ dero schriben ✳ und inen uns unn sz₎ szer ✳ beswoͧrden erscheinen ✳ und bitten also die selben des guͣtlichen zuͦgestùnden. ✳ so wellen wir die genomnen seyl dèzwùschen als in ùwer selbs hannd ruͦwen làs sz₎ szen gestellt achten ✳ und so wir von ùwer gnàd geheͦrt wer d₎ den dàmitt tuͦnd und là ssz₎ sszen , ✳ was si unns und die unn sz₎ szer bescheide. ✳ und wir getruwen derselben nitt minder neigung unns bi dem unn sz₎n szern zù handthaben ✳ dann jemand anders, ✳ woͤllten ouch niemand geneigt sin, das sin zù naͤmen, ✳ sun dˀ der unns des unn sz₎n szern genuͣgen, ✳ und bevelhen dàmitt ùwer gnàd gott dem all-meͣchtigen ✳ und unns ir erlichen hanndthabung zuͦ allen ziten, ✳ dàtum statthalterin und convent zuͦ Kùngsfell d₎ den den edlen…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": null,
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0828/02"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "fùr uns bitten",
+      "period": "unchecked",
+      "context": "document",
+      "snippet_id": "ev-fc232cfa09d8"
+    },
+    "reading_text": "…wirdt ettwas genom seylen, so er dem vestenn Casparenn Efingers zuͦ Wildek gene men sol haben, hàt wider zùgeben und sind dàrbi gemelldt ursach desselben und ob es nitt beschaͧhe, das es uwern gnà den nitt gevellig were, gnaͧdiger, lieber herrnn ùwer gnàd sel wàrlich wùstz, das unn szer hofmeister fùr sich selbs har inn nuͦtz anders getàn, dann das imm unn szer frow die aͤptissin guͦter gedaͧchtnùstz het bevolhen unn szers gotzhus gerechtikeit und zùgeheͦrd nitt zuͣverlieren. und dàmitt ùwer gnàd was unns dàran ligt meg wùstz wellen wir gar in kurtzem die unn szern zuͦ dero schriben und inen uns unn szer beswoͧrden erscheinen und bitten also die selben des guͣtlichen zuͦgestùnden. so wellen wir die genomnen seyl dèzwùschen als in ùwer selbs hannd ruͦwen làs szen gestellt achten und so wir von ùwer gnàd geheͦrt wer den dàmitt tuͦnd und là sszen , was si unns und die unn szer bescheide. und wir getruwen derselben nitt minder neigung unns bi dem unn szern zù handthaben dann jemand anders, woͤllten ouch niemand geneigt sin, das sin zù naͤmen, sun der unns des unn szern genuͣgen, und bevelhen dàmitt ùwer gnàd gott dem all-meͣchtigen und unns ir erlichen hanndthabung zuͦ allen ziten, dàtum statthalterin und convent zuͦ Kùngsfell den den edlen…"
+  },
+  "ev-fac21100347a": {
+    "evidence_id": "ev-fac21100347a",
+    "doc_id": "U-17_0444",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 1336,
+    "quote": "…wissentlich fûr mich und mine er bn̄ ben und nachko mē men dˀ der egn̄̄ egenanten guͤ tˀ ter und aller dˀ der an sp̃ch ansprach , so wir darzuͦ je gehatten odˀ oder noch inkûnfti gē gen ziten je mˀ mer gehaben moͤchtend, ✳ und entwerend ùnsel bˀ ber dˀ der sel bn̄ ben guͤ tˀ ter ✳ und setzend si, die ob gn̄̄ genanten froͧwen, und alle ira nachko mē men dˀ der sel bn̄ ben guͤ tˀ ter in nutzlich, ruͤwklich gewer, ✳ also dz si die nu angendes besitzen und hi nāt nant hin ewklich nut zē zen , niessen, besetzen und entsetzen soͤnd in al lˀ ler wise und maͧsse als andri ira eigne guͤ tˀ ter . und soͤnd oͧch alle die, so zuͦ den sel bn̄ ben guͤ tˀn tern hoͤrend und die besitz¬end, inē inen nu zemal angendes hin nāt nant hin und ewklich gehorsam und gewertig sni ✳ und mir nûtt noch kei nˀ ner mi nˀ nen er bn̄ ben noch nachko mē men des ich gentzlich entpfilche in disem brieff. ich lobe oͧch den egn̄̄ egenanten klos tˀ ter froͧwen, dˀ der aͤptissin und dem convent gemeinlich, und allen iren nachko mē men fûr mich, mine er bn̄ ben und nachko mē men , die ich vestlich harzuͦ binde, dirre gabe und ord nūg nung und die selben guͤ tˀ ter ze werend nu und hienach ✳ und rechte werschaft zehaltend in gericht und aͧne gericht fûr ledig eigen, als davor, wo, wenn oder wie dick inen des durft, ist aͧn all geverd und argen…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1400",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0444"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "besitz",
+      "period": "unchecked",
+      "context": "document",
+      "snippet_id": "ev-bb87695feca2"
+    },
+    "reading_text": "…wissentlich fûr mich und mine er ben und nachko men der egenanten guͤ ter und aller der an sp̃ch ansprach , so wir darzuͦ je gehatten oder noch inkûnfti gen ziten je mer gehaben moͤchtend, und entwerend ùnsel ber der sel ben guͤ ter und setzend si, die ob genanten froͧwen, und alle ira nachko men der sel ben guͤ ter in nutzlich, ruͤwklich gewer, also dz si die nu angendes besitzen und hi nant hin ewklich nut zen , niessen, besetzen und entsetzen soͤnd in al ler wise und maͧsse als andri ira eigne guͤ ter . und soͤnd oͧch alle die, so zuͦ den sel ben guͤ tern hoͤrend und die besitzend, inen nu zemal angendes hin nant hin und ewklich gehorsam und gewertig sni und mir nûtt noch kei ner mi nen er ben noch nachko men des ich gentzlich entpfilche in disem brieff. ich lobe oͧch den egenanten klos ter froͧwen, der aͤptissin und dem convent gemeinlich, und allen iren nachko men fûr mich, mine er ben und nachko men , die ich vestlich harzuͦ binde, dirre gabe und ord nung und die selben guͤ ter ze werend nu und hienach und rechte werschaft zehaltend in gericht und aͧne gericht fûr ledig eigen, als davor, wo, wenn oder wie dick inen des durft, ist aͧn all geverd und argen…"
+  },
+  "ev-b5aaeb277c45": {
+    "evidence_id": "ev-b5aaeb277c45",
+    "doc_id": "U-17_0186",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 1358,
+    "quote": "…✳ phunt under die swestr, an je dˀ der swes t₎ ter iren teil besunder in die hant, ✳ und dˀ der custrin drizig schilling, ✳ daz si da von habe zweinzig kertzen in der masse, ✳ als zuͦ unsers lieben her rē ren un̄ und vatters, chuͦnng Alb̄r Albrecht , seligen, jarzit. ✳ man sol oͧch geben den bruͦ dnˀ dern ✳ in dem cō con vente ein phunt ✳ und ein phunt under si teilen, je dem bruͦ dˀ der si nē nen teil besun dˀ der . ✳ man sol ✳ oͧch bachen fùnf mût kˀ ker nen, ✳ die man des selben tages teilen sol gemeinen armen lûten. ✳ wir wellen oͧch, daz die bruͦ dˀ der ein sel messe singen un̄ und ein vigily ✳ und je der brûder besun dˀ der ein selmesse spreche. ✳ die froͧ wē wen sûllent oͧch ein selmesse singen ✳ und ein vigily ✳ un̄ und je dù swes t₎ ter besun dˀ der ein vigilyͤ un̄ und ein placebo ✳ un̄ und hundert pa t₎ ter nos t₎ ter und hun dˀt dert ave Maria sprechen. ✳ ich, dû epthissin, und aller der convente gemeinlich vergehen und binden uns stet ze haben und ze volle fuͤrend ✳ alles, das da vor verschriben ist, ✳ mit unserr gehor¬sami und gewissent. ✳ und ze einem offen urchûnde, ✳ so hencke ich, dû epthissenne, min ingesigel ✳ un̄ und dez conventes ingesigel zuͦ unserr hˀcz hercz lieben froͧwen ✳ und muͦter, ✳ der hˀ her czoginne ze Lothringen, inge¬sigel an disen brief, ✳ der geben ist ze Chûngesfelt, an sant Uͦlrichs tag, ✳ in…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1340",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0186"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "selmesse",
+      "period": "unchecked",
+      "context": "document",
+      "snippet_id": "ev-2390e2ec61bd"
+    },
+    "reading_text": "… phunt under die swestr, an je der swes ter iren teil besunder in die hant, und der custrin drizig schilling, daz si da von habe zweinzig kertzen in der masse, als zuͦ unsers lieben her ren und vatters, chuͦnng Albrecht , seligen, jarzit. man sol oͧch geben den bruͦ dern in dem con vente ein phunt und ein phunt under si teilen, je dem bruͦ der si nen teil besun der . man sol oͧch bachen fùnf mût ker nen, die man des selben tages teilen sol gemeinen armen lûten. wir wellen oͧch, daz die bruͦ der ein sel messe singen und ein vigily und je der brûder besun der ein selmesse spreche. die froͧ wen sûllent oͧch ein selmesse singen und ein vigily und je dù swes ter besun der ein vigilyͤ und ein placebo und hundert pa ter nos ter und hun dert ave Maria sprechen. ich, dû epthissin, und aller der convente gemeinlich vergehen und binden uns stet ze haben und ze volle fuͤrend alles, das da vor verschriben ist, mit unserr gehorsami und gewissent. und ze einem offen urchûnde, so hencke ich, dû epthissenne, min ingesigel und dez conventes ingesigel zuͦ unserr hercz lieben froͧwen und muͦter, der her czoginne ze Lothringen, ingesigel an disen brief, der geben ist ze Chûngesfelt, an sant Uͦlrichs tag, in…"
+  },
+  "ev-0e45ff88ccfa": {
+    "evidence_id": "ev-0e45ff88ccfa",
+    "doc_id": "U-17_0716",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 1374,
+    "quote": "…Wernly Moser vor ùns, wie er ein jàrlich gùlt mit namen achtzechen mùt haber, viertzig und acht huͤnr ze Birmistorff uff den guͤtern, so von Halwyl har lehen waͤren, hette, ✳ die im die zinsmeyer, als die in sinen roͤdeln stuͤnden, lange zit gewert und sinen vordern lenger dan̄ dann yemand verdencken moͤcht guͤtlich bezalt und dar in keinen intrag getän hetten, dan̄ dann yetz by kurtzem haben sich etzlich understanden im einen intrag ze tuͤnd und im die gùlt und zins nit ze geben, die doch im und sinen vordern und den land am̄an amman von Bremgarten allwegen guͤtlich gangen und worden syen. nu habe er ir etzlich in sunders mit recht fùrgevordert und vermeint die zins von denen inzebringen und ze¬beziechen nach dem und im das vor mit einer urteil von den eydtgnossen bekendt worden sye. so er nu sòlichs understanden hab, syen etzlich, mit nam ēn men die frawen von Kùngsfelden, ir hofmeis tˀ ter von ir wegen, ✳ die von Mùlinen und ander, so ver mein̄en meinnen und vor inn haben die guͤter, so er in anspräch hab, sòllent zem teil ir eigen und nit lehen sin ꝫ et cꝭ cetera , in dero eigenschaft er nit rede, öch ungern reden woͤlt, allein begerte er siner zinsen nach dem und im die von alter har geben und an inn brächt waͤrend und getrwͥte, sy wurden durch ùns rechtlich underwyst im sin zins ze volgen laussen, hofte ùns beduncken soͤlt billich sin, mit mer…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1461",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0716"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "zins",
+      "period": "unchecked",
+      "context": "document",
+      "snippet_id": "ev-235b6045b3d0"
+    },
+    "reading_text": "…Wernly Moser vor ùns, wie er ein jàrlich gùlt mit namen achtzechen mùt haber, viertzig und acht huͤnr ze Birmistorff uff den guͤtern, so von Halwyl har lehen waͤren, hette, die im die zinsmeyer, als die in sinen roͤdeln stuͤnden, lange zit gewert und sinen vordern lenger dann yemand verdencken moͤcht guͤtlich bezalt und dar in keinen intrag getän hetten, dann yetz by kurtzem haben sich etzlich understanden im einen intrag ze tuͤnd und im die gùlt und zins nit ze geben, die doch im und sinen vordern und den land amman von Bremgarten allwegen guͤtlich gangen und worden syen. nu habe er ir etzlich in sunders mit recht fùrgevordert und vermeint die zins von denen inzebringen und zebeziechen nach dem und im das vor mit einer urteil von den eydtgnossen bekendt worden sye. so er nu sòlichs understanden hab, syen etzlich, mit nam ēn men die frawen von Kùngsfelden, ir hofmeis ter von ir wegen, die von Mùlinen und ander, so ver meinnen und vor inn haben die guͤter, so er in anspräch hab, sòllent zem teil ir eigen und nit lehen sin ꝫ et cꝭ cetera , in dero eigenschaft er nit rede, öch ungern reden woͤlt, allein begerte er siner zinsen nach dem und im die von alter har geben und an inn brächt waͤrend und getrwͥte, sy wurden durch ùns rechtlich underwyst im sin zins ze volgen laussen, hofte ùns beduncken soͤlt billich sin, mit mer…"
+  },
+  "ev-56f6de119cbf": {
+    "evidence_id": "ev-56f6de119cbf",
+    "doc_id": "U-17_0109",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 1275,
+    "quote": "…conventes silber von den er bˀn bern rit tˀn tern von ✳ Chienberg, ✳ Goͤtzlin ame Stad von Schafhusen und von Johans von Steinwurch, den er von uns ze pfande stuͤnt umb vierzig und hundert march. ✳ und sùllen die epthissenn und der convente den vorgnanten hof haben, ✳ ✳ nutzzen und niessen mit unserm und unsers lieben bruͦders hˀ her tzog Alb̄ Albrecht guͦtem willen und urloͧb alle die wile, untz wir ald unser bruͤder hˀ her tzog Alb̄ Albrecht ✳ oder unser erben den hof von in erloͤsen umb sibenzehene und hundert march silbers. ✳ und swas si des hofes die wile geniessent, das geben wir in ze einem rehten almuͦsen ✳ und lassen ez in dur got und durch unser und aller unserr vordern sele willen, ✳ das si got eweclich fùr uns bitten sùllent. und ze einem urchùnde der vorgeschribenen dinge ist dirre brief besigelt mit unserm insigel, ✳ der wart ge¬ben ze Baden, ✳ do man zalte von Christes gebùrt drùcehenhundert jar ✳ und dar nach in dem drizigostem jar, an samstag vor ✳ judica. ✳ ùbˀ ùber Elfingen iij dˀ der iij brief ùbˀ ùber Elfin g₎ gen dˀ der iij brief dē den hoff ze xviij Elfingin ein verwilligùng über den hoff zuͦ Ellfin g₎ gen ✳ koùff ✳ von hertzog ✳ Otto ꝫ et cꝭ cetera K Q ✳ 7 ✳ 330 Königsf. Königsfelden 109 Staatsarchiv AARGAU Kgsf. Königsfelden 109",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1330",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0109"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "durch got",
+      "period": "unchecked",
+      "context": "document",
+      "snippet_id": "ev-14b546921f72"
+    },
+    "reading_text": "…conventes silber von den er bern rit tern von Chienberg, Goͤtzlin ame Stad von Schafhusen und von Johans von Steinwurch, den er von uns ze pfande stuͤnt umb vierzig und hundert march. und sùllen die epthissenn und der convente den vorgnanten hof haben, nutzzen und niessen mit unserm und unsers lieben bruͦders her tzog Albrecht guͦtem willen und urloͧb alle die wile, untz wir ald unser bruͤder her tzog Albrecht oder unser erben den hof von in erloͤsen umb sibenzehene und hundert march silbers. und swas si des hofes die wile geniessent, das geben wir in ze einem rehten almuͦsen und lassen ez in dur got und durch unser und aller unserr vordern sele willen, das si got eweclich fùr uns bitten sùllent. und ze einem urchùnde der vorgeschribenen dinge ist dirre brief besigelt mit unserm insigel, der wart geben ze Baden, do man zalte von Christes gebùrt drùcehenhundert jar und dar nach in dem drizigostem jar, an samstag vor judica. ùber Elfingen iij der iij brief ùber Elfin gen der iij brief den hoff ze xviij Elfingin ein verwilligùng über den hoff zuͦ Ellfin gen koùff von hertzog Otto ꝫ et cꝭ cetera K Q 7 330 Königsfelden 109 Staatsarchiv AARGAU Kgsf. Königsfelden 109"
+  },
+  "ev-456180bd97a7": {
+    "evidence_id": "ev-456180bd97a7",
+    "doc_id": "U-17_0911",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 1364,
+    "quote": "…die pfründ wurd set zn̄n zenn ✳ unnd der selb uff der pfründ voˀ vor -gemeldt tm̄ tem her rnn̄ renn ✳ wurd abgànn, ✳ dem selbenn sol ouch gonndt ✳ unnd zü glaussenn sin, ✳ si nē nen erbval mit sächs Rini schnn̄ schenn guldinen ze loͤsenn, ✳ wie im, ✳ unnd fürer nàch hrnn̄ hernn Heinrichs tòd nitt ✳ nàch annders dhei nē nen ouch ✳ dann sinem verwaͤser dàmit unnsre privilegia priester zeerbenn, ✳ by ✳ irn̄n irenn krefftenn beli bnn̄ benn . darwider unnd gaͤgenn hab ich, bemeldt teˀ ter her Heinrich Küssennberger, ✳ minenn g₎ gnädigen froͧwenn frygg ✳ unnd ganntz unzwun gē gen lich vergondt, zuͦ gsagt ✳ unnd nàchglaus snn̄ senn min läbenn lanng unnd die wil ich die pfründ besitz ✳ unnd in mi nē nem namen besit znn̄ zenn lausz, ✳ die novalia, zuͦ tuͤtsch nüw uffbrüch genampt, ✳ wo die bishar gmacht unnd uff gbrochenn sinnd, in hochwäl dnn̄ denn oder saust, ✳ oder in künff¬ti gm̄ gem uffbrochenn werdenn, ✳ die niemmer ✳ ze ervor drēn drenn , zenäm mē men , ✳ ze ni mē men ✳ nàch mich dero nützit annäm mē men , sunders dero gannz geruͤwigt ✳ unnd mine g₎ gen froͧ wn̄ wen guͤttlich by denenn beli bnn̄ benn laussenn, ✳ unersuͤcht ob ich schònn dero raͤcht haͤtty. ✳ so wil ich mich soͤli cheˀ cher vor drūng drunng ✳ unnd anspräch ganntz verzigenn ha ben̄ benn , alles uffrecht ✳ unnd in erberli chnn̄ chenn guͤt tn̄n tenn trù wnn̄ wenn ꝫ et cꝭ…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1519",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0911"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "besitz",
+      "period": "unchecked",
+      "context": "document",
+      "snippet_id": "ev-5f8e80790718"
+    },
+    "reading_text": "…die pfründ wurd set zenn unnd der selb uff der pfründ vor -gemeldt tem her renn wurd abgànn, dem selbenn sol ouch gonndt unnd zü glaussenn sin, si nen erbval mit sächs Rini schenn guldinen ze loͤsenn, wie im, unnd fürer nàch hernn Heinrichs tòd nitt nàch annders dhei nen ouch dann sinem verwaͤser dàmit unnsre privilegia priester zeerbenn, by irenn krefftenn beli benn . darwider unnd gaͤgenn hab ich, bemeldt ter her Heinrich Küssennberger, minenn gnädigen froͧwenn frygg unnd ganntz unzwun gen lich vergondt, zuͦ gsagt unnd nàchglaus senn min läbenn lanng unnd die wil ich die pfründ besitz unnd in mi nem namen besit zenn lausz, die novalia, zuͦ tuͤtsch nüw uffbrüch genampt, wo die bishar gmacht unnd uff gbrochenn sinnd, in hochwäl denn oder saust, oder in künffti gem uffbrochenn werdenn, die niemmer ze ervor drenn , zenäm men , ze ni men nàch mich dero nützit annäm men , sunders dero gannz geruͤwigt unnd mine gen froͧ wen guͤttlich by denenn beli benn laussenn, unersuͤcht ob ich schònn dero raͤcht haͤtty. so wil ich mich soͤli cher vor drunng unnd anspräch ganntz verzigenn ha benn , alles uffrecht unnd in erberli chenn guͤt tenn trù wenn ꝫ et cꝭ…"
+  },
+  "ev-7452dac44aa3": {
+    "evidence_id": "ev-7452dac44aa3",
+    "doc_id": "U-17_0649_02",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 1373,
+    "quote": "…ùwer zùkunft gewartet un̄ und wisten ouch nitt an dˀs ders , ir soͤl tēt tent komen sin, an dˀs ders ich hett ùch da rub̄ rumb geschri bn̄ ben , doch nùtzit des minder. ✳ nach dem uns bedunckt un̄ und ouch am ✳ lùtpriester ✳ von Stouffen vˀ ver stand un̄ und ✳ am ✳ tag und mercklich ist, das soͤlichs ân un sˀn sern un̄ und der lùtpriestry un̄ und eins lùtpriesters, das allweg uns beruͤrt, so vil im ✳ von ✳ dem un̄ und an dˀm derm abgât, ✳ merckli chn̄ chen gebresten, scha d₎ den un̄ und abgang goͤttlichs diensts ✳ nitt sin noch bestân mag, ✳ wie wol ✳ si an dˀs ders fùrgebent, ✳ hand wir da rub̄ rumb Zùrich am ✳ probst un̄ und meister ✳ Felix Hē Hem merlin lassen râts pflegen, ✳ was uns inden sa chē chen nach un sˀm serm un̄ und unsers lùtpriesters anligen da rin̄ rinn zetuͦnd gepurte ✳ odˀ oder ob wir das nach ir fùrnemen vˀ ver wilgen muͤsten odˀ oder nitt ✳ ꝫ et cꝭ cetera , ✳ hât uns meister ✳ Felix sin rât inschrift geschickt, des ich ùch hiemitt ouch ein abschrift send. ✳ und uff das, als ir nitt komen ✳ sind un̄ und aber die von Lentzburg gern unser ✳ antwurt gehept hetten, ✳ han ich inē inen da rub̄ rumb ein tag uff jetz vˀ ver gan gē gen ✳ donstag alhar beschei d₎ den und allda ✳ mitt den râtsfrowen, ✳ mitt un sˀn seren lùtpries tnˀ tern von Stouffen un̄ und ✳ vō von Windisch, ouch mitt un sˀn sern ✳ amptlùten un̄ und pfruͦn dnˀ dern ,…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1452",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0649/02"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "pflegen",
+      "period": "unchecked",
+      "context": "document",
+      "snippet_id": "ev-1f923f19633f"
+    },
+    "reading_text": "…ùwer zùkunft gewartet und wisten ouch nitt an ders , ir soͤl tent komen sin, an ders ich hett ùch da rumb geschri ben , doch nùtzit des minder. nach dem uns bedunckt und ouch am lùtpriester von Stouffen ver stand und am tag und mercklich ist, das soͤlichs ân un sern und der lùtpriestry und eins lùtpriesters, das allweg uns beruͤrt, so vil im von dem und an derm abgât, merckli chen gebresten, scha den und abgang goͤttlichs diensts nitt sin noch bestân mag, wie wol si an ders fùrgebent, hand wir da rumb Zùrich am probst und meister Felix Hem merlin lassen râts pflegen, was uns inden sa chen nach un serm und unsers lùtpriesters anligen da rinn zetuͦnd gepurte oder ob wir das nach ir fùrnemen ver wilgen muͤsten oder nitt ꝫ et cꝭ cetera , hât uns meister Felix sin rât inschrift geschickt, des ich ùch hiemitt ouch ein abschrift send. und uff das, als ir nitt komen sind und aber die von Lentzburg gern unser antwurt gehept hetten, han ich inen da rumb ein tag uff jetz ver gan gen donstag alhar beschei den und allda mitt den râtsfrowen, mitt un seren lùtpries tern von Stouffen und von Windisch, ouch mitt un sern amptlùten und pfruͦn dern ,…"
+  },
+  "ev-c7c32a2030e6": {
+    "evidence_id": "ev-c7c32a2030e6",
+    "doc_id": "U-17_0061_02",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 1058,
+    "quote": "…baider toten bestate, ✳ di von andaht da ir begrebde erwellent. ✳ daz dis allez, daz hie vor ge-schriben ist, ✳ stête belibe, ✳ dar uber geben wir disen brief, ✳ vˀ ver sigelt ✳ mit ûnserm insigel ✳ und mit dē dem insigel bruͦ dˀ der Heinrich von Talhein, der ze den ziten der Minren Bruͦ dˀ der minis tˀ ter was, ✳ und mit dem insigel swes tˀ ter Guͦten von Bachenstain, diu ze dē den ziten abtissen was, ✳ und irs conventes insigel, wan ez mit ir aller gunst und willen ist beschehen. ✳ dirre brief wart ze Strasburc geben, do man vo gotes geburt zalt driuzehenhun dˀt dert jar, dar nach in dem ahtzedem jar, ✳ an dem zehendem tage in dem merzen. ✳ ubˀ uber der bruͦ dˀ der almuͦsen lr̄a littera abbatisse su ꝑ per elemosina fr̄i fratri bƺ bus assig nā nan du ✳ b iij der iiij wist ✳ was die froͧ wn̄ wen zuͦ Kùngsfel d₎ den den Barfuͦssen von gùl t₎ ten zuͦ Stoͧf f₎ fen uff vj priester sol t₎ ten geben K ✳ T ✳ 66 ✳ diser brieff sol in geheim gläsenn wärdenn und unser Nͦ✳ Numero 1 ✳ Königsf. Königsfelden 61 Staatsarchiv AARGAU Kgsf. Königsfelden 61",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1318",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0061/02"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "almuͦsen",
+      "period": "unchecked",
+      "context": "document",
+      "snippet_id": "ev-113f0427734c"
+    },
+    "reading_text": "…baider toten bestate, di von andaht da ir begrebde erwellent. daz dis allez, daz hie vor ge-schriben ist, stête belibe, dar uber geben wir disen brief, ver sigelt mit ûnserm insigel und mit dem insigel bruͦ der Heinrich von Talhein, der ze den ziten der Minren Bruͦ der minis ter was, und mit dem insigel swes ter Guͦten von Bachenstain, diu ze den ziten abtissen was, und irs conventes insigel, wan ez mit ir aller gunst und willen ist beschehen. dirre brief wart ze Strasburc geben, do man vo gotes geburt zalt driuzehenhun dert jar, dar nach in dem ahtzedem jar, an dem zehendem tage in dem merzen. uber der bruͦ der almuͦsen littera abbatisse su per elemosina fratri bus assig nan du b iij der iiij wist was die froͧ wen zuͦ Kùngsfel den den Barfuͦssen von gùl ten zuͦ Stoͧf fen uff vj priester sol ten geben K T 66 diser brieff sol in geheim gläsenn wärdenn und unser Numero 1 Königsfelden 61 Staatsarchiv AARGAU Kgsf. Königsfelden 61"
+  },
+  "ev-8cb6a6a55dd1": {
+    "evidence_id": "ev-8cb6a6a55dd1",
+    "doc_id": "U-17_0677",
+    "page": "",
+    "reading": {
+      "engine": "edition",
+      "model_id": "kf",
+      "status": "edition"
+    },
+    "char_start": 0,
+    "char_end": 1389,
+    "quote": "…von Rinach, junkher Petters von Griffensee und ander. und wond nu sölliche ordnung zevestnen und bestäten ist, darumb haben wir, obge nt̄en nanten von Lentzburg, disz alles fùr die erwirdigen, geistlichen unser gnedigen fròwen, epptissin und covent ze Kùngszfelden, gebracht und sy durch uns selbs und ander dienstlich und ernstlich gebetten als kilcher ˀen ren der lùtkilchen ze ✳ Stoͧffen, da rin̄ rinn ouch Lentzburg gelegen ist, ✳ daz sy söllichs also under ir sigel vˀ ver willigen wellent, daz sy òch umb gottes und söllicher bett willen gnedclich und güttlich getan habent als harnach stàt. wir, gräfin Elszbeth von Liningen, eptissin, und gemei nˀ ner covent ze Kùngszfelden, beken nē nen offenlich fùr ùns und unser nachko mē men , daz wir nach söllichem anbrin g₎ gen , bitten und begeren die mesz umbe merung und fùrderung gottes dienst verwilliget und unse rn̄ ren gunst und willen darzuͦ geben habent, doch also und in den worten, daz sie belib und bestand, yetz und hinfùr ewenclich, ùns, unse rm̄ rem gotzhus ze Kùngszfelden, unser kilchen und lùtpriesterige ze ✳ Stoͧffen in den obe rn̄ ren und allen an dnˀ dern artike ln̄ len und sust inallweg gantz un vˀ ver griffen und an schaden und anders nit ungevarlich in krafft und urkùnd disz brieffs, daran wir desz alles zuͦ warem, vestem urkùnde unsers covents ze Kùngszfelden insigel offenlich gehenkt habent. wir, der ✳…",
+    "match": "exact",
+    "agreement": "single",
+    "alternatives": [],
+    "identical_readings": [],
+    "page_band": "unmeasurable",
+    "max_pairwise_cer": null,
+    "source": {
+      "datierung": "1454",
+      "datierung_unsicher": null,
+      "sprache": null,
+      "sprachen": [],
+      "bestand": "kf",
+      "title": "StAAG U.17/0677"
+    },
+    "anchor": null,
+    "catalogue_url": null,
+    "retrieval": {
+      "score": 0.0,
+      "scored_by": "fulltext",
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "fùr uns bitten",
+      "period": "unchecked",
+      "context": "document",
+      "snippet_id": "ev-038062dfae4d"
+    },
+    "reading_text": "…von Rinach, junkher Petters von Griffensee und ander. und wond nu sölliche ordnung zevestnen und bestäten ist, darumb haben wir, obge nanten von Lentzburg, disz alles fùr die erwirdigen, geistlichen unser gnedigen fròwen, epptissin und covent ze Kùngszfelden, gebracht und sy durch uns selbs und ander dienstlich und ernstlich gebetten als kilcher ˀen ren der lùtkilchen ze Stoͧffen, da rinn ouch Lentzburg gelegen ist, daz sy söllichs also under ir sigel ver willigen wellent, daz sy òch umb gottes und söllicher bett willen gnedclich und güttlich getan habent als harnach stàt. wir, gräfin Elszbeth von Liningen, eptissin, und gemei ner covent ze Kùngszfelden, beken nen offenlich fùr ùns und unser nachko men , daz wir nach söllichem anbrin gen , bitten und begeren die mesz umbe merung und fùrderung gottes dienst verwilliget und unse ren gunst und willen darzuͦ geben habent, doch also und in den worten, daz sie belib und bestand, yetz und hinfùr ewenclich, unse rem gotzhus ze Kùngszfelden, unser kilchen und lùtpriesterige ze Stoͧffen in den obe ren und allen an dern artike len und sust inallweg gantz un ver griffen und an schaden und anders nit ungevarlich in krafft und urkùnd disz brieffs, daran wir desz alles zuͦ warem, vestem urkùnde unsers covents ze Kùngszfelden insigel offenlich gehenkt habent. wir, der …"
+  }
+}
