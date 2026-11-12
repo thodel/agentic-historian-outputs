@@ -1,0 +1,567 @@
+{
+  "question_id": "q-a3118479d5",
+  "question": "Welche Pflichten hat der Hofmeister von Königsfelden gegenüber dem Konvent?",
+  "filters": {
+    "bestand": "kf",
+    "from": null,
+    "to": null
+  },
+  "plan": {
+    "question": "Welche Pflichten hat der Hofmeister von Königsfelden gegenüber dem Konvent?",
+    "subquestions": [
+      {
+        "id": "q0",
+        "text": "Welche Pflichten hat der Hofmeister von Königsfelden gegenüber dem Konvent?",
+        "terms": [
+          "pflichten",
+          "hofmeister",
+          "konvent"
+        ]
+      },
+      {
+        "id": "q1",
+        "text": "Welche administrativen Aufgaben hatte der Hofmeister gegenüber dem Konvent?",
+        "terms": [
+          "gelt",
+          "abgabe",
+          "verwalten"
+        ]
+      },
+      {
+        "id": "q2",
+        "text": "Welche liturgischen Pflichten, insbesondere im Zusammenhang mit Jahrzeiten, hatte der Hofmeister für den Konvent?",
+        "terms": [
+          "jartzit",
+          "begangen",
+          "pflegen"
+        ]
+      },
+      {
+        "id": "q3",
+        "text": "Welche Fürbitten‑ und Spendenverpflichtungen gegenüber dem Konvent waren dem Hofmeister auferlegt?",
+        "terms": [
+          "fùr uns bitten",
+          "spende",
+          "almuͦsen"
+        ]
+      }
+    ],
+    "period": null,
+    "languages": [
+      "de",
+      "la"
+    ],
+    "from_model": true,
+    "bestand": "kf"
+  },
+  "sampled": [
+    "ev-c253cb880a56",
+    "ev-125f1f25aaf3",
+    "ev-040a23a90d1c",
+    "ev-1424dd0c94e1",
+    "ev-955f904c00c7",
+    "ev-740241d9f266",
+    "ev-8d615528ebef",
+    "ev-c7c32a2030e6",
+    "ev-8cb6a6a55dd1",
+    "ev-1396843f6304",
+    "ev-67ce1c9dde91"
+  ],
+  "dropped": [
+    {
+      "evidence_id": "ev-214216934a36",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-289aab46030f",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-2a5a1e6ee636",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-2ad7abaf6afe",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-31c0a5102651",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3a3b5b561dbf",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3a77c2830a90",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3dc0fd9a7312",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-43afa1e90747",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-4d7830715532",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-4dfb49c5b102",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-5978013e296e",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-5d88198959a4",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6281b8f4e915",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-63e6aca98cb3",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6592c8a0d038",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6b0b94059a5d",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6cb8052cd8f7",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6d10d9b79b9a",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6d74dc5598bc",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-737b47f5cb15",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-7452dac44aa3",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-7d1f585ebfb8",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-7d3ea9cdcbbc",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-829bbeadced4",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-8cb6a6a55dd1",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-941cfe7af39b",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9810c435230f",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9923b94e9dd7",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9f41a52d0cdb",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9f817c3b9601",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9f8a047cfcdc",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-a28a2132d022",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-aa6d188412f5",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-aabe87ef536f",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b136d701cf1d",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b1ae87b6ffc5",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b338257f6081",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b481f1424cff",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b69a33d941a7",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-bc41af47f88c",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-bcfbd1e6d4a4",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-bdb367aff4f8",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-c1dbdcfb59ec",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-c62ec20dfc68",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-cc7a66b42ea2",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d2e1347e5791",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d3b97735106f",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d5db779fee29",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d97005fe9406",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e4d42b6cbcfc",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e4d4c1439c81",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e8c19dcc0499",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-efb425302d80",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-f2a0455f4c35",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-f6e64004a2cf",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-f7939a8fab1f",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-f8ed5ef10de5",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-fe164c86d9a9",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-ff1c37063a6e",
+      "reason": "sample full"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Der Hofmeister fungiert als Schaffner und Amtmann des Klosters und verwaltet damit dessen Güter und übernimmt administrative Aufgaben für den Konvent.",
+      "bindings": [
+        {
+          "evidence_id": "ev-955f904c00c7",
+          "quote": "der erber, wolbescheiden Walther Hofmeister, schafner und amptman des klosters ze Kunigsvelt",
+          "ok": true,
+          "reason": "",
+          "layer": "reading",
+          "source_span": "der erber, wolbescheiden Walther Hofmeister, ✳ schafner und amptman des klosters ze Kunigsvelt",
+          "gloss": "der Erbe, wohlbescheidener Walther Hofmeister, Schaffner und Amtmann des Klosters zu Königsfelden",
+          "gloss_flags": []
+        }
+      ],
+      "number": 2,
+      "checks": [
+        "Folgt nicht aus der eigenen Übersetzung: Die Übersetzung nennt Walther Hofmeister als Schaffner und Amtmann des Klosters, aber sie enthält keine Aussage darüber, dass er die Güter des Klosters verwaltet oder administrative Aufgaben für den Konvent übernimmt. Die Behauptung erweite"
+      ]
+    },
+    {
+      "text": "Der Hofmeister hat die Aufgabe, aufgrund von Urkunden Rechte zu erkennen und rechtlich durchzusetzen.",
+      "bindings": [
+        {
+          "evidence_id": "ev-1396843f6304",
+          "quote": "nach verhör des selben houptbriefs begert min her hofmeister, den in kraft ze erkennenn, und satzt darumb zuͦ recht.",
+          "ok": true,
+          "reason": "",
+          "layer": "reading",
+          "source_span": "nach verhör des selben houptbriefs ✳ begert min her hofmeister, ✳ den in kraft ze erkennenn, ✳ und satzt darumb zuͦ recht.",
+          "gloss": "nach Verhör des selben Hauptbriefs begab mein Herr Hofmeister, den in Kraft zu erkennen, und setzte darum zu Recht",
+          "gloss_flags": []
+        }
+      ],
+      "number": 3,
+      "checks": []
+    }
+  ],
+  "rejected_claims": [
+    {
+      "text": "Der Hofmeister ist verpflichtet, die Gerechtigkeit und die Rechte des Gottshauses (Konvents) zu bewahren, wie die Äbtissin es befiehlt.",
+      "bindings": [
+        {
+          "evidence_id": "ev-c253cb880a56",
+          "quote": "unn sér hofmeister fùr sich selbs har inn nuͦtz anders getàn, dann das imm unn sér frow die aͤptissin guͦter gedaͧchtnùstz het bevolhen unn szers gotzhus gerechtikeit und zùgeheͦrd nitt zuͣverlieren.",
+          "ok": false,
+          "reason": "quote not in the cited passage",
+          "layer": "",
+          "source_span": "",
+          "gloss": "und unser Hofmeister für sich selbst hat in nichts anders getan, dann das im und unser Frau die Äbtissin guter Erinnerung hat befohlen und seines Gotteshauses Gerechtigkeit und Zugehörigkeit nicht zu verlieren.",
+          "gloss_flags": []
+        }
+      ],
+      "number": 1,
+      "checks": []
+    }
+  ],
+  "summary": "",
+  "summary_rejected": "1 sentence(s) withheld: cites claim [1], which was not accepted",
+  "coverage": [
+    {
+      "subquestion": "q0",
+      "retriever": "passages",
+      "query": "Welche Pflichten hat der Hofmeister von Königsfelden gegenüber dem Konvent?",
+      "status": "not in holding",
+      "hits": 0,
+      "error": "none of our own transcriptions is in holding kf"
+    },
+    {
+      "subquestion": "q0",
+      "retriever": "fulltext",
+      "query": "pflichten",
+      "status": "ok",
+      "hits": 1
+    },
+    {
+      "subquestion": "q0",
+      "retriever": "fulltext",
+      "query": "hofmeister",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q0",
+      "retriever": "fulltext",
+      "query": "konvent",
+      "status": "ok",
+      "hits": 3
+    },
+    {
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "gelt",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "abgabe",
+      "status": "empty",
+      "hits": 0
+    },
+    {
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "verwalten",
+      "status": "empty",
+      "hits": 0
+    },
+    {
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "jartzit",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "begangen",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "pflegen",
+      "status": "ok",
+      "hits": 2
+    },
+    {
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "fùr uns bitten",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "spende",
+      "status": "ok",
+      "hits": 3
+    },
+    {
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "almuͦsen",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "r1g3",
+      "retriever": "fulltext",
+      "query": "für uns bitten",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "r1g3",
+      "retriever": "fulltext",
+      "query": "fuͤr uns bitten",
+      "status": "ok",
+      "hits": 1
+    }
+  ],
+  "gaps": [
+    {
+      "id": "r1g1",
+      "text": "Um administrative Pflichten des Hofmeisters zu finden, sollten Begriffe verwendet werden, die in mittelhochdeutschen Urkunden für Verwaltung und Abgabe vorkommen.",
+      "terms": [
+        "hofmeister",
+        "verwalten",
+        "abgabe"
+      ],
+      "why": "Diese Wörter decken mögliche Formulierungen zu Verwaltungsaufgaben und finanziellen Abgaben des Hofmeisters gegenüber dem Konvent ab."
+    },
+    {
+      "id": "r1g2",
+      "text": "Für liturgische Pflichten, insbesondere Jahrzeiten, sind spezifische Begriffe nötig.",
+      "terms": [
+        "jartzit",
+        "pflegen",
+        "hofmeister"
+      ],
+      "why": "Jartzit und pflegen werden in Quellen für die Verantwortung bei jährlichen Gedenkfeiern verwendet."
+    },
+    {
+      "id": "r1g3",
+      "text": "Für Fürbitten‑ und Spendenverpflichtungen sollten Begriffe aus dem Stiftungs‑ und Gebetsvokabular genutzt werden.",
+      "terms": [
+        "für uns bitten",
+        "almuͦsen",
+        "spende"
+      ],
+      "why": "Diese Wörter erscheinen in mittelalterlichen Texten, wenn Stifter zu Fürbitten und Almosen verpflichtet werden."
+    }
+  ],
+  "audit": {
+    "max_tokens": 300000,
+    "max_calls": 12,
+    "calls": [
+      {
+        "stage": "plan",
+        "prompt_tokens": 800,
+        "completion_tokens": 762
+      },
+      {
+        "stage": "bind",
+        "prompt_tokens": 5763,
+        "completion_tokens": 3135
+      },
+      {
+        "stage": "verify",
+        "prompt_tokens": 415,
+        "completion_tokens": 575
+      },
+      {
+        "stage": "reflect-1",
+        "prompt_tokens": 1044,
+        "completion_tokens": 947
+      },
+      {
+        "stage": "bind",
+        "prompt_tokens": 5215,
+        "completion_tokens": 2178
+      },
+      {
+        "stage": "verify",
+        "prompt_tokens": 419,
+        "completion_tokens": 461
+      },
+      {
+        "stage": "reflect-2",
+        "prompt_tokens": 1037,
+        "completion_tokens": 547
+      }
+    ],
+    "prompt_tokens": 14693,
+    "completion_tokens": 8605,
+    "unknown_usage_calls": 0,
+    "rounds": 2,
+    "stopped_because": "",
+    "skipped": [],
+    "events": [
+      "model: gpt-oss-120b",
+      "plan: the question's subject was not among the search terms — added: pflichten, hofmeister, konvent",
+      "bind: summary — 1 sentence(s) withheld: cites claim [2], which was not accepted",
+      "bind: summary — 1 sentence(s) withheld: cites claim [1], which was not accepted"
+    ],
+    "tokens": 23298
+  },
+  "complete": true,
+  "created_at": "2026-11-12T20:31:11+00:00"
+}
