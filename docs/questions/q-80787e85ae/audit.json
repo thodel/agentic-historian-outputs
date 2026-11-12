@@ -1,0 +1,928 @@
+{
+  "question_id": "q-80787e85ae",
+  "question": "Welche Pflichten hat der Hofmeister von Königsfelden gegenüber dem Konvent?",
+  "filters": {
+    "bestand": "kf",
+    "from": null,
+    "to": null
+  },
+  "plan": {
+    "question": "Welche Pflichten hat der Hofmeister von Königsfelden gegenüber dem Konvent?",
+    "subquestions": [
+      {
+        "id": "q1",
+        "text": "Welche konkreten Aufgaben hat der Hofmeister in der Verwaltung des Klostervermögens?",
+        "terms": [
+          "gelt",
+          "zins",
+          "abgabe"
+        ]
+      },
+      {
+        "id": "q2",
+        "text": "Welche liturgischen Pflichten, insbesondere das Pflegen von Jahrzeiten, obliegen dem Hofmeister?",
+        "terms": [
+          "jartzit",
+          "begangen",
+          "pflegen"
+        ]
+      },
+      {
+        "id": "q3",
+        "text": "Welche Fürbitte‑ und Seelenheilsverpflichtungen hat der Hofmeister gegenüber dem Konvent?",
+        "terms": [
+          "fùr uns bitten",
+          "sele",
+          "pro anima"
+        ]
+      }
+    ],
+    "period": null,
+    "languages": [
+      "de",
+      "la"
+    ],
+    "from_model": true,
+    "bestand": "kf"
+  },
+  "sampled": [
+    "ev-125f1f25aaf3",
+    "ev-040a23a90d1c",
+    "ev-1424dd0c94e1",
+    "ev-dbfc10abf224",
+    "ev-e23894004965",
+    "ev-39d517438aa9",
+    "ev-3e8f58190fe4",
+    "ev-1ba57d1a6a24",
+    "ev-0e45ff88ccfa",
+    "ev-7b30513e90cb",
+    "ev-c8f583ada870",
+    "ev-10703a96c2e8"
+  ],
+  "dropped": [
+    {
+      "evidence_id": "ev-038062dfae4d",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-087fbbfa1ea2",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-0adcc89cb180",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-1614df3d32f9",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-19a443c76135",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-1a89a2060029",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-1e2116a258b5",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-1edad8076eaf",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-2010b51fd087",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-22f22ff84cc1",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-2377efc08b69",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-2a54497f36e7",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-2ad7abaf6afe",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-2c1e127d4380",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-2cfb5243de8c",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-2e22291fb24b",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-306472aaa6c0",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-31c0a5102651",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3695143e5619",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3ac987a35ba2",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3b150c16aba6",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3bf79f0674ae",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3c84221a1123",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3cdd62ef9ae3",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3e81324f45b0",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3f4a466a9256",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-40e8584a781c",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-417ecd9cacc8",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-42e0a8a3486c",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-484a850791ff",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-4d7830715532",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-4dfa4b21bd96",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-4dfb49c5b102",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-4e66d71ca1a5",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-4f96fccdbc63",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-52ae7b2e1b06",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-552a485cd59e",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-576102c25984",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-5978013e296e",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-59f5112eedf9",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-5a31de03c473",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-5e45946ceffc",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6199a372ef2b",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-63e3721ba5e8",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-63e6aca98cb3",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6592c8a0d038",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-67ce1c9dde91",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6ab85e2f56ea",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6b0b94059a5d",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6d28c31878c2",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6d374287f677",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6d74dc5598bc",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6e57f00bf93a",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6e93df75fdbe",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6f75b78d250c",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-70c0bf656a11",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-723103d45b12",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-737b47f5cb15",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-7452dac44aa3",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-76cc14fd9d38",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-7d3ea9cdcbbc",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-8116453bc343",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-829bbeadced4",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-8511279b00e8",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-859d7521bad7",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-8b4eb59b7d0b",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-8cb6a6a55dd1",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-8d615528ebef",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-8f8c2683118b",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-8fbbbc9c137e",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-90251bfd9844",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-90a6064690c2",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-91497d4e9f7d",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9297d8169c28",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-93258619e8a8",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9923b94e9dd7",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-99a80c38175f",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9cad114fadae",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9d90d159d3dd",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9e58fd279109",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-a0041464fe36",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-a28a2132d022",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-a4e18bd5daeb",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-a820a4ee6f7f",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-aa6d188412f5",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-aabe87ef536f",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b1102a060ccb",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b1ae87b6ffc5",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b2d555fbc921",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b338257f6081",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b5aaeb277c45",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b69a33d941a7",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b929d2b8e0de",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b98d58861618",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-bc41af47f88c",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-bcfbd1e6d4a4",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-bdb367aff4f8",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-c1835d842ca2",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-c186b77438d5",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-c24f18ebeb00",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-c253cb880a56",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-c513ceb2f467",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-cbac71508ba9",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-cc7a66b42ea2",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-cc96d250f85e",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-cea6c4a22193",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d1616b008d82",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d2e1347e5791",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d3b97735106f",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d53a35c11c0b",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d5541c6583bd",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d5db779fee29",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d7cfb603fda9",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d97005fe9406",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e19696408b94",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e4d42b6cbcfc",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e4d4c1439c81",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e74084fc3980",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e820e4731f47",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e8bf3f9da536",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e8c19dcc0499",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-ec585ec91cc2",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-ec76cd16f843",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-ee03db5085fd",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-ee7516ba2be0",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-efb425302d80",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-f0d3f8e39f92",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-f2a0455f4c35",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-f48c7c35d4b0",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-f6e64004a2cf",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-f7939a8fab1f",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-f8998d9b7dc8",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-f8ed5ef10de5",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-fa02a4763a41",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-ff1c37063a6e",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-ffd3c512f7df",
+      "reason": "sample full"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Der Hofmeister soll die ihm anvertrauten Güter nicht an sich selbst veräußern, sondern sie dem Kloster erhalten.",
+      "bindings": [
+        {
+          "evidence_id": "ev-0e45ff88ccfa",
+          "quote": "ir hofmeis ter von ir wegen, … sòllent zem teil ir eigen und nit lehen sin",
+          "ok": true,
+          "reason": "",
+          "layer": "reading",
+          "source_span": " ir hofmeis tˀ ter von ir wegen, ✳ die von Mùlinen und ander, so ver mein̄en meinnen und vor inn haben die guͤter, so er in anspräch hab, sòllent zem teil ir eigen und nit lehen si",
+          "gloss": "her hofmeister of her because, ... should to the part her own and not lend be",
+          "gloss_flags": []
+        }
+      ],
+      "number": 2,
+      "checks": [
+        "Folgt nicht aus der eigenen Übersetzung: Die Übersetzung des Zitats lautet etwa: „... soll ihr Teil ihr eigen sein und nicht geliehen werden.“ Sie spricht lediglich davon, dass der Hofmeister das ihm anvertraute Gut nicht verleihen, sondern sein Eigentum behalten soll. Der Anspruc"
+      ]
+    }
+  ],
+  "rejected_claims": [
+    {
+      "text": "Der Hofmeister darf die Güter des Klosters nicht für eigenen Nutzen verwenden.",
+      "bindings": [
+        {
+          "evidence_id": "ev-1424dd0c94e1",
+          "quote": "das unn sér hofmeister fùr sich selbs har inn nuͦtz anders getàn",
+          "ok": false,
+          "reason": "quote not in the cited passage",
+          "layer": "",
+          "source_span": "",
+          "gloss": "that and his hofmeister for himself has in benefit otherwise done",
+          "gloss_flags": []
+        }
+      ],
+      "number": 1,
+      "checks": []
+    }
+  ],
+  "summary": "",
+  "summary_rejected": "1 sentence(s) withheld: cites claim [1], which was not accepted",
+  "coverage": [
+    {
+      "subquestion": "q1",
+      "retriever": "passages",
+      "query": "Welche konkreten Aufgaben hat der Hofmeister in der Verwaltung des Klostervermögens?",
+      "status": "not in holding",
+      "hits": 0,
+      "error": "none of our own transcriptions is in holding kf"
+    },
+    {
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "gelt",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "zins",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "abgabe",
+      "status": "empty",
+      "hits": 0
+    },
+    {
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "jartzit",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "begangen",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "pflegen",
+      "status": "ok",
+      "hits": 2
+    },
+    {
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "fùr uns bitten",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "sele",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "pro anima",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "r1g1",
+      "retriever": "fulltext",
+      "query": "hofmeister",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "r1g1",
+      "retriever": "fulltext",
+      "query": "verwalten",
+      "status": "empty",
+      "hits": 0
+    },
+    {
+      "subquestion": "r1g1",
+      "retriever": "fulltext",
+      "query": "güter",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "r1g1",
+      "retriever": "fulltext",
+      "query": "guͤter",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "r1g3",
+      "retriever": "fulltext",
+      "query": "fürbitte",
+      "status": "empty",
+      "hits": 0
+    },
+    {
+      "subquestion": "r1g3",
+      "retriever": "fulltext",
+      "query": "fuͤrbitte",
+      "status": "empty",
+      "hits": 0
+    },
+    {
+      "subquestion": "r1g3",
+      "retriever": "fulltext",
+      "query": "selmesse",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "r2g1",
+      "retriever": "fulltext",
+      "query": "pfliget",
+      "status": "ok",
+      "hits": 7
+    },
+    {
+      "subquestion": "r2g2",
+      "retriever": "fulltext",
+      "query": "fùr",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "r2g2",
+      "retriever": "fulltext",
+      "query": "bitten",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "r2g3",
+      "retriever": "fulltext",
+      "query": "pflicht",
+      "status": "ok",
+      "hits": 10
+    }
+  ],
+  "gaps": [
+    {
+      "id": "r1g1",
+      "text": "Verwaltung des Klostervermögens durch den Hofmeister",
+      "terms": [
+        "hofmeister",
+        "verwalten",
+        "güter"
+      ],
+      "why": "Um konkrete Anweisungen und Pflichten des Hofmeisters bei der Verwaltung von Gütern, Einnahmen und Abgaben zu finden, müssen die historischen Begriffe für Verwaltung und Besitz in den Urkunden gesucht werden."
+    },
+    {
+      "id": "r1g2",
+      "text": "Liturgische Pflichten, insbesondere das Pflegen von Jahrzeiten",
+      "terms": [
+        "hofmeister",
+        "jartzit",
+        "pflegen"
+      ],
+      "why": "Die Quellen verwenden die mittelhochdeutschen Formen für Jahrzeiten (jartzit/jarzit) und das Verb ‚pflegen‘, um die Verantwortung des Hofmeisters für die jährlichen Gedenkfeiern zu beschreiben."
+    },
+    {
+      "id": "r1g3",
+      "text": "Fürbitte‑ und Seelenheilsverpflichtungen des Hofmeisters gegenüber dem Konvent",
+      "terms": [
+        "hofmeister",
+        "fürbitte",
+        "selmesse"
+      ],
+      "why": "Die relevanten Passagen zu intercessorischen Aufgaben und Seelenmessen (selmesse) werden mit den historischen Begriffen ‚fürbitte‘ und ‚selmesse‘ verzeichnet; diese Suchbegriffe ermöglichen das Auffinden entsprechender Bestimmungen."
+    },
+    {
+      "id": "r2g1",
+      "text": "Liturgische Pflichten des Hofmeisters – insbesondere das Pflegen von Jahrzeiten (jartzit).",
+      "terms": [
+        "hofmeister",
+        "jartzit",
+        "pfliget"
+      ],
+      "why": "Die vorhandenen Behauptungen behandeln nur Vermögensverwaltung; für die liturgischen Aufgaben fehlt ein Nachweis, dass der Hofmeister für die jährlichen Gedenkfeiern (jartzit) verantwortlich war."
+    },
+    {
+      "id": "r2g2",
+      "text": "Fürbitte‑Verpflichtungen des Hofmeisters gegenüber dem Konvent.",
+      "terms": [
+        "hofmeister",
+        "fùr",
+        "bitten"
+      ],
+      "why": "Um die intercessorischen Pflichten (Fürbitte für die Gemeinschaft) zu belegen, muss nach Quellen gesucht werden, in denen der Hofmeister ausdrücklich zum „fùr uns bitten“ verpflichtet wird."
+    },
+    {
+      "id": "r2g3",
+      "text": "Seelenheils‑ und Selmesse‑Aufgaben des Hofmeisters.",
+      "terms": [
+        "hofmeister",
+        "selmesse",
+        "pflicht"
+      ],
+      "why": "Die Frage nach Seelenheilsverpflichtungen (z. B. das Besorgen von Selmesse) ist noch unbeantwortet; passende Begriffe ermöglichen das Auffinden entsprechender Bestimmungen."
+    }
+  ],
+  "audit": {
+    "max_tokens": 300000,
+    "max_calls": 12,
+    "calls": [
+      {
+        "stage": "plan",
+        "prompt_tokens": 800,
+        "completion_tokens": 544
+      },
+      {
+        "stage": "bind",
+        "prompt_tokens": 5514,
+        "completion_tokens": 2700
+      },
+      {
+        "stage": "verify",
+        "prompt_tokens": 383,
+        "completion_tokens": 281
+      },
+      {
+        "stage": "reflect-1",
+        "prompt_tokens": 886,
+        "completion_tokens": 668
+      },
+      {
+        "stage": "bind",
+        "prompt_tokens": 5454,
+        "completion_tokens": 4644
+      },
+      {
+        "stage": "verify",
+        "prompt_tokens": 592,
+        "completion_tokens": 840
+      },
+      {
+        "stage": "reflect-2",
+        "prompt_tokens": 918,
+        "completion_tokens": 1007
+      },
+      {
+        "stage": "bind",
+        "prompt_tokens": 5533,
+        "completion_tokens": 2375
+      },
+      {
+        "stage": "verify",
+        "prompt_tokens": 303,
+        "completion_tokens": 347
+      }
+    ],
+    "prompt_tokens": 20383,
+    "completion_tokens": 13406,
+    "unknown_usage_calls": 0,
+    "rounds": 2,
+    "stopped_because": "",
+    "skipped": [],
+    "events": [
+      "model: gpt-oss-120b",
+      "bind: summary — 1 sentence(s) withheld: cites claim [2], which was not accepted",
+      "bind: summary — 2 sentence(s) withheld: cites claim [1], which was not accepted; cites claim [2], which was not accepted",
+      "bind: summary — 1 sentence(s) withheld: cites claim [1], which was not accepted"
+    ],
+    "tokens": 33789
+  },
+  "complete": true,
+  "created_at": "2026-11-12T11:54:46+00:00"
+}
