@@ -1,0 +1,505 @@
+{
+  "question_id": "q-2b1d16fd28",
+  "question": "frage:Welche Pflichten hat der Hofmeister von Königsfelden gegenüber dem Konvent?",
+  "filters": {
+    "bestand": "kf",
+    "from": null,
+    "to": null
+  },
+  "plan": {
+    "question": "frage:Welche Pflichten hat der Hofmeister von Königsfelden gegenüber dem Konvent?",
+    "subquestions": [
+      {
+        "id": "q0",
+        "text": "frage:Welche Pflichten hat der Hofmeister von Königsfelden gegenüber dem Konvent?",
+        "terms": [
+          "frage",
+          "pflichten"
+        ]
+      },
+      {
+        "id": "q1",
+        "text": "Welche Aufgaben und Verantwortlichkeiten hatte der Hofmeister im täglichen Verwaltungshandeln gegenüber dem Konvent?",
+        "terms": [
+          "hofmeister",
+          "verwalten",
+          "konvent"
+        ]
+      },
+      {
+        "id": "q2",
+        "text": "Welche finanziellen Pflichten, etwa Abgaben, Gelt oder Zins, hatte der Hofmeister gegenüber dem Konvent?",
+        "terms": [
+          "gelt",
+          "zins",
+          "abgabe"
+        ]
+      },
+      {
+        "id": "q3",
+        "text": "Welche liturgischen oder seelsorgerischen Pflichten (z. B. Jartzit, Fürbitte) hatte der Hofmeister gegenüber dem Konvent?",
+        "terms": [
+          "jartzit",
+          "orare",
+          "pflegen"
+        ]
+      },
+      {
+        "id": "q4",
+        "text": "Wie wurden diese Pflichten vertraglich oder durch Bestimmungen (z. B. „mit der bescheidenheit …“) festgelegt?",
+        "terms": [
+          "bescheidenheit",
+          "bestimmung",
+          "obligatio"
+        ]
+      }
+    ],
+    "period": null,
+    "languages": [
+      "de",
+      "la"
+    ],
+    "from_model": true,
+    "bestand": "kf"
+  },
+  "sampled": [
+    "ev-f5a471597657",
+    "ev-36cc6476b81f",
+    "ev-12f5fbac2ec9",
+    "ev-040a23a90d1c",
+    "ev-ee52d49e521e",
+    "ev-f265a1ba1925",
+    "ev-b4201fc6414b",
+    "ev-be0f77725b36",
+    "ev-358d74ffb282",
+    "ev-29443d9fbd74",
+    "ev-8b79896c87c9",
+    "ev-6d2e2d669bee"
+  ],
+  "dropped": [
+    {
+      "evidence_id": "ev-072b38450122",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-18cacd894f3f",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-1f7ac7bdaaf3",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-2562e9cd3be5",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-33da854d48f4",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3a5249d1a292",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-3e81324f45b0",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-441c3bcfbc8a",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-45b52f151582",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-4784aae6a6ee",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-47bc7b3ba9b5",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-4c8097a0c469",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-57947d1758ce",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-5f335906a2fd",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-612fa62987a3",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6199a372ef2b",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-656f9f96c8d7",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-6683aa09be5c",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-688f1652f578",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-711b39b329c3",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-720786fb62cd",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-72bb82018e97",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-765479908c12",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-771fc3112d10",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-84ac240f8cd3",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-88323214ef0b",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-8f08feecf5dd",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-8f11e733504a",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9556228233ba",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9dc105ca262f",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-9ea83cb1d455",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-a28a2132d022",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-aba810034353",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b2a86edb38f4",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-b7624960f6d8",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-bc52ed5dea3a",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-bcfbd1e6d4a4",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-bf989c095145",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-c62ec20dfc68",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-c96fa5a794aa",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-cdad0ac29613",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d0f15614f3d9",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-d500e07a17de",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-dc260649f5d2",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-dca29dfce761",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e06801a9bc6b",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e4075474bbc6",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e4c98f965b89",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e5ded9a806dd",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-e892cc1fc66d",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-ea312d7a0063",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-eab882ee8ac7",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-ec585ec91cc2",
+      "reason": "sample full"
+    },
+    {
+      "evidence_id": "ev-efb425302d80",
+      "reason": "sample full"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Der Hofmeister muss die Güter des Klosters besitzen, nutzen und genießen, dabei wertvoll, dienstlich und gehorsam sein und alles tun, was von den gnädigen Frauen des Konvents gefordert wird; er ist nach Recht und Brauch pflichtig und schuldig.",
+      "bindings": [
+        {
+          "evidence_id": "ev-6d2e2d669bee",
+          "quote": "das inn ze haben, nutzen und niess-en, oͧch dar von gewertig, dienstig und gehorsam zuͦ sind und alles das ze tuͦnd, das ein man sinen gnedig froͧwen, einem hofmeister an ir gnad stat pflichtig und schuldig zetuͦnd ist",
+          "ok": true,
+          "reason": "",
+          "layer": "reading",
+          "source_span": ", das inn ze haben, nutzen und niess-en, oͧch dar vō von gewertig, dienstig und gehorsam zuͦ sind und alles das ze tuͦnd, das ein man sinen gnedig froͧwen, einem hofmeistˀ hofmeister an ir gnad stat pflichtig und schuldig zetuͦnd ",
+          "gloss": "das in zu haben, nutzen und genießen, auch davon von wertig, dienstlich und gehorsam zu sein und alles das zu tun, das ein Mann seinen gnädigen Frauen, einem Hofmeister an seiner Gnade stat pflichtig und schuldig zu tun ist.",
+          "gloss_flags": []
+        }
+      ],
+      "number": 2,
+      "checks": [
+        "Folgt nicht aus der eigenen Übersetzung: Die Übersetzung enthält die Forderungen, dass der Hofmeister das Gut besitzen, nutzen und genießen sowie wertig, dienstlich und gehorsam sein und alles tun soll, was von den gnädigen Frauen verlangt wird, und dass er pflichtig und schuldig "
+      ]
+    }
+  ],
+  "rejected_claims": [
+    {
+      "text": "Der Hofmeister ist verpflichtet, dem Auftrag aus dem Sanftbrief nachzukommen, indem er das befohlene Gut zu den Casparen Efingers nach Wildek transportiert.",
+      "bindings": [
+        {
+          "evidence_id": "ev-36cc6476b81f",
+          "quote": "unszer hofmeister hàt unns jetz geszeͣugt ein sanndtbrief, von ùwrù gnàden an inn ussgangen, dàrinn imm bevolhen wirdt ettwas genom seylen, so er dem vestenn Casparenn Efingers zuͦ Wildek genemen sol haben, hàt wider zùgeben und sind dàrbi gemelldt ursach desselben und ob es nitt beschaͧhe, das es uwern gnàden nitt gevellig were, gnaͧdiger, lieber herrnn ùwer gnàd sel wàrlich wùstz, das unnszer hofmeister fùr sich selbs har inn nuͦtz anders getàn, dann das imm unnszer frow die aͤptissin guͦter gedaͧchtnùstz het bevolhen unnszers gotzhus gerechtikeit und zùgeheͦrd nitt zuͣverlieren.",
+          "ok": false,
+          "reason": "quote not in the cited passage",
+          "layer": "",
+          "source_span": "",
+          "gloss": "unsere Hofmeister hat uns jetzt gezeigt ein sanftes Schreiben, von unserer Gnade an ihn ausgegangen, darin ihm befohlen wird etwas zu senden, so er dem vesten Casparen Efingers zu Wildek nehmen soll haben, hat wieder zu geben und sind dabei gemeldet Ursache desselben und ob es nicht beschähe, dass es unserer Gnade nicht gefallen wäre, gnädiger, lieber Herren unsere Gnade selbst wohl wissend, dass unser Hofmeister für sich selbst hat inn nichts anderes getan, dann dass ihm unsere Frau die Äbtissin Güter gedacht hat befohlen unser Gotshaus Gerechtigkeit und Zugehörigkeit nicht zu verlieren.",
+          "gloss_flags": []
+        }
+      ],
+      "number": 1,
+      "checks": []
+    },
+    {
+      "text": "Der Hofmeister muss die Güter der Konventschwestern verwalten, sie vor Verlust schützen und darf sie nicht zu seinem eigenen Vorteil behalten.",
+      "bindings": [
+        {
+          "evidence_id": "ev-0716",
+          "quote": "die frawen von Kùngsfelden, ir hofmeister von ir wegen, die von Mùlinen und ander, so vermeinnen und vor inn haben die guͤter, so er in anspräch hab, sòllent zem teil ir eigen und nit lehen sin",
+          "ok": false,
+          "reason": "unknown id",
+          "layer": "",
+          "source_span": "",
+          "gloss": "die Frauen von Königsfelden, ihr Hofmeister von ihr wegen, die von Mühlen und ander, so vermeiden und vor inn haben die Güter, so er in Anspruch hab, sollen zum Teil ihr eigen und nicht leihen sein.",
+          "gloss_flags": []
+        }
+      ],
+      "number": 3,
+      "checks": []
+    }
+  ],
+  "summary": "",
+  "summary_rejected": "1 sentence(s) withheld: cites claim [1], which was not accepted",
+  "coverage": [
+    {
+      "subquestion": "q0",
+      "retriever": "passages",
+      "query": "frage:Welche Pflichten hat der Hofmeister von Königsfelden gegenüber dem Konvent?",
+      "status": "not in holding",
+      "hits": 0,
+      "error": "none of our own transcriptions is in holding kf"
+    },
+    {
+      "subquestion": "q0",
+      "retriever": "fulltext",
+      "query": "frage",
+      "status": "ok",
+      "hits": 4
+    },
+    {
+      "subquestion": "q0",
+      "retriever": "fulltext",
+      "query": "pflichten",
+      "status": "ok",
+      "hits": 4
+    },
+    {
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "hofmeister",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "verwalten",
+      "status": "ok",
+      "hits": 1
+    },
+    {
+      "subquestion": "q1",
+      "retriever": "fulltext",
+      "query": "konvent",
+      "status": "ok",
+      "hits": 3
+    },
+    {
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "gelt",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "zins",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q2",
+      "retriever": "fulltext",
+      "query": "abgabe",
+      "status": "empty",
+      "hits": 0
+    },
+    {
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "jartzit",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "orare",
+      "status": "ok",
+      "hits": 1
+    },
+    {
+      "subquestion": "q3",
+      "retriever": "fulltext",
+      "query": "pflegen",
+      "status": "ok",
+      "hits": 3
+    },
+    {
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "bescheidenheit",
+      "status": "ok",
+      "hits": 10
+    },
+    {
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "bestimmung",
+      "status": "empty",
+      "hits": 0
+    },
+    {
+      "subquestion": "q4",
+      "retriever": "fulltext",
+      "query": "obligatio",
+      "status": "empty",
+      "hits": 0
+    }
+  ],
+  "gaps": [],
+  "audit": {
+    "max_tokens": 300000,
+    "max_calls": 12,
+    "calls": [
+      {
+        "stage": "plan",
+        "prompt_tokens": 802,
+        "completion_tokens": 1044
+      },
+      {
+        "stage": "bind",
+        "prompt_tokens": 5627,
+        "completion_tokens": 3988
+      },
+      {
+        "stage": "verify",
+        "prompt_tokens": 422,
+        "completion_tokens": 480
+      },
+      {
+        "stage": "reflect-1",
+        "prompt_tokens": 1152,
+        "completion_tokens": 659
+      }
+    ],
+    "prompt_tokens": 8003,
+    "completion_tokens": 6171,
+    "unknown_usage_calls": 0,
+    "rounds": 1,
+    "stopped_because": "",
+    "skipped": [],
+    "events": [
+      "model: gpt-oss-120b",
+      "plan: the question's subject was not among the search terms — added: frage, pflichten",
+      "bind: summary — 1 sentence(s) withheld: cites claim [1], which was not accepted"
+    ],
+    "tokens": 14174
+  },
+  "complete": true,
+  "created_at": "2026-11-16T10:31:52+00:00"
+}
