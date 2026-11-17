@@ -1,0 +1,253 @@
+{
+  "doc_id": "lassberg-letter-0054",
+  "ad_fontes_version": "UZH 16-element",
+  "elements": {
+    "Aufbewahrungsort": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben möglich; kein Archivsiegel, keine Stempel oder Signatur auf den gezeigten Seiten erkennbar.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Beschreibstoff": {
+      "wert": "Papier",
+      "unsicher": false,
+      "notiz": "Deutlich sichtbare Faserstruktur und typische Papiermasse; leicht vergilbt, stellenweise fleckig (u. a. kleiner brauner Fleck Mitte rechts auf Seite 1), an den Rändern und unten leicht wellig/abgenutzt. Wasserzeichen auf den gezeigten Bildern nicht erkennbar. Keine Hinweise auf Palimpsest.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Blaetter": {
+      "wert": "1 Blatt (2 Seiten: Recto und Verso)",
+      "unsicher": false,
+      "notiz": "Das Dokument umfasst die beiden gezeigten Seiten, die als Vorder- und Rückseite eines einzelnen Blattes zu lesen sind. Oben rechts auf Seite 1 eine kleine, schwache Ziffer '6' (vermutlich alte Foliierung/Nummerierung). Keine Textverluste erkennbar; Lagenstruktur nicht beurteilbar.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Format": {
+      "wert": "Folio (ca. 40 x 25 cm) (unsicher)",
+      "unsicher": true,
+      "notiz": "Hochformatiges einzelnes Blatt; exakte Maße ohne Massstab nicht bestimmbar, Größenordnung entspricht einem Folioblatt. Keine abweichenden Formate durch Ergänzungen sichtbar.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Datierung": {
+      "wert": "1801 (explizit: 6. Februar 1801)",
+      "unsicher": false,
+      "notiz": "Explizite Datierung im Adresskopf auf Seite 1: 'du 6 fevrier 1801. à heiligenberg'. Neuzeitliches Dokument (19. Jh.), nicht spätmittelalterlich.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Lagen": {
+      "wert": "nicht beobachtbar",
+      "unsicher": true,
+      "notiz": "Nur ein einzelnes Blatt abgebildet; keine Lagenstruktur, keine Kustoden oder Reklamanten erkennbar.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "1 Spalte, nicht liniert, ca. 30–40 Zeilen",
+      "unsicher": true,
+      "notiz": "Freie Schreibweise ohne Linierung oder Raster; einzeiliger Schriftraum mit breiten Randzonen (v. a. links und unten). Keine Verweiszeichen (nota bene) erkennbar. Schriftraumhöhe ca. 30 cm, Breite ca. 18–20 cm (unsicher).",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Schrift": {
+      "wert": "Kursivschrift (Kurrent/Kanzleischrift)",
+      "unsicher": false,
+      "kandidaten": [
+        {
+          "schrift": "Kursivschrift (Kurrent/Kanzleischrift)",
+          "zuversicht": 0.8,
+          "merkmale": [
+            "geschwungene, verbundene Buchstaben",
+            "ausgeprägte Ober- und Unterlängen mit Schleifen",
+            "Punkte und Striche als Abkürzungszeichen",
+            "gleichmäßiger, flüssiger Duktus"
+          ]
+        },
+        {
+          "schrift": "humanistische Kursivschrift",
+          "zuversicht": 0.2,
+          "merkmale": [
+            "relativ klare, leserefreundliche Buchstabenformen",
+            "französische Schreibtradition"
+          ]
+        }
+      ],
+      "notiz": "Braunschwarze Tinte, keine Rubrizierung, keine farbigen Initialen. Zahlreiche Abkürzungen (Punkte, Striche). Auf Seite 2 eine Streichung (durchgestrichenes Wort, vgl. Transkription 'n'avait'). Zeilenhöhe ca. 5–7 mm (unsicher).",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Schreiber": {
+      "wert": "eine Hand (anonym, signiert 'Lasberg')",
+      "unsicher": false,
+      "notiz": "Beide Seiten in derselben Hand; der Schreiber unterzeichnet auf Seite 2 mit 'Lasberg'. Keine weiteren Hände, keine Marginalien oder Federproben. Eine zeitgenössische Korrektur durch Streichung auf Seite 2.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Ausstattung": {
+      "wert": "keine",
+      "unsicher": false,
+      "notiz": "Kein Buchschmuck, keine Miniaturen, keine verzierten Initialen oder Lombarden; einfarbige Tinte.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Sprache": {
+      "wert": "Französisch",
+      "unsicher": false,
+      "notiz": "Durchgehend französischer Text mit deutschen Orts-/Personennamen (z. B. Heiligenberg, Rotenbourg, Wächter, Dirlingen). Kein Latein.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Einband": {
+      "wert": "nicht sichtbar (loses Blatt)",
+      "unsicher": true,
+      "notiz": "Das Blatt liegt frei vor; kein Einband, keine Schließen, keine Metallbeschläge, keine Titelschilder oder alten Signaturen auf den gezeigten Seiten erkennbar.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Provenienz": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben möglich; aus dem Text lässt sich ein Bezug zu Heiligenberg und zu dänischen/lothringerischen Besitzverhältnissen ableiten, jedoch keine gesicherte Provenienz.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Literatur": {
+      "wert": "",
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben möglich.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Inhalt": {
+      "wert": "Brief (Lettre) an Madame la Comtesse d'Albany",
+      "unsicher": false,
+      "notiz": "Privat-/Geschäftsbrief vom 6. Februar 1801 aus Heiligenberg; Sachinhalt: rechtliche/feudale Auseinandersetzung um eine 'Affession' (Zession) an die dänische Krone, Hypothek, Grand Baillage de Rotenbourg, Forderung nach Rückzahlung und Klageerhebung. Dokumententyp: Brief (kein Urbar, Roedel oder Rechnungsbuch).",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Weitere_Hinweise": {
+      "wert": "Ziffer '6' oben rechts (Seite 1)",
+      "unsicher": true,
+      "notiz": "Kleine, schwache Ziffer oben rechts auf Seite 1, vermutlich alte Foliierungs- oder Aktennummer. Papier unten leicht wellig und an den Ecken abgenutzt.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0054_001.jpg",
+          "lassberg-letter-0054_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    }
+  },
+  "care_flag": {
+    "is_care_related": false,
+    "care_context": "",
+    "care_types": [],
+    "beteiligte": [],
+    "classified": true
+  },
+  "image_path": "/home/dh/batches/lassberg/lassberg-letter-0054/lassberg-letter-0054_001.jpg",
+  "pages_seen": [
+    "lassberg-letter-0054_001.jpg",
+    "lassberg-letter-0054_002.jpg"
+  ]
+}

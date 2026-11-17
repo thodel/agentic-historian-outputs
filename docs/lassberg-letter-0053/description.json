@@ -1,0 +1,256 @@
+{
+  "doc_id": "lassberg-letter-0053",
+  "ad_fontes_version": "UZH 16-element",
+  "elements": {
+    "Aufbewahrungsort": {
+      "wert": "keine gesicherten Angaben möglich",
+      "unsicher": false,
+      "notiz": "Nicht aus den Abbildungen ableitbar.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Beschreibstoff": {
+      "wert": "Papier",
+      "unsicher": false,
+      "notiz": "Vergilbtes, leicht fleckiges Papier; Faserstruktur und leichte Unebenheiten sichtbar. Wasserzeichen in den gezeigten Ansichten nicht sicher erkennbar. Keine Hinweise auf Palimpsest.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Blaetter": {
+      "wert": "2 Seiten (Vorder- und Rückseite eines Blattes bzw. zwei Blätter, unsicher)",
+      "unsicher": true,
+      "notiz": "Oben rechts auf der ersten Seite eine Ziffer '5' (vermutlich Nummer/Foliierung). Keine weiteren Foliierungszeichen sichtbar. Keine Textverluste erkennbar; unten an beiden Seiten je ein rundes Loch (Lochung/Klammer).",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Format": {
+      "wert": "Hochformat, vermutlich Quart (unsicher)",
+      "unsicher": true,
+      "notiz": "Exakte Maße ohne Maßstab nicht bestimmbar; Blattformat deutlich höher als breit, typisch für einen Brief.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Datierung": {
+      "wert": "10. Januar 1804",
+      "unsicher": false,
+      "notiz": "Explizite Datierung auf Seite 1: 'dato 10 Janvier 1804'.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Lagen": {
+      "wert": "nicht beobachtbar",
+      "unsicher": false,
+      "notiz": "Vorliegendes Einzelblatt/Brief; keine Lagenstruktur, Kustoden oder Reklamanten erkennbar.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "einspaltig, nicht liniert, freie Schrift",
+      "unsicher": false,
+      "notiz": "Schriftraum füllt nahezu die gesamte Seite; keine Linien oder Raster sichtbar. Keine Verweiszeichen.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Schrift": {
+      "wert": "französische Kursive (Kurrent)",
+      "unsicher": false,
+      "kandidaten": [
+        {
+          "schrift": "französische Kursive (Kurrent)",
+          "zuversicht": 0.9,
+          "merkmale": [
+            "flüssige, nach rechts geneigte Kursive",
+            "geschwungene Oberlängen und Schleifen",
+            "verkürzte Buchstabenformen und Abkürzungszeichen (z. B. 'me', 'que')",
+            "braunschwarze Tinte"
+          ]
+        },
+        {
+          "schrift": "gotische Kursive",
+          "zuversicht": 0.1,
+          "merkmale": [
+            "keine typischen gotischen Ductus-Merkmale; nur als entfernter Kandidat"
+          ]
+        }
+      ],
+      "notiz": "Zeilenhöhe ca. 5–7 mm (unsicher). Mehrere Streichungen und Überschreibungen (Korrekturen) sichtbar, z. B. gestrichene Namen und über der Zeile nachgetragene Ergänzungen. Keine farbigen Initialen oder Rubrizierung.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Schreiber": {
+      "wert": "eine Hand (Briefschreiber), anonym",
+      "unsicher": false,
+      "notiz": "Gleiche Hand auf beiden Seiten; Unterschrift/Paraphe 'Htmry 57' und 'Leisberg' (in ovaler Umrandung) auf Seite 2. Korrekturen durch Streichung und Überschreibung, teils mit über der Zeile nachgetragenen Wörtern.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Ausstattung": {
+      "wert": "keine",
+      "unsicher": false,
+      "notiz": "Kein Buchschmuck, keine Miniaturen, keine verzierten Initialen, keine Farben.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Sprache": {
+      "wert": "Französisch",
+      "unsicher": false,
+      "notiz": "Durchgehend französischer Text; keine lateinischen oder deutschen Passagen erkennbar.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Einband": {
+      "wert": "nicht sichtbar",
+      "unsicher": false,
+      "notiz": "Loses Blatt; kein Einband, keine Schließen oder Beschläge in den Abbildungen zu sehen.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Provenienz": {
+      "wert": "keine gesicherten Angaben möglich",
+      "unsicher": false,
+      "notiz": "Nicht aus den Abbildungen ableitbar.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Literatur": {
+      "wert": "keine gesicherten Angaben möglich",
+      "unsicher": false,
+      "notiz": "Nicht aus den Abbildungen ableitbar.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Inhalt": {
+      "wert": "Brief (Lettre)",
+      "unsicher": false,
+      "notiz": "Adressiert 'A Madame la parente d'Ulmery à Florence', datiert 10. Januar 1804. Sachinhalt: persönliche und geschäftliche Angelegenheiten, Nachrichten über 'Mr d'Anicet' (Aufenthalt in Guenzbourg/Genf), Stand einer gemeinsamen 'affaire'; Abschluss mit 'Conclusion' und respektvoller Anrede 'a Madame' sowie Signatur 'Leisberg'.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Weitere_Hinweise": {
+      "wert": "Lochung unten an beiden Seiten; Ziffer '5' oben rechts Seite 1",
+      "unsicher": false,
+      "notiz": "Rundes Loch unten rechts (Seite 1) bzw. unten links (Seite 2), vermutlich von Klammer oder Lochung; leichte Faltspuren und Vergilbung. Dokument ist trotz mittelalterlicher Spezialisierung des Beschreibers eindeutig frühneuzeitlich (1804) und kein spätmittelalterliches Verwaltungsschriftgut.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0053_001.jpg",
+          "lassberg-letter-0053_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    }
+  },
+  "care_flag": {
+    "is_care_related": false,
+    "care_context": "",
+    "care_types": [],
+    "beteiligte": [
+      "Mr d'Anicet",
+      "Madame",
+      "Htmry 57 Leisberg"
+    ],
+    "classified": true
+  },
+  "image_path": "/home/dh/batches/lassberg/lassberg-letter-0053/lassberg-letter-0053_001.jpg",
+  "pages_seen": [
+    "lassberg-letter-0053_001.jpg",
+    "lassberg-letter-0053_002.jpg"
+  ]
+}
