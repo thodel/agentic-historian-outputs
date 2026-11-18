@@ -1,0 +1,251 @@
+{
+  "doc_id": "lassberg-letter-0036",
+  "ad_fontes_version": "UZH 16-element",
+  "elements": {
+    "Aufbewahrungsort": {
+      "wert": null,
+      "unsicher": false,
+      "notiz": "keine gesicherten Angaben möglich",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Beschreibstoff": {
+      "wert": "Papier",
+      "unsicher": false,
+      "notiz": "vergilbt, leicht fleckig und wellig; auf der Rückseite ein kleiner brauner Rostfleck in der Mitte; Wasserzeichen in der vorliegenden Aufnahme nicht erkennbar; kein Hinweis auf Palimpsest",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Blaetter": {
+      "wert": "1 Blatt, 2 Seiten",
+      "unsicher": false,
+      "notiz": "Einblattschreiben (Brief); keine antike oder moderne Foliierung; keine Textverluste; keine Lagenstruktur",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Format": {
+      "wert": "ca. 42 x 28 cm, Folio (unsicher)",
+      "unsicher": true,
+      "notiz": "Maße geschätzt, da kein Maßstab vorhanden; loses, nicht gebundenes Blatt; keine abweichenden Formate",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Datierung": {
+      "wert": "2. Oktober 1862",
+      "unsicher": false,
+      "notiz": "explizit im Registerauftrag ('dato: 2 Octbr. 1862 v. Heilbronn'); 19. Jahrhundert, nicht spätmittelalterlich",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Lagen": {
+      "wert": "nicht anwendbar (Einblattschreiben)",
+      "unsicher": false,
+      "notiz": "keine Lagen, keine Lagensignaturen (Kustoden), keine Reklamanten",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "1 Spalte, nicht liniert, ca. 35 Zeilen (unsicher)",
+      "unsicher": true,
+      "notiz": "freihändig geschrieben, keine Linierung oder Rasterung; der Schriftraum füllt nahezu die gesamte Vorderseite; keine Verweiszeichen",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Schrift": {
+      "wert": "deutsche Kurrentschrift (Kanzleikursiv)",
+      "unsicher": false,
+      "notiz": "braunschwarze Tinte; Strichabkürzungen (z.B. Taler-Strich über 'T', 'Octbr.' für Oktober); keine Rubrizierung, keine farbigen Initialen; keine Rasuren, vereinzelt Korrekturen durch Überschreibung",
+      "kandidaten": [
+        {
+          "schrift": "deutsche Kurrentschrift (Kanzleikursiv)",
+          "zuversicht": 0.9,
+          "merkmale": [
+            "geschlossene Kurrentbuchstaben",
+            "Schleifen an Ober- und Unterlängen",
+            "Strichabkürzungen (Taler, Monatsname)"
+          ]
+        },
+        {
+          "schrift": "Kanzleikursiv (flacher, registraturartig)",
+          "zuversicht": 0.1,
+          "merkmale": [
+            "flachere, breitere Duktus in den oberen Registerzeilen"
+          ]
+        }
+      ],
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Schreiber": {
+      "wert": "zwei Hände (Brieftext und Registerauftrag) (unsicher)",
+      "unsicher": true,
+      "notiz": "Brieftext in einer durchgehenden Kurrent; die oberen Registerangaben (Anf, dato, Inbegriff) in einer flacheren, vermutlich registraturartigen Hand; Signatur 'Kasberg' mit Monogramm am Ende des Briefes; keine Marginalien oder Federproben",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Ausstattung": {
+      "wert": "keine",
+      "unsicher": false,
+      "notiz": "kein Buchschmuck, keine Miniaturen, keine verzierten Initialen, keine Farben",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Sprache": {
+      "wert": "Deutsch",
+      "unsicher": false,
+      "notiz": "Neuhochdeutsch (19. Jh.), keine lateinischen Einschübe im Fließtext",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Einband": {
+      "wert": "keiner (loses Blatt)",
+      "unsicher": false,
+      "notiz": "kein Einband, keine Schließen, keine Metallbeschläge, kein Titelschild sichtbar",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Provenienz": {
+      "wert": null,
+      "unsicher": false,
+      "notiz": "keine gesicherten Angaben möglich",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Literatur": {
+      "wert": null,
+      "unsicher": false,
+      "notiz": "keine gesicherten Angaben möglich",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Inhalt": {
+      "wert": "Brief (Geschäfts-/Bankkorrespondenz)",
+      "unsicher": false,
+      "notiz": "Adressat Dr. Schneider, Freiburg im Breisgau; Absenderort Heilbronn; Sachinhalt: Kapital (82.000 + 18.750 = 100.750 Taler), Vorschläge, Beziehungen zu England, Hrn. v. Waechter in Heilbronn, Dr. Ostetag in Stuttgart als Anwalt; Registerauftrag mit 'Anf', 'dato', 'Inbegriff'",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Weitere_Hinweise": {
+      "wert": "Signatur 'K 2951,77' oben rechts in Bleistift",
+      "unsicher": false,
+      "notiz": "moderne Archivsignatur; Rückseite leer mit einem braunen Rostfleck",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0036_001.jpg",
+          "lassberg-letter-0036_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    }
+  },
+  "care_flag": {
+    "is_care_related": false,
+    "care_context": "",
+    "care_types": [],
+    "beteiligte": [],
+    "classified": true
+  },
+  "image_path": "/home/dh/batches/lassberg/lassberg-letter-0036/lassberg-letter-0036_001.jpg",
+  "pages_seen": [
+    "lassberg-letter-0036_001.jpg",
+    "lassberg-letter-0036_002.jpg"
+  ]
+}

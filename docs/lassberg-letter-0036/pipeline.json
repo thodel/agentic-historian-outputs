@@ -1,0 +1,651 @@
+{
+  "doc_id": "lassberg-letter-0036",
+  "transcription": "--- lassberg-letter-0036_001.jpg ---\nK 2951,77\nAnf: Dr. Schneider z. Freiburg im Breisgau.\ndato: 2 Octbr. 1862 v. Heilbronn.\nInbegriff: Ein Aufsatz über die Beziehungen zu England\ngegen den Hrn. v. Waechter zu Heilbronn.\n\nVerfolgen wir auf Ihre Berufung gründlich, so bin auf Ihr\nSchreiben in London & Wien, bin ich Ihnen in betreff Ihrer\nMonarch zu danken, respektive fabric.\nGestatten Sie mir nun und aufs neue hoffentlich Hrn. v. Waechter\nvorzubringen, welche Form sich mir möglich macht sollt\nIhr Capital ist 82000 T̄ S 18750 T̄ giebt also im ganzen: 100750 T̄\nIhr Vorschlag würde ich sehr geneigt sein anzunehmen falls befriedigt Sie\nin Florenz und sind wir einig so wird sich schicken für Sie ein Bankhaus\nzu betreiben und aus Ihren Noten einen Aufschluß zu machen.\nEs fehlt aber noch die eine wesentliche Frage: Vorschlag, was\nwird Sie, was ist mir genügt, wenn ein künftiges Ueberland ausser\nordentliches bitte ich mir sagend auf zweckmäßig finde, Sie nötigen\nAugenblicken für mich als Geschäftsfreundlichkeit ist in der\ngeschickten Form und geschickten Zugemuth, damit ist nichts in der\nZugleich auf Florenz kann abgepaßt werden... Sie können mir gefälligst eine\nStellung und nöthigenfalls in London ist Sie zum Aufschluß anworten in\nIhrer Sache Comptoir B & Allen, damit ist Ganzes vorzügliche Vorzug\nmacht\nObschon ich nicht glaube dass 1862 Ihre ganze Forderung der Monarchist für-\nderung Ihrer Freunde so wird es sich vielleicht auch als zu nöthig sein um einen Satz\ngeschickt als möglich zu betreiben in London als auch gutgeheissen kommen so\nIhr denen fürderung Ihre Contoirs abwärts in Auftragsbefugnisse Vorschlag &\nHerrn W̄ auf sich für sich selbst kommen welche Ausserordentlich mein so lang-\nals mit einer Special Hypothek besetzt wird wahrlich würde kommen...\nHr v W̄ sche auf v Ihrem gnädigen v Heilbronn wird meinen Vorschlag\nGedanke mit Dr Ostetag in Stuttgart als Anwalt für's bestellet\nsein... So Ihnen freundlichen bekannt so bitte ich es mir ge-\nneigt zu teilen... Ihr Vorschlag würde ich 100750 T̄ aus Hrn W̄ zu-\nsammen setz ist mein Schreiben also Ihr Schreiben sind wir ein-\nverstanden...\n\nGef bin mit & & &\n\nKasberg\n\n--- lassberg-letter-0036_002.jpg ---\n--- SEITE 1 ---",
+  "description": {
+    "doc_id": "lassberg-letter-0036",
+    "source_description": "## Kodizologische Beschreibung\n\n**1. Aufbewahrungsort**\nKeine gesicherten Angaben möglich.\n\n**2. Beschreibstoff**\nDas Dokument besteht aus **Papier**. Der Beschreibstoff ist vergilbt, leicht fleckig und wellig; auf der Rückseite befindet sich in der Mitte ein kleiner brauner Rostfleck. In der vorliegenden Aufnahme ist **kein Wasserzeichen** erkennbar. Es gibt **keine Hinweise auf ein Palimpsest**. (Hinweis: Das Material ist zeitlich dem 19. Jahrhundert zuzuordnen, nicht dem spätmittelalterlichen Papier- oder Pergamentumfeld.)\n\n**3. Blaetter**\nEs handelt sich um **ein einzelnes Blatt mit zwei Seiten** (Vorder- und Rückseite), also ein Einblattschreiben. Eine Foliierung (antike oder moderne) ist nicht vorhanden. Es fehlen keine Blätter, und es ist keine Lagenstruktur erkennbar.\n\n**4. Format**\nDas Blatt ist als loses, nicht gebundenes Schreiben ausgeführt. Die Maße sind ohne Maßstab nur geschätzt: **ca. 42 × 28 cm**, entsprechend einem **Folio-Format** (unsicher). Abweichende Formate durch spätere Ergänzungen sind nicht vorhanden.\n\n**5. Datierung**\nDie Datierung ist **explizit** im Registerauftrag angegeben: **„2 Octbr. 1862 v. Heilbronn“**, also das Jahr **1862** (19. Jahrhundert).\n\n**6. Lagen**\nDie Lagenstruktur ist **nicht anwendbar**, da es sich um ein Einblattschreiben handelt. Es sind weder Lagensignaturen (Kustoden) noch Reklamanten vorhanden.\n\n**7. Schriftraum_Gliederung**\nDer Schriftraum ist **einspaltig** und **nicht liniert** bzw. nicht gerastert; die Zeilen sind freihändig gesetzt. Die Zeilenzahl beträgt **ca. 35** (unsicher). Der Schriftraum füllt nahezu die gesamte Vorderseite. Verweiszeichen (z. B. kleine Hand) sind nicht erkennbar.\n\n**8. Schrift**\nDie Schrift ist eine **deutsche Kurrentschrift (Kanzleikursiv)** in **braunschwarzer Tinte**. Es werden **Strichabkürzungen** verwendet (z. B. Taler-Strich über „T“ für Taler, „Octbr.“ für Oktober). Es gibt **keine Rubrizierung**, keine farbigen Initialen und keine Auszeichnungsschriften. Vereinzelt sind Korrekturen durch Überschreibung zu beobachten; Rasuren sind nicht erkennbar.\n*Kandidaten:* (1) deutsche Kurrentschrift / Kanzleikursiv (Zuversicht 0,9; Merkmale: geschlossene Kurrentbuchstaben, Schleifen an Ober",
+    "source_json": {
+      "Aufbewahrungsort": {
+        "wert": null,
+        "unsicher": false,
+        "notiz": "keine gesicherten Angaben möglich",
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2,
+          "transkription": true
+        }
+      },
+      "Beschreibstoff": {
+        "wert": "Papier",
+        "unsicher": false,
+        "notiz": "vergilbt, leicht fleckig und wellig; auf der Rückseite ein kleiner brauner Rostfleck in der Mitte; Wasserzeichen in der vorliegenden Aufnahme nicht erkennbar; kein Hinweis auf Palimpsest",
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2
+        }
+      },
+      "Blaetter": {
+        "wert": "1 Blatt, 2 Seiten",
+        "unsicher": false,
+        "notiz": "Einblattschreiben (Brief); keine antike oder moderne Foliierung; keine Textverluste; keine Lagenstruktur",
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2
+        }
+      },
+      "Format": {
+        "wert": "ca. 42 x 28 cm, Folio (unsicher)",
+        "unsicher": true,
+        "notiz": "Maße geschätzt, da kein Maßstab vorhanden; loses, nicht gebundenes Blatt; keine abweichenden Formate",
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2
+        }
+      },
+      "Datierung": {
+        "wert": "2. Oktober 1862",
+        "unsicher": false,
+        "notiz": "explizit im Registerauftrag ('dato: 2 Octbr. 1862 v. Heilbronn'); 19. Jahrhundert, nicht spätmittelalterlich",
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2,
+          "transkription": true
+        }
+      },
+      "Lagen": {
+        "wert": "nicht anwendbar (Einblattschreiben)",
+        "unsicher": false,
+        "notiz": "keine Lagen, keine Lagensignaturen (Kustoden), keine Reklamanten",
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2
+        }
+      },
+      "Schriftraum_Gliederung": {
+        "wert": "1 Spalte, nicht liniert, ca. 35 Zeilen (unsicher)",
+        "unsicher": true,
+        "notiz": "freihändig geschrieben, keine Linierung oder Rasterung; der Schriftraum füllt nahezu die gesamte Vorderseite; keine Verweiszeichen",
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2
+        }
+      },
+      "Schrift": {
+        "wert": "deutsche Kurrentschrift (Kanzleikursiv)",
+        "unsicher": false,
+        "notiz": "braunschwarze Tinte; Strichabkürzungen (z.B. Taler-Strich über 'T', 'Octbr.' für Oktober); keine Rubrizierung, keine farbigen Initialen; keine Rasuren, vereinzelt Korrekturen durch Überschreibung",
+        "kandidaten": [
+          {
+            "schrift": "deutsche Kurrentschrift (Kanzleikursiv)",
+            "zuversicht": 0.9,
+            "merkmale": [
+              "geschlossene Kurrentbuchstaben",
+              "Schleifen an Ober- und Unterlängen",
+              "Strichabkürzungen (Taler, Monatsname)"
+            ]
+          },
+          {
+            "schrift": "Kanzleikursiv (flacher, registraturartig)",
+            "zuversicht": 0.1,
+            "merkmale": [
+              "flachere, breitere Duktus in den oberen Registerzeilen"
+            ]
+          }
+        ],
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2
+        }
+      },
+      "Schreiber": {
+        "wert": "zwei Hände (Brieftext und Registerauftrag) (unsicher)",
+        "unsicher": true,
+        "notiz": "Brieftext in einer durchgehenden Kurrent; die oberen Registerangaben (Anf, dato, Inbegriff) in einer flacheren, vermutlich registraturartigen Hand; Signatur 'Kasberg' mit Monogramm am Ende des Briefes; keine Marginalien oder Federproben",
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2
+        }
+      },
+      "Ausstattung": {
+        "wert": "keine",
+        "unsicher": false,
+        "notiz": "kein Buchschmuck, keine Miniaturen, keine verzierten Initialen, keine Farben",
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2
+        }
+      },
+      "Sprache": {
+        "wert": "Deutsch",
+        "unsicher": false,
+        "notiz": "Neuhochdeutsch (19. Jh.), keine lateinischen Einschübe im Fließtext",
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2,
+          "transkription": true
+        }
+      },
+      "Einband": {
+        "wert": "keiner (loses Blatt)",
+        "unsicher": false,
+        "notiz": "kein Einband, keine Schließen, keine Metallbeschläge, kein Titelschild sichtbar",
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2
+        }
+      },
+      "Provenienz": {
+        "wert": null,
+        "unsicher": false,
+        "notiz": "keine gesicherten Angaben möglich",
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2,
+          "transkription": true
+        }
+      },
+      "Literatur": {
+        "wert": null,
+        "unsicher": false,
+        "notiz": "keine gesicherten Angaben möglich",
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2,
+          "transkription": true
+        }
+      },
+      "Inhalt": {
+        "wert": "Brief (Geschäfts-/Bankkorrespondenz)",
+        "unsicher": false,
+        "notiz": "Adressat Dr. Schneider, Freiburg im Breisgau; Absenderort Heilbronn; Sachinhalt: Kapital (82.000 + 18.750 = 100.750 Taler), Vorschläge, Beziehungen zu England, Hrn. v. Waechter in Heilbronn, Dr. Ostetag in Stuttgart als Anwalt; Registerauftrag mit 'Anf', 'dato', 'Inbegriff'",
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2,
+          "transkription": true
+        }
+      },
+      "Weitere_Hinweise": {
+        "wert": "Signatur 'K 2951,77' oben rechts in Bleistift",
+        "unsicher": false,
+        "notiz": "moderne Archivsignatur; Rückseite leer mit einem braunen Rostfleck",
+        "quelle": "vlm",
+        "basis": {
+          "seiten": [
+            "lassberg-letter-0036_001.jpg",
+            "lassberg-letter-0036_002.jpg"
+          ],
+          "von": 2,
+          "transkription": true
+        }
+      }
+    },
+    "sampling": {
+      "temperature": 0.0
+    },
+    "care_flag": {
+      "is_care_related": false,
+      "care_context": "",
+      "care_types": [],
+      "beteiligte": [],
+      "classified": true
+    },
+    "image_path": "/home/dh/batches/lassberg/lassberg-letter-0036/lassberg-letter-0036_001.jpg",
+    "pages_seen": [
+      "lassberg-letter-0036_001.jpg",
+      "lassberg-letter-0036_002.jpg"
+    ],
+    "cost": {
+      "seiten": 2,
+      "sekunden": 76.4,
+      "prompt_tokens": 6752,
+      "completion_tokens": 3500
+    }
+  },
+  "entities": {
+    "entities": [
+      {
+        "text": "Dr. Schneider z. Freiburg im Breisgau",
+        "type": "PERSON",
+        "normalised": "Dr. Schneider",
+        "context": "Anf: Dr. Schneider z. Freiburg im Breisgau.",
+        "char_start": 52,
+        "char_end": 89,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Freiburg im Breisgau",
+        "type": "PLACE",
+        "normalised": "Freiburg im Breisgau",
+        "context": "Anf: Dr. Schneider z. Freiburg im Breisgau.",
+        "char_start": 69,
+        "char_end": 89,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "2 Octbr. 1862",
+        "type": "DATE",
+        "normalised": "2 October 1862",
+        "context": "dato: 2 Octbr. 1862 v. Heilbronn.",
+        "char_start": 97,
+        "char_end": 110,
+        "located": true
+      },
+      {
+        "text": "Heilbronn",
+        "type": "PLACE",
+        "normalised": "Heilbronn",
+        "context": "dato: 2 Octbr. 1862 v. Heilbronn.",
+        "char_start": 114,
+        "char_end": 123,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Heilbronn",
+        "type": "PLACE",
+        "normalised": "Heilbronn",
+        "context": "dato: 2 Octbr. 1862 v. Heilbronn.",
+        "char_start": 210,
+        "char_end": 219,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Heilbronn",
+        "type": "PLACE",
+        "normalised": "Heilbronn",
+        "context": "dato: 2 Octbr. 1862 v. Heilbronn.",
+        "char_start": 1816,
+        "char_end": 1825,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "England",
+        "type": "PLACE",
+        "normalised": "England",
+        "context": "Ein Aufsatz über die Beziehungen zu England",
+        "char_start": 172,
+        "char_end": 179,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Hrn. v. Waechter",
+        "type": "PERSON",
+        "normalised": "Herr von Waechter",
+        "context": "gegen den Hrn. v. Waechter zu Heilbronn.",
+        "char_start": 190,
+        "char_end": 206,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Hrn. v. Waechter",
+        "type": "PERSON",
+        "normalised": "Herr von Waechter",
+        "context": "gegen den Hrn. v. Waechter zu Heilbronn.",
+        "char_start": 425,
+        "char_end": 441,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "London",
+        "type": "PLACE",
+        "normalised": "London",
+        "context": "Schreiben in London & Wien",
+        "char_start": 293,
+        "char_end": 299,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "London",
+        "type": "PLACE",
+        "normalised": "London",
+        "context": "Schreiben in London & Wien",
+        "char_start": 1202,
+        "char_end": 1208,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "London",
+        "type": "PLACE",
+        "normalised": "London",
+        "context": "Schreiben in London & Wien",
+        "char_start": 1517,
+        "char_end": 1523,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Wien",
+        "type": "PLACE",
+        "normalised": "Wien",
+        "context": "Schreiben in London & Wien",
+        "char_start": 302,
+        "char_end": 306,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Florenz",
+        "type": "PLACE",
+        "normalised": "Florenz",
+        "context": "falls befriedigt Sie in Florenz",
+        "char_start": 642,
+        "char_end": 649,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Florenz",
+        "type": "PLACE",
+        "normalised": "Florenz",
+        "context": "falls befriedigt Sie in Florenz",
+        "char_start": 1109,
+        "char_end": 1116,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Bankhaus",
+        "type": "ORG",
+        "normalised": "Bankhaus",
+        "context": "ein Bankhaus zu betreiben",
+        "char_start": 703,
+        "char_end": 711,
+        "located": true
+      },
+      {
+        "text": "Comptoir B & Allen",
+        "type": "ORG",
+        "normalised": "Comptoir B & Allen",
+        "context": "Comptoir B & Allen",
+        "char_start": 1255,
+        "char_end": 1273,
+        "located": true
+      },
+      {
+        "text": "Hrn W̄",
+        "type": "PERSON",
+        "normalised": "Herr W",
+        "context": "100750 T̄ aus Hrn W̄ zusammen",
+        "char_start": 2030,
+        "char_end": 2036,
+        "located": true,
+        "hub_id": "",
+        "gnd": "",
+        "hls": "",
+        "wikidata": "",
+        "hub_confidence": "high",
+        "link_method": "mcp_federation",
+        "mcp_sources": [
+          "eos"
+        ],
+        "candidates": []
+      },
+      {
+        "text": "Dr Ostetag",
+        "type": "PERSON",
+        "normalised": "Dr. Ostetag",
+        "context": "Dr Ostetag in Stuttgart als Anwalt",
+        "char_start": 1860,
+        "char_end": 1870,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Stuttgart",
+        "type": "PLACE",
+        "normalised": "Stuttgart",
+        "context": "Dr Ostetag in Stuttgart als Anwalt",
+        "char_start": 1874,
+        "char_end": 1883,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      },
+      {
+        "text": "Anwalt",
+        "type": "ROLE",
+        "normalised": "Anwalt",
+        "context": "Dr Ostetag in Stuttgart als Anwalt",
+        "char_start": 1888,
+        "char_end": 1894,
+        "located": true
+      },
+      {
+        "text": "Monarch",
+        "type": "ROLE",
+        "normalised": "Monarch",
+        "context": "Monarch zu danken",
+        "char_start": 339,
+        "char_end": 346,
+        "located": true
+      },
+      {
+        "text": "Monarch",
+        "type": "ROLE",
+        "normalised": "Monarch",
+        "context": "Monarch zu danken",
+        "char_start": 1377,
+        "char_end": 1384,
+        "located": true
+      },
+      {
+        "text": "Kasberg",
+        "type": "PLACE",
+        "normalised": "Kasberg",
+        "context": "Kasberg",
+        "char_start": 2139,
+        "char_end": 2146,
+        "located": true,
+        "hub_confidence": "unverified",
+        "link_method": "none"
+      }
+    ]
+  },
+  "errors": [],
+  "a_meta": {
+    "pages": 2,
+    "qa_score": 0.0,
+    "source": "grouped-ensemble-criteria",
+    "criteria_rerun": true,
+    "engines_planned": 12,
+    "engines_answered": 12,
+    "engines_failed": 0,
+    "engines_with_text": 3,
+    "coverage": 1.0
+  },
+  "collection": "lassberg",
+  "recognitions": [
+    {
+      "engine": "vlm",
+      "model_id": "qwen3.8-27b",
+      "text": "K 2951,77\nAnf: Dr. Schneider z. Freiburg im Breisgau.\ndato: 2 Octbr. 1862 v. Heilbronn.\nInbegriff: Ein Aufsatz über die Beziehungen zu England\ngegen den Hrn. v. Waechter zu Heilbronn.\n\nVerfolgen wir auf Ihre Berufung gründlich, so bin auf Ihr\nSchreiben in London & Wien, bin ich Ihnen in betreff Ihrer\nMonarch zu danken, respektive fabric.\nGestatten Sie mir nun und aufs neue hoffentlich Hrn. v. Waechter\nvorzubringen, welche Form wohl am besten würde seyn.\nDas Capital ist 82000 fl – S 18750 fl giebt also im Ganzen: 100750 fl\nIhr Vorschlag würde ich sehr geneigt seyn anzunehmen falls befriedigt Sie\nin Florenz und sind wir einig so wird sich schicken für Sie ein Bankhaus\nzu betreiben und aus Ihren Daten einen Contract zu errichten.\nEs fehlt aber noch die eine wesentliche Frage: baar oder baar &\nwenn Sie, wie es sich versteht, beides ein künftiges Ueberschuss ansehnlich\nwollten; so bitte ich um Angabe auf welche Zeit Sie nöthigen\nFalls Gelder brauchen für mich als Hauptunternehmungsform; in der\ngeschilderten Form und gesonderten Zugemuth; damit ich dieselbe in ihrer\nganzheit auf Florenz kann abgreifen lassen – Sie können mir gefälligst eine\nStellung und Adresse geben in welcher ich Sie zum nächsten Auswärtigen in\nIhrer Sache Comptoir B & Allen; damit ich Ihnen umgehend Antwort\nertheile.\nObschon ich nicht glaube dass 1862 Ihre ganze Forderung der Monarchist hin-\nreichend sey; so wird es sich vielleicht auch als zu viel für unsere Sache\nerweisen; als möglich zu betreiben; ein Theil es kann gut seyn benutzt; so\ndass eine Fortsetzung des Capitals über 30 in Aussicht befindlichen Zeitraum &\nRest etc auf sich für später kommen; welche Weise; wie; so lang es sich mit einer Special Hypothek belegen; was natürlich würde kommen –\nHr v W sche auf v Ihrem Vorschlag v Waechter mit einem Besuche\nbetrafft und Dr Osttag in Stuttgart als Anwalt Ihres Interesses für Sie – Es Ihnen sehr sehr bekannt; so bitte ich es mir gut seyn zu helfen – Ihr Vorschlag würde für 100750 fl aus H v W zu fordern seyn; ist mein Theil; also Ihr Schreiben sind wir ein-geeinigt –\n\nGef bin mit & & &\n\nKasberg",
+      "confidence": 0.8,
+      "error": "",
+      "timing_ms": null,
+      "segmented_by": null
+    },
+    {
+      "engine": "vlm",
+      "model_id": "qwen3.8-27b",
+      "text": "--- SEITE 1 ---",
+      "confidence": 0.3,
+      "error": "",
+      "timing_ms": null,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-bastarda_inzigkofen",
+      "text": "",
+      "confidence": 0.0,
+      "error": "",
+      "timing_ms": null,
+      "segmented_by": null
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-medieval-escriptmask",
+      "text": "",
+      "confidence": 0.0,
+      "error": "",
+      "timing_ms": null,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-bifrost_old_norse",
+      "text": "",
+      "confidence": 0.0,
+      "error": "",
+      "timing_ms": null,
+      "segmented_by": null
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-kurrent-xvi-xvii",
+      "text": "",
+      "confidence": 0.0,
+      "error": "",
+      "timing_ms": null,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-catmus_gothic_print",
+      "text": "",
+      "confidence": 0.0,
+      "error": "",
+      "timing_ms": null,
+      "segmented_by": null
+    },
+    {
+      "engine": "trocr",
+      "model_id": "trocr-essoins-middle-latin",
+      "text": "",
+      "confidence": 0.0,
+      "error": "",
+      "timing_ms": null,
+      "segmented_by": null
+    },
+    {
+      "engine": "vlm",
+      "model_id": "qwen3.8-27b",
+      "text": "K 2951,77\nAnf: Dr. Schneider z. Freiburg im Breisgau.\ndato: 2 Octbr. 1862 v. Heilbronn.\nInbegriff: Ein Aufsatz über die Beziehungen zu England\ngegen den Hrn. v. Waechter zu Heilbronn.\n\nVerfolgen wir auf Ihre Berufung gründlich, so bin auf Ihr\nSchreiben in London & Wien, bin ich Ihnen in betreff Ihrer\nMonarch zu danken, respektive fabric.\nGestatten Sie mir nun und aufs neue hoffentlich Hrn. v. Waechter\nvorzubringen, welche Form sich mir möglich macht sollt\nIhr Capital ist 82000 T̄ S 18750 T̄ giebt also im ganzen: 100750 T̄\nIhr Vorschlag würde ich sehr geneigt sein anzunehmen falls befriedigt Sie\nin Florenz und sind wir einig so wird sich schicken für Sie ein Bankhaus\nzu betreiben und aus Ihren Noten einen Aufschluß zu machen.\nEs fehlt aber noch die eine wesentliche Frage: Vorschlag, was\nwird Sie, was ist mir genügt, wenn ein künftiges Ueberland ausser\nordentliches bitte ich mir sagend auf zweckmäßig finde, Sie nötigen\nAugenblicken für mich als Geschäftsfreundlichkeit ist in der\ngeschickten Form und geschickten Zugemuth, damit ist nichts in der\nZugleich auf Florenz kann abgepaßt werden... Sie können mir gefälligst eine\nStellung und nöthigenfalls in London ist Sie zum Aufschluß anworten in\nIhrer Sache Comptoir B & Allen, damit ist Ganzes vorzügliche Vorzug\nmacht\nObschon ich nicht glaube dass 1862 Ihre ganze Forderung der Monarchist für-\nderung Ihrer Freunde so wird es sich vielleicht auch als zu nöthig sein um einen Satz\ngeschickt als möglich zu betreiben in London als auch gutgeheissen kommen so\nIhr denen fürderung Ihre Contoirs abwärts in Auftragsbefugnisse Vorschlag &\nHerrn W̄ auf sich für sich selbst kommen welche Ausserordentlich mein so lang-\nals mit einer Special Hypothek besetzt wird wahrlich würde kommen...\nHr v W̄ sche auf v Ihrem gnädigen v Heilbronn wird meinen Vorschlag\nGedanke mit Dr Ostetag in Stuttgart als Anwalt für's bestellet\nsein... So Ihnen freundlichen bekannt so bitte ich es mir ge-\nneigt zu teilen... Ihr Vorschlag würde ich 100750 T̄ aus Hrn W̄ zu-\nsammen setz ist mein Schreiben also Ihr Schreiben sind wir ein-\nverstanden...\n\nGef bin mit & & &\n\nKasberg",
+      "confidence": 0.8,
+      "error": "",
+      "timing_ms": null,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-bohemian_19th",
+      "text": "",
+      "confidence": 0.0,
+      "error": "",
+      "timing_ms": null,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-cursive_inzigkofen",
+      "text": "",
+      "confidence": 0.0,
+      "error": "",
+      "timing_ms": null,
+      "segmented_by": null
+    },
+    {
+      "engine": "kraken",
+      "model_id": "kraken-austrian_fraktur",
+      "text": "",
+      "confidence": 0.0,
+      "error": "",
+      "timing_ms": null,
+      "segmented_by": null
+    }
+  ]
+}

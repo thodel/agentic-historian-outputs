@@ -1,0 +1,253 @@
+{
+  "doc_id": "lassberg-letter-0041",
+  "ad_fontes_version": "UZH 16-element",
+  "elements": {
+    "Aufbewahrungsort": {
+      "wert": null,
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben möglich; aus den Bilddaten nicht ableitbar.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Beschreibstoff": {
+      "wert": "Papier",
+      "unsicher": false,
+      "notiz": "Vergilbtes, leicht fleckiges und an den Rändern/unterem Rand der zweiten Seite geknittertes Papier; Faserstruktur sichtbar. Wasserzeichen auf den gezeigten Seiten nicht erkennbar (unsicher). Keine Palimpsest-Spuren.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Blaetter": {
+      "wert": "2 Seiten (Vorder- und Rückseite eines Blattes)",
+      "unsicher": false,
+      "notiz": "Gezeigt sind zwei aufeinanderfolgende Seiten eines Briefes. Oben links moderne/antike Signatur 'N° 9.', oben rechts Ziffer '2'. Keine durchgehende Foliierung beobachtbar. Kein Textverlust erkennbar.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Format": {
+      "wert": "Folio (ca. 32 x 21 cm) (unsicher)",
+      "unsicher": true,
+      "notiz": "Maße geschätzt; kein Maßstab im Bild. Abweichende Formate durch spätere Ergänzungen nicht beobachtbar.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Datierung": {
+      "wert": "1802 (explizit: 'Hildburgh le 14 Nov : 1802')",
+      "unsicher": false,
+      "notiz": "Explizite Datierung in der Kopfzeile; zusätzlich 'Reponse sur sa lettre du 16 Nov 1802'.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Lagen": {
+      "wert": "nicht beobachtbar",
+      "unsicher": true,
+      "notiz": "Nur zwei Seiten eines Briefes sichtbar; Lagenstruktur, Kustoden und Reklamanten nicht bestimmbar.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Schriftraum_Gliederung": {
+      "wert": "1 Spalte, nicht liniert, ca. 40–45 Zeilen (unsicher)",
+      "unsicher": true,
+      "notiz": "Freie Schreibweise ohne Linierung oder Raster; Schriftraum ca. 26 x 14 cm (geschätzt, unsicher). Keine Verweiszeichen (nota bene) beobachtet.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Schrift": {
+      "wert": "Kurrentschrift (deutsche Kursive)",
+      "unsicher": false,
+      "kandidaten": [
+        {
+          "schrift": "Kurrentschrift (deutsche Kursive)",
+          "zuversicht": 0.8,
+          "merkmale": [
+            "ausgeprägte Schleifen an Ober- und Unterlängen",
+            "Bindestrich- und Bindeschreibweise",
+            "typische Kurrent-Buchstabenformen (z. B. 's', 't', 'z')",
+            "Punkte als Abkürzungszeichen (M.r, D.r, V.P.)"
+          ]
+        },
+        {
+          "schrift": "französische Kursive",
+          "zuversicht": 0.2,
+          "merkmale": [
+            "fließende Kursivschrift",
+            "französischer Textinhalt"
+          ]
+        }
+      ],
+      "notiz": "Tinte braun-schwarz, stellenweise verblasst. Keine Rubrizierung, keine farbigen Initialen. Abkürzungen durch Punkte. Eine Streichung in der Kopfzeile ('Nov' durchstrichen).",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Schreiber": {
+      "wert": "eine Hand, anonym, signiert 'Massillon'",
+      "unsicher": false,
+      "notiz": "Auf beiden Seiten dieselbe Hand. Signatur 'Massillon' am Ende. Korrekturen: Streichung in der Kopfzeile; vereinzelt Über-/Nachschreibungen im Text. Keine Marginalien oder Federproben beobachtet.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Ausstattung": {
+      "wert": "keine",
+      "unsicher": false,
+      "notiz": "Kein Buchschmuck, keine Miniaturen, keine verzierten Initialen, keine Farben.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Sprache": {
+      "wert": "Französisch",
+      "unsicher": false,
+      "notiz": "Durchgehend französischer Text; einzelne deutsche Orts-/Namensformen (Hildburgh, Hildau). Kein Latein.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Einband": {
+      "wert": "nicht sichtbar (lose Blätter)",
+      "unsicher": true,
+      "notiz": "Kein Einband, keine Schließen, keine Metallbeschläge, keine Titelschilder auf den gezeigten Seiten erkennbar.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2
+      }
+    },
+    "Provenienz": {
+      "wert": null,
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben möglich.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Literatur": {
+      "wert": null,
+      "unsicher": true,
+      "notiz": "Keine gesicherten Angaben möglich.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Inhalt": {
+      "wert": "Brief (Korrespondenz) zu einer rechtlich-finanziellen Angelegenheit",
+      "unsicher": false,
+      "notiz": "Französischer Brief vom 14. Nov. 1802 aus Hildburgh; Gegenstand: Prozess/Exekution gegen 'M.r D.W.', Übermittlung von Originaltiteln, Forderungen, Kredit und Hypothekenfragen; Absender 'Massillon'.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    },
+    "Weitere_Hinweise": {
+      "wert": "Signatur 'N° 9.' (oben links) und Ziffer '2' (oben rechts)",
+      "unsicher": false,
+      "notiz": "Kopfzeile mit Betreff 'Oeuvre la fortune d' Albany à Florence' und 'Addio : Hildburgh le 14 Nov : 1802'. Hinweis: Dokument ist ein frühneuzeitlicher/moderner Brief (1802), kein spätmittelalterliches Verwaltungsstück.",
+      "quelle": "vlm",
+      "basis": {
+        "seiten": [
+          "lassberg-letter-0041_001.jpg",
+          "lassberg-letter-0041_002.jpg"
+        ],
+        "von": 2,
+        "transkription": true
+      }
+    }
+  },
+  "care_flag": {
+    "is_care_related": false,
+    "care_context": "",
+    "care_types": [],
+    "beteiligte": [],
+    "classified": true
+  },
+  "image_path": "/home/dh/batches/lassberg/lassberg-letter-0041/lassberg-letter-0041_001.jpg",
+  "pages_seen": [
+    "lassberg-letter-0041_001.jpg",
+    "lassberg-letter-0041_002.jpg"
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "entities": [
+    {
+      "text": "Madame la Comtesse d'Albany",
+      "type": "PERSON",
+      "normalised": "Comtesse d'Albany, Madame",
+      "context": "À Madame la Comtesse d'Albany à Florence .",
+      "char_start": 39,
+      "char_end": 66,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Florence",
+      "type": "PLACE",
+      "normalised": "Florence",
+      "context": "À Madame la Comtesse d'Albany à Florence .",
+      "char_start": 69,
+      "char_end": 77,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "12 Juny 1803",
+      "type": "DATE",
+      "normalised": "1803-06-12",
+      "context": "datto : 12 Juny 1803 . Heildgenberg .",
+      "char_start": 89,
+      "char_end": 101,
+      "located": true
+    },
+    {
+      "text": "Heildgenberg",
+      "type": "PLACE",
+      "normalised": "Heildgenberg",
+      "context": "datto : 12 Juny 1803 . Heildgenberg .",
+      "char_start": 104,
+      "char_end": 116,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "15 Mars",
+      "type": "DATE",
+      "normalised": "XXXX-03-15",
+      "context": "N'ayant pas reçu de réponse sur ma lettre du 15 Mars , que j'ai pris la liberté",
+      "char_start": 166,
+      "char_end": 173,
+      "located": true
+    },
+    {
+      "text": "15 Mars",
+      "type": "DATE",
+      "normalised": "XXXX-03-15",
+      "context": "N'ayant pas reçu de réponse sur ma lettre du 15 Mars , que j'ai pris la liberté",
+      "char_start": 2121,
+      "char_end": 2128,
+      "located": true
+    },
+    {
+      "text": "26 fevrier",
+      "type": "DATE",
+      "normalised": "XXXX-02-26",
+      "context": "en réponse à votre Douceur du 26 fevrier ,",
+      "char_start": 249,
+      "char_end": 259,
+      "located": true
+    },
+    {
+      "text": "12 Avril",
+      "type": "DATE",
+      "normalised": "XXXX-04-12",
+      "context": "Dans celle du 12 Avril j'ai eu l'honneur",
+      "char_start": 643,
+      "char_end": 651,
+      "located": true
+    },
+    {
+      "text": "12 Avril",
+      "type": "DATE",
+      "normalised": "XXXX-04-12",
+      "context": "Dans celle du 12 Avril j'ai eu l'honneur",
+      "char_start": 2131,
+      "char_end": 2139,
+      "located": true
+    },
+    {
+      "text": "avocat",
+      "type": "ROLE",
+      "normalised": "avocat",
+      "context": "notre avocat avait eu à son départ d'Amster- dam une Entretien",
+      "char_start": 695,
+      "char_end": 701,
+      "located": true
+    },
+    {
+      "text": "Amster- dam",
+      "type": "PLACE",
+      "normalised": "Amsterdam",
+      "context": "notre avocat avait eu à son départ d'Amster- dam une Entretien",
+      "char_start": 726,
+      "char_end": 737,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Capitaine",
+      "type": "ROLE",
+      "normalised": "Capitaine",
+      "context": "Mr de Wachter Capitaine au service d~Danemarck~",
+      "char_start": 786,
+      "char_end": 795,
+      "located": true
+    },
+    {
+      "text": "Danemarck",
+      "type": "PLACE",
+      "normalised": "Denmark",
+      "context": "service d~Danemarck~",
+      "char_start": 809,
+      "char_end": 818,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Mr Lohrider",
+      "type": "PERSON",
+      "normalised": "Lohrider, Mr",
+      "context": "Mr Lohrider ...",
+      "char_start": 931,
+      "char_end": 942,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Mr Lohrider",
+      "type": "PERSON",
+      "normalised": "Lohrider, Mr",
+      "context": "Mr Lohrider ...",
+      "char_start": 1858,
+      "char_end": 1869,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Mr Lohrider",
+      "type": "PERSON",
+      "normalised": "Lohrider, Mr",
+      "context": "Mr Lohrider ...",
+      "char_start": 2155,
+      "char_end": 2166,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Express",
+      "type": "ORG",
+      "normalised": "Express (postal service)",
+      "context": "par un Express Nos~tires au g~d~ Dommage de Quatourze sols",
+      "char_start": 451,
+      "char_end": 458,
+      "located": true
+    },
+    {
+      "text": "Livre des Hypothèques",
+      "type": "ORG",
+      "normalised": "Livre des Hypothèques",
+      "context": "l'enregistrement de votre tutelle sur le Livre des Hypothèques",
+      "char_start": 576,
+      "char_end": 597,
+      "located": true
+    },
+    {
+      "text": "Mr de Wachter",
+      "type": "PERSON",
+      "normalised": "Wachter, de",
+      "context": "Entretien avec le fils aîné d~Mr~de Wachter Capitaine au service d~Danemarck~",
+      "char_start": null,
+      "char_end": null,
+      "located": false,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    }
+  ]
+}
