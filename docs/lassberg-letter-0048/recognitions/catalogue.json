@@ -1,7 +1,7 @@
 {
   "artifacts": [
     {
-      "characters": 4245,
+      "characters": 2704,
       "engine": "fusion",
       "error": null,
       "error_path": null,
@@ -13,22 +13,11 @@
       "status_code": "success"
     },
     {
-      "characters": null,
-      "engine": "vlm",
-      "error": "Die Erkennung hat keine Ausgabe erzeugt.",
-      "error_path": null,
-      "id": "vlm-qwen3-8-27b",
-      "model_id": "qwen3.8-27b",
-      "page": null,
-      "path": null,
-      "status": "error"
-    },
-    {
-      "characters": 2439,
+      "characters": 1762,
       "engine": "vlm",
       "error": null,
       "error_path": null,
-      "id": "vlm-qwen3-8-27b-2",
+      "id": "vlm-qwen3-8-27b",
       "model_id": "qwen3.8-27b",
       "page": null,
       "path": null,
@@ -36,7 +25,18 @@
       "status_code": "success"
     },
     {
-      "characters": 1741,
+      "characters": null,
+      "engine": "vlm",
+      "error": "Die Erkennung hat keine Ausgabe erzeugt.",
+      "error_path": null,
+      "id": "vlm-qwen3-8-27b-2",
+      "model_id": "qwen3.8-27b",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 243,
       "engine": "vlm",
       "error": null,
       "error_path": null,
@@ -48,7 +48,7 @@
       "status_code": "success"
     },
     {
-      "characters": 2428,
+      "characters": 2385,
       "engine": "vlm",
       "error": null,
       "error_path": null,

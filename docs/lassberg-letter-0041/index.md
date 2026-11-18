@@ -1,217 +1,313 @@
 ---
 layout: default
-title: lassberg-letter-0041
+title: "lassberg-letter-0041"
 ---
 
-# lassberg-letter-0041
+<link rel="stylesheet" href="{{ '/assets/output.css' | relative_url }}">
 
-> ⚠️ Diese Transkription entstand aus **3 von 4 geplanten Lesungen**. 1 Lesung(en) kamen ohne Text zurück: die Engine hat die Seite gelesen und nichts gefunden — das ist eine Lesung, keine Störung (#483). Ein Vergleich mit einer vollständig gelesenen Seite ist deshalb kein Vergleich zweier Ensembles.
+<nav class="breadcrumbs" aria-label="Brotkrumen"><a href="../">Alle Ausgaben</a> <span aria-hidden="true">/</span> lassberg-letter-0041</nav>
+<header class="output-header page-section page-section--identity" data-page-section="identity">
+  <p class="output-kicker">Forschungsausgabe</p><h1>lassberg-letter-0041</h1>
+  <div class="output-status-bar" role="group" aria-label="Verifikationsstatus und Qualität"><span class="output-status-badge output-status-badge--machine-generated" data-review-status="machine-generated">⚙ Maschinell erzeugt<button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-verification_needed-hdr"><span aria-hidden="true">ⓘ</span> Menschliche Überprüfung empfohlen</button></span><span class="output-status-badge output-status-badge--pages">2 Seiten</span><span class="output-status-badge output-status-badge--warning" role="img" aria-label="Warnung: 1 Erkennungsproblem">⚠ 1 Erkennungsproblem<button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-failed-hdr"><span aria-hidden="true">ⓘ</span> Fehlgeschlagene Erkennung</button></span><span class="output-status-badge output-status-badge--legacy">Legacy-QA 0%<button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-legacy_qa-hdr"><span aria-hidden="true">ⓘ</span> Legacy-QA-Wert (unspezifiziert)</button></span></div>
+  <div class="quality-explanation" id="quality-explanation-verification_needed-hdr" role="region" aria-label="Menschliche Überprüfung empfohlen" hidden><p><strong>Menschliche Überprüfung empfohlen:</strong> Diese Transkription ist maschinell erzeugt.  Sie sollte anhand des Originaldokuments überprüft werden, bevor sie in einer wissenschaftlichen Arbeit zitiert wird. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-verification">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-legacy_qa-hdr" role="region" aria-label="Legacy-QA-Wert (unspezifiziert)" hidden><p><strong>Legacy-QA-Wert (unspezifiziert):</strong> Dieser QA-Wert stammt aus einem älteren Verarbeitungsschritt und hat keine definierte Bedeutung oder Einheit.  Er gibt keinen Aufschluss darüber, wie korrekt die Transkription ist.  Verlässlichere Qualitätshinweise sind Erkennungskonfidenz, Erkennungsfehler oder — wenn vorhanden — CER/WER gegen eine Referenztranskription. <a class="quality-explanation-link" href="../methodology.html#quality-metrics">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-failed-hdr" role="region" aria-label="Fehlgeschlagene Erkennung" hidden><p><strong>Fehlgeschlagene Erkennung:</strong> Die Erkennung ist fehlgeschlagen (Timeout, Dienst nicht erreichbar oder anderer Fehler).  Es liegt keine verwertbare Transkription vor. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-failure">Methodik <span aria-hidden="true">→</span></a></p></div>
+  <p class="notice"><strong>Maschinell erzeugt:</strong> Dieser Output wurde automatisch erzeugt und nicht menschlich überprüft. Nicht als Edition oder verifizierte Transkription zitieren.</p>
+</header>
+<nav class="page-section-nav" aria-label="Seitennavigation" data-page-nav>
+<ol class="page-section-nav-list"><li><a href="#source">Quelle</a></li><li><a href="#transcription">Transkription</a></li><li><a href="#recognitions">Erkennungen</a></li><li><a href="#orientation">Orientierung</a></li><li><a href="#claims">Metadaten</a></li><li><a href="#entities">Entitäten</a></li><li><a href="#downloads">Downloads</a></li><li><a href="#citation">Zitation</a></li><li><a href="#history">Versionsgeschichte</a></li></ol>
+</nav>
 
-## Metadaten
+<section id="source" class="page-section page-section--evidence" data-page-section="source" aria-labelledby="source-heading"><h2 id="source-heading">Quelle und Digitalisat</h2>
+<div class="notice notice--warning"><strong>Kein öffentliches Digitalisat verknüpft.</strong> Ein lokaler Verarbeitungspfad ist kein zitierbarer Quellenbeleg. Ergänzen Sie <code>source_url</code> oder <code>iiif_manifest</code> in der Pipeline-Ausgabe.</div></section>
 
-| Feld | Wert |
-|---|---|
-| Datierung | 1802 (explizit: 'Hildburgh le 14 Nov : 1802') |
-| Sprache | Französisch |
-| Schrift | Kurrentschrift (deutsche Kursive) |
-| Schreiber | eine Hand, anonym, signiert 'Massillon' |
-| Grundlage | Beschreibung aus 2 von 2 Seite(n): lassberg-letter-0041_001.jpg, lassberg-letter-0041_002.jpg |
-| HTR | grouped-ensemble-criteria (QA 0.0) |
-| Lesungen | 3 von 4 mit Text, 0 fehlgeschlagen (Abdeckung 100%) |
+<section id="transcription" class="page-section page-section--evidence" data-page-section="transcription" aria-labelledby="transcription-heading"><h2 id="transcription-heading">Transkription</h2>
+<div class="transcription-toolbar"><button type="button" class="copy-btn" data-copy-transcript aria-label="Transkription in die Zwischenablage kopieren"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>Transkription kopieren</button></div><div class="transcription-wrap" role="table" aria-label="Transkription mit Zeilennummern"><span class="line" data-line="1" role="row"><span class="line-number" aria-hidden="true">1</span><span class="line-text">--- lassberg-letter-0041_001.jpg ---</span></span><span class="line" data-line="2" role="row"><span class="line-number" aria-hidden="true">2</span><span class="line-text">--- SEITE 1 ---</span></span><span class="line" data-line="3" role="row"><span class="line-number" aria-hidden="true">3</span><span class="line-text">N° 9 .</span></span><span class="line" data-line="4" role="row"><span class="line-number" aria-hidden="true">4</span><span class="line-text">2</span></span><span class="line" data-line="5" role="row"><span class="line-number" aria-hidden="true">5</span><span class="line-text">Oeuvre la fortune d&#x27; <mark class="entity-place" id="passage-83-89">Albany</mark> à <mark class="entity-place" id="passage-92-100">Florence</mark> .</span></span><span class="line" data-line="6" role="row"><span class="line-number" aria-hidden="true">6</span><span class="line-text">Addio : <mark class="entity-person" id="passage-111-120">Hildburgh</mark> le 14 Nov : 1802 .</span></span><span class="line" data-line="7" role="row"><span class="line-number" aria-hidden="true">7</span><span class="line-text">Reponse sur sa lettre du 16 ~Nov~ 1802 .</span></span><span class="line" data-line="8" role="row"><span class="line-number" aria-hidden="true">8</span><span class="line-text">Je suis de recevoir la gracieuse lettre que vous avez daigné</span></span><span class="line" data-line="9" role="row"><span class="line-number" aria-hidden="true">9</span><span class="line-text">de m&#x27;adresser le 16 du mois passé ; aujourd&#x27;hui le 14 Novr j&#x27;espere</span></span><span class="line" data-line="10" role="row"><span class="line-number" aria-hidden="true">10</span><span class="line-text">donc que vous n&#x27;aurez rien en attendant la réponse que j&#x27;ai pris la</span></span><span class="line" data-line="11" role="row"><span class="line-number" aria-hidden="true">11</span><span class="line-text">liberté de vous faire parvenir en y joignant une Requête pour servir</span></span><span class="line" data-line="12" role="row"><span class="line-number" aria-hidden="true">12</span><span class="line-text">pour pourvoir l&#x27;affaire du M.D.W en votre Nom .</span></span><span class="line" data-line="13" role="row"><span class="line-number" aria-hidden="true">13</span><span class="line-text">J&#x27;attends avec la plus vive impatience votre réponse sur cette dernière ,</span></span><span class="line" data-line="14" role="row"><span class="line-number" aria-hidden="true">14</span><span class="line-text">car , ayant reçu par mon avocat le <mark class="entity-person" id="passage-604-614">Dr Schmelz</mark> avis , que le Procès d&#x27;Exécution</span></span><span class="line" data-line="15" role="row"><span class="line-number" aria-hidden="true">15</span><span class="line-text">contre M . D.W va commencer , il me parait que dans l&#x27;espace pas un moment</span></span><span class="line" data-line="16" role="row"><span class="line-number" aria-hidden="true">16</span><span class="line-text">à perdre , pour ne pas encourir l&#x27;exclusion de votre prétention . Peut-être</span></span><span class="line" data-line="17" role="row"><span class="line-number" aria-hidden="true">17</span><span class="line-text">donc aurai-je l&#x27;honneur d&#x27;envoyer au plutôt vos Titres originaux par la</span></span><span class="line" data-line="18" role="row"><span class="line-number" aria-hidden="true">18</span><span class="line-text">voie de M . Salvety à <mark class="entity-place" id="passage-893-899">Hildau</mark> , ou par les adresses au <mark class="entity-person" id="passage-925-945">Dr de Hildburghausen</mark> ,</span></span><span class="line" data-line="19" role="row"><span class="line-number" aria-hidden="true">19</span><span class="line-text"><mark class="entity-role" id="passage-948-957">Directeur</mark> du <mark class="entity-org" id="passage-961-989">Bureau des Postes impériales</mark> en cette Ville , qui est mon</span></span><span class="line" data-line="20" role="row"><span class="line-number" aria-hidden="true">20</span><span class="line-text">beau-frère et qui me fera parvenir vos dépêches par une Voie sure et</span></span><span class="line" data-line="21" role="row"><span class="line-number" aria-hidden="true">21</span><span class="line-text">courte à <mark class="entity-place" id="passage-1097-1111">Hildburghausen</mark> , où je raisonnerai la semaine prochaine avec ma</span></span><span class="line" data-line="22" role="row"><span class="line-number" aria-hidden="true">22</span><span class="line-text">famille pendant l&#x27;hiver .</span></span><span class="line" data-line="23" role="row"><span class="line-number" aria-hidden="true">23</span><span class="line-text">Vous avez très bien fait Madame ! de faire prendre copie de vos Titres dans les</span></span><span class="line" data-line="24" role="row"><span class="line-number" aria-hidden="true">24</span><span class="line-text">anciens archives de la Ville ; car l&#x27;on ne peut répondre des Evénements ; cependant je n&#x27;aime pas que les originaux courent aucun</span></span><span class="line" data-line="25" role="row"><span class="line-number" aria-hidden="true">25</span><span class="line-text">risque par la voie de la Poste en prenant toujours un risque .</span></span><span class="line" data-line="26" role="row"><span class="line-number" aria-hidden="true">26</span><span class="line-text">Je me souviens très bien d&#x27;avoir entendu dire par mon Père que votre défunt époux avoit eu l&#x27;honneur d&#x27;être chargé par lui d&#x27;une affaire importante , et qu&#x27;il étoit fort en peine de la voie par laquelle il pouvoit s&#x27;acquitter ~De~ du Montant de cet Emprunt ; peut-être avoit-il même eu l&#x27;occasion de vous faire ses très humbles remerciements par cette grâce ; permettez Madame ! de m&#x27;en acquitter en son nom et de vous supplier de vouloir bien m&#x27;indiquer la valeur de cette caisse , pour pouvoir vous en faire l&#x27;Envoi .</span></span><span class="line" data-line="27" role="row"><span class="line-number" aria-hidden="true">27</span><span class="line-text">Je n&#x27;ai pas encore eu le temps d&#x27;avoir des frais pour cette affaire qui méritent d&#x27;être nommés et qui ceux qui pourront avoir lieu dans l&#x27;espace ; je soumets à votre choix si je veux m&#x27;en faire tenir un crédit adéquat sur une maison à <mark class="entity-place" id="passage-2215-2221">Hildau</mark> , ou si je voulois me faire la grâce de permettre que je fasse les avances nécessaires à charge de vous en indiquer le montant toutes les fois que j&#x27;aurois l&#x27;honneur de demander vos ordres pendant le cours de l&#x27;affaire .</span></span><span class="line" data-line="28" role="row"><span class="line-number" aria-hidden="true">28</span><span class="line-text">Ne craignez pas Madame ! que la Terre du M.D.W ne soit pas payée ; le <mark class="entity-person" id="passage-2513-2528">Comte d&#x27;Ittenis</mark> , dont il étoit héritier , n&#x27;étoit pas homme à pouvoir attendre long-temps sur le remboursement d&#x27;une somme qui devoit lui causer être même elle n&#x27;étoit pas payée ; la <mark class="entity-place" id="passage-2697-2703">France</mark> n&#x27;étant pas hypothéqué elle n&#x27;entreroit en concours qu&#x27;après nous . Il est vrai que le P r avoit acquis des Champs et Bois dans le <mark class="entity-place" id="passage-2835-2855">Comté de Belinhausen</mark> qui avoient été séquestrés sous le règne de l&#x27;<mark class="entity-person" id="passage-2902-2920">Empereur Joseph II</mark> mais cette dette étoit acquittée l&#x27;an née <mark class="entity-date" id="passage-2963-2967">1800</mark> . Quand M.D.W vint ici , qu&#x27;il avoit des prétentions à réaliser en <mark class="entity-place" id="passage-3035-3045">Angleterre</mark> , il s&#x27;est beaucoup éloigné d&#x27;Ici ; il avoit négocié une somme de 600000 fr par <mark class="entity-person" id="passage-3126-3137">Louis XVIII</mark> ; mais c&#x27;étoient des <mark class="entity-social_group" id="passage-3159-3169">négociants</mark> de <mark class="entity-place" id="passage-3173-3181">Hambourg</mark> qui avoient fourni l&#x27;argent et fait une lettre au <mark class="entity-person" id="passage-3232-3246">Comte d&#x27;Avaray</mark> favori de l&#x27;infortuné <mark class="entity-role" id="passage-3269-3282">Roi de France</mark> dans laquelle on promettoit que les sommes qu&#x27;on attendoit d&#x27;<mark class="entity-place" id="passage-3344-3354">Angleterre</mark> seroient employées pr appaiser les créances des <mark class="entity-social_group" id="passage-3403-3413">négociants</mark> ;</span></span><span class="line" data-line="29" role="row"><span class="line-number" aria-hidden="true">29</span><span class="line-text"> </span></span><span class="line" data-line="30" role="row"><span class="line-number" aria-hidden="true">30</span><span class="line-text">--- lassberg-letter-0041_002.jpg ---</span></span><span class="line" data-line="31" role="row"><span class="line-number" aria-hidden="true">31</span><span class="line-text">qui voulaient s&#x27;en prendre à M&lt;sup&gt;r&lt;/sup&gt;. D.W. sous le Nom du quel toute l&#x27;affaire</span></span><span class="line" data-line="32" role="row"><span class="line-number" aria-hidden="true">32</span><span class="line-text">s&#x27;traituit – le <mark class="entity-role" id="passage-3555-3561">Payeur</mark> que M&lt;sup&gt;r&lt;/sup&gt;. D.W. tient Maison à <mark class="entity-place" id="passage-3601-3606">Paris</mark> est fait</span></span><span class="line" data-line="33" role="row"><span class="line-number" aria-hidden="true">33</span><span class="line-text">l&#x27;agent de tous ceux qui sont assez bons géronniers dans son Danneau.</span></span><span class="line" data-line="34" role="row"><span class="line-number" aria-hidden="true">34</span><span class="line-text">Il ressemble aux Champignons qui attendent la fin de la Gerbation</span></span><span class="line" data-line="35" role="row"><span class="line-number" aria-hidden="true">35</span><span class="line-text">pr&lt;sup&gt;o&lt;/sup&gt; jouner du nouveau.</span></span><span class="line" data-line="36" role="row"><span class="line-number" aria-hidden="true">36</span><span class="line-text">L&#x27;essentiel parait être Madame ! de me faire parvenir au plutôt</span></span><span class="line" data-line="37" role="row"><span class="line-number" aria-hidden="true">37</span><span class="line-text">possible les Titres originaux, tout Retard risquant dans le Sril Titre</span></span><span class="line" data-line="38" role="row"><span class="line-number" aria-hidden="true">38</span><span class="line-text">se ranger avec cette Detention dans la classe des <mark class="entity-social_group" id="passage-3971-3997">financiers non hypothéqués</mark></span></span><span class="line" data-line="39" role="row"><span class="line-number" aria-hidden="true">39</span><span class="line-text">Ce qui tout loin de m&#x27;assurer que cette classe ne sera pas trop nombreuse.</span></span><span class="line" data-line="40" role="row"><span class="line-number" aria-hidden="true">40</span><span class="line-text">Je n&#x27;ai point Madame ! que je regarderai comme l&#x27;Ennuyement le plus</span></span><span class="line" data-line="41" role="row"><span class="line-number" aria-hidden="true">41</span><span class="line-text">heureux &amp; le plus agréable qui me puisse arriver, si je parviens à terminer</span></span><span class="line" data-line="42" role="row"><span class="line-number" aria-hidden="true">42</span><span class="line-text">cette affaire à votre contentement, d&#x27;agréer l&#x27;agréer les sentimens d&#x27;un</span></span><span class="line" data-line="43" role="row"><span class="line-number" aria-hidden="true">43</span><span class="line-text">qui vous &amp; d&#x27;un attachement sans bornes avec lequel j&#x27;ai l&#x27;honneur</span></span><span class="line" data-line="44" role="row"><span class="line-number" aria-hidden="true">44</span><span class="line-text">Vêtre pp</span></span><span class="line" data-line="45" role="row"><span class="line-number" aria-hidden="true">45</span><span class="line-text"> </span></span><span class="line" data-line="46" role="row"><span class="line-number" aria-hidden="true">46</span><span class="line-text"><mark class="entity-person" id="passage-4367-4375">Masseron</mark></span></span></div>
+</section>
 
-## Entitäten
-
-### DATE
-- 1800
-- 1802-11-14
-- 1802-11-16
-
-### ORG
-- Bureau des Postes impériales
-- Négociants de Hambourg
-
-### PERSON
-- Hildburgh — [GND](https://d-nb.info/gnd/143076868) · [WD](https://www.wikidata.org/entity/Q18910975)
-- Hildburgh — [GND](https://d-nb.info/gnd/143076868) · [WD](https://www.wikidata.org/entity/Q18910975)
-- Hildburgh — [GND](https://d-nb.info/gnd/143076868) · [WD](https://www.wikidata.org/entity/Q18910975)
-- Dr Schmelz
-- Dr de Hildburghausen
-- Comte d'Ittenis
-- Joseph II
-- Louis XVIII
-- Comte d'Avaray
-- Masseron
-- M. D.W
-- M. Salvety
-
-### PLACE
-- Albany
-- Florence
-- Hildau
-- Hildau
-- Hildburghausen
-- Hildburghausen
-- Comté de Belinhausen
-- France
-- France
-- Angleterre
-- Angleterre
-- Hambourg
-- Paris
-
-### ROLE
-- Directeur
-- Roi de France
-- Payeur
-- Agent
-
-### SOCIAL_GROUP
-- financiers non hypothéqués
-- financiers
-- négociants
-- négociants
-
-## Transkription
-
-```
---- lassberg-letter-0041_001.jpg ---
+<section id="recognitions" class="page-section page-section--evidence" data-page-section="recognitions" aria-labelledby="recognitions-heading">
+<h2 id="recognitions-heading">Erkennungsversionen</h2>
+<p class="rec-intro">
+Alle maschinellen Erkennungsversuche bleiben als überprüfbare Provenienz sichtbar.
+<button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-incomparable_confidence">ⓘ Nicht vergleichbare Konfidenz</button>
+</p>
+<div class="quality-explanation" id="quality-explanation-engine_confidence" role="region" aria-label="Engine-Konfidenz" hidden><p><strong>Engine-Konfidenz:</strong> Die Engine-Konfidenz ist ein von der Erkennungs-Engine produzierter Wahrscheinlichkeitswert.  Er gilt nur für die jeweilige Engine und ist nicht mit Konfidenzwerten anderer Engines vergleichbar.  Hohe Werte bedeuten nicht notwendigerweise, dass die Transkription korrekt ist. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-engine-confidence">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-agreement" role="region" aria-label="Engine-Übereinstimmung" hidden><p><strong>Engine-Übereinstimmung:</strong> Die Übereinstimmung zeigt, wie viele Engines dieselbe Lesart erzeugt haben.  Übereinstimmung bedeutet nicht, dass die Lesart korrekt ist — alle Engines können gemeinsam fehlgehen.  Übereinstimmungswerte sind nicht dasselbe wie Genauigkeitswerte. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-agreement">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-degenerate" role="region" aria-label="Degenerierte Ausgabe" hidden><p><strong>Degenerierte Ausgabe:</strong> Die Erkennung hat eine degenerierte Ausgabe erzeugt (z. B. sich wiederholende Zeichen oder unerwartet lange Zeichenketten), obwohl kein technischer Fehler gemeldet wurde.  Solche Ausgaben sind mit Vorsicht zu verwenden. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-degeneration">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-failed" role="region" aria-label="Fehlgeschlagene Erkennung" hidden><p><strong>Fehlgeschlagene Erkennung:</strong> Die Erkennung ist fehlgeschlagen (Timeout, Dienst nicht erreichbar oder anderer Fehler).  Es liegt keine verwertbare Transkription vor. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-failure">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-reference_evaluation" role="region" aria-label="Referenzbasierte Auswertung (CER/WER)" hidden><p><strong>Referenzbasierte Auswertung (CER/WER):</strong> CER (Character Error Rate) und WER (Word Error Rate) werden gegen eine bekannte Referenztranskription berechnet.  Niedrigere Werte bedeuten weniger Fehler.  Die Metrik gilt nur für die angegebene Referenz und Normalisierung; ein anderes Referenzkorpus kann zu anderen Werten führen. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-reference-evaluation">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-incomparable_confidence" role="region" aria-label="Nicht vergleichbare Konfidenzwerte" hidden><p><strong>Nicht vergleichbare Konfidenzwerte:</strong> Konfidenzwerte verschiedener Engines stammen aus unterschiedlichen Modellen mit unterschiedlichen Skalen und Bedeutungen.  Ein höherer Wert einer Engine bedeutet nicht, dass deren Transkription genauer ist als die einer anderen Engine. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-engine-confidence">Methodik <span aria-hidden="true">→</span></a></p></div><div class="quality-explanation" id="quality-explanation-selection_score" role="region" aria-label="Ausgewählte Transkription / Fusion" hidden><p><strong>Ausgewählte Transkription / Fusion:</strong> Die ausgewählte Transkription ist das Ergebnis, das die Pipeline als Haupttranskription ausgewählt oder aus mehreren Engine-Ausgaben fusioniert hat.  Sie stellt den besten maschinellen Versuch dar, nicht zwingend die historisch korrekte Lesart.  Konfidenzwerte verschiedener Engines werden dabei nicht direkt summiert oder gemittelt.  Das Ergebnis sollte stets am Original überprüft werden. <a class="quality-explanation-link" href="../methodology.html#quality-metrics-selection-score">Methodik <span aria-hidden="true">→</span></a></p></div>
+<div class="rec-viewer" data-recognition-viewer data-doc-id="lassberg-letter-0041" data-recognition-download-switcher>
+<div class="rec-primary-download"><a class="btn-rec-download" href="recognitions/fused.txt" data-doc-id="lassberg-letter-0041" data-default-href="recognitions/fused.txt" download data-rec-primary-download>Aktuelle Transkription herunterladen <span class="rec-download-format">TXT</span></a><span class="rec-download-provenance">fusion · Seite nicht zugeordnet</span></div><div class="dl-switcher"><label for="dl-cand-select-lassberg-letter-0041">Andere Version wählen:</label> <select id="dl-cand-select-lassberg-letter-0041" class="dl-cand-select" data-doc-id="lassberg-letter-0041"><option value="selected" data-href="recognitions/fused.txt">Ausgewählt / Fusion</option>
+<option value="vlm-qwen3-8-27b" data-href="">VLM · qwen3.8-27b</option>
+<option value="vlm-qwen3-8-27b-2" data-href="" disabled>VLM · qwen3.8-27b</option>
+<option value="vlm-qwen3-8-27b-3" data-href="">VLM · qwen3.8-27b</option>
+<option value="vlm-qwen3-8-27b-4" data-href="">VLM · qwen3.8-27b</option></select></div>
+<details class="rec-inventory"><summary>Alle Erkennungsversionen herunterladen <span class="rec-inv-count">(5 Versionen)</span></summary>
+<div class="table-scroll"><table class="rec-inv-table"><thead><tr><th>Engine</th><th>Modell</th><th>Typ</th><th>Seite</th><th>Zeichen</th><th>Status</th><th>Konfidenz/Fehler</th><th>Download</th></tr></thead><tbody><tr class="rec-inv-page-header"><th colspan="7">Nicht zugeordnet</th></tr><tr><td>fusion</td><td class="inv-model"><code>—</code></td><td><span class="badge badge--raw">roh · S. </span></td><td class="inv-right">Seite </td><td class="inv-right">4375</td><td>Erfolgreich</td><td>Nicht angegeben</td><td class="rec-inv-dl"><a href="recognitions/fused.txt" download>fused.txt</a></td></tr><tr><td>vlm</td><td class="inv-model"><code>qwen3.8-27b</code></td><td><span class="badge badge--raw">roh · S. </span></td><td class="inv-right">Seite </td><td class="inv-right">3398</td><td>Erfolgreich</td><td>80%</td><td>—</td></tr><tr class="rec-inv-error"><td>vlm</td><td class="inv-model"><code>qwen3.8-27b</code></td><td><span class="badge badge--error">Fehler</span></td><td class="inv-right">Seite </td><td class="inv-right">—</td><td>Fehlgeschlagen</td><td>Der Erkennungsversuch lieferte keinen Text.</td><td>—</td></tr><tr><td>vlm</td><td class="inv-model"><code>qwen3.8-27b</code></td><td><span class="badge badge--raw">roh · S. </span></td><td class="inv-right">Seite </td><td class="inv-right">3378</td><td>Erfolgreich</td><td>80%</td><td>—</td></tr><tr><td>vlm</td><td class="inv-model"><code>qwen3.8-27b</code></td><td><span class="badge badge--raw">roh · S. </span></td><td class="inv-right">Seite </td><td class="inv-right">921</td><td>Erfolgreich</td><td>80%</td><td>—</td></tr></tbody></table></div></details>
+<div class="notice notice--warning rec-run-summary"><strong>Erkennungslauf:</strong> 1 technisch fehlgeschlagen; 0 degeneriert (von 5) <span class="rec-run-chips"><span class="rec-chip rec-chip--ok">4 erfolgreich</span><span class="rec-chip rec-chip--failed">1 fehlgeschlagen</span><span class="rec-chip rec-chip--degenerate">0 degeneriert</span></span></div>
+<div class="rec-compare" data-recognition-compare>
+<div class="rec-compare-toolbar"><button class="btn-rec-compare" type="button" data-rec-compare-open aria-expanded="false">&#128269; Vergleichen</button></div>
+<div class="rec-compare-panes" data-rec-compare-panes hidden>
+<div class="rec-compare-heading" data-rec-compare-heading><span>Modellvergleich</span></div>
+<div class="rec-compare-share" data-rec-compare-share>
+<input class="rec-compare-share-input" type="text" data-rec-compare-share-input readonly placeholder="Vergleichs-URL" aria-label="Vergleichs-URL zum Teilen">
+<button class="btn-rec-compare btn-rec-compare-share-copy" type="button" data-rec-compare-share-copy>Kopieren</button>
+</div>
+<div class="rec-compare-pane" data-rec-compare-pane="left" data-rec-compare-selected="selected">
+<div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-left">Version links</label></div>
+<select class="rec-compare-select" id="rec-compare-select-left" data-rec-compare-select="left"><option value="selected" data-page="">Ausgewählt / Fusion</option><option value="vlm-qwen3-8-27b" data-page="">VLM · qwen3.8-27b</option><option value="vlm-qwen3-8-27b-2" data-page="" disabled>VLM · qwen3.8-27b</option><option value="vlm-qwen3-8-27b-3" data-page="">VLM · qwen3.8-27b</option><option value="vlm-qwen3-8-27b-4" data-page="">VLM · qwen3.8-27b</option></select>
+<div class="rec-compare-body" data-rec-compare-body="left" tabindex="-1" aria-live="polite"></div></div>
+<div class="rec-compare-pane" data-rec-compare-pane="right" data-rec-compare-selected="vlm-qwen3-8-27b">
+<div class="rec-compare-header"><label class="rec-compare-label" for="rec-compare-select-right">Version rechts</label></div>
+<select class="rec-compare-select" id="rec-compare-select-right" data-rec-compare-select="right"><option value="selected" data-page="">Ausgewählt / Fusion</option><option value="vlm-qwen3-8-27b" data-page="">VLM · qwen3.8-27b</option><option value="vlm-qwen3-8-27b-2" data-page="" disabled>VLM · qwen3.8-27b</option><option value="vlm-qwen3-8-27b-3" data-page="">VLM · qwen3.8-27b</option><option value="vlm-qwen3-8-27b-4" data-page="">VLM · qwen3.8-27b</option></select>
+<div class="rec-compare-body" data-rec-compare-body="right" tabindex="-1" aria-live="polite"></div>
+<div class="rec-compare-diff" data-rec-compare-diff hidden role="region" aria-label="Unterschiede"></div></div>
+<button class="btn-rec-compare-close" type="button" data-rec-compare-close aria-label="Vergleich schliessen">&#215;</button>
+</div></div>
+<nav class="rec-selector" aria-label="Erkennungsversionen"><ul><li><a href="#recognition-selected" data-recognition-select="selected" data-page="" data-engine="fusion" data-model="" aria-controls="recognition-selected">Ausgewählt / Fusion</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-vlm-qwen3-8-27b" data-recognition-select="vlm-qwen3-8-27b" data-page="" data-engine="vlm" data-model="qwen3.8-27b" aria-controls="recognition-vlm-qwen3-8-27b">VLM · qwen3.8-27b</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-vlm-qwen3-8-27b-2" data-recognition-select="vlm-qwen3-8-27b-2" data-page="" data-engine="vlm" data-model="qwen3.8-27b" aria-controls="recognition-vlm-qwen3-8-27b-2">VLM · qwen3.8-27b</a> <span class="rec-status rec-status--failed">Fehlgeschlagen</span></li><li><a href="#recognition-vlm-qwen3-8-27b-3" data-recognition-select="vlm-qwen3-8-27b-3" data-page="" data-engine="vlm" data-model="qwen3.8-27b" aria-controls="recognition-vlm-qwen3-8-27b-3">VLM · qwen3.8-27b</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li><li><a href="#recognition-vlm-qwen3-8-27b-4" data-recognition-select="vlm-qwen3-8-27b-4" data-page="" data-engine="vlm" data-model="qwen3.8-27b" aria-controls="recognition-vlm-qwen3-8-27b-4">VLM · qwen3.8-27b</a> <span class="rec-status rec-status--ok">Erfolgreich</span></li></ul></nav>
+<div class="rec-panels"><details class="rec-panel" id="recognition-selected" data-recognition-panel="selected" data-page="" data-engine="fusion" data-model="" open>
+<summary>Ausgewählt / Fusion — ausgewählt<button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-selection_score"><span aria-hidden="true">ⓘ</span> Ausgewählte Transkription / Fusion</button></summary>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>fusion</dd></div>
+<div><dt>Modell</dt><dd>—</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd aria-label="Engine-Konfidenz: Nicht angegeben, Geltungsbereich: fusion">Nicht angegeben <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: fusion</p><p>Modell: —</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz: Nicht angegeben</p></details>
+<div><dt>Zeichen</dt><dd>4375</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Engine-Konfidenz">Konfidenz Nicht angegeben</span></dd></div>
+</dl>
+<pre class="rec-text" tabindex="0"><code>--- lassberg-letter-0041_001.jpg ---
 --- SEITE 1 ---
 N° 9 .
 2
-Oeuvre la fortune d' Albany à Florence .
+Oeuvre la fortune d&#x27; Albany à Florence .
 Addio : Hildburgh le 14 Nov : 1802 .
 Reponse sur sa lettre du 16 ~Nov~ 1802 .
 Je suis de recevoir la gracieuse lettre que vous avez daigné
-de m'adresser le 16 du mois passé ; aujourd'hui le 14 Novr j'espere
-donc que vous n'aurez rien en attendant la réponse que j'ai pris la
+de m&#x27;adresser le 16 du mois passé ; aujourd&#x27;hui le 14 Novr j&#x27;espere
+donc que vous n&#x27;aurez rien en attendant la réponse que j&#x27;ai pris la
 liberté de vous faire parvenir en y joignant une Requête pour servir
-pour pourvoir l'affaire du M.D.W en votre Nom .
-J'attends avec la plus vive impatience votre réponse sur cette dernière ,
-car , ayant reçu par mon avocat le Dr Schmelz avis , que le Procès d'Exécution
-contre M . D.W va commencer , il me parait que dans l'espace pas un moment
-à perdre , pour ne pas encourir l'exclusion de votre prétention . Peut-être
-donc aurai-je l'honneur d'envoyer au plutôt vos Titres originaux par la
+pour pourvoir l&#x27;affaire du M.D.W en votre Nom .
+J&#x27;attends avec la plus vive impatience votre réponse sur cette dernière ,
+car , ayant reçu par mon avocat le Dr Schmelz avis , que le Procès d&#x27;Exécution
+contre M . D.W va commencer , il me parait que dans l&#x27;espace pas un moment
+à perdre , pour ne pas encourir l&#x27;exclusion de votre prétention . Peut-être
+donc aurai-je l&#x27;honneur d&#x27;envoyer au plutôt vos Titres originaux par la
 voie de M . Salvety à Hildau , ou par les adresses au Dr de Hildburghausen ,
 Directeur du Bureau des Postes impériales en cette Ville , qui est mon
 beau-frère et qui me fera parvenir vos dépêches par une Voie sure et
 courte à Hildburghausen , où je raisonnerai la semaine prochaine avec ma
-famille pendant l'hiver .
+famille pendant l&#x27;hiver .
 Vous avez très bien fait Madame ! de faire prendre copie de vos Titres dans les
-anciens archives de la Ville ; car l'on ne peut répondre des Evénements ; cependant je n'aime pas que les originaux courent aucun
+anciens archives de la Ville ; car l&#x27;on ne peut répondre des Evénements ; cependant je n&#x27;aime pas que les originaux courent aucun
 risque par la voie de la Poste en prenant toujours un risque .
-Je me souviens très bien d'avoir entendu dire par mon Père que votre défunt époux avoit eu l'honneur d'être chargé par lui d'une affaire importante , et qu'il étoit fort en peine de la voie par laquelle il pouvoit s'acquitter ~De~ du Montant de cet Emprunt ; peut-être avoit-il même eu l'occasion de vous faire ses très humbles remerciements par cette grâce ; permettez Madame ! de m'en acquitter en son nom et de vous supplier de vouloir bien m'indiquer la valeur de cette caisse , pour pouvoir vous en faire l'Envoi .
-Je n'ai pas encore eu le temps d'avoir des frais pour cette affaire qui méritent d'être nommés et qui ceux qui pourront avoir lieu dans l'espace ; je soumets à votre choix si je veux m'en faire tenir un crédit adéquat sur une maison à Hildau , ou si je voulois me faire la grâce de permettre que je fasse les avances nécessaires à charge de vous en indiquer le montant toutes les fois que j'aurois l'honneur de demander vos ordres pendant le cours de l'affaire .
-Ne craignez pas Madame ! que la Terre du M.D.W ne soit pas payée ; le Comte d'Ittenis , dont il étoit héritier , n'étoit pas homme à pouvoir attendre long-temps sur le remboursement d'une somme qui devoit lui causer être même elle n'étoit pas payée ; la France n'étant pas hypothéqué elle n'entreroit en concours qu'après nous . Il est vrai que le P r avoit acquis des Champs et Bois dans le Comté de Belinhausen qui avoient été séquestrés sous le règne de l'Empereur Joseph II mais cette dette étoit acquittée l'an née 1800 . Quand M.D.W vint ici , qu'il avoit des prétentions à réaliser en Angleterre , il s'est beaucoup éloigné d'Ici ; il avoit négocié une somme de 600000 fr par Louis XVIII ; mais c'étoient des négociants de Hambourg qui avoient fourni l'argent et fait une lettre au Comte d'Avaray favori de l'infortuné Roi de France dans laquelle on promettoit que les sommes qu'on attendoit d'Angleterre seroient employées pr appaiser les créances des négociants ;
+Je me souviens très bien d&#x27;avoir entendu dire par mon Père que votre défunt époux avoit eu l&#x27;honneur d&#x27;être chargé par lui d&#x27;une affaire importante , et qu&#x27;il étoit fort en peine de la voie par laquelle il pouvoit s&#x27;acquitter ~De~ du Montant de cet Emprunt ; peut-être avoit-il même eu l&#x27;occasion de vous faire ses très humbles remerciements par cette grâce ; permettez Madame ! de m&#x27;en acquitter en son nom et de vous supplier de vouloir bien m&#x27;indiquer la valeur de cette caisse , pour pouvoir vous en faire l&#x27;Envoi .
+Je n&#x27;ai pas encore eu le temps d&#x27;avoir des frais pour cette affaire qui méritent d&#x27;être nommés et qui ceux qui pourront avoir lieu dans l&#x27;espace ; je soumets à votre choix si je veux m&#x27;en faire tenir un crédit adéquat sur une maison à Hildau , ou si je voulois me faire la grâce de permettre que je fasse les avances nécessaires à charge de vous en indiquer le montant toutes les fois que j&#x27;aurois l&#x27;honneur de demander vos ordres pendant le cours de l&#x27;affaire .
+Ne craignez pas Madame ! que la Terre du M.D.W ne soit pas payée ; le Comte d&#x27;Ittenis , dont il étoit héritier , n&#x27;étoit pas homme à pouvoir attendre long-temps sur le remboursement d&#x27;une somme qui devoit lui causer être même elle n&#x27;étoit pas payée ; la France n&#x27;étant pas hypothéqué elle n&#x27;entreroit en concours qu&#x27;après nous . Il est vrai que le P r avoit acquis des Champs et Bois dans le Comté de Belinhausen qui avoient été séquestrés sous le règne de l&#x27;Empereur Joseph II mais cette dette étoit acquittée l&#x27;an née 1800 . Quand M.D.W vint ici , qu&#x27;il avoit des prétentions à réaliser en Angleterre , il s&#x27;est beaucoup éloigné d&#x27;Ici ; il avoit négocié une somme de 600000 fr par Louis XVIII ; mais c&#x27;étoient des négociants de Hambourg qui avoient fourni l&#x27;argent et fait une lettre au Comte d&#x27;Avaray favori de l&#x27;infortuné Roi de France dans laquelle on promettoit que les sommes qu&#x27;on attendoit d&#x27;Angleterre seroient employées pr appaiser les créances des négociants ;
 
 --- lassberg-letter-0041_002.jpg ---
-qui voulaient s'en prendre à M<sup>r</sup>. D.W. sous le Nom du quel toute l'affaire
-s'traituit – le Payeur que M<sup>r</sup>. D.W. tient Maison à Paris est fait
-l'agent de tous ceux qui sont assez bons géronniers dans son Danneau.
+qui voulaient s&#x27;en prendre à M&lt;sup&gt;r&lt;/sup&gt;. D.W. sous le Nom du quel toute l&#x27;affaire
+s&#x27;traituit – le Payeur que M&lt;sup&gt;r&lt;/sup&gt;. D.W. tient Maison à Paris est fait
+l&#x27;agent de tous ceux qui sont assez bons géronniers dans son Danneau.
 Il ressemble aux Champignons qui attendent la fin de la Gerbation
-pr<sup>o</sup> jouner du nouveau.
-L'essentiel parait être Madame ! de me faire parvenir au plutôt
+pr&lt;sup&gt;o&lt;/sup&gt; jouner du nouveau.
+L&#x27;essentiel parait être Madame ! de me faire parvenir au plutôt
 possible les Titres originaux, tout Retard risquant dans le Sril Titre
 se ranger avec cette Detention dans la classe des financiers non hypothéqués
-Ce qui tout loin de m'assurer que cette classe ne sera pas trop nombreuse.
-Je n'ai point Madame ! que je regarderai comme l'Ennuyement le plus
-heureux & le plus agréable qui me puisse arriver, si je parviens à terminer
-cette affaire à votre contentement, d'agréer l'agréer les sentimens d'un
-qui vous & d'un attachement sans bornes avec lequel j'ai l'honneur
+Ce qui tout loin de m&#x27;assurer que cette classe ne sera pas trop nombreuse.
+Je n&#x27;ai point Madame ! que je regarderai comme l&#x27;Ennuyement le plus
+heureux &amp; le plus agréable qui me puisse arriver, si je parviens à terminer
+cette affaire à votre contentement, d&#x27;agréer l&#x27;agréer les sentimens d&#x27;un
+qui vous &amp; d&#x27;un attachement sans bornes avec lequel j&#x27;ai l&#x27;honneur
 Vêtre pp
 
-Masseron
-```
+Masseron</code></pre>
 
-## Recognition results
-
-_4 independent candidate transcription(s), each exported separately._
-
-| Page | Engine | Model | Chars | Export |
-|---|---|---|---|---|
-| `—` | `vlm` | `qwen3.8-27b` | 3398 | [vlm-qwen3.8-27b.txt](recognitions/vlm-qwen3.8-27b.txt) |
-| `—` | `vlm` | `qwen3.8-27b` | 0 | — |
-| `—` | `vlm` | `qwen3.8-27b` | 3378 | [vlm-qwen3.8-27b.txt](recognitions/vlm-qwen3.8-27b.txt) |
-| `—` | `vlm` | `qwen3.8-27b` | 921 | [vlm-qwen3.8-27b.txt](recognitions/vlm-qwen3.8-27b.txt) |
-
-<details>
-<summary>vlm · qwen3.8-27b (3398 chars)</summary>
-
-```
-N° 9 .
+<p><a class="rec-download" href="recognitions/fused.txt" download data-cand="selected">Diese Transkription herunterladen</a></p>
+</details><details class="rec-panel" id="recognition-vlm-qwen3-8-27b" data-recognition-panel="vlm-qwen3-8-27b" data-page="" data-engine="vlm" data-model="qwen3.8-27b">
+<summary>VLM · qwen3.8-27b</summary>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>vlm</dd></div>
+<div><dt>Modell</dt><dd>qwen3.8-27b</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd aria-label="Engine-Konfidenz: 80%, Einheit: Wahrscheinlichkeit, Geltungsbereich: vlm/qwen3.8-27b"><span class="rec-confidence-value">80%</span> <span class="rec-confidence-scope">— vlm/qwen3.8-27b</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: vlm</p><p>Modell: qwen3.8-27b</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz: 0.8</p></details>
+<div><dt>Zeichen</dt><dd>3398</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Engine-Konfidenz">Konfidenz 80%</span></dd></div>
+</dl>
+<pre class="rec-text" tabindex="0"><code>N° 9 .
 2
-Oeuvre la fortune d' Albany à Florence .
+Oeuvre la fortune d&#x27; Albany à Florence .
 Addio : Hildburgh le 14 Nov : 1802 .
 Reponse sur sa lettre du 16 Novr : 1802 .
-Je suis de recevoir la gracieuse lettre que vous avez daigné de m'adresser le 16 du mois passé , aujourd'hui le 74 Novr : & je vous doute que vous n'ayez reçu en attendant la réponse que j'ai pris la liberté de vous faire parvenir en y joignant une Requête pour vous signifier pour pourvoir l'affaire du D.r De W.r en votre Nom .
-J'attends avec la plus vive impatience votre réponse sur cette dernière , car , ayant reçu par mon avocat le D.r Schmitz lavis que le Procès D'Exécution contre M.r D.W.r est commencé , il me paroit que vous n'avez pas un moment à perdre , pour ne pas encourir l'Exclusion de votre prétention . Peut-être donc aurai je l'honneur d'envoyer au plutôt vos Titres originaux par la voie de M.r Salzet à Hildau , ou par les adresses au D.r de Hildburghausen Directeur du Bureau des Postes impériales en cette Ville , qui est mon beau-frère & qui me fera parvenir vos dépêches par une Voie sûre & courte à Hildburghausen , où je raisonnerai si la semaine prochaine arrivera famille pendant l'hiver .
-Vous avez très bien fait Madame ! de faire prendre copie de vos Titres dans les propres archives de la Ville ; car l'on ne peut répondre des Evénements , cependant je n'aurois pas que les originaux courent aucun risque par la voie de la Poste en prenant toujours un gage .
-Je ne saurois très bien d'avoir entendu dire par mon Fils que vous aviez donné ordre à M.r Salzet de lui faire parvenir une caisse destinée à être par lui une valeur , & qu'il étoit fort en peine de la voie par laquelle il pouvoit s'acquitter du Montant de cet Envoy ; j'en suis même au l'occasion de vous faire mes très humbles remerciements grâces à cette grâce ; permettrez Madame ! de m'en acquitter en son Nom & de vous supplié de vouloir bien m'indiquer la valeur de cette caisse , pour pouvoir vous en faire l'Envoy .
-Je n'ai pas encore été assez heureux , de faire des…
-```
-</details>
+Je suis de recevoir la gracieuse lettre que vous avez daigné de m&#x27;adresser le 16 du mois passé , aujourd&#x27;hui le 74 Novr : &amp; je vous doute que vous n&#x27;ayez reçu en attendant la réponse que j&#x27;ai pris la liberté de vous faire parvenir en y joignant une Requête pour vous signifier pour pourvoir l&#x27;affaire du D.r De W.r en votre Nom .
+J&#x27;attends avec la plus vive impatience votre réponse sur cette dernière , car , ayant reçu par mon avocat le D.r Schmitz lavis que le Procès D&#x27;Exécution contre M.r D.W.r est commencé , il me paroit que vous n&#x27;avez pas un moment à perdre , pour ne pas encourir l&#x27;Exclusion de votre prétention . Peut-être donc aurai je l&#x27;honneur d&#x27;envoyer au plutôt vos Titres originaux par la voie de M.r Salzet à Hildau , ou par les adresses au D.r de Hildburghausen Directeur du Bureau des Postes impériales en cette Ville , qui est mon beau-frère &amp; qui me fera parvenir vos dépêches par une Voie sûre &amp; courte à Hildburghausen , où je raisonnerai si la semaine prochaine arrivera famille pendant l&#x27;hiver .
+Vous avez très bien fait Madame ! de faire prendre copie de vos Titres dans les propres archives de la Ville ; car l&#x27;on ne peut répondre des Evénements , cependant je n&#x27;aurois pas que les originaux courent aucun risque par la voie de la Poste en prenant toujours un gage .
+Je ne saurois très bien d&#x27;avoir entendu dire par mon Fils que vous aviez donné ordre à M.r Salzet de lui faire parvenir une caisse destinée à être par lui une valeur , &amp; qu&#x27;il étoit fort en peine de la voie par laquelle il pouvoit s&#x27;acquitter du Montant de cet Envoy ; j&#x27;en suis même au l&#x27;occasion de vous faire mes très humbles remerciements grâces à cette grâce ; permettrez Madame ! de m&#x27;en acquitter en son Nom &amp; de vous supplié de vouloir bien m&#x27;indiquer la valeur de cette caisse , pour pouvoir vous en faire l&#x27;Envoy .
+Je n&#x27;ai pas encore été assez heureux , de faire des frais pour cette affaire qui méritent d&#x27;être nommés &amp; je crains que je pourroit avoir lieu dans l&#x27;espace ; je soumets à votre choix si je vous m&#x27;en faisais tenir un crédit adéquat sur une maison à Hildau , ou si je voulois me faire la grâce de permettre que je fasse les avances nécessaires à charge de vous en indiquer le montant toutes les fois que j&#x27;aurois l&#x27;honneur de demander vos ordres pendant le cours de l&#x27;affaire .
+Ne craignez pas Madame ! que la terre de M.D.W.r ne soit pas payée ; le Comte d&#x27;Altmiss , du quel il l&#x27;a achetée , n&#x27;étoit pas homme à pouvoir attendre long temps sur le remboursement d&#x27;une somme qui seroit à causer &amp; si même elle n&#x27;étoit pas payée , la France n&#x27;étant pas hypothéquée elle n&#x27;entreroit en concours qu&#x27;après nous . Il est vrai que le P.re avoit acquis des Champs &amp; Bois dans le Comté de Belinhausen qui avoit sécularisé sous le règne de l&#x27;Empereur Joseph II mais cette dette étoit acquittée l&#x27;an née 1800 .
+Quand M.D.W.r vint ici , qu&#x27;il avoit des prétentions à réaliser en Angleterre , il s&#x27;est beaucoup éloigné d&#x27;Ici Vite ; il avoit négocié une somme de 600000 £ par louis XIV ; mais c&#x27;étoient des négocians de Hambourg qui avoient fourni l&#x27;argent &amp; fait une lettre au Comte d&#x27;Avaray favori de l&#x27;infortuné roi de France dans laquelle on promettoit que les sommes qu&#x27;on attendoit d&#x27;Angleterre seroient employées pour appaiser les créanciers des négocians ;</code></pre>
 
-<details>
-<summary>vlm · qwen3.8-27b (3378 chars)</summary>
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-vlm-qwen3-8-27b-2" data-recognition-panel="vlm-qwen3-8-27b-2" data-page="" data-engine="vlm" data-model="qwen3.8-27b">
+<summary>VLM · qwen3.8-27b</summary>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>vlm</dd></div>
+<div><dt>Modell</dt><dd>qwen3.8-27b</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
 
-```
---- SEITE 1 ---
+<div><dt>Zeichen</dt><dd>0</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--failed" title="Fehlgeschlagene Erkennung">Fehlgeschlagen</span></dd></div>
+</dl>
+<div class="notice notice--warning rec-error"><strong>Erkennung fehlgeschlagen.</strong><br>Die Erkennung hat keine Ausgabe erzeugt.</div>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-vlm-qwen3-8-27b-3" data-recognition-panel="vlm-qwen3-8-27b-3" data-page="" data-engine="vlm" data-model="qwen3.8-27b">
+<summary>VLM · qwen3.8-27b</summary>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>vlm</dd></div>
+<div><dt>Modell</dt><dd>qwen3.8-27b</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd aria-label="Engine-Konfidenz: 80%, Einheit: Wahrscheinlichkeit, Geltungsbereich: vlm/qwen3.8-27b"><span class="rec-confidence-value">80%</span> <span class="rec-confidence-scope">— vlm/qwen3.8-27b</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: vlm</p><p>Modell: qwen3.8-27b</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz: 0.8</p></details>
+<div><dt>Zeichen</dt><dd>3378</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Engine-Konfidenz">Konfidenz 80%</span></dd></div>
+</dl>
+<pre class="rec-text" tabindex="0"><code>--- SEITE 1 ---
 N° 9 .
 2
-Oeuvre la fortune d' Albany à Florence .
+Oeuvre la fortune d&#x27; Albany à Florence .
 Addio : Hildburgh le 14 Nov : 1802 .
 Reponse sur sa lettre du 16 ~Nov~ 1802 .
 Je suis de recevoir la gracieuse lettre que vous avez daigné
-de m'adresser le 16 du mois passé ; aujourd'hui le 14 Novr j'espere
-donc que vous n'aurez rien en attendant la réponse que j'ai pris la
+de m&#x27;adresser le 16 du mois passé ; aujourd&#x27;hui le 14 Novr j&#x27;espere
+donc que vous n&#x27;aurez rien en attendant la réponse que j&#x27;ai pris la
 liberté de vous faire parvenir en y joignant une Requête pour servir
-pour pourvoir l'affaire du M.D.W en votre Nom .
-J'attends avec la plus vive impatience votre réponse sur cette dernière ,
-car , ayant reçu par mon avocat le Dr Schmelz avis , que le Procès d'Exécution
-contre M . D.W va commencer , il me parait que dans l'espace pas un moment
-à perdre , pour ne pas encourir l'exclusion de votre prétention . Peut-être
-donc aurai-je l'honneur d'envoyer au plutôt vos Titres originaux par la
+pour pourvoir l&#x27;affaire du M.D.W en votre Nom .
+J&#x27;attends avec la plus vive impatience votre réponse sur cette dernière ,
+car , ayant reçu par mon avocat le Dr Schmelz avis , que le Procès d&#x27;Exécution
+contre M . D.W va commencer , il me parait que dans l&#x27;espace pas un moment
+à perdre , pour ne pas encourir l&#x27;exclusion de votre prétention . Peut-être
+donc aurai-je l&#x27;honneur d&#x27;envoyer au plutôt vos Titres originaux par la
 voie de M . Salvety à Hildau , ou par les adresses au Dr de Hildburghausen ,
 Directeur du Bureau des Postes impériales en cette Ville , qui est mon
 beau-frère et qui me fera parvenir vos dépêches par une Voie sure et
 courte à Hildburghausen , où je raisonnerai la semaine prochaine avec ma
-famille pendant l'hiver .
+famille pendant l&#x27;hiver .
 Vous avez très bien fait Madame ! de faire prendre copie de vos Titres dans les
-anciens archives de la Ville ; car l'on ne peut répondre des Evénements ; cependant je n'aime pas que les originaux courent aucun
+anciens archives de la Ville ; car l&#x27;on ne peut répondre des Evénements ; cependant je n&#x27;aime pas que les originaux courent aucun
 risque par la voie de la Poste en prenant toujours un risque .
-Je me souviens très bien d'avoir entendu dire par mon Père que votre défunt époux avoit eu l'honneur d'être chargé par lui d'une affaire importante , et qu'il étoit fort en peine de la voie par laquelle il pouvoit s'acquitter ~De~ du Montant de cet Emprunt ; peut-être avoit-il même eu l'occasion de vous faire ses très humbles remerciements par cette grâce ; permettez Madame ! de m'en acquitter en son nom et de vous supplier de vouloir bien m'indiquer la valeur de cette caisse , pour pouvoir vous en faire l'Envoi .
-Je n'ai pas encore eu le temps d'avoir des frais pour cet…
-```
-</details>
+Je me souviens très bien d&#x27;avoir entendu dire par mon Père que votre défunt époux avoit eu l&#x27;honneur d&#x27;être chargé par lui d&#x27;une affaire importante , et qu&#x27;il étoit fort en peine de la voie par laquelle il pouvoit s&#x27;acquitter ~De~ du Montant de cet Emprunt ; peut-être avoit-il même eu l&#x27;occasion de vous faire ses très humbles remerciements par cette grâce ; permettez Madame ! de m&#x27;en acquitter en son nom et de vous supplier de vouloir bien m&#x27;indiquer la valeur de cette caisse , pour pouvoir vous en faire l&#x27;Envoi .
+Je n&#x27;ai pas encore eu le temps d&#x27;avoir des frais pour cette affaire qui méritent d&#x27;être nommés et qui ceux qui pourront avoir lieu dans l&#x27;espace ; je soumets à votre choix si je veux m&#x27;en faire tenir un crédit adéquat sur une maison à Hildau , ou si je voulois me faire la grâce de permettre que je fasse les avances nécessaires à charge de vous en indiquer le montant toutes les fois que j&#x27;aurois l&#x27;honneur de demander vos ordres pendant le cours de l&#x27;affaire .
+Ne craignez pas Madame ! que la Terre du M.D.W ne soit pas payée ; le Comte d&#x27;Ittenis , dont il étoit héritier , n&#x27;étoit pas homme à pouvoir attendre long-temps sur le remboursement d&#x27;une somme qui devoit lui causer être même elle n&#x27;étoit pas payée ; la France n&#x27;étant pas hypothéqué elle n&#x27;entreroit en concours qu&#x27;après nous . Il est vrai que le P r avoit acquis des Champs et Bois dans le Comté de Belinhausen qui avoient été séquestrés sous le règne de l&#x27;Empereur Joseph II mais cette dette étoit acquittée l&#x27;an née 1800 . Quand M.D.W vint ici , qu&#x27;il avoit des prétentions à réaliser en Angleterre , il s&#x27;est beaucoup éloigné d&#x27;Ici ; il avoit négocié une somme de 600000 fr par Louis XVIII ; mais c&#x27;étoient des négociants de Hambourg qui avoient fourni l&#x27;argent et fait une lettre au Comte d&#x27;Avaray favori de l&#x27;infortuné Roi de France dans laquelle on promettoit que les sommes qu&#x27;on attendoit d&#x27;Angleterre seroient employées pr appaiser les créances des négociants ;</code></pre>
 
-<details>
-<summary>vlm · qwen3.8-27b (921 chars)</summary>
-
-```
-qui voulaient s'en prendre à M<sup>r</sup>. D.W. sous le Nom du quel toute l'affaire
-s'traituit – le Payeur que M<sup>r</sup>. D.W. tient Maison à Paris est fait
-l'agent de tous ceux qui sont assez bons géronniers dans son Danneau.
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details><details class="rec-panel" id="recognition-vlm-qwen3-8-27b-4" data-recognition-panel="vlm-qwen3-8-27b-4" data-page="" data-engine="vlm" data-model="qwen3.8-27b">
+<summary>VLM · qwen3.8-27b</summary>
+<dl class="rec-meta">
+<div><dt>Engine</dt><dd>vlm</dd></div>
+<div><dt>Modell</dt><dd>qwen3.8-27b</dd></div>
+<div><dt>Seite</dt><dd>Nicht zugeordnet</dd></div>
+<div><dt>Engine-Konfidenz</dt><dd aria-label="Engine-Konfidenz: 80%, Einheit: Wahrscheinlichkeit, Geltungsbereich: vlm/qwen3.8-27b"><span class="rec-confidence-value">80%</span> <span class="rec-confidence-scope">— vlm/qwen3.8-27b</span> <button class="quality-explain-btn" type="button" aria-expanded="false" aria-controls="quality-explanation-engine_confidence"><span aria-hidden="true">ⓘ</span> Engine-Konfidenz</button></dd></div><details class="rec-confidence-raw"><summary>Rohtext</summary><p>Engine: vlm</p><p>Modell: qwen3.8-27b</p><p>Seite: Nicht zugeordnet</p><p>Konfidenz: 0.8</p></details>
+<div><dt>Zeichen</dt><dd>921</dd></div>
+<div><dt>Status</dt><dd><span class="quality-badge quality-badge--engine_confidence" title="Engine-Konfidenz">Konfidenz 80%</span></dd></div>
+</dl>
+<pre class="rec-text" tabindex="0"><code>qui voulaient s&#x27;en prendre à M&lt;sup&gt;r&lt;/sup&gt;. D.W. sous le Nom du quel toute l&#x27;affaire
+s&#x27;traituit – le Payeur que M&lt;sup&gt;r&lt;/sup&gt;. D.W. tient Maison à Paris est fait
+l&#x27;agent de tous ceux qui sont assez bons géronniers dans son Danneau.
 Il ressemble aux Champignons qui attendent la fin de la Gerbation
-pr<sup>o</sup> jouner du nouveau.
-L'essentiel parait être Madame ! de me faire parvenir au plutôt
+pr&lt;sup&gt;o&lt;/sup&gt; jouner du nouveau.
+L&#x27;essentiel parait être Madame ! de me faire parvenir au plutôt
 possible les Titres originaux, tout Retard risquant dans le Sril Titre
 se ranger avec cette Detention dans la classe des financiers non hypothéqués
-Ce qui tout loin de m'assurer que cette classe ne sera pas trop nombreuse.
-Je n'ai point Madame ! que je regarderai comme l'Ennuyement le plus
-heureux & le plus agréable qui me puisse arriver, si je parviens à terminer
-cette affaire à votre contentement, d'agréer l'agréer les sentimens d'un
-qui vous & d'un attachement sans bornes avec lequel j'ai l'honneur
+Ce qui tout loin de m&#x27;assurer que cette classe ne sera pas trop nombreuse.
+Je n&#x27;ai point Madame ! que je regarderai comme l&#x27;Ennuyement le plus
+heureux &amp; le plus agréable qui me puisse arriver, si je parviens à terminer
+cette affaire à votre contentement, d&#x27;agréer l&#x27;agréer les sentimens d&#x27;un
+qui vous &amp; d&#x27;un attachement sans bornes avec lequel j&#x27;ai l&#x27;honneur
 Vêtre pp
 
-Masseron
-```
+Masseron</code></pre>
+
+<p><span class="rec-download-unavailable">Kein Textdownload verfügbar</span></p>
+</details></div>
+</div></section>
+
+<details class="page-section-disclosure" data-disclosure="orientation" open>
+<summary class="page-section-summary"><span class="summary-title">Inhaltliche Orientierung</span> <span class="summary-detail">Automatisch zusammengestellt</span></summary>
+<section id="orientation" class="page-section page-section--interpretation" data-page-section="orientation" aria-labelledby="orientation-heading"><h2 id="orientation-heading">Inhaltliche Orientierung</h2>
+<p>Brief (Korrespondenz) zu einer rechtlich-finanziellen Angelegenheit</p>
+<p class="muted">Automatisch aus Beschreibungsfeldern zusammengestellt; keine unabhängige historische Interpretation. <a href="#claims">Behauptungen und Unsicherheiten prüfen</a>.</p></section>
 </details>
 
-## Dateien
+<details class="page-section-disclosure" data-disclosure="claims" open>
+<summary class="page-section-summary"><span class="summary-title">Metadaten, Provenienz und Unsicherheit</span> <span class="summary-detail">16 Felder</span></summary>
+<section id="claims" class="page-section page-section--interpretation" data-page-section="claims" aria-labelledby="claims-heading"><h2 id="claims-heading">Metadaten, Provenienz und Unsicherheit</h2><div class="table-scroll"><table><thead><tr><th>Feld</th><th>Wert</th><th>Sicherheit</th><th>Begründung</th><th>Nachweis</th></tr></thead><tbody><tr><th scope="row">Aufbewahrungsort</th><td>—</td><td>Unsicher</td><td>Keine gesicherten Angaben möglich; aus den Bilddaten nicht ableitbar.</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr><tr><th scope="row">Beschreibstoff</th><td>Papier</td><td>Nicht markiert</td><td>Vergilbtes, leicht fleckiges und an den Rändern/unterem Rand der zweiten Seite geknittertes Papier; Faserstruktur sichtbar. Wasserzeichen auf den gezeigten Seiten nicht erkennbar (unsicher). Keine Palimpsest-Spuren.</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr><tr><th scope="row">Blaetter</th><td>2 Seiten (Vorder- und Rückseite eines Blattes)</td><td>Nicht markiert</td><td>Gezeigt sind zwei aufeinanderfolgende Seiten eines Briefes. Oben links moderne/antike Signatur &#x27;N° 9.&#x27;, oben rechts Ziffer &#x27;2&#x27;. Keine durchgehende Foliierung beobachtbar. Kein Textverlust erkennbar.</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr><tr><th scope="row">Format</th><td>Folio (ca. 32 x 21 cm) (unsicher)</td><td>Unsicher</td><td>Maße geschätzt; kein Maßstab im Bild. Abweichende Formate durch spätere Ergänzungen nicht beobachtbar.</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr><tr><th scope="row">Datierung</th><td>1802 (explizit: &#x27;Hildburgh le 14 Nov : 1802&#x27;)</td><td>Nicht markiert</td><td>Explizite Datierung in der Kopfzeile; zusätzlich &#x27;Reponse sur sa lettre du 16 Nov 1802&#x27;.</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr><tr><th scope="row">Lagen</th><td>nicht beobachtbar</td><td>Unsicher</td><td>Nur zwei Seiten eines Briefes sichtbar; Lagenstruktur, Kustoden und Reklamanten nicht bestimmbar.</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr><tr><th scope="row">Schriftraum Gliederung</th><td>1 Spalte, nicht liniert, ca. 40–45 Zeilen (unsicher)</td><td>Unsicher</td><td>Freie Schreibweise ohne Linierung oder Raster; Schriftraum ca. 26 x 14 cm (geschätzt, unsicher). Keine Verweiszeichen (nota bene) beobachtet.</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr><tr><th scope="row">Schrift</th><td>Kurrentschrift (deutsche Kursive)</td><td>Nicht markiert</td><td>Tinte braun-schwarz, stellenweise verblasst. Keine Rubrizierung, keine farbigen Initialen. Abkürzungen durch Punkte. Eine Streichung in der Kopfzeile (&#x27;Nov&#x27; durchstrichen).</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr><tr><th scope="row">Schreiber</th><td>eine Hand, anonym, signiert &#x27;Massillon&#x27;</td><td>Nicht markiert</td><td>Auf beiden Seiten dieselbe Hand. Signatur &#x27;Massillon&#x27; am Ende. Korrekturen: Streichung in der Kopfzeile; vereinzelt Über-/Nachschreibungen im Text. Keine Marginalien oder Federproben beobachtet.</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr><tr><th scope="row">Ausstattung</th><td>keine</td><td>Nicht markiert</td><td>Kein Buchschmuck, keine Miniaturen, keine verzierten Initialen, keine Farben.</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr><tr><th scope="row">Sprache</th><td>Französisch</td><td>Nicht markiert</td><td>Durchgehend französischer Text; einzelne deutsche Orts-/Namensformen (Hildburgh, Hildau). Kein Latein.</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr><tr><th scope="row">Einband</th><td>nicht sichtbar (lose Blätter)</td><td>Unsicher</td><td>Kein Einband, keine Schließen, keine Metallbeschläge, keine Titelschilder auf den gezeigten Seiten erkennbar.</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr><tr><th scope="row">Provenienz</th><td>—</td><td>Unsicher</td><td>Keine gesicherten Angaben möglich.</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr><tr><th scope="row">Literatur</th><td>—</td><td>Unsicher</td><td>Keine gesicherten Angaben möglich.</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr><tr><th scope="row">Inhalt</th><td>Brief (Korrespondenz) zu einer rechtlich-finanziellen Angelegenheit</td><td>Nicht markiert</td><td>Französischer Brief vom 14. Nov. 1802 aus Hildburgh; Gegenstand: Prozess/Exekution gegen &#x27;M.r D.W.&#x27;, Übermittlung von Originaltiteln, Forderungen, Kredit und Hypothekenfragen; Absender &#x27;Massillon&#x27;.</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr><tr><th scope="row">Weitere Hinweise</th><td>Signatur &#x27;N° 9.&#x27; (oben links) und Ziffer &#x27;2&#x27; (oben rechts)</td><td>Nicht markiert</td><td>Kopfzeile mit Betreff &#x27;Oeuvre la fortune d&#x27; Albany à Florence&#x27; und &#x27;Addio : Hildburgh le 14 Nov : 1802&#x27;. Hinweis: Dokument ist ein frühneuzeitlicher/moderner Brief (1802), kein spätmittelalterliches Verwaltungsstück.</td><td><a href="#transcription">Transkription</a> · <a href="description.json">JSON</a></td></tr></tbody></table></div></section>
+</details>
 
-- [description.json](description.json)
-- [description.md](description.md)
-- [entities.json](entities.json)
-- [entities.md](entities.md)
-- [recognitions/fused.txt](recognitions/fused.txt)
-- [recognitions/vlm-qwen3.8-27b.txt](recognitions/vlm-qwen3.8-27b.txt)
-- [transcription.txt](transcription.txt)
+<details class="page-section-disclosure" data-disclosure="entities">
+<summary class="page-section-summary"><span class="summary-title">Erkannte Entitäten</span> <span class="summary-detail">38 Entitäten</span></summary>
+<section id="entities" class="page-section page-section--interpretation" data-page-section="entities" aria-labelledby="entities-heading"><h2 id="entities-heading">Erkannte Entitäten</h2>
+<h3>DATE</h3><ul><li><a href="../entities/1800-685f6445/">1800</a> <span class="entity-noise-flag" title="nur Ziffern; nur einmal erkannt">Unsichere Erkennung · Score 6</span> <a class="entity-passage-link" href="#passage-2963-2967">Stelle im Text</a> <span class="muted">— cette dette était acquittée l&#x27;an née 1800</span></li><li><a href="../entities/1802-11-14-9fccfa0f/">1802-11-14</a> <span class="entity-noise-flag" title="nur Ziffern; nur einmal erkannt">Unsichere Erkennung · Score 6</span> <span class="muted">— Addio : Hildburgh le 14 Nov : 1802</span></li><li><a href="../entities/1802-11-16-113488ce/">1802-11-16</a> <span class="entity-noise-flag" title="nur Ziffern; nur einmal erkannt">Unsichere Erkennung · Score 6</span> <span class="muted">— Reponse sur sa lettre du 16 Nov 1802</span></li></ul><h3>ORG</h3><ul><li><a href="../entities/bureau-des-postes-imp-riales-a6194b40/">Bureau des Postes impériales</a> <a class="entity-passage-link" href="#passage-961-989">Stelle im Text</a> <span class="muted">— Directeur du Bureau des Postes impériales en cette Ville</span></li><li><a href="../entities/n-gociants-de-hambourg-18d03a3e/">Négociants de Hambourg</a> <span class="entity-noise-flag" title="lange Konsonantenfolge; nur einmal erkannt">Unsichere Erkennung · Score 2</span> <span class="muted">— des négociants de Hambourg qui avaient fourni l&#x27;argent</span></li></ul><h3>PERSON</h3><ul><li><a href="../entities/hildburgh-25429e8e/">Hildburgh</a> <a class="entity-passage-link" href="#passage-111-120">Stelle im Text</a> <span class="muted">— Addio : Hildburgh le 14 Nov : 1802</span></li><li><a href="../entities/dr-schmelz-24e6bf1e/">Dr Schmelz</a> <span class="entity-noise-flag" title="auffälliges Vokal-/Konsonantenmuster; lange Konsonantenfolge; nur einmal erkannt">Unsichere Erkennung · Score 4</span> <a class="entity-passage-link" href="#passage-604-614">Stelle im Text</a> <span class="muted">— mon avocat le Dr Schmelz</span></li><li><a href="../entities/dr-de-hildburghausen-0325c0cc/">Dr de Hildburghausen</a> <span class="entity-noise-flag" title="lange Konsonantenfolge; nur einmal erkannt">Unsichere Erkennung · Score 2</span> <a class="entity-passage-link" href="#passage-925-945">Stelle im Text</a> <span class="muted">— adresses au Dr de Hildburghausen, Directeur du Bureau des Postes impériales</span></li><li><a href="../entities/comte-d-ittenis-dc27e3fe/">Comte d&#x27;Ittenis</a> <a class="entity-passage-link" href="#passage-2513-2528">Stelle im Text</a> <span class="muted">— le Comte d&#x27;Ittenis, dont il était héritier</span></li><li><a href="../entities/joseph-ii-2eccec58/">Joseph II</a> <a class="entity-passage-link" href="#passage-2902-2920">Stelle im Text</a> <span class="muted">— sous le règne de l&#x27;Empereur Joseph II</span></li><li><a href="../entities/louis-xviii-a91bb803/">Louis XVIII</a> <span class="entity-noise-flag" title="lange Konsonantenfolge; nur einmal erkannt">Unsichere Erkennung · Score 2</span> <a class="entity-passage-link" href="#passage-3126-3137">Stelle im Text</a> <span class="muted">— il avoit négocié une somme de 600000 fr par Louis XVIII</span></li><li><a href="../entities/comte-d-avaray-24479ccd/">Comte d&#x27;Avaray</a> <a class="entity-passage-link" href="#passage-3232-3246">Stelle im Text</a> <span class="muted">— le Comte d&#x27;Avaray favori de l&#x27;infortuné Roi de France</span></li><li><a href="../entities/masseron-a71b1078/">Masseron</a> <a class="entity-passage-link" href="#passage-4367-4375">Stelle im Text</a> <span class="muted">— Signature: Masseron</span></li><li><a href="../entities/m-d-w-ce04db80/">M. D.W</a> <span class="muted">— Procès d&#x27;Exécution contre M. D.W</span></li><li><a href="../entities/m-salvety-509169aa/">M. Salvety</a> <span class="muted">— voies de M. Salvety à Hildau</span></li></ul><h3>PLACE</h3><ul><li><a href="../entities/albany-03db30c4/">Albany</a> <a class="entity-passage-link" href="#passage-83-89">Stelle im Text</a> <span class="muted">— Oeuvre la fortune d&#x27; Albany à Florence</span></li><li><a href="../entities/florence-5e4d2a31/">Florence</a> <a class="entity-passage-link" href="#passage-92-100">Stelle im Text</a> <span class="muted">— Oeuvre la fortune d&#x27; Albany à Florence</span></li><li><a href="../entities/hildau-9b2bb816/">Hildau</a> <a class="entity-passage-link" href="#passage-893-899">Stelle im Text</a> <span class="muted">— voies de M. Salvety à Hildau</span></li><li><a href="../entities/hildburghausen-60f65a4b/">Hildburghausen</a> <a class="entity-passage-link" href="#passage-931-945">Stelle im Text</a> <span class="muted">— adresses au Dr de Hildburghausen</span></li><li><a href="../entities/comt-de-belinhausen-6ec2a34d/">Comté de Belinhausen</a> <a class="entity-passage-link" href="#passage-2835-2855">Stelle im Text</a> <span class="muted">— Champs et Bois dans le Comté de Belinhausen</span></li><li><a href="../entities/france-a2f311b8/">France</a> <a class="entity-passage-link" href="#passage-2697-2703">Stelle im Text</a> <span class="muted">— la France n&#x27;étant pas hypothéqué</span></li><li><a href="../entities/angleterre-496e97eb/">Angleterre</a> <a class="entity-passage-link" href="#passage-3035-3045">Stelle im Text</a> <span class="muted">— prétentions à réaliser en Angleterre</span></li><li><a href="../entities/hambourg-ea8393cb/">Hambourg</a> <a class="entity-passage-link" href="#passage-3173-3181">Stelle im Text</a> <span class="muted">— des négociants de Hambourg</span></li><li><a href="../entities/paris-0231d00d/">Paris</a> <a class="entity-passage-link" href="#passage-3601-3606">Stelle im Text</a> <span class="muted">— Maison à Paris</span></li></ul><h3>ROLE</h3><ul><li><a href="../entities/directeur-d25b0cb7/">Directeur</a> <a class="entity-passage-link" href="#passage-948-957">Stelle im Text</a> <span class="muted">— Directeur du Bureau des Postes impériales en cette Ville</span></li><li><a href="../entities/roi-de-france-5eea9819/">Roi de France</a> <a class="entity-passage-link" href="#passage-3269-3282">Stelle im Text</a> <span class="muted">— Roi de France dans la lettre</span></li><li><a href="../entities/payeur-614dba6e/">Payeur</a> <a class="entity-passage-link" href="#passage-3555-3561">Stelle im Text</a> <span class="muted">— le Payeur que M. D.W tient Maison à Paris</span></li><li><a href="../entities/agent-a4311389/">Agent</a> <span class="muted">— est fait l&#x27;agent de tous ceux</span></li></ul><h3>SOCIAL_GROUP</h3><ul><li><a href="../entities/financiers-non-hypoth-qu-s-a8c1085f/">financiers non hypothéqués</a> <span class="entity-noise-flag" title="lange Konsonantenfolge; nur einmal erkannt">Unsichere Erkennung · Score 2</span> <a class="entity-passage-link" href="#passage-3971-3997">Stelle im Text</a> <span class="muted">— classe des financiers non hypothéqués</span></li><li><a href="../entities/financiers-917c3a18/">financiers</a> <a class="entity-passage-link" href="#passage-3971-3981">Stelle im Text</a> <span class="muted">— classe des financiers non hypothéqués</span></li><li><a href="../entities/n-gociants-77f2b8b3/">négociants</a> <a class="entity-passage-link" href="#passage-3159-3169">Stelle im Text</a> <span class="muted">— des négociants de Hambourg</span></li></ul>
+<p><a href="entities.csv">Entitäten als CSV herunterladen</a> · <a href="../entities/">Alle Entitäten durchsuchen</a></p></section>
+</details>
+
+<details class="page-section-disclosure" data-disclosure="downloads">
+<summary class="page-section-summary"><span class="summary-title">Downloads und Nachnutzung</span> <span class="summary-detail">5 Dateien</span></summary>
+<section id="downloads" class="page-section page-section--administrative" data-page-section="downloads" aria-labelledby="downloads-heading"><h2 id="downloads-heading">Downloads und Nachnutzung</h2>
+<ul><li><a href="lassberg-letter-0041-recognition-package.zip">Vollständiges Erkennungspaket (ZIP)</a></li><li><a href="transcription.tei.xml">TEI-XML</a></li><li><a href="entities.csv">Entitäten (CSV)</a></li><li><a href="pipeline.json">Vollständige Pipeline-Ausgabe (JSON)</a></li><li><a href="CITATION.cff">CITATION.cff</a></li></ul>
+<p><strong>Rechtehinweis:</strong> Diese Forschungsdaten stehen unter <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Namensnennung erforderlich: Agentic Historian. Rechte am Digitalisat und an zugrunde liegenden Quellen können separat bestehen. Bitte prüfen Sie die Quellenrechte vor der Nachnutzung.</p></section>
+</details>
+
+<details class="page-section-disclosure" data-disclosure="citation">
+<summary class="page-section-summary"><span class="summary-title">Zitation und stabile Adresse</span> <span class="summary-detail">Stabile Adresse verfügbar</span></summary>
+<section id="citation" class="page-section page-section--administrative" data-page-section="citation" aria-labelledby="citation-heading"><h2 id="citation-heading">Zitation und stabile Adresse</h2>
+<p><code>Agentic Historian. (2026). Agentic Historian output: lassberg-letter-0041 [Machine-generated dataset]. https://thodel.github.io/agentic-historian-outputs/lassberg-letter-0041/</code></p>
+<p>Stabile Seite: <a href="https://thodel.github.io/agentic-historian-outputs/lassberg-letter-0041/">https://thodel.github.io/agentic-historian-outputs/lassberg-letter-0041/</a> · <a href="https://github.com/thodel/agentic-historian-outputs/commits/main/docs/lassberg-letter-0041/pipeline.json">Versionsverlauf auf GitHub</a></p></section>
+</details>
+
+<details class="page-section-disclosure" data-disclosure="history">
+<summary class="page-section-summary"><span class="summary-title">Versionsgeschichte</span> <span class="summary-detail">1 Commits</span></summary>
+<section id="history" class="page-section page-section--administrative" data-page-section="history" aria-labelledby="history-heading"><h2 id="history-heading">Versionsgeschichte</h2><ol><li><a href="https://github.com/thodel/agentic-historian-outputs/commit/fb678ef"><code>fb678ef</code></a> · <time datetime="2026-11-18T20:24:52+01:00">2026-11-18</time> · Publish lassberg-proof-3 (5 docs)</li></ol></section>
+</details>
+<script src="{{ '/assets/rec-viewer.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/workspace.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/evidence-viewer.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/page-sync.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/page-disclosure.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/quality-explain.js' | relative_url }}" defer></script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "name": "Agentic Historian output: lassberg-letter-0041",
+  "url": "https://thodel.github.io/agentic-historian-outputs/lassberg-letter-0041/",
+  "creator": {
+    "@type": "SoftwareApplication",
+    "name": "Agentic Historian"
+  },
+  "publisher": {
+    "@type": "SoftwareApplication",
+    "name": "Agentic Historian"
+  },
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "dateCreated": "2026-11-18T20:24:52+01:00",
+  "dateModified": "2026-11-18T20:24:52+01:00",
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "name": "Pipeline JSON",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/lassberg-letter-0041/pipeline.json",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "TEI-XML Transkription",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/lassberg-letter-0041/transcription.tei.xml",
+      "encodingFormat": "application/tei+xml"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Entitäten (CSV)",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/lassberg-letter-0041/entities.csv",
+      "encodingFormat": "text/csv"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "CITATION.cff",
+      "contentUrl": "https://thodel.github.io/agentic-historian-outputs/lassberg-letter-0041/CITATION.cff",
+      "encodingFormat": "text/x-yaml"
+    }
+  ],
+  "description": "Brief (Korrespondenz) zu einer rechtlich-finanziellen Angelegenheit"
+}</script>

@@ -1,7 +1,7 @@
 {
   "artifacts": [
     {
-      "characters": 2894,
+      "characters": 1781,
       "engine": "fusion",
       "error": null,
       "error_path": null,
@@ -13,7 +13,7 @@
       "status_code": "success"
     },
     {
-      "characters": 1536,
+      "characters": 1727,
       "engine": "vlm",
       "error": null,
       "error_path": null,
@@ -25,7 +25,7 @@
       "status_code": "success"
     },
     {
-      "characters": 1175,
+      "characters": 1034,
       "engine": "vlm",
       "error": null,
       "error_path": null,
@@ -37,7 +37,7 @@
       "status_code": "success"
     },
     {
-      "characters": 1715,
+      "characters": 1706,
       "engine": "vlm",
       "error": null,
       "error_path": null,
@@ -49,26 +49,25 @@
       "status_code": "success"
     },
     {
-      "characters": 1103,
+      "characters": null,
       "engine": "vlm",
-      "error": null,
+      "error": "Die Erkennung hat keine Ausgabe erzeugt.",
       "error_path": null,
       "id": "vlm-qwen3-8-27b-4",
       "model_id": "qwen3.8-27b",
       "page": null,
       "path": null,
-      "status": "success",
-      "status_code": "success"
+      "status": "error"
     }
   ],
   "doc_id": "lassberg-letter-0054",
   "run_counts": {
     "degenerate": 0,
     "empty": 0,
-    "failed": 0,
-    "successful": 5,
+    "failed": 1,
+    "successful": 4,
     "total": 5
   },
-  "run_quality": "clean",
+  "run_quality": "partial_failure",
   "version": "1.0"
 }

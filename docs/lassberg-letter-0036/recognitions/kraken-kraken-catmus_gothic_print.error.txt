@@ -1,0 +1,17 @@
+{
+  "attempt": 1,
+  "complete": true,
+  "diagnostic_code": "empty",
+  "engine": "kraken",
+  "error": "Die Erkennung hat keine Ausgabe erzeugt.",
+  "fusion_decision": "excluded",
+  "model_id": "kraken-catmus_gothic_print",
+  "page": null,
+  "retry_count": 0,
+  "retryable": true,
+  "reuse_notice": "Incomplete recognition attempt; cite the failure record with the run provenance.",
+  "run_id": null,
+  "status_code": "empty",
+  "text_artifact": null,
+  "timing_ms": null
+}

@@ -1,7 +1,7 @@
 {
   "artifacts": [
     {
-      "characters": 2223,
+      "characters": 2173,
       "engine": "fusion",
       "error": null,
       "error_path": null,
@@ -24,7 +24,7 @@
       "status": "error"
     },
     {
-      "characters": 386,
+      "characters": 422,
       "engine": "vlm",
       "error": null,
       "error_path": null,
@@ -36,7 +36,7 @@
       "status_code": "success"
     },
     {
-      "characters": 1759,
+      "characters": 1705,
       "engine": "vlm",
       "error": null,
       "error_path": null,
@@ -48,7 +48,7 @@
       "status_code": "success"
     },
     {
-      "characters": 388,
+      "characters": 392,
       "engine": "vlm",
       "error": null,
       "error_path": null,
