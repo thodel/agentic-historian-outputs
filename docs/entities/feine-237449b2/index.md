@@ -1,0 +1,8 @@
+---
+layout: default
+title: "feine"
+---
+
+<link rel="stylesheet" href="{{ '/assets/output.css' | relative_url }}">
+
+<nav class="breadcrumbs"><a href="../">Entitäten</a> / feine</nav><h1>feine</h1><p><span class="entity-type">ROLE</span> · 1 Vorkommen</p><p><strong>Belegte Schreibvarianten:</strong> <code>Feine</code>, <code>feine</code></p><p class="notice notice--warning">Nicht mit einem externen Normdatensatz verknüpft.</p><div class="table-scroll"><table><thead><tr><th>Ausgabe</th><th>Form</th><th>Kontext</th><th>Konfidenz</th></tr></thead><tbody><tr><td><a href="../../lassberg-letter-0048/">lassberg-letter-0048</a></td><td>Feine</td><td>Dagnaraut ger al ton i straha &amp; Feine</td><td>Nicht angegeben</td></tr></tbody></table></div>

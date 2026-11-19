@@ -1,7 +1,7 @@
 {
   "artifacts": [
     {
-      "characters": 2173,
+      "characters": 1925,
       "engine": "fusion",
       "error": null,
       "error_path": null,
@@ -13,18 +13,77 @@
       "status_code": "success"
     },
     {
-      "characters": null,
+      "characters": 1614,
       "engine": "vlm",
-      "error": "Die Erkennung hat keine Ausgabe erzeugt.",
+      "error": null,
       "error_path": null,
       "id": "vlm-qwen3-8-27b",
       "model_id": "qwen3.8-27b",
       "page": null,
       "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 653,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-bastarda-inzigkofen",
+      "model_id": "kraken-bastarda_inzigkofen",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
+      "error_path": null,
+      "id": "trocr-trocr-medieval-escriptmask",
+      "model_id": "trocr-medieval-escriptmask",
+      "page": null,
+      "path": null,
       "status": "error"
     },
     {
-      "characters": 422,
+      "characters": 1155,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-bifrost-old-norse",
+      "model_id": "kraken-bifrost_old_norse",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
+      "error_path": null,
+      "id": "trocr-trocr-kurrent-xvi-xvii",
+      "model_id": "trocr-kurrent-xvi-xvii",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 1079,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-catmus-gothic-print",
+      "model_id": "kraken-catmus_gothic_print",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 387,
       "engine": "vlm",
       "error": null,
       "error_path": null,
@@ -36,7 +95,76 @@
       "status_code": "success"
     },
     {
-      "characters": 1705,
+      "characters": 225,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-bastarda-inzigkofen-2",
+      "model_id": "kraken-bastarda_inzigkofen",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
+      "error_path": null,
+      "id": "trocr-trocr-medieval-escriptmask-2",
+      "model_id": "trocr-medieval-escriptmask",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 344,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-bifrost-old-norse-2",
+      "model_id": "kraken-bifrost_old_norse",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
+      "error_path": null,
+      "id": "trocr-trocr-kurrent-xvi-xvii-2",
+      "model_id": "trocr-kurrent-xvi-xvii",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 268,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-catmus-gothic-print-2",
+      "model_id": "kraken-catmus_gothic_print",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": null,
+      "engine": "trocr",
+      "error": "Die Erkennung lieferte keine verwertbare Ausgabe.",
+      "error_path": "recognitions/trocr-trocr-essoins-middle-latin.error.txt",
+      "id": "trocr-trocr-essoins-middle-latin",
+      "model_id": "trocr-essoins-middle-latin",
+      "page": null,
+      "path": null,
+      "status": "error"
+    },
+    {
+      "characters": 2161,
       "engine": "vlm",
       "error": null,
       "error_path": null,
@@ -48,7 +176,43 @@
       "status_code": "success"
     },
     {
-      "characters": 392,
+      "characters": 1413,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-cursive-inzigkofen",
+      "model_id": "kraken-cursive_inzigkofen",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 1506,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-bohemian-19th",
+      "model_id": "kraken-bohemian_19th",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 1240,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-catmus-print-large",
+      "model_id": "kraken-catmus_print_large",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 386,
       "engine": "vlm",
       "error": null,
       "error_path": null,
@@ -58,15 +222,51 @@
       "path": null,
       "status": "success",
       "status_code": "success"
+    },
+    {
+      "characters": 436,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-cursive-inzigkofen-2",
+      "model_id": "kraken-cursive_inzigkofen",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 463,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-bohemian-19th-2",
+      "model_id": "kraken-bohemian_19th",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
+    },
+    {
+      "characters": 368,
+      "engine": "kraken",
+      "error": null,
+      "error_path": null,
+      "id": "kraken-kraken-catmus-print-large-2",
+      "model_id": "kraken-catmus_print_large",
+      "page": null,
+      "path": null,
+      "status": "success",
+      "status_code": "success"
     }
   ],
   "doc_id": "lassberg-letter-0053",
   "run_counts": {
-    "degenerate": 0,
+    "degenerate": 5,
     "empty": 0,
-    "failed": 1,
-    "successful": 4,
-    "total": 5
+    "failed": 0,
+    "successful": 17,
+    "total": 22
   },
   "run_quality": "partial_failure",
   "version": "1.0"

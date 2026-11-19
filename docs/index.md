@@ -116,7 +116,7 @@ title: Katalog
 <p id="catalogue-empty" class="catalogue-empty" role="status" hidden>Keine Einträge entsprechen den aktiven Filtern. Ändern Sie die Filter oder setzen Sie sie zurück.</p>
 
 <div id="catalogue-list" class="catalogue-list" data-enhanced="false" data-total-records="9" data-shown-records="9">
-<article class="catalogue-card" data-document-id="lassberg-letter-0041" data-created="2026-11-18T20:24:52+01:00" data-kind="output" data-language="französisch" data-script="kurrentschrift (deutsche kursive)" data-search="lassberg-letter-0041 brief 1802 (explizit: &#x27;hildburgh le 14 nov : 1802&#x27;) französisch kurrentschrift (deutsche kursive) brief lassberg-letter-0041_001.jpg seite 1 n° 9 . 2 oeuvre la fortune d&#x27; albany à florence . addio : hildburgh le 14 nov : 1802 . reponse sur sa lettre du 16 ~nov~ 1802 . je suis de rece" data-superseded="false" data-recognition-provenance="current" data-recognition-total="4" data-recognition-successful="3" data-recognition-failed="0" data-recognition-empty="1" data-recognition-degenerate="0" data-recognition-engines="vlm" data-recognition-models="1" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="DATE,ORG,PERSON,PLACE,ROLE,SOCIAL_GROUP" data-completeness="teilweise">
+<article class="catalogue-card" data-document-id="lassberg-letter-0041" data-created="2026-11-18T20:24:52+01:00" data-kind="output" data-language="französisch" data-script="kurrentschrift (deutsche kursive)" data-search="lassberg-letter-0041 brief 1802 (explizit: &#x27;hildburgh le 14 nov : 1802&#x27;) französisch kurrentschrift (deutsche kursive) brief lassberg-letter-0041_001.jpg 1. darde tahrmann d. allbani ühsrmäs¬ dato 7dmsdorf 2 10. novi 1802. lepewer dar satrarvánt 16 s. 180c. henirsde tareein de graaiisnlirr g u vus enr pe" data-superseded="false" data-recognition-provenance="current" data-recognition-total="21" data-recognition-successful="16" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="5" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="DATE,ORG,PERSON,PLACE" data-completeness="teilweise">
   <div class="catalogue-card__layout">
   <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
   <div class="catalogue-card__content">
@@ -126,31 +126,31 @@ title: Katalog
       <h2><a href="lassberg-letter-0041/">Brief</a></h2>
       <p class="catalogue-id">Dokument-ID <code>lassberg-letter-0041</code></p>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">1 problematische Kandidaten</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">5 problematische Kandidaten</span></div>
   </div>
-  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>1802 (explizit: &#x27;Hildburgh le 14 Nov : 1802&#x27;)</dd></div><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Entitäten</dt><dd>38</dd></div></dl>
+  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>1802 (explizit: &#x27;Hildburgh le 14 Nov : 1802&#x27;)</dd></div><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Entitäten</dt><dd>32</dd></div></dl>
   <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="lassberg-letter-0041/" aria-label="Dokument öffnen: Brief">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="lassberg-letter-0041/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: Brief">Erkennungen ansehen</a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
-      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Brief</dd></div><div><dt>Sprache</dt><dd>Französisch</dd></div><div><dt>Schrift</dt><dd>Kurrentschrift (deutsche Kursive)</dd></div><div><dt>Kandidaten</dt><dd>3 erfolgreich / 4 insgesamt</dd></div></dl>
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Brief</dd></div><div><dt>Sprache</dt><dd>Französisch</dd></div><div><dt>Schrift</dt><dd>Kurrentschrift (deutsche Kursive)</dd></div><div><dt>Kandidaten</dt><dd>16 erfolgreich / 21 insgesamt</dd></div></dl>
       <div class="catalogue-status-groups">
         <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
-        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">1 von 4 Kandidaten problematisch</p></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">5 von 21 Kandidaten problematisch</p></div>
       </div>
 
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
-        <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
-        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+        <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
+        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 5 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
       </div>
-      <p class="catalogue-preview">lassberg-letter-0041_001.jpg SEITE 1 N° 9 . 2 Oeuvre la fortune d&#x27; Albany à Florence . Addio : Hildburgh le 14 Nov : 1802 . Reponse sur sa lettre du 16 ~Nov~ 1802 . Je suis de rece…</p>
+      <p class="catalogue-preview">lassberg-letter-0041_001.jpg 1. Darde tahrmann d. Allbani ühsrmäs¬ dato 7dmsdorf 2 10. Novi 1802. Lepewer dar satrarvánt 16 S. 180c. Henirsde tareein de graaiisnlirr g u vus enr Pe…</p>
     </div>
   </details>
   </div>
   </div>
 </article>
-<article class="catalogue-card" data-document-id="lassberg-letter-0036" data-created="2026-11-18T20:24:52+01:00" data-kind="output" data-language="deutsch" data-script="deutsche kurrentschrift (kanzleikursiv)" data-search="lassberg-letter-0036 brief 2. oktober 1862 deutsch deutsche kurrentschrift (kanzleikursiv) brief lassberg-letter-0036_001.jpg k 2951,77 anf: dr. schneider z. freiburg im breisgau. dato: 2 octbr. 1862 v. heilbronn. inbegriff: ein aufsatz über die beziehungen zu england gegen de" data-superseded="false" data-recognition-provenance="current" data-recognition-total="12" data-recognition-successful="3" data-recognition-failed="0" data-recognition-empty="9" data-recognition-degenerate="0" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="DATE,ORG,PERSON,PLACE,ROLE" data-completeness="teilweise">
+<article class="catalogue-card" data-document-id="lassberg-letter-0036" data-created="2026-11-18T20:24:52+01:00" data-kind="output" data-language="deutsch" data-script="deutsche kurrentschrift (kanzleikursiv)" data-search="lassberg-letter-0036 brief 2. oktober 1862 deutsch deutsche kurrentschrift (kanzleikursiv) brief lassberg-letter-0036_001.jpg ras s. shraik z. (rätarg in beahped. dato. 2. dtb.s. 1802 v. sbaligeaber bls d. die halsherigs der protesterlea v. besterd 19gen den s. . d. wactls geb" data-superseded="false" data-recognition-provenance="current" data-recognition-total="21" data-recognition-successful="9" data-recognition-failed="0" data-recognition-empty="9" data-recognition-degenerate="3" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="DATE,ORG,PERSON,PLACE,ROLE,SOCIAL_GROUP" data-completeness="teilweise">
   <div class="catalogue-card__layout">
   <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
   <div class="catalogue-card__content">
@@ -160,31 +160,31 @@ title: Katalog
       <h2><a href="lassberg-letter-0036/">Brief</a></h2>
       <p class="catalogue-id">Dokument-ID <code>lassberg-letter-0036</code></p>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">9 problematische Kandidaten</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">12 problematische Kandidaten</span></div>
   </div>
-  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>2. Oktober 1862</dd></div><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Entitäten</dt><dd>24</dd></div></dl>
+  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>2. Oktober 1862</dd></div><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Entitäten</dt><dd>15</dd></div></dl>
   <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="lassberg-letter-0036/" aria-label="Dokument öffnen: Brief">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="lassberg-letter-0036/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: Brief">Erkennungen ansehen</a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
-      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Brief</dd></div><div><dt>Sprache</dt><dd>Deutsch</dd></div><div><dt>Schrift</dt><dd>deutsche Kurrentschrift (Kanzleikursiv)</dd></div><div><dt>Kandidaten</dt><dd>3 erfolgreich / 12 insgesamt</dd></div></dl>
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Brief</dd></div><div><dt>Sprache</dt><dd>Deutsch</dd></div><div><dt>Schrift</dt><dd>deutsche Kurrentschrift (Kanzleikursiv)</dd></div><div><dt>Kandidaten</dt><dd>9 erfolgreich / 21 insgesamt</dd></div></dl>
       <div class="catalogue-status-groups">
         <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
-        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">9 von 12 Kandidaten problematisch</p></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">12 von 21 Kandidaten problematisch</p></div>
       </div>
 
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
         <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
-        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 3 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
       </div>
-      <p class="catalogue-preview">lassberg-letter-0036_001.jpg K 2951,77 Anf: Dr. Schneider z. Freiburg im Breisgau. dato: 2 Octbr. 1862 v. Heilbronn. Inbegriff: Ein Aufsatz über die Beziehungen zu England gegen de…</p>
+      <p class="catalogue-preview">lassberg-letter-0036_001.jpg Ras S. Shraik z. (rätarg in beahped. dato. 2. Dtb.s. 1802 v. Sbaligeaber Bls d. die halsherigs der Protesterlea v. Besterd 19gen den S. . d. Wactls geb…</p>
     </div>
   </details>
   </div>
   </div>
 </article>
-<article class="catalogue-card" data-document-id="lassberg-letter-0054" data-created="2026-11-17T14:23:45+01:00" data-kind="output" data-language="französisch" data-script="kursivschrift (kurrent/kanzleischrift)" data-search="lassberg-letter-0054 brief 1801 (explizit: 6. februar 1801) französisch kursivschrift (kurrent/kanzleischrift) brief lassberg-letter-0054_001.jpg a madame la comtesse d&#x27;albany a florville du 6 fevrier 1801. à heiligenberg. l&#x27;importance de l&#x27;object et la hâte qui en est inséparable, excuseront la " data-superseded="false" data-recognition-provenance="current" data-recognition-total="4" data-recognition-successful="3" data-recognition-failed="0" data-recognition-empty="1" data-recognition-degenerate="0" data-recognition-engines="vlm" data-recognition-models="1" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="DATE,ORG,PERSON,PLACE,ROLE,SOCIAL_GROUP" data-completeness="teilweise">
+<article class="catalogue-card" data-document-id="lassberg-letter-0054" data-created="2026-11-17T14:23:45+01:00" data-kind="output" data-language="französisch" data-script="kursivschrift (kurrent/kanzleischrift)" data-search="lassberg-letter-0054 brief 1801 (explizit: 6. februar 1801) französisch kursivschrift (kurrent/kanzleischrift) brief lassberg-letter-0054_001.jpg ot io r͛a me o po i··· cc il͛om u io nine͛ ie e c cotit · ooa · i bhÿ mab ig· / ayxo· omu o c oy ·el ece lir zu eden iysn · ·iden · eno ·xirr a x·ie d" data-superseded="false" data-recognition-provenance="current" data-recognition-total="20" data-recognition-successful="16" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="4" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="9" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="PERSON,PLACE" data-completeness="teilweise">
   <div class="catalogue-card__layout">
   <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
   <div class="catalogue-card__content">
@@ -194,31 +194,31 @@ title: Katalog
       <h2><a href="lassberg-letter-0054/">Brief</a></h2>
       <p class="catalogue-id">Dokument-ID <code>lassberg-letter-0054</code></p>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">1 problematische Kandidaten</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">4 problematische Kandidaten</span></div>
   </div>
-  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>1801 (explizit: 6. Februar 1801)</dd></div><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Entitäten</dt><dd>26</dd></div></dl>
+  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>1801 (explizit: 6. Februar 1801)</dd></div><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Entitäten</dt><dd>8</dd></div></dl>
   <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="lassberg-letter-0054/" aria-label="Dokument öffnen: Brief">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="lassberg-letter-0054/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: Brief">Erkennungen ansehen</a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
-      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Brief</dd></div><div><dt>Sprache</dt><dd>Französisch</dd></div><div><dt>Schrift</dt><dd>Kursivschrift (Kurrent/Kanzleischrift)</dd></div><div><dt>Kandidaten</dt><dd>3 erfolgreich / 4 insgesamt</dd></div></dl>
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Brief</dd></div><div><dt>Sprache</dt><dd>Französisch</dd></div><div><dt>Schrift</dt><dd>Kursivschrift (Kurrent/Kanzleischrift)</dd></div><div><dt>Kandidaten</dt><dd>16 erfolgreich / 20 insgesamt</dd></div></dl>
       <div class="catalogue-status-groups">
         <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
-        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">1 von 4 Kandidaten problematisch</p></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">4 von 20 Kandidaten problematisch</p></div>
       </div>
 
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
-        <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
-        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+        <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
+        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 4 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
       </div>
-      <p class="catalogue-preview">lassberg-letter-0054_001.jpg A Madame la Comtesse d&#x27;Albany a florville du 6 fevrier 1801. à heiligenberg. L&#x27;importance de l&#x27;Object et la hâte qui en est inséparable, excuseront la …</p>
+      <p class="catalogue-preview">lassberg-letter-0054_001.jpg ot io r͛a me o po i··· cc il͛om u io nine͛ ie e c cotit · ooa · i bhÿ mab ig· / ayxo· omu o c oy ·el ece lir zu eden iyſn · ·iden · eno ·xirr a x·ie d…</p>
     </div>
   </details>
   </div>
   </div>
 </article>
-<article class="catalogue-card" data-document-id="lassberg-letter-0053" data-created="2026-11-17T14:23:45+01:00" data-kind="output" data-language="französisch" data-script="französische kursive (kurrent)" data-search="lassberg-letter-0053 brief 10. januar 1804 französisch französische kursive (kurrent) brief lassberg-letter-0053_001.jpg 5 a madam la comtesse d&#x27;albany, à florence. ditto: 20 janvier 1801. il seroit inutile de vouloir entreprendre, a ~~de~~ vous pûndre madame! l&#x27;impressio" data-superseded="false" data-recognition-provenance="current" data-recognition-total="4" data-recognition-successful="3" data-recognition-failed="0" data-recognition-empty="1" data-recognition-degenerate="0" data-recognition-engines="vlm" data-recognition-models="1" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="DATE,ORG,PERSON,PLACE,ROLE" data-completeness="teilweise">
+<article class="catalogue-card" data-document-id="lassberg-letter-0053" data-created="2026-11-17T14:23:45+01:00" data-kind="output" data-language="französisch" data-script="französische kursive (kurrent)" data-search="lassberg-letter-0053 brief 10. januar 1804 französisch französische kursive (kurrent) brief lassberg-letter-0053_001.jpg lil ulium beisnam e aem · · sumt onio · d oo min voda oi͛ imm͛ dirlin ae nulein enlin noneen et mu ntin gladan · sic·i ·u ii pne enu i ikū en · / ux ·" data-superseded="false" data-recognition-provenance="current" data-recognition-total="21" data-recognition-successful="16" data-recognition-failed="0" data-recognition-empty="0" data-recognition-degenerate="5" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="DATE,ORG,PLACE" data-completeness="teilweise">
   <div class="catalogue-card__layout">
   <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
   <div class="catalogue-card__content">
@@ -228,31 +228,31 @@ title: Katalog
       <h2><a href="lassberg-letter-0053/">Brief</a></h2>
       <p class="catalogue-id">Dokument-ID <code>lassberg-letter-0053</code></p>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">1 problematische Kandidaten</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">5 problematische Kandidaten</span></div>
   </div>
-  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>10. Januar 1804</dd></div><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Entitäten</dt><dd>24</dd></div></dl>
+  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>10. Januar 1804</dd></div><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Entitäten</dt><dd>16</dd></div></dl>
   <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="lassberg-letter-0053/" aria-label="Dokument öffnen: Brief">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="lassberg-letter-0053/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: Brief">Erkennungen ansehen</a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
-      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Brief</dd></div><div><dt>Sprache</dt><dd>Französisch</dd></div><div><dt>Schrift</dt><dd>französische Kursive (Kurrent)</dd></div><div><dt>Kandidaten</dt><dd>3 erfolgreich / 4 insgesamt</dd></div></dl>
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Brief</dd></div><div><dt>Sprache</dt><dd>Französisch</dd></div><div><dt>Schrift</dt><dd>französische Kursive (Kurrent)</dd></div><div><dt>Kandidaten</dt><dd>16 erfolgreich / 21 insgesamt</dd></div></dl>
       <div class="catalogue-status-groups">
         <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
-        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">1 von 4 Kandidaten problematisch</p></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">5 von 21 Kandidaten problematisch</p></div>
       </div>
 
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
-        <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
-        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+        <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
+        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 5 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
       </div>
-      <p class="catalogue-preview">lassberg-letter-0053_001.jpg 5 A Madam la comtesse d&#x27;Albany, à florence. ditto: 20 Janvier 1801. Il seroit inutile de vouloir entreprendre, a ~~de~~ vous pûndre Madame! L&#x27;Impressio…</p>
+      <p class="catalogue-preview">lassberg-letter-0053_001.jpg lil ulium beiſnam e aem · · ſumt onio · d oo min voda oi͛ imm͛ dirlin ae nulein enlin noneen et mu ntin gladan · Sic·i ·u ii pne enu i ikū en · / ux ·…</p>
     </div>
   </details>
   </div>
   </div>
 </article>
-<article class="catalogue-card" data-document-id="lassberg-letter-0048" data-created="2026-11-17T14:23:45+01:00" data-kind="output" data-language="französisch" data-script="französische kurrent-/kursivschrift (écriture cursive / ronde)" data-search="lassberg-letter-0048 brief 1783 (explizit: &#x27;12 juny 1783&#x27;) französisch französische kurrent-/kursivschrift (écriture cursive / ronde) brief lassberg-letter-0048_001.jpg à madame la comtesse d&#x27;albany à florence . datto : 12 juny 1803 . heildgenberg . n&#x27;ayant pas reçu de réponse sur ma lettre du 15 mars , que j&#x27;ai pris l" data-superseded="false" data-recognition-provenance="current" data-recognition-total="4" data-recognition-successful="3" data-recognition-failed="0" data-recognition-empty="1" data-recognition-degenerate="0" data-recognition-engines="vlm" data-recognition-models="1" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="DATE,ORG,PERSON,PLACE,ROLE" data-completeness="teilweise">
+<article class="catalogue-card" data-document-id="lassberg-letter-0048" data-created="2026-11-17T14:23:45+01:00" data-kind="output" data-language="französisch" data-script="französische kurrent-/kursivschrift (écriture cursive / ronde)" data-search="lassberg-letter-0048 brief 1783 (explizit: &#x27;12 juny 1783&#x27;) französisch französische kurrent-/kursivschrift (écriture cursive / ronde) brief lassberg-letter-0048_001.jpg # matem dehne v. abani d horud¬ 2cto. 18 puny 1000. saitigenberg naiert geb rsa des rgonse der inas lees de 18 mart ger hei zus talsich # vas adt icste" data-superseded="false" data-recognition-provenance="current" data-recognition-total="21" data-recognition-successful="14" data-recognition-failed="0" data-recognition-empty="1" data-recognition-degenerate="6" data-recognition-engines="kraken,trocr,vlm" data-recognition-models="10" data-recognition-pages="2" data-source-type="missing" data-source-available="false" data-review-status="machine-generated" data-comparison-ready="false" data-entity-types="DATE,ORG,PERSON,PLACE,ROLE,SOCIAL_GROUP" data-completeness="teilweise">
   <div class="catalogue-card__layout">
   <div class="catalogue-source-visual catalogue-source-visual--missing" aria-label="Digitale Quelle fehlt"><span aria-hidden="true">∅</span><span>Quelle fehlt</span></div>
   <div class="catalogue-card__content">
@@ -262,25 +262,25 @@ title: Katalog
       <h2><a href="lassberg-letter-0048/">Brief</a></h2>
       <p class="catalogue-id">Dokument-ID <code>lassberg-letter-0048</code></p>
     </div>
-    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">1 problematische Kandidaten</span></div>
+    <div class="catalogue-badges"><span class="catalogue-badge catalogue-badge--review-machine">Maschinell erzeugt</span><span class="catalogue-badge catalogue-badge--quality-failed">7 problematische Kandidaten</span></div>
   </div>
-  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>1783 (explizit: &#x27;12 Juny 1783&#x27;)</dd></div><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Entitäten</dt><dd>19</dd></div></dl>
+  <dl class="catalogue-summary-facts"><div><dt>Datierung</dt><dd>1783 (explizit: &#x27;12 Juny 1783&#x27;)</dd></div><div><dt>Seiten</dt><dd>2</dd></div><div><dt>Entitäten</dt><dd>64</dd></div></dl>
   <p class="catalogue-actions"><a class="catalogue-action catalogue-action--primary" href="lassberg-letter-0048/" aria-label="Dokument öffnen: Brief">Dokument öffnen <span aria-hidden="true">→</span></a><a class="catalogue-action catalogue-action--secondary" href="lassberg-letter-0048/?rec=selected#recognition-selected" aria-label="Erkennungen ansehen: Brief">Erkennungen ansehen</a></p>
   <details class="catalogue-details">
     <summary>Details und Vorschau</summary>
     <div class="catalogue-details__body">
-      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Brief</dd></div><div><dt>Sprache</dt><dd>Französisch</dd></div><div><dt>Schrift</dt><dd>französische Kurrent-/Kursivschrift (écriture cursive / ronde)</dd></div><div><dt>Kandidaten</dt><dd>3 erfolgreich / 4 insgesamt</dd></div></dl>
+      <dl class="catalogue-facts"><div><dt>Dokumenttyp</dt><dd>Brief</dd></div><div><dt>Sprache</dt><dd>Französisch</dd></div><div><dt>Schrift</dt><dd>französische Kurrent-/Kursivschrift (écriture cursive / ronde)</dd></div><div><dt>Kandidaten</dt><dd>14 erfolgreich / 21 insgesamt</dd></div></dl>
       <div class="catalogue-status-groups">
         <div><p class="catalogue-provenance__label">Technischer Status</p><span class="catalogue-badge catalogue-badge--ok">Verarbeitung abgeschlossen</span></div>
-        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">1 von 4 Kandidaten problematisch</p></div>
+        <div><p class="catalogue-provenance__label">Erkennungsqualität</p><p class="catalogue-recognition-status">7 von 21 Kandidaten problematisch</p></div>
       </div>
 
       <div class="catalogue-provenance" aria-label="Erkennungsprovenienz">
         <p class="catalogue-provenance__label">Engines</p>
-        <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
-        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
+        <ul class="catalogue-engines"><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>kraken</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>trocr</li><li class="catalogue-engine"><span class="visually-hidden">Erkennungsengine: </span>vlm</li></ul>
+        <p class="catalogue-warning"><span aria-hidden="true">⚠</span> 6 degenerierte Ergebnisse</p><p class="catalogue-warning"><span aria-hidden="true">⚠</span> Keine digitale Quelle verknüpft</p>
       </div>
-      <p class="catalogue-preview">lassberg-letter-0048_001.jpg À Madame la Comtesse d&#x27;Albany à Florence . datto : 12 Juny 1803 . Heildgenberg . N&#x27;ayant pas reçu de réponse sur ma lettre du 15 Mars , que j&#x27;ai pris l…</p>
+      <p class="catalogue-preview">lassberg-letter-0048_001.jpg # Matem dehne v. Abani d Horud¬ 2cto. 18 puny 1000. Saitigenberg Naiert geb rsa des Rgonse der inas Lees de 18 Mart ger hei zus talsich # vas adt icste…</p>
     </div>
   </details>
   </div>
