@@ -2,39 +2,33 @@
 
 ## PERSON
 
-- **Hrn W̄** (Herr W) — 100750 T̄ aus Hrn W̄ zusammen _(conf=high, mcp_federation)_
-- **Dr. Schneider z. Freiburg im Breisgau** (Dr. Schneider) — Anf: Dr. Schneider z. Freiburg im Breisgau. _(conf=unverified, none)_
-- **Hrn. v. Waechter** (Herr von Waechter) — gegen den Hrn. v. Waechter zu Heilbronn. _(conf=unverified, none)_
-- **Hrn. v. Waechter** (Herr von Waechter) — gegen den Hrn. v. Waechter zu Heilbronn. _(conf=unverified, none)_
-- **Dr Ostetag** (Dr. Ostetag) — Dr Ostetag in Stuttgart als Anwalt _(conf=unverified, none)_
-
-## PLACE
-
-- **Freiburg im Breisgau** (Freiburg im Breisgau) — Anf: Dr. Schneider z. Freiburg im Breisgau. _(conf=unverified, none)_
-- **Heilbronn** (Heilbronn) — dato: 2 Octbr. 1862 v. Heilbronn. _(conf=unverified, none)_
-- **Heilbronn** (Heilbronn) — dato: 2 Octbr. 1862 v. Heilbronn. _(conf=unverified, none)_
-- **Heilbronn** (Heilbronn) — dato: 2 Octbr. 1862 v. Heilbronn. _(conf=unverified, none)_
-- **England** (England) — Ein Aufsatz über die Beziehungen zu England _(conf=unverified, none)_
-- **London** (London) — Schreiben in London & Wien _(conf=unverified, none)_
-- **London** (London) — Schreiben in London & Wien _(conf=unverified, none)_
-- **London** (London) — Schreiben in London & Wien _(conf=unverified, none)_
-- **Wien** (Wien) — Schreiben in London & Wien _(conf=unverified, none)_
-- **Florenz** (Florenz) — falls befriedigt Sie in Florenz _(conf=unverified, none)_
-- **Florenz** (Florenz) — falls befriedigt Sie in Florenz _(conf=unverified, none)_
-- **Stuttgart** (Stuttgart) — Dr Ostetag in Stuttgart als Anwalt _(conf=unverified, none)_
-- **Kasberg** (Kasberg) — Kasberg _(conf=unverified, none)_
-
-## DATE
-
-- **2 Octbr. 1862** (2 October 1862) — dato: 2 Octbr. 1862 v. Heilbronn. _(conf=unverified, ?)_
-
-## ORG
-
-- **Bankhaus** (Bankhaus) — ein Bankhaus zu betreiben _(conf=unverified, ?)_
-- **Comptoir B & Allen** (Comptoir B & Allen) — Comptoir B & Allen _(conf=unverified, ?)_
+- **Ras S. Shraik** (Ras S. Shraik) — Ras S. Shraik z. (rätarg in beahped _(conf=unverified, none)_
+- **Tarhegell** (Tarhegell) — Tarhegell is. 82. 000 2I v. 18750 _(conf=unverified, none)_
+- **Krazus** (Krazus) — vegeb Krazus lust _(conf=unverified, none)_
+- **S. Wtello** (S. Wtello) — as. S. Wtello in Natigers _(conf=unverified, none)_
 
 ## ROLE
 
-- **Anwalt** (Anwalt) — Dr Ostetag in Stuttgart als Anwalt _(conf=unverified, ?)_
-- **Monarch** (Monarch) — Monarch zu danken _(conf=unverified, ?)_
-- **Monarch** (Monarch) — Monarch zu danken _(conf=unverified, ?)_
+- **rätarg** (Rätarg) — Ras S. Shraik z. (rätarg in beahped _(conf=unverified, ?)_
+- **Graghap** (Graf) — 1 n. 1. 16 duh. v. der Graghap vn Wierloagt _(conf=unverified, ?)_
+
+## DATE
+
+- **2. Dtb.s. 1802** (1802-??-??) — dato. 2. Dtb.s. 1802 v. Sbaligeaber _(conf=unverified, ?)_
+- **Nov.** (November) — prl dt Nov. Wric _(conf=unverified, ?)_
+
+## PLACE
+
+- **Sbaligeaber** (Sbaligeaber) — dato. 2. Dtb.s. 1802 v. Sbaligeaber _(conf=unverified, none)_
+- **Gaageni** (Gaageni) — Zuhe dss in Gaageni. 100. 705 _(conf=unverified, none)_
+- **Wierloagt** (Wierloagt) — der Graghap vn Wierloagt wit einem Pudessa _(conf=unverified, none)_
+- **Meishen** (Meishen) — Finder hil ist amr Drrn aus die 11 Vnapt hiruch ein Meishen _(conf=unverified, none)_
+
+## SOCIAL_GROUP
+
+- **Protesterlea** (Protestanten) — die halsherigs der Protesterlea v. Besterd _(conf=unverified, ?)_
+
+## ORG
+
+- **Besterd** (Besterd) — die halsherigs der Protesterlea v. Besterd _(conf=unverified, ?)_
+- **Antreibent** (Antreibent) — Bnhrig als wuzis vd Antreibent zir der ab leis _(conf=unverified, ?)_

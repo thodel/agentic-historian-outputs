@@ -1,217 +1,76 @@
 {
   "entities": [
     {
-      "text": "Madame la Comtesse d'Albany",
+      "text": "Sxoimiu",
       "type": "PERSON",
-      "normalised": "Comtesse d'Albany",
-      "context": "A Madame la Comtesse d'Albany a florville du 6 fevrier 1801",
-      "char_start": 39,
-      "char_end": 66,
+      "normalised": "sxoimiu",
+      "context": "Sxoimiu  gnnd n /er",
+      "char_start": 245,
+      "char_end": 252,
       "located": true,
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "6 fevrier 1801",
-      "type": "DATE",
-      "normalised": "1801-02-06",
-      "context": "du 6 fevrier 1801. à heiligenberg",
-      "char_start": 82,
-      "char_end": 96,
-      "located": true
+      "text": "Dur",
+      "type": "PLACE",
+      "normalised": "dur",
+      "context": "bi͛ Dur  · at noind",
+      "char_start": 647,
+      "char_end": 650,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
     },
     {
-      "text": "M. le Baron de Wächter",
+      "text": "Nias",
+      "type": "PLACE",
+      "normalised": "nias",
+      "context": "Nias͛ er / o·üit",
+      "char_start": 663,
+      "char_end": 667,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Sund",
+      "type": "PLACE",
+      "normalised": "sund",
+      "context": "· t e nene · Sund · uen",
+      "char_start": 443,
+      "char_end": 447,
+      "located": true,
+      "hub_confidence": "unverified",
+      "link_method": "none"
+    },
+    {
+      "text": "Mnxxec",
       "type": "PERSON",
-      "normalised": "Baron de Wächter",
-      "context": "M. le Baron de Wächter a fait de sa Terre à Sa Majesté Danoise",
-      "char_start": 303,
-      "char_end": 325,
+      "normalised": "mnxxec",
+      "context": "eenie Mnxxec ai oix·",
+      "char_start": 369,
+      "char_end": 375,
       "located": true,
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "Sa Majesté Danoise",
+      "text": "Iiuuu",
       "type": "PERSON",
-      "normalised": "Danish Majesty",
-      "context": "à Sa Majesté Danoise; il y a vu des Si",
-      "char_start": 347,
-      "char_end": 365,
+      "normalised": "iiuuu",
+      "context": "Iiuuu eauu eir",
+      "char_start": 897,
+      "char_end": 902,
       "located": true,
       "hub_confidence": "unverified",
       "link_method": "none"
     },
     {
-      "text": "Deutz",
-      "type": "PLACE",
-      "normalised": "Deutz",
-      "context": "en la forte de Deutz, Grand baillié de Rotenbourg",
-      "char_start": 477,
-      "char_end": 482,
-      "located": true,
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Deutz",
-      "type": "PLACE",
-      "normalised": "Deutz",
-      "context": "en la forte de Deutz, Grand baillié de Rotenbourg",
-      "char_start": 1535,
-      "char_end": 1540,
-      "located": true,
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Grand baillié de Rotenbourg",
-      "type": "ORG",
-      "normalised": "Grand baillié de Rotenbourg",
-      "context": "Grand baillié de Rotenbourg, qui a la Bonté de s'intéresser pour moi",
-      "char_start": 484,
-      "char_end": 511,
-      "located": true
-    },
-    {
-      "text": "Rotenbourg",
-      "type": "PLACE",
-      "normalised": "Rotenbourg",
-      "context": "Grand baillié de Rotenbourg",
-      "char_start": 501,
-      "char_end": 511,
-      "located": true,
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "Rotenbourg",
-      "type": "PLACE",
-      "normalised": "Rotenbourg",
-      "context": "Grand baillié de Rotenbourg",
-      "char_start": 1373,
-      "char_end": 1383,
-      "located": true,
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "comte de Beutell",
+      "text": "Iere",
       "type": "PERSON",
-      "normalised": "Comte de Beutell",
-      "context": "selon le conseil du comte de Beutell écrit aujourd'hui",
-      "char_start": 1316,
-      "char_end": 1332,
-      "located": true,
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "grand Bailliage de Rotenbourg",
-      "type": "ORG",
-      "normalised": "Grand Bailliage de Rotenbourg",
-      "context": "au grand Bailliage de Rotenbourg",
-      "char_start": 1354,
-      "char_end": 1383,
-      "located": true
-    },
-    {
-      "text": "Roi de Danemark",
-      "type": "PERSON",
-      "normalised": "King of Denmark",
-      "context": "le Roi de Danemark en declarant",
-      "char_start": 1490,
-      "char_end": 1505,
-      "located": true,
-      "hub_confidence": "unverified",
-      "link_method": "none"
-    },
-    {
-      "text": "créanciers privilégiés",
-      "type": "SOCIAL_GROUP",
-      "normalised": "créanciers privilégiés",
-      "context": "Remboursement des créanciers privilégiés",
-      "char_start": 680,
-      "char_end": 702,
-      "located": true
-    },
-    {
-      "text": "créanciers",
-      "type": "SOCIAL_GROUP",
-      "normalised": "créanciers",
-      "context": "aux créanciers sur la hypothèque",
-      "char_start": 680,
-      "char_end": 690,
-      "located": true
-    },
-    {
-      "text": "créanciers",
-      "type": "SOCIAL_GROUP",
-      "normalised": "créanciers",
-      "context": "aux créanciers sur la hypothèque",
-      "char_start": 803,
-      "char_end": 813,
-      "located": true
-    },
-    {
-      "text": "créanciers",
-      "type": "SOCIAL_GROUP",
-      "normalised": "créanciers",
-      "context": "aux créanciers sur la hypothèque",
-      "char_start": 1688,
-      "char_end": 1698,
-      "located": true
-    },
-    {
-      "text": "débiteurs",
-      "type": "SOCIAL_GROUP",
-      "normalised": "débiteurs",
-      "context": "la haine publique de tous ses débiteurs",
-      "char_start": 979,
-      "char_end": 988,
-      "located": true
-    },
-    {
-      "text": "Baron",
-      "type": "ROLE",
-      "normalised": "Baron",
-      "context": "M. le Baron de Wächter",
-      "char_start": 309,
-      "char_end": 314,
-      "located": true
-    },
-    {
-      "text": "Comtesse",
-      "type": "ROLE",
-      "normalised": "Comtesse",
-      "context": "Madame la Comtesse d'Albany",
-      "char_start": 49,
-      "char_end": 57,
-      "located": true
-    },
-    {
-      "text": "Roi",
-      "type": "ROLE",
-      "normalised": "Roi",
-      "context": "Roi de Danemark",
-      "char_start": 1490,
-      "char_end": 1493,
-      "located": true
-    },
-    {
-      "text": "Bailli",
-      "type": "ROLE",
-      "normalised": "Bailli",
-      "context": "Grand baillié de Rotenbourg",
-      "char_start": 1360,
-      "char_end": 1366,
-      "located": true
-    },
-    {
-      "text": "Heiligenberg",
-      "type": "PLACE",
-      "normalised": "Heiligenberg",
-      "context": "à heiligenberg",
+      "normalised": "iere",
+      "context": "I ere baeerren",
       "char_start": null,
       "char_end": null,
       "located": false,
@@ -219,40 +78,15 @@
       "link_method": "none"
     },
     {
-      "text": "Tribunal feodal",
-      "type": "ORG",
-      "normalised": "feudal tribunal",
-      "context": "déclarer à son Tribunal feodal",
+      "text": "Lassberg",
+      "type": "PLACE",
+      "normalised": "lassberg",
+      "context": "--- lassberg-letter-0054_001.jpg ---",
       "char_start": null,
       "char_end": null,
-      "located": false
-    },
-    {
-      "text": "15 fevrier",
-      "type": "DATE",
-      "normalised": "02-15",
-      "context": "son écrit du 15me de fevrier - il croit",
-      "char_start": null,
-      "char_end": null,
-      "located": false
-    },
-    {
-      "text": "20 janvier",
-      "type": "DATE",
-      "normalised": "01-20",
-      "context": "mes lettres du 20 & 26 Janvier",
-      "char_start": null,
-      "char_end": null,
-      "located": false
-    },
-    {
-      "text": "26 janvier",
-      "type": "DATE",
-      "normalised": "01-26",
-      "context": "mes lettres du 20 & 26 Janvier",
-      "char_start": null,
-      "char_end": null,
-      "located": false
+      "located": false,
+      "hub_confidence": "unverified",
+      "link_method": "none"
     }
   ]
 }

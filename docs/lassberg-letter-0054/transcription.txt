@@ -1,31 +1,71 @@
 # Transkription: lassberg-letter-0054
-# QA-Score: 0.00
+# QA-Score: 0.06
 # HTR-Source: grouped
 # Modell: qwen3.8-27b
 
 --- lassberg-letter-0054_001.jpg ---
-A Madame la Comtesse d'Albany a florville
-du 6 fevrier 1801. à heiligenberg.
-
-L'importance de l'Object et la hâte qui en est
-inséparable, excuseront la forme de mon lettre !
-Vous voudrez bien, par l'Inspection des papiers
-y joints, prendre Notice de l'acession, que
-M. le Baron de Wächter a fait de sa Terre à
-Sa Majesté Danoise; il y a vu des Si qu'il
-n'a jugé apropos de declarer à son Tribunal
-feodal, que dans ce moment.
-en la forte de Deutz, Grand baillié de Rotenbourg,
-qui a la Bonté de s'intéresser pour moi, me fait
-douter cette nouvelle par son écrit du 15me de
-fevrier - il croit que cette cession va accélérer
-le Remboursement des créanciers privilégiés; Dieu-
-bonis Dieu, que vous Madame ! Soit de ce
-Nombre; car je crains beaucoup, que tous les
-autres créanciers, auront bien de la peine à tirer
-quelque chose du Bn de Wächter, au quel, cette
-Declaration, apparemment très involontaire, va
-attirer la haine publique de tous ses débiteurs, sa
-femme étant morte dernièrement. Espérant que Vous ayez en attendant reçu mes lettres du 20 & 26 Janvier; je me flatte, que votre Opinion sur mon choral & mon Zèle arons ferai ait changé à mon avantage & j'ai osé anticiper sur vos Reso- lutions ultérieures & pour ne pas perdre le moment favorable j'ai, selon le conseil du comte de Beutell écrit aujourd'hui au grand Bailliage de Rotenbourg & réclamé en votre Nom Non; contre cette cession & notamment contre la prise de possession de celle ci le Roi de Danemark en declarant que: nos Titres Deutz étant De plus ancienne Date que la cession nous croyons nous y devoir opposer aussi long tems que si M. Danoise n'aura pas liquidé & remboursé les créanciers sur la hypothèque qu'elle croit avoir acquis
+ot io r͛a me o po i··· cc il͛om u io nine͛
+ie e c cotit · ooa · i bhÿ mab ig·
+/ ayxo·  omu o c oy ·el ece lir zu eden
+iyſn · ·iden · eno ·xirr a x·ie d · amnt͛ war
+D · n eraou dun · x· e· ixn · · eew eex· u
+Sxoimiu  gnnd n /er · u d·i · eien gue
+en · n b aund · naenu u rae du eu i͛im a
+iu by enu d͛ano ·de · v eii and dye i
+eenie Mnxxec ai oix· ·i u · iitmus
+§ ·oral / j n aen a co men
+ere/ · t e nene · Sund · uen x/ · · dunur·rn ·
+giu a· do /S·ie du o aiuneu · n· uc iri · an / u
+air · em tinoetu xn i · uxo urii e S ··de
+/iri͛ in il et g ane ſc nin iu o ·it ·c
+b linc · y / nucmaeg irtuit mitnett / ·
+bi͛ Dur  · at noind Nias͛ er / o·üit a a
+i/·urdr  · onj · emiid dean ·omx · § n ione bc
+aun ſrerad emon din re /iedūm a air
+paryn x ain an dͦ au hamun j iu j aec eolte
+d · rirand͛n xu nin · dul iinr ·arain v·t
+elin a dumn xndxy er ee i · · io dilur  ou
+Iiuuu eauu eir emrna·
+hoeur gat done aus i aured iu · ixu aro retn
+ar lo a io d͛mnux ⁊ · er ſaie · jm imii dounor
+da iro vvi a mn deu i xien an ange
+o ewa amalaye M ai m auryn dirr · · /ln·
+liuuin alnene dynir my x ixxiihi ·e u nrut
+/iroiode / u ·iiu econrael taſgimr ae / bail
+end e uu͛mī ant ny ·and ·iln · o · / mnbom
+ec irm  nd mu di ·ion e dom Ouiu ale /ſi nai
+o anerun emiin c dir · er dom min ae i·nd·
+ I ere baeerren j i eaam · jm · nor vider
+ae /· re͛ in·· ·  m· girur an aiimre den jn lu emom
+iiue em irno eenn cn diit i xxon er be dem eic
+ae uir · danore uiain zir eerde reredoene
+io din ixr · vex u xroliyrxe x · · eir m· min eÿnae
 
 --- lassberg-letter-0054_002.jpg ---
+ ie / · mun o i · beed dinude· eie͛
+t dumu͛ ⁊x·iiwn  in amme ut numi ·cd i
+ot ou diiäin ge br eo ni ai ſ· oili · eo direke
+dend · d͛ · e r lino  an ſirlimeh · · · er d
+ aud͛ nu n arun  o eu·u / o͛iir un eu deu
+c bdie aenn · aonē z pr tiire adi ſa·co
+irri · · uu dle ummd ai vmminmn n rrpu
+anne olieno · irx · mun·
+· aew gn  gemlb mayede olinel ern o mmare
+ae im iix aili ibumg ixm oamium gu une
+dir ie peem ijn a͛ ee a un enduē durer mat͛
+ec · rmuum / eſ hamtu
+o ies ·rc ·vx eemn · e ynx·u · c · ut u merareo du-
+o · /u cxx ut / ii · aypewru Aie eelēmÿ ie
+x·uir xnr s c · em͛ · nx nim xex cv du /n atin
+ ai geer e cui · /rie irr lo io· gu
+ic u wam  u eu e nanx ·r ai rom ue
+neno ar d e limeud eiror amnc uuin / darm
+ne axuix ni ·  · v enx · x emen · iu
+peu  xe xeu ·i gu͛ c ar ·ru̶x  urr zurr bine
+eco ai · aii e aines / emie ꝯ ii ·· virus
+dut/ ba o ·c ·xx · nu nemuien
+aler elimu · y xnic · ugrinun
+byxci e ·· n
+be tu· du
+
+ass ·
